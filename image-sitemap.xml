@@ -39,6 +39,16 @@
       <image:title>Dr. Niranjan Hiranandani CMD Hiranandani Communities</image:title>
       <image:caption>Architectural visionary and leader shaping Pune's first integrated equestrian township.</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/mobile-hiranandani-banner.webp</image:loc>
+      <image:title>Krisala Hiranandani Mobile Township Banner</image:title>
+      <image:caption>Mobile vertical panorama of the 105-acre equestrian township Hinjewadi.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/video-thumbnail.webp</image:loc>
+      <image:title>Krisala Hiranandani 4K Drone Tour Reel Cover</image:title>
+      <image:caption>Official cinematic video reel thumbnail cover.</image:caption>
+    </image:image>
   </url>
 
   <url>
@@ -58,19 +68,34 @@
       <image:title>Everlyn Tower A, B, C Floor Plan</image:title>
       <image:caption>Spacious 2 &amp; 3 BHK luxury floor plans at Krisala Hiranandani.</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/Everlyn.webp</image:loc>
+      <image:title>Everlyn Official Crest Insignia</image:title>
+      <image:caption>Official architectural emblem for Everlyn Residences Hinjewadi.</image:caption>
+    </image:image>
   </url>
 
   <url>
     <loc>https://krisalahiranandanitownships.com/della</loc>
     <image:image>
-      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp</image:loc>
-      <image:title>The Della Collection Villa Plots</image:title>
-      <image:caption>Ultra-luxury villa plots by Della Resorts in Hinjewadi.</image:caption>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/della-racecource.webp</image:loc>
+      <image:title>The Della Collection 8-Acre Private Racecourse</image:title>
+      <image:caption>Ultra-luxury polo track and equestrian grounds in Hinjewadi.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/mobile-view-della.webp</image:loc>
+      <image:title>The Della Collection Mobile Racecourse View</image:title>
+      <image:caption>Mobile view of equestrian estate and villa plots.</image:caption>
     </image:image>
   </url>
 
   <url>
     <loc>https://krisalahiranandanitownships.com/masterplan</loc>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/Krisala-x-Hiranandani-Township-Brochure-1.webp</image:loc>
+      <image:title>Official Developer Master Township Layout</image:title>
+      <image:caption>High-resolution 105-acre master plan brochure blueprint.</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://krisalahiranandanitownships.com/public/everlyn/masterplan/master_layout_hq.webp</image:loc>
       <image:title>Krisala Hiranandani Interactive Masterplan</image:title>
@@ -80,6 +105,11 @@
 
   <url>
     <loc>https://krisalahiranandanitownships.com/neighborhood</loc>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/proximity-to-pune-mumbai.webp</image:loc>
+      <image:title>Proximity to Mumbai &amp; Pune Expressway</image:title>
+      <image:caption>Official proximity transit graphic demonstrating 5-minute access to Mumbai-Pune Expressway.</image:caption>
+    </image:image>
     <image:image>
       <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp</image:loc>
       <image:title>North Hinjewadi Micro-Market Location Map</image:title>

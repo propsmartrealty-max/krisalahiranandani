@@ -618,8 +618,11 @@
     <section class="hero hero-grand" id="home">
         <div class="hero-bg">
             <div class="hero-overlay"></div>
-            <img fetchpriority="high" src="public/imported/krisala-hiranandani-banner.webp" onerror="this.src='public/everlyn/hero/hero_main_hq.webp'" alt="Krisala Hiranandani Township Hinjewadi Panorama"
-                class="hero-img parallax-img" width="1920" height="1080">
+            <picture>
+                <source media="(max-width: 768px)" srcset="public/imported/mobile-hiranandani-banner.webp" width="1024" height="1897">
+                <img fetchpriority="high" src="public/imported/krisala-hiranandani-banner.webp" onerror="this.src='public/everlyn/hero/hero_main_hq.webp'" alt="Krisala Hiranandani Township Hinjewadi Panorama"
+                    class="hero-img parallax-img" width="1920" height="1080">
+            </picture>
         </div>
 
         <div class="container hero-content">
@@ -1214,8 +1217,11 @@
                 </div>
             </div>
             <div class="della-visual glass-panel scroll-reveal right">
-                <img loading="lazy" decodings="async" src="public/imported/della-racecource.webp" onerror="this.src='public/everlyn/masterplan/aerial_layout_hq.webp'"
-                    alt="Della Resorts 8-Acre Private Racecourse at Krisala Hiranandani Township Pune">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="public/imported/mobile-view-della.webp">
+                    <img loading="lazy" decodings="async" src="public/imported/della-racecource.webp" onerror="this.src='public/everlyn/masterplan/aerial_layout_hq.webp'"
+                        alt="Della Resorts 8-Acre Private Racecourse at Krisala Hiranandani Township Pune">
+                </picture>
                 <div class="visual-overlay">
                     <div class="visual-stat">
                         <h3>100</h3>
@@ -2254,18 +2260,25 @@
             </div>
     <!-- 4K Cinematic Video Reel Modal -->
     <div class="modal-overlay video-modal-overlay" id="videoModal">
-        <div class="modal-container glass-panel" style="max-width: 900px; padding: 25px;">
+        <div class="modal-container glass-panel" style="max-width: 920px; padding: 25px;">
             <button class="close-modal close-video-modal" aria-label="Close Video"><i class="ph ph-x"></i></button>
             <div style="aspect-ratio: 16/9; width: 100%; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 15px 40px rgba(0,0,0,0.8);">
-                <video id="townshipFilmPlayer" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
+                <video id="townshipFilmPlayer" controls playsinline preload="metadata" poster="public/imported/video-thumbnail.webp" style="width: 100%; height: 100%; object-fit: contain;">
                     <source src="public/imported/u8323264961_httpss.mj_.rundqik694D-FI_aerial_view_of_dense_gre_cdda2115-7b10-495a-84ac-39089bcdc5a2_2.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <div style="padding: 18px 10px 5px; text-align: center;">
-                <span class="badge" style="margin-bottom: 8px; display: inline-block;"><i class="ph ph-video-camera"></i> Official 4K Drone Footage</span>
-                <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.5rem;">Krisala × Hiranandani Township • 105-Acre Master Ecosystem</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 6px;">Experience the lush Sahyadri topography, Della resort district, 8-acre racecourse, and neoclassical towers from above.</p>
+            <div class="video-playlist-tracks" style="margin-top: 15px;">
+                <button type="button" class="video-track-btn active" data-src="public/imported/u8323264961_httpss.mj_.rundqik694D-FI_aerial_view_of_dense_gre_cdda2115-7b10-495a-84ac-39089bcdc5a2_2.mp4" data-title="Krisala × Hiranandani Township • 105-Acre Master Drone Tour" data-desc="Experience the lush Sahyadri topography, Della resort district, 8-acre racecourse, and neoclassical towers from above."><i class="ph ph-airplane-tilt"></i> 4K Drone Tour</button>
+                <button type="button" class="video-track-btn" data-src="public/imported/u8323264961_httpss.mj_.runIgQeJU6RN0w_macro_water_droplet_spla_c2ec9034-b2f7-4a69-a9ae-516ac8f0a20f_1-1.mp4" data-title="TERI 50-Year Eco Hydrology &amp; Water Resilience" data-desc="Zero-discharge circular water ecology, rainwater reservoirs, and pristine hydrologic management."><i class="ph ph-drop"></i> Water Eco-Resilience</button>
+                <button type="button" class="video-track-btn" data-src="public/imported/u8323264961_httpss.mj_.runLS9qHtlyZgc_happy_little_girl_enjoyi_cac46d73-5de5-4904-91ae-b176eb48e6af_0.mp4" data-title="Holistic Community Living &amp; Family Sanctuary" data-desc="Children playscapes, multi-generational clubhouses, and secure neoclassical gated sanctuary."><i class="ph ph-users"></i> Community Life</button>
+                <button type="button" class="video-track-btn" data-src="public/imported/u8323264961_httpss.mj_.runQT4LbtUme-w_glass_light_bulb_jar_fil_a5505473-db1e-4ade-9efc-b58367a543d8_1.mp4" data-title="Smart Clean Energy Grid &amp; Low-Carbon Infrastructure" data-desc="Solar corridors, EV infrastructure, and high-efficiency thermal neoclassical architecture."><i class="ph ph-lightning"></i> Clean Tech</button>
+                <button type="button" class="video-track-btn" data-src="public/imported/u8323264961_httpss.mj_.runXRCv2kRFrV4_stack_of_golden_coins_ro_60f900e5-f442-496e-a044-41f835c0b7bf_3.mp4" data-title="Capital Appreciation &amp; Hinjewadi ROI Forecast" data-desc="Strong rental yields and rapid capital growth backed by Metro Line 3 and IT hub expansion."><i class="ph ph-trend-up"></i> Investment ROI</button>
+            </div>
+            <div style="padding: 14px 10px 5px; text-align: center;">
+                <span class="badge" style="margin-bottom: 8px; display: inline-block;"><i class="ph ph-video-camera"></i> Official 4K Footage Reel</span>
+                <h3 id="videoReelTitle" style="font-family: var(--font-heading); color: #fff; font-size: 1.4rem;">Krisala × Hiranandani Township • 105-Acre Master Ecosystem</h3>
+                <p id="videoReelDesc" style="color: var(--text-muted); font-size: 0.88rem; margin-top: 6px;">Experience the lush Sahyadri topography, Della resort district, 8-acre racecourse, and neoclassical towers from above.</p>
             </div>
         </div>
     </div>

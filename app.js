@@ -914,11 +914,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 34. 4K Cinematic Video Reel Modal Controller
+    // 34. 4K Cinematic Video Reel Modal Controller & Multi-Track Playlist
     const videoModal = document.getElementById('videoModal');
     const openVideoBtns = document.querySelectorAll('.open-video-modal');
     const closeVideoBtn = document.querySelector('.close-video-modal');
     const videoPlayer = document.getElementById('townshipFilmPlayer');
+    const trackBtns = document.querySelectorAll('.video-track-btn');
+    const videoTitle = document.getElementById('videoReelTitle');
+    const videoDesc = document.getElementById('videoReelDesc');
+
+    if (trackBtns.length > 0 && videoPlayer) {
+        trackBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                trackBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const src = btn.getAttribute('data-src');
+                const title = btn.getAttribute('data-title');
+                const desc = btn.getAttribute('data-desc');
+
+                if (src) {
+                    videoPlayer.src = src;
+                    videoPlayer.load();
+                    videoPlayer.play().catch(() => {});
+                }
+                if (videoTitle && title) videoTitle.innerText = title;
+                if (videoDesc && desc) videoDesc.innerText = desc;
+            });
+        });
+    }
 
     if (videoModal && openVideoBtns.length > 0) {
         openVideoBtns.forEach(btn => {
