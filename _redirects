@@ -1,21 +1,14 @@
 # Cloudflare Pages Redirects Configuration
 # Documentation: https://developers.cloudflare.com/pages/configuration/redirects/
 
-# 301 Permanent Redirects to Canonical URLs
+# 301 Permanent Redirects to Canonical Clean URLs
 /home                 /                      301
 /township             /                      301
-/everlyn              /everlyn.html          301
-/della                /della.html            301
-/della-plots          /della.html            301
-/masterplan           /masterplan.html       301
-/master-plan          /masterplan.html       301
-/neighborhood         /neighborhood.html     301
-/location             /neighborhood.html     301
-/compare              /compare.html          301
-/blog                 /knowledge-hub.html    301
-/insights             /knowledge-hub.html    301
-/knowledge-hub        /knowledge-hub.html    301
-/privacy              /privacy-policy.html   301
-/terms                /privacy-policy.html   301
-/thankyou             /thank-you.html        301
-/thank-you            /thank-you.html        301
+/della-plots          /della                 301
+/master-plan          /masterplan            301
+/location             /neighborhood          301
+/blog                 /knowledge-hub         301
+/insights             /knowledge-hub         301
+/privacy              /privacy-policy        301
+/terms                /privacy-policy        301
+/thankyou             /thank-you             301

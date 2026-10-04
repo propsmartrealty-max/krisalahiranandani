@@ -3,7 +3,7 @@ const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
     '/',
-    '/index.html',
+    '/',
     '/style.css',
     '/app.js',
     '/offline.html',
@@ -13,12 +13,12 @@ const CORE_ASSETS = [
 ];
 
 const SILO_ASSETS = [
-    '/everlyn.html',
-    '/della.html',
-    '/knowledge-hub.html',
-    '/compare.html',
-    '/neighborhood.html',
-    '/masterplan.html',
+    '/everlyn',
+    '/della',
+    '/knowledge-hub',
+    '/compare',
+    '/neighborhood',
+    '/masterplan',
     '/404.html'
 ];
 
