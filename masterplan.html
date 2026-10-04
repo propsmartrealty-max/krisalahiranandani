@@ -2,18 +2,82 @@
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="shortcut icon" href="favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Masterplan | Krisala Hiranandani Township Hinjewadi</title>
-    
-    <!-- Phase 21: Extreme Performance Preloads (Lighthouse 100/100) -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" as="style">
+    <link rel="canonical" href="https://krisalahiranandanitownships.com/masterplan.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>105-Acre Masterplan | Krisala × Hiranandani Township Hinjewadi</title>
+    <meta name="description"
+        content="Explore the interactive 105+ Acre master layout of Krisala × Hiranandani Township, North Hinjewadi. High-resolution zoomable zoning map featuring Everlyn residences, Sector Arcadia, Sector Icon, Della villa plots, and 8-acre racecourse.">
+    <meta name="keywords"
+        content="Krisala Hiranandani masterplan, 105 acre township Hinjewadi master layout, Hiranandani Pune masterplan, North Hinjewadi layout map, Della villa plot layout, racecourse township zoning Pune">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Global Crawler Directives & Geo-Targeting -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="geo.region" content="IN-MH">
+    <meta name="geo.placename" content="North Hinjawadi, Pune">
+    <meta name="geo.position" content="18.5913;73.7389">
+    <meta name="ICBM" content="18.5913, 73.7389">
+    <link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/masterplan.html">
+    <link rel="alternate" hreflang="x-default" href="https://krisalahiranandanitownships.com/masterplan.html">
+
+    <!-- Preloads & Performance -->
+    <link rel="preload" href="public/everlyn/masterplan/master_layout_hq.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="style.css?v=2" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#08080a">
+
+    <!-- Social & OpenGraph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://krisalahiranandanitownships.com/masterplan.html">
+    <meta property="og:title" content="Interactive 105-Acre Masterplan | Krisala × Hiranandani Township">
+    <meta property="og:description"
+        content="High-resolution interactive zoning map of the 105+ acre township in North Hinjewadi. Everlyn residences, Della villa plots, and 8-acre private racecourse.">
+    <meta property="og:image" content="https://krisalahiranandanitownships.com/public/everlyn/masterplan/master_layout_hq.webp">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:site_name" content="Krisala Hiranandani Township Pune">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Interactive 105-Acre Masterplan | Krisala × Hiranandani Township">
+    <meta name="twitter:description"
+        content="High-resolution interactive zoning map of the 105+ acre township in North Hinjewadi. Everlyn residences, Della villa plots, and 8-acre private racecourse.">
+    <meta name="twitter:image" content="https://krisalahiranandanitownships.com/public/everlyn/masterplan/master_layout_hq.webp">
+
+    <!-- Schema.org JSON-LD Graph for Masterplan -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Map",
+          "@id": "https://krisalahiranandanitownships.com/masterplan.html#map",
+          "name": "105-Acre Integrated Masterplan Layout",
+          "description": "Comprehensive interactive masterplan map detailing the 105-acre zoning of Krisala × Hiranandani Township in North Hinjewadi, Pune. Identifies residential sectors, 40-acre Della hospitality precinct, 8-acre racecourse, and arterial transit corridors.",
+          "url": "https://krisalahiranandanitownships.com/masterplan.html",
+          "mapType": "VenueMap"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://krisalahiranandanitownships.com/masterplan.html#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Interactive Masterplan", "item": "https://krisalahiranandanitownships.com/masterplan.html" }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <style>
         body {
             margin: 0;
@@ -42,7 +106,6 @@
             max-width: none;
             height: auto;
             width: 3000px;
-            /* High res width */
             user-select: none;
         }
 
@@ -54,11 +117,11 @@
             display: flex;
             gap: 15px;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             padding: 10px 20px;
             border-radius: 30px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(197, 160, 89, 0.3);
         }
 
         .control-btn {
@@ -75,27 +138,30 @@
         }
 
         .back-btn {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            z-index: 100;
-            background: rgba(197, 160, 89, 0.2);
-            padding: 10px 20px;
-            border-radius: 5px;
+            background: rgba(15, 15, 18, 0.85);
+            padding: 10px 18px;
+            border-radius: 8px;
             color: #fff;
             text-decoration: none;
-            backdrop-filter: blur(5px);
-            border: 1px solid var(--gold-primary);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
         }
 
-        /* Overlays / Hotspots */
+        .back-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+        }
+
         .hotspot {
             position: absolute;
             width: 150px;
             height: 150px;
             border: 2px dashed var(--gold-primary);
             border-radius: 50%;
-            background: rgba(197, 160, 89, 0.1);
+            background: rgba(197, 160, 89, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,56 +170,51 @@
             text-shadow: 0 0 10px #000;
             cursor: pointer;
             transition: all 0.3s;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
         .hotspot:hover {
-            background: rgba(197, 160, 89, 0.4);
+            background: rgba(197, 160, 89, 0.45);
             transform: scale(1.1);
         }
     </style>
-
-    <!-- Social & OpenGraph Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://krisalahiranandanitownships.com/masterplan.html">
-    <meta property="og:title" content="Interactive Masterplan | Krisala Hiranandani Township Hinjewadi">
-    <meta property="og:description" content="Interactive 105+ acre township masterplan map for Krisala Hiranandani Hinjewadi.">
-    <meta property="og:image" content="https://krisalahiranandanitownships.com/public/everlyn/masterplan/master_layout_hq.webp">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Interactive Masterplan | Krisala Hiranandani Township Hinjewadi">
-    <meta name="twitter:description" content="Interactive 105+ acre township masterplan map for Krisala Hiranandani Hinjewadi.">
-    <meta name="twitter:image" content="https://krisalahiranandanitownships.com/public/everlyn/masterplan/master_layout_hq.webp">
 </head>
 
 <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#mapContainer" class="skip-link">Skip to Interactive Map</a>
+
     <nav class="masterplan-nav" style="position: absolute; top: 20px; left: 20px; z-index: 100; display: flex; gap: 10px; flex-wrap: wrap;" aria-label="Masterplan Navigation">
-        <a href="index.html" class="back-btn" style="position: static;"><i class="ph ph-arrow-left"></i> Township</a>
-        <a href="everlyn.html" class="back-btn" style="position: static;">Everlyn</a>
-        <a href="della.html" class="back-btn" style="position: static;">Della Collection</a>
-        <a href="neighborhood.html" class="back-btn" style="position: static;">Neighborhood</a>
-        <a href="compare.html" class="back-btn" style="position: static;">Compare</a>
+        <a href="index.html" class="back-btn"><i class="ph ph-arrow-left"></i> Main Township</a>
+        <a href="everlyn.html" class="back-btn">Everlyn Towers</a>
+        <a href="della.html" class="back-btn">Della Collection</a>
+        <a href="neighborhood.html" class="back-btn">Neighborhood</a>
+        <a href="compare.html" class="back-btn">Compare</a>
     </nav>
 
-    <div class="map-container" id="mapContainer">
+    <div class="map-container" id="mapContainer" role="region" aria-label="105-Acre Township Interactive Layout">
         <div class="map-wrapper" id="mapWrapper">
-            <img fetchpriority="high" src="public/everlyn/masterplan/master_layout_hq.webp" alt="Masterplan" class="map-img" draggable="false">
+            <img fetchpriority="high" src="public/everlyn/masterplan/master_layout_hq.webp" alt="Krisala Hiranandani 105-Acre Masterplan Layout Map" class="map-img" draggable="false" width="3000" height="1875">
 
-            <!-- Approximate Hotspots -->
-            <div class="hotspot" style="top: 25%; left: 35%;" onclick="window.location.href='everlyn.html'">
-                Everlyn Tower
+            <!-- Interactive Hotspots -->
+            <div class="hotspot" style="top: 25%; left: 35%;" onclick="window.location.href='everlyn.html'" role="button" aria-label="Explore Everlyn Tower and Sector Arcadia / Icon">
+                Everlyn Residences (Arcadia &amp; Icon)
             </div>
-            <div class="hotspot" style="top: 15%; left: 60%;" onclick="window.location.href='della.html'">
-                The Della Collection
+            <div class="hotspot" style="top: 15%; left: 60%;" onclick="window.location.href='della.html'" role="button" aria-label="Explore The Della Collection Villa Plots">
+                The Della Collection (Villa Plots)
             </div>
-            <div class="hotspot" style="top: 55%; left: 45%;" onclick="window.location.href='index.html#equestrian'">
-                Private Racecourse
+            <div class="hotspot" style="top: 55%; left: 45%;" onclick="window.location.href='index.html#equestrian'" role="button" aria-label="Explore 8-Acre Private Racecourse & Polo Club">
+                8-Acre Private Racecourse &amp; Polo Club
             </div>
         </div>
     </div>
 
-    <div class="controls">
-        <button class="control-btn" onclick="zoom(0.1)"><i class="ph ph-plus"></i></button>
-        <button class="control-btn" onclick="zoom(-0.1)"><i class="ph ph-minus"></i></button>
-        <button class="control-btn" onclick="resetZoom()"><i class="ph ph-arrows-out"></i></button>
+    <div class="controls" aria-label="Map Zoom and View Controls">
+        <button class="control-btn" onclick="zoom(0.1)" aria-label="Zoom in on masterplan"><i class="ph ph-plus"></i></button>
+        <button class="control-btn" onclick="zoom(-0.1)" aria-label="Zoom out on masterplan"><i class="ph ph-minus"></i></button>
+        <button class="control-btn" onclick="resetZoom()" aria-label="Reset masterplan zoom to default"><i class="ph ph-arrows-out"></i></button>
     </div>
 
     <script>
@@ -197,6 +258,26 @@
             updateTransform();
         });
 
+        // Touch Support for Mobile Drag
+        container.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                isDragging = true;
+                startX = e.touches[0].clientX - translateX;
+                startY = e.touches[0].clientY - translateY;
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isDragging || e.touches.length !== 1) return;
+            translateX = e.touches[0].clientX - startX;
+            translateY = e.touches[0].clientY - startY;
+            updateTransform();
+        }, { passive: true });
+
         // Scroll Zoom
         container.addEventListener('wheel', (e) => {
             e.preventDefault();
@@ -207,11 +288,11 @@
 
     <!-- Floating Actions -->
     <div class="floating-actions">
-        <a href="https://wa.me/918010834316?text=Hi%2C%20I%20am%20exploring%20the%20Masterplan%20for%20Krisala%20Hiranandani" class="float-btn float-whatsapp" target="_blank"
+        <a href="https://wa.me/919172174141?text=Hi%2C%20I%20am%20exploring%20the%20Masterplan%20for%20Krisala%20Hiranandani" class="float-btn float-whatsapp" target="_blank"
             aria-label="Chat on WhatsApp">
             <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
         </a>
-        <a href="tel:+918010834316" class="float-btn float-call" aria-label="Call Assistance">
+        <a href="tel:+919172174141" class="float-btn float-call" aria-label="Call Assistance">
             <i class="ph ph-phone" aria-hidden="true"></i>
         </a>
     </div>
