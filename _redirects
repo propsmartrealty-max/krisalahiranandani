@@ -1,9 +1,24 @@
 # Cloudflare Pages Redirects Configuration
 # Documentation: https://developers.cloudflare.com/pages/configuration/redirects/
 
-# Friendly URL Aliases
-/home            /index.html            301
-/privacy         /privacy-policy.html   301
-/terms           /privacy-policy.html   302
-/thank-you       /thank-you.html        301
-/master-plan     /masterplan.html       301
+# Clean URL Rewrites and Canonical Aliases (301 Permanent)
+/home                 /index.html            301
+/township             /index.html            301
+/everlyn              /everlyn.html          301
+/della                /della.html            301
+/della-plots          /della.html            301
+/masterplan           /masterplan.html       301
+/master-plan          /masterplan.html       301
+/neighborhood         /neighborhood.html     301
+/location             /neighborhood.html     301
+/compare              /compare.html          301
+/knowledge-hub        /knowledge-hub.html    301
+/blog                 /knowledge-hub.html    301
+/insights             /knowledge-hub.html    301
+/privacy              /privacy-policy.html   301
+/privacy-policy       /privacy-policy.html   301
+/terms                /privacy-policy.html   302
+/thank-you            /thank-you.html        301
+
+# Strict 404 Fallback
+/*                    /404.html              404

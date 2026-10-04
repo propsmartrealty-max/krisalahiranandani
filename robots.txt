@@ -4,6 +4,10 @@ Allow: /public/
 Allow: /style.css
 Allow: /app.js
 Allow: /manifest.json
+Disallow: /analytics.html
+Disallow: /semantic_block.html
+Disallow: /*.md$
+Disallow: /*.toml$
 
 # Image & Asset Crawling
 Allow: /*.jpg$
@@ -13,3 +17,4 @@ Allow: /*.webp$
 
 # Sitemaps
 Sitemap: https://krisalahiranandanitownships.com/sitemap.xml
+Sitemap: https://krisalahiranandanitownships.com/image-sitemap.xml
