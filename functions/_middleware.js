@@ -45,9 +45,20 @@ export async function onRequest(context) {
     const { request, next } = context;
     const url = new URL(request.url);
     const path = url.pathname.toLowerCase();
-    const userAgent = (request.headers.get('user-agent') || '').toLowerCase();
+    // 1. Canonical Host Normalization & HTTPS Edge Upgrade
+    // Enforce apex domain https://krisalahiranandanitownships.com globally
+    const isWww = url.hostname === 'www.krisalahiranandanitownships.com';
+    const isPagesDev = url.hostname === 'krisalahiranandani.pages.dev';
+    const isHttp = url.protocol === 'http:' && !url.hostname.includes('localhost') && !url.hostname.includes('127.0.0.1');
 
-    // 1. Method restriction
+    if (isWww || isPagesDev || isHttp) {
+        const canonicalUrl = new URL(request.url);
+        canonicalUrl.hostname = 'krisalahiranandanitownships.com';
+        canonicalUrl.protocol = 'https:';
+        return Response.redirect(canonicalUrl.toString(), 301);
+    }
+
+    // 2. Method restriction
     if (!ALLOWED_METHODS.includes(request.method)) {
         return new Response('Method Not Allowed', {
             status: 405,
@@ -73,6 +84,7 @@ export async function onRequest(context) {
     }
 
     // 3. Known scanner user-agent blocking
+    const userAgent = (request.headers.get('user-agent') || '').toLowerCase();
     if (BLOCKED_USER_AGENTS.some(bot => userAgent.includes(bot))) {
         return new Response('Forbidden', {
             status: 403,
