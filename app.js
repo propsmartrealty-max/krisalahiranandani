@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         submitBtn.style.background = '';
                         submitBtn.style.color = '';
                         submitBtn.disabled = false;
-                        window.location.href = 'thank-you.html';
+                        window.location.href = '/thank-you';
                     }, 1200);
                 } else {
                     throw new Error('Form submission failed');

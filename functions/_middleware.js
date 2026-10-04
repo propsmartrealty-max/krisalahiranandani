@@ -101,7 +101,19 @@ export async function onRequest(context) {
     // 5. Clone and inject hardened headers onto the outgoing response
     const newHeaders = new Headers(response.headers);
 
-    // Hardened Security Headers
+    // Cloudflare Edge Cache-Tag for instant targeted purging
+    newHeaders.set('Cache-Tag', 'kxh-township, kxh-html, kxh-seo, kxh-edge');
+
+    // Cloudflare Early Hints / HTTP 103 Resource Preloading
+    newHeaders.set('Link', [
+        '<https://fonts.googleapis.com>; rel=preconnect',
+        '<https://fonts.gstatic.com>; rel=preconnect; crossorigin',
+        '</style.css?v=2>; rel=preload; as=style',
+        '</app.js>; rel=preload; as=script',
+        '</public/krisala-hiranandani-logo.webp>; rel=preload; as=image'
+    ].join(', '));
+
+    // Hardened Edge Security Headers
     newHeaders.set('X-Content-Type-Options', 'nosniff');
     newHeaders.set('X-Frame-Options', 'DENY');
     newHeaders.set('X-XSS-Protection', '1; mode=block');
@@ -117,15 +129,20 @@ export async function onRequest(context) {
         "script-src 'self' 'unsafe-inline' https://unpkg.com",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com",
         "font-src 'self' https://fonts.gstatic.com https://unpkg.com",
-        "img-src 'self' data: https://krisalahiranandanitownships.com",
-        "connect-src 'self' https://formsubmit.co",
-        "form-action 'self' https://formsubmit.co",
+        "img-src 'self' data: blob: https://krisalahiranandanitownships.com",
+        "connect-src 'self' https://formsubmit.co https://api.indexnow.org",
+        "form-action 'self' https://formsubmit.co https://wa.me",
         "frame-ancestors 'none'",
         "base-uri 'self'",
         "object-src 'none'",
         "manifest-src 'self'",
         "upgrade-insecure-requests"
     ].join('; '));
+
+    // Edge Caching Calibration for HTML routes
+    if (path === '/' || path.endsWith('.html') || !path.includes('.')) {
+        newHeaders.set('Cloudflare-CDN-Cache-Control', 'max-age=604800, stale-while-revalidate=86400');
+    }
 
     // Strip revealing server headers
     newHeaders.delete('x-powered-by');
