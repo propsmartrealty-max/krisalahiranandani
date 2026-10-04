@@ -4,3 +4,5 @@ node_modules/
 *.log
 *service_account*.json
 *.pem
+.env
+.env.*

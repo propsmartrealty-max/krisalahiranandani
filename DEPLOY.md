@@ -1,6 +1,6 @@
 # Krisala Hiranandani Deployment Guide
 
-The website is fully optimized and hardened for production deployment across Cloudflare Pages, Vercel, or Netlify.
+The website is fully optimized and hardened for production deployment across Cloudflare Pages.
 
 ---
 
@@ -28,11 +28,6 @@ The repository includes enterprise-grade Cloudflare configuration:
 
 ---
 
-## 2. Vercel & Netlify Configurations
-- **Vercel**: Configuration is pre-wired in `vercel.json` (root output, CSP, and HSTS).
-- **Netlify**: Configuration is pre-wired in `netlify.toml`.
-
----
 
 ## 3. Security & CSP Whitelist
 The Content Security Policy allows:

@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="style.css?v=2">
@@ -322,7 +322,10 @@
             <div class="grid-2">
                 <!-- Sector Arcadia -->
                 <div class="sector-card scroll-reveal">
-                    <span class="sector-badge">Sector Arcadia &bull; Premium Enclave</span>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <span class="sector-badge">Sector Arcadia &bull; Premium Enclave</span>
+                        <img src="public/imported/codename-arcadia.webp" alt="Codename Arcadia Insignia" style="height: 42px; width: auto;" loading="lazy">
+                    </div>
                     <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; color: var(--gold-light);">Sector Arcadia</h3>
                     <p style="color: var(--text-muted); margin-bottom: 20px;">Curated for young professionals, growing families, and tech leaders seeking smart spatial design, zero wastage layouts, and rapid connectivity to Hinjewadi IT Park.</p>
                     <ul style="list-style: none; margin-bottom: 25px; line-height: 1.8;">
@@ -337,9 +340,12 @@
 
                 <!-- Sector Icon -->
                 <div class="sector-card scroll-reveal delay-1">
-                    <span class="sector-badge" style="background: rgba(197, 160, 89, 0.25); color: #fff;">Sector Icon &bull; Ultra-Luxury Flagship</span>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                        <span class="sector-badge" style="background: rgba(197, 160, 89, 0.25); color: #fff;">Sector Icon &bull; Ultra-Luxury Flagship</span>
+                        <img src="public/imported/icon-logo.webp" alt="Sector Icon Insignia" style="height: 42px; width: auto;" loading="lazy">
+                    </div>
                     <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; color: var(--gold-light);">Sector Icon</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">The premier residential address in West Pune. Designed for CXOs, business owners, and luxury seekers featuring expansive living areas and double-height duplex homes.</p>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">The premier residential address in West Pune. Designed for CXOs, business owners, and luxury seekers featuring expansive living areas and double-height duplex homes. MahaRERA Reg: PR1260002600818.</p>
                     <ul style="list-style: none; margin-bottom: 25px; line-height: 1.8;">
                         <li><i class="ph ph-check gold-icon"></i> <strong>3 BHK Grande</strong>: 1,250 &ndash; 1,450 sq.ft. carpet area</li>
                         <li><i class="ph ph-check gold-icon"></i> <strong>4 BHK Ultra-Luxury</strong>: 1,850 &ndash; 2,300 sq.ft. carpet area</li>
@@ -460,20 +466,60 @@
         <div class="container">
             <div class="section-title scroll-reveal">
                 <span class="subtitle">Engineering Blueprints</span>
-                <h2>Architectural Floor Plans</h2>
+                <h2>Architectural Floor Plans &amp; Blueprints</h2>
                 <div class="title-line"></div>
                 <p>Designed for optimal Vaastu compliance, maximum natural lighting, and zero carpet area wastage.</p>
             </div>
-            <div class="calculators-grid">
-                <div class="calc-card scroll-reveal">
-                    <h3><i class="ph ph-layout"></i> Tower A, B &amp; C (Sector Arcadia)</h3>
-                    <p>Optimized 2 &amp; 3 BHK residences with expansive balconies and modular utility space.</p>
-                    <button class="btn-gold open-modal" style="margin-top: 20px;">Download Arcadia Blueprints</button>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;">
+                <div class="fp-interactive-card scroll-reveal">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/tower_a_b_c_plan.webp" alt="Tower A, B & C Floor Plan Sector Arcadia">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>Tower A, B &amp; C (Sector Arcadia)</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">2 &amp; 3 BHK</span>
+                                <span class="fp-chip">Carpet: 740 – 1,180 sq.ft</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Optimized 2 &amp; 3 BHK residences with expansive balconies and modular utility space.</p>
+                        </div>
+                        <button class="btn-primary open-modal w-100" style="margin-top: 20px;">Download Arcadia Blueprints</button>
+                    </div>
                 </div>
-                <div class="calc-card scroll-reveal delay-1">
-                    <h3><i class="ph ph-layout"></i> Tower D &amp; E (Sector Icon)</h3>
-                    <p>Exclusive luxury layouts featuring 3, 4 BHK and signature double-height duplex residences.</p>
-                    <button class="btn-gold open-modal" style="margin-top: 20px;">Download Icon Blueprints</button>
+
+                <div class="fp-interactive-card scroll-reveal delay-1">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/tower_d_plan.webp" alt="Tower D & E Floor Plan Sector Icon">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>Tower D &amp; E (Sector Icon)</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">3, 4 BHK &amp; Duplexes</span>
+                                <span class="fp-chip">Carpet: 1,250 – 1,862 sq.ft</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Exclusive luxury layouts featuring 3, 4 BHK and signature double-height duplex penthouses.</p>
+                        </div>
+                        <button class="btn-primary open-modal w-100" style="margin-top: 20px;">Download Icon Blueprints</button>
+                    </div>
+                </div>
+
+                <div class="fp-interactive-card scroll-reveal delay-2">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/plan_booklet_1.webp" alt="Everlyn Unit Floor Plan Booklet">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>Everlyn Unit Booklet</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Full 20-Page Booklet</span>
+                                <span class="fp-chip">Mivan Engineering</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Comprehensive dimension schedule, carpet area certifications, and structural specifications.</p>
+                        </div>
+                        <button class="btn-primary open-modal w-100" style="margin-top: 20px;">Download Plan Booklet</button>
+                    </div>
                 </div>
             </div>
         </div>

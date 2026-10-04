@@ -28,21 +28,9 @@
     <link rel="preload" href="public/everlyn/hero/hero_main_hq.webp" as="image" fetchpriority="high">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-        rel="stylesheet">
-
-    <!-- Icons -->
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-
-
-    <!-- Phase 21: Extreme Performance Preloads (Lighthouse 100/100) -->
-    <link rel="preload" href="style.css?v=2" as="style">
-    <link rel="preload"
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-        as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css?v=2">
     <link rel="manifest" href="manifest.json">
@@ -630,7 +618,7 @@
     <section class="hero hero-grand" id="home">
         <div class="hero-bg">
             <div class="hero-overlay"></div>
-            <img fetchpriority="high" src="public/everlyn/hero/hero_main_hq.webp" alt="Luxury Township Aerial View"
+            <img fetchpriority="high" src="public/imported/krisala-hiranandani-banner.webp" onerror="this.src='public/everlyn/hero/hero_main_hq.webp'" alt="Krisala Hiranandani Township Hinjewadi Panorama"
                 class="hero-img parallax-img" width="1920" height="1080">
         </div>
 
@@ -676,6 +664,9 @@
                     <button class="btn-secondary open-modal" data-magnet="brochure" data-en="Download Brochure"
                         data-mr="माहिती पुस्तिका" aria-label="Download Krisala Hiranandani Township Pune Brochure">
                         <i class="ph ph-download-simple"></i> Download Brochure
+                    </button>
+                    <button class="btn-secondary open-video-modal" aria-label="Watch 4K Cinematic Township Film" style="background: rgba(197, 160, 89, 0.15); border-color: var(--gold-primary);">
+                        <i class="ph ph-play-circle" style="color: var(--gold-primary);"></i> Watch 4K Film
                     </button>
                 </div>
                 <div class="scroll-indicator">
@@ -742,95 +733,346 @@
         </div>
     </section>
 
-    <!-- Master Plan & Scale -->
-    <section class="masterplan" id="masterplan">
-        <div class="container masterplan-grid">
-            <div class="masterplan-image glass-panel scroll-reveal" style="background: white; padding: 20px;">
-                <img loading="lazy" decodings="async" src="public/everlyn/masterplan/master_layout.webp"
-                    alt="105-Acre Krisala Hiranandani Township Master Plan Layout in Hinjewadi Phase 1"
-                    style="object-fit: contain;">
-                <div class="image-caption" style="bottom: 30px; left: 30px;">
-                    <i class="ph ph-compass"></i>
-                    <span>A City Within a City</span>
+    <!-- Visionary Founders & Leadership Section (Hiranandani x Krisala) -->
+    <section class="founders-section" id="leadership">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="subtitle">Architects of Modern India</span>
+                <h2 class="section-title">Visionary Leadership. <span>Uncompromising Legacy.</span></h2>
+                <div class="roman-rule"></div>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--text-muted);">
+                    A historic partnership uniting Dr. Niranjan Hiranandani's four decades of visionary nation-building with the agile development precision of Krisala Developers.
+                </p>
+            </div>
+
+            <!-- Dr. Niranjan Hiranandani Statement Fold -->
+            <div class="founder-quote-banner scroll-reveal">
+                <div class="founder-portrait">
+                    <img src="public/imported/dr-niranjan-hiranandani.webp" alt="Dr. Niranjan Hiranandani CMD Hiranandani Communities" width="699" height="450" loading="lazy">
+                </div>
+                <div class="founder-quote-text">
+                    <blockquote>
+                        "Pune has always been a city of immense potential, and this marks my first township here — an ecosystem envisioned with the same conviction that shaped Powai decades ago. What gives me complete confidence is the leadership at Krisala; together, we are crafting a master-planned sanctuary where architecture, nature, and equine elegance coexist in perpetual harmony."
+                    </blockquote>
+                    <div class="founder-quote-author">
+                        <h4>Dr. Niranjan Hiranandani</h4>
+                        <span>CMD – Hiranandani Communities | Chairman – NAREDCO</span>
+                    </div>
                 </div>
             </div>
-            <div class="masterplan-text scroll-reveal right delay-1">
-                <h2 class="section-title">The Master <span>Plan</span></h2>
-                <p>Meticulously zoned to offer the perfect balance of serene residential life and vibrant commercial
-                    hubs. Over 70% of the 105 acres is dedicated to nature.</p>
 
-                <ul class="masterplan-features">
-                    <li>
-                        <i class="ph ph-drop"></i>
-                        <div>
-                            <strong>Eco-Smart Infrastructure</strong>
-                            <span>Rainwater harvesting, solar boulevards, and zero-waste management.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="ph ph-storefront"></i>
-                        <div>
-                            <strong>High-Street Retail</strong>
-                            <span>Premium shopping arcades and daily conveniences within walking distance.</span>
-                        </div>
-                    </li>
-                    <li>
-                        <i class="ph ph-road-horizon"></i>
-                        <div>
-                            <strong>Flawless Internal Planning</strong>
-                            <span>Wide, tree-lined avenues designed for pedestrian safety and smooth traffic
-                                flow.</span>
-                        </div>
-                    </li>
-                </ul>
-                <a href="masterplan" class="btn-primary"
-                    style="display: inline-block; text-decoration: none; margin-top: 30px;">Explore Interactive
-                    Sitemap</a>
+            <!-- Krisala Leadership Vanguard -->
+            <div class="founders-leadership-grid scroll-reveal">
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <img src="public/imported/mr-Sagar-Agrawal.webp" alt="Mr. Sagar Agarwal Managing Director Krisala Developers" loading="lazy">
+                    </div>
+                    <div class="leader-info">
+                        <h4>Mr. Sagar Agarwal</h4>
+                        <p>Managing Director • Krisala Developers</p>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <img src="public/imported/mr-Akash-agarwa.webp" alt="Mr. Aakash Agarwal Director Krisala Developers" loading="lazy">
+                    </div>
+                    <div class="leader-info">
+                        <h4>Mr. Aakash Agarwal</h4>
+                        <p>Director • Krisala Developers</p>
+                    </div>
+                </div>
+                <div class="leader-card">
+                    <div class="leader-img">
+                        <img src="public/imported/mr-Vishal-Agrawal.webp" alt="Mr. Vishal Agarwal Director Krisala Developers" loading="lazy">
+                    </div>
+                    <div class="leader-info">
+                        <h4>Mr. Vishal Agarwal</h4>
+                        <p>Director • Krisala Developers</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Floor Plans Section (NEW Everlyn Integration) -->
+    <!-- Master Plan & Scale (Official 105-Acre Township Layout) -->
+    <section class="masterplan" id="masterplan">
+        <div class="container">
+            <div class="section-header center scroll-reveal">
+                <span class="subtitle">105-Acre Master Ecosystem</span>
+                <h2 class="section-title">The Master <span>Township Layout</span></h2>
+                <div class="roman-rule"></div>
+                <p style="max-width: 820px; margin: 0 auto; color: var(--text-muted);">
+                    Meticulously zoned across 105 contiguous acres to integrate high-rise residential sectors, a 40-acre Della resort precinct, an 8-acre equestrian racecourse, and grand commercial boulevards.
+                </p>
+            </div>
+
+            <div class="master-layout-showcase scroll-reveal">
+                <div class="master-layout-image-wrap">
+                    <img loading="lazy" decodings="async" src="public/imported/Krisala-x-Hiranandani-Township-Brochure-1.webp" onerror="this.src='public/imported/Krisala-x-Hiranandani-Township-Brochure-1.jpg'"
+                        alt="105-Acre Krisala Hiranandani Master Township Layout Hinjewadi Pune">
+                </div>
+
+                <div class="master-layout-legend-grid">
+                    <div class="layout-sector-item">
+                        <h4><i class="ph ph-buildings" style="color: var(--gold-primary);"></i> Sector Arcadia (Everlyn)</h4>
+                        <p>Phase 1 residential towers featuring luxury 2 &amp; 3 BHK residences with panoramic green sundecks and wellness clubhouses.</p>
+                    </div>
+                    <div class="layout-sector-item">
+                        <h4><i class="ph ph-crown" style="color: var(--gold-primary);"></i> Sector Icon (Phase 3)</h4>
+                        <p>Ultra-spacious 2, 3, 4 BR &amp; Duplex penthouses (1,070 to 1,862 sq.ft carpet). MahaRERA Reg: PR1260002600818.</p>
+                    </div>
+                    <div class="layout-sector-item">
+                        <h4><i class="ph ph-horse" style="color: var(--gold-primary);"></i> Della 40-Acre Resort &amp; Racecourse</h4>
+                        <p>India's first 8-acre private racecourse inside a township, paired with Della 5-star resort hospitality and villa plots.</p>
+                    </div>
+                    <div class="layout-sector-item">
+                        <h4><i class="ph ph-tree" style="color: var(--gold-primary);"></i> Green Ribbons &amp; Civic Artery</h4>
+                        <p>70% open green expanses, 45m Town Planning DP roads, and pedestrianized tree-lined neoclassical boulevards.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="masterplan" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                        Explore Interactive Masterplan <i class="ph ph-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grand Classical Entrance Boulevard Banner -->
+    <section class="container scroll-reveal" style="padding-top: 0; padding-bottom: 0;">
+        <div class="grand-entrance-banner">
+            <img src="public/imported/main-entrance.webp" onerror="this.src='public/imported/main-entrance.jpg'" alt="Krisala Hiranandani Grand Classical Entrance Archway" loading="lazy">
+            <div class="grand-entrance-overlay">
+                <div class="grand-entrance-content">
+                    <span class="badge" style="background: rgba(9, 10, 15, 0.7);"><i class="ph ph-columns"></i> Neoclassical Grandeur</span>
+                    <h3>The Royal Gateway to North Hinjewadi</h3>
+                    <p>Towering Greco-Roman colonnades, ceremonial water fountains, and manicured royal palms welcome residents into Pune's most distinguished residential address.</p>
+                    <button class="btn-primary open-modal" aria-haspopup="dialog">Schedule Gate Entry Tour</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floor Plans Section (Interactive Typology Explorer) -->
     <section class="floorplans" id="floorplans">
         <div class="container">
-            <div class="section-header scroll-reveal">
-                <h2 class="section-title">Everlyn <span>Floor Plans</span></h2>
-                <p>Meticulously crafted unit layouts and tower blueprints optimized for everyday peace.</p>
+            <div class="section-header center scroll-reveal">
+                <span class="subtitle">Art of Living • Precision Floor Plans</span>
+                <h2 class="section-title">Architectural <span>Floor Plans</span></h2>
+                <div class="roman-rule"></div>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--text-muted);">
+                    Engineered with 100% monolithic MIVAN formwork for zero dead space, expansive 10'2" clear ceiling heights, and 6.5ft deep panoramic sundecks.
+                </p>
             </div>
 
-            <div class="floorplan-grid">
-                <div class="fp-card glass-panel scroll-reveal">
-                    <h3>Tower A, B & C Plan</h3>
-                    <img loading="lazy" decodings="async" src="public/everlyn/floorplans/plan_booklet_1.webp"
-                        alt="Everlyn Tower A, B, C 2 & 3 BHK Premium Floor Plans in Krisala Hinjewadi">
+            <!-- Tab Navigation -->
+            <div class="floorplans-tab-nav scroll-reveal">
+                <button class="floorplans-tab-btn active" data-tab="tab-2bhk">2 BHK Luxury (780–845 sq.ft)</button>
+                <button class="floorplans-tab-btn" data-tab="tab-3bhk">3 BHK Royale (1,065–1,280 sq.ft)</button>
+                <button class="floorplans-tab-btn" data-tab="tab-duplex">3 &amp; 4 BR Duplexes (1,450–1,862 sq.ft)</button>
+                <button class="floorplans-tab-btn" data-tab="tab-della">Della Villa Plots</button>
+                <button class="floorplans-tab-btn" data-tab="tab-towers">Tower Master Blueprints</button>
+            </div>
+
+            <!-- Tab 1: 2 BHK -->
+            <div class="floorplans-tab-content active" id="tab-2bhk">
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/plan_booklet_1.webp" alt="2 BHK Luxury Residence Floor Plan Krisala Hiranandani">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>2 BHK Luxury Residence</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Carpet: 780 – 815 sq.ft</span>
+                                <span class="fp-chip">Deck: 6.5 ft Deep</span>
+                                <span class="fp-chip">Sector: Arcadia / Everlyn</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Optimal biophilic cross-ventilation, dedicated dining enclave, master suite with walk-in wardrobe nook, and dry utility balcony.</p>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <button class="btn-primary open-modal" style="flex: 1;">Enquire Price</button>
+                            <button class="btn-outline open-modal" data-magnet="brochure" style="padding: 10px 14px;"><i class="ph ph-download-simple"></i> PDF</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="fp-card glass-panel scroll-reveal delay-1">
-                    <h3>Tower D Plan</h3>
-                    <img loading="lazy" decodings="async" src="public/everlyn/floorplans/plan_booklet_2.webp"
-                        alt="Everlyn Tower D Luxury 3 BHK Floor Plan by Krisala Developers">
-                </div>
-                <div class="fp-card glass-panel scroll-reveal delay-2">
-                    <h3>Tower E Plan</h3>
-                    <img loading="lazy" decodings="async" src="public/everlyn/floorplans/plan_booklet_3.webp"
-                        alt="Everlyn Tower E Exclusive 4 BHK Floor Plan at Hiranandani Pune">
+
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/unit_plan_1.webp" alt="2 BHK Grand Suite Floor Plan">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>2 BHK Grand Suite</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Carpet: 825 – 845 sq.ft</span>
+                                <span class="fp-chip">Double Sundeck</span>
+                                <span class="fp-chip">Tower A &amp; B</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Dual open view corridors overlooking the podium greens, luxury foyer entry, and premium European sanitary fittings.</p>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <button class="btn-primary open-modal" style="flex: 1;">Enquire Price</button>
+                            <button class="btn-outline open-modal" data-magnet="brochure" style="padding: 10px 14px;"><i class="ph ph-download-simple"></i> PDF</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="floorplan-grid" style="margin-top: 2rem;">
-                <div class="fp-card glass-panel scroll-reveal">
-                    <h3>Premium Unit Plan 1</h3>
-                    <img loading="lazy" decodings="async" src="public/everlyn/floorplans/plan_booklet_4.webp"
-                        alt="Premium 2 BHK Unit Plan Krisala Hiranandani Wakad Boundary">
+            <!-- Tab 2: 3 BHK -->
+            <div class="floorplans-tab-content" id="tab-3bhk">
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/plan_booklet_2.webp" alt="3 BHK Royale Residence Plan">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>3 BHK Royale Residence</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Carpet: 1,065 – 1,180 sq.ft</span>
+                                <span class="fp-chip">Corner Layout</span>
+                                <span class="fp-chip">Sector Arcadia</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Three-side open corner floor geometry providing uninterrupted 270-degree vistas of the Sahyadri foothills and private racecourse.</p>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <button class="btn-primary open-modal" style="flex: 1;">Enquire Price</button>
+                            <button class="btn-outline open-modal" data-magnet="brochure" style="padding: 10px 14px;"><i class="ph ph-download-simple"></i> PDF</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="fp-card glass-panel scroll-reveal delay-1">
-                    <h3>Premium Unit Plan 2</h3>
-                    <img loading="lazy" decodings="async" src="public/everlyn/floorplans/unit_plan_2.webp"
-                        alt="Luxury 3 BHK Unit Plan Krisala Hiranandani Hinjewadi Phase 1">
+
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/unit_plan_2.webp" alt="3 BHK Imperial Suite Plan">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>3 BHK Imperial Suite</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Carpet: 1,220 – 1,280 sq.ft</span>
+                                <span class="fp-chip">Powder Room + Maid</span>
+                                <span class="fp-chip">Tower D &amp; E</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Palatial living and dining salon opening onto an oversized party terrace with Italian marble flooring throughout common zones.</p>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <button class="btn-primary open-modal" style="flex: 1;">Enquire Price</button>
+                            <button class="btn-outline open-modal" data-magnet="brochure" style="padding: 10px 14px;"><i class="ph ph-download-simple"></i> PDF</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="fp-card glass-panel scroll-reveal delay-2">
-                    <h3>Premium Unit Plan 3</h3>
-                    <img loading="lazy" decodings="async" src="public/everlyn/floorplans/unit_plan_3.webp"
-                        alt="Opulent 4 BHK Unit Plan at Della Resorts Villa Plots Hinjewadi">
+            </div>
+
+            <!-- Tab 3: Duplex -->
+            <div class="floorplans-tab-content" id="tab-duplex">
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/plan_booklet_3.webp" alt="Sector Icon 3 BR Duplex Plan">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>Sector Icon 3 BR Duplex</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Carpet: 1,450 – 1,580 sq.ft</span>
+                                <span class="fp-chip">Double-Height Ceiling</span>
+                                <span class="fp-chip">Sector: ICON</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Spectacular 20ft double-height living room volume, internal private staircase, and mezzanine family lounge.</p>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <button class="btn-primary open-modal" style="flex: 1;">Enquire Price</button>
+                            <button class="btn-outline open-modal" data-magnet="brochure" style="padding: 10px 14px;"><i class="ph ph-download-simple"></i> PDF</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/unit_plan_3.webp" alt="Sector Icon 4 BR Presidential Duplex">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>4 BR Presidential Duplex</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Carpet: 1,720 – 1,862 sq.ft</span>
+                                <span class="fp-chip">Private Sky Terrace</span>
+                                <span class="fp-chip">MahaRERA: PR1260002600818</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">The ultimate high-rise trophy residence with private jacuzzi deck provisions and dual master suites.</p>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <button class="btn-primary open-modal" style="flex: 1;">Enquire Price</button>
+                            <button class="btn-outline open-modal" data-magnet="brochure" style="padding: 10px 14px;"><i class="ph ph-download-simple"></i> PDF</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Della Plots -->
+            <div class="floorplans-tab-content" id="tab-della">
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/masterplan/aerial_layout_hq.webp" alt="The Della Collection Gated Villa Plots">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>The Della Collection Villa Plots</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Plot Sizes: 1,500 – 4,000 sq.ft</span>
+                                <span class="fp-chip">40-Acre Resort Gated</span>
+                                <span class="fp-chip">Racecourse Facing</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Only 100 bespoke villa plots with curated architectural freedom, 5-star Della concierge services, and private plunge pool options.</p>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <a href="della" class="btn-primary" style="flex: 1; text-align: center; text-decoration: none;">Explore Della Plots</a>
+                            <button class="btn-outline open-modal" style="padding: 10px 14px;"><i class="ph ph-download-simple"></i> Specs</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 5: Tower Blueprints -->
+            <div class="floorplans-tab-content" id="tab-towers">
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/tower_a_b_c_plan.webp" alt="Tower A, B & C Typical Cluster Floor Plan">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>Tower A, B &amp; C Typical Floor Blueprint</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Cluster: 4 Units / Core</span>
+                                <span class="fp-chip">High-Speed Lifts: 3</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">High-efficiency core design with zero common wall sharing between living rooms for maximum acoustic privacy.</p>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <button class="btn-primary open-modal w-100">Request Blueprint Dossier</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fp-interactive-card">
+                    <div class="fp-img-container">
+                        <img loading="lazy" src="public/everlyn/floorplans/tower_d_plan.webp" alt="Tower D Royale Cluster Floor Plan">
+                    </div>
+                    <div class="fp-card-details">
+                        <div>
+                            <h3>Tower D &amp; E Royale Floor Blueprint</h3>
+                            <div class="fp-meta-chips">
+                                <span class="fp-chip">Cluster: 2–3 Units / Core</span>
+                                <span class="fp-chip">Dedicated Service Elevator</span>
+                            </div>
+                            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Low-density executive floor layout catering exclusively to premium 3 BHK and duplex layouts.</p>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <button class="btn-primary open-modal w-100">Request Blueprint Dossier</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -940,6 +1182,9 @@
     <section class="della-collection" id="equestrian">
         <div class="container della-grid">
             <div class="della-content scroll-reveal">
+                <div style="margin-bottom: 15px;">
+                    <img src="public/imported/Dell-Township-Pune-Logo.webp" alt="Della Township Pune Logo" style="height: 38px; width: auto;" loading="lazy">
+                </div>
                 <span class="badge">The Zenith of Luxury</span>
                 <h2 class="section-title" data-en="The Della <span>Collection</span>"
                     data-mr="डेला <span>कलेक्शन</span>">The Della <span>Collection</span></h2>
@@ -952,7 +1197,7 @@
                     <div class="della-feature-item">
                         <i class="ph ph-horse gold-icon"></i>
                         <h4>8-Acre Private Racecourse</h4>
-                        <p>India's first equestrian-themed township. host private derbies and polo matches at your
+                        <p>India's first equestrian-themed township. Host private derbies, equestrian training, and polo matches at your
                             doorstep.</p>
                     </div>
                     <div class="della-feature-item">
@@ -969,8 +1214,8 @@
                 </div>
             </div>
             <div class="della-visual glass-panel scroll-reveal right">
-                <img loading="lazy" decodings="async" src="public/everlyn/masterplan/aerial_layout_hq.webp"
-                    alt="Della Resorts Racecourse Aerial View at Krisala Hiranandani Township Pune West">
+                <img loading="lazy" decodings="async" src="public/imported/della-racecource.webp" onerror="this.src='public/everlyn/masterplan/aerial_layout_hq.webp'"
+                    alt="Della Resorts 8-Acre Private Racecourse at Krisala Hiranandani Township Pune">
                 <div class="visual-overlay">
                     <div class="visual-stat">
                         <h3>100</h3>
@@ -980,6 +1225,51 @@
                         <h3>8</h3>
                         <p>Acre Polo Club</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERI Consortium & IGBC Platinum Green Township -->
+    <section class="sustainability-section" id="sustainability">
+        <div class="container">
+            <div class="teri-logo-banner scroll-reveal">
+                <span class="subtitle">Nature as a Foundation • Powered by TERI’s Consortium</span>
+                <div style="margin: 20px 0;">
+                    <img src="public/imported/TERI-50-Year-Logo-Horizontal-Orientation.webp" alt="TERI 50 Year Green Partnership" width="460" height="110" loading="lazy">
+                </div>
+                <h2 class="section-title">Targeting <span>IGBC Platinum</span> Green Township Rating</h2>
+                <div class="roman-rule"></div>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--text-muted); font-size: 1rem; line-height: 1.7;">
+                    Engineered in strict alignment with The Energy and Resources Institute (TERI) benchmarks, creating Pune's most sustainable, future-proof residential ecosystem.
+                </p>
+            </div>
+
+            <div class="sustain-pillars-grid scroll-reveal">
+                <div class="sustain-pillar-card">
+                    <i class="ph ph-lightning"></i>
+                    <h3>Lower Electricity &amp; Water Bills</h3>
+                    <p>Passive solar shading, cross-ventilation orientation, and smart LED civic infrastructure reduce utility operating expenses by up to 34%.</p>
+                </div>
+                <div class="sustain-pillar-card">
+                    <i class="ph ph-heartbeat"></i>
+                    <h3>Healthier, Happier Living</h3>
+                    <p>70% green canopy with over 15,000 native trees, oxygen pockets, and Sahyadri air currents providing 4x cleaner AQI than central Pune.</p>
+                </div>
+                <div class="sustain-pillar-card">
+                    <i class="ph ph-drop"></i>
+                    <h3>Better Water Sustenance</h3>
+                    <p>100% rainwater harvesting catchment, on-site sewage treatment recycling (STP), and zero-discharge landscape irrigation systems.</p>
+                </div>
+                <div class="sustain-pillar-card">
+                    <i class="ph ph-shield-check"></i>
+                    <h3>Lower Maintenance Bills</h3>
+                    <p>MIVAN monolithic construction and durable siliconized facades reduce long-term resident society structural maintenance outlays.</p>
+                </div>
+                <div class="sustain-pillar-card">
+                    <i class="ph ph-globe-hemisphere-east"></i>
+                    <h3>Carbon Footprint Reduction</h3>
+                    <p>Electric vehicle (EV) charging infrastructure, pedestrianized green boulevards, and organic waste composting on campus.</p>
                 </div>
             </div>
         </div>
@@ -1961,6 +2251,21 @@
             </div>
             <div class="quiz-progress">
                 <div class="progress-bar" id="quizBar"></div>
+            </div>
+    <!-- 4K Cinematic Video Reel Modal -->
+    <div class="modal-overlay video-modal-overlay" id="videoModal">
+        <div class="modal-container glass-panel" style="max-width: 900px; padding: 25px;">
+            <button class="close-modal close-video-modal" aria-label="Close Video"><i class="ph ph-x"></i></button>
+            <div style="aspect-ratio: 16/9; width: 100%; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 15px 40px rgba(0,0,0,0.8);">
+                <video id="townshipFilmPlayer" controls playsinline preload="metadata" style="width: 100%; height: 100%; object-fit: contain;">
+                    <source src="public/imported/u8323264961_httpss.mj_.rundqik694D-FI_aerial_view_of_dense_gre_cdda2115-7b10-495a-84ac-39089bcdc5a2_2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div style="padding: 18px 10px 5px; text-align: center;">
+                <span class="badge" style="margin-bottom: 8px; display: inline-block;"><i class="ph ph-video-camera"></i> Official 4K Drone Footage</span>
+                <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.5rem;">Krisala × Hiranandani Township • 105-Acre Master Ecosystem</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 6px;">Experience the lush Sahyadri topography, Della resort district, 8-acre racecourse, and neoclassical towers from above.</p>
             </div>
         </div>
     </div>

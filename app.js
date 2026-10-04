@@ -897,4 +897,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 33. Floorplan Interactive Tab Switcher
+    const fpTabBtns = document.querySelectorAll('.floorplans-tab-btn');
+    const fpTabPanes = document.querySelectorAll('.floorplans-tab-content');
+    if (fpTabBtns.length > 0 && fpTabPanes.length > 0) {
+        fpTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+                fpTabBtns.forEach(b => b.classList.remove('active'));
+                fpTabPanes.forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                const targetPane = document.getElementById(targetTab);
+                if (targetPane) targetPane.classList.add('active');
+            });
+        });
+    }
+
+    // 34. 4K Cinematic Video Reel Modal Controller
+    const videoModal = document.getElementById('videoModal');
+    const openVideoBtns = document.querySelectorAll('.open-video-modal');
+    const closeVideoBtn = document.querySelector('.close-video-modal');
+    const videoPlayer = document.getElementById('townshipFilmPlayer');
+
+    if (videoModal && openVideoBtns.length > 0) {
+        openVideoBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                videoModal.classList.add('active');
+                if (videoPlayer) videoPlayer.play().catch(() => {});
+            });
+        });
+
+        if (closeVideoBtn) {
+            closeVideoBtn.addEventListener('click', () => {
+                videoModal.classList.remove('active');
+                if (videoPlayer) videoPlayer.pause();
+            });
+        }
+
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                if (videoPlayer) videoPlayer.pause();
+            }
+        });
+    }
 });

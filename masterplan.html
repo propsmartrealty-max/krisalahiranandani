@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="style.css?v=2">
@@ -212,6 +212,7 @@
     </div>
 
     <div class="controls" aria-label="Map Zoom and View Controls">
+        <button class="control-btn" id="toggleLayoutBtn" title="Switch Layout Plan" aria-label="Toggle Layout View"><i class="ph ph-swap"></i></button>
         <button class="control-btn" onclick="zoom(0.1)" aria-label="Zoom in on masterplan"><i class="ph ph-plus"></i></button>
         <button class="control-btn" onclick="zoom(-0.1)" aria-label="Zoom out on masterplan"><i class="ph ph-minus"></i></button>
         <button class="control-btn" onclick="resetZoom()" aria-label="Reset masterplan zoom to default"><i class="ph ph-arrows-out"></i></button>
@@ -220,6 +221,22 @@
     <script>
         const wrapper = document.getElementById('mapWrapper');
         const container = document.getElementById('mapContainer');
+        const mapImg = document.querySelector('.map-img');
+        const toggleBtn = document.getElementById('toggleLayoutBtn');
+        let currentMap = 0;
+        const layoutMaps = [
+            'public/imported/Krisala-x-Hiranandani-Township-Brochure-1.webp',
+            'public/everlyn/masterplan/master_layout_hq.webp'
+        ];
+
+        if (toggleBtn && mapImg) {
+            toggleBtn.addEventListener('click', () => {
+                currentMap = (currentMap + 1) % layoutMaps.length;
+                mapImg.src = layoutMaps[currentMap];
+                resetZoom();
+            });
+        }
+
         let scale = 1;
         let isDragging = false;
         let startX, startY, translateX = 0, translateY = 0;
