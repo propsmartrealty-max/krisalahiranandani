@@ -1,13 +1,14 @@
-const CACHE_NAME = 'krisala-hiranandani-v2';
+const CACHE_NAME = 'krisala-hiranandani-v3';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
-    '/',
     '/',
     '/style.css',
     '/app.js',
     '/offline.html',
     '/manifest.json',
+    '/public/krisala-hiranandani-logo.webp',
+    '/public/krisala-hiranandani-logo.png',
     '/public/logo.svg',
     '/public/maharera_logo.svg'
 ];
