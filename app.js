@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorOutline = document.querySelector('[data-cursor-outline]');
 
     window.addEventListener('mousemove', (e) => {
+        if (!cursorDot || !cursorOutline) return;
         const posX = e.clientX;
         const posY = e.clientY;
 
@@ -21,14 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const interactables = document.querySelectorAll('a, button, .slider-btn, .am-item, .phase-slide');
     interactables.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.6)';
-            cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
-            cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.8)';
+            if (cursorOutline) {
+                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.6)';
+                cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.8)';
+            }
         });
         el.addEventListener('mouseleave', () => {
-            cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursorOutline.style.backgroundColor = 'transparent';
-            cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.5)';
+            if (cursorOutline) {
+                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorOutline.style.backgroundColor = 'transparent';
+                cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.5)';
+            }
         });
     });
 
@@ -126,22 +131,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector('.close-modal');
     const leadForm = document.getElementById('leadForm');
 
-    const openModal = () => modalOverlay.classList.add('active');
-    const closeModal = () => modalOverlay.classList.remove('active');
+    const openModal = () => { if (modalOverlay) modalOverlay.classList.add('active'); };
+    const closeModal = () => { if (modalOverlay) modalOverlay.classList.remove('active'); };
 
     openBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            if (!modalOverlay) return;
 
             // Lead Magnet Logic
             const magnet = btn.getAttribute('data-magnet');
             const modalTitle = modalOverlay.querySelector('h2');
-            if (magnet === 'brochure') {
-                modalTitle.innerText = 'Download Elite Brochure';
-            } else if (magnet === 'pricesheet') {
-                modalTitle.innerText = 'Request Luxury Price Sheet';
-            } else {
-                modalTitle.innerText = modalTitle.getAttribute('data-en-original') || 'Register Your Interest';
+            if (modalTitle) {
+                if (magnet === 'brochure') {
+                    modalTitle.innerText = 'Download Elite Brochure';
+                } else if (magnet === 'pricesheet') {
+                    modalTitle.innerText = 'Request Luxury Price Sheet';
+                } else {
+                    modalTitle.innerText = modalTitle.getAttribute('data-en-original') || modalTitle.innerText || 'Register Your Interest';
+                }
             }
 
             // If button is within a specific phase slide, pre-select that option
@@ -324,12 +332,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let quizAnswers = {};
 
     const openQuiz = () => {
-        quizOverlay.classList.add('active');
-        resetQuiz();
+        if (quizOverlay) {
+            quizOverlay.classList.add('active');
+            resetQuiz();
+        }
     };
 
     const closeQuiz = () => {
-        quizOverlay.classList.remove('active');
+        if (quizOverlay) quizOverlay.classList.remove('active');
     };
 
     const resetQuiz = () => {
@@ -865,7 +875,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelector('.nav-links');
 
     if (hamburgerBtn && navLinks) {
-        hamburgerBtn.addEventListener('click', () => {
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             hamburgerBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
@@ -876,6 +887,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 hamburgerBtn.classList.remove('active');
                 navLinks.classList.remove('active');
             });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                hamburgerBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
         });
     }
 });

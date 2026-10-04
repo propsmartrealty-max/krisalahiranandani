@@ -119,16 +119,27 @@
     <!-- Navigation -->
     <header class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo" style="text-decoration: none;">
+            <a href="index.html" class="logo" style="text-decoration: none;" aria-label="Krisala Hiranandani Home">
                 <img src="https://krisalahiranandani.com/wp-content/uploads/2025/08/krisala-hirananadani-logo.png"
                     alt="Krisala Hiranandani Logo" class="header-logo">
             </a>
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link">Main Township</a>
+            <nav class="nav-links" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Township</a>
                 <a href="everlyn.html" class="nav-link">Everlyn</a>
-                <a href="della.html" class="nav-link">Della Collection</a>
+                <a href="della.html" class="nav-link">Della Plots</a>
+                <a href="masterplan.html" class="nav-link">Masterplan</a>
+                <a href="neighborhood.html" class="nav-link">Neighborhood</a>
+                <a href="compare.html" class="nav-link">Compare</a>
+                <a href="knowledge-hub.html" class="nav-link active">Knowledge Hub</a>
             </nav>
-            <button class="btn-primary open-modal">Join the Community</button>
+            <div class="header-actions">
+                <button class="btn-primary open-modal" aria-haspopup="dialog">Join Community</button>
+                <div class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation" role="button" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -200,21 +211,42 @@
         </div>
     </section>
 
-    <!-- Footer Reused -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
+        <div class="container footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <div class="footer-logo-text">K<span>x</span>H</div>
-                    <p>Krisala Hiranandani Hub</p>
+                    <img src="https://krisalahiranandani.com/wp-content/uploads/2025/08/krisala-hirananadani-logo.png"
+                        alt="Krisala Hiranandani Logo" class="footer-logo"
+                        style="height: 40px; width: auto; margin-bottom: 20px; display: block;">
+                    <p>
+                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+                    </p>
+                    <div style="margin-top: 15px;">
+                        <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
+                        <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
+                    </div>
                 </div>
                 <div class="footer-links">
-                    <a href="index.html">Main Site</a>
-                    <a href="everlyn.html">Everlyn</a>
-                    <a href="della.html">Della</a>
+                    <h4>The Township</h4>
+                    <a href="index.html">Township Overview</a>
+                    <a href="everlyn.html">Everlyn Residences</a>
+                    <a href="della.html">The Della Collection</a>
+                    <a href="masterplan.html">Interactive Masterplan</a>
+                    <a href="neighborhood.html">Neighborhood Guide</a>
+                    <a href="compare.html">Compare Projects</a>
+                    <a href="knowledge-hub.html">Knowledge Hub</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Sales Concierge</h4>
+                    <p><a href="tel:+918010834316" style="color: var(--gold-primary); text-decoration: none;"><i class="ph ph-phone"></i> +91 8010834316</a></p>
+                    <p><a href="https://wa.me/918010834316?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani" target="_blank" style="color: #25D366; text-decoration: none;"><i class="ph ph-whatsapp-logo"></i> WhatsApp Concierge</a></p>
+                    <button class="btn-outline open-modal" aria-haspopup="dialog" style="margin-top: 10px;">Open Enquiry Form</button>
+                    <p style="font-size: 0.8rem; margin-top: 15px; color: var(--text-muted);">All enquiries are routed securely to our sales desk.</p>
                 </div>
             </div>
             <div class="footer-bottom">
+                <p class="disclaimer">Disclaimer: This is a pre-launch project. All images, content, and visuals are conceptual. MahaRERA registration is under process. The 'Della' phase and specific amenities like the racecourse are subject to final municipal approvals. Features, layouts, specifications, and prices are subject to change without prior notice.</p>
                 <p>&copy; 2026 Krisala Hiranandani Township. All rights reserved. | <a href="privacy-policy.html" style="color: var(--gold-primary); text-decoration: none;">Privacy Policy</a></p>
             </div>
         </div>
@@ -232,6 +264,7 @@
                 method="POST">
                 <input type="hidden" name="_subject" value="New Enquiry from Knowledge Hub">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://krisalahiranandani.com/thank-you.html">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Full Name *" required>
                 </div>
@@ -241,6 +274,17 @@
                 <button type="submit" class="btn-primary w-100">Subscribe for Updates</button>
             </form>
         </div>
+    </div>
+
+    <!-- Floating Actions -->
+    <div class="floating-actions">
+        <a href="https://wa.me/918010834316?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Insights" class="float-btn float-whatsapp" target="_blank"
+            aria-label="Chat on WhatsApp">
+            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
+        </a>
+        <a href="tel:+918010834316" class="float-btn float-call" aria-label="Call Assistance">
+            <i class="ph ph-phone" aria-hidden="true"></i>
+        </a>
     </div>
 
     <script defer src="app.js"></script>

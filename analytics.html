@@ -185,15 +185,26 @@
     <!-- Navigation -->
     <header class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo" style="text-decoration: none;">
+            <a href="index.html" class="logo" style="text-decoration: none;" aria-label="Krisala Hiranandani Home">
                 <img src="https://krisalahiranandani.com/wp-content/uploads/2025/08/krisala-hirananadani-logo.png" alt="Krisala Hiranandani Logo" class="header-logo">
             </a>
-            <nav class="nav-links">
-                <a href="index.html" class="nav-link">Main Township</a>
-                <a href="compare.html" class="nav-link">Compare</a>
+            <nav class="nav-links" aria-label="Main Navigation">
+                <a href="index.html" class="nav-link">Township</a>
+                <a href="everlyn.html" class="nav-link">Everlyn</a>
+                <a href="della.html" class="nav-link">Della Plots</a>
+                <a href="masterplan.html" class="nav-link">Masterplan</a>
                 <a href="neighborhood.html" class="nav-link">Neighborhood</a>
+                <a href="compare.html" class="nav-link">Compare</a>
+                <a href="knowledge-hub.html" class="nav-link">Knowledge Hub</a>
             </nav>
-            <span style="color: var(--gold-primary); font-weight: 600; font-size: 0.85rem;">ADMIN</span>
+            <div class="header-actions">
+                <span style="color: var(--gold-primary); font-weight: 600; font-size: 0.85rem; border: 1px solid var(--gold-primary); padding: 4px 10px; border-radius: 4px;">ADMIN</span>
+                <div class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation" role="button" tabindex="0">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -338,6 +349,7 @@
             }, 1000);
         });
     </script>
+    <script defer src="app.js"></script>
 </body>
 
 </html>

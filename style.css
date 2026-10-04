@@ -244,6 +244,15 @@ ul {
     width: 100%;
 }
 
+.nav-link.active {
+    color: var(--gold-primary);
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
 /* Grand Hero Section */
 .hero-grand {
     position: relative;
@@ -1316,10 +1325,6 @@ ul {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-
     .hero-title {
         font-size: 3.5rem;
     }
@@ -2988,12 +2993,14 @@ img.loaded {
         max-width: 180px !important;
     }
 
+    .header-actions .btn-primary,
     #registerBtn {
         display: none;
         /* Hide on small screens to prevent overlap */
     }
 
     .nav-links {
+        display: flex;
         position: absolute;
         top: 100%;
         left: 0;
@@ -3005,6 +3012,7 @@ img.loaded {
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         transition: clip-path 0.4s ease-in-out;
         gap: 20px;
+        border-bottom: 1px solid rgba(197, 160, 89, 0.2);
     }
 
     .nav-links.active {
