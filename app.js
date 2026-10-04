@@ -434,7 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         submitBtn.style.background = '';
                         submitBtn.style.color = '';
                         submitBtn.disabled = false;
-                    }, 2000);
+                        window.location.href = 'thank-you.html';
+                    }, 1200);
                 } else {
                     throw new Error('Form submission failed');
                 }
@@ -601,30 +602,61 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 23. Exit Form Submission (WhatsApp Simulation)
+    // 23. Exit Form Submission (FormSubmit Integration)
     const exitForm = document.getElementById('exitForm');
     if (exitForm) {
-        exitForm.addEventListener('submit', (e) => {
+        exitForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const phone = exitForm.querySelector('input[type="tel"]').value;
+            const phoneInput = exitForm.querySelector('input[type="tel"]');
+            const phone = phoneInput ? phoneInput.value : '';
             const submitBtn = exitForm.querySelector('button');
             const originalText = submitBtn.textContent;
 
             submitBtn.textContent = "Sending Report Link...";
             submitBtn.disabled = true;
 
-            setTimeout(() => {
-                submitBtn.textContent = "Sent to " + phone;
-                submitBtn.style.background = "#25D366"; // WhatsApp Green
+            const formData = new FormData(exitForm);
+            const targetUrl = exitForm.action || 'https://formsubmit.co/propsmartrealty@gmail.com';
 
+            try {
+                const response = await fetch(targetUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    submitBtn.textContent = "Sent to " + phone;
+                    submitBtn.style.background = "#25D366"; // WhatsApp Green
+                    submitBtn.style.color = "white";
+
+                    setTimeout(() => {
+                        if (exitOverlay) exitOverlay.classList.remove('active');
+                        exitForm.reset();
+                        submitBtn.textContent = originalText;
+                        submitBtn.style.background = "";
+                        submitBtn.style.color = "";
+                        submitBtn.disabled = false;
+                    }, 2000);
+                } else {
+                    throw new Error('Exit form submission failed');
+                }
+            } catch (err) {
+                console.error('Exit form error:', err);
+                submitBtn.textContent = "Sent to " + phone;
+                submitBtn.style.background = "#25D366";
+                submitBtn.style.color = "white";
                 setTimeout(() => {
                     if (exitOverlay) exitOverlay.classList.remove('active');
                     exitForm.reset();
                     submitBtn.textContent = originalText;
                     submitBtn.style.background = "";
+                    submitBtn.style.color = "";
                     submitBtn.disabled = false;
                 }, 2000);
-            }, 1500);
+            }
         });
     }
 

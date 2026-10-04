@@ -3065,4 +3065,91 @@ img.loaded {
     .hero-actions .btn-secondary {
         width: 100%;
     }
+
+    :root {
+        --section-gap: 80px;
+    }
+
+    .hero-content {
+        padding-top: 80px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+    .legacy-card {
+        padding: 25px;
+    }
+
+    .legacy-split {
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .masterplan-grid {
+        gap: 30px;
+    }
+
+    .amenities-grid {
+        gap: 15px;
+    }
+
+    .fp-card {
+        padding: 15px;
+    }
+
+    .slider-controls {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --section-gap: 60px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .stat-item h3 {
+        font-size: 1.6rem;
+    }
+
+    .phase-slide {
+        min-width: 90vw;
+    }
+
+    .slide-content {
+        padding: 20px;
+    }
+
+    .image-caption {
+        right: 10px;
+        bottom: 10px;
+        padding: 10px 15px;
+    }
+
+    .masterplan-features i {
+        font-size: 1.8rem;
+        padding: 10px;
+    }
+
+    .legacy-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .masterplan-text>p {
+        font-size: 1rem;
+    }
+
+    .amenities-grid {
+        grid-auto-rows: 250px;
+    }
 }
