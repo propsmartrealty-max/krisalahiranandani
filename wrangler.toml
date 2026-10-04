@@ -3,6 +3,3 @@ name = "krisalahiranandani"
 compatibility_date = "2026-10-01"
 pages_build_output_dir = "."
 
-[build]
-command = ""
-watch_dir = "."
