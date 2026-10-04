@@ -83,33 +83,8 @@ export async function onRequest(context) {
         });
     }
 
-    // 4. Clean URL routing at the edge
-    const cleanRoutes = {
-        '/': '/index.html',
-        '/home': '/index.html',
-        '/township': '/index.html',
-        '/everlyn': '/everlyn.html',
-        '/della': '/della.html',
-        '/della-plots': '/della.html',
-        '/masterplan': '/masterplan.html',
-        '/master-plan': '/masterplan.html',
-        '/neighborhood': '/neighborhood.html',
-        '/location': '/neighborhood.html',
-        '/compare': '/compare.html',
-        '/knowledge-hub': '/knowledge-hub.html',
-        '/privacy': '/privacy-policy.html',
-        '/privacy-policy': '/privacy-policy.html',
-        '/thank-you': '/thank-you.html',
-        '/analytics': '/analytics.html'
-    };
-
-    let response;
-    if (cleanRoutes[path] && context.env && context.env.ASSETS) {
-        url.pathname = cleanRoutes[path];
-        response = await context.env.ASSETS.fetch(new Request(url.toString(), request));
-    } else {
-        response = await next();
-    }
+    // 4. Proceed with request through Cloudflare Pages asset pipeline
+    const response = await next();
 
     // 5. Clone and inject hardened headers onto the outgoing response
     const newHeaders = new Headers(response.headers);
