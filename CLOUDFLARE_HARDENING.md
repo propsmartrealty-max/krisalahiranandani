@@ -98,20 +98,35 @@ Navigate to **Speed > Optimization**:
 * **HTTP/3 (with QUIC)**: **ON** (Next-gen protocol with zero round-trip latency on mobile networks).
 * **Rocket Loader**: **OFF** (Keep disabled to prevent deferring DOM-critical scripts like custom sliders and lazy-loaders).
 
-### 4. DNSSEC (Domain Name System Security Extensions)
-Navigate to **DNS > Settings**:
-1. Under **DNSSEC**, click **Enable DNSSEC**.
-2. Cloudflare will generate DS record parameters:
-   * **Key Tag**: e.g., `2371`
-   * **Algorithm**: `13` (ECDSA Curve P-256 with SHA-256)
-   * **Digest Type**: `2` (SHA-256)
-   * **Digest**: `(64-character hash)`
-3. Log into your domain registrar (GoDaddy, Namecheap, Google Domains/Squarespace) and add the DS record under your domain's DNS management settings.
-4. Once saved, Cloudflare validates cryptographically signed DNS responses, preventing DNS spoofing and cache poisoning.
+### 4. Live Automated Verification & Status (Applied & Verified)
 
-### 5. Custom Domain Configuration (Cloudflare Pages)
-Under **Workers & Pages > krisalahiranandani > Custom domains**:
-1. Add both:
-   * `krisalahiranandani.com` (Apex)
-   * `www.krisalahiranandani.com` (Subdomain)
-2. Cloudflare automatically issues and manages universal SSL certificates for both with zero renewal overhead.
+All infrastructure hardening settings and DNS records were programmatically applied via Cloudflare API v4 on **Zone `099c3d36269355695c355008ff2586e4`**:
+
+| Layer | Configuration | Live Status | Details |
+| :--- | :--- | :--- | :--- |
+| **SSL / TLS** | SSL Mode: `strict` | ✅ **Active** | Full (Strict) End-to-End Encryption |
+| **HTTPS Enforcement** | `always_use_https`: `on` | ✅ **Active** | 301 Edge Upgrade for all HTTP traffic |
+| **TLS Protocol** | `min_tls_version`: `1.2`, `tls_1_3`: `on` | ✅ **Active** | Legacy TLS 1.0/1.1 blocked; 0ms TLS 1.3 active |
+| **Replay Defense** | `0rtt`: `off` | ✅ **Active** | Anti-replay attack mitigation on POST requests |
+| **Compression** | `brotli`: `on` | ✅ **Active** | ~20% superior payload compression |
+| **HTTP 103** | `early_hints`: `on` | ✅ **Active** | Preload CSS and fonts while edge prepares response |
+| **Bot Shield** | Bot Fight Mode: `True` | ✅ **Active** | Challenges automated scrapers and bad bots |
+| **WAF Custom Rules** | Exploit Shield Ruleset | ✅ **Active** | Drops `wp-login`, `.env`, `.git`, `phpmyadmin` with `403 Forbidden` |
+| **DNS CAA** | 6 CA Restrictions | ✅ **Active** | Restricted to Let's Encrypt, DigiCert, Google PKI, Comodo, SSL.com |
+| **DNS SPF** | `v=spf1 -all` | ✅ **Active** | Anti-spoofing TXT protection |
+| **DNS DMARC** | `p=reject; sp=reject` | ✅ **Active** | Strict DMARC enforcement |
+| **DNS MX** | RFC 7505 Null MX (`0 .`) | ✅ **Active** | Blocks spam relay exploitation |
+| **DNSSEC** | Cloudflare Active | ✅ **Generated** | DS Record generated; ready for registrar entry |
+
+---
+
+### 5. DNSSEC Registrar Delegation Parameters
+
+To complete end-to-end cryptographic DNS validation, add this DS record in your domain registrar (e.g. Hostinger, GoDaddy, Namecheap):
+
+* **Key Tag**: `2371`
+* **Algorithm**: `13` (ECDSA Curve P-256 with SHA-256)
+* **Digest Type**: `2` (SHA-256)
+* **Digest**: `5124955176676268478778924DBC97B675F8BE0DC874D991C331C82DF4A2F8A7`
+* **Public Key**: `mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==`
+
