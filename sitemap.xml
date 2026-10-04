@@ -73,9 +73,17 @@
   <!-- Neighborhood Guide Silo -->
   <url>
     <loc>https://krisalahiranandanitownships.com/neighborhood.html</loc>
-    <lastmod>2026-10-04T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Legal & MahaRERA Privacy Policy -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/privacy-policy.html</loc>
+    <lastmod>2026-10-05T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>

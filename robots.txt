@@ -5,7 +5,6 @@ Allow: /style.css
 Allow: /app.js
 Allow: /manifest.json
 Disallow: /analytics.html
-Disallow: /semantic_block.html
 Disallow: /*.md$
 Disallow: /*.toml$
 
