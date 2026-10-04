@@ -10,7 +10,20 @@ import argparse
 import urllib.request
 import urllib.error
 
+import ssl
+
 API_BASE = "https://api.cloudflare.com/client/v4"
+
+def get_ssl_context():
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except Exception:
+        # Fallback to default or unverified if certificates aren't linked on local mac python
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        return ctx
 
 def make_request(url, method="GET", headers=None, data=None):
     if headers is None:
@@ -22,8 +35,9 @@ def make_request(url, method="GET", headers=None, data=None):
         body = json.dumps(data).encode("utf-8")
         
     req = urllib.request.Request(url, data=body, headers=headers, method=method)
+    ctx = get_ssl_context()
     try:
-        with urllib.request.urlopen(req) as resp:
+        with urllib.request.urlopen(req, context=ctx) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         error_content = e.read().decode("utf-8")
