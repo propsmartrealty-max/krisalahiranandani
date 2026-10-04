@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 54" width="280" height="54" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5e6cf" />
+      <stop offset="50%" stop-color="#c5a059" />
+      <stop offset="100%" stop-color="#9a7b38" />
+    </linearGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c5a059" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#f5e6cf" stop-opacity="1" />
+      <stop offset="100%" stop-color="#9a7b38" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Monogram Crest -->
+  <g transform="translate(4, 3)">
+    <!-- Outer Shield / Diamond -->
+    <polygon points="24,0 48,24 24,48 0,24" fill="rgba(197, 160, 89, 0.08)" stroke="url(#goldBorder)" stroke-width="1.5" />
+    <polygon points="24,5 43,24 24,43 5,24" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" stroke-dasharray="2,2" />
+    
+    <!-- Monogram K x H Text -->
+    <text x="24" y="27" font-family="'Playfair Display', Georgia, serif" font-size="14" font-weight="700" fill="url(#goldGrad)" text-anchor="middle" dominant-baseline="middle" letter-spacing="1">K<tspan font-size="10" font-family="'Outfit', sans-serif" fill="#ffffff" opacity="0.8">×</tspan>H</text>
+  </g>
+
+  <!-- Brand Typography -->
+  <!-- Main Title: KRISALA × HIRANANDANI -->
+  <text x="64" y="24" font-family="'Playfair Display', Georgia, serif" font-size="17" font-weight="700" fill="url(#goldGrad)" letter-spacing="0.8">
+    KRISALA <tspan font-family="'Outfit', sans-serif" font-size="13" font-weight="300" fill="#ffffff" opacity="0.75">×</tspan> HIRANANDANI
+  </text>
+
+  <!-- Subtitle: NORTH HINJEWADI • TOWNSHIP -->
+  <text x="65" y="41" font-family="'Outfit', system-ui, sans-serif" font-size="8.5" font-weight="600" fill="#a8a8b4" letter-spacing="2.8">
+    NORTH HINJEWADI • TOWNSHIP
+  </text>
+</svg>

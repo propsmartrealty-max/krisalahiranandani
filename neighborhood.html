@@ -198,7 +198,7 @@
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo" style="text-decoration: none;" aria-label="Krisala Hiranandani Home">
-                <img src="https://krisalahiranandani.com/wp-content/uploads/2025/08/krisala-hirananadani-logo.png"
+                <img src="public/logo.svg"
                     alt="Krisala Hiranandani Logo" class="header-logo">
             </a>
             <nav class="nav-links" aria-label="Main Navigation">
@@ -234,19 +234,55 @@
     <section class="section" style="padding-top: 0;">
         <div class="container">
             <div class="neighborhood-grid">
-                <div class="hood-card glass-panel scroll-reveal">
+                <div class="hood-card glass-panel scroll-reveal" id="connectivity">
                     <i class="ph ph-buildings gold-icon"></i>
                     <h3>IT & Business Hubs</h3>
                     <p>The township sits in the epicenter of Pune's tech corridor.</p>
                     <ul>
                         <li>Hinjewadi Phase 1 (Wipro Circle) <span>8 Mins</span></li>
                         <li>Hinjewadi Phase 2 (Infosys/TCS) <span>12 Mins</span></li>
-                        <li>Hinjewadi Phase 3 (Emerging) <span>15 Mins</span></li>
-                        <li>Rajiv Gandhi IT Park <span>18 Mins</span></li>
+                        <li>Hinjewadi Phase 3 (Barclays/Megapolis) <span>15 Mins</span></li>
+                        <li>Rajiv Gandhi Infotech Park <span>10 Mins</span></li>
                     </ul>
                 </div>
 
-                <div class="hood-card glass-panel scroll-reveal delay-1">
+                <div class="hood-card glass-panel scroll-reveal delay-1" id="expressway">
+                    <i class="ph ph-road-horizon gold-icon"></i>
+                    <h3>Expressway & Arterial Transit</h3>
+                    <p>Signal-free connectivity to Mumbai, Pune City & PMRDA Ring Road.</p>
+                    <ul>
+                        <li>Mumbai-Pune Expressway Exit <span>5–7 Mins</span></li>
+                        <li>Upcoming PMRDA Ring Road <span>4 Mins</span></li>
+                        <li>Old Mumbai-Pune Highway (NH 48) <span>10 Mins</span></li>
+                        <li>Pune International Airport (Via Bypass) <span>45 Mins</span></li>
+                    </ul>
+                </div>
+
+                <div class="hood-card glass-panel scroll-reveal" id="metro">
+                    <i class="ph ph-train gold-icon"></i>
+                    <h3>Metro Line 3 Rapid Transit</h3>
+                    <p>Hinjewadi to Shivajinagar direct mass rapid transit access.</p>
+                    <ul>
+                        <li>Nearest Metro Line 3 Station <span>8 Mins</span></li>
+                        <li>Direct Line to Shivajinagar & Civil Court <span>Rapid Rail</span></li>
+                        <li>Zero-Congestion Daily Commute <span>Seamless</span></li>
+                        <li>Property Appreciation Surge <span>High Impact</span></li>
+                    </ul>
+                </div>
+
+                <div class="hood-card glass-panel scroll-reveal delay-1" id="wakad">
+                    <i class="ph ph-crosshair gold-icon"></i>
+                    <h3>Wakad, Baner & Balewadi Nodes</h3>
+                    <p>Prime connectivity to West Pune's premier lifestyle destinations.</p>
+                    <ul>
+                        <li>Wakad Junction & Datta Mandir <span>8 Mins</span></li>
+                        <li>Balewadi High Street <span>15 Mins</span></li>
+                        <li>Baner Commercial Corridor <span>15 Mins</span></li>
+                        <li>Tathawade & Punawale <span>7–10 Mins</span></li>
+                    </ul>
+                </div>
+
+                <div class="hood-card glass-panel scroll-reveal">
                     <i class="ph ph-graduation-cap gold-icon"></i>
                     <h3>Education Excellence</h3>
                     <p>Premium schooling within a 15-minute radius.</p>
@@ -254,11 +290,11 @@
                         <li>VIBGYOR High School <span>8 Mins</span></li>
                         <li>Indira International School <span>12 Mins</span></li>
                         <li>Blue Ridge Public School <span>10 Mins</span></li>
-                        <li>MIT World Peace University <span>20 Mins</span></li>
+                        <li>Symbiosis International University <span>15 Mins</span></li>
                     </ul>
                 </div>
 
-                <div class="hood-card glass-panel scroll-reveal">
+                <div class="hood-card glass-panel scroll-reveal delay-1">
                     <i class="ph ph-first-aid gold-icon"></i>
                     <h3>Healthcare & Wellness</h3>
                     <p>World-class medical facilities at your doorstep.</p>
@@ -270,13 +306,13 @@
                     </ul>
                 </div>
 
-                <div class="hood-card glass-panel scroll-reveal delay-1">
+                <div class="hood-card glass-panel scroll-reveal">
                     <i class="ph ph-shopping-bag gold-icon"></i>
                     <h3>Lifestyle & Retail</h3>
                     <p>The best of Pune's retail and entertainment scene nearby.</p>
                     <ul>
-                        <li>Phoenix Mall of the Millennium <span>15 Mins</span></li>
-                        <li>Xion Mall <span>8 Mins</span></li>
+                        <li>Phoenix Mall of the Millennium <span>12 Mins</span></li>
+                        <li>Xion Mall Hinjewadi <span>8 Mins</span></li>
                         <li>Balewadi High Street <span>15 Mins</span></li>
                         <li>Westend Mall, Aundh <span>22 Mins</span></li>
                     </ul>
@@ -319,7 +355,7 @@
         <div class="container footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="https://krisalahiranandani.com/wp-content/uploads/2025/08/krisala-hirananadani-logo.png"
+                    <img src="public/logo.svg"
                         alt="Krisala Hiranandani Logo" class="footer-logo"
                         style="height: 40px; width: auto; margin-bottom: 20px; display: block;">
                     <p>
@@ -367,7 +403,7 @@
                 method="POST">
                 <input type="hidden" name="_subject" value="New Area Report Request">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://krisalahiranandani.com/thank-you.html">
+                <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Full Name *" required>
                 </div>

@@ -120,7 +120,7 @@
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo" style="text-decoration: none;" aria-label="Krisala Hiranandani Home">
-                <img src="https://krisalahiranandani.com/wp-content/uploads/2025/08/krisala-hirananadani-logo.png"
+                <img src="public/logo.svg"
                     alt="Krisala Hiranandani Logo" class="header-logo">
             </a>
             <nav class="nav-links" aria-label="Main Navigation">
@@ -163,7 +163,7 @@
 
             <div class="knowledge-grid" id="articleGrid">
                 <!-- Article 1: Appreciation -->
-                <article class="article-card scroll-reveal">
+                <article class="article-card scroll-reveal" id="investment">
                     <div class="article-img">
                         <i class="ph ph-chart-line-up"
                             style="font-size: 4rem; color: var(--gold-primary); opacity: 0.3;"></i>
@@ -207,6 +207,32 @@
                                 class="ph ph-arrow-right"></i></button>
                     </div>
                 </article>
+
+                <!-- Article 4: NRI Investment -->
+                <article class="article-card scroll-reveal" id="nri">
+                    <div class="article-img">
+                        <i class="ph ph-globe-hemisphere-west" style="font-size: 4rem; color: var(--gold-primary); opacity: 0.3;"></i>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">NRI Advisory</span>
+                        <h3>NRI Real Estate Portfolio Guide: Hinjewadi 2026</h3>
+                        <p>Complete walkthrough of NRE/NRO transaction frameworks, Power of Attorney compliance, and high-yield tenant onboarding in North Hinjewadi.</p>
+                        <button class="btn-text open-modal" style="margin-top: 15px;">Read Full Report <i class="ph ph-arrow-right"></i></button>
+                    </div>
+                </article>
+
+                <!-- Article 5: MahaRERA Compliance -->
+                <article class="article-card scroll-reveal delay-1" id="rera">
+                    <div class="article-img">
+                        <i class="ph ph-certificate" style="font-size: 4rem; color: var(--gold-primary); opacity: 0.3;"></i>
+                    </div>
+                    <div class="article-content">
+                        <span class="article-tag">Legal &amp; RERA</span>
+                        <h3>MahaRERA Buyer Verification &amp; Sanctioned Plans</h3>
+                        <p>How to verify approved carpet areas, title clearance, and milestone-linked escrow payment protections for Krisala Hiranandani Township.</p>
+                        <button class="btn-text open-modal" style="margin-top: 15px;">Read Full Report <i class="ph ph-arrow-right"></i></button>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -216,7 +242,7 @@
         <div class="container footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="https://krisalahiranandani.com/wp-content/uploads/2025/08/krisala-hirananadani-logo.png"
+                    <img src="public/logo.svg"
                         alt="Krisala Hiranandani Logo" class="footer-logo"
                         style="height: 40px; width: auto; margin-bottom: 20px; display: block;">
                     <p>
@@ -264,7 +290,7 @@
                 method="POST">
                 <input type="hidden" name="_subject" value="New Enquiry from Knowledge Hub">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://krisalahiranandani.com/thank-you.html">
+                <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                 <div class="form-group">
                     <input type="text" name="name" placeholder="Full Name *" required>
                 </div>

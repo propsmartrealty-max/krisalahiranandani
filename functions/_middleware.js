@@ -117,7 +117,7 @@ export async function onRequest(context) {
         "script-src 'self' 'unsafe-inline' https://unpkg.com",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com",
         "font-src 'self' https://fonts.gstatic.com https://unpkg.com",
-        "img-src 'self' data: https://images.unsplash.com https://maharera.mahaonline.gov.in https://krisalahiranandani.com https://krisalahiranandanitownships.com",
+        "img-src 'self' data: https://krisalahiranandanitownships.com",
         "connect-src 'self' https://formsubmit.co",
         "form-action 'self' https://formsubmit.co",
         "frame-ancestors 'none'",

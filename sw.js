@@ -7,7 +7,9 @@ const CORE_ASSETS = [
     '/style.css',
     '/app.js',
     '/offline.html',
-    '/manifest.json'
+    '/manifest.json',
+    '/public/logo.svg',
+    '/public/maharera_logo.svg'
 ];
 
 const SILO_ASSETS = [
