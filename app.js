@@ -1,4 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Google Analytics 4 & Google Ads dataLayer Telemetry
+    window.dataLayer = window.dataLayer || [];
+
+    // Track WhatsApp conversions
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        link.addEventListener('click', () => {
+            window.dataLayer.push({
+                event: 'contact',
+                method: 'whatsapp',
+                action: 'initiate_chat',
+                value: 8500000,
+                currency: 'INR'
+            });
+        });
+    });
+
+    // Track Phone call conversions
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', () => {
+            window.dataLayer.push({
+                event: 'contact',
+                method: 'phone_call',
+                action: 'click_to_call',
+                value: 8500000,
+                currency: 'INR'
+            });
+        });
+    });
+
     // 1. Custom Cursor Logic
     const cursorDot = document.querySelector('[data-cursor-dot]');
     const cursorOutline = document.querySelector('[data-cursor-outline]');
@@ -436,6 +465,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.style.background = '#28a745';
                     submitBtn.style.color = 'white';
 
+                    // Google Ads & GA4 Lead Conversion Event
+                    window.dataLayer.push({
+                        event: 'generate_lead',
+                        form_id: 'enquiry_lead_form',
+                        value: 8500000,
+                        currency: 'INR',
+                        event_time: new Date().toISOString()
+                    });
+
                     setTimeout(() => {
                         const enquiryModal = document.getElementById('enquiryModal');
                         if (enquiryModal) enquiryModal.classList.remove('active');
@@ -641,6 +679,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     submitBtn.textContent = "Sent to " + phone;
                     submitBtn.style.background = "#25D366"; // WhatsApp Green
                     submitBtn.style.color = "white";
+
+                    // Google Ads & GA4 Exit Intent Lead Conversion
+                    window.dataLayer.push({
+                        event: 'generate_lead',
+                        form_id: 'exit_intent_form',
+                        value: 8500000,
+                        currency: 'INR',
+                        event_time: new Date().toISOString()
+                    });
 
                     setTimeout(() => {
                         if (exitOverlay) exitOverlay.classList.remove('active');

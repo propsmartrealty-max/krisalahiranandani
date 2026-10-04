@@ -1,0 +1,9 @@
+# Security Disclosure Policy for Krisala Hiranandani Township
+# Reference: RFC 9116
+
+Contact: mailto:propsmartrealty@gmail.com
+Expires: 2027-10-05T00:00:00.000Z
+Preferred-Languages: en, hi, mr
+Canonical: https://krisalahiranandanitownships.com/.well-known/security.txt
+Policy: https://krisalahiranandanitownships.com/privacy-policy
+Acknowledgments: https://krisalahiranandanitownships.com/

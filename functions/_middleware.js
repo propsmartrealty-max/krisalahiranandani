@@ -58,6 +58,24 @@ export async function onRequest(context) {
         return Response.redirect(canonicalUrl.toString(), 301);
     }
 
+    // 1b. Edge Healthcheck & Observability API
+    if (path === '/health' || path === '/api/health') {
+        return new Response(JSON.stringify({
+            status: "healthy",
+            service: "krisala-hiranandani-edge",
+            edge_node: request.cf?.colo || "global",
+            country: request.cf?.country || "IN",
+            timestamp: new Date().toISOString()
+        }), {
+            status: 200,
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'Cache-Control': 'no-store, no-cache, must-revalidate',
+                'Access-Control-Allow-Origin': '*'
+            }
+        });
+    }
+
     // 2. Method restriction
     if (!ALLOWED_METHODS.includes(request.method)) {
         return new Response('Method Not Allowed', {
@@ -126,11 +144,11 @@ export async function onRequest(context) {
     // Strict Content Security Policy
     newHeaders.set('Content-Security-Policy', [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' https://unpkg.com",
+        "script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com",
         "font-src 'self' https://fonts.gstatic.com https://unpkg.com",
-        "img-src 'self' data: blob: https://krisalahiranandanitownships.com",
-        "connect-src 'self' https://formsubmit.co https://api.indexnow.org",
+        "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://www.google-analytics.com",
+        "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com",
         "form-action 'self' https://formsubmit.co https://wa.me",
         "frame-ancestors 'none'",
         "base-uri 'self'",
