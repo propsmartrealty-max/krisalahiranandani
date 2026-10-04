@@ -1,28 +1,47 @@
 # Krisala Hiranandani Deployment Guide
 
-The website is fully optimized and ready for production deployment.
+The website is fully optimized and ready for production deployment across Cloudflare Pages, Vercel, or Netlify.
 
-## Security Headers
-Strict security headers (CSP, HSTS, X-Frame-Options, XSS Protection) have been configured for instant deployment on modern platforms.
-- **Vercel**: Configuration is ready in `vercel.json`.
-- **Netlify**: Configuration is ready in `netlify.toml`.
+---
 
-Your CSP allows:
-- Scripts: `unpkg.com` (for Phosphor icons)
-- Styles/Fonts: `fonts.googleapis.com`, `fonts.gstatic.com`, `unpkg.com`
-- Images: `images.unsplash.com`, `maharera.mahaonline.gov.in`, `data:` URIs
+## 1. Cloudflare Pages Deployment (Recommended)
 
-## Production Build (Optional)
-If you want to serve minified assets to achieve the absolute maximum Lighthouse score:
+The repository includes native `_headers` and `_redirects` files configured for Cloudflare Pages.
 
-1. Ensure Node.js is installed.
-2. Run `npm install`
-3. Run `npm run build`
-4. The `dist/` folder will contain your globally optimized production site.
-5. *Note: If you use the `dist/` folder, ensure you update the HTML files in `dist/` to reference `style.min.css` and `app.min.js` instead of the unminified versions.* For standard Vercel/Netlify deployments, the unminified files with Brotli compression (handled by the platform) are usually sufficient for 95+ scores.
+### Setup Instructions:
+1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/).
+2. Go to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
+3. Select your GitHub repository: `propsmartrealty-max/krisalahiranandani`.
+4. Configure Build settings:
+   - **Framework preset**: `None`
+   - **Build command**: *(leave blank)*
+   - **Build output directory**: `.` *(or root)*
+   - **Root directory**: `/`
+5. Click **Save and Deploy**. Deployment completes in ~10 seconds.
+6. Under **Custom Domains**, connect your live domain (e.g. `krisalahiranandanitownships.com`).
+7. In Cloudflare **SSL/TLS settings**, ensure encryption mode is set to **Full (Strict)**.
+8. In Cloudflare **Speed > Optimization**, keep **Rocket Loader: OFF** to prevent interference with interactive modals and preloader scripts.
 
-## Final Lighthouse Readiness
-- Semantic HTML tags used correctly.
-- Lazy-loading with blur-up effect active on all large images.
+---
+
+## 2. Vercel & Netlify Configurations
+- **Vercel**: Configuration is pre-wired in `vercel.json` (root output, CSP, and HSTS).
+- **Netlify**: Configuration is pre-wired in `netlify.toml`.
+
+---
+
+## 3. Security & CSP Whitelist
+The Content Security Policy allows:
+- **Scripts**: `'self'`, `'unsafe-inline'`, `https://unpkg.com` (Phosphor icons)
+- **Styles/Fonts**: `https://fonts.googleapis.com`, `https://fonts.gstatic.com`, `https://unpkg.com`
+- **Images**: `'self'`, `data:`, `https://images.unsplash.com`, `https://maharera.mahaonline.gov.in`, `https://krisalahiranandani.com`
+- **Connect & Forms**: `https://formsubmit.co` (for lead submission)
+- **Manifest**: `'self'`
+
+---
+
+## 4. Lighthouse & Core Web Vitals Readiness
+- Semantic HTML tags and JSON-LD Schema markup on all pages.
+- Critical assets and WebP images preloaded for LCP optimization.
 - PWA manifest and service worker with offline caching active.
-- ARIA labels and alt tags applied.
+- ARIA accessibility labels and mobile-responsive breakpoints (768px & 480px).

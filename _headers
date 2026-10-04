@@ -1,0 +1,38 @@
+# Cloudflare Pages Headers Configuration
+# Documentation: https://developers.cloudflare.com/pages/configuration/headers/
+
+# Global Security & Policy Headers for all routes
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: https://images.unsplash.com https://maharera.mahaonline.gov.in https://krisalahiranandani.com; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; manifest-src 'self';
+
+# Service Worker - Must revalidate immediately so PWA updates deploy instantly
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# PWA Web Manifest
+/manifest.json
+  Content-Type: application/manifest+json; charset=utf-8
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# High-Performance Edge Caching for Static Images & Renders
+/public/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Core Stylesheet & JavaScript
+/style.css
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/app.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Favicons
+/favicon.ico
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/favicon.png
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
