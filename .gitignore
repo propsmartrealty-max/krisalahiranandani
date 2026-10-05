@@ -6,3 +6,6 @@ node_modules/
 *.pem
 .env
 .env.*
+__pycache__/
+*.pyc
+indexing_ledger.json
