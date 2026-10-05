@@ -72,95 +72,99 @@ const ENTITY_DICTIONARY = {
 };
 
 export async function onRequest(context) {
-    const { request, env, params } = context;
-    const url = new URL(request.url);
-    const cf = request.cf || {};
+    try {
+        const { request, env, params } = context;
+        const url = new URL(request.url);
+        const cf = request.cf || {};
 
-    // Extract slug from URL parameter array
-    const slugParts = params.slug || [];
-    const slug = (Array.isArray(slugParts) ? slugParts.join('/') : slugParts).toLowerCase();
+        // Extract slug from URL parameter array
+        const slugParts = params.slug || [];
+        const slug = (Array.isArray(slugParts) ? slugParts.join('/') : slugParts).toLowerCase();
 
-    // Generate dynamic page attributes based on slug intelligence and edge geo context
-    const pageData = buildPageIntelligence(slug, url.href, cf);
+        // Generate dynamic page attributes based on slug intelligence and edge geo context
+        const pageData = buildPageIntelligence(slug, url.href, cf);
 
-    // Fetch base programmatic HTML template from Cloudflare Pages static asset storage
-    const templateResponse = await env.ASSETS.fetch(new URL('/programmatic-template.html', request.url));
-    if (!templateResponse.ok) {
-        return new Response('Programmatic Template Error', { status: 500 });
-    }
+        // Fetch base programmatic HTML template from Cloudflare Pages static asset storage
+        const templateResponse = await env.ASSETS.fetch(new URL('/programmatic-template.html', request.url));
+        if (!templateResponse.ok) {
+            return new Response('Programmatic Template Error', { status: 500 });
+        }
 
-    // Initialize native Cloudflare streaming HTMLRewriter
-    const rewriter = new HTMLRewriter()
-        // SEO Meta & Title
-        .on('title#seoTitle', {
-            element(e) { e.setInnerContent(pageData.metaTitle); }
-        })
-        .on('meta#seoDesc', {
-            element(e) { e.setAttribute('content', pageData.metaDescription); }
-        })
-        .on('link#seoCanonical', {
-            element(e) { e.setAttribute('href', pageData.canonicalUrl); }
-        })
-        .on('meta#ogUrl', {
-            element(e) { e.setAttribute('content', pageData.canonicalUrl); }
-        })
-        .on('meta#ogTitle', {
-            element(e) { e.setAttribute('content', pageData.metaTitle); }
-        })
-        .on('meta#ogDesc', {
-            element(e) { e.setAttribute('content', pageData.metaDescription); }
-        })
-        // Hero & Headings
-        .on('#seoH1', {
-            element(e) { e.setInnerContent(pageData.h1); }
-        })
-        .on('#seoSubtitle', {
-            element(e) { e.setInnerContent(pageData.subtitle); }
-        })
-        .on('#seoBadge', {
-            element(e) { e.setInnerContent(`<i class="ph ph-shield-check"></i> ${pageData.badge}`); }
-        })
-        .on('#seoBreadcrumbs', {
-            element(e) { e.setInnerContent(pageData.breadcrumbsHtml, { html: true }); }
-        })
-        // Content Blocks
-        .on('#seoEditorialBody', {
-            element(e) { e.setInnerContent(pageData.editorialHtml, { html: true }); }
-        })
-        .on('#seoSpecTable', {
-            element(e) { e.setInnerContent(pageData.specTableHtml, { html: true }); }
-        })
-        .on('#seoCommuteMatrix', {
-            element(e) { e.setInnerContent(pageData.commuteHtml, { html: true }); }
-        })
-        .on('#seoFaqAccordion', {
-            element(e) { e.setInnerContent(pageData.faqsHtml, { html: true }); }
-        })
-        // Structured Data Schema
-        .on('script#seoSchemaJson', {
-            element(e) { e.setInnerContent(JSON.stringify(pageData.schemaJson, null, 2)); }
+        // Initialize native Cloudflare streaming HTMLRewriter
+        const rewriter = new HTMLRewriter()
+            // SEO Meta & Title
+            .on('title#seoTitle', {
+                element(e) { e.setInnerContent(pageData.metaTitle); }
+            })
+            .on('meta#seoDesc', {
+                element(e) { e.setAttribute('content', pageData.metaDescription); }
+            })
+            .on('link#seoCanonical', {
+                element(e) { e.setAttribute('href', pageData.canonicalUrl); }
+            })
+            .on('meta#ogUrl', {
+                element(e) { e.setAttribute('content', pageData.canonicalUrl); }
+            })
+            .on('meta#ogTitle', {
+                element(e) { e.setAttribute('content', pageData.metaTitle); }
+            })
+            .on('meta#ogDesc', {
+                element(e) { e.setAttribute('content', pageData.metaDescription); }
+            })
+            // Hero & Headings
+            .on('#seoH1', {
+                element(e) { e.setInnerContent(pageData.h1); }
+            })
+            .on('#seoSubtitle', {
+                element(e) { e.setInnerContent(pageData.subtitle); }
+            })
+            .on('#seoBadge', {
+                element(e) { e.setInnerContent(`<i class="ph ph-shield-check"></i> ${pageData.badge}`, { html: true }); }
+            })
+            .on('#seoBreadcrumbs', {
+                element(e) { e.setInnerContent(pageData.breadcrumbsHtml, { html: true }); }
+            })
+            // Content Blocks
+            .on('#seoEditorialBody', {
+                element(e) { e.setInnerContent(pageData.editorialHtml, { html: true }); }
+            })
+            .on('#seoSpecTable', {
+                element(e) { e.setInnerContent(pageData.specTableHtml, { html: true }); }
+            })
+            .on('#seoCommuteMatrix', {
+                element(e) { e.setInnerContent(pageData.commuteHtml, { html: true }); }
+            })
+            .on('#seoFaqAccordion', {
+                element(e) { e.setInnerContent(pageData.faqsHtml, { html: true }); }
+            })
+            // Structured Data Schema
+            .on('script#seoSchemaJson', {
+                element(e) { e.setInnerContent(JSON.stringify(pageData.schemaJson, null, 2)); }
+            });
+
+        // Stream the transformed response with edge cache headers
+        const transformedResponse = rewriter.transform(templateResponse);
+        const newHeaders = new Headers(transformedResponse.headers);
+
+        newHeaders.set('Content-Type', 'text/html; charset=utf-8');
+        newHeaders.set('Cache-Control', 'public, max-age=604800, stale-while-revalidate=86400');
+        newHeaders.set('Cloudflare-CDN-Cache-Control', 'max-age=604800, stale-while-revalidate=86400');
+        newHeaders.set('Cache-Tag', 'kxh-programmatic, kxh-seo, kxh-html');
+        newHeaders.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1');
+
+        return new Response(transformedResponse.body, {
+            status: 200,
+            headers: newHeaders
         });
-
-    // Stream the transformed response with edge cache headers
-    const transformedResponse = rewriter.transform(templateResponse);
-    const newHeaders = new Headers(transformedResponse.headers);
-
-    newHeaders.set('Content-Type', 'text/html; charset=utf-8');
-    newHeaders.set('Cache-Control', 'public, max-age=604800, stale-while-revalidate=86400');
-    newHeaders.set('Cloudflare-CDN-Cache-Control', 'max-age=604800, stale-while-revalidate=86400');
-    newHeaders.set('Cache-Tag', 'kxh-programmatic, kxh-seo, kxh-html');
-    newHeaders.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1');
-
-    return new Response(transformedResponse.body, {
-        status: 200,
-        headers: newHeaders
-    });
+    } catch (err) {
+        return new Response('Edge Programmatic Engine Error: ' + err.message, { status: 500 });
+    }
 }
 
 /**
  * Intelligent Parametric Engine that compiles slug into rich, high-E-E-A-T editorial content
  */
-function buildPageIntelligence(slug, rawUrl) {
+function buildPageIntelligence(slug, rawUrl, cf = {}) {
     const cleanSlug = slug.replace(/^\/+|\/+$/g, '') || 'krisala-hiranandani-township-hinjewadi';
     const canonicalUrl = `https://krisalahiranandanitownships.com/explore/${cleanSlug}`;
 
