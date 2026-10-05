@@ -150,6 +150,12 @@ export async function onRequest(context) {
             .on('meta#ogDesc', {
                 element(e) { e.setAttribute('content', pageData.metaDescription); }
             })
+            .on('meta#twTitle', {
+                element(e) { e.setAttribute('content', pageData.metaTitle); }
+            })
+            .on('meta#twDesc', {
+                element(e) { e.setAttribute('content', pageData.metaDescription); }
+            })
             // Hero & Headings
             .on('#seoH1', {
                 element(e) { e.setInnerContent(pageData.h1); }

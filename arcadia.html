@@ -1382,6 +1382,101 @@
     </section>
 
     <!-- ═══════════════════════════════════
+         ARCADIA EMI CALCULATOR
+         ═══════════════════════════════════ -->
+    <section class="section" id="emi-calculator" aria-labelledby="arcadia-emi-heading">
+        <div class="container">
+            <div class="text-center scroll-reveal">
+                <span class="badge" style="margin-bottom: 16px;"><i class="ph ph-calculator"></i>&nbsp; Investment &amp; Mortgage Planning</span>
+                <h2 id="arcadia-emi-heading" class="section-title">Sector Arcadia Home Loan &amp; EMI Calculator</h2>
+                <div class="title-line"></div>
+                <p class="subtitle" style="max-width: 640px; margin: 16px auto 0;">
+                    Calculate monthly mortgage commitments across 2 BHK (₹79L*) and 3 BHK (₹1.25Cr*) residences with real-time interest and tenure simulation.
+                </p>
+            </div>
+
+            <div class="emi-calc-wrap scroll-reveal" style="max-width: 820px; margin: 40px auto 0; background: rgba(255,255,255,0.02); border: 1px solid rgba(197,160,89,0.25); border-radius: var(--border-radius); padding: 35px 30px;">
+                <!-- Preset Configurations -->
+                <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap;">
+                    <button type="button" class="btn-outline" onclick="setArcadiaPreset(7900000 * 0.8, '2 BHK Luxury (80% Loan)')" style="font-size: 0.8rem; padding: 6px 14px;">2 BHK (₹63.2L Loan)</button>
+                    <button type="button" class="btn-outline" onclick="setArcadiaPreset(9500000 * 0.8, '2 BHK Grand (80% Loan)')" style="font-size: 0.8rem; padding: 6px 14px;">2 BHK Grand (₹76L Loan)</button>
+                    <button type="button" class="btn-outline" onclick="setArcadiaPreset(12500000 * 0.8, '3 BHK Royale (80% Loan)')" style="font-size: 0.8rem; padding: 6px 14px;">3 BHK Royale (₹1.0Cr Loan)</button>
+                </div>
+
+                <!-- Loan Amount -->
+                <div class="emi-field" style="margin-bottom: 22px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <label for="emi-principal" style="color: #fff; font-size: 0.9rem;">Loan Amount</label>
+                        <strong id="emi-principal-val" style="color: var(--gold-light); font-size: 1.05rem;">₹63.2 L</strong>
+                    </div>
+                    <input type="range" id="emi-principal" min="2000000" max="25000000" step="100000" value="6320000"
+                        oninput="calcArcadiaEMI()" aria-label="Loan amount slider" style="width: 100%; accent-color: var(--gold-primary);">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">
+                        <span>₹20 L</span>
+                        <span>₹2.5 Cr</span>
+                    </div>
+                </div>
+
+                <!-- Interest Rate -->
+                <div class="emi-field" style="margin-bottom: 22px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <label for="emi-rate" style="color: #fff; font-size: 0.9rem;">Interest Rate (p.a.)</label>
+                        <strong id="emi-rate-val" style="color: var(--gold-light); font-size: 1.05rem;">8.5%</strong>
+                    </div>
+                    <input type="range" id="emi-rate" min="6.5" max="12" step="0.1" value="8.5"
+                        oninput="calcArcadiaEMI()" aria-label="Interest rate slider" style="width: 100%; accent-color: var(--gold-primary);">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">
+                        <span>6.5% (SBI / HDFC)</span>
+                        <span>12.0%</span>
+                    </div>
+                </div>
+
+                <!-- Tenure -->
+                <div class="emi-field" style="margin-bottom: 28px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <label for="emi-tenure" style="color: #fff; font-size: 0.9rem;">Loan Tenure</label>
+                        <strong id="emi-tenure-val" style="color: var(--gold-light); font-size: 1.05rem;">20 years</strong>
+                    </div>
+                    <input type="range" id="emi-tenure" min="5" max="30" step="1" value="20"
+                        oninput="calcArcadiaEMI()" aria-label="Loan tenure slider" style="width: 100%; accent-color: var(--gold-primary);">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">
+                        <span>5 years</span>
+                        <span>30 years</span>
+                    </div>
+                </div>
+
+                <!-- Result -->
+                <div class="emi-result" id="emi-result" style="background: rgba(197,160,89,0.08); border: 1px solid rgba(197,160,89,0.3); border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 20px;">
+                    <div style="font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;">Estimated Monthly EMI</div>
+                    <div id="emi-amount" style="font-family: var(--font-heading); font-size: 2.4rem; color: var(--gold-light); font-weight: 700; margin: 6px 0;">₹54,853</div>
+                    <div id="emi-sub" style="font-size: 0.8rem; color: var(--text-muted);">Based on ₹63.2L loan @ 8.5% for 20 years</div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 24px;">
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 15px; border-radius: 6px; text-align: center;">
+                        <div style="font-size: 0.76rem; color: var(--text-muted);">Total Interest Payable</div>
+                        <div id="emi-interest" style="font-size: 1.15rem; color: #fff; font-weight: 600; margin-top: 4px;">₹68.45 L</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 15px; border-radius: 6px; text-align: center;">
+                        <div style="font-size: 0.76rem; color: var(--text-muted);">Total Outflow (P + I)</div>
+                        <div id="emi-total" style="font-size: 1.15rem; color: #fff; font-weight: 600; margin-top: 4px;">₹1.32 Cr</div>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                    <button class="btn-primary open-modal" data-magnet="loan-eligibility" style="padding: 12px 24px;">
+                        <i class="ph ph-file-pdf"></i>&nbsp; Download Arcadia Cost Sheet
+                    </button>
+                    <a href="https://wa.me/917744009295?text=Hi%2C%20I%20would%20like%20to%20know%20the%20bank%20loan%20eligibility%20and%20EMI%20schedule%20for%20Sector%20Arcadia"
+                        class="btn-outline" target="_blank" rel="noopener noreferrer" style="padding: 12px 24px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="ph ph-whatsapp-logo" style="color: #25d366;"></i>&nbsp; Talk to Loan Officer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
          CTA BANNER
          ═══════════════════════════════════ -->
     <section class="cta-banner scroll-reveal" aria-label="Sector Arcadia CTA">
@@ -1574,7 +1669,7 @@
         </a>
     </div>
 
-    <!-- FAQ Accordion Script (inline, minimal) -->
+    <!-- FAQ Accordion Script & Arcadia EMI Calculator -->
     <script>
         document.querySelectorAll('.faq-question').forEach(function(q) {
             q.addEventListener('keydown', function(e) {
@@ -1583,6 +1678,42 @@
                     this.parentElement.classList.toggle('open');
                 }
             });
+        });
+
+        /* ── Arcadia EMI Calculator ─────────────────── */
+        function calcArcadiaEMI() {
+            const P = parseFloat(document.getElementById('emi-principal').value);
+            const annualRate = parseFloat(document.getElementById('emi-rate').value);
+            const years = parseInt(document.getElementById('emi-tenure').value);
+            const r = annualRate / 12 / 100;
+            const n = years * 12;
+            const emi = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+            const totalPay = emi * n;
+            const totalInterest = totalPay - P;
+
+            document.getElementById('emi-principal-val').textContent = '₹' + formatArcadiaAmount(P);
+            document.getElementById('emi-rate-val').textContent = annualRate.toFixed(1) + '%';
+            document.getElementById('emi-tenure-val').textContent = years + ' years';
+            document.getElementById('emi-amount').textContent = '₹' + Math.round(emi).toLocaleString('en-IN');
+            document.getElementById('emi-interest').textContent = '₹' + formatArcadiaAmount(totalInterest);
+            document.getElementById('emi-total').textContent = '₹' + formatArcadiaAmount(totalPay);
+            document.getElementById('emi-sub').textContent =
+                'Based on ₹' + formatArcadiaAmount(P) + ' loan @ ' + annualRate.toFixed(1) + '% for ' + years + ' years';
+        }
+
+        function formatArcadiaAmount(val) {
+            if (val >= 10000000) return (val / 10000000).toFixed(2) + ' Cr';
+            if (val >= 100000) return (val / 100000).toFixed(2) + ' L';
+            return Math.round(val).toLocaleString('en-IN');
+        }
+
+        function setArcadiaPreset(loanAmount, label) {
+            document.getElementById('emi-principal').value = loanAmount;
+            calcArcadiaEMI();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            calcArcadiaEMI();
         });
     </script>
 

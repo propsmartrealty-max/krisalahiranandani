@@ -1054,4 +1054,70 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ── Intelligent Dynamic WhatsApp Router ───────────────────
+    (function initDynamicWhatsAppRouter() {
+        const path = window.location.pathname.toLowerCase();
+        let topic = "Krisala Hiranandani Integrated Township";
+
+        if (path.includes('arcadia')) topic = "Sector Arcadia (2 & 3 BHK residences)";
+        else if (path.includes('icon')) topic = "Sector Icon (3, 4 BHK & sky penthouses)";
+        else if (path.includes('everlyn')) topic = "Everlyn Residences";
+        else if (path.includes('della')) topic = "Della Villa Plots & Hospitality";
+        else if (path.includes('racecourse')) topic = "8-Acre Private Racecourse View homes";
+        else if (path.includes('amenities')) topic = "100+ Master Amenities & Equestrian Academy";
+        else if (path.includes('pricing')) topic = "2026 Price List & CLP Payment Schedule";
+        else if (path.includes('nri')) topic = "NRI Investment Desk (FEMA & Capital Repatriation)";
+        else if (path.includes('connectivity')) topic = "Transit & Metro Line 3 Connectivity";
+        else if (path.includes('masterplan')) topic = "105-Acre Masterplan & Sector Map";
+        else if (path.includes('neighborhood')) topic = "North Hinjewadi Neighborhood & Appreciation";
+        else if (path.includes('compare')) topic = "Project Comparison Matrix";
+        else if (path.includes('explore')) topic = "Exclusive Exploration Portal";
+
+        const dynamicMsg = `Hi, I am inquiring about ${topic} at Krisala Hiranandani Township Hinjewadi. Please share available inventory, floor plans, and current pricing.`;
+        const encoded = encodeURIComponent(dynamicMsg);
+
+        document.querySelectorAll('a.float-whatsapp, a[data-whatsapp-smart]').forEach(waLink => {
+            waLink.href = `https://wa.me/917744009295?text=${encoded}`;
+        });
+    })();
+
+    // ── Zero-Latency Edge Lead Form Submissions ───────────────
+    (function initEdgeLeadSubmission() {
+        document.querySelectorAll('form.enquiry-form, form#leadForm, form#exitForm').forEach(form => {
+            form.addEventListener('submit', async (e) => {
+                const btn = form.querySelector('button[type="submit"]');
+                const origText = btn ? btn.innerHTML : '';
+                if (btn) {
+                    btn.disabled = true;
+                    btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Submitting...';
+                }
+
+                // If user submits via standard form action, allow graceful progressive enhancement
+                try {
+                    const formData = new FormData(form);
+                    formData.append('_source', window.location.href);
+
+                    const res = await fetch('/api/lead', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (res.ok) {
+                        e.preventDefault();
+                        window.location.href = '/thank-you';
+                        return;
+                    }
+                } catch (err) {
+                    // Fall back to native form POST if edge endpoint fails or is offline
+                } finally {
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.innerHTML = origText;
+                    }
+                }
+            });
+        });
+    })();
 });
+
