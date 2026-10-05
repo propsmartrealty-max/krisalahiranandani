@@ -43,6 +43,24 @@ const ENTITY_DICTIONARY = {
         spec: "22 ft Double-Height Living Room, Private Terrace Sky Garden, Premium Home Automation",
         desc: "Signature double-height sky duplex penthouses designed for CXOs, industrialists, and luxury collectors seeking a villa-like lifestyle in the sky."
     },
+    "5-bhk": {
+        name: "5 BHK Imperial Signature Penthouses",
+        carpet: "2,800 – 3,800 sq.ft.",
+        price: "₹3.20 Cr* onwards",
+        sector: "Sector Icon Signature Tier",
+        floors: "Top Floor Sky Mansions",
+        spec: "Private Lap Pool, 24 ft Double-Height Living, Private High-Speed Elevators, Butler Room",
+        desc: "The pinnacle of architectural grandeur in West Pune. Palatial 5 BHK sky mansions offering unmatched 360-degree vistas across the equestrian racecourse and Sahyadri valleys."
+    },
+    "simplex": {
+        name: "Simplex Executive Luxury Suites",
+        carpet: "920 – 1,150 sq.ft.",
+        price: "₹98 Lakhs* onwards",
+        sector: "Sector Arcadia Executive",
+        floors: "Mid & High Levels",
+        spec: "Spacious Single-Level Floorplate, Zero Hallway Wastage, Acoustic Double Glazing",
+        desc: "Efficient single-level executive homes tailored for modern tech leaders seeking streamlined maintenance with elite Hiranandani craftsmanship."
+    },
     "della-plots": {
         name: "The Della Collection Equestrian Villa Plots",
         carpet: "2,000 – 5,000 sq.ft. Plot Area",
@@ -63,11 +81,13 @@ const ENTITY_DICTIONARY = {
     "capgemini": { landmark: "Capgemini India Hinjewadi", distance: "4.5 km", time: "8 mins", route: "Via Phase 2 Flyover" },
 
     // Connectivity & Corridors
+    "mahalunge": { landmark: "Maan-Mahalunge Hi-Tech Smart City & Riverfront", distance: "3.5 km", time: "6 mins", route: "Direct Mahalunge-Hinjewadi Link Corridor" },
     "expressway": { landmark: "Mumbai-Pune Expressway Toll Plaza", distance: "3.2 km", time: "5 mins", route: "Direct Arterial Bypass" },
     "metro-line-3": { landmark: "Hinjewadi-Shivajinagar Metro Line 3 (Megapolis Station)", distance: "2.5 km", time: "4 mins", route: "Direct Feeder Connector" },
     "ring-road": { landmark: "Proposed PMRDA 128m Ring Road Junction", distance: "1.8 km", time: "3 mins", route: "North Hinjewadi Darumbre Interchange" },
     "wakad": { landmark: "Bhumkar Chowk & Wakad Commercial District", distance: "7.0 km", time: "12 mins", route: "Via Wakad-Hinjewadi Highway" },
     "baner": { landmark: "Baner & Balewadi High Street", distance: "12.5 km", time: "18 mins", route: "Via Bangalore-Mumbai Bypass Highway" },
+    "hadapsar": { landmark: "Pune West vs East (Hadapsar / Magarpatta Comparison)", distance: "28 km", time: "40 mins", route: "Via Mumbai-Bangalore Bypass & Pune Ring Road" },
     "airport": { landmark: "Pune International Airport (Lohegaon / Purandar)", distance: "32 km", time: "45 mins", route: "Via PMRDA Ring Road Express Corridor" }
 };
 
@@ -170,9 +190,11 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
 
     // Token analysis
     let unitKey = "2-bhk";
-    if (cleanSlug.includes('3-bhk') || cleanSlug.includes('3bhk')) unitKey = "3-bhk";
+    if (cleanSlug.includes('5-bhk') || cleanSlug.includes('5bhk')) unitKey = "5-bhk";
     else if (cleanSlug.includes('4-bhk') || cleanSlug.includes('4bhk')) unitKey = "4-bhk";
-    else if (cleanSlug.includes('duplex')) unitKey = "duplex";
+    else if (cleanSlug.includes('3-bhk') || cleanSlug.includes('3bhk')) unitKey = "3-bhk";
+    else if (cleanSlug.includes('simplex')) unitKey = "simplex";
+    else if (cleanSlug.includes('duplex') || cleanSlug.includes('skyduplex')) unitKey = "duplex";
     else if (cleanSlug.includes('villa') || cleanSlug.includes('plot') || cleanSlug.includes('della')) unitKey = "della-plots";
 
     let workKey = null;
@@ -181,7 +203,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     }
 
     let transitKey = null;
-    for (const k of ['expressway', 'metro-line-3', 'ring-road', 'wakad', 'baner', 'airport']) {
+    for (const k of ['mahalunge', 'expressway', 'metro-line-3', 'ring-road', 'wakad', 'baner', 'hadapsar', 'airport']) {
         if (cleanSlug.includes(k)) { transitKey = k; break; }
     }
 
@@ -195,10 +217,10 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         .map(w => w.charAt(0).toUpperCase() + w.slice(1))
         .join(' ');
 
-    const h1 = `Krisala Hiranandani ${unit.name} • ${work ? 'Near ' + work.landmark : transit ? 'Near ' + transit.landmark : 'North Hinjewadi Pune'}`;
+    const h1 = `Krisala Hiranandani ${unit.name} • ${work ? 'Near ' + work.landmark : transit ? 'Near ' + transit.landmark : 'North Hinjewadi & Mahalunge Pune'}`;
     const metaTitle = `${formattedSubject} | Krisala Hiranandani Township Hinjewadi`;
     const metaDescription = `Verified specifications, pricing (${unit.price}), carpet area (${unit.carpet}), floor plans, and commute analysis for ${formattedSubject} at Krisala Hiranandani Township Hinjewadi, Pune. MahaRERA PR1260002502438.`;
-    const subtitle = `Comprehensive architectural analysis, floor plans, real-time pricing guidance, and commute timeline for ${unit.name} in North Hinjewadi, Pune.`;
+    const subtitle = `Comprehensive architectural analysis, floor plans, real-time pricing guidance, and commute timeline for ${unit.name} in North Hinjewadi & Mahalunge, Pune.`;
     const badge = `MahaRERA Registered PR1260002502438 • ${unit.sector}`;
 
     const breadcrumbsHtml = `
@@ -215,8 +237,10 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     // International Currency Conversion for overseas buyers
     const nriPricing = {
         "2-bhk": "₹79 Lakhs* (~$94,500 USD / AED 347,000)",
+        "simplex": "₹98 Lakhs* (~$117,000 USD / AED 430,000)",
         "3-bhk": "₹1.25 Cr* (~$149,000 USD / AED 548,000)",
         "4-bhk": "₹2.10 Cr* (~$251,000 USD / AED 920,000)",
+        "5-bhk": "₹3.20 Cr* (~$382,000 USD / AED 1,400,000)",
         "duplex": "₹2.65 Cr* (~$316,000 USD / AED 1,160,000)",
         "della-plots": "₹1.80 Cr – ₹3.50 Cr* (~$215,000 – $418,000 USD)"
     };
@@ -398,7 +422,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                     "@type": "Offer",
                     "url": canonicalUrl,
                     "priceCurrency": "INR",
-                    "price": unitKey === "2-bhk" ? "7900000" : unitKey === "3-bhk" ? "12500000" : unitKey === "4-bhk" ? "21000000" : "26500000",
+                    "price": unitKey === "2-bhk" ? "7900000" : unitKey === "simplex" ? "9800000" : unitKey === "3-bhk" ? "12500000" : unitKey === "4-bhk" ? "21000000" : unitKey === "5-bhk" ? "32000000" : "26500000",
                     "availability": "https://schema.org/InStock",
                     "itemCondition": "https://schema.org/NewCondition"
                 },

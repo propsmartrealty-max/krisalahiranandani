@@ -20,6 +20,7 @@ const SILO_ASSETS = [
     '/compare',
     '/neighborhood',
     '/masterplan',
+    '/blog',
     '/404.html'
 ];
 

@@ -16,37 +16,37 @@ SILOS = [
     {
         "name": "configurations",
         "file": "sitemap-configurations.xml",
-        "bases": ["2-bhk-luxury-apartments", "3-bhk-royale-residences", "4-bhk-palatial-homes", "duplex-sky-villas", "della-villa-plots-racecourse"],
+        "bases": ["2-bhk-luxury-apartments", "3-bhk-royale-residences", "4-bhk-palatial-homes", "5-bhk-signature-penthouses", "duplex-sky-villas"],
         "modifiers": ["floor-plans", "carpet-area-specs", "tower-layout-blueprints", "sample-flat-video", "possession-dates", "price-breakdown", "vaastu-compliant", "corner-units", "balcony-views", "luxury-finishes"],
-        "localities": ["hinjewadi-phase-1", "hinjewadi-phase-2", "hinjewadi-phase-3", "north-hinjewadi", "darumbre-marunji", "pune-west", "near-metro-station", "near-expressway", "near-wipro-circle", "near-infosys-campus", "punawale-annexe", "wakad-extension", "tathawade-corridor", "baner-balewadi-belt", "sahydari-view", "racecourse-facing", "green-valley", "podium-facing", "clubhouse-front", "executive-enclave"]
+        "localities": ["hinjewadi-phase-1", "hinjewadi-phase-2", "hinjewadi-phase-3", "mahalunge-smart-city", "mahalunge-riverfront", "north-hinjewadi", "darumbre-marunji", "baner-balewadi-belt", "wakad-extension", "hadapsar-comparison", "near-metro-station", "near-expressway", "near-wipro-circle", "near-infosys-campus", "punawale-annexe", "tathawade-corridor", "sahydari-view", "racecourse-facing", "podium-facing", "executive-enclave"]
     },
     {
         "name": "pricing",
         "file": "sitemap-pricing.xml",
         "bases": ["price-list-2026", "all-inclusive-cost-sheet", "stamp-duty-gst-breakup", "construction-linked-payment-plan", "down-payment-offers"],
-        "modifiers": ["79-lakhs-2-bhk", "1-25-crore-3-bhk", "2-10-crore-4-bhk", "2-65-crore-duplex", "3-50-crore-della-plots", "bank-pre-approved-loans", "sbi-home-loan-interest", "hdfc-bank-approval", "icici-bank-eligibility", "axis-bank-schemes"],
-        "localities": ["hinjewadi", "darumbre", "marunji", "wakad", "baner", "pune-it-park", "north-hinjewadi", "pune-west", "pune-mumbai-expressway", "metro-corridor", "nri-investors", "it-executives", "direct-developer-price", "zero-brokerage", "exclusive-discounts", "festive-offers", "pre-launch-benefits", "eoi-booking-token", "schedule-site-visit", "verified-inventory"]
+        "modifiers": ["79-lakhs-2-bhk", "1-25-crore-3-bhk", "2-10-crore-4-bhk", "3-20-crore-5-bhk", "2-65-crore-duplex", "bank-pre-approved-loans", "sbi-home-loan-interest", "hdfc-bank-approval", "icici-bank-eligibility", "axis-bank-schemes"],
+        "localities": ["hinjewadi", "mahalunge", "darumbre", "marunji", "wakad", "baner", "pune-it-park", "north-hinjewadi", "pune-west", "pune-mumbai-expressway", "metro-corridor", "nri-investors", "it-executives", "direct-developer-price", "zero-brokerage", "exclusive-discounts", "festive-offers", "pre-launch-benefits", "eoi-booking-token", "schedule-site-visit"]
     },
     {
         "name": "it-workplaces",
         "file": "sitemap-it-workplaces.xml",
         "bases": ["commute-to-infosys-phase-1-2", "distance-to-wipro-circle", "travel-time-to-tcs-sahyadri-park", "commute-to-cognizant-phase-3", "proximity-to-barclays-global"],
-        "modifiers": ["2-bhk-homes", "3-bhk-residences", "4-bhk-duplexes", "della-villas", "it-professionals-housing", "shuttle-bus-routes", "walking-commute-options", "signal-free-drive", "work-life-balance", "top-rated-township"],
-        "localities": ["rajiv-gandhi-infotech-park", "embassy-tech-zone", "quadron-business-park", "tech-mahindra-campus", "capgemini-office", "accenture-hinjewadi", "credit-suisse-pune", "nvidia-ai-center", "ibm-software-labs", "synechron-office", "dassault-systemes", "e-zest-solutions", "atos-syntel-campus", "persistent-systems", "kpso-tech-hub", "blueridge-seze", "megapolis-circle", "phase-3-terminal", "wipro-phase-2", "infosys-gate-1"]
+        "modifiers": ["2-bhk-homes", "3-bhk-residences", "4-bhk-duplexes", "5-bhk-penthouses", "it-professionals-housing", "shuttle-bus-routes", "walking-commute-options", "signal-free-drive", "work-life-balance", "top-rated-township"],
+        "localities": ["rajiv-gandhi-infotech-park", "mahalunge-tech-corridor", "embassy-tech-zone", "quadron-business-park", "tech-mahindra-campus", "capgemini-office", "accenture-hinjewadi", "credit-suisse-pune", "nvidia-ai-center", "ibm-software-labs", "synechron-office", "dassault-systemes", "e-zest-solutions", "atos-syntel-campus", "persistent-systems", "kpso-tech-hub", "blueridge-seze", "megapolis-circle", "phase-3-terminal", "wipro-phase-2"]
     },
     {
         "name": "connectivity",
         "file": "sitemap-connectivity.xml",
-        "bases": ["mumbai-pune-expressway-access", "hinjewadi-metro-line-3-megapolis", "pmrda-128m-ring-road-junction", "bhumkar-chowk-wakad-flyover", "pune-international-airport-commute"],
-        "modifiers": ["signal-free-corridor", "5-mins-drive", "3-mins-access", "zero-traffic-route", "arterial-road-widening", "metro-feeder-services", "darumbre-underpass", "expressway-toll-bypass", "baner-connectivity", "pimpri-chinchwad-link"],
-        "localities": ["hinjewadi", "marunji", "darumbre", "wakad", "punawale", "tathawade", "ravet", "balewadi", "baner", "somatane-phata", "dehu-road", "talegaon-industrial", "chakan-auto-hub", "shivajinagar-station", "pune-railway-station", "hadapsar-corridor", "kharadi-it-belt", "magarpatta-city", "lohegaon-airport", "purandar-airport"]
+        "bases": ["mumbai-pune-expressway-access", "hinjewadi-metro-line-3-megapolis", "pmrda-128m-ring-road-junction", "mahalunge-hinjewadi-bridge", "pune-international-airport-commute"],
+        "modifiers": ["signal-free-corridor", "5-mins-drive", "3-mins-access", "zero-traffic-route", "arterial-road-widening", "metro-feeder-services", "darumbre-underpass", "expressway-toll-bypass", "baner-connectivity", "hadapsar-bypass-link"],
+        "localities": ["hinjewadi", "mahalunge", "marunji", "darumbre", "wakad", "punawale", "tathawade", "ravet", "balewadi", "baner", "somatane-phata", "dehu-road", "talegaon-industrial", "chakan-auto-hub", "shivajinagar-station", "pune-railway-station", "hadapsar-corridor", "kharadi-it-belt", "magarpatta-city", "purandar-airport"]
     },
     {
         "name": "comparisons",
         "file": "sitemap-comparisons.xml",
-        "bases": ["vs-kolte-patil-life-republic", "vs-godrej-elements-hinjewadi", "vs-lodha-panache-hinjewadi", "vs-shapoorji-joyville-hinjewadi", "vs-megapolis-hinjewadi"],
+        "bases": ["vs-godrej-river-royale-mahalunge", "vs-vtp-earth-one-mahalunge", "vs-lodha-sylvan-hinjewadi", "vs-kolte-patil-life-republic", "vs-shapoorji-joyville-hinjewadi"],
         "modifiers": ["price-comparison", "carpet-area-difference", "amenity-benchmark", "construction-quality-mivan", "neoclassical-vs-modern", "racecourse-vs-standard-open-space", "appreciation-forecast", "rera-possession-timeline", "green-building-teri", "location-connectivity-advantage"],
-        "localities": ["2-bhk-comparison", "3-bhk-comparison", "4-bhk-comparison", "duplex-comparison", "villa-plot-comparison", "hinjewadi-phase-1", "hinjewadi-phase-2", "hinjewadi-phase-3", "north-hinjewadi", "wakad-projects", "baner-projects", "balewadi-projects", "pune-luxury-townships", "gated-community-ratings", "resale-value-comparison", "rental-yield-benchmark", "maintenance-cost-analysis", "architectural-elegance", "developer-track-record", "final-verdict-guide"]
+        "localities": ["2-bhk-comparison", "3-bhk-comparison", "4-bhk-comparison", "5-bhk-comparison", "duplex-comparison", "hinjewadi-phase-1", "hinjewadi-phase-2", "hinjewadi-phase-3", "mahalunge-projects", "north-hinjewadi", "wakad-projects", "baner-projects", "balewadi-projects", "hadapsar-comparison", "gated-community-ratings", "resale-value-comparison", "rental-yield-benchmark", "maintenance-cost-analysis", "developer-track-record", "final-verdict-guide"]
     },
     {
         "name": "amenities",
