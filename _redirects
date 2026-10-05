@@ -18,7 +18,8 @@
 /sitemaps.xml         /sitemap-index.xml     301
 /sitemap              /sitemap.xml           301
 
-# Sub-sitemap proxy rewrites for search engine crawlers
-/sitemaps/*           /public/sitemaps/:splat 200
+# Sub-sitemap 301 redirects for search engine crawlers to root
+/public/sitemaps/:splat /:splat 301
+/sitemaps/:splat        /:splat 301
 
 

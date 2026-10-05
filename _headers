@@ -79,31 +79,32 @@
 /sitemap-index.xml
   Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+
+/sitemap*.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
 
 /public/sitemaps/*
   Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=86400
-
-/sitemap.xml
-  Content-Type: application/xml; charset=utf-8
-  Cache-Control: public, max-age=86400
-
-/image-sitemap.xml
-  Content-Type: application/xml; charset=utf-8
-  Cache-Control: public, max-age=86400
-
-/video-sitemap.xml
-  Content-Type: application/xml; charset=utf-8
-  Cache-Control: public, max-age=86400
-
-/google-merchant-feed.xml
-  Content-Type: application/xml; charset=utf-8
-  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
 
 /sitemap.xsl
-  Content-Type: text/xsl; charset=utf-8
+  Content-Type: text/xml; charset=utf-8
   Cache-Control: public, max-age=86400
   Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
 
 # LLM Directives, RSS Feeds, and OpenSearch Auto-Discovery
 /llms.txt

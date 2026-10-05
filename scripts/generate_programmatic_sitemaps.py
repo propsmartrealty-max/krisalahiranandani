@@ -85,6 +85,10 @@ SILOS = [
     }
 ]
 
+ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
+OUTPUT_DIR = os.path.join(ROOT_DIR, "public", "sitemaps")
+INDEX_PATH = os.path.join(ROOT_DIR, "sitemap-index.xml")
+
 def generate_sharded_sitemaps():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     today = datetime.now().strftime("%Y-%m-%d")
@@ -97,7 +101,8 @@ def generate_sharded_sitemaps():
 
     for silo in SILOS:
         filename = silo["file"]
-        filepath = os.path.join(OUTPUT_DIR, filename)
+        root_filepath = os.path.join(ROOT_DIR, filename)
+        public_filepath = os.path.join(OUTPUT_DIR, filename)
         silo_urls = []
 
         # Generate exactly 1,000 programmatic combinations: 5 bases * 10 modifiers * 20 localities = 1,000
@@ -125,11 +130,18 @@ def generate_sharded_sitemaps():
         ET.indent(tree, space="  ", level=0)
         xml_str = ET.tostring(root, encoding="utf-8").decode("utf-8")
         full_xml = f'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n{xml_str}'
-        with open(filepath, "w", encoding="utf-8") as f:
+        
+        # Write to root directory (Googlebot directory scope root /)
+        with open(root_filepath, "w", encoding="utf-8") as f:
+            f.write(full_xml)
+            
+        # Also write to public/sitemaps for backward compatibility
+        with open(public_filepath, "w", encoding="utf-8") as f:
             f.write(full_xml)
 
-        print(f"  [✓] {filename}: {len(silo_urls)} URLs generated ({filepath})")
-        sub_sitemaps.append(f"{BASE_URL}/public/sitemaps/{filename}")
+        print(f"  [✓] {filename}: {len(silo_urls)} URLs generated (Root: {root_filepath})")
+        # Sub-sitemaps linked directly at root level to satisfy sitemaps.org directory scope
+        sub_sitemaps.append(f"{BASE_URL}/{filename}")
         total_urls += len(silo_urls)
 
     # Build Master Sitemap Index
@@ -148,7 +160,7 @@ def generate_sharded_sitemaps():
         lastmod = ET.SubElement(s_elem, "lastmod")
         lastmod.text = today
 
-    # Include the 10 sharded programmatic sitemaps
+    # Include the 10 sharded programmatic sitemaps (all at root domain level)
     for s in sub_sitemaps:
         s_elem = ET.SubElement(index_root, "sitemap")
         loc_elem = ET.SubElement(s_elem, "loc")

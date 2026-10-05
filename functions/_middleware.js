@@ -173,14 +173,23 @@ export async function onRequest(context) {
         newHeaders.set('X-Crawler-Status', 'whitelisted');
     }
 
-    // Cloudflare Early Hints / HTTP 103 Resource Preloading
-    newHeaders.set('Link', [
-        '<https://fonts.googleapis.com>; rel=preconnect',
-        '<https://fonts.gstatic.com>; rel=preconnect; crossorigin',
-        '</style.css?v=2>; rel=preload; as=style',
-        '</app.js>; rel=preload; as=script',
-        '</public/krisala-hiranandani-logo.webp>; rel=preload; as=image'
-    ].join(', '));
+    // Cloudflare Early Hints / HTTP 103 Resource Preloading (HTML pages only)
+    const isHtmlRoute = path === '/' || path.endsWith('.html') || (!path.includes('.') && !path.startsWith('/api'));
+    if (isHtmlRoute) {
+        newHeaders.set('Link', [
+            '<https://fonts.googleapis.com>; rel=preconnect',
+            '<https://fonts.gstatic.com>; rel=preconnect; crossorigin',
+            '</style.css?v=2>; rel=preload; as=style',
+            '</app.js>; rel=preload; as=script',
+            '</public/krisala-hiranandani-logo.webp>; rel=preload; as=image'
+        ].join(', '));
+    }
+
+    // Unrestricted Cross-Origin access for XML Sitemaps, XSL stylesheets, and Feeds
+    if (path.endsWith('.xml') || path.endsWith('.xsl') || path.endsWith('.txt')) {
+        newHeaders.set('Access-Control-Allow-Origin', '*');
+        newHeaders.set('Cross-Origin-Resource-Policy', 'cross-origin');
+    }
 
     // Hardened Edge Security Headers
     newHeaders.set('X-Content-Type-Options', 'nosniff');
