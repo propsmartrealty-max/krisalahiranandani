@@ -22,5 +22,35 @@
             "sizes": "180x180",
             "type": "image/png"
         }
+    ],
+    "shortcuts": [
+        {
+            "name": "Price Sheet & Inventory",
+            "short_name": "Pricing",
+            "description": "View all 2, 3, 4 BHK and villa plot pricing & payment plans",
+            "url": "/pricing",
+            "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "100+ Master Amenities",
+            "short_name": "Amenities",
+            "description": "Explore equestrian academy, clubhouse & sports facilities",
+            "url": "/amenities",
+            "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Transit & Location",
+            "short_name": "Connectivity",
+            "description": "Metro Line 3, Expressway and IT corridor commute times",
+            "url": "/connectivity",
+            "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "NRI Investment Desk",
+            "short_name": "NRI Desk",
+            "description": "FEMA compliance, repatriable capital and USD/AED/GBP pricing",
+            "url": "/nri",
+            "icons": [{ "src": "/favicon-192.png", "sizes": "192x192" }]
+        }
     ]
 }
