@@ -74,13 +74,14 @@ const ENTITY_DICTIONARY = {
 export async function onRequest(context) {
     const { request, env, params } = context;
     const url = new URL(request.url);
+    const cf = request.cf || {};
 
     // Extract slug from URL parameter array
     const slugParts = params.slug || [];
     const slug = (Array.isArray(slugParts) ? slugParts.join('/') : slugParts).toLowerCase();
 
-    // Generate dynamic page attributes based on slug intelligence
-    const pageData = buildPageIntelligence(slug, url.href);
+    // Generate dynamic page attributes based on slug intelligence and edge geo context
+    const pageData = buildPageIntelligence(slug, url.href, cf);
 
     // Fetch base programmatic HTML template from Cloudflare Pages static asset storage
     const templateResponse = await env.ASSETS.fetch(new URL('/programmatic-template.html', request.url));
@@ -202,8 +203,23 @@ function buildPageIntelligence(slug, rawUrl) {
         <span style="color: var(--gold-light);">${unit.name}</span>
     `;
 
+    // Geo-IP Localization Intelligence
+    const country = cf.country || 'IN';
+    const city = cf.city || '';
+    const isNRI = country !== 'IN';
+
+    // International Currency Conversion for overseas buyers
+    const nriPricing = {
+        "2-bhk": "₹79 Lakhs* (~$94,500 USD / AED 347,000)",
+        "3-bhk": "₹1.25 Cr* (~$149,000 USD / AED 548,000)",
+        "4-bhk": "₹2.10 Cr* (~$251,000 USD / AED 920,000)",
+        "duplex": "₹2.65 Cr* (~$316,000 USD / AED 1,160,000)",
+        "della-plots": "₹1.80 Cr – ₹3.50 Cr* (~$215,000 – $418,000 USD)"
+    };
+    const effectivePrice = isNRI ? (nriPricing[unitKey] || unit.price) : unit.price;
+
     // Editorial Long-Form Content
-    const editorialHtml = `
+    let editorialHtml = `
         <h2 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1.8rem; margin-bottom: 16px;">
             Architectural Excellence &amp; Living Experience in ${unit.sector}
         </h2>
@@ -213,14 +229,40 @@ function buildPageIntelligence(slug, rawUrl) {
         <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 18px;">
             Set across <strong>105+ integrated acres</strong> with 70% open green space, residents enjoy direct access to the 40-acre Della hospitality district, an 8-acre private equestrian racecourse, and Olympic-grade recreational facilities. The development is pre-certified <strong>IGBC Platinum</strong> and features <strong>TERI 50-Year certified circular water management</strong>, guaranteeing 30%+ reduction in recurring household utility expenses.
         </p>
-        ${work ? `
+    `;
+
+    // Dynamic Geo-Targeted Callouts
+    if (isNRI) {
+        editorialHtml += `
+        <div style="background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.03)); border: 1px solid var(--gold-primary); padding: 22px; border-radius: 6px; margin: 25px 0;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span class="badge" style="background: var(--gold-primary); color: #000; font-weight: 700;"><i class="ph ph-globe"></i> NRI Portfolio Concierge</span>
+                <span style="color: var(--gold-light); font-size: 0.9rem; font-weight: 600;">USA • UAE • UK • Singapore • Canada</span>
+            </div>
+            <h4 style="color: #fff; font-size: 1.25rem; margin: 8px 0;">Remote Overseas Investment &amp; Repatriation Support</h4>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                Dedicated assistance for international buyers: 100% digital KYC and real-time virtual walkthroughs, transparent NRE/NRO banking facilitation, remote Power of Attorney (POA) registration, and zero-friction capital repatriation under FEMA regulations.
+            </p>
+        </div>`;
+    } else if (city.toLowerCase().includes('mumbai') || city.toLowerCase().includes('thane')) {
+        editorialHtml += `
+        <div style="background: rgba(255,255,255,0.03); border-left: 3px solid var(--gold-primary); padding: 18px 20px; margin: 20px 0; border-radius: 4px;">
+            <h4 style="color: var(--gold-light); margin-bottom: 6px;"><i class="ph ph-car"></i> Direct Mumbai-Pune Expressway Gateway</h4>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">
+                Located just 90 minutes from Navi Mumbai &amp; BKC via the Expressway toll corridor (3.2 km to toll plaza), making Krisala Hiranandani an effortless second residence and resort sanctuary for Mumbai investors.
+            </p>
+        </div>`;
+    }
+
+    if (work) {
+        editorialHtml += `
         <div style="background: rgba(212, 175, 55, 0.08); border-left: 3px solid var(--gold-primary); padding: 18px 20px; margin: 20px 0; border-radius: 4px;">
             <h4 style="color: var(--gold-light); margin-bottom: 6px;"><i class="ph ph-briefcase"></i> Commute Advantage for ${work.landmark} Professionals</h4>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">
                 Located just <strong>${work.distance} (${work.time})</strong> away via ${work.route}, tech professionals can eliminate peak-hour traffic bottlenecks and enjoy a healthy work-life balance within Pune's primary technology epicenter.
             </p>
-        </div>` : ''}
-    `;
+        </div>`;
+    }
 
     // Parametric Specifications Table
     const specTableHtml = `
@@ -245,7 +287,7 @@ function buildPageIntelligence(slug, rawUrl) {
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
                     <td style="padding: 14px 16px; font-weight: 600;">Indicative Base Guidance</td>
-                    <td style="padding: 14px 16px; font-weight: 700; color: #fff;">${unit.price}</td>
+                    <td style="padding: 14px 16px; font-weight: 700; color: #fff;">${effectivePrice}</td>
                     <td style="padding: 14px 16px; color: var(--gold-light);">CLP / Flexi Payment Plans</td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
@@ -301,7 +343,7 @@ function buildPageIntelligence(slug, rawUrl) {
     const faqs = [
         {
             q: `What is the price and carpet area for ${unit.name} at Krisala Hiranandani Township?`,
-            a: `The ${unit.name} features an approximate usable carpet area of ${unit.carpet} with starting price guidance from ${unit.price}. Construction is executed using high-precision Mivan formwork in ${unit.sector}.`
+            a: `The ${unit.name} features an approximate usable carpet area of ${unit.carpet} with starting price guidance from ${effectivePrice}. Construction is executed using high-precision Mivan formwork in ${unit.sector}.`
         },
         {
             q: `What is the MahaRERA registration number for Krisala Hiranandani Township Hinjewadi?`,
@@ -324,7 +366,7 @@ function buildPageIntelligence(slug, rawUrl) {
         </div>
     `).join('');
 
-    // Dynamic Schema.org JSON-LD Graph
+    // Dynamic Schema.org JSON-LD Graph with Speakable & sameAs Entity Links
     const schemaJson = {
         "@context": "https://schema.org",
         "@graph": [
@@ -334,6 +376,15 @@ function buildPageIntelligence(slug, rawUrl) {
                 "name": `Krisala Hiranandani ${unit.name}`,
                 "description": metaDescription,
                 "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp",
+                "sameAs": [
+                    "https://maharera.mahaonline.gov.in/",
+                    "https://en.wikipedia.org/wiki/Hiranandani_Group",
+                    "https://en.wikipedia.org/wiki/Hinjawadi"
+                ],
+                "speakable": {
+                    "@type": "SpeakableSpecification",
+                    "cssSelector": ["#seoH1", "#seoSubtitle"]
+                },
                 "brand": {
                     "@type": "Brand",
                     "name": "Krisala x Hiranandani"

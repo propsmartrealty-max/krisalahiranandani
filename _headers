@@ -98,3 +98,16 @@
 /google-merchant-feed.xml
   Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=86400
+
+# LLM Directives, RSS Feeds, and OpenSearch Auto-Discovery
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+
+/rss.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/opensearch.xml
+  Content-Type: application/opensearchdescription+xml; charset=utf-8
+  Cache-Control: public, max-age=86400

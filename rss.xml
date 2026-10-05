@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Krisala Hiranandani Township Hinjewadi • Official Project Dispatches</title>
+    <link>https://krisalahiranandanitownships.com/</link>
+    <description>Official dispatches, construction updates, phase releases, and architectural developments for the 105-Acre Krisala Hiranandani Integrated Equestrian Township in North Hinjewadi, Pune.</description>
+    <language>en-in</language>
+    <lastBuildDate>Mon, 05 Oct 2026 06:00:00 GMT</lastBuildDate>
+    <atom:link href="https://krisalahiranandanitownships.com/rss.xml" rel="self" type="application/rss+xml"/>
+
+    <!-- Item 1: Official Township Launch -->
+    <item>
+      <title>Official Release: 105-Acre Krisala Hiranandani Master Township Unveiled in North Hinjewadi, Pune</title>
+      <link>https://krisalahiranandanitownships.com/</link>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/#launch-dispatch</guid>
+      <pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Krisala Developers and Hiranandani Communities announce the formal launch of Pune's first integrated neoclassical equestrian township featuring Sector Arcadia, Sector Icon, and India's first 8-acre private racecourse.</description>
+    </item>
+
+    <!-- Item 2: Everlyn Residences -->
+    <item>
+      <title>Everlyn Residences Phase 3: Premium 2 &amp; 3 BHK Floor Plans Released for Sector Arcadia</title>
+      <link>https://krisalahiranandanitownships.com/everlyn</link>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/everlyn#phase-3-release</guid>
+      <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Detailed Mivan architectural blueprints and starting price guidance (₹79 Lakhs* onwards) released for Sector Arcadia 2 and 3 BHK homes overlooking landscaped podium gardens.</description>
+    </item>
+
+    <!-- Item 3: The Della Collection -->
+    <item>
+      <title>The Della Collection: Limited 100 Equestrian Villa Plots with Private Polo Track Membership</title>
+      <link>https://krisalahiranandanitownships.com/della</link>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/della#villa-dispatch</guid>
+      <pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Curated by Della Resorts, 2,000 to 5,000 sq.ft. luxury villa plots open for priority allocation with exclusive privileges at the 8-acre championship equestrian track.</description>
+    </item>
+
+    <!-- Item 4: Master Plan Analysis -->
+    <item>
+      <title>Interactive Masterplan &amp; Zoning Blueprint: 70% Open Space &amp; TERI 50-Year Hydrology</title>
+      <link>https://krisalahiranandanitownships.com/masterplan</link>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/masterplan#blueprint-dispatch</guid>
+      <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Explore the 105-acre zoning masterplan highlighting low-density residential sectors, civic arteries, solar corridors, and eco-resilience reservoirs.</description>
+    </item>
+
+    <!-- Item 5: ROI Analysis -->
+    <item>
+      <title>Investment Whitepaper: Why Hinjewadi Phase 3 Integrated Townships Command 16% YoY Appreciation</title>
+      <link>https://krisalahiranandanitownships.com/knowledge-hub</link>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/knowledge-hub#roi-whitepaper</guid>
+      <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+      <description>Comprehensive real estate analysis exploring capital growth multipliers driven by the upcoming Hinjewadi-Shivajinagar Metro Line 3 and PMRDA 128m Ring Road.</description>
+    </item>
+  </channel>
+</rss>

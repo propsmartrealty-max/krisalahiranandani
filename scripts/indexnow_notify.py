@@ -22,7 +22,15 @@ URL_LIST = [
     f"https://{HOST}/compare",
     f"https://{HOST}/knowledge-hub",
     f"https://{HOST}/privacy-policy",
-    f"https://{HOST}/thank-you"
+    f"https://{HOST}/thank-you",
+    f"https://{HOST}/sitemap-index.xml",
+    f"https://{HOST}/llms.txt",
+    f"https://{HOST}/rss.xml",
+    f"https://{HOST}/explore/2-bhk-hinjewadi",
+    f"https://{HOST}/explore/3-bhk-hinjewadi",
+    f"https://{HOST}/explore/4-bhk-hinjewadi",
+    f"https://{HOST}/explore/duplex-hinjewadi",
+    f"https://{HOST}/explore/della-plots-hinjewadi"
 ]
 
 def main():
