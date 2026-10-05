@@ -4,6 +4,7 @@ Cloudflare & DNS Full-Stack Optimizer & Hardener
 Automates security settings, TLS configurations, and DNS records via Cloudflare v4 REST API.
 """
 
+import os
 import sys
 import json
 import argparse
@@ -112,10 +113,10 @@ def purge_cache(headers, zone_id):
 
 def main():
     parser = argparse.ArgumentParser(description="Cloudflare Hardening & DNS Optimizer")
-    parser.add_argument("--token", help="Cloudflare API Bearer Token")
-    parser.add_argument("--key", help="Cloudflare Global API Key")
-    parser.add_argument("--email", help="Cloudflare Account Email")
-    parser.add_argument("--zone", default="krisalahiranandanitownships.com", help="Domain zone name")
+    parser.add_argument("--token", default=os.getenv("CLOUDFLARE_API_TOKEN"), help="Cloudflare API Bearer Token")
+    parser.add_argument("--key", default=os.getenv("CLOUDFLARE_GLOBAL_API_KEY") or os.getenv("CLOUDFLARE_API_KEY"), help="Cloudflare Global API Key")
+    parser.add_argument("--email", default=os.getenv("CLOUDFLARE_EMAIL"), help="Cloudflare Account Email")
+    parser.add_argument("--zone", default=os.getenv("CLOUDFLARE_ZONE_NAME", "krisalahiranandanitownships.com"), help="Domain zone name")
     parser.add_argument("--test-auth", action="store_true", help="Only verify credentials")
     
     args = parser.parse_args()

@@ -1,6 +1,10 @@
-# Krisala Hiranandani Master Township Hinjewadi Robots Directives
-# Optimized for Googlebot, SearchGPT, Perplexity, Bing, and AI Retrieval Overviews
+# ==============================================================================
+# Krisala Hiranandani Master Township Hinjewadi — Hardened Robots Architecture
+# Enterprise Search Engine Directives: Googlebot, AI Overviews, Bing, & Social
+# Domain: https://krisalahiranandanitownships.com/
+# ==============================================================================
 
+# Global Directives for Standard Search Crawlers
 User-agent: *
 Allow: /
 Allow: /public/
@@ -8,53 +12,196 @@ Allow: /style.css
 Allow: /app.js
 Allow: /manifest.json
 Allow: /llms.txt
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /apple-touch-icon.png
 Disallow: /analytics.html
 Disallow: /*.md$
 Disallow: /*.toml$
+Disallow: /*.zone$
+Disallow: /scripts/
 
-# Google Ecosystem & AI Crawlers
+# ------------------------------------------------------------------------------
+# Google Ecosystem Bots (Full Unrestricted Access & Discover Optimization)
+# ------------------------------------------------------------------------------
 User-agent: Googlebot
 Allow: /
 Allow: /explore/
 Allow: /blog
+Allow: /everlyn
+Allow: /della
+Allow: /masterplan
+Allow: /neighborhood
+Allow: /compare
+Allow: /knowledge-hub
 Allow: /public/
+
+User-agent: Googlebot-Image
+Allow: /public/
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /public/
+Allow: /*.mp4$
+Allow: /video-sitemap.xml
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /blog
+Allow: /rss.xml
+Allow: /
 
 User-agent: Google-Extended
 Allow: /
 Allow: /llms.txt
 Allow: /blog
+Allow: /knowledge-hub
 
+User-agent: Storebot-Google
+Allow: /
+Allow: /google-merchant-feed.xml
+Allow: /everlyn
+Allow: /della
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Microsoft Bing & IndexNow Partner Crawlers
+# ------------------------------------------------------------------------------
 User-agent: Bingbot
 Allow: /
 Allow: /explore/
 Allow: /blog
+Allow: /public/
 
+User-agent: msnbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Apple & Siri Knowledge Retrieval Bots
+# ------------------------------------------------------------------------------
+User-agent: Applebot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /llms.txt
+
+# ------------------------------------------------------------------------------
+# AI Search Engines & Generative Search Overviews (GEO Optimized)
+# ------------------------------------------------------------------------------
 User-agent: GPTBot
 Allow: /
 Allow: /llms.txt
 Allow: /blog
+Allow: /knowledge-hub
+
+User-agent: ChatGPT-User
+Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 Allow: /llms.txt
 Allow: /blog
+Allow: /knowledge-hub
 
 User-agent: ClaudeBot
 Allow: /
 Allow: /llms.txt
 Allow: /blog
+Allow: /knowledge-hub
 
-User-agent: Applebot-Extended
+User-agent: Claude-Web
+Allow: /
+Allow: /llms.txt
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /llms.txt
+
+User-agent: Amazonbot
+Allow: /
+Allow: /llms.txt
+
+User-agent: cohere-ai
 Allow: /
 
-# Image & Asset Crawling
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.webp$
-Allow: /*.mp4$
+User-agent: Bytespider
+Allow: /
+Allow: /llms.txt
 
-# Google & Search Engine Sitemaps
+# ------------------------------------------------------------------------------
+# Social Media & Rich Card Snippet Bots
+# ------------------------------------------------------------------------------
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# Disallow Aggressive Third-Party Scrapers & SEO Spy Crawlers
+# ------------------------------------------------------------------------------
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# ------------------------------------------------------------------------------
+# Master Sitemaps & Feeds Auto-Discovery
+# ------------------------------------------------------------------------------
 Sitemap: https://krisalahiranandanitownships.com/sitemap-index.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap.xml
 Sitemap: https://krisalahiranandanitownships.com/image-sitemap.xml

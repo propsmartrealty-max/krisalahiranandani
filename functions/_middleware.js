@@ -1,6 +1,7 @@
 /**
  * Cloudflare Pages Hardened Edge Middleware
  * Runs at 300+ Cloudflare Edge data centers globally
+ * Whitelists Googlebot, Bingbot, and AI Search Crawlers for priority crawling and instant indexing
  */
 
 const BLOCKED_EXTENSIONS = [
@@ -36,7 +37,47 @@ const BLOCKED_USER_AGENTS = [
     'wpscan',
     'acunetix',
     'nessus',
-    'nuclei'
+    'nuclei',
+    'ahrefsbot',
+    'semrushbot',
+    'dotbot',
+    'mj12bot',
+    'megaindex',
+    'blexbot',
+    'zoominfobot',
+    'petalbot'
+];
+
+// Verified search engines, AI retrieval agents, and social card previews
+const WHITELISTED_CRAWLERS = [
+    'googlebot',
+    'google-extended',
+    'adsbot-google',
+    'mediapartners-google',
+    'storebot-google',
+    'bingbot',
+    'bingpreview',
+    'msnbot',
+    'applebot',
+    'gptbot',
+    'chatgpt-user',
+    'perplexitybot',
+    'claudebot',
+    'claude-web',
+    'anthropic-ai',
+    'amazonbot',
+    'bytespider',
+    'cohere-ai',
+    'duckduckbot',
+    'yandexbot',
+    'baiduspider',
+    'facebookexternalhit',
+    'twitterbot',
+    'linkedinbot',
+    'whatsapp',
+    'telegrambot',
+    'slackbot',
+    'pinterestbot'
 ];
 
 const ALLOWED_METHODS = ['GET', 'HEAD', 'POST', 'OPTIONS'];
@@ -45,6 +86,9 @@ export async function onRequest(context) {
     const { request, next } = context;
     const url = new URL(request.url);
     const path = url.pathname.toLowerCase();
+    const userAgent = (request.headers.get('user-agent') || '').toLowerCase();
+    const isWhitelistedBot = WHITELISTED_CRAWLERS.some(bot => userAgent.includes(bot));
+
     // 1. Canonical Host Normalization & HTTPS Edge Upgrade
     // Enforce apex domain https://krisalahiranandanitownships.com globally
     const isWww = url.hostname === 'www.krisalahiranandanitownships.com';
@@ -65,6 +109,7 @@ export async function onRequest(context) {
             service: "krisala-hiranandani-edge",
             edge_node: request.cf?.colo || "global",
             country: request.cf?.country || "IN",
+            is_crawler: isWhitelistedBot,
             timestamp: new Date().toISOString()
         }), {
             status: 200,
@@ -87,7 +132,7 @@ export async function onRequest(context) {
         });
     }
 
-    // 2. Exploit & scanner path blocking
+    // 3. Exploit & scanner path blocking (applies to all except whitelisted bots on public paths)
     if (
         BLOCKED_PATHS.some(blocked => path.includes(blocked)) ||
         BLOCKED_EXTENSIONS.some(ext => path.endsWith(ext))
@@ -101,9 +146,8 @@ export async function onRequest(context) {
         });
     }
 
-    // 3. Known scanner user-agent blocking
-    const userAgent = (request.headers.get('user-agent') || '').toLowerCase();
-    if (BLOCKED_USER_AGENTS.some(bot => userAgent.includes(bot))) {
+    // 4. Known scanner & aggressive scraper user-agent blocking (whitelisted crawlers bypass this)
+    if (!isWhitelistedBot && BLOCKED_USER_AGENTS.some(bot => userAgent.includes(bot))) {
         return new Response('Forbidden', {
             status: 403,
             headers: {
@@ -113,14 +157,21 @@ export async function onRequest(context) {
         });
     }
 
-    // 4. Proceed with request through Cloudflare Pages asset pipeline
+    // 5. Proceed with request through Cloudflare Pages asset pipeline
     const response = await next();
 
-    // 5. Clone and inject hardened headers onto the outgoing response
+    // 6. Clone and inject hardened headers onto the outgoing response
     const newHeaders = new Headers(response.headers);
 
     // Cloudflare Edge Cache-Tag for instant targeted purging
     newHeaders.set('Cache-Tag', 'kxh-township, kxh-html, kxh-seo, kxh-edge');
+
+    // Global Robots Indexing Directive for Maximum Crawl & AI Overviews
+    newHeaders.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+
+    if (isWhitelistedBot) {
+        newHeaders.set('X-Crawler-Status', 'whitelisted');
+    }
 
     // Cloudflare Early Hints / HTTP 103 Resource Preloading
     newHeaders.set('Link', [

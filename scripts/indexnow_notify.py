@@ -5,11 +5,12 @@ Notifies Microsoft Bing, Yandex, Seznam, and IndexNow partners
 for instant search engine crawl and indexation.
 """
 
+import os
 import requests
 import json
 
-HOST = "krisalahiranandanitownships.com"
-KEY = "e2b9c79fa4d84b90a6e4d77c15243890"
+HOST = os.getenv("INDEXNOW_HOST", "krisalahiranandanitownships.com")
+KEY = os.getenv("INDEXNOW_KEY", "e2b9c79fa4d84b90a6e4d77c15243890")
 KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 

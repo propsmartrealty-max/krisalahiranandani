@@ -67,6 +67,16 @@ def save_ledger(ledger):
         json.dump(ledger, f, indent=2)
 
 def get_access_token():
+    env_key = os.getenv("GOOGLE_SERVICE_ACCOUNT_KEY")
+    if env_key:
+        try:
+            info = json.loads(env_key)
+            creds = service_account.Credentials.from_service_account_info(info, scopes=SCOPES)
+            creds.refresh(Request())
+            return creds.token
+        except Exception as e:
+            print(f"Warning: Failed to parse GOOGLE_SERVICE_ACCOUNT_KEY env var: {e}")
+
     if not os.path.exists(KEY_FILE):
         print(f"Error: Google Service Account key file not found at: {KEY_FILE}")
         sys.exit(1)

@@ -11,3 +11,7 @@
 /privacy              /privacy-policy        301
 /terms                /privacy-policy        301
 /thankyou             /thank-you             301
+
+# Sub-sitemap proxy rewrites for search engine crawlers
+/sitemaps/*           /public/sitemaps/:splat 200
+
