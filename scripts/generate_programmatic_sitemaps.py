@@ -16,6 +16,7 @@ SILOS = [
     {
         "name": "configurations",
         "file": "sitemap-configurations.xml",
+        "hubs": ["/arcadia", "/icon"],
         "bases": ["2-bhk-luxury-apartments", "3-bhk-royale-residences", "4-bhk-palatial-homes", "5-bhk-signature-penthouses", "duplex-sky-villas"],
         "modifiers": ["floor-plans", "carpet-area-specs", "tower-layout-blueprints", "sample-flat-video", "possession-dates", "price-breakdown", "vaastu-compliant", "corner-units", "balcony-views", "luxury-finishes"],
         "localities": ["hinjewadi-phase-1", "hinjewadi-phase-2", "hinjewadi-phase-3", "mahalunge-smart-city", "mahalunge-riverfront", "north-hinjewadi", "darumbre-marunji", "baner-balewadi-belt", "wakad-extension", "hadapsar-comparison", "near-metro-station", "near-expressway", "near-wipro-circle", "near-infosys-campus", "punawale-annexe", "tathawade-corridor", "sahydari-view", "racecourse-facing", "podium-facing", "executive-enclave"]
@@ -23,6 +24,7 @@ SILOS = [
     {
         "name": "pricing",
         "file": "sitemap-pricing.xml",
+        "hubs": ["/pricing"],
         "bases": ["price-list-2026", "all-inclusive-cost-sheet", "stamp-duty-gst-breakup", "construction-linked-payment-plan", "down-payment-offers"],
         "modifiers": ["79-lakhs-2-bhk", "1-25-crore-3-bhk", "2-10-crore-4-bhk", "3-20-crore-5-bhk", "2-65-crore-duplex", "bank-pre-approved-loans", "sbi-home-loan-interest", "hdfc-bank-approval", "icici-bank-eligibility", "axis-bank-schemes"],
         "localities": ["hinjewadi", "mahalunge", "darumbre", "marunji", "wakad", "baner", "pune-it-park", "north-hinjewadi", "pune-west", "pune-mumbai-expressway", "metro-corridor", "nri-investors", "it-executives", "direct-developer-price", "zero-brokerage", "exclusive-discounts", "festive-offers", "pre-launch-benefits", "eoi-booking-token", "schedule-site-visit"]
@@ -37,6 +39,7 @@ SILOS = [
     {
         "name": "connectivity",
         "file": "sitemap-connectivity.xml",
+        "hubs": ["/connectivity"],
         "bases": ["mumbai-pune-expressway-access", "hinjewadi-metro-line-3-megapolis", "pmrda-128m-ring-road-junction", "mahalunge-hinjewadi-bridge", "pune-international-airport-commute"],
         "modifiers": ["signal-free-corridor", "5-mins-drive", "3-mins-access", "zero-traffic-route", "arterial-road-widening", "metro-feeder-services", "darumbre-underpass", "expressway-toll-bypass", "baner-connectivity", "hadapsar-bypass-link"],
         "localities": ["hinjewadi", "mahalunge", "marunji", "darumbre", "wakad", "punawale", "tathawade", "ravet", "balewadi", "baner", "somatane-phata", "dehu-road", "talegaon-industrial", "chakan-auto-hub", "shivajinagar-station", "pune-railway-station", "hadapsar-corridor", "kharadi-it-belt", "magarpatta-city", "purandar-airport"]
@@ -44,6 +47,7 @@ SILOS = [
     {
         "name": "comparisons",
         "file": "sitemap-comparisons.xml",
+        "hubs": ["/compare"],
         "bases": ["vs-godrej-river-royale-mahalunge", "vs-vtp-earth-one-mahalunge", "vs-lodha-sylvan-hinjewadi", "vs-kolte-patil-life-republic", "vs-shapoorji-joyville-hinjewadi"],
         "modifiers": ["price-comparison", "carpet-area-difference", "amenity-benchmark", "construction-quality-mivan", "neoclassical-vs-modern", "racecourse-vs-standard-open-space", "appreciation-forecast", "rera-possession-timeline", "green-building-teri", "location-connectivity-advantage"],
         "localities": ["2-bhk-comparison", "3-bhk-comparison", "4-bhk-comparison", "5-bhk-comparison", "duplex-comparison", "hinjewadi-phase-1", "hinjewadi-phase-2", "hinjewadi-phase-3", "mahalunge-projects", "north-hinjewadi", "wakad-projects", "baner-projects", "balewadi-projects", "hadapsar-comparison", "gated-community-ratings", "resale-value-comparison", "rental-yield-benchmark", "maintenance-cost-analysis", "developer-track-record", "final-verdict-guide"]
@@ -51,6 +55,7 @@ SILOS = [
     {
         "name": "amenities",
         "file": "sitemap-amenities.xml",
+        "hubs": ["/amenities", "/racecourse"],
         "bases": ["della-8-acre-private-racecourse", "international-polo-club", "50000-sqft-neoclassical-clubhouse", "olympic-length-swimming-pool", "teri-certified-water-hydrology"],
         "modifiers": ["horse-riding-academy", "equestrian-stables", "sports-arenas-cricket-football", "indoor-badminton-squash", "co-working-business-lounge", "sky-observatory-deck", "zen-meditation-gardens", "organic-urban-farming", "pet-park-agility-zone", "children-adventure-playscape"],
         "localities": ["sector-arcadia-amenities", "sector-icon-exclusive-club", "della-resort-privileges", "concierge-lifestyle", "wellness-lifestyle", "senior-citizen-enclaves", "ev-charging-infrastructure", "3-tier-biometric-security", "lotus-ponds-jogging-tracks", "banquet-hall-facilities", "amphitheatre-events", "spa-sauna-jacuzzi", "cycling-velodrome", "tennis-courts", "pickleball-arena", "skating-rink", "climbing-wall", "yoga-deck", "reflexology-path", "lifestyle-sanctuary"]
@@ -58,6 +63,7 @@ SILOS = [
     {
         "name": "investment-roi",
         "file": "sitemap-investment-roi.xml",
+        "hubs": ["/knowledge-hub"],
         "bases": ["capital-appreciation-forecast-2026-2035", "gross-rental-yield-analysis", "it-hub-tenant-demand", "resale-value-trends-hinjewadi", "nri-real-estate-investment-guide"],
         "modifiers": ["14-to-18-percent-cagr", "5-percent-rental-yield", "metro-line-3-impact", "pmrda-ring-road-multiplier", "tax-benefits-80c-24b", "repatriation-nre-nro", "wealth-creation-strategy", "commercial-corridor-growth", "first-mover-township-advantage", "inflation-hedge-asset"],
         "localities": ["2-bhk-roi", "3-bhk-roi", "4-bhk-roi", "duplex-roi", "della-plot-roi", "hinjewadi-it-boom", "pune-real-estate-market", "dubai-nri-investors", "usa-nri-buyers", "singapore-nri-investors", "london-nri-investors", "tech-leader-portfolio", "passive-rental-income", "ready-reckoner-rates", "capital-gains-exemption", "property-management-services", "high-net-worth-estates", "family-office-allocation", "long-term-wealth", "investment-whitepaper"]
@@ -79,9 +85,26 @@ SILOS = [
     {
         "name": "rera-legal",
         "file": "sitemap-rera-legal.xml",
+        "hubs": ["/privacy-policy"],
         "bases": ["maharera-registration-pr1260002502438", "sector-icon-rera-pr1260002600818", "phase-wise-possession-schedule", "carpet-area-regulatory-verification", "clear-marketable-title-search-report"],
         "modifiers": ["q4-2028-possession", "q2-2029-possession", "rera-approved-bank-loans", "encumbrance-free-land-title", "7-12-extract-verification", "environmental-noc-clearance", "fire-safety-noc-approval", "airport-authority-height-noc", "pmrda-sanctioned-layout", "commencement-certificate-cc"],
         "localities": ["darumbre-survey-numbers", "marunji-gat-numbers", "north-hinjewadi-approval", "krisala-joint-venture-agreement", "hiranandani-development-rights", "buyer-rights-and-guarantees", "rera-escrow-account-transparency", "zero-risk-booking-process", "legal-due-diligence-guide", "allotment-letter-terms", "agreement-for-sale-draft", "stamp-duty-calculation-rules", "registration-office-haveli", "sub-registrar-pune-west", "rera-complaint-free-record", "legal-faq-homebuyers", "nri-power-of-attorney", "gst-input-tax-rules", "oc-handover-timeline", "official-compliance-dossier"]
+    },
+    {
+        "name": "nri-desk",
+        "file": "sitemap-nri-desk.xml",
+        "hubs": ["/nri"],
+        "bases": ["nri-real-estate-investment-pune", "fema-compliant-property-buying-guide", "nre-nro-capital-repatriation-rules", "dubai-uae-nri-property-investment", "usa-canada-nri-property-buying"],
+        "modifiers": ["5-percent-rental-yield", "100-percent-digital-kyc-remote-poa", "pre-approved-nri-home-loans", "dtaa-double-tax-avoidance", "turnkey-tenant-management-services", "high-cagr-capital-appreciation", "virtual-4k-drone-walkthrough", "maharera-verified-title-docket", "dr-niranjan-hiranandani-township", "della-equestrian-polo-plots"],
+        "localities": ["hinjewadi-phase-3", "mahalunge-smart-city", "north-hinjewadi", "darumbre-marunji", "baner-balewadi", "wakad-extension", "dubai-nri-buyers", "abu-dhabi-investors", "singapore-expats", "london-uk-nris", "california-bay-area-nris", "seattle-tech-nris", "texas-dallas-buyers", "toronto-canada-nris", "sydney-australia-nris", "it-leadership-portfolios", "family-office-investments", "luxury-duplex-penthouses", "simplex-executive-suites", "ready-possession-villa-plots"]
+    },
+    {
+        "name": "amenities-lifestyle",
+        "file": "sitemap-amenities-lifestyle.xml",
+        "hubs": ["/amenities", "/racecourse"],
+        "bases": ["8-acre-private-racecourse-polo-club", "50000-sqft-neoclassical-clubhouse", "olympic-temperature-controlled-lap-pool", "teri-50-year-water-reservoirs", "pro-turf-tennis-pickleball-arenas"],
+        "modifiers": ["horse-riding-academy-training", "air-cooled-equine-stables", "technogym-biometric-fitness-center", "ayurvedic-spa-turkish-hammam", "indoor-wooden-badminton-squash", "fifa-certified-box-cricket-football", "15-acre-central-botanical-park", "1000-seater-roman-amphitheatre", "adventure-kids-playscape-splash-park", "smart-coworking-zoom-video-pods"],
+        "localities": ["sector-arcadia-residents", "sector-icon-sky-villas", "the-della-collection-plots", "hinjewadi-tech-executives", "north-hinjewadi-living", "mahalunge-hi-tech-city", "pune-west-luxury-lifestyle", "equestrian-enthusiasts", "wellness-and-longevity", "sustainable-family-living", "senior-citizen-enclaves", "pet-friendly-township", "ev-mobility-infrastructure", "ai-3-tier-surveillance", "high-street-retail-arcade", "jogging-and-cycling-velodrome", "meditation-and-yoga-decks", "lotus-ponds-and-wetlands", "igbc-platinum-green-living", "zero-tanker-water-security"]
     }
 ]
 
@@ -96,7 +119,7 @@ def generate_sharded_sitemaps():
     total_urls = 0
 
     print("=" * 60)
-    print("Generating 10,000 Programmatic URLs Across 10 Sharded Sitemaps...")
+    print("Generating 12,000 Programmatic URLs Across 12 Sharded Sitemaps...")
     print("=" * 60)
 
     for silo in SILOS:
@@ -105,26 +128,31 @@ def generate_sharded_sitemaps():
         public_filepath = os.path.join(OUTPUT_DIR, filename)
         silo_urls = []
 
+        # Add canonical parent hubs at top if present
+        hubs = silo.get("hubs", [])
+        for hub in hubs:
+            silo_urls.append((f"{BASE_URL}{hub}", "daily", "0.95"))
+
         # Generate exactly 1,000 programmatic combinations: 5 bases * 10 modifiers * 20 localities = 1,000
         for b in silo["bases"]:
             for m in silo["modifiers"]:
                 for loc in silo["localities"]:
                     slug = f"krisala-hiranandani-{b}-{m}-{loc}"
                     url = f"{BASE_URL}/explore/{slug}"
-                    silo_urls.append(url)
+                    silo_urls.append((url, "weekly", "0.8"))
 
         # Build XML
         root = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-        for u in silo_urls:
+        for u, freq, prio in silo_urls:
             url_elem = ET.SubElement(root, "url")
             loc_elem = ET.SubElement(url_elem, "loc")
             loc_elem.text = u
             lastmod = ET.SubElement(url_elem, "lastmod")
             lastmod.text = today
             changefreq = ET.SubElement(url_elem, "changefreq")
-            changefreq.text = "weekly"
+            changefreq.text = freq
             priority = ET.SubElement(url_elem, "priority")
-            priority.text = "0.8"
+            priority.text = prio
 
         tree = ET.ElementTree(root)
         ET.indent(tree, space="  ", level=0)

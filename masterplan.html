@@ -30,7 +30,7 @@
     <link rel="search" type="application/opensearchdescription+xml" title="Krisala Hiranandani" href="/opensearch.xml">
 
     <!-- Preloads & Performance -->
-    <link rel="preload" href="public/everlyn/masterplan/master_layout_hq.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="/public/everlyn/masterplan/master_layout_hq.webp" as="image" fetchpriority="high">
     <link rel="preload" href="style.css?v=2" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -197,28 +197,38 @@
         <span style="color: #d4b877; font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;">105-Acre Masterplan • Sector Zoning Map</span>
     </div>
 
-    <nav class="masterplan-nav" style="position: absolute; top: 20px; left: 20px; z-index: 100; display: flex; gap: 10px; flex-wrap: wrap;" aria-label="Masterplan Navigation">
-        <a href="/" class="back-btn"><i class="ph ph-arrow-left"></i> Main Township</a>
-        <a href="/everlyn" class="back-btn">Everlyn Towers</a>
-        <a href="/della" class="back-btn">Della Collection</a>
-        <a href="/neighborhood" class="back-btn">Neighborhood</a>
+    <nav class="masterplan-nav" style="position: absolute; top: 20px; left: 20px; z-index: 100; display: flex; gap: 8px; flex-wrap: wrap;" aria-label="Masterplan Navigation">
+        <a href="/" class="back-btn"><i class="ph ph-arrow-left"></i> Township</a>
+        <a href="/arcadia" class="back-btn">Arcadia (2 &amp; 3 BHK)</a>
+        <a href="/icon" class="back-btn">Icon (Duplex)</a>
+        <a href="/della" class="back-btn">Della Plots</a>
+        <a href="/racecourse" class="back-btn">8-Acre Racecourse</a>
+        <a href="/pricing" class="back-btn">Price List</a>
+        <a href="/amenities" class="back-btn">Amenities</a>
+        <a href="/gallery" class="back-btn">Photo Gallery</a>
+        <a href="/connectivity" class="back-btn">Connectivity</a>
+        <a href="/nri" class="back-btn">NRI Desk</a>
+        <a href="/neighborhood" class="back-btn">Location</a>
         <a href="/compare" class="back-btn">Compare</a>
-        <a href="/knowledge-hub" class="back-btn">Knowledge Hub</a>
+        <a href="/knowledge-hub" class="back-btn">Research</a>
         <a href="/blog" class="back-btn">Blog</a>
     </nav>
 
     <div class="map-container" id="mapContainer" role="region" aria-label="105-Acre Township Interactive Layout">
         <div class="map-wrapper" id="mapWrapper">
-            <img fetchpriority="high" src="public/everlyn/masterplan/master_layout_hq.webp" alt="Krisala Hiranandani 105-Acre Masterplan Layout Map" class="map-img" draggable="false" width="3000" height="1875">
+            <img fetchpriority="high" src="/public/everlyn/masterplan/master_layout_hq.webp" alt="Krisala Hiranandani 105-Acre Masterplan Layout Map" class="map-img" draggable="false" width="3000" height="1875">
 
             <!-- Interactive Hotspots -->
-            <div class="hotspot" style="top: 25%; left: 35%;" onclick="window.location.href='/everlyn'" role="button" aria-label="Explore Everlyn Tower and Sector Arcadia / Icon">
-                Everlyn Residences (Arcadia &amp; Icon)
+            <div class="hotspot" style="top: 25%; left: 32%;" onclick="window.location.href='/arcadia'" role="button" aria-label="Explore Sector Arcadia 2 and 3 BHK">
+                Sector Arcadia (2 &amp; 3 BHK)
             </div>
-            <div class="hotspot" style="top: 15%; left: 60%;" onclick="window.location.href='/della'" role="button" aria-label="Explore The Della Collection Villa Plots">
+            <div class="hotspot" style="top: 30%; left: 45%;" onclick="window.location.href='/icon'" role="button" aria-label="Explore Sector Icon Presidential Duplex">
+                Sector Icon (Duplex Sky Villas)
+            </div>
+            <div class="hotspot" style="top: 15%; left: 62%;" onclick="window.location.href='/della'" role="button" aria-label="Explore The Della Collection Villa Plots">
                 The Della Collection (Villa Plots)
             </div>
-            <div class="hotspot" style="top: 55%; left: 45%;" onclick="window.location.href='/#equestrian'" role="button" aria-label="Explore 8-Acre Private Racecourse & Polo Club">
+            <div class="hotspot" style="top: 55%; left: 45%;" onclick="window.location.href='/racecourse'" role="button" aria-label="Explore 8-Acre Private Racecourse & Polo Club">
                 8-Acre Private Racecourse &amp; Polo Club
             </div>
         </div>
@@ -238,8 +248,8 @@
         const toggleBtn = document.getElementById('toggleLayoutBtn');
         let currentMap = 0;
         const layoutMaps = [
-            'public/imported/Krisala-x-Hiranandani-Township-Brochure-1.webp',
-            'public/everlyn/masterplan/master_layout_hq.webp'
+            '/public/imported/Krisala-x-Hiranandani-Township-Brochure-1.webp',
+            '/public/everlyn/masterplan/master_layout_hq.webp'
         ];
 
         if (toggleBtn && mapImg) {

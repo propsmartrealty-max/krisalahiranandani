@@ -88,7 +88,26 @@ const ENTITY_DICTIONARY = {
     "wakad": { landmark: "Bhumkar Chowk & Wakad Commercial District", distance: "7.0 km", time: "12 mins", route: "Via Wakad-Hinjewadi Highway" },
     "baner": { landmark: "Baner & Balewadi High Street", distance: "12.5 km", time: "18 mins", route: "Via Bangalore-Mumbai Bypass Highway" },
     "hadapsar": { landmark: "Pune West vs East (Hadapsar / Magarpatta Comparison)", distance: "28 km", time: "40 mins", route: "Via Mumbai-Bangalore Bypass & Pune Ring Road" },
-    "airport": { landmark: "Pune International Airport (Lohegaon / Purandar)", distance: "32 km", time: "45 mins", route: "Via PMRDA Ring Road Express Corridor" }
+    "airport": { landmark: "Pune International Airport (Lohegaon / Purandar)", distance: "32 km", time: "45 mins", route: "Via PMRDA Ring Road Express Corridor" },
+
+    // Micro-Markets & Localities
+    "punawale": { landmark: "Punawale & 18 Latitude Corridor", distance: "4.5 km", time: "8 mins", route: "Via Punawale-Marunji Link Road" },
+    "tathawade": { landmark: "Tathawade & JSPM Education Hub", distance: "6.2 km", time: "11 mins", route: "Via Dange Chowk Connector" },
+    "marunji": { landmark: "Marunji Village & Megapolis Boulevard", distance: "1.5 km", time: "3 mins", route: "Direct Arterial Access" },
+    "darumbre": { landmark: "Darumbre North Hinjewadi Interchange", distance: "0.8 km", time: "2 mins", route: "Immediate Township Frontage" },
+    "ravet": { landmark: "Ravet & Mukai Chowk BRTS Gateway", distance: "7.5 km", time: "13 mins", route: "Via Dehu-Katraj Bypass" },
+    "pimple-saudagar": { landmark: "Pimple Saudagar Linear Garden Corridor", distance: "9.5 km", time: "16 mins", route: "Via Kunal Icon Road" },
+    "balewadi": { landmark: "Balewadi High Street & Sports Complex", distance: "11.5 km", time: "16 mins", route: "Via Mumbai-Bangalore Highway" },
+    "kasarsai": { landmark: "Kasarsai Dam & Eco-Tourism Belt", distance: "3.8 km", time: "7 mins", route: "Via Kasarsai Scenic Drive" },
+    "maan": { landmark: "Maan Village & Tech Zone Corridor", distance: "2.8 km", time: "5 mins", route: "Direct PMRDA Road Link" },
+    "somatane": { landmark: "Somatane Phata & Old Mumbai Highway", distance: "8.5 km", time: "12 mins", route: "Via Talegaon Expressway Interchange" },
+
+    // Social, Education & Healthcare
+    "mercedes-benz": { landmark: "Mercedes-Benz International School", distance: "4.8 km", time: "8 mins", route: "Via Phase 1 Flyover" },
+    "podar": { landmark: "Podar International School Hinjewadi", distance: "3.6 km", time: "6 mins", route: "Via Marunji Arterial" },
+    "symbiosis": { landmark: "Symbiosis Institute Hinjewadi", distance: "5.2 km", time: "9 mins", route: "Via Rajiv Gandhi Infotech Corridor" },
+    "ruby-hall": { landmark: "Ruby Hall Clinic Hinjewadi", distance: "5.0 km", time: "8 mins", route: "Via Phase 1 Main Road" },
+    "phoenix-mall": { landmark: "Phoenix Mall of the Millennium Wakad", distance: "7.8 km", time: "14 mins", route: "Via Bhumkar Chowk" }
 };
 
 export async function onRequest(context) {
@@ -203,7 +222,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     }
 
     let transitKey = null;
-    for (const k of ['mahalunge', 'expressway', 'metro-line-3', 'ring-road', 'wakad', 'baner', 'hadapsar', 'airport']) {
+    for (const k of ['mahalunge', 'expressway', 'metro-line-3', 'ring-road', 'wakad', 'baner', 'hadapsar', 'airport', 'punawale', 'tathawade', 'marunji', 'darumbre', 'ravet', 'pimple-saudagar', 'balewadi', 'kasarsai', 'maan', 'somatane', 'mercedes-benz', 'podar', 'symbiosis', 'ruby-hall', 'phoenix-mall']) {
         if (cleanSlug.includes(k)) { transitKey = k; break; }
     }
 

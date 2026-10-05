@@ -1,9 +1,9 @@
-const CACHE_NAME = 'krisala-hiranandani-v3';
+const CACHE_NAME = 'krisala-hiranandani-v5';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
     '/',
-    '/style.css',
+    '/style.css?v=2',
     '/app.js',
     '/offline.html',
     '/manifest.json',
@@ -15,11 +15,19 @@ const CORE_ASSETS = [
 
 const SILO_ASSETS = [
     '/everlyn',
+    '/arcadia',
+    '/icon',
     '/della',
+    '/racecourse',
+    '/amenities',
+    '/pricing',
+    '/gallery',
+    '/masterplan',
+    '/connectivity',
+    '/nri',
     '/knowledge-hub',
     '/compare',
     '/neighborhood',
-    '/masterplan',
     '/blog',
     '/404.html'
 ];

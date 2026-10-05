@@ -2,6 +2,18 @@
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://krisalahiranandanitownships.com/amenities</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/racecourse</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://krisalahiranandanitownships.com/explore/krisala-hiranandani-della-8-acre-private-racecourse-horse-riding-academy-sector-arcadia-amenities</loc>
     <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>

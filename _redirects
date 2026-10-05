@@ -22,4 +22,29 @@
 /public/sitemaps/:splat /:splat 301
 /sitemaps/:splat        /:splat 301
 
+# Ecosystem Silo Aliases
+/sector-arcadia       /arcadia               301
+/arcadia-residences   /arcadia               301
+/sector-icon          /icon                  301
+/icon-duplex          /icon                  301
+/price-list           /pricing               301
+/payment-plans        /pricing               301
+/cost-sheet           /pricing               301
+/polo-club            /racecourse            301
+/equestrian           /racecourse            301
+/media                /gallery               301
+/master-amenities     /amenities             301
+/facilities           /amenities             301
+/clubhouse            /amenities             301
+/nri-desk             /nri                   301
+/nri-investors        /nri                   301
+/nri-guide            /nri                   301
+/transit              /connectivity          301
+/infrastructure       /connectivity          301
+/metro-line-3         /connectivity          301
+# Brochure Aliases
+/brochure             /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
+/download-brochure    /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
+/pdf                  /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
+
 

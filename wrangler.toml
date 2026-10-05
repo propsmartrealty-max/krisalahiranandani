@@ -1,5 +1,14 @@
 # Cloudflare Pages Configuration
 name = "krisalahiranandani"
 compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "."
+
+[vars]
+ENVIRONMENT = "production"
+PROJECT_NAME = "Krisala Hiranandani Township"
+PRIMARY_DOMAIN = "krisalahiranandanitownships.com"
+CONCIERGE_PHONE = "+917744009295"
+CONCIERGE_EMAIL = "propsmartrealty@gmail.com"
+
 

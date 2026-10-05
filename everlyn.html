@@ -30,7 +30,7 @@
     <link rel="search" type="application/opensearchdescription+xml" title="Krisala Hiranandani" href="/opensearch.xml">
 
     <!-- Preloads & Performance -->
-    <link rel="preload" href="public/everlyn/hero/hero_exterior.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="/public/everlyn/hero/hero_exterior.webp" as="image" fetchpriority="high">
     <link rel="preload" href="style.css?v=2" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,10 +49,16 @@
     <meta property="og:description"
         content="Ultra-luxury 2, 3, 4 BHK & Duplex residences in Sector Arcadia & Sector Icon, North Hinjewadi. Wellness podium, lotus ponds, and private racecourse views.">
     <meta property="og:image" content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Everlyn Residences at Krisala Hiranandani Township Hinjewadi">
+    <meta property="og:image:type" content="image/webp">
     <meta property="og:locale" content="en_IN">
     <meta property="og:site_name" content="Krisala Hiranandani Township Pune">
 
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@KrisalaHiranandani">
+    <meta name="twitter:creator" content="@KrisalaHiranandani">
     <meta name="twitter:title" content="Everlyn Residences | Krisala × Hiranandani Phase 3 Hinjewadi">
     <meta name="twitter:description"
         content="Ultra-luxury 2, 3, 4 BHK & Duplex residences in Sector Arcadia & Sector Icon, North Hinjewadi. Wellness podium, lotus ponds, and private racecourse views.">
@@ -153,7 +159,7 @@
         .hero-everlyn {
             min-height: 70vh;
             padding-top: 100px;
-            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('public/everlyn/hero/hero_exterior.webp');
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('/public/everlyn/hero/hero_exterior.webp');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -263,11 +269,17 @@
             <nav class="nav-links" aria-label="Main Navigation">
                 <a href="/" class="nav-link">Township</a>
                 <a href="/everlyn" class="nav-link active">Everlyn</a>
+                <a href="/arcadia" class="nav-link">Arcadia</a>
+                <a href="/icon" class="nav-link">Icon</a>
                 <a href="/della" class="nav-link">Della Plots</a>
+                <a href="/racecourse" class="nav-link">Racecourse</a>
+                <a href="/amenities" class="nav-link">Amenities</a>
+                <a href="/pricing" class="nav-link">Pricing</a>
+                <a href="/gallery" class="nav-link">Gallery</a>
                 <a href="/masterplan" class="nav-link">Masterplan</a>
-                <a href="/neighborhood" class="nav-link">Neighborhood</a>
+                <a href="/connectivity" class="nav-link">Connectivity</a>
+                <a href="/nri" class="nav-link">NRI Desk</a>
                 <a href="/compare" class="nav-link">Compare</a>
-                <a href="/knowledge-hub" class="nav-link">Knowledge Hub</a>
                 <a href="/blog" class="nav-link">Blog</a>
             </nav>
             <div class="header-actions">
@@ -284,7 +296,7 @@
     <!-- Everlyn Hero -->
     <section class="hero-everlyn">
         <div class="container" style="text-align: center;">
-            <img src="public/imported/Everlyn.webp" alt="Everlyn Official Insignia" style="height: 58px; width: auto; margin-bottom: 18px; filter: drop-shadow(0 4px 15px rgba(212,175,55,0.4));" loading="eager">
+            <img src="/public/imported/Everlyn.webp" alt="Everlyn Official Insignia" style="height: 58px; width: auto; margin-bottom: 18px; filter: drop-shadow(0 4px 15px rgba(212,175,55,0.4));" loading="eager">
             <h1 class="scroll-reveal"
                 style="font-size: 3.5rem; color: var(--gold-light); font-family: var(--font-heading); margin-bottom: 15px;">EVERLYN RESIDENCES</h1>
             <p class="scroll-reveal delay-1" style="font-size: 1.3rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); max-width: 800px; margin: 0 auto;">
@@ -331,7 +343,7 @@
                 <div class="sector-card scroll-reveal">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
                         <span class="sector-badge">Sector Arcadia &bull; Premium Enclave</span>
-                        <img src="public/imported/codename-arcadia.webp" alt="Codename Arcadia Insignia" style="height: 42px; width: auto;" loading="lazy">
+                        <img src="/public/imported/codename-arcadia.webp" alt="Codename Arcadia Insignia" style="height: 42px; width: auto;" loading="lazy">
                     </div>
                     <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; color: var(--gold-light);">Sector Arcadia</h3>
                     <p style="color: var(--text-muted); margin-bottom: 20px;">Curated for young professionals, growing families, and tech leaders seeking smart spatial design, zero wastage layouts, and rapid connectivity to Hinjewadi IT Park.</p>
@@ -349,7 +361,7 @@
                 <div class="sector-card scroll-reveal delay-1">
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
                         <span class="sector-badge" style="background: rgba(197, 160, 89, 0.25); color: #fff;">Sector Icon &bull; Ultra-Luxury Flagship</span>
-                        <img src="public/imported/icon-logo.webp" alt="Sector Icon Insignia" style="height: 42px; width: auto;" loading="lazy">
+                        <img src="/public/imported/icon-logo.webp" alt="Sector Icon Insignia" style="height: 42px; width: auto;" loading="lazy">
                     </div>
                     <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; color: var(--gold-light);">Sector Icon</h3>
                     <p style="color: var(--text-muted); margin-bottom: 20px;">The premier residential address in West Pune. Designed for CXOs, business owners, and luxury seekers featuring expansive living areas and double-height duplex homes. MahaRERA Reg: PR1260002600818.</p>
@@ -480,7 +492,7 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 30px;">
                 <div class="fp-interactive-card scroll-reveal">
                     <div class="fp-img-container">
-                        <img loading="lazy" src="public/everlyn/floorplans/tower_a_b_c_plan.webp" alt="Tower A, B & C Floor Plan Sector Arcadia">
+                        <img loading="lazy" src="/public/everlyn/floorplans/tower_a_b_c_plan.webp" alt="Tower A, B & C Floor Plan Sector Arcadia">
                     </div>
                     <div class="fp-card-details">
                         <div>
@@ -497,7 +509,7 @@
 
                 <div class="fp-interactive-card scroll-reveal delay-1">
                     <div class="fp-img-container">
-                        <img loading="lazy" src="public/everlyn/floorplans/tower_d_plan.webp" alt="Tower D & E Floor Plan Sector Icon">
+                        <img loading="lazy" src="/public/everlyn/floorplans/tower_d_plan.webp" alt="Tower D & E Floor Plan Sector Icon">
                     </div>
                     <div class="fp-card-details">
                         <div>
@@ -514,7 +526,7 @@
 
                 <div class="fp-interactive-card scroll-reveal delay-2">
                     <div class="fp-img-container">
-                        <img loading="lazy" src="public/everlyn/floorplans/plan_booklet_1.webp" alt="Everlyn Unit Floor Plan Booklet">
+                        <img loading="lazy" src="/public/everlyn/floorplans/plan_booklet_1.webp" alt="Everlyn Unit Floor Plan Booklet">
                     </div>
                     <div class="fp-card-details">
                         <div>

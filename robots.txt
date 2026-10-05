@@ -29,8 +29,16 @@ Allow: /
 Allow: /explore/
 Allow: /blog
 Allow: /everlyn
+Allow: /arcadia
+Allow: /icon
 Allow: /della
+Allow: /racecourse
+Allow: /pricing
+Allow: /gallery
 Allow: /masterplan
+Allow: /amenities
+Allow: /nri
+Allow: /connectivity
 Allow: /neighborhood
 Allow: /compare
 Allow: /knowledge-hub

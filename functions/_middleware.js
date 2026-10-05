@@ -82,6 +82,31 @@ const WHITELISTED_CRAWLERS = [
 
 const ALLOWED_METHODS = ['GET', 'HEAD', 'POST', 'OPTIONS'];
 
+// In-Worker Sliding Window IP Rate Limiter for Lead Form Submissions
+const POST_RATE_LIMIT = new Map();
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const MAX_POSTS_PER_WINDOW = 5;
+
+function isPostRateLimited(clientIp) {
+    if (!clientIp || clientIp === 'unknown') return false;
+    const now = Date.now();
+    const history = POST_RATE_LIMIT.get(clientIp) || [];
+    const validTimestamps = history.filter(ts => now - ts < RATE_LIMIT_WINDOW_MS);
+    if (validTimestamps.length >= MAX_POSTS_PER_WINDOW) {
+        return true;
+    }
+    validTimestamps.push(now);
+    POST_RATE_LIMIT.set(clientIp, validTimestamps);
+    if (POST_RATE_LIMIT.size > 2000) {
+        for (const [ip, tsList] of POST_RATE_LIMIT.entries()) {
+            if (tsList.every(ts => now - ts >= RATE_LIMIT_WINDOW_MS)) {
+                POST_RATE_LIMIT.delete(ip);
+            }
+        }
+    }
+    return false;
+}
+
 export async function onRequest(context) {
     const { request, next } = context;
     const url = new URL(request.url);
@@ -132,6 +157,26 @@ export async function onRequest(context) {
         });
     }
 
+    // 2b. Rate Limiting on Lead Form POST submissions
+    if (request.method === 'POST') {
+        const clientIp = request.headers.get('cf-connecting-ip') || request.headers.get('x-forwarded-for') || 'unknown';
+        if (isPostRateLimited(clientIp)) {
+            return new Response(JSON.stringify({
+                status: 429,
+                error: "Too Many Requests",
+                message: "Enquiry submission limit reached. Please wait a few minutes or call our concierge desk directly at +91 7744009295."
+            }), {
+                status: 429,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Retry-After': '600',
+                    'X-RateLimit-Limit': '5',
+                    'X-RateLimit-Remaining': '0'
+                }
+            });
+        }
+    }
+
     // 3. Exploit & scanner path blocking (applies to all except whitelisted bots on public paths)
     if (
         BLOCKED_PATHS.some(blocked => path.includes(blocked)) ||
@@ -163,11 +208,41 @@ export async function onRequest(context) {
     // 6. Clone and inject hardened headers onto the outgoing response
     const newHeaders = new Headers(response.headers);
 
-    // Cloudflare Edge Cache-Tag for instant targeted purging
-    newHeaders.set('Cache-Tag', 'kxh-township, kxh-html, kxh-seo, kxh-edge');
+    // Cloudflare Edge Cache-Tags: Granular tags allow surgical invalidation per sector/silo
+    const cacheTags = ['kxh-township', 'kxh-edge'];
+    const isHtmlRoute = path === '/' || path.endsWith('.html') || (!path.includes('.') && !path.startsWith('/api'));
+    if (isHtmlRoute) cacheTags.push('kxh-html', 'kxh-seo');
+    if (path.includes('arcadia')) cacheTags.push('kxh-arcadia');
+    if (path.includes('icon')) cacheTags.push('kxh-icon');
+    if (path.includes('pricing')) cacheTags.push('kxh-pricing');
+    if (path.includes('racecourse')) cacheTags.push('kxh-racecourse');
+    if (path.includes('gallery')) cacheTags.push('kxh-gallery');
+    if (path.includes('della')) cacheTags.push('kxh-della');
+    if (path.includes('everlyn')) cacheTags.push('kxh-everlyn');
+    if (path.includes('masterplan')) cacheTags.push('kxh-masterplan');
+    if (path.includes('explore')) cacheTags.push('kxh-programmatic');
+    if (path.includes('blog')) cacheTags.push('kxh-blog');
+    if (path.includes('knowledge-hub')) cacheTags.push('kxh-knowledge');
+    if (path.includes('compare')) cacheTags.push('kxh-compare');
+    if (path.includes('neighborhood')) cacheTags.push('kxh-neighborhood');
+    if (path.includes('amenities')) cacheTags.push('kxh-amenities');
+    if (path.includes('nri')) cacheTags.push('kxh-nri');
+    if (path.includes('connectivity')) cacheTags.push('kxh-connectivity');
+    newHeaders.set('Cache-Tag', cacheTags.join(', '));
 
-    // Global Robots Indexing Directive for Maximum Crawl & AI Overviews
-    newHeaders.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    // Route-Aware X-Robots-Tag: Prevents indexing of private thank-you and analytics pages
+    const isPrivateOrErrorRoute = path.includes('thank-you') ||
+                                  path.includes('analytics') ||
+                                  path.includes('404') ||
+                                  response.status === 404 ||
+                                  response.status === 403;
+
+    if (isPrivateOrErrorRoute) {
+        newHeaders.set('X-Robots-Tag', 'noindex, nofollow');
+        newHeaders.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+    } else {
+        newHeaders.set('X-Robots-Tag', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+    }
 
     if (isWhitelistedBot) {
         newHeaders.set('X-Crawler-Status', 'whitelisted');

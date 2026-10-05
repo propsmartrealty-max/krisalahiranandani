@@ -17,6 +17,23 @@ CF_GLOBAL_KEY = os.getenv("CLOUDFLARE_GLOBAL_API_KEY") or os.getenv("CLOUDFLARE_
 CF_EMAIL = os.getenv("CLOUDFLARE_EMAIL", "")
 
 DEFAULT_TAGS = ["kxh-township", "kxh-html", "kxh-programmatic", "kxh-seo", "kxh-edge"]
+SECTOR_TAG_MAP = {
+    "arcadia": "kxh-arcadia",
+    "icon": "kxh-icon",
+    "pricing": "kxh-pricing",
+    "racecourse": "kxh-racecourse",
+    "gallery": "kxh-gallery",
+    "della": "kxh-della",
+    "everlyn": "kxh-everlyn",
+    "masterplan": "kxh-masterplan",
+    "blog": "kxh-blog",
+    "knowledge": "kxh-knowledge",
+    "compare": "kxh-compare",
+    "neighborhood": "kxh-neighborhood",
+    "amenities": "kxh-amenities",
+    "nri": "kxh-nri",
+    "connectivity": "kxh-connectivity"
+}
 
 def get_auth_headers(token=None, key=None, email=None):
     headers = {"Content-Type": "application/json"}
@@ -44,12 +61,20 @@ def purge_all(zone_id, headers):
 def main():
     parser = argparse.ArgumentParser(description="Purge Cloudflare Edge Cache")
     parser.add_argument("--all", action="store_true", help="Purge entire cache for the zone")
-    parser.add_argument("--tags", nargs="+", default=DEFAULT_TAGS, help="List of cache tags to purge")
+    parser.add_argument("--sector", choices=list(SECTOR_TAG_MAP.keys()), help="Purge a specific sector/silo by its tag")
+    parser.add_argument("--tags", nargs="+", default=None, help="List of cache tags to purge")
     parser.add_argument("--zone", default=CF_ZONE_ID, help="Cloudflare Zone ID")
     parser.add_argument("--token", default=CF_API_TOKEN, help="Cloudflare API Token")
     parser.add_argument("--key", default=CF_GLOBAL_KEY, help="Cloudflare Global API Key")
     parser.add_argument("--email", default=CF_EMAIL, help="Cloudflare Account Email (required with --key)")
     args = parser.parse_args()
+
+    if args.sector:
+        tags_to_purge = [SECTOR_TAG_MAP[args.sector]]
+    elif args.tags:
+        tags_to_purge = args.tags
+    else:
+        tags_to_purge = DEFAULT_TAGS
 
     if not args.zone:
         print("Usage error: CLOUDFLARE_ZONE_ID must be set as env var or passed via --zone.")
