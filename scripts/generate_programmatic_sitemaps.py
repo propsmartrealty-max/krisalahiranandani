@@ -123,7 +123,10 @@ def generate_sharded_sitemaps():
 
         tree = ET.ElementTree(root)
         ET.indent(tree, space="  ", level=0)
-        tree.write(filepath, encoding="UTF-8", xml_declaration=True)
+        xml_str = ET.tostring(root, encoding="utf-8").decode("utf-8")
+        full_xml = f'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n{xml_str}'
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(full_xml)
 
         print(f"  [✓] {filename}: {len(silo_urls)} URLs generated ({filepath})")
         sub_sitemaps.append(f"{BASE_URL}/public/sitemaps/{filename}")
@@ -155,8 +158,11 @@ def generate_sharded_sitemaps():
 
     index_tree = ET.ElementTree(index_root)
     ET.indent(index_tree, space="  ", level=0)
-    index_tree.write(INDEX_PATH, encoding="UTF-8", xml_declaration=True)
-    print(f"\n[✓] Master Sitemap Index generated: {INDEX_PATH}")
+    index_xml_str = ET.tostring(index_root, encoding="utf-8").decode("utf-8")
+    full_index_xml = f'<?xml version="1.0" encoding="UTF-8"?>\n<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>\n{index_xml_str}'
+    with open(INDEX_PATH, "w", encoding="utf-8") as f:
+        f.write(full_index_xml)
+    print(f"\n[✓] Master Sitemap Index generated with XSL stylesheet: {INDEX_PATH}")
     print(f"    Referencing 3 core sitemaps + 10 programmatic sub-sitemaps ({total_urls} programmatic URLs)")
     print("=" * 60)
 

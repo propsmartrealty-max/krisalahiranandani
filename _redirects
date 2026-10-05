@@ -12,6 +12,13 @@
 /terms                /privacy-policy        301
 /thankyou             /thank-you             301
 
+# 301 Permanent Redirects for Sitemap Index Variations
+/sitemap_index.xml    /sitemap-index.xml     301
+/sitemap-index        /sitemap-index.xml     301
+/sitemaps.xml         /sitemap-index.xml     301
+/sitemap              /sitemap.xml           301
+
 # Sub-sitemap proxy rewrites for search engine crawlers
 /sitemaps/*           /public/sitemaps/:splat 200
+
 
