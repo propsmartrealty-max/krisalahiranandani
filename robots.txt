@@ -1,12 +1,51 @@
+# Krisala Hiranandani Master Township Hinjewadi Robots Directives
+# Optimized for Googlebot, SearchGPT, Perplexity, Bing, and AI Retrieval Overviews
+
 User-agent: *
 Allow: /
 Allow: /public/
 Allow: /style.css
 Allow: /app.js
 Allow: /manifest.json
+Allow: /llms.txt
 Disallow: /analytics.html
 Disallow: /*.md$
 Disallow: /*.toml$
+
+# Google Ecosystem & AI Crawlers
+User-agent: Googlebot
+Allow: /
+Allow: /explore/
+Allow: /blog
+Allow: /public/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /blog
+
+User-agent: Bingbot
+Allow: /
+Allow: /explore/
+Allow: /blog
+
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /blog
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /blog
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /blog
+
+User-agent: Applebot-Extended
+Allow: /
 
 # Image & Asset Crawling
 Allow: /*.jpg$
@@ -20,4 +59,3 @@ Sitemap: https://krisalahiranandanitownships.com/sitemap-index.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap.xml
 Sitemap: https://krisalahiranandanitownships.com/image-sitemap.xml
 Sitemap: https://krisalahiranandanitownships.com/video-sitemap.xml
-

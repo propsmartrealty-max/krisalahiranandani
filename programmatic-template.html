@@ -60,6 +60,7 @@
                 <a href="/neighborhood" class="nav-link">Neighborhood</a>
                 <a href="/compare" class="nav-link">Compare</a>
                 <a href="/knowledge-hub" class="nav-link">Knowledge Hub</a>
+                <a href="/blog" class="nav-link">Blog</a>
             </nav>
             <div class="header-actions">
                 <button class="btn-primary open-modal" aria-haspopup="dialog">Request Cost Sheet</button>
@@ -175,9 +176,10 @@
                 <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 25px;">
                     Receive complete all-inclusive cost sheets, floor plan blueprints, and VIP site visit arrangements via WhatsApp.
                 </p>
-                <form class="enquiry-form" action="https://formsubmit.co/propsmartrealty@gmail.com" method="POST" style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
+                <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com" method="POST" style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;">
                     <input type="hidden" name="_subject" value="New Programmatic Portal Lead">
                     <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_honey" style="display:none">
                     <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                     <input type="hidden" name="programmatic_source" id="programmaticSourceField" value="">
 
@@ -199,17 +201,115 @@
 
     <!-- Footer -->
     <footer class="footer" style="padding: 60px 0 30px; background: #06070a; border-top: 1px solid rgba(255,255,255,0.05);">
-        <div class="container" style="text-align: center;">
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">
-                <strong>Krisala × Hiranandani Township</strong> • North Hinjewadi, Darumbre, Pune, Maharashtra 410506
-            </p>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">
-                MahaRERA Registration Numbers: PR1260002502438 | PR1260002600818. Authorised Real Estate Advisory: Propsmart Realty.
-            </p>
-            <div style="display: flex; gap: 20px; justify-content: center; font-size: 0.85rem;">
-                <a href="/privacy-policy" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
-                <a href="/masterplan" style="color: var(--text-muted); text-decoration: none;">Master Plan</a>
-                <a href="/knowledge-hub" style="color: var(--text-muted); text-decoration: none;">Knowledge Hub</a>
+        <div class="container">
+            <div class="footer-top" style="display: grid; grid-template-columns: 2fr 1fr 1.2fr 1fr; gap: 30px; text-align: left; margin-bottom: 40px;">
+                <div class="footer-brand">
+                    <img src="/public/krisala-hiranandani-logo.webp"
+                        onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';"
+                        alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" width="280" height="38"
+                        style="height: 40px; width: auto; margin-bottom: 20px; display: block;">
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+                    </p>
+                    <div style="margin-top: 15px;">
+                        <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
+                        <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4 style="font-family: var(--font-heading); color: var(--gold-light); margin-bottom: 12px;">The Township</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+                        <li><a href="/" style="color: var(--text-muted); text-decoration: none;">Township Overview</a></li>
+                        <li><a href="/everlyn" style="color: var(--text-muted); text-decoration: none;">Everlyn Residences</a></li>
+                        <li><a href="/della" style="color: var(--text-muted); text-decoration: none;">The Della Collection</a></li>
+                        <li><a href="/masterplan" style="color: var(--text-muted); text-decoration: none;">Interactive Masterplan</a></li>
+                        <li><a href="/neighborhood" style="color: var(--text-muted); text-decoration: none;">Neighborhood Guide</a></li>
+                        <li><a href="/compare" style="color: var(--text-muted); text-decoration: none;">Compare Projects</a></li>
+                        <li><a href="/knowledge-hub" style="color: var(--text-muted); text-decoration: none;">Knowledge Hub</a></li>
+                        <li><a href="/blog" style="color: var(--text-muted); text-decoration: none;">Research Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 style="font-family: var(--font-heading); color: var(--gold-light); margin-bottom: 12px;">Corridors &amp; Typologies</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+                        <li><a href="/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1" style="color: var(--text-muted); text-decoration: none;">2 BHK Residences</a></li>
+                        <li><a href="/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1" style="color: var(--text-muted); text-decoration: none;">3 BHK Grande</a></li>
+                        <li><a href="/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi" style="color: var(--text-muted); text-decoration: none;">4 BHK Palatial</a></li>
+                        <li><a href="/explore/krisala-hiranandani-5-bhk-signature-penthouses-hinjewadi" style="color: var(--text-muted); text-decoration: none;">5 BHK Sky Mansions</a></li>
+                        <li><a href="/explore/krisala-hiranandani-duplex-penthouses-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Sky Duplex Suites</a></li>
+                        <li><a href="/explore/krisala-hiranandani-della-villa-plots-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Della Villa Plots</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4 style="font-family: var(--font-heading); color: var(--gold-light); margin-bottom: 12px;">Sales Concierge</h4>
+                    <p style="margin-bottom: 8px;"><a href="tel:+917744009295" style="color: var(--gold-primary); text-decoration: none;"><i class="ph ph-phone"></i> +91 7744009295</a></p>
+                    <p style="margin-bottom: 12px;"><a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani" target="_blank" style="color: #25D366; text-decoration: none;"><i class="ph ph-whatsapp-logo"></i> WhatsApp Concierge</a></p>
+                    <button class="btn-outline open-modal" aria-haspopup="dialog" style="padding: 8px 16px; font-size: 0.85rem;">Open Enquiry Form</button>
+                    <p style="font-size: 0.78rem; margin-top: 12px; color: var(--text-muted);">All enquiries routed securely to propsmartrealty@gmail.com.</p>
+                </div>
+            </div>
+
+            <!-- Pune Real Estate Keyword Mega-Index -->
+            <div style="border-top: 1px solid rgba(212,175,55,0.2); margin-top: 30px; padding-top: 30px;">
+                <div style="margin-bottom: 20px; text-align: left;">
+                    <span class="badge" style="margin-bottom: 8px;"><i class="ph ph-magnifying-glass"></i> Pune Real Estate Search Directory</span>
+                    <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.25rem;">Explore Pune Real Estate Micro-Markets &amp; Typologies</h3>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; text-align: left;">
+                    <div>
+                        <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 0.95rem; margin-bottom: 10px;">Residential Typologies</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; font-size: 0.82rem;">
+                            <li><a href="/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1" style="color: var(--text-muted); text-decoration: none;">2 BHK Flats in Hinjewadi Phase 1</a></li>
+                            <li><a href="/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1" style="color: var(--text-muted); text-decoration: none;">3 BHK Flats in Mahalunge Corridor</a></li>
+                            <li><a href="/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi" style="color: var(--text-muted); text-decoration: none;">4 BHK Luxury Apartments in Baner</a></li>
+                            <li><a href="/explore/krisala-hiranandani-5-bhk-signature-penthouses-hinjewadi" style="color: var(--text-muted); text-decoration: none;">5 BHK Sky Mansions in Pune West</a></li>
+                            <li><a href="/explore/krisala-hiranandani-duplex-penthouses-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Sky Duplex Penthouses in Hinjewadi</a></li>
+                            <li><a href="/explore/krisala-hiranandani-della-villa-plots-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Equestrian Villa Plots with Racecourse</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 0.95rem; margin-bottom: 10px;">Tech Park Corridors</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; font-size: 0.82rem;">
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Flats near Infosys Phase 1 &amp; 2</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-wipro-circle-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Apartments near Wipro Circle</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-tcs-sahyadri-park-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Homes near TCS Sahyadri Park</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-cognizant-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Residences near Cognizant Phase 3</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-barclays-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Flats near Barclays Global Service Centre</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-embassy-tech-zone" style="color: var(--text-muted); text-decoration: none;">Homes near Embassy TechZone</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 0.95rem; margin-bottom: 10px;">Transit &amp; Highways</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; font-size: 0.82rem;">
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway" style="color: var(--text-muted); text-decoration: none;">Apartments near Mumbai-Pune Expressway</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-metro-line-3-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Flats near Hinjewadi Metro Line 3</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-pmrda-ring-road" style="color: var(--text-muted); text-decoration: none;">Properties near PMRDA 128m Ring Road</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-wakad-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Homes near Bhumkar Chowk Wakad</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-baner-pune" style="color: var(--text-muted); text-decoration: none;">Apartments near Balewadi High Street Baner</a></li>
+                            <li><a href="/explore/krisala-hiranandani-apartments-near-darumbre-marunji" style="color: var(--text-muted); text-decoration: none;">Residences in Darumbre Marunji Belt</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 0.95rem; margin-bottom: 10px;">Market Comparisons</h4>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; font-size: 0.82rem;">
+                            <li><a href="/explore/krisala-hiranandani-vs-godrej-river-royale-mahalunge" style="color: var(--text-muted); text-decoration: none;">Krisala Hiranandani vs Godrej River Royale</a></li>
+                            <li><a href="/explore/krisala-hiranandani-vs-vtp-earth-one-mahalunge" style="color: var(--text-muted); text-decoration: none;">Krisala Hiranandani vs VTP Earth One</a></li>
+                            <li><a href="/explore/krisala-hiranandani-vs-lodha-sylvan-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Krisala Hiranandani vs Lodha Sylvan</a></li>
+                            <li><a href="/explore/krisala-hiranandani-vs-kolte-patil-life-republic" style="color: var(--text-muted); text-decoration: none;">Township vs Kolte Patil Life Republic</a></li>
+                            <li><a href="/explore/krisala-hiranandani-hadapsar-comparison" style="color: var(--text-muted); text-decoration: none;">Hinjewadi vs Hadapsar Property ROI</a></li>
+                            <li><a href="/explore/krisala-hiranandani-price-list-2026" style="color: var(--text-muted); text-decoration: none;">All-Inclusive 2026 Cost Sheet Breakdown</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
+                <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.5; margin-bottom: 10px;">
+                    Disclaimer: This is an authoritative real estate advisory portal for Krisala Hiranandani Township. MahaRERA Registration: PR1260002502438 | PR1260002600818. Channel Partner RERA: A52100024102.
+                </p>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">
+                    &copy; 2026 Krisala Hiranandani Township. All rights reserved. | <a href="/privacy-policy" style="color: var(--gold-primary); text-decoration: none;">Privacy Policy</a> | <a href="/masterplan" style="color: var(--gold-primary); text-decoration: none;">Master Plan</a> | <a href="/knowledge-hub" style="color: var(--gold-primary); text-decoration: none;">Knowledge Hub</a>
+                </p>
             </div>
         </div>
     </footer>

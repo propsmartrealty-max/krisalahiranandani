@@ -3,6 +3,9 @@ name: Automated SEO & Edge Deployment Pipeline
 on:
   push:
     branches: [ main ]
+  schedule:
+    # Run daily at 03:00 UTC (08:30 IST) for automated Google & search engine sweep
+    - cron: '0 3 * * *'
   workflow_dispatch:
 
 jobs:
@@ -22,6 +25,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install requests google-auth
+
+      - name: Regenerate 10,000 Programmatic Sitemaps & Master Index
+        run: |
+          python scripts/generate_programmatic_sitemaps.py
+
 
       - name: Validate HTML, XML & Schema Integrity
         run: |

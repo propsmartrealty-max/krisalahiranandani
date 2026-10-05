@@ -443,6 +443,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (leadForm) {
         leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // Honeypot spam defense
+            const honeyInput = leadForm.querySelector('input[name="_honey"]');
+            if (honeyInput && honeyInput.value) {
+                console.warn('Bot submission blocked.');
+                return;
+            }
+
+            // Indian phone number validation
+            const phoneInput = leadForm.querySelector('input[type="tel"]');
+            if (phoneInput) {
+                const phoneVal = phoneInput.value.replace(/[\s\-\(\)]/g, '');
+                const phoneRegex = /^(?:\+91|0)?[6-9]\d{9}$/;
+                if (!phoneRegex.test(phoneVal)) {
+                    phoneInput.focus();
+                    phoneInput.style.border = '1px solid #ff4d4f';
+                    alert('Please enter a valid 10-digit mobile number (e.g. 9876543210).');
+                    return;
+                }
+                phoneInput.style.border = '';
+            }
+
             const submitBtn = leadForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
 
@@ -657,6 +679,18 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const phoneInput = exitForm.querySelector('input[type="tel"]');
             const phone = phoneInput ? phoneInput.value : '';
+
+            // Phone validation
+            const phoneVal = phone.replace(/[\s\-\(\)]/g, '');
+            const phoneRegex = /^(?:\+91|0)?[6-9]\d{9}$/;
+            if (phoneInput && !phoneRegex.test(phoneVal)) {
+                phoneInput.focus();
+                phoneInput.style.border = '1px solid #ff4d4f';
+                alert('Please enter a valid 10-digit mobile number.');
+                return;
+            }
+            if (phoneInput) phoneInput.style.border = '';
+
             const submitBtn = exitForm.querySelector('button');
             const originalText = submitBtn.textContent;
 

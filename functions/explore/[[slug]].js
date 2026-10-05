@@ -404,10 +404,13 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                 "name": `Krisala Hiranandani ${unit.name}`,
                 "description": metaDescription,
                 "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp",
+                "hasMap": "https://maps.google.com/?q=18.5913,73.7389",
                 "sameAs": [
                     "https://maharera.mahaonline.gov.in/",
                     "https://en.wikipedia.org/wiki/Hiranandani_Group",
-                    "https://en.wikipedia.org/wiki/Hinjawadi"
+                    "https://en.wikipedia.org/wiki/Hinjawadi",
+                    "https://maps.google.com/?q=18.5913,73.7389",
+                    "https://www.openstreetmap.org/#map=16/18.5913/73.7389"
                 ],
                 "speakable": {
                     "@type": "SpeakableSpecification",
@@ -433,6 +436,64 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                     "worstRating": "1",
                     "ratingCount": "194",
                     "reviewCount": "162"
+                }
+            },
+            {
+                "@type": "RealEstateAgent",
+                "@id": "https://krisalahiranandanitownships.com/#agent",
+                "name": "Propsmart Realty - Krisala Hiranandani Experience Desk",
+                "telephone": "+917744009295",
+                "url": "https://krisalahiranandanitownships.com/",
+                "priceRange": "₹79L - ₹5Cr+",
+                "hasMap": "https://maps.google.com/?q=18.5913,73.7389",
+                "areaServed": ["Hinjewadi", "Mahalunge", "Baner", "Wakad", "Bavdhan", "Hadapsar", "Pune", "PMRDA"],
+                "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                    "opens": "09:00",
+                    "closes": "20:00"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Krisala x Hiranandani Township, North Hinjawadi, Darumbre",
+                    "addressLocality": "North Hinjewadi, Pune",
+                    "addressRegion": "Maharashtra",
+                    "postalCode": "410506",
+                    "addressCountry": "IN"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "18.5913",
+                    "longitude": "73.7389"
+                },
+                "sameAs": [
+                    "https://maharera.mahaonline.gov.in/",
+                    "https://en.wikipedia.org/wiki/Hiranandani_Group",
+                    "https://en.wikipedia.org/wiki/Hinjawadi",
+                    "https://maps.google.com/?q=18.5913,73.7389",
+                    "https://www.openstreetmap.org/#map=16/18.5913/73.7389"
+                ]
+            },
+            {
+                "@type": "ApartmentComplex",
+                "@id": "https://krisalahiranandanitownships.com/#complex",
+                "name": "Krisala Hiranandani Township Hinjewadi",
+                "description": "105-acre neoclassical integrated equestrian township in North Hinjewadi, Pune West.",
+                "url": "https://krisalahiranandanitownships.com/",
+                "telephone": "+917744009295",
+                "hasMap": "https://maps.google.com/?q=18.5913,73.7389",
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "18.5913",
+                    "longitude": "73.7389"
+                },
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "North Hinjawadi, Darumbre",
+                    "addressLocality": "Pune",
+                    "addressRegion": "Maharashtra",
+                    "postalCode": "410506",
+                    "addressCountry": "IN"
                 }
             },
             {
