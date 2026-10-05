@@ -21,6 +21,7 @@ URL_LIST = [
     f"https://{HOST}/neighborhood",
     f"https://{HOST}/compare",
     f"https://{HOST}/knowledge-hub",
+    f"https://{HOST}/blog",
     f"https://{HOST}/privacy-policy",
     f"https://{HOST}/thank-you",
     f"https://{HOST}/sitemap-index.xml",
@@ -29,8 +30,11 @@ URL_LIST = [
     f"https://{HOST}/explore/2-bhk-hinjewadi",
     f"https://{HOST}/explore/3-bhk-hinjewadi",
     f"https://{HOST}/explore/4-bhk-hinjewadi",
+    f"https://{HOST}/explore/5-bhk-hinjewadi",
+    f"https://{HOST}/explore/simplex-hinjewadi",
     f"https://{HOST}/explore/duplex-hinjewadi",
-    f"https://{HOST}/explore/della-plots-hinjewadi"
+    f"https://{HOST}/explore/della-plots-hinjewadi",
+    f"https://{HOST}/explore/mahalunge-smart-city"
 ]
 
 def main():

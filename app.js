@@ -677,6 +677,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (exitForm) {
         exitForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // Honeypot spam defense
+            const honeyInput = exitForm.querySelector('input[name="_honey"]');
+            if (honeyInput && honeyInput.value) {
+                console.warn('Bot submission blocked.');
+                return;
+            }
+
             const phoneInput = exitForm.querySelector('input[type="tel"]');
             const phone = phoneInput ? phoneInput.value : '';
 

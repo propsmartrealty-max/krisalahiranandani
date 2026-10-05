@@ -30,11 +30,14 @@ PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/neighborhood",
     "https://krisalahiranandanitownships.com/compare",
     "https://krisalahiranandanitownships.com/knowledge-hub",
+    "https://krisalahiranandanitownships.com/blog",
     "https://krisalahiranandanitownships.com/privacy-policy",
     "https://krisalahiranandanitownships.com/thank-you",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi",
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-5-bhk-signature-penthouses-hinjewadi",
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-simplex-executive-suites-hinjewadi",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-duplex-penthouses-hinjewadi",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-della-villa-plots-hinjewadi",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi",
@@ -42,7 +45,12 @@ PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-tcs-sahyadri-park-hinjewadi",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-metro-line-3-hinjewadi",
-    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-pmrda-ring-road"
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-pmrda-ring-road",
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-mahalunge-smart-city",
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-vs-godrej-river-royale-mahalunge",
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-vs-vtp-earth-one-mahalunge",
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-vs-lodha-sylvan-hinjewadi",
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hadapsar-comparison"
 ]
 
 def load_ledger():
