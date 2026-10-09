@@ -347,29 +347,185 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 14. Find Your Masterpiece Quiz Logic
-    const quizOverlay = document.getElementById('quizOverlay');
-    const quizTriggers = document.querySelectorAll('.quiz-trigger');
-    const closeQuizBtns = document.querySelectorAll('.close-quiz');
-    const quizSteps = document.querySelectorAll('.quiz-step');
-    const quizBar = document.getElementById('quizBar');
-    const quizOptions = document.querySelectorAll('.quiz-opt');
-    const restartBtn = document.getElementById('restartQuiz');
-    const quizCta = document.getElementById('quizCta');
+    // 14. Find Your Masterpiece Quiz Logic (Universal Auto-Inject Engine)
+    function ensureQuizOverlay() {
+        let overlay = document.getElementById('quizOverlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'quiz-overlay';
+            overlay.id = 'quizOverlay';
+            overlay.innerHTML = `
+                <div class="quiz-container glass-panel">
+                    <button class="close-quiz" aria-label="Close Quiz"><i class="ph ph-x"></i></button>
+                    <div class="quiz-steps" id="quizSteps">
+                        <!-- Step 1: Configuration & Budget -->
+                        <div class="quiz-step active" data-step="1">
+                            <span class="step-num">01 / 03</span>
+                            <h2>What configuration &amp; <span>budget fits your plan?</span></h2>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-value="colosseum-3bhk">
+                                    <i class="ph ph-columns gold-icon"></i>
+                                    <strong>The Colosseum Signature</strong>
+                                    <span>Pre-Launch 3/4 BHK • From ₹85 Lakh*</span>
+                                </button>
+                                <button class="quiz-opt" data-value="arcadia-2bhk">
+                                    <i class="ph ph-layout gold-icon"></i>
+                                    <strong>2 BHK Urban Luxury</strong>
+                                    <span>Sector Arcadia • From ₹79 Lakh*</span>
+                                </button>
+                                <button class="quiz-opt" data-value="arcadia-3bhk">
+                                    <i class="ph ph-buildings gold-icon"></i>
+                                    <strong>3 BHK Grande Family Suite</strong>
+                                    <span>Sector Arcadia • From ₹1.18 Cr*</span>
+                                </button>
+                                <button class="quiz-opt" data-value="icon-4bhk">
+                                    <i class="ph ph-crown gold-icon"></i>
+                                    <strong>4 BHK Duplex &amp; Sky Mansion</strong>
+                                    <span>Sector Icon • From ₹2.10 Cr*</span>
+                                </button>
+                                <button class="quiz-opt" data-value="della-villa">
+                                    <i class="ph ph-horse gold-icon"></i>
+                                    <strong>Bespoke Equestrian Villa Plot</strong>
+                                    <span>Della District • From ₹1.50 Cr*</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Primary Lifestyle Focus -->
+                        <div class="quiz-step" data-step="2">
+                            <span class="step-num">02 / 03</span>
+                            <h2>What is your top <span>lifestyle priority?</span></h2>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-value="roman-grandeur">
+                                    <i class="ph ph-bank gold-icon"></i>
+                                    <strong>Neoclassical Roman Grandeur</strong>
+                                    <span>Triple-height marble lobby, Roman columns &amp; amphitheater.</span>
+                                </button>
+                                <button class="quiz-opt" data-value="metro-commute">
+                                    <i class="ph ph-train-regional gold-icon"></i>
+                                    <strong>2-Min Hinjawadi Tech Park Commute</strong>
+                                    <span>Walk to Metro Line 3, Wipro, Infosys &amp; Embassy TechZone.</span>
+                                </button>
+                                <button class="quiz-opt" data-value="racecourse-resort">
+                                    <i class="ph ph-sun gold-icon"></i>
+                                    <strong>8-Acre Racecourse &amp; Resort District</strong>
+                                    <span>Equestrian academy, Della hospitality &amp; 100+ master amenities.</span>
+                                </button>
+                                <button class="quiz-opt" data-value="wellness-nature">
+                                    <i class="ph ph-leaf gold-icon"></i>
+                                    <strong>Zen Nature &amp; Circular Water Sanctuary</strong>
+                                    <span>TERI certified zero-carbon ecology, Miyawaki forests &amp; peace.</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Purchase Objective & Timeline -->
+                        <div class="quiz-step" data-step="3">
+                            <span class="step-num">03 / 03</span>
+                            <h2>What is your primary <span>buying objective?</span></h2>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-value="prelaunch-roi">
+                                    <i class="ph ph-chart-line-up gold-icon"></i>
+                                    <strong>Pre-Launch Priority Pricing (Max ROI)</strong>
+                                    <span>Capitalize on 15%+ YoY capital appreciation track record.</span>
+                                </button>
+                                <button class="quiz-opt" data-value="family-enduse">
+                                    <i class="ph ph-house-line gold-icon"></i>
+                                    <strong>Family Home (Possession 2026–2027)</strong>
+                                    <span>Secure a premium neoclassical legacy for generations.</span>
+                                </button>
+                                <button class="quiz-opt" data-value="nri-rental">
+                                    <i class="ph ph-globe-hemisphere-east gold-icon"></i>
+                                    <strong>High-Yield Rental / NRI Investment</strong>
+                                    <span>FEMA compliant, dollar-hedged returns &amp; Hinjawadi tenant demand.</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Final Recommendation -->
+                        <div class="quiz-step" id="quizResultStep">
+                            <div class="result-header">
+                                <div class="match-score-badge"><i class="ph ph-seal-check"></i> <span id="quizMatchScore">98% Ideal Match Found</span></div>
+                                <h2 id="recommendedSector">The Colosseum Phase 4</h2>
+                                <p id="recommendedDesc">Neoclassical Roman landmark with soaring columns, double-height lobby, and private racecourse panorama.</p>
+                            </div>
+                            <div class="quiz-result-specs" id="quizSpecsGrid">
+                                <div class="quiz-spec-item">
+                                    <div class="q-label">Configuration</div>
+                                    <div class="q-val" id="specConfig">3 BHK Signature Residence</div>
+                                </div>
+                                <div class="quiz-spec-item">
+                                    <div class="q-label">Carpet Area</div>
+                                    <div class="q-val" id="specCarpet">815 – 1,180 Sq. Ft.</div>
+                                </div>
+                                <div class="quiz-spec-item">
+                                    <div class="q-label">Pre-Launch Price</div>
+                                    <div class="q-val" id="specPrice">From ₹85 Lakh*</div>
+                                </div>
+                                <div class="quiz-spec-item">
+                                    <div class="q-label">MahaRERA Registration</div>
+                                    <div class="q-val" id="specRera">P52100055291</div>
+                                </div>
+                            </div>
+                            <div class="result-actions">
+                                <button class="btn-primary" id="quizLockVipBtn">
+                                    <i class="ph ph-ticket"></i>&nbsp; Lock Priority Allotment for This Unit
+                                </button>
+                                <a href="https://wa.me/917744009295" target="_blank" class="btn-secondary" id="quizWhatsAppBtn">
+                                    <i class="ph ph-whatsapp-logo"></i>&nbsp; Instant WhatsApp Brochure &amp; Cost Sheet
+                                </a>
+                                <button class="btn-outline" id="restartQuiz">
+                                    <i class="ph ph-arrow-counter-clockwise"></i>&nbsp; Retake Matcher
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quiz-progress">
+                        <div class="progress-bar" id="quizBar"></div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            bindQuizListeners();
+        }
+        return overlay;
+    }
 
     let currentQuizStep = 0;
     let quizAnswers = {};
 
+    function bindQuizListeners() {
+        const overlay = document.getElementById('quizOverlay');
+        if (!overlay) return;
+        overlay.querySelectorAll('.close-quiz').forEach(btn => btn.onclick = closeQuiz);
+        const restartBtn = overlay.querySelector('#restartQuiz');
+        if (restartBtn) restartBtn.onclick = resetQuiz;
+
+        overlay.querySelectorAll('.quiz-opt').forEach(opt => {
+            opt.onclick = () => {
+                const step = opt.closest('.quiz-step').getAttribute('data-step');
+                const value = opt.getAttribute('data-value');
+                quizAnswers[step] = value;
+
+                setTimeout(() => {
+                    currentQuizStep++;
+                    updateQuizStep();
+                }, 250);
+            };
+        });
+    }
+
     const openQuiz = (e) => {
         if (e && e.preventDefault) e.preventDefault();
-        if (quizOverlay) {
-            quizOverlay.classList.add('active');
-            resetQuiz();
-        }
+        const overlay = ensureQuizOverlay();
+        overlay.classList.add('active');
+        bindQuizListeners();
+        resetQuiz();
     };
 
     const closeQuiz = () => {
-        if (quizOverlay) quizOverlay.classList.remove('active');
+        const overlay = document.getElementById('quizOverlay');
+        if (overlay) overlay.classList.remove('active');
     };
 
     const resetQuiz = () => {
@@ -379,15 +535,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function updateQuizStep() {
-        quizSteps.forEach((step, index) => {
+        const overlay = document.getElementById('quizOverlay');
+        if (!overlay) return;
+        const steps = overlay.querySelectorAll('.quiz-step');
+        const bar = overlay.querySelector('#quizBar');
+
+        steps.forEach((step, index) => {
             step.classList.toggle('active', index === currentQuizStep);
         });
 
         // Progress bar (Steps 1-3 = 33, 66, 100%)
-        const progress = ((currentQuizStep + 1) / (quizSteps.length - 1)) * 100;
-        if (quizBar) quizBar.style.width = `${Math.min(progress, 100)}%`;
+        const progress = ((currentQuizStep + 1) / (steps.length - 1)) * 100;
+        if (bar) bar.style.width = `${Math.min(progress, 100)}%`;
 
-        if (currentQuizStep === quizSteps.length - 1) {
+        if (currentQuizStep === steps.length - 1) {
             showRecommendation();
         }
     }
