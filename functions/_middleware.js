@@ -418,8 +418,8 @@ export async function onRequest(context) {
     // Strict Content Security Policy
     newHeaders.set('Content-Security-Policy', [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://static.cloudflareinsights.com",
-        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com",
+        "script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://static.cloudflareinsights.com https://cdn.ampproject.org",
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.ampproject.org",
         "font-src 'self' https://fonts.gstatic.com https://unpkg.com",
         "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://www.google-analytics.com https://*.google.com https://*.googleapis.com https://*.gstatic.com",
         "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com https://cloudflareinsights.com",
