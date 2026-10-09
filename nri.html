@@ -539,5 +539,40 @@
             if (srcInput) srcInput.value = window.location.pathname;
         });
     </script>
+    <!-- Enquiry Modal -->
+    <div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-container glass-panel" role="document">
+            <button class="close-modal" aria-label="Close Modal"><i class="ph ph-x"></i></button>
+            <div class="modal-header">
+                <h2 id="modalTitle">NRI Concierge &amp; Virtual Walkthrough</h2>
+                <p>FEMA compliance, NRE/NRO banking, power-of-attorney &amp; high-yield rental advisory.</p>
+            </div>
+            <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New NRI Enquiry — Krisala × Hiranandani">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_honey" style="display:none">
+                <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
+                <input type="hidden" name="source" value="nri_page">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name *" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone Number (with Country Code) *" required autocomplete="tel">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email Address *" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="country" placeholder="Current Country of Residence (e.g. USA, UAE, UK)">
+                </div>
+                <button type="submit" class="btn-primary w-100">
+                    <i class="ph ph-video-camera"></i>&nbsp; Book Virtual Consultation
+                </button>
+                <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
+                    Dedicated international time zone scheduling available.
+                </p>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

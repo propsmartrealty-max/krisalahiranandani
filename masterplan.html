@@ -370,6 +370,50 @@
             <i class="ph ph-phone" aria-hidden="true"></i>
         </a>
     </div>
+    <!-- Enquiry Modal -->
+    <div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-container glass-panel" role="document">
+            <button class="close-modal" aria-label="Close Modal"><i class="ph ph-x"></i></button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Download Master Layout &amp; Sector Blueprint</h2>
+                <p>Register for high-resolution township maps and sector development schedules.</p>
+            </div>
+            <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Master Plan Enquiry — Krisala × Hiranandani">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_honey" style="display:none">
+                <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
+                <input type="hidden" name="source" value="masterplan_page">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name *" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone Number *" required autocomplete="tel">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email Address" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <select name="configuration" style="width:100%; padding: 14px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(197,160,89,0.3); border-radius: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem; outline: none;">
+                        <option value="" disabled selected>Preferred Sector / Enclave</option>
+                        <option value="sector-icon">Sector Icon Triad (3, 4 BHK &amp; Duplex)</option>
+                        <option value="colosseum">The Colosseum Phase 4 (2 &amp; 3 BHK)</option>
+                        <option value="sector-arcadia">Sector Arcadia (2 &amp; 3 BHK)</option>
+                        <option value="della-collection">The Della Collection (Villas &amp; Suites)</option>
+                        <option value="entire-township">Entire Township Overview</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary w-100">
+                    <i class="ph ph-file-pdf"></i>&nbsp; Download Master Plan (PDF)
+                </button>
+                <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
+                    Your privacy is protected. Verified RERA Channel Partner PropSmart Realty.
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="/app.js" defer></script>
 </body>
 
 </html>
