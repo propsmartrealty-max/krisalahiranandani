@@ -16,6 +16,15 @@ ENDPOINT = "https://api.indexnow.org/indexnow"
 
 URL_LIST = [
     f"https://{HOST}/",
+    f"https://{HOST}/arcadia",
+    f"https://{HOST}/colosseum",
+    f"https://{HOST}/icon",
+    f"https://{HOST}/pricing",
+    f"https://{HOST}/amenities",
+    f"https://{HOST}/nri",
+    f"https://{HOST}/connectivity",
+    f"https://{HOST}/racecourse",
+    f"https://{HOST}/gallery",
     f"https://{HOST}/everlyn",
     f"https://{HOST}/della",
     f"https://{HOST}/masterplan",
@@ -26,6 +35,7 @@ URL_LIST = [
     f"https://{HOST}/privacy-policy",
     f"https://{HOST}/thank-you",
     f"https://{HOST}/sitemap-index.xml",
+    f"https://{HOST}/sitemap.xml",
     f"https://{HOST}/llms.txt",
     f"https://{HOST}/rss.xml",
     f"https://{HOST}/explore/2-bhk-hinjewadi",

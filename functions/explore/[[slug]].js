@@ -70,6 +70,24 @@ const ENTITY_DICTIONARY = {
         spec: "Private Polo Track Access, Della Concierge Club Membership, 100 Exclusive Plots",
         desc: "Exclusive resort-themed equestrian villa plots curated in partnership with Della Resorts, boasting an 8-acre international polo club and private racecourse."
     },
+    "colosseum": {
+        name: "The Colosseum Signature Towers",
+        carpet: "750 – 1,860 sq.ft.",
+        price: "₹75.99 Lakhs* onwards",
+        sector: "The Colosseum &bull; Phase 4",
+        floors: "B + G + 27 Storeys",
+        spec: "Neoclassical Roman Façade, Panoramic 8-Acre Racecourse Views, IGBC Platinum Design",
+        desc: "The monumental residential enclave within the 105-acre township, inspired by neoclassical Roman amphitheater aesthetics with sweeping Sahyadri vistas and high-street lifestyle promenades."
+    },
+    "everland": {
+        name: "Hiranandani Everland / Everlyn Precinct",
+        carpet: "740 – 1,420 sq.ft.",
+        price: "₹79.5 Lakhs* onwards",
+        sector: "Everland / Everlyn Phase 3 & 4",
+        floors: "G + 32 Storeys",
+        spec: "Mivan Monolithic RCC, Neoclassical Pillars, TERI Circular Water Hydrology",
+        desc: "The flagship residential phase by Hiranandani Communities and Krisala Developers registered under MahaRERA PR1260002500600, engineered for next-generation family wellness."
+    },
 
     // Workplaces & IT Parks
     "infosys": { landmark: "Infosys Hinjewadi Phase 1 & 2", distance: "4.2 km", time: "8 mins", route: "Via Hinjewadi Phase 1 Main Spine Road" },
@@ -215,7 +233,9 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
 
     // Token analysis
     let unitKey = "2-bhk";
-    if (cleanSlug.includes('5-bhk') || cleanSlug.includes('5bhk')) unitKey = "5-bhk";
+    if (cleanSlug.includes('colosseum') || cleanSlug.includes('collosum')) unitKey = "colosseum";
+    else if (cleanSlug.includes('everland')) unitKey = "everland";
+    else if (cleanSlug.includes('5-bhk') || cleanSlug.includes('5bhk')) unitKey = "5-bhk";
     else if (cleanSlug.includes('4-bhk') || cleanSlug.includes('4bhk')) unitKey = "4-bhk";
     else if (cleanSlug.includes('3-bhk') || cleanSlug.includes('3bhk')) unitKey = "3-bhk";
     else if (cleanSlug.includes('simplex')) unitKey = "simplex";

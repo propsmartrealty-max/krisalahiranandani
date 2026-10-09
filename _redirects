@@ -42,9 +42,13 @@
 /transit              /connectivity          301
 /infrastructure       /connectivity          301
 /metro-line-3         /connectivity          301
-# Brochure Aliases
-/brochure             /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
-/download-brochure    /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
-/pdf                  /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
+# Colosseum Silo Aliases
+/the-colosseum        /colosseum             301
+/codename-colosseum   /colosseum             301
+/collosum             /colosseum             301
+/the-collosum         /colosseum             301
+/phase-4              /colosseum             301
+/colosseum-brochure   /public/brochure/Krisala-Hiranandani-The-Colosseum-Phase4-Dossier.pdf 302
+/colosseum-dossier    /public/brochure/Krisala-Hiranandani-The-Colosseum-Phase4-Dossier.pdf 302
 
 

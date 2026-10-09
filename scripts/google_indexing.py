@@ -24,6 +24,15 @@ MAX_DAILY_BATCH = 190  # Safe buffer below Google's default 200/day project quot
 # Core Authority Pillars & Strategic Corridors
 PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/",
+    "https://krisalahiranandanitownships.com/arcadia",
+    "https://krisalahiranandanitownships.com/colosseum",
+    "https://krisalahiranandanitownships.com/icon",
+    "https://krisalahiranandanitownships.com/pricing",
+    "https://krisalahiranandanitownships.com/amenities",
+    "https://krisalahiranandanitownships.com/nri",
+    "https://krisalahiranandanitownships.com/connectivity",
+    "https://krisalahiranandanitownships.com/racecourse",
+    "https://krisalahiranandanitownships.com/gallery",
     "https://krisalahiranandanitownships.com/everlyn",
     "https://krisalahiranandanitownships.com/della",
     "https://krisalahiranandanitownships.com/masterplan",

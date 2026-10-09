@@ -180,3 +180,8 @@
   Cache-Tag: kxh-township, kxh-html, kxh-connectivity
   Cache-Control: public, max-age=0, must-revalidate
 
+/colosseum
+  Cache-Tag: kxh-township, kxh-html, kxh-colosseum
+  Cache-Control: public, max-age=0, must-revalidate
+
+
