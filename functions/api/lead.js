@@ -57,6 +57,8 @@ export async function onRequestPost(context) {
         const phone = rawPhone.replace(/[^0-9+\s-]/g, '').slice(0, 20);
         const email = sanitize(formData.email || '', 100);
         const config = sanitize(formData.configuration || formData.interest || formData._subject || '', 120);
+        const timezone = sanitize(formData.timezone || formData.tz || '', 60);
+        const callbackWindow = sanitize(formData.callback_window || formData.preferred_time || '', 80);
         const sourceUrl = sanitize(formData._source || formData.source || request.headers.get('Referer') || '', 180);
 
         // Validate basic inputs: phone must contain at least 7 digits
@@ -78,6 +80,8 @@ export async function onRequestPost(context) {
             phone: phone,
             email: email || 'N/A',
             interest: config || 'Krisala Hiranandani Township General Enquiry',
+            timezone: timezone || 'IST (Asia/Kolkata)',
+            callbackWindow: callbackWindow || 'Immediate / Flexible',
             sourceUrl: sourceUrl,
             location: `${city}, ${country}`,
             ip: clientIp,
@@ -91,6 +95,8 @@ export async function onRequestPost(context) {
         const tgToken = env?.TELEGRAM_BOT_TOKEN;
         const tgChatId = env?.TELEGRAM_CHAT_ID;
         if (tgToken && tgChatId) {
+            const tzLine = leadPayload.timezone ? `🌐 *Timezone:* ${leadPayload.timezone}\n` : '';
+            const cbLine = leadPayload.callbackWindow ? `⏰ *Preferred Callback:* ${leadPayload.callbackWindow}\n` : '';
             const tgMessage = 
                 `🏰 *NEW TOWNSHIP LEAD RECEIVED*\n` +
                 `━━━━━━━━━━━━━━━━━━━━\n` +
@@ -99,6 +105,8 @@ export async function onRequestPost(context) {
                 `💬 *WhatsApp:* [Click to Chat](https://wa.me/${leadPayload.phone.replace(/[^0-9]/g, '')})\n` +
                 `📧 *Email:* ${leadPayload.email}\n` +
                 `🏢 *Interest:* ${leadPayload.interest}\n` +
+                tzLine +
+                cbLine +
                 `📍 *Location:* ${leadPayload.location}\n` +
                 `🕒 *Time:* ${leadPayload.timeIST}\n` +
                 `🔗 *Source:* ${leadPayload.sourceUrl}`;

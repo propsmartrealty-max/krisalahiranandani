@@ -911,6 +911,21 @@
                     </button>
                 </div>
 
+                <!-- Multi-Currency Switcher -->
+                <div class="currency-switcher-cluster" id="currencySwitcherCluster">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <i class="ph ph-currency-circle-dollar" style="color:var(--gold-primary); font-size:1.25rem;"></i>
+                        <span style="font-size:0.82rem; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-main);">Display Currency:</span>
+                    </div>
+                    <div class="currency-pills" id="currencyPillCluster">
+                        <button type="button" class="currency-pill active" data-curr="INR" onclick="switchCurrency('INR')">INR (₹)</button>
+                        <button type="button" class="currency-pill" data-curr="USD" onclick="switchCurrency('USD')">USD ($)</button>
+                        <button type="button" class="currency-pill" data-curr="AED" onclick="switchCurrency('AED')">AED (د.إ)</button>
+                        <button type="button" class="currency-pill" data-curr="GBP" onclick="switchCurrency('GBP')">GBP (£)</button>
+                        <button type="button" class="currency-pill" data-curr="EUR" onclick="switchCurrency('EUR')">EUR (€)</button>
+                    </div>
+                </div>
+
                 <!-- Unit Presets -->
                 <div class="unit-preset-selector">
                     <label style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); display:block; margin-bottom:10px;">
@@ -1124,8 +1139,8 @@
 
                 <!-- High-Conversion Action CTAs -->
                 <div class="calc-action-buttons">
-                    <button type="button" class="btn-outline" onclick="window.print()" style="padding:12px 20px;">
-                        <i class="ph ph-printer"></i>&nbsp; Print / Save PDF Cost Sheet
+                    <button type="button" class="btn-primary" onclick="generateOfficialCostSheetPDF()" style="padding:12px 22px; font-weight:600; background:linear-gradient(135deg, var(--gold-primary), #9e7d3b); color:#050608;">
+                        <i class="ph ph-file-pdf"></i>&nbsp; Download Official MahaRERA Cost Sheet (PDF)
                     </button>
                     <a href="https://wa.me/917744009295" target="_blank" class="btn-secondary" id="calcWhatsAppBtn" style="padding:12px 20px;">
                         <i class="ph ph-whatsapp-logo"></i>&nbsp; Share Breakdown on WhatsApp
@@ -1528,6 +1543,28 @@
                         <option value="della-plot">Della Villa Plot</option>
                     </select>
                 </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px;">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label style="font-size:0.74rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); display:block; margin-bottom:4px;">Time Zone</label>
+                        <select name="timezone" id="leadTimezone" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(197,160,89,0.2);color:#ccc;padding:10px 12px;border-radius:8px;font-size:0.82rem;">
+                            <option value="IST (UTC+05:30) - India" selected>IST (India • UTC+05:30)</option>
+                            <option value="GST (UTC+04:00) - UAE / Dubai">GST (Dubai • UTC+04:00)</option>
+                            <option value="EST (UTC-05:00) - USA Eastern">EST (New York • UTC-05:00)</option>
+                            <option value="PST (UTC-08:00) - USA Pacific">PST (California • UTC-08:00)</option>
+                            <option value="GMT (UTC+00:00) - UK / London">GMT (London • UTC+00:00)</option>
+                            <option value="SGT (UTC+08:00) - Singapore">SGT (Singapore • UTC+08:00)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label style="font-size:0.74rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); display:block; margin-bottom:4px;">Preferred Time</label>
+                        <select name="callback_window" style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(197,160,89,0.2);color:#ccc;padding:10px 12px;border-radius:8px;font-size:0.82rem;">
+                            <option value="Immediate (Within 15 mins)" selected>⚡ Immediate (15 mins)</option>
+                            <option value="Morning (10:00 AM - 1:00 PM)">🌅 Morning (10am - 1pm)</option>
+                            <option value="Afternoon (2:00 PM - 5:00 PM)">☀️ Afternoon (2pm - 5pm)</option>
+                            <option value="Evening (6:00 PM - 9:00 PM)">🌙 Evening (6pm - 9pm)</option>
+                        </select>
+                    </div>
+                </div>
                 <button type="submit" class="btn-primary w-100" style="padding:14px;">
                     <i class="ph ph-file-arrow-down"></i>&nbsp; Send Me The Price Sheet
                 </button>
@@ -1571,7 +1608,7 @@
          INLINE SCRIPTS
     ══════════════════════════════════════ -->
     <script>
-        /* ── All-Inclusive Statutory Cost Sheet & Mortgage Planner Engine ── */
+        /* ── Multi-Currency & All-Inclusive Statutory Cost Sheet Engine ── */
         let currentUnitName = "2 BHK Luxury — Sector Arcadia";
         let currentAgreementVal = 7900000;
         let currentStampDutyRate = 0.07;
@@ -1579,15 +1616,50 @@
         let currentDownPaymentPercent = 20;
         let currentInterestRate = 8.40;
         let currentTenureYears = 20;
+        let currentCurrency = 'INR';
 
-        function formatINR(val) {
-            return '₹' + Math.round(val).toLocaleString('en-IN');
+        const currencyConfigs = {
+            INR: { symbol: '₹', rate: 1, suffix: '', name: 'Indian Rupee' },
+            USD: { symbol: '$', rate: 87.50, suffix: ' USD', name: 'US Dollar' },
+            AED: { symbol: 'AED ', rate: 23.82, suffix: '', name: 'UAE Dirham' },
+            GBP: { symbol: '£', rate: 114.20, suffix: ' GBP', name: 'British Pound' },
+            EUR: { symbol: '€', rate: 95.60, suffix: ' EUR', name: 'Euro' }
+        };
+
+        function switchCurrency(currCode) {
+            if (!currencyConfigs[currCode]) return;
+            currentCurrency = currCode;
+            document.querySelectorAll('#currencyPillCluster .currency-pill').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.curr === currCode);
+            });
+            recalculateAll();
+        }
+
+        function formatCurrency(inrVal) {
+            const cfg = currencyConfigs[currentCurrency] || currencyConfigs.INR;
+            if (currentCurrency === 'INR') {
+                return '₹' + Math.round(inrVal).toLocaleString('en-IN');
+            }
+            const converted = inrVal / cfg.rate;
+            return cfg.symbol + Math.round(converted).toLocaleString('en-US') + cfg.suffix;
+        }
+
+        function formatDualCurrency(inrVal) {
+            const inrStr = '₹' + Math.round(inrVal).toLocaleString('en-IN');
+            if (currentCurrency === 'INR') return inrStr;
+            const cfg = currencyConfigs[currentCurrency];
+            const converted = inrVal / cfg.rate;
+            const foreignStr = cfg.symbol + Math.round(converted).toLocaleString('en-US') + cfg.suffix;
+            return `${foreignStr} (${inrStr})`;
         }
 
         function formatLakhCr(val) {
-            if (val >= 10000000) return '₹' + (val / 10000000).toFixed(2) + ' Cr';
-            if (val >= 100000) return '₹' + (val / 100000).toFixed(2) + ' L';
-            return formatINR(val);
+            if (currentCurrency === 'INR') {
+                if (val >= 10000000) return '₹' + (val / 10000000).toFixed(2) + ' Cr';
+                if (val >= 100000) return '₹' + (val / 100000).toFixed(2) + ' L';
+                return '₹' + Math.round(val).toLocaleString('en-IN');
+            }
+            return formatCurrency(val);
         }
 
         function switchCalcTab(tab) {
@@ -1640,6 +1712,8 @@
             recalculateEMIOnly();
         }
 
+        let lastCalculatedBreakdown = null;
+
         function recalculateAll() {
             currentStampDutyRate = parseFloat(document.getElementById('stampDutyRate').value);
             currentPLC = parseFloat(document.getElementById('plcOption').value);
@@ -1653,16 +1727,29 @@
             const infra = 250000;
             const grandTotal = effectiveAgreement + stampDuty + registration + gst + infra;
 
+            lastCalculatedBreakdown = {
+                unitName: currentUnitName,
+                agreement,
+                plcVal,
+                effectiveAgreement,
+                stampDuty,
+                registration,
+                gst,
+                infra,
+                grandTotal,
+                currency: currentCurrency
+            };
+
             // Update Cost Sheet Table
-            document.getElementById('tableAgreement').textContent = formatINR(agreement);
-            document.getElementById('tablePLC').textContent = plcVal > 0 ? formatINR(plcVal) : '₹0';
+            document.getElementById('tableAgreement').textContent = formatCurrency(agreement);
+            document.getElementById('tablePLC').textContent = plcVal > 0 ? formatCurrency(plcVal) : (currentCurrency === 'INR' ? '₹0' : '0');
             document.getElementById('plcNote').textContent = plcVal > 0 ? '+3% Preferred Location Charges applied' : 'Standard premium view included';
-            document.getElementById('tableStampDuty').textContent = formatINR(stampDuty);
+            document.getElementById('tableStampDuty').textContent = formatCurrency(stampDuty);
             document.getElementById('stampDutyNote').textContent = currentStampDutyRate === 0.07 ? '6% Standard + 1% Pune Metro Cess (7% Total)' : '6% Standard Maharashtra Residential';
-            document.getElementById('tableReg').textContent = formatINR(registration);
-            document.getElementById('tableGST').textContent = formatINR(gst);
-            document.getElementById('tableInfra').textContent = formatINR(infra);
-            document.getElementById('tableGrandTotal').textContent = formatINR(grandTotal);
+            document.getElementById('tableReg').textContent = formatCurrency(registration);
+            document.getElementById('tableGST').textContent = formatCurrency(gst);
+            document.getElementById('tableInfra').textContent = formatCurrency(infra);
+            document.getElementById('tableGrandTotal').textContent = formatDualCurrency(grandTotal);
 
             // Update Mortgage inputs
             recalculateEMIOnly(grandTotal, effectiveAgreement);
@@ -1670,12 +1757,13 @@
             // Sync WhatsApp Share Link
             const waText = encodeURIComponent(
                 `Hi, I calculated the All-Inclusive Cost Sheet for "${currentUnitName}" on your official portal:\n` +
-                `• Agreement Value: ${formatINR(agreement)}\n` +
-                `• Stamp Duty & Metro Cess: ${formatINR(stampDuty)}\n` +
-                `• Registration: ${formatINR(registration)}\n` +
-                `• GST (5%): ${formatINR(gst)}\n` +
-                `• Estimated On-Road Total: ${formatINR(grandTotal)}\n\n` +
-                `Please share the confirmed developer payment schedule and available inventory.`
+                `• Agreement Value: ${formatDualCurrency(agreement)}\n` +
+                `• Stamp Duty & Metro Cess: ${formatDualCurrency(stampDuty)}\n` +
+                `• Registration: ${formatDualCurrency(registration)}\n` +
+                `• GST (5%): ${formatDualCurrency(gst)}\n` +
+                `• Infrastructure Fund: ${formatDualCurrency(infra)}\n` +
+                `• Estimated On-Road Total: ${formatDualCurrency(grandTotal)}\n\n` +
+                `Please share the confirmed developer payment schedule, allotment availability, and official MahaRERA docket.`
             );
             const waBtn = document.getElementById('calcWhatsAppBtn');
             if (waBtn) waBtn.href = `https://wa.me/917744009295?text=${waText}`;
@@ -1684,7 +1772,7 @@
             const lockBtn = document.getElementById('calcLockOfferBtn');
             if (lockBtn) {
                 lockBtn.setAttribute('data-unit', currentUnitName);
-                lockBtn.setAttribute('data-price', formatINR(grandTotal));
+                lockBtn.setAttribute('data-price', formatDualCurrency(grandTotal));
             }
         }
 
@@ -1695,8 +1783,8 @@
             const loanPrincipal = Math.max(agreement - downpaymentVal, 500000);
 
             document.getElementById('downpayment-percent-txt').textContent = currentDownPaymentPercent + '%';
-            document.getElementById('downpayment-rupee-txt').textContent = formatLakhCr(downpaymentVal);
-            document.getElementById('loan-amount-txt').textContent = 'Net Loan: ' + formatLakhCr(loanPrincipal);
+            document.getElementById('downpayment-rupee-txt').textContent = formatDualCurrency(downpaymentVal);
+            document.getElementById('loan-amount-txt').textContent = 'Net Loan: ' + formatDualCurrency(loanPrincipal);
 
             currentInterestRate = parseFloat(document.getElementById('emi-rate').value);
             document.getElementById('emi-rate-val').textContent = currentInterestRate.toFixed(2) + '%';
@@ -1711,13 +1799,13 @@
             const totalRepayment = emi * n;
             const totalInterest = totalRepayment - P;
 
-            document.getElementById('emi-amount').textContent = formatINR(emi);
+            document.getElementById('emi-amount').textContent = formatCurrency(emi) + ' / mo';
             document.getElementById('emi-sub-summary').textContent =
-                `Based on ${formatLakhCr(P)} loan @ ${currentInterestRate.toFixed(2)}% for ${currentTenureYears} years`;
-            document.getElementById('legendPrincipal').textContent = formatLakhCr(P);
-            document.getElementById('legendInterest').textContent = formatLakhCr(totalInterest);
-            document.getElementById('emi-interest').textContent = formatLakhCr(totalInterest);
-            document.getElementById('emi-total').textContent = formatLakhCr(totalRepayment);
+                `Based on ${formatDualCurrency(P)} loan @ ${currentInterestRate.toFixed(2)}% for ${currentTenureYears} years`;
+            document.getElementById('legendPrincipal').textContent = formatDualCurrency(P);
+            document.getElementById('legendInterest').textContent = formatDualCurrency(totalInterest);
+            document.getElementById('emi-interest').textContent = formatDualCurrency(totalInterest);
+            document.getElementById('emi-total').textContent = formatDualCurrency(totalRepayment);
 
             // Progress bar
             const principalPct = Math.min(Math.max(Math.round((P / totalRepayment) * 100), 10), 90);
@@ -1741,6 +1829,60 @@
                 recalculateAll();
             });
         });
+
+        /* ── Official MahaRERA PDF Cost Sheet Generator ── */
+        window.generateOfficialCostSheetPDF = function() {
+            if (!lastCalculatedBreakdown) recalculateAll();
+            const d = lastCalculatedBreakdown;
+            const docketId = 'KXH-CS-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+            const todayStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+            const modal = document.getElementById('costSheetPdfModal');
+            if (!modal) return;
+
+            document.getElementById('pdfDocketRef').textContent = docketId;
+            document.getElementById('pdfDocketDate').textContent = todayStr;
+            document.getElementById('pdfUnitName').textContent = d.unitName;
+            document.getElementById('pdfAgreementVal').textContent = formatDualCurrency(d.agreement);
+            document.getElementById('pdfPlcVal').textContent = d.plcVal > 0 ? formatDualCurrency(d.plcVal) : 'N/A (Included)';
+            document.getElementById('pdfEffectiveVal').textContent = formatDualCurrency(d.effectiveAgreement);
+            document.getElementById('pdfStampDutyVal').textContent = formatDualCurrency(d.stampDuty);
+            document.getElementById('pdfRegVal').textContent = formatDualCurrency(d.registration);
+            document.getElementById('pdfGstVal').textContent = formatDualCurrency(d.gst);
+            document.getElementById('pdfInfraVal').textContent = formatDualCurrency(d.infra);
+            document.getElementById('pdfGrandTotalVal').textContent = formatDualCurrency(d.grandTotal);
+
+            // Compute Milestone values
+            document.getElementById('mBookingVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.10);
+            document.getElementById('mExcavationVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.20);
+            document.getElementById('mPlinthVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.15);
+            document.getElementById('mSlabsVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.25);
+            document.getElementById('mFinishingVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.20);
+            document.getElementById('mPossessionVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.10);
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Push event to dataLayer
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    event: 'generate_cost_sheet_pdf',
+                    unit: d.unitName,
+                    amount_inr: d.grandTotal,
+                    currency: d.currency
+                });
+            }
+        };
+
+        window.closeCostSheetPDFModal = function() {
+            const modal = document.getElementById('costSheetPdfModal');
+            if (modal) modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        window.printCostSheetDocket = function() {
+            window.print();
+        };
 
         // Initialize on load
         recalculateAll();
@@ -1777,6 +1919,135 @@
             checkWidth();
         })();
     </script>
+
+    <!-- ══════════════════════════════════════
+         OFFICIAL MAHARERA PDF COST SHEET MODAL
+    ══════════════════════════════════════ -->
+    <div class="costsheet-modal-overlay" id="costSheetPdfModal" role="dialog" aria-modal="true" aria-labelledby="pdfDocketTitle">
+        <div class="costsheet-docket-wrapper">
+            <div class="costsheet-docket-header">
+                <div>
+                    <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--gold-bright); font-weight:700;">Official MahaRERA Quotation Docket</div>
+                    <h3 id="pdfDocketTitle" style="margin:4px 0 0; font-family:var(--font-heading); font-size:1.4rem; color:#fff;">KRISALA × HIRANANDANI TOWNSHIP</h3>
+                    <div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">North Hinjawadi, Pune • MahaRERA Reg: PR1260002500600 / P52100053982</div>
+                </div>
+                <button type="button" onclick="closeCostSheetPDFModal()" style="background:transparent; border:none; color:#fff; font-size:1.8rem; cursor:pointer; line-height:1;" aria-label="Close Docket">&times;</button>
+            </div>
+
+            <div class="costsheet-docket-body" id="costsheetPrintArea">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #c5a059; padding-bottom:12px; margin-bottom:16px;">
+                    <div>
+                        <strong style="font-size:1.05rem; color:#111827;" id="pdfUnitName">2 BHK Luxury — Sector Arcadia</strong>
+                        <div style="font-size:0.78rem; color:#6b7280;">Bespoke Residential Residence • Neoclassical Architecture</div>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="font-size:0.76rem; color:#6b7280;">Docket Ref: <strong id="pdfDocketRef" style="color:#111827;">KXH-CS-2026-0000</strong></div>
+                        <div style="font-size:0.76rem; color:#6b7280;">Date: <span id="pdfDocketDate">Today</span></div>
+                    </div>
+                </div>
+
+                <table class="costsheet-table" aria-label="Official Cost Sheet Breakup">
+                    <thead>
+                        <tr>
+                            <th>Statutory Cost Component</th>
+                            <th>Regulatory Basis</th>
+                            <th style="text-align:right;">Amount Payable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Base Agreement Value</strong></td>
+                            <td style="font-size:0.78rem; color:#6b7280;">Carpet area &amp; developer rate card</td>
+                            <td style="text-align:right; font-weight:600;" id="pdfAgreementVal">₹79,00,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Preferred Location Charges (PLC)</strong></td>
+                            <td style="font-size:0.78rem; color:#6b7280;">Selected orientation / view</td>
+                            <td style="text-align:right;" id="pdfPlcVal">Included</td>
+                        </tr>
+                        <tr style="background:#f9fafb;">
+                            <td><strong>Gross Unit Value</strong></td>
+                            <td style="font-size:0.78rem; color:#6b7280;">Agreement + PLC Subtotal</td>
+                            <td style="text-align:right; font-weight:600;" id="pdfEffectiveVal">₹79,00,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Maharashtra Stamp Duty &amp; Metro Cess</strong></td>
+                            <td style="font-size:0.78rem; color:#6b7280;">6% + 1% Pune Metro Cess (Statutory)</td>
+                            <td style="text-align:right;" id="pdfStampDutyVal">₹5,53,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Govt Registration Fee</strong></td>
+                            <td style="font-size:0.78rem; color:#6b7280;">Statutory Cap (Govt of Maharashtra)</td>
+                            <td style="text-align:right;" id="pdfRegVal">₹30,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GST (Goods &amp; Services Tax)</strong></td>
+                            <td style="font-size:0.78rem; color:#6b7280;">5% Under-Construction RERA (Zero ITC)</td>
+                            <td style="text-align:right;" id="pdfGstVal">₹3,95,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infrastructure &amp; Society Corpus</strong></td>
+                            <td style="font-size:0.78rem; color:#6b7280;">Clubhouse, electric, legal &amp; share capital</td>
+                            <td style="text-align:right;" id="pdfInfraVal">₹2,50,000</td>
+                        </tr>
+                        <tr style="background:#fef3c7; border-top:2px solid #c5a059;">
+                            <td style="font-size:1rem; font-weight:700; color:#92400e;">Estimated All-Inclusive On-Road Total</td>
+                            <td style="font-size:0.78rem; color:#92400e;">Subject to floor rise &amp; prevailing terms</td>
+                            <td style="text-align:right; font-size:1.15rem; font-weight:800; color:#92400e;" id="pdfGrandTotalVal">₹91,28,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top:20px;">
+                    <div style="font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:#374151; margin-bottom:6px;">MahaRERA Construction-Linked Milestone Schedule (CLP):</div>
+                    <div class="costsheet-milestone-grid">
+                        <div class="costsheet-milestone-item">
+                            <div><strong>10% Booking Token &amp; Execution</strong></div>
+                            <div id="mBookingVal" style="color:#c5a059; font-weight:600;">₹7,90,000</div>
+                        </div>
+                        <div class="costsheet-milestone-item">
+                            <div><strong>20% Excavation &amp; Foundation</strong></div>
+                            <div id="mExcavationVal" style="color:#c5a059; font-weight:600;">₹15,80,000</div>
+                        </div>
+                        <div class="costsheet-milestone-item">
+                            <div><strong>15% Plinth Completion</strong></div>
+                            <div id="mPlinthVal" style="color:#c5a059; font-weight:600;">₹11,85,000</div>
+                        </div>
+                        <div class="costsheet-milestone-item">
+                            <div><strong>25% RCC Slabs &amp; Superstructure</strong></div>
+                            <div id="mSlabsVal" style="color:#c5a059; font-weight:600;">₹19,75,000</div>
+                        </div>
+                        <div class="costsheet-milestone-item">
+                            <div><strong>20% MEP, Finishing &amp; Glazing</strong></div>
+                            <div id="mFinishingVal" style="color:#c5a059; font-weight:600;">₹15,80,000</div>
+                        </div>
+                        <div class="costsheet-milestone-item">
+                            <div><strong>10% Possession Intimation</strong></div>
+                            <div id="mPossessionVal" style="color:#c5a059; font-weight:600;">₹7,90,000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:18px; padding:10px 14px; background:#f3f4f6; border-radius:6px; font-size:0.75rem; color:#4b5563; line-height:1.4;">
+                    <strong>Bank Approvals:</strong> Pre-approved by State Bank of India, HDFC Bank, ICICI Bank &amp; Bank of Baroda. Special festive interest rates starting from 8.40% p.a. with zero processing fee offers.
+                </div>
+            </div>
+
+            <div class="costsheet-docket-footer">
+                <div style="font-size:0.75rem; color:#6b7280;">
+                    Official Developer Desk: <strong>+91 77440 09295</strong> • propsmartrealty@gmail.com
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <button type="button" onclick="printCostSheetDocket()" style="background:#111827; color:#fff; border:none; padding:10px 18px; border-radius:6px; font-weight:600; font-size:0.85rem; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+                        <i class="ph ph-printer"></i> Print / Save as PDF
+                    </button>
+                    <a href="https://wa.me/917744009295" target="_blank" style="background:#25D366; color:#fff; text-decoration:none; padding:10px 18px; border-radius:6px; font-weight:600; font-size:0.85rem; display:inline-flex; align-items:center; gap:6px;">
+                        <i class="ph ph-whatsapp-logo"></i> Send via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script defer src="/app.js"></script>
 </body>

@@ -136,7 +136,7 @@ function isPostRateLimited(clientIp) {
  * - Safe tabnabbing defense (rel="noopener noreferrer" on external links)
  * - Meta tag harmonization (OpenGraph, Twitter Cards, Googlebot)
  */
-function applyEdgeHtmlRewriter(response, url, isWhitelistedBot) {
+function applyEdgeHtmlRewriter(response, url, isWhitelistedBot, request) {
     const path = url.pathname.toLowerCase();
     const cleanPath = path === '/index.html' ? '/' : (path.endsWith('.html') ? path.slice(0, -5) : path);
     const canonicalUrl = `https://krisalahiranandanitownships.com${cleanPath}`;
@@ -218,6 +218,14 @@ function applyEdgeHtmlRewriter(response, url, isWhitelistedBot) {
             element(el) {
                 el.setAttribute('integrity', 'sha384-6p9AefaqUhEVheRlj1mpAkbngHXy9mbYMrIdcIt4Jlc9lOLIablJq3bBsLOjGwZ7');
                 el.setAttribute('crossorigin', 'anonymous');
+            }
+        })
+        .on('body', {
+            element(el) {
+                const country = request?.cf?.country || 'IN';
+                const city = request?.cf?.city || 'Pune';
+                el.setAttribute('data-geo-country', country);
+                el.setAttribute('data-geo-city', city);
             }
         });
 
@@ -466,7 +474,7 @@ export async function onRequest(context) {
     // Run Streaming Edge HTMLRewriter on HTML responses
     const contentType = (newHeaders.get('content-type') || response.headers.get('content-type') || '').toLowerCase();
     if (isHtmlRoute || contentType.includes('text/html')) {
-        return applyEdgeHtmlRewriter(modifiedResponse, url, isWhitelistedBot);
+        return applyEdgeHtmlRewriter(modifiedResponse, url, isWhitelistedBot, request);
     }
 
     return modifiedResponse;

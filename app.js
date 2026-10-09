@@ -1674,3 +1674,399 @@ window.switchTownshipView = function(viewId, btn) {
     if (target) target.classList.add('active');
 };
 
+// ══════════════════════════════════════════════════════════════════════════════
+// 1. CLOUDFLARE EDGE GEO-PERSONALIZATION ENGINE (NRI VS METRO DESK)
+// ══════════════════════════════════════════════════════════════════════════════
+(function initEdgeGeoPersonalization() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const country = (document.body.getAttribute('data-geo-country') || 'IN').toUpperCase();
+        const city = document.body.getAttribute('data-geo-city') || '';
+        const isDismissed = sessionStorage.getItem('kxh_nri_banner_dismissed');
+
+        // Country name dictionary for friendly NRI greeting
+        const countryNames = {
+            'AE': 'United Arab Emirates',
+            'US': 'United States',
+            'GB': 'United Kingdom',
+            'SG': 'Singapore',
+            'CA': 'Canada',
+            'AU': 'Australia',
+            'QA': 'Qatar',
+            'SA': 'Saudi Arabia',
+            'KW': 'Kuwait',
+            'OM': 'Oman',
+            'DE': 'Germany',
+            'FR': 'France',
+            'NL': 'Netherlands'
+        };
+
+        // If outside India, display VIP NRI Desk banner and auto-configure local currency & timezone
+        if (country !== 'IN' && !isDismissed) {
+            const countryLabel = countryNames[country] || country;
+            const locationText = city ? `${city}, ${countryLabel}` : countryLabel;
+
+            const banner = document.createElement('div');
+            banner.id = 'nriGeoBanner';
+            banner.className = 'nri-geo-banner active';
+            banner.setAttribute('role', 'region');
+            banner.setAttribute('aria-label', 'NRI Investment Desk Notification');
+            banner.innerHTML = `
+                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                    <span style="font-size:1.1rem;">🌍</span>
+                    <span><strong>Welcome from ${locationText}</strong> • Exclusive NRI Investment Desk: FEMA Compliance, Capital Repatriation &amp; Virtual 4K Tours.</span>
+                    <a href="/nri" class="nri-cta-btn"><i class="ph ph-arrow-right"></i> Explore NRI Portal</a>
+                </div>
+                <button type="button" class="nri-close-btn" id="dismissNriBannerBtn" aria-label="Dismiss Banner">&times;</button>
+            `;
+            document.body.prepend(banner);
+
+            document.getElementById('dismissNriBannerBtn')?.addEventListener('click', () => {
+                banner.remove();
+                sessionStorage.setItem('kxh_nri_banner_dismissed', 'true');
+            });
+
+            // Auto-switch currency on pricing page if function exists
+            if (typeof window.switchCurrency === 'function') {
+                if (country === 'AE') window.switchCurrency('AED');
+                else if (country === 'GB') window.switchCurrency('GBP');
+                else if (['DE', 'FR', 'NL', 'IT', 'ES'].includes(country)) window.switchCurrency('EUR');
+                else window.switchCurrency('USD');
+            }
+
+            // Auto-select timezone in any enquiry modal
+            const tzSelect = document.getElementById('leadTimezone');
+            if (tzSelect) {
+                if (country === 'AE') tzSelect.value = 'GST (UTC+04:00) - UAE / Dubai';
+                else if (country === 'US') tzSelect.value = 'EST (UTC-05:00) - USA Eastern';
+                else if (country === 'GB') tzSelect.value = 'GMT (UTC+00:00) - UK / London';
+                else if (country === 'SG') tzSelect.value = 'SGT (UTC+08:00) - Singapore';
+            }
+        }
+    });
+})();
+
+// ══════════════════════════════════════════════════════════════════════════════
+// 2. AI REAL ESTATE CONCIERGE ("ARIA") FLOATING INTERACTIVE ENGINE
+// ══════════════════════════════════════════════════════════════════════════════
+(function initAriaConcierge() {
+    document.addEventListener('DOMContentLoaded', () => {
+        // Build floating launcher pill
+        const launcher = document.createElement('div');
+        launcher.id = 'ariaLauncher';
+        launcher.className = 'aria-concierge-launcher';
+        launcher.setAttribute('role', 'button');
+        launcher.setAttribute('tabindex', '0');
+        launcher.setAttribute('aria-label', 'Open Aria AI Real Estate Concierge');
+        launcher.innerHTML = `
+            <div class="aria-avatar-ring">
+                <span class="aria-status-dot"></span>
+                <i class="ph ph-sparkle"></i>
+            </div>
+            <span class="aria-launcher-text">Ask Aria • AI Concierge</span>
+        `;
+        document.body.appendChild(launcher);
+
+        // Build interactive window
+        const win = document.createElement('div');
+        win.id = 'ariaWindow';
+        win.className = 'aria-concierge-window';
+        win.setAttribute('role', 'dialog');
+        win.setAttribute('aria-modal', 'true');
+        win.setAttribute('aria-label', 'Aria AI Township Concierge');
+        win.innerHTML = `
+            <div class="aria-window-header">
+                <div class="aria-header-title">
+                    <div class="aria-avatar-ring" style="width:28px; height:28px; font-size:0.9rem;">
+                        <i class="ph ph-sparkle"></i>
+                    </div>
+                    <div>
+                        <h4>Aria • Executive Concierge</h4>
+                        <span><i class="ph ph-circle" style="font-size:8px;"></i> Online • Verified Intelligence</span>
+                    </div>
+                </div>
+                <button type="button" id="closeAriaBtn" style="background:transparent; border:none; color:var(--text-muted); font-size:1.4rem; cursor:pointer; line-height:1;" aria-label="Close Concierge">&times;</button>
+            </div>
+            <div class="aria-window-body" id="ariaMsgBody">
+                <div class="aria-msg aria-msg-bot">
+                    Welcome to <strong>Krisala × Hiranandani Township</strong> (North Hinjawadi). I am Aria, your executive real-estate intelligence concierge. How may I assist your home search today?
+                </div>
+                <div class="aria-chips-container" id="ariaChipCluster">
+                    <button type="button" class="aria-chip-btn" data-topic="colosseum">🏛️ The Colosseum (Phase 4)</button>
+                    <button type="button" class="aria-chip-btn" data-topic="rera">📜 MahaRERA Approvals</button>
+                    <button type="button" class="aria-chip-btn" data-topic="possession">🗓️ Possession Timelines</button>
+                    <button type="button" class="aria-chip-btn" data-topic="racecourse">🏇 8-Acre Racecourse &amp; Della</button>
+                    <button type="button" class="aria-chip-btn" data-topic="payment">💰 Payment Plans (CLP &amp; 20:80)</button>
+                    <button type="button" class="aria-chip-btn" data-topic="visit">🚗 Book Free Chauffeur Visit</button>
+                </div>
+            </div>
+            <div class="aria-window-footer">
+                <form id="ariaQueryForm" class="aria-input-row">
+                    <input type="text" id="ariaInput" placeholder="Ask about price, floorplans, location..." autocomplete="off">
+                    <button type="submit" aria-label="Send Message"><i class="ph ph-paper-plane-right"></i></button>
+                </form>
+            </div>
+        `;
+        document.body.appendChild(win);
+
+        // Toggle logic
+        launcher.addEventListener('click', () => {
+            win.classList.toggle('active');
+        });
+        document.getElementById('closeAriaBtn')?.addEventListener('click', () => {
+            win.classList.remove('active');
+        });
+
+        // Knowledge base dictionary
+        const knowledgeBase = {
+            colosseum: {
+                title: "The Colosseum (Phase 4 Pre-Launch)",
+                reply: "<strong>The Colosseum (Phase 4)</strong> is our monumental B+G+27 Roman landmark in North Hinjawadi featuring 2, 3 &amp; 4 BHK residences (765 to 1,600 sq.ft) with soaring 11-ft ceilings and private viewing decks overlooking the Sahyadris.<br><br>• <strong>2 BHK:</strong> From ₹82.99 Lakh*<br>• <strong>3 BHK:</strong> From ₹1.15 Crore*<br>• <strong>MahaRERA:</strong> PR1260002500600<br><br>Would you like me to send the complete high-resolution floor plans and price sheet to your WhatsApp?"
+            },
+            rera: {
+                title: "MahaRERA Registration & Approvals",
+                reply: "The entire 105+ acre township is sanctioned and MahaRERA compliant with clear, unencumbered land titles:<br><br>• <strong>Hiranandani Everland (Darumbre):</strong> PR1260002500600<br>• <strong>The Colosseum Phase 4:</strong> PR1260002500600<br>• <strong>Sector Icon Towers:</strong> PR1260002600818<br>• <strong>Sector Arcadia Phase 1:</strong> PR1260002502438<br><br>Pre-approved for instant disbursements by SBI, HDFC Bank, ICICI Bank, and Bank of Baroda."
+            },
+            possession: {
+                title: "Possession Timelines",
+                reply: "Construction is being executed using rapid European Mivan monolithic aluminum formwork:<br><br>• <strong>Sector Arcadia (Phase 1 &amp; 2):</strong> Dec 2028<br>• <strong>The Colosseum (Phase 4):</strong> Dec 2029 - Mid 2030<br>• <strong>Sector Icon Flagship Towers:</strong> Dec 2029<br>• <strong>Della Villa Plots:</strong> Immediate allotment with fast-track registry."
+            },
+            racecourse: {
+                title: "8-Acre Racecourse & Della Amenities",
+                reply: "A landmark first in Indian real estate! The township hosts:<br><br>• <strong>8-Acre Private Racecourse &amp; Polo Arena:</strong> Thoroughbred stables, equestrian riding trails, and clubhouse paddock.<br>• <strong>Della 5-Star Resort Precinct:</strong> 40-acre experiential glamping, fine-dining restaurants, and wellness spas.<br>• <strong>5-Tier Neoclassical Clubhouse:</strong> Olympic 50m pool, squash, badminton, and private banqueting."
+            },
+            payment: {
+                title: "Payment Schemes & Banking",
+                reply: "We offer maximum financial flexibility:<br><br>1. <strong>Standard MahaRERA Construction-Linked Plan (CLP):</strong> 10% on booking, balanced strictly as slabs are cast.<br>2. <strong>Festive 20:80 Subvention:</strong> Pay 20% now, zero EMI until structural completion.<br>3. <strong>SBI / HDFC Pre-Approved Rates:</strong> 8.40% p.a. with zero processing fee offers."
+            },
+            visit: {
+                title: "Complimentary VIP Chauffeur Visit",
+                reply: "We provide <strong>complimentary luxury chauffeur pick-up &amp; drop</strong> (Mercedes / Innova Crysta) across Pune (Airport, Kothrud, Baner, Wakad) and Mumbai for prospective home buyers.<br><br>Enter your mobile number below and our VIP concierge team will confirm your pick-up slot immediately."
+            }
+        };
+
+        const msgBody = document.getElementById('ariaMsgBody');
+
+        function appendMessage(html, isUser = false) {
+            const div = document.createElement('div');
+            div.className = `aria-msg ${isUser ? 'aria-msg-user' : 'aria-msg-bot'}`;
+            div.innerHTML = html;
+            msgBody.appendChild(div);
+            msgBody.scrollTop = msgBody.scrollHeight;
+        }
+
+        function appendLeadPrompt(contextTopic) {
+            const promptDiv = document.createElement('div');
+            promptDiv.className = 'aria-msg aria-msg-bot';
+            promptDiv.style.border = '1px solid rgba(197, 160, 89, 0.4)';
+            promptDiv.style.background = 'rgba(197, 160, 89, 0.08)';
+            promptDiv.innerHTML = `
+                <div style="font-size:0.8rem; font-weight:600; color:var(--gold-light); margin-bottom:8px;">
+                    📲 Receive Official PDF Docket &amp; Floorplans on WhatsApp:
+                </div>
+                <form class="aria-lead-mini-form" style="display:flex; gap:6px;">
+                    <input type="tel" placeholder="Enter Mobile Number" required style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:6px 10px; border-radius:6px; font-size:0.8rem; outline:none;">
+                    <button type="submit" style="background:linear-gradient(135deg, var(--gold-primary), #9e7d3b); color:#050608; border:none; padding:6px 12px; border-radius:6px; font-weight:700; font-size:0.78rem; cursor:pointer;">Send</button>
+                </form>
+            `;
+            msgBody.appendChild(promptDiv);
+            msgBody.scrollTop = msgBody.scrollHeight;
+
+            const form = promptDiv.querySelector('form');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const phoneInput = form.querySelector('input');
+                const phone = phoneInput.value.trim();
+                if (!phone) return;
+
+                form.innerHTML = '<span style="color:#10b981; font-size:0.8rem;"><i class="ph ph-check-circle"></i> Sent! Senior Manager connecting via WhatsApp.</span>';
+
+                try {
+                    const fd = new FormData();
+                    fd.append('name', 'Aria Concierge Visitor');
+                    fd.append('phone', phone);
+                    fd.append('interest', `Aria Concierge Query: ${contextTopic || 'General Inquiry'}`);
+                    fd.append('_source', window.location.href);
+                    await fetch('/api/lead', { method: 'POST', body: fd });
+                } catch (err) {}
+            });
+        }
+
+        // Chip button click handling
+        document.querySelectorAll('#ariaChipCluster .aria-chip-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const topic = btn.dataset.topic;
+                appendMessage(btn.textContent, true);
+                setTimeout(() => {
+                    if (knowledgeBase[topic]) {
+                        appendMessage(knowledgeBase[topic].reply);
+                        appendLeadPrompt(knowledgeBase[topic].title);
+                    }
+                }, 300);
+            });
+        });
+
+        // Free-text input handling
+        document.getElementById('ariaQueryForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('ariaInput');
+            const q = input.value.trim().toLowerCase();
+            if (!q) return;
+
+            appendMessage(input.value, true);
+            input.value = '';
+
+            setTimeout(() => {
+                let matched = null;
+                if (q.includes('colosseum') || q.includes('phase 4') || q.includes('flats') || q.includes('apartment')) {
+                    matched = knowledgeBase.colosseum;
+                } else if (q.includes('rera') || q.includes('legal') || q.includes('approval') || q.includes('bank')) {
+                    matched = knowledgeBase.rera;
+                } else if (q.includes('possession') || q.includes('date') || q.includes('ready') || q.includes('when')) {
+                    matched = knowledgeBase.possession;
+                } else if (q.includes('racecourse') || q.includes('horse') || q.includes('della') || q.includes('villa') || q.includes('resort')) {
+                    matched = knowledgeBase.racecourse;
+                } else if (q.includes('price') || q.includes('cost') || q.includes('payment') || q.includes('emi') || q.includes('loan')) {
+                    matched = knowledgeBase.payment;
+                } else if (q.includes('visit') || q.includes('car') || q.includes('cab') || q.includes('chauffeur') || q.includes('see')) {
+                    matched = knowledgeBase.visit;
+                }
+
+                if (matched) {
+                    appendMessage(matched.reply);
+                    appendLeadPrompt(matched.title);
+                } else {
+                    appendMessage(
+                        `Thank you for asking! For detailed inventory, customizable floor layouts, and current pre-launch developer allotment on that specific query, let our Senior Real Estate Manager contact you directly:`
+                    );
+                    appendLeadPrompt('Custom Query: ' + q);
+                }
+            }, 350);
+        });
+    });
+})();
+
+// ══════════════════════════════════════════════════════════════════════════════
+// 3. INTERACTIVE SECTOR NAVIGATOR ENGINE (INDEX & MASTERPLAN)
+// ══════════════════════════════════════════════════════════════════════════════
+(function initSectorNavigator() {
+    document.addEventListener('DOMContentLoaded', () => {
+        const legendGrid = document.querySelector('.master-layout-legend-grid');
+        if (!legendGrid) return;
+
+        const sectors = [
+            {
+                id: 'colosseum',
+                name: 'The Colosseum (Phase 4)',
+                badge: 'Roman Landmark',
+                price: '₹82.99 Lakh*',
+                config: '2, 3, 4 BHK & Sky Duplexes (765 – 1,600 sq.ft)',
+                rera: 'PR1260002500600',
+                img: '/public/imported/the_colosseum_grand_facade_hq.webp',
+                desc: 'Monumental B+G+27 classical Roman-inspired residences featuring grand Corinthian columns, private viewing sundecks, and exclusive pre-launch allotment benefits.',
+                url: '/colosseum'
+            },
+            {
+                id: 'icon',
+                name: 'Sector Icon (Flagship)',
+                badge: 'Presidential Living',
+                price: '₹2.10 Crore*',
+                config: '3 & 4 BHK Luxury & Duplex Mansions',
+                rera: 'PR1260002600818',
+                img: '/public/imported/everlyn_penthouse_terrace_hq.webp',
+                desc: 'The pinnacle of luxury in North Hinjawadi. Soaring 18-ft ceilings, imported Italian statuario marble, bespoke private elevator foyers, and 52 curated lifestyle amenities.',
+                url: '/icon'
+            },
+            {
+                id: 'arcadia',
+                name: 'Sector Arcadia (Neoclassical)',
+                badge: 'Phase 1 & 2',
+                price: '₹79.00 Lakh*',
+                config: '2 & 3 BHK Luxury Residences',
+                rera: 'PR1260002502438',
+                img: '/public/imported/everlyn_clubhouse_grand_pool_hq.webp',
+                desc: 'Classical Greco-Roman towers with manicured podium gardens, private sundecks, wellness clubhouses, and seamless 15-minute connectivity to Hinjewadi Phase 1 IT hub.',
+                url: '/arcadia'
+            },
+            {
+                id: 'della',
+                name: 'Della Resort & Racecourse',
+                badge: '40-Acre District',
+                price: '₹1.50 Crore*',
+                config: 'Bespoke Villa Plots & Glamping',
+                rera: 'Sanctioned Master Enclave',
+                img: '/public/imported/della_equestrian_championship_track_hq.webp',
+                desc: "India's first 8-acre private equestrian racecourse & polo arena within a residential township, paired with Della's 5-star resort hospitality and 100 private villa estates.",
+                url: '/della'
+            }
+        ];
+
+        // Container wrapper
+        const navCluster = document.createElement('div');
+        navCluster.className = 'sector-navigator-cluster';
+
+        // Sector navigation pills
+        const pillsDiv = document.createElement('div');
+        pillsDiv.className = 'sector-nav-pills';
+
+        sectors.forEach((sec, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `sector-nav-pill ${idx === 0 ? 'active' : ''}`;
+            btn.dataset.secId = sec.id;
+            btn.innerHTML = `<i class="ph ph-buildings"></i> ${sec.name}`;
+            pillsDiv.appendChild(btn);
+        });
+        navCluster.appendChild(pillsDiv);
+
+        // Dynamic spotlight card
+        const card = document.createElement('div');
+        card.className = 'sector-spotlight-card';
+        card.id = 'sectorSpotlightCard';
+
+        function renderSpotlight(sec) {
+            card.innerHTML = `
+                <div class="sector-spotlight-media">
+                    <img src="${sec.img}" alt="${sec.name} Krisala Hiranandani Township" loading="lazy" width="600" height="400">
+                    <span style="position:absolute; top:16px; left:16px; background:rgba(9,10,15,0.85); border:1px solid rgba(197,160,89,0.4); color:var(--gold-bright); font-size:0.75rem; font-weight:700; padding:4px 12px; border-radius:20px;">
+                        ${sec.badge}
+                    </span>
+                </div>
+                <div class="sector-spotlight-info">
+                    <div style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-primary); font-weight:700; margin-bottom:6px;">MahaRERA: ${sec.rera}</div>
+                    <h3 style="font-family:var(--font-heading); font-size:1.6rem; color:#fff; margin:0 0 10px;">${sec.name}</h3>
+                    <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5; margin-bottom:14px;">${sec.desc}</p>
+                    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:10px 14px; margin-bottom:18px;">
+                        <div style="font-size:0.78rem; color:var(--text-muted);">Configuration &amp; Pricing:</div>
+                        <div style="font-size:0.95rem; font-weight:700; color:#fff; margin-top:2px;">${sec.config} • <span style="color:var(--gold-bright);">${sec.price}</span></div>
+                    </div>
+                    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                        <a href="${sec.url}" class="btn-primary" style="padding:10px 20px; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                            Explore Sector &rarr;
+                        </a>
+                        <a href="/pricing" class="btn-outline" style="padding:10px 18px; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                            <i class="ph ph-receipt"></i> Calculate Cost
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        renderSpotlight(sectors[0]);
+        navCluster.appendChild(card);
+
+        // Insert before legendGrid
+        legendGrid.parentNode.insertBefore(navCluster, legendGrid);
+
+        // Pill click listeners
+        pillsDiv.querySelectorAll('.sector-nav-pill').forEach(btn => {
+            btn.addEventListener('click', () => {
+                pillsDiv.querySelectorAll('.sector-nav-pill').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const selected = sectors.find(s => s.id === btn.dataset.secId);
+                if (selected) renderSpotlight(selected);
+            });
+        });
+    });
+})();
+
+
