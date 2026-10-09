@@ -332,6 +332,7 @@ ul {
 }
 
 .nav-dropdown-menu {
+    display: none;
     position: absolute;
     top: calc(100% + 14px);
     left: 50%;
@@ -349,7 +350,6 @@ ul {
     pointer-events: none;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1050;
-    display: flex;
     flex-direction: column;
     gap: 4px;
 }
@@ -369,6 +369,7 @@ ul {
 
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: flex;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -1327,22 +1328,26 @@ ul {
     line-height: 1.8;
 }
 
-/* Modal */
+/* Modal Architecture */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px 14px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .modal-overlay.active {
@@ -1350,29 +1355,48 @@ ul {
     visibility: visible;
 }
 
-.modal-container {
+.modal-container,
+.modal-card {
     width: 100%;
-    max-width: 600px;
-    padding: 56px;
+    max-width: 580px;
+    max-height: min(92vh, 850px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 44px 36px;
     position: relative;
-    transform: translateY(40px);
-    transition: transform 0.4s ease;
+    border-radius: 16px;
+    background: rgba(14, 14, 18, 0.95);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(197, 160, 89, 0.1);
+    transform: translateY(30px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal-overlay.active .modal-container {
+.modal-overlay.active .modal-container,
+.modal-overlay.active .modal-card {
     transform: translateY(0);
 }
 
-.close-modal {
+.close-modal,
+.modal-close {
     position: absolute;
-    top: 32px;
-    right: 32px;
-    background: transparent;
-    border: none;
+    top: 14px;
+    right: 14px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
     color: var(--text-main);
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: all 0.25s ease;
+    z-index: 10;
 }
 
 .close-modal:hover {
@@ -4442,4 +4466,177 @@ img.loaded {
 
 .glass-flow-card:hover::before {
     opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE HARDENING & CONVERSION ARCHITECTURE
+   ══════════════════════════════════════════════════ */
+
+/* 1. Body Scroll Lock for Mobile Menu */
+body.menu-open {
+    overflow: hidden !important;
+    touch-action: none;
+}
+
+/* 2. Mobile Sticky Conversion Action Bar */
+.mobile-sticky-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1500;
+    background: rgba(10, 10, 14, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(197, 160, 89, 0.35);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.85);
+    padding: 8px 12px;
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.sticky-bar-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 6px;
+    min-height: 48px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.sticky-bar-btn i {
+    font-size: 1.25rem;
+}
+
+.sticky-call {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sticky-call:hover, .sticky-call:active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gold-light);
+}
+
+.sticky-whatsapp {
+    background: rgba(37, 211, 102, 0.15);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+}
+
+.sticky-whatsapp:hover, .sticky-whatsapp:active {
+    background: #25d366;
+    color: #000;
+}
+
+.sticky-enquire {
+    background: linear-gradient(135deg, #c5a059 0%, #9e7d3b 100%);
+    color: #08080a;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+}
+
+.sticky-enquire:hover, .sticky-enquire:active {
+    background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%);
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .mobile-sticky-bar {
+        display: flex;
+    }
+    body {
+        padding-bottom: calc(65px + env(safe-area-inset-bottom, 0px));
+    }
+    .floating-actions {
+        display: none !important;
+    }
+
+    /* 3. Township Command Hub Tabs Horizontal Touch Snap */
+    .township-hub-nav {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 8px !important;
+        padding: 4px 4px 10px !important;
+        justify-content: flex-start !important;
+    }
+    .township-hub-nav::-webkit-scrollbar {
+        display: none;
+    }
+    .township-hub-tab {
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: 0.76rem !important;
+        padding: 8px 14px !important;
+    }
+
+    /* 4. Floorplan Tabs Horizontal Touch Snap */
+    .floorplan-tabs,
+    .plan-tabs {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 8px !important;
+        padding-bottom: 8px !important;
+        justify-content: flex-start !important;
+    }
+    .floorplan-tabs::-webkit-scrollbar,
+    .plan-tabs::-webkit-scrollbar {
+        display: none;
+    }
+    .floorplan-tab,
+    .plan-tab {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 5. Hero Typography Calibration for Small Smartphone Screens */
+    .hero-title {
+        font-size: clamp(1.75rem, 6.8vw, 2.3rem) !important;
+        line-height: 1.15 !important;
+        margin-bottom: 16px !important;
+    }
+    .hero-subtitle {
+        font-size: 0.9rem !important;
+        line-height: 1.55 !important;
+        margin-bottom: 20px !important;
+    }
+    .hero-stats {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+    .hero-stats .stat-item h3 {
+        font-size: 1.8rem !important;
+    }
+    .hero-stats .stat-item p {
+        font-size: 0.72rem !important;
+    }
+    .hero-stats .stat-divider {
+        display: none !important;
+    }
 }

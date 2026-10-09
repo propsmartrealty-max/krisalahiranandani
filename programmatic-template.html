@@ -24,7 +24,7 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="/style.css?v=2">
+    <link rel="stylesheet" href="/style.css?v=20261009_v5">
 
     <!-- OpenGraph / Social Dominance -->
     <meta property="og:type" content="website">
@@ -50,6 +50,17 @@
       "url": "https://krisalahiranandanitownships.com/explore/"
     }
     </script>
+    <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
+    <style>
+        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+        .nav-dropdown:hover > .nav-dropdown-menu,
+        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+        @media (max-width: 1180px) {
+            .nav-dropdown-menu { position: static !important; transform: none !important; }
+            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+        }
+    </style>
 </head>
 
 <body>

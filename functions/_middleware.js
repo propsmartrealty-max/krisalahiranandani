@@ -258,7 +258,7 @@ export async function onRequest(context) {
         newHeaders.set('Link', [
             '<https://fonts.googleapis.com>; rel=preconnect',
             '<https://fonts.gstatic.com>; rel=preconnect; crossorigin',
-            '</style.css?v=2>; rel=preload; as=style',
+            '</style.css?v=20261009_v5>; rel=preload; as=style',
             '</app.js>; rel=preload; as=script',
             '</public/krisala-hiranandani-logo.webp>; rel=preload; as=image'
         ].join(', '));

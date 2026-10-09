@@ -966,8 +966,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburgerBtn && navLinks) {
         hamburgerBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            hamburgerBtn.classList.toggle('active');
+            const isOpen = hamburgerBtn.classList.toggle('active');
             navLinks.classList.toggle('active');
+            document.body.classList.toggle('menu-open', isOpen);
         });
 
         // Mobile Accordion Toggle for Dropdowns
@@ -987,6 +988,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 hamburgerBtn.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
                 navLinks.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
             });
         });
@@ -996,6 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
                 hamburgerBtn.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.classList.remove('menu-open');
                 navLinks.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
             }
         });

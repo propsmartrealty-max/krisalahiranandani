@@ -51,9 +51,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css?v=20261009_v5">
     <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
-    <link rel="stylesheet" href="/style.css?v=2">
+    <link rel="stylesheet" href="/style.css?v=20261009_v5">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#08080a">
 
@@ -204,6 +204,17 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-top: 5px;
+        }
+    </style>
+    <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
+    <style>
+        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+        .nav-dropdown:hover > .nav-dropdown-menu,
+        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+        @media (max-width: 1180px) {
+            .nav-dropdown-menu { position: static !important; transform: none !important; }
+            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
         }
     </style>
 </head>
@@ -680,6 +691,22 @@
     </div>
 
     <!-- Floating Concierge -->
+        <!-- Mobile Sticky Conversion Bar -->
+    <div class="mobile-sticky-bar" id="mobileStickyBar" role="navigation" aria-label="Quick Mobile Actions">
+        <a href="tel:+917744009295" class="sticky-bar-btn sticky-call" aria-label="Direct Phone Call">
+            <i class="ph ph-phone-call"></i>
+            <span>Call</span>
+        </a>
+        <a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township.%20Please%20share%20verified%20floor%20plans%20and%20pricing." target="_blank" class="sticky-bar-btn sticky-whatsapp" aria-label="Chat on WhatsApp">
+            <i class="ph ph-whatsapp-logo"></i>
+            <span>WhatsApp</span>
+        </a>
+        <button class="sticky-bar-btn sticky-enquire open-modal" data-magnet="brochure" aria-label="Request Brochure &amp; Price List">
+            <i class="ph ph-download-simple"></i>
+            <span>Enquire</span>
+        </button>
+    </div>
+
     <div class="floating-actions">
         <a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township.%20Please%20share%20details."
             class="float-btn float-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
