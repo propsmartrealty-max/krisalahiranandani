@@ -207,7 +207,23 @@ def purge_cache(headers, zone_id):
     else:
         print(f"  [✗] Cache purge failed: {res.get('errors')}")
 
+def load_env():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.dirname(script_dir)
+    env_file = os.path.join(project_dir, ".env")
+    if os.path.exists(env_file):
+        with open(env_file, "r") as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    k = k.strip()
+                    v = v.strip().strip('"').strip("'")
+                    if k not in os.environ:
+                        os.environ[k] = v
+
 def main():
+    load_env()
     parser = argparse.ArgumentParser(description="Cloudflare Hardening & DNS Optimizer")
     parser.add_argument("--token", default=os.getenv("CLOUDFLARE_API_TOKEN"), help="Cloudflare API Bearer Token")
     parser.add_argument("--key", default=os.getenv("CLOUDFLARE_GLOBAL_API_KEY") or os.getenv("CLOUDFLARE_API_KEY"), help="Cloudflare Global API Key")
