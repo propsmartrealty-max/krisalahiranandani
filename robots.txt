@@ -28,6 +28,7 @@ User-agent: Googlebot
 Allow: /
 Allow: /explore/
 Allow: /blog
+Allow: /colosseum
 Allow: /everlyn
 Allow: /arcadia
 Allow: /icon

@@ -307,4 +307,63 @@
       <image:caption>Signal-free commute corridors to Infosys, Wipro, TCS, and Metro Line 3.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/colosseum</loc>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/floorplans/plan_booklet_2.webp</image:loc>
+      <image:title>The Colosseum Phase 4 Architecture &amp; Floor Layouts</image:title>
+      <image:caption>Neoclassical Roman Amphitheatre B+G+27 Towers 2 &amp; 3 BHK Floor Plans.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/icon</loc>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/icon_official/icon_title_brand_cover.webp</image:loc>
+      <image:title>Sector Icon Flagship Triad Cover</image:title>
+      <image:caption>Ultra-Luxury 3 &amp; 4 BHK Simplex and Duplex Residences Tower A, B, and C.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/icon_official/icon_sector_master_layout_plan_numbered.webp</image:loc>
+      <image:title>Sector Icon Numbered Master Layout Plan</image:title>
+      <image:caption>Detailed 52-amenity site plan and tower footprint for Sector Icon.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/icon_official/icon_lookout_pod_aether_deck.webp</image:loc>
+      <image:title>Sector Icon Sky Lookout Pod &amp; Aether Deck</image:title>
+      <image:caption>Rooftop architectural lookout pod commanding 360-degree racecourse views.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/icon_official/hiranandani_heritage_pillars.webp</image:loc>
+      <image:title>Hiranandani Heritage Classical Colonnade Pillars</image:title>
+      <image:caption>Signature neoclassical Greek and Roman architectural columns in Sector Icon.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/masterplan</loc>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp</image:loc>
+      <image:title>105-Acre Master Township Birds-Eye Aerial View</image:title>
+      <image:caption>High-resolution aerial view of the 105+ acre integrated township zoning in North Hinjewadi.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/connectivity</loc>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>North Hinjewadi Official Connectivity &amp; Transit Map</image:title>
+      <image:caption>Arterial route map connecting to Mumbai-Pune Expressway, Metro Line 3, and Hinjewadi IT Park.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/della</loc>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/della_resort_villas_equestrian_official.webp</image:loc>
+      <image:title>The Della Collection Resort &amp; Equestrian Villas</image:title>
+      <image:caption>Official luxury resort grounds, 8-acre racecourse, and 100 bespoke villa plots.</image:caption>
+    </image:image>
+  </url>
 </urlset>
