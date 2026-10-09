@@ -5,7 +5,7 @@
     <link>https://krisalahiranandanitownships.com/</link>
     <description>Official dispatches, construction updates, phase releases, and architectural developments for the 105-Acre Krisala Hiranandani Integrated Equestrian Township in North Hinjewadi, Pune.</description>
     <language>en-in</language>
-    <lastBuildDate>Mon, 05 Oct 2026 06:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 12:00:00 GMT</lastBuildDate>
     <atom:link href="https://krisalahiranandanitownships.com/rss.xml" rel="self" type="application/rss+xml"/>
 
     <!-- Item 1: Official Township Launch -->
@@ -96,6 +96,33 @@
       <guid isPermaLink="true">https://krisalahiranandanitownships.com/racecourse#dispatch</guid>
       <pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
       <description>Exclusive equestrian lifestyle with a 6-furlong turf track, professional horse riding academy, dressage arenas, and private clubhouse viewing lounges curated with Della Resorts.</description>
+    </item>
+
+    <!-- Item 11: Codename The Colosseum Phase 4 Pre-Launch -->
+    <item>
+      <title>Codename The Colosseum (Phase 4): Neoclassical Roman Towers &amp; Festive Diwali Benefits Released</title>
+      <link>https://krisalahiranandanitownships.com/colosseum</link>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/colosseum#dispatch-20261009</guid>
+      <pubDate>Fri, 09 Oct 2026 09:00:00 GMT</pubDate>
+      <description>Official pre-launch window (11 Oct – 1 Nov 2026) for Phase 4 monumental B+G+27 towers starting ₹82.99L* with ₹5L–₹9L early bird advantages, Roman amphitheatre podium, and 270-degree racecourse horizon views.</description>
+    </item>
+
+    <!-- Item 12: Masterplan 2.0 Architecture -->
+    <item>
+      <title>Masterplan 2.0 Unveiled: Responsive Viewport Scaling, Cyber-Luxury Glass HUD &amp; 4-Layer Zoning</title>
+      <link>https://krisalahiranandanitownships.com/masterplan</link>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/masterplan#dispatch-20261009</guid>
+      <pubDate>Fri, 09 Oct 2026 10:30:00 GMT</pubDate>
+      <description>Interactive 105-acre master layout upgraded with dynamic layer filters (All, Residential, Amenities, Della Equestrian), radar pins, and high-contrast glass HUD for immersive homebuyer navigation.</description>
+    </item>
+
+    <!-- Item 13: 15,000+ Programmatic Exploration Engine -->
+    <item>
+      <title>Programmatic Real Estate Knowledge Portal: 15,000+ Verified Semantic Exploration Corridors</title>
+      <link>https://krisalahiranandanitownships.com/explore/the-colosseum</link>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/explore/#dispatch-20261009</guid>
+      <pubDate>Fri, 09 Oct 2026 12:00:00 GMT</pubDate>
+      <description>Edge-powered Cloudflare HTMLRewriter engine serving 15,000+ hyper-targeted corridors covering unit layouts, commute timelines to Infosys, Wipro, TCS, and competitive benchmarks against Godrej River Royale and VTP Earth One.</description>
     </item>
   </channel>
 </rss>

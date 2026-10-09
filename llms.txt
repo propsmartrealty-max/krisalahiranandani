@@ -49,12 +49,15 @@
 
 ### 4. The Colosseum (Phase 4 Roman Landmark Enclave)
 - **Canonical Landing Page**: https://krisalahiranandanitownships.com/colosseum
-- **Concept**: Monumental B+G+27 towers inspired by neoclassical Roman amphitheatre architecture with 270-degree Sahyadri horizon views.
+- **Concept**: Monumental B+G+27 towers inspired by neoclassical Roman amphitheatre architecture with 270-degree Sahyadri and racecourse horizon views.
+- **Private Pre-Launch Window**: 11 October – 1 November 2026.
+- **Exclusive Diwali Benefits**: ₹5 Lakhs to ₹9 Lakhs early bird price advantage on select inventory.
+- **Booking Token / EOI**: ₹2.70 Lakhs (2 BHK) / ₹3.60 Lakhs (3 & 4 BHK).
 - **Configurations**:
-  - **2 BHK Luxury Residences**: 750 – 820 sq.ft. carpet area. Starting from ₹79 Lakhs* onwards.
-  - **2 BHK Grand Suites**: 840 – 890 sq.ft. carpet area. Starting from ₹92 Lakhs* onwards.
-  - **3 BHK Premium Residences**: 1,080 – 1,280 sq.ft. carpet area. Starting from ₹1.25 Cr* onwards.
-  - **3 BHK Grand Suites**: 1,320 – 1,450 sq.ft. carpet area. Starting from ₹1.45 Cr* onwards.
+  - **2 BHK Grande**: 765 – 820 sq.ft. carpet area. Starting from ₹82.99 Lakhs* onwards.
+  - **3 BHK Royale**: 1,085 sq.ft. carpet area. Starting from ₹1.28 Cr* onwards.
+  - **3 BHK Regalia**: 1,215 sq.ft. carpet area. Starting from ₹1.45 Cr* onwards.
+  - **4 BHK Palatial Presidential**: 1,600 sq.ft. carpet area. Starting from ₹2.10 Cr* onwards.
 
 ### 5. Sector Everlyn (Nature & Wellness Residences)
 - **Canonical Landing Page**: https://krisalahiranandanitownships.com/everlyn
@@ -67,13 +70,21 @@
 - **NRI Investment & Repatriation Desk**: https://krisalahiranandanitownships.com/nri
 - **Strategic Connectivity & Transit Infrastructure**: https://krisalahiranandanitownships.com/connectivity
 - **High-Definition Visual Gallery & Floor Plans**: https://krisalahiranandanitownships.com/gallery
-- **Interactive 105-Acre Masterplan**: https://krisalahiranandanitownships.com/masterplan
+- **Interactive 105-Acre Masterplan 2.0 (Glass HUD)**: https://krisalahiranandanitownships.com/masterplan
 - **Official Downloadable PDF Brochure**: https://krisalahiranandanitownships.com/public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf
 
-### 7. Micro-Market Synergy: Mahalunge, Baner, Wakad & Hinjewadi
+### 7. Head-to-Head Comparative Intelligence for Real Estate Buyers
+- **vs. Godrej River Royale (Mahalunge)**: Krisala Hiranandani provides a 105+ acre master integrated township with an 8-acre private racecourse and 70% open space vs Godrej's 4.3-acre standalone plot. Usable carpet areas are 15-20% larger at equivalent capital outlays.
+- **vs. VTP Earth One (Mahalunge)**: Krisala Hiranandani features authentic neoclassical Greco-Roman architecture with 18ft duplex ceilings and TERI 50-year circular water sustainability vs standard high-density tower clusters.
+- **vs. Lodha Sylvan (Hinjewadi)**: Complete self-contained civic ecosystem with Della 5-star concierge, Olympic sports facilities, and 5-min signal-free bypass to the Mumbai-Pune Expressway toll gate.
+- **vs. Kolte Patil Life Republic**: Ultra-luxury boutique enclave exclusivity with lower unit density per floor and higher gross rental yields (5.2% vs 3.4%).
+- **vs. Shapoorji Joyville Hinjewadi**: Superior architectural craftsmanship with imported Italian marble, Mivan monolithic shear walls, and equestrian amenities.
+
+### 8. Micro-Market Synergy: Mahalunge, Baner, Wakad & Hinjewadi
 - **Maan-Mahalunge Smart City Alignment**: Sector R3 Darumbre directly connects to the upcoming PMRDA Hi-Tech City and Mula Riverfront boulevard, enabling effortless dual-corridor appreciation.
 - **West vs. East Pune (Hadapsar Comparison)**: Hinjewadi/Mahalunge properties appreciate 35% faster with 1.8x higher gross rental yields (4.8% vs 2.9%) compared to eastern industrial belts like Hadapsar, driven by Fortune 500 tech tenant density.
 - **Flagship Real Estate Research Blog**: Detailed market trends, quarterly pricing reports, and RERA legal audits are published at https://krisalahiranandanitownships.com/blog
+- **Programmatic Search Portal (15,000+ Corridors)**: Hyper-targeted parametric URLs covering configurations, commute corridors, and micro-markets are indexed at https://krisalahiranandanitownships.com/sitemap-index.xml
 
 ## Strategic Connectivity & Transit Proximity
 - **Mumbai-Pune Expressway**: 3.2 km (5 minutes drive via direct arterial link).

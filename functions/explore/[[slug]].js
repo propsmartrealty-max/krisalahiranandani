@@ -181,8 +181,55 @@ const ENTITY_DICTIONARY = {
     "mercedes-benz": { landmark: "Mercedes-Benz International School", distance: "4.8 km", time: "8 mins", route: "Via Phase 1 Flyover" },
     "podar": { landmark: "Podar International School Hinjewadi", distance: "3.6 km", time: "6 mins", route: "Via Marunji Arterial" },
     "symbiosis": { landmark: "Symbiosis Institute Hinjewadi", distance: "5.2 km", time: "9 mins", route: "Via Rajiv Gandhi Infotech Corridor" },
-    "ruby-hall": { landmark: "Ruby Hall Clinic Hinjewadi", distance: "5.0 km", time: "8 mins", route: "Via Phase 1 Main Road" },
     "phoenix-mall": { landmark: "Phoenix Mall of the Millennium Wakad", distance: "7.8 km", time: "14 mins", route: "Via Bhumkar Chowk" }
+};
+
+const COMPETITOR_BENCHMARKS = {
+    "godrej": {
+        name: "Godrej River Royale Mahalunge",
+        comparisonTitle: "Krisala Hiranandani vs Godrej River Royale Mahalunge",
+        headline: "Head-to-Head: Krisala Hiranandani vs Godrej River Royale Mahalunge",
+        acres: "105+ Acres Master Integrated Township vs 4.3 Acres Standalone Development",
+        amenities: "8-Acre Private Racecourse & 50,000 sq.ft. Clubhouse vs Compact Podium Amenities",
+        density: "Low-Density (35 units/acre) with 70% Open Space vs High-Density Tower Block (110 units/acre)",
+        verdict: "Krisala Hiranandani delivers 3x larger usable space, equestrian living, and superior long-term capital appreciation backed by Dr. Niranjan Hiranandani & Krisala Developers."
+    },
+    "vtp": {
+        name: "VTP Earth One Mahalunge",
+        comparisonTitle: "Krisala Hiranandani vs VTP Earth One Mahalunge",
+        headline: "Head-to-Head: Krisala Hiranandani vs VTP Earth One Mahalunge",
+        acres: "105+ Master Township with 70% Open Spaces vs High-Rise Cluster",
+        amenities: "Equestrian Derby Track, Roman Colosseum Amphitheatre & Olympic Lap Pool",
+        density: "Neoclassical Greco-Roman Architecture with 18ft Ceilings vs Standard 9.8ft Ceilings",
+        verdict: "Krisala Hiranandani offers landmark architectural heritage, luxury brand prestige, and 50-year TERI zero-water-tanker circular sustainability."
+    },
+    "lodha": {
+        name: "Lodha Sylvan Hinjewadi",
+        comparisonTitle: "Krisala Hiranandani vs Lodha Sylvan Hinjewadi",
+        headline: "Head-to-Head: Krisala Hiranandani vs Lodha Sylvan Hinjewadi",
+        acres: "105+ Integrated Acres vs Standalone Land Parcel",
+        amenities: "Integrated Della Resort Hospitality, 40-Acre Adventure District & 8-Acre Derby Track",
+        density: "Monolithic Mivan Shear Wall Construction with Zero Beam Encroachment",
+        verdict: "Unmatched lifestyle infrastructure and seamless 5-min transit to Mumbai-Pune Expressway toll corridor."
+    },
+    "kolte-patil": {
+        name: "Kolte Patil Life Republic",
+        comparisonTitle: "Krisala Hiranandani vs Kolte Patil Life Republic",
+        headline: "Head-to-Head: Krisala Hiranandani vs Kolte Patil Life Republic",
+        acres: "Ultra-Luxury Neoclassical Boutique Sectors vs Mass-Market Township",
+        amenities: "Bespoke Della Concierge, 52 Numbered Flagship Amenities & Private Elevators",
+        density: "Curated CXO Community & Lower Per-Floor Unit Density",
+        verdict: "Higher rental yield (5.2%) and executive tenant preference in North Hinjewadi."
+    },
+    "shapoorji": {
+        name: "Shapoorji Joyville Hinjewadi",
+        comparisonTitle: "Krisala Hiranandani vs Shapoorji Joyville Hinjewadi",
+        headline: "Head-to-Head: Krisala Hiranandani vs Shapoorji Joyville Hinjewadi",
+        acres: "105-Acre Master Ecosystem vs Mid-Segment Compact Development",
+        amenities: "Double-Height Sky Duplexes & Private Equestrian Polo Club",
+        density: "Palatial 2, 3, 4 & 5 BHK Layouts with Private Balcony Sundecks",
+        verdict: "Supreme luxury finishes including Italian marble, smart home automation, and acoustic soundproof glazing."
+    }
 };
 
 export async function onRequest(context) {
@@ -212,6 +259,9 @@ export async function onRequest(context) {
             })
             .on('meta#seoDesc', {
                 element(e) { e.setAttribute('content', pageData.metaDescription); }
+            })
+            .on('meta#seoKeywords', {
+                element(e) { e.setAttribute('content', pageData.metaKeywords); }
             })
             .on('link#seoCanonical', {
                 element(e) { e.setAttribute('href', pageData.canonicalUrl); }
@@ -309,6 +359,17 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         if (cleanSlug.includes(k)) { transitKey = k; break; }
     }
 
+    // Competitor & Intent Analysis
+    let compKey = null;
+    for (const ck of ['godrej', 'vtp', 'lodha', 'kolte-patil', 'shapoorji']) {
+        if (cleanSlug.includes(ck)) { compKey = ck; break; }
+    }
+    const comp = compKey ? COMPETITOR_BENCHMARKS[compKey] : null;
+
+    const isPricingIntent = cleanSlug.includes('price') || cleanSlug.includes('cost') || cleanSlug.includes('payment') || cleanSlug.includes('clp') || cleanSlug.includes('loan') || cleanSlug.includes('stamp-duty');
+    const isLegalIntent = cleanSlug.includes('rera') || cleanSlug.includes('legal') || cleanSlug.includes('title') || cleanSlug.includes('pr1260002502438') || cleanSlug.includes('pr1260002600818');
+    const isRacecourseIntent = cleanSlug.includes('racecourse') || cleanSlug.includes('polo') || cleanSlug.includes('equestrian') || cleanSlug.includes('derby');
+
     const unit = ENTITY_DICTIONARY[unitKey];
     const work = workKey ? ENTITY_DICTIONARY[workKey] : null;
     const transit = transitKey ? ENTITY_DICTIONARY[transitKey] : null;
@@ -319,9 +380,45 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         .map(w => w.charAt(0).toUpperCase() + w.slice(1))
         .join(' ');
 
-    const h1 = `Krisala Hiranandani ${unit.name} • ${work ? 'Near ' + work.landmark : transit ? 'Near ' + transit.landmark : 'North Hinjewadi & Mahalunge Pune'}`;
-    const metaTitle = `${formattedSubject} | Krisala Hiranandani Township Hinjewadi`;
-    const metaDescription = `Verified specifications, pricing (${unit.price}), carpet area (${unit.carpet}), floor plans, and commute analysis for ${formattedSubject} at Krisala Hiranandani Township Hinjewadi, Pune. MahaRERA PR1260002502438.`;
+    let h1 = `Krisala Hiranandani ${unit.name} • ${work ? 'Near ' + work.landmark : transit ? 'Near ' + transit.landmark : 'North Hinjewadi & Mahalunge Pune'}`;
+    let metaTitle = `${formattedSubject} | Krisala Hiranandani Township Hinjewadi`;
+    let metaDescription = `Verified specifications, pricing (${unit.price}), carpet area (${unit.carpet}), floor plans, and commute analysis for ${formattedSubject} at Krisala Hiranandani Township Hinjewadi, Pune. MahaRERA PR1260002502438.`;
+
+    if (comp) {
+        h1 = `Krisala Hiranandani vs ${comp.name} • Township Benchmark Analysis`;
+        metaTitle = `${comp.comparisonTitle} | Krisala Hiranandani Pune`;
+        metaDescription = `Comprehensive real estate comparison: Krisala Hiranandani vs ${comp.name}. Compare usable carpet area, 8-acre racecourse amenities, density, Mivan construction, and 2026-2035 appreciation ROI.`;
+    } else if (isPricingIntent) {
+        h1 = `Krisala Hiranandani Price List 2026 • Cost Sheets & Payment Plans`;
+        metaTitle = `Krisala Hiranandani Price List 2026 | All-Inclusive Cost Sheets & Payment Plans`;
+        metaDescription = `MahaRERA verified 2026 price list and cost sheets for Krisala Hiranandani Hinjewadi: 2 BHK from ₹79L, 3 BHK from ₹1.25 Cr, 4 BHK from ₹2.10 Cr. Zero-brokerage CLP payment plans & bank loans.`;
+    } else if (isLegalIntent) {
+        h1 = `Krisala Hiranandani MahaRERA Verification • PR1260002502438 Legal Dossier`;
+        metaTitle = `MahaRERA PR1260002502438 & PR1260002600818 Legal Title | Krisala Hiranandani`;
+        metaDescription = `Official legal compliance docket for Krisala Hiranandani Township Hinjewadi: MahaRERA PR1260002502438, clear 30-year marketable land title, PMRDA layout sanctions, and escrow protections.`;
+    } else if (isRacecourseIntent) {
+        h1 = `8-Acre Private Racecourse & Equestrian Polo Club • Krisala Hiranandani`;
+        metaTitle = `8-Acre Private Racecourse & International Polo Club | Krisala Hiranandani`;
+        metaDescription = `India's first residential equestrian township: 8-acre private racecourse, championship polo oval, air-cooled stables, and Della Resorts concierge in Hinjewadi, Pune.`;
+    }
+
+    const metaKeywords = [
+        formattedSubject,
+        "Krisala Hiranandani",
+        "Krisala Hiranandani Township",
+        "Krisala Hiranandani Hinjewadi",
+        "Hiranandani Pune",
+        "Krisala Developers Wakad",
+        unit.name,
+        unit.sector,
+        comp ? comp.name : null,
+        work ? work.landmark : "Hinjewadi IT Park",
+        transit ? transit.landmark : "Mumbai Pune Expressway",
+        "MahaRERA PR1260002502438",
+        "flats in Hinjewadi",
+        "luxury apartments in Pune"
+    ].filter(Boolean).join(", ");
+
     const subtitle = `Comprehensive architectural analysis, floor plans, real-time pricing guidance, and commute timeline for ${unit.name} in North Hinjewadi & Mahalunge, Pune.`;
     const badge = `MahaRERA Registered PR1260002502438 • ${unit.sector}`;
 
@@ -360,6 +457,72 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
             Set across <strong>105+ integrated acres</strong> with 70% open green space, residents enjoy direct access to the 40-acre Della hospitality district, an 8-acre private equestrian racecourse, and Olympic-grade recreational facilities. The development is pre-certified <strong>IGBC Platinum</strong> and features <strong>TERI 50-Year certified circular water management</strong>, guaranteeing 30%+ reduction in recurring household utility expenses.
         </p>
     `;
+
+    // Dynamic Competitor Benchmark Card
+    if (comp) {
+        editorialHtml += `
+        <div style="background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(255,255,255,0.02)); border: 1px solid var(--gold-primary); padding: 24px; border-radius: 8px; margin: 25px 0;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <span class="badge" style="background: var(--gold-primary); color: #000; font-weight: 700;"><i class="ph ph-scales"></i> Head-to-Head Benchmark</span>
+                <span style="color: var(--gold-light); font-weight: 600;">Krisala Hiranandani vs ${comp.name}</span>
+            </div>
+            <h3 style="color: #fff; font-size: 1.35rem; margin: 8px 0;">${comp.headline}</h3>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 14px; color: var(--text-muted); font-size: 0.95rem;">
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff; width: 30%;">Master Land Scale</td><td style="padding: 10px 0; color: var(--gold-light);">${comp.acres}</td></tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Signature Amenities</td><td style="padding: 10px 0;">${comp.amenities}</td></tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Density &amp; Design</td><td style="padding: 10px 0;">${comp.density}</td></tr>
+                <tr><td style="padding: 10px 0; font-weight: 600; color: #fff;">Buyer Verdict</td><td style="padding: 10px 0; color: #fff;"><strong>${comp.verdict}</strong></td></tr>
+            </table>
+        </div>`;
+    }
+
+    // Dynamic CLP Payment Schedule Card
+    if (isPricingIntent) {
+        editorialHtml += `
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--gold-primary); padding: 24px; border-radius: 8px; margin: 25px 0;">
+            <h3 style="color: var(--gold-light); font-size: 1.35rem; margin-bottom: 12px;"><i class="ph ph-currency-inr"></i> 2026 Construction-Linked Payment (CLP) Schedule</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">Transparent milestone-based disbursements ensuring zero developer risk and maximum capital security for homebuyers:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 6px; border-left: 3px solid var(--gold-primary);"><strong style="color: #fff;">Booking / Token</strong><br><span style="color: var(--gold-light);">10% (On Allotment)</span></div>
+                <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 6px; border-left: 3px solid var(--gold-primary);"><strong style="color: #fff;">Plinth Completion</strong><br><span style="color: var(--gold-light);">15% (Foundation Done)</span></div>
+                <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 6px; border-left: 3px solid var(--gold-primary);"><strong style="color: #fff;">Slab Milestones</strong><br><span style="color: var(--gold-light);">30% (Staggered Slabs)</span></div>
+                <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 6px; border-left: 3px solid var(--gold-primary);"><strong style="color: #fff;">Brickwork &amp; Plaster</strong><br><span style="color: var(--gold-light);">20% (Internal &amp; External)</span></div>
+                <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 6px; border-left: 3px solid var(--gold-primary);"><strong style="color: #fff;">Flooring &amp; Finishing</strong><br><span style="color: var(--gold-light);">20% (Italian Marble &amp; CP)</span></div>
+                <div style="background: rgba(0,0,0,0.3); padding: 14px; border-radius: 6px; border-left: 3px solid var(--gold-primary);"><strong style="color: #fff;">Possession &amp; OC</strong><br><span style="color: var(--gold-light);">5% (Key Handover)</span></div>
+            </div>
+            <div style="margin-top: 14px; font-size: 0.85rem; color: var(--text-muted);"><i class="ph ph-bank"></i> Pre-Approved Banking Partners: SBI, HDFC, ICICI, Axis Bank with interest rates starting 8.35%* p.a.</div>
+        </div>`;
+    }
+
+    // Dynamic MahaRERA Legal Docket Card
+    if (isLegalIntent) {
+        editorialHtml += `
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--gold-primary); padding: 24px; border-radius: 8px; margin: 25px 0;">
+            <h3 style="color: var(--gold-light); font-size: 1.35rem; margin-bottom: 12px;"><i class="ph ph-shield-check"></i> MahaRERA Verified Legal &amp; Regulatory Dossier</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px;">Complete legal verification and clear marketable title certified under PMRDA and MahaRERA statutory guidelines:</p>
+            <ul style="color: var(--text-muted); line-height: 1.8; padding-left: 20px; margin: 0;">
+                <li><strong style="color: #fff;">MahaRERA Project ID</strong>: PR1260002502438 (Township Phase 3) &amp; PR1260002600818 (Sector Icon Flagship)</li>
+                <li><strong style="color: #fff;">Land Title Audit</strong>: 100% Freehold clear marketable title with 30-year search report certified by High Court advocates.</li>
+                <li><strong style="color: #fff;">Statutory Approvals</strong>: PMRDA Commencement Certificate (CC), Environmental Clearance, Fire Safety NOC &amp; Airport Authority NOC.</li>
+                <li><strong style="color: #fff;">Buyer Protection</strong>: Dedicated MahaRERA Escrow Account maintaining 70% of all project funds strictly for construction.</li>
+            </ul>
+        </div>`;
+    }
+
+    // Dynamic 8-Acre Racecourse Card
+    if (isRacecourseIntent) {
+        editorialHtml += `
+        <div style="background: rgba(212,175,55,0.08); border-left: 4px solid var(--gold-primary); padding: 22px; border-radius: 6px; margin: 25px 0;">
+            <h3 style="color: var(--gold-light); font-size: 1.35rem; margin-bottom: 8px;"><i class="ph ph-horse"></i> 8-Acre Private Racecourse &amp; Equestrian Polo Club</h3>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 12px;">India's first residential private racecourse inside a 105-acre mega integrated township curated in partnership with Della Resorts &amp; Adventure (Jimmy Mistry):</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px;"><span style="color: var(--gold-light); font-weight: 700;">Derby Track</span><br><span style="font-size: 0.9rem; color: var(--text-muted);">8-Acre professional polo &amp; race oval</span></div>
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px;"><span style="color: var(--gold-light); font-weight: 700;">Equine Stables</span><br><span style="font-size: 0.9rem; color: var(--text-muted);">Air-cooled stables &amp; vet care</span></div>
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px;"><span style="color: var(--gold-light); font-weight: 700;">Riding Academy</span><br><span style="font-size: 0.9rem; color: var(--text-muted);">Professional training for all ages</span></div>
+                <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px;"><span style="color: var(--gold-light); font-weight: 700;">Della Privileges</span><br><span style="font-size: 0.9rem; color: var(--text-muted);">5-Star resort hospitality &amp; dining</span></div>
+            </div>
+        </div>`;
+    }
 
     // Dynamic Geo-Targeted Callouts
     if (isNRI) {
@@ -470,7 +633,37 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     `;
 
     // Dynamic Contextual FAQs
-    const faqs = [
+    const faqs = [];
+
+    if (comp) {
+        faqs.push({
+            q: `How does Krisala Hiranandani compare against ${comp.name}?`,
+            a: `Krisala Hiranandani spans 105+ acres featuring an 8-acre private racecourse, 50,000 sq.ft. neoclassical clubhouse, and 70% open green space compared to ${comp.name}. Layouts feature Mivan monolithic shear wall engineering with zero beam intrusions and 15–20% higher usable carpet area.`
+        });
+    }
+
+    if (isPricingIntent) {
+        faqs.push({
+            q: `What is the current 2026 payment plan and all-inclusive pricing at Krisala Hiranandani?`,
+            a: `2 BHK residences start from ₹79 Lakhs*, 3 BHK from ₹1.25 Cr*, and palatial 4 BHK / duplexes from ₹2.10 Cr*. Homebuyers can take advantage of the construction-linked payment plan (CLP) with pre-approved loans from SBI, HDFC, ICICI, and Axis Bank.`
+        });
+    }
+
+    if (isLegalIntent) {
+        faqs.push({
+            q: `Is the land title and MahaRERA registration verified for Krisala Hiranandani Township?`,
+            a: `Yes, the township is registered under MahaRERA PR1260002502438 & PR1260002600818 with PMRDA sanctioned layouts. The land holds a 100% clear, marketable, and encumbrance-free title certified by High Court advocates.`
+        });
+    }
+
+    if (isRacecourseIntent) {
+        faqs.push({
+            q: `What are the details of the 8-acre private racecourse at Krisala Hiranandani?`,
+            a: `Curated in collaboration with Della Resorts, the 8-acre equestrian precinct includes an international polo track, air-cooled equine stables, a riding academy, and 100 exclusive villa plots with 5-star concierge privileges.`
+        });
+    }
+
+    faqs.push(
         {
             q: `What is the price and carpet area for ${unit.name} at Krisala Hiranandani Township?`,
             a: `The ${unit.name} features an approximate usable carpet area of ${unit.carpet} with starting price guidance from ${effectivePrice}. Construction is executed using high-precision Mivan formwork in ${unit.sector}.`
@@ -487,7 +680,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
             q: `What unique amenities are available at the 105-acre Krisala Hiranandani Township?`,
             a: `The township features India's 1st private 8-acre residential racecourse and polo track, 40-acre Della hospitality district, TERI 50-year certified sustainable water hydrology, an Olympic-length swimming pool, and 70% open green space.`
         }
-    ];
+    );
 
     const faqsHtml = faqs.map((f, i) => `
         <div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 16px;">
@@ -640,6 +833,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     return {
         metaTitle,
         metaDescription,
+        metaKeywords,
         canonicalUrl,
         h1,
         subtitle,
