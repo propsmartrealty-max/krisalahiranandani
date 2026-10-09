@@ -970,11 +970,24 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when a link is clicked
+        // Mobile Accordion Toggle for Dropdowns
+        navLinks.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1180) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = trigger.closest('.nav-dropdown');
+                    if (dropdown) dropdown.classList.toggle('open');
+                }
+            });
+        });
+
+        // Close menu when a destination link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburgerBtn.classList.remove('active');
                 navLinks.classList.remove('active');
+                navLinks.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
             });
         });
 
@@ -983,6 +996,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
                 hamburgerBtn.classList.remove('active');
                 navLinks.classList.remove('active');
+                navLinks.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
             }
         });
     }

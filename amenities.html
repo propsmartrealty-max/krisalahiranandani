@@ -217,21 +217,75 @@
                     onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';"
                     alt="Krisala Hiranandani Township Hinjewadi Logo" class="header-logo" width="280" height="38" fetchpriority="high">
             </a>
-            <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
-                <a href="/" class="nav-link">Township</a>
-                <a href="/everlyn" class="nav-link">Everlyn</a>
-                <a href="/arcadia" class="nav-link">Arcadia</a>
-                <a href="/icon" class="nav-link">Icon</a>
-                <a href="/della" class="nav-link">Della Plots</a>
-                <a href="/racecourse" class="nav-link">Racecourse</a>
-                <a href="/amenities" class="nav-link">Amenities</a>
-                <a href="/pricing" class="nav-link">Pricing</a>
-                <a href="/gallery" class="nav-link">Gallery</a>
-                <a href="/masterplan" class="nav-link">Masterplan</a>
-                <a href="/connectivity" class="nav-link">Connectivity</a>
-                <a href="/nri" class="nav-link">NRI Desk</a>
-                <a href="/compare" class="nav-link">Compare</a>
-                <a href="/blog" class="nav-link">Blog</a>
+                        <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
+                <a href="/" class="nav-link" data-en="Township" data-mr="टाउनशिप">Township</a>
+                
+                <!-- Enclaves Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                        <span data-en="Enclaves" data-mr="प्रकल्प">Enclaves</span> <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/colosseum" class="nav-dropdown-item">
+                            <div class="item-title"><span class="badge-mini badge-gold">NEW</span> The Colosseum</div>
+                            <div class="item-desc">Phase 4 Roman Landmark | B+G+27 Towers</div>
+                        </a>
+                        <a href="/icon" class="nav-dropdown-item">
+                            <div class="item-title">Sector Icon</div>
+                            <div class="item-desc">Towers A, B &amp; C Triad | Sky Duplexes</div>
+                        </a>
+                        <a href="/arcadia" class="nav-dropdown-item">
+                            <div class="item-title">Sector Arcadia</div>
+                            <div class="item-desc">2 &amp; 3 BHK Neoclassical Residences</div>
+                        </a>
+                        <a href="/della" class="nav-dropdown-item">
+                            <div class="item-title">The Della Collection</div>
+                            <div class="item-desc">100 Villa Plots &amp; 8-Acre Racecourse</div>
+                        </a>
+                        <a href="/everlyn" class="nav-dropdown-item">
+                            <div class="item-title">Sector Everlyn</div>
+                            <div class="item-desc">Nature Lake &amp; Butterfly Park Living</div>
+                        </a>
+                    </div>
+                </div>
+
+                <a href="/masterplan" class="nav-link" data-en="Masterplan" data-mr="मास्टर प्लॅन">Masterplan</a>
+                <a href="/amenities" class="nav-link active" data-en="Amenities" data-mr="सुविधा">Amenities</a>
+                <a href="/connectivity" class="nav-link" data-en="Connectivity" data-mr="कनेक्टिव्हिटी">Connectivity</a>
+                <a href="/pricing" class="nav-link" data-en="Pricing" data-mr="किंमत">Pricing</a>
+
+                <!-- Explore Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+                        <span data-en="Explore" data-mr="अधिक माहिती">Explore</span> <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/gallery" class="nav-dropdown-item">
+                            <div class="item-title">Visual Gallery</div>
+                            <div class="item-desc">3D Renders, Drone Views &amp; Videos</div>
+                        </a>
+                        <a href="/nri" class="nav-dropdown-item">
+                            <div class="item-title">NRI Investment Desk</div>
+                            <div class="item-desc">FEMA, Tax Concierge &amp; Virtual Tours</div>
+                        </a>
+                        <a href="/neighborhood" class="nav-dropdown-item">
+                            <div class="item-title">Location &amp; IT Hub</div>
+                            <div class="item-desc">Phase 1 &amp; 3 IT Corridor Infrastructure</div>
+                        </a>
+                        <a href="/compare" class="nav-dropdown-item">
+                            <div class="item-title">Compare Projects</div>
+                            <div class="item-desc">Hinjewadi Competitor Benchmark</div>
+                        </a>
+                        <a href="/knowledge-hub" class="nav-dropdown-item">
+                            <div class="item-title">Investment Whitepaper</div>
+                            <div class="item-desc">Rental ROI &amp; Infrastructure Outlook</div>
+                        </a>
+                        <a href="/blog" class="nav-dropdown-item">
+                            <div class="item-title">Research Blog</div>
+                            <div class="item-desc">Market Updates &amp; Construction News</div>
+                        </a>
+                    </div>
+                </div>
             </nav>
             <div class="header-actions">
                 <button class="btn-primary open-modal" aria-haspopup="dialog" data-magnet="brochure">Enquire Now</button>
