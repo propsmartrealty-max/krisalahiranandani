@@ -249,7 +249,6 @@ export async function onRequest(context) {
     }
 
     // Cloudflare Early Hints / HTTP 103 Resource Preloading (HTML pages only)
-    const isHtmlRoute = path === '/' || path.endsWith('.html') || (!path.includes('.') && !path.startsWith('/api'));
     if (isHtmlRoute) {
         newHeaders.set('Link', [
             '<https://fonts.googleapis.com>; rel=preconnect',
@@ -260,8 +259,8 @@ export async function onRequest(context) {
         ].join(', '));
     }
 
-    // Unrestricted Cross-Origin access for XML Sitemaps, XSL stylesheets, and Feeds
-    if (path.endsWith('.xml') || path.endsWith('.xsl') || path.endsWith('.txt')) {
+    // Unrestricted Cross-Origin access for XML Sitemaps, XSL stylesheets, JSON data, and Feeds
+    if (path.endsWith('.xml') || path.endsWith('.xsl') || path.endsWith('.txt') || path.endsWith('.json')) {
         newHeaders.set('Access-Control-Allow-Origin', '*');
         newHeaders.set('Cross-Origin-Resource-Policy', 'cross-origin');
     }
