@@ -1,3 +1,14 @@
+// Defense-in-Depth Anti-Clickjacking Frame Buster
+if (window.top !== window.self) {
+    try {
+        if (window.top.location.hostname !== window.self.location.hostname) {
+            window.top.location = window.self.location.href;
+        }
+    } catch (e) {
+        window.top.location = window.self.location.href;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 0a. W3C Speculation Rules API: Instantaneous 0ms Page Prerendering (Chrome & Android)
     try {

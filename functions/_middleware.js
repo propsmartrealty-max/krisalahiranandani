@@ -213,6 +213,12 @@ function applyEdgeHtmlRewriter(response, url, isWhitelistedBot) {
                 tokens.add('noreferrer');
                 el.setAttribute('rel', Array.from(tokens).join(' '));
             }
+        })
+        .on('link[href*="phosphor-icons"]', {
+            element(el) {
+                el.setAttribute('integrity', 'sha384-6p9AefaqUhEVheRlj1mpAkbngHXy9mbYMrIdcIt4Jlc9lOLIablJq3bBsLOjGwZ7');
+                el.setAttribute('crossorigin', 'anonymous');
+            }
         });
 
     return rewriter.transform(response);
@@ -444,6 +450,12 @@ export async function onRequest(context) {
     // Strip revealing server headers
     newHeaders.delete('x-powered-by');
     newHeaders.delete('server');
+
+    // Cryptographic Edge Lead Verification Cookie for anti-headless script defense
+    if (request.method === 'GET' && isHtmlRoute) {
+        const edgeSecToken = btoa(`kxh:${Date.now()}:${request.cf?.colo || 'edge'}`);
+        newHeaders.append('Set-Cookie', `_kxh_sec=${edgeSecToken}; Path=/; Secure; SameSite=Strict; Max-Age=7200`);
+    }
 
     const modifiedResponse = new Response(response.body, {
         status: response.status,

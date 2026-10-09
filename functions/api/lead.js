@@ -31,6 +31,21 @@ export async function onRequestPost(context) {
             });
         }
 
+        // Anti-Headless Script & Bot Token Verification
+        const cookies = request.headers.get('Cookie') || '';
+        const referer = request.headers.get('Referer') || '';
+        const hasSecCookie = cookies.includes('_kxh_sec');
+        const hasValidReferer = referer.includes('krisalahiranandani') || referer.includes('localhost') || referer.includes('127.0.0.1');
+
+        if (!hasSecCookie && !hasValidReferer) {
+            return new Response(JSON.stringify({
+                error: 'Security verification failed. Please submit inquiries directly from the official portal.'
+            }), {
+                status: 403,
+                headers: { 'Content-Type': 'application/json' }
+            });
+        }
+
         // Input sanitisation helper: strip HTML tags and script injections
         const sanitize = (str, maxLen = 120) => {
             if (!str || typeof str !== 'string') return '';
