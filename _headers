@@ -184,6 +184,34 @@
   Cache-Tag: kxh-township, kxh-html, kxh-colosseum
   Cache-Control: public, max-age=0, must-revalidate
 
+/everlyn
+  Cache-Tag: kxh-township, kxh-html, kxh-everlyn
+  Cache-Control: public, max-age=0, must-revalidate
+
+/della
+  Cache-Tag: kxh-township, kxh-html, kxh-della
+  Cache-Control: public, max-age=0, must-revalidate
+
+/neighborhood
+  Cache-Tag: kxh-township, kxh-html, kxh-neighborhood
+  Cache-Control: public, max-age=0, must-revalidate
+
+/masterplan
+  Cache-Tag: kxh-township, kxh-html, kxh-masterplan
+  Cache-Control: public, max-age=0, must-revalidate
+
+/compare
+  Cache-Tag: kxh-township, kxh-html, kxh-compare
+  Cache-Control: public, max-age=0, must-revalidate
+
+/knowledge-hub
+  Cache-Tag: kxh-township, kxh-html, kxh-knowledge-hub
+  Cache-Control: public, max-age=0, must-revalidate
+
+/blog
+  Cache-Tag: kxh-township, kxh-html, kxh-blog
+  Cache-Control: public, max-age=0, must-revalidate
+
 /google-merchant-feed.xml
   Content-Type: application/xml; charset=utf-8
   Access-Control-Allow-Origin: *

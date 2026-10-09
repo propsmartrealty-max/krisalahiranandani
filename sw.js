@@ -1,9 +1,9 @@
-const CACHE_NAME = 'krisala-hiranandani-v5';
+const CACHE_NAME = 'krisala-hiranandani-v6';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
     '/',
-    '/style.css?v=2',
+    '/style.css?v=20261009_v5',
     '/app.js',
     '/offline.html',
     '/manifest.json',
@@ -14,6 +14,7 @@ const CORE_ASSETS = [
 ];
 
 const SILO_ASSETS = [
+    '/colosseum',
     '/everlyn',
     '/arcadia',
     '/icon',

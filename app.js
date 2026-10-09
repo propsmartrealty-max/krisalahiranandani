@@ -1101,7 +1101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Zero-Latency Edge Lead Form Submissions ───────────────
     (function initEdgeLeadSubmission() {
-        document.querySelectorAll('form.enquiry-form, form#leadForm, form#exitForm').forEach(form => {
+        document.querySelectorAll('form.enquiry-form, form#leadForm, form#exitForm, form#enquiryForm, form.modal-form').forEach(form => {
             form.addEventListener('submit', async (e) => {
                 const btn = form.querySelector('button[type="submit"]');
                 const origText = btn ? btn.innerHTML : '';
