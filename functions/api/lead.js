@@ -31,15 +31,23 @@ export async function onRequestPost(context) {
             });
         }
 
-        const name = (formData.name || '').trim();
-        const phone = (formData.phone || '').trim();
-        const email = (formData.email || '').trim();
-        const config = (formData.configuration || formData.interest || '').trim();
-        const sourceUrl = (formData._source || formData.source || request.headers.get('Referer') || '').trim();
+        // Input sanitisation helper: strip HTML tags and script injections
+        const sanitize = (str, maxLen = 100) => {
+            if (!str || typeof str !== 'string') return '';
+            return str.replace(/<[^>]*>?/gm, '').replace(/[\\'";`]/g, '').trim().slice(0, maxLen);
+        };
 
-        // Validate basic inputs
-        if (!phone) {
-            return new Response(JSON.stringify({ error: 'Phone number is required' }), {
+        const name = sanitize(formData.name || '', 80);
+        const rawPhone = (formData.phone || '').trim();
+        const phone = rawPhone.replace(/[^0-9+\s-]/g, '').slice(0, 20);
+        const email = sanitize(formData.email || '', 100);
+        const config = sanitize(formData.configuration || formData.interest || '', 100);
+        const sourceUrl = sanitize(formData._source || formData.source || request.headers.get('Referer') || '', 150);
+
+        // Validate basic inputs: phone must contain at least 7 digits
+        const digitsOnly = phone.replace(/[^0-9]/g, '');
+        if (!digitsOnly || digitsOnly.length < 7) {
+            return new Response(JSON.stringify({ error: 'Please enter a valid phone number with at least 7 digits.' }), {
                 status: 400,
                 headers: { 'Content-Type': 'application/json' }
             });
@@ -54,7 +62,7 @@ export async function onRequestPost(context) {
             sourceUrl: sourceUrl,
             location: `${city}, ${country}`,
             ip: clientIp,
-            ua: userAgent
+            ua: sanitize(userAgent, 200)
         };
 
         // Forward to backup FormSubmit / webhook if configured

@@ -72,6 +72,10 @@ Allow: /knowledge-hub
 User-agent: Storebot-Google
 Allow: /
 Allow: /google-merchant-feed.xml
+Allow: /products.json
+Allow: /colosseum
+Allow: /icon
+Allow: /arcadia
 Allow: /everlyn
 Allow: /della
 

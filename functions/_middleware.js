@@ -5,7 +5,7 @@
  */
 
 const BLOCKED_EXTENSIONS = [
-    '.php', '.asp', '.aspx', '.jsp', '.cgi', '.env', '.git', '.sql', '.bak', '.config', '.ds_store'
+    '.php', '.asp', '.aspx', '.jsp', '.cgi', '.env', '.git', '.sql', '.bak', '.config', '.ds_store', '.key', '.pem', '.jsonl'
 ];
 
 const BLOCKED_PATHS = [
@@ -24,7 +24,12 @@ const BLOCKED_PATHS = [
     '/actuator',
     '/server-status',
     '/cgi-bin',
-    '/vendor/phpunit'
+    '/vendor/phpunit',
+    '/scripts',
+    '/credentials',
+    '/secret',
+    'service_account',
+    'serviceaccount'
 ];
 
 const BLOCKED_USER_AGENTS = [
