@@ -132,6 +132,25 @@ export async function onRequest(context) {
         return Response.redirect(canonicalUrl.toString(), 301);
     }
 
+    // 1c. Canonical URL Path Normalization (SEO Clean URLs at the Edge)
+    if (path === '/index.html') {
+        const canonicalUrl = new URL(request.url);
+        canonicalUrl.pathname = '/';
+        return Response.redirect(canonicalUrl.toString(), 301);
+    }
+
+    if (path.endsWith('.html') && !path.startsWith('/404') && !path.startsWith('/offline')) {
+        const canonicalUrl = new URL(request.url);
+        canonicalUrl.pathname = path.slice(0, -5);
+        return Response.redirect(canonicalUrl.toString(), 301);
+    }
+
+    if (path.length > 1 && path.endsWith('/')) {
+        const canonicalUrl = new URL(request.url);
+        canonicalUrl.pathname = path.slice(0, -1);
+        return Response.redirect(canonicalUrl.toString(), 301);
+    }
+
     // 1b. Edge Healthcheck & Observability API
     if (path === '/health' || path === '/api/health') {
         return new Response(JSON.stringify({
@@ -283,11 +302,11 @@ export async function onRequest(context) {
     // Strict Content Security Policy
     newHeaders.set('Content-Security-Policy', [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com",
+        "script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://static.cloudflareinsights.com",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com",
         "font-src 'self' https://fonts.gstatic.com https://unpkg.com",
         "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://www.google-analytics.com https://*.google.com https://*.googleapis.com https://*.gstatic.com",
-        "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com",
+        "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com https://cloudflareinsights.com",
         "frame-src 'self' https://www.google.com https://maps.google.com",
         "form-action 'self' https://formsubmit.co https://wa.me",
         "frame-ancestors 'none'",
@@ -296,6 +315,10 @@ export async function onRequest(context) {
         "manifest-src 'self'",
         "upgrade-insecure-requests"
     ].join('; '));
+
+    // Cloudflare Edge Observability Headers
+    newHeaders.set('X-Edge-Colo', request.cf?.colo || 'global');
+    newHeaders.set('X-Edge-Country', request.cf?.country || 'IN');
 
     // Edge Caching Calibration for HTML routes
     if (path === '/' || path.endsWith('.html') || !path.includes('.')) {

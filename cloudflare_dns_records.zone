@@ -22,15 +22,25 @@ www                     IN  CNAME   krisalahiranandani.pages.dev.
 @                       IN  CAA     0 issuewild "pki.goog"
 @                       IN  CAA     0 iodef "mailto:security@krisalahiranandanitownships.com"
 
-;; 3. EMAIL REPUTATION & ANTI-SPOOFING LOCKDOWN
-;; Strict SPF: Declares that NO outbound email is authorized from this domain (prevents phishing/spoofing)
+;; 3. EMAIL REPUTATION, REPORTING & ANTI-SPOOFING LOCKDOWN
+;; Strict SPF: Declares that NO outbound email is authorized directly from this domain (prevents phishing/spoofing)
 @                       IN  TXT     "v=spf1 -all"
 
-;; DMARC: Strict reject policy for any spoofed emails claiming to be from this domain
-_dmarc                  IN  TXT     "v=DMARC1; p=reject; sp=reject; aspf=s; adkim=s; fo=1"
+;; DMARC: Strict reject policy with aggregate forensic reporting to propsmartrealty@gmail.com
+_dmarc                  IN  TXT     "v=DMARC1; p=reject; sp=reject; aspf=s; adkim=s; fo=1; rua=mailto:propsmartrealty@gmail.com; ruf=mailto:propsmartrealty@gmail.com"
 
 ;; DKIM Wildcard Null Policy: Rejects all unauthorized signed emails
 *._domainkey            IN  TXT     "v=DKIM1; p="
 
-;; RFC 7505 Null MX: Informs global MTAs that this domain does not accept email
+;; Default Option A: RFC 7505 Null MX (Active when domain accepts NO incoming emails)
 @                       IN  MX      0 .
+
+;; ------------------------------------------------------------------------------
+;; OPTION B: CLOUDFLARE EMAIL ROUTING (Free Lead Forwarding to Gmail)
+;; If activating Cloudflare Email Routing to forward enquiry@ / info@ / sales@ 
+;; to propsmartrealty@gmail.com, REMOVE the Null MX above and UNCOMMENT below:
+;; ------------------------------------------------------------------------------
+;; @                       IN  MX      1   route1.mx.cloudflare.net.
+;; @                       IN  MX      5   route2.mx.cloudflare.net.
+;; @                       IN  MX      9   route3.mx.cloudflare.net.
+;; @                       IN  TXT     "v=spf1 include:_spf.mx.cloudflare.net ~all"
