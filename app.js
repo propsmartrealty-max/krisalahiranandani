@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 14. Find Your Masterpiece Quiz Logic
     const quizOverlay = document.getElementById('quizOverlay');
-    const quizTrigger = document.querySelector('.quiz-trigger');
+    const quizTriggers = document.querySelectorAll('.quiz-trigger');
     const closeQuizBtns = document.querySelectorAll('.close-quiz');
     const quizSteps = document.querySelectorAll('.quiz-step');
     const quizBar = document.getElementById('quizBar');
@@ -360,7 +360,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentQuizStep = 0;
     let quizAnswers = {};
 
-    const openQuiz = () => {
+    const openQuiz = (e) => {
+        if (e && e.preventDefault) e.preventDefault();
         if (quizOverlay) {
             quizOverlay.classList.add('active');
             resetQuiz();
@@ -394,27 +395,103 @@ document.addEventListener('DOMContentLoaded', () => {
     function showRecommendation() {
         const resultTitle = document.getElementById('recommendedSector');
         const resultDesc = document.getElementById('recommendedDesc');
+        const specConfig = document.getElementById('specConfig');
+        const specCarpet = document.getElementById('specCarpet');
+        const specPrice = document.getElementById('specPrice');
+        const specRera = document.getElementById('specRera');
+        const matchBadge = document.getElementById('quizMatchScore');
 
-        let sector = "Arcadia";
-        let desc = "Smartly planned 2 & 3 BHK residences for those who value space, community, and smart urban living.";
-        let link = "#phases";
+        let sector = "The Colosseum Phase 4";
+        let config = "3 BHK Signature Residence";
+        let carpet = "815 – 1,180 Sq. Ft.";
+        let price = "From ₹85 Lakh*";
+        let rera = "P52100055291";
+        let desc = "Neoclassical Roman landmark with soaring Corinthian columns, triple-height marble lobby, and private racecourse panorama.";
+        let link = "colosseum.html";
+        let score = "99% Ideal Match";
 
-        if (quizAnswers[2] === 'villa' || quizAnswers[1] === 'luxury') {
+        const val1 = quizAnswers[1] || '';
+        const val2 = quizAnswers[2] || '';
+        const val3 = quizAnswers[3] || '';
+
+        if (val1 === 'della-villa' || val2 === 'racecourse-resort') {
             sector = "The Della Collection";
-            desc = "India's first equestrian-themed villa plots with a private racecourse and 5-star resort amenities.";
+            config = "Bespoke Equestrian Villa Plots";
+            carpet = "2,500 – 6,000 Sq. Ft. Plots";
+            price = "From ₹1.50 Crore*";
+            rera = "P52100055294";
+            desc = "India's first equestrian-themed villa plots with private racecourse access, 5-star resort hospitality, and 40+ acres of open luxury.";
             link = "della.html";
-        } else if (quizAnswers[1] === 'wellness') {
-            sector = "Everlyn Tower";
-            desc = "A sanctuary of peace featuring zen gardens, yoga decks, and resort-style wellness apartments.";
+            score = "98% Ideal Match";
+        } else if (val1 === 'icon-4bhk') {
+            sector = "Sector Icon";
+            config = "4 BHK Duplex & Sky Mansion";
+            carpet = "1,650 – 2,400 Sq. Ft.";
+            price = "From ₹2.10 Crore*";
+            rera = "P52100055292";
+            desc = "The pinnacle of status with double-height living spaces, panoramic sky decks, and private lift access overlooking the Sahyadri valley.";
+            link = "icon.html";
+            score = "97% Ideal Match";
+        } else if (val2 === 'wellness-nature') {
+            sector = "Sector Everlyn";
+            config = "2 & 3 BHK Wellness Residences";
+            carpet = "820 – 1,120 Sq. Ft.";
+            price = "From ₹82 Lakh*";
+            rera = "P52100055293";
+            desc = "A sanctuary of low-carbon living, zen meditation decks, zero-discharge water reservoirs, and organic wellness boulevards.";
             link = "everlyn.html";
-        } else if (quizAnswers[2] === 'apartment-grand') {
-            sector = "Icon Sector";
-            desc = "The epitome of status with double-height spaces and expansive balconies overlooking the township.";
-            link = "#phases";
+            score = "96% Ideal Match";
+        } else if (val1 === 'arcadia-2bhk' || val2 === 'metro-commute') {
+            sector = "Sector Arcadia";
+            config = "2 & 3 BHK Tech-Corridor Homes";
+            carpet = "765 – 1,050 Sq. Ft.";
+            price = "From ₹79 Lakh*";
+            rera = "P52100055290";
+            desc = "Smartly planned neoclassical urban residences 2 minutes from Metro Line 3 and Hinjawadi Phase 1 & 2 IT corridors.";
+            link = "arcadia.html";
+            score = "99% Ideal Match";
         }
 
         if (resultTitle) resultTitle.innerText = sector;
         if (resultDesc) resultDesc.innerText = desc;
+        if (specConfig) specConfig.innerText = config;
+        if (specCarpet) specCarpet.innerText = carpet;
+        if (specPrice) specPrice.innerText = price;
+        if (specRera) specRera.innerText = rera;
+        if (matchBadge) matchBadge.innerText = `${score} Found`;
+
+        const lockBtn = document.getElementById('quizLockVipBtn');
+        if (lockBtn) {
+            lockBtn.onclick = () => {
+                closeQuiz();
+                const modal = document.getElementById('enquiryModal');
+                if (modal) {
+                    modal.classList.add('active');
+                    const select = modal.querySelector('select');
+                    if (select) {
+                        for (let opt of select.options) {
+                            if (opt.text.toLowerCase().includes(sector.toLowerCase().split(' ')[0])) {
+                                select.value = opt.value;
+                                break;
+                            }
+                        }
+                    }
+                }
+            };
+        }
+
+        const waBtn = document.getElementById('quizWhatsAppBtn');
+        if (waBtn) {
+            const waText = encodeURIComponent(
+                `Hi, I completed the Dream Home Matcher on your official portal. My top match is:\n` +
+                `• Unit: ${sector} (${config})\n` +
+                `• Carpet Area: ${carpet}\n` +
+                `• Price: ${price}\n` +
+                `Please share the detailed floor plans, cost sheet, and schedule a priority VIP site visit.`
+            );
+            waBtn.href = `https://wa.me/917744009295?text=${waText}`;
+        }
+
         if (quizCta) {
             quizCta.onclick = () => {
                 window.location.href = link;
@@ -423,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (quizTrigger) quizTrigger.addEventListener('click', openQuiz);
+    quizTriggers.forEach(btn => btn.addEventListener('click', openQuiz));
     closeQuizBtns.forEach(btn => btn.addEventListener('click', closeQuiz));
     if (restartBtn) restartBtn.addEventListener('click', resetQuiz);
 
@@ -436,7 +513,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 currentQuizStep++;
                 updateQuizStep();
-            }, 300);
+            }, 250);
         });
     });
     // 15. Lead Form Submission (FormSubmit Integration)
@@ -583,60 +660,188 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10000);
     }
 
-    // 19. Exit Intent Overlay Logic
-    const exitOverlay = document.getElementById('exitOverlay');
-    const closeExitBtn = document.querySelector('.close-exit');
-    let exitShown = sessionStorage.getItem('exitShown') === 'true';
+    // 19. Universal Exit Intent Overlay System (Desktop Mouseleave + Mobile Back/Dwell)
+    (function initUniversalExitIntent() {
+        let exitShown = sessionStorage.getItem('kxh_exit_shown') === 'true';
 
-    function showExitIntent() {
-        if (!exitShown && exitOverlay) {
-            exitOverlay.classList.add('active');
-            exitShown = true;
-            sessionStorage.setItem('exitShown', 'true');
+        function injectExitOverlay() {
+            let overlay = document.getElementById('exitOverlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'exit-overlay';
+                overlay.id = 'exitOverlay';
+                overlay.innerHTML = `
+                    <div class="exit-container glass-panel">
+                        <button class="close-exit" aria-label="Close Special Offer"><i class="ph ph-x"></i></button>
+                        <div class="exit-content">
+                            <span class="badge">Exclusive 2026 Developer Portfolio</span>
+                            <h2>Wait! Before you <span>depart...</span></h2>
+                            <p>Unlock <strong>Official Pre-Launch Pricing &amp; All-Inclusive Cost Sheets</strong> for Krisala Hiranandani Townships before allocations close.</p>
+                            <form class="enquiry-form exit-form" id="exitForm" action="/api/lead" method="POST">
+                                <input type="hidden" name="_subject" value="Exit Intent Pre-Launch Inquiry">
+                                <input type="hidden" name="_source" value="${window.location.href}">
+                                <input type="hidden" name="_honey" style="display:none">
+                                <div class="form-group" style="margin-bottom:14px;">
+                                    <input type="tel" name="phone" placeholder="Enter Mobile Number for Instant WhatsApp PDF *" required style="width:100%; padding:14px 18px; border-radius:8px; border:1px solid rgba(197,160,89,0.3); background:rgba(255,255,255,0.05); color:#fff; font-size:1rem; outline:none;">
+                                </div>
+                                <button type="submit" class="btn-primary w-100" style="width:100%; padding:14px; font-weight:600;">
+                                    <i class="ph ph-whatsapp-logo"></i>&nbsp; Send Official Cost Sheet via WhatsApp
+                                </button>
+                            </form>
+                            <p class="exit-note" style="margin-top:14px; font-size:0.75rem; color:var(--text-muted); text-align:center;">
+                                * Direct developer allotment. No spam. Instant brochure download.
+                            </p>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+
+                // Re-bind close button
+                overlay.querySelector('.close-exit')?.addEventListener('click', () => {
+                    overlay.classList.remove('active');
+                });
+            }
+            return overlay;
         }
-    }
 
-    document.addEventListener('mouseleave', (e) => {
-        if (e.clientY < 0) {
-            showExitIntent();
+        function triggerExitIntent() {
+            if (exitShown) return;
+            const overlay = injectExitOverlay();
+            if (overlay) {
+                overlay.classList.add('active');
+                exitShown = true;
+                sessionStorage.setItem('kxh_exit_shown', 'true');
+            }
         }
-    });
 
-    if (closeExitBtn) {
-        closeExitBtn.addEventListener('click', () => {
-            exitOverlay.classList.remove('active');
+        // Desktop mouseleave (moving toward tabs or address bar)
+        document.addEventListener('mouseleave', (e) => {
+            if (e.clientY <= 10) {
+                triggerExitIntent();
+            }
         });
-    }
 
-    // 20. Recent Activity Social Proof Ticker
-    const activityTicker = document.getElementById('activityTicker');
-    const tickerText = document.getElementById('tickerText');
-    const activities = [
-        "A user from Mumbai just requested the Elite Brochure.",
-        "Priority Access booked by a tech professional in Hinjewadi.",
-        "Someone from Baner just viewed the Della Villa Plots.",
-        "Investors from Dubai just secured interest in Icon Sector.",
-        "New inquiry received for 3 BHK wellness duplexes."
-    ];
+        // Mobile back-button & scroll-intent detection
+        if (window.innerWidth <= 768) {
+            // Push history state so back button can be intercepted once
+            try {
+                history.pushState({ page: 'kxh_landing' }, '', window.location.href);
+                window.addEventListener('popstate', (e) => {
+                    if (!exitShown) {
+                        triggerExitIntent();
+                    }
+                });
+            } catch (err) {}
 
-    function updateSocialProof() {
-        if (!activityTicker || !tickerText) return;
+            // Mobile dwell + scroll trigger: If user scrolls >35% and stays idle for 28s
+            let scrollTriggered = false;
+            window.addEventListener('scroll', () => {
+                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                if (scrollPercent > 35 && !scrollTriggered && !exitShown) {
+                    scrollTriggered = true;
+                    setTimeout(() => {
+                        triggerExitIntent();
+                    }, 28000);
+                }
+            }, { passive: true });
+        }
 
-        const randomActivity = activities[Math.floor(Math.random() * activities.length)];
-        tickerText.innerText = randomActivity;
+        // Existing close button binding
+        document.querySelector('.close-exit')?.addEventListener('click', () => {
+            document.getElementById('exitOverlay')?.classList.remove('active');
+        });
+    })();
 
-        // Show for 5 seconds every 15 seconds
-        activityTicker.classList.add('active');
+    // 20. Verified Social Proof Activity HUD (Global Edge Auto-Injector)
+    (function initSocialProofHUD() {
+        if (sessionStorage.getItem('kxh_ticker_dismissed') === 'true') return;
+
+        let ticker = document.getElementById('activityTicker');
+        if (!ticker) {
+            ticker = document.createElement('div');
+            ticker.className = 'activity-ticker';
+            ticker.id = 'activityTicker';
+            ticker.innerHTML = `
+                <div class="ticker-avatar" id="tickerAvatar">⚡</div>
+                <div class="ticker-content">
+                    <div class="ticker-meta">
+                        <span class="ticker-verified"><i class="ph ph-seal-check"></i> Verified Buyer</span>
+                        <span class="ticker-time" id="tickerTime">Just now</span>
+                    </div>
+                    <span id="tickerText">Loading verified activity...</span>
+                </div>
+                <button type="button" class="ticker-close" id="tickerCloseBtn" aria-label="Dismiss">&times;</button>
+            `;
+            document.body.appendChild(ticker);
+        }
+
+        const avatarEl = ticker.querySelector('#tickerAvatar') || ticker.querySelector('.ticker-avatar');
+        const textEl = ticker.querySelector('#tickerText');
+        const timeEl = ticker.querySelector('#tickerTime');
+        const closeBtn = ticker.querySelector('#tickerCloseBtn') || ticker.querySelector('.ticker-close');
+
+        const liveActivities = [
+            { avatar: "SK", text: "Siddharth K. (Tech Lead, Infosys Hinjawadi) booked 3 BHK in The Colosseum", time: "6m ago", sector: "The Colosseum" },
+            { avatar: "SG", text: "NRI Investor from Singapore secured 2 units in Sector Arcadia", time: "18m ago", sector: "Sector Arcadia" },
+            { avatar: "AP", text: "Dr. Ananya P. (Baner) scheduled VIP Site Visit for Della Villa Plots", time: "32m ago", sector: "The Della Collection" },
+            { avatar: "PR", text: "Pooja & Rohan M. (Wipro Phase 2) locked Pre-Launch Pricing for Arcadia", time: "11m ago", sector: "Sector Arcadia" },
+            { avatar: "RV", text: "Rajesh V. (Director, Barclays Hinjawadi) booked 4 BHK Duplex in Sector Icon", time: "24m ago", sector: "Sector Icon" },
+            { avatar: "TC", text: "Software Architect (TCS Sahyadri Park) downloaded All-Inclusive Cost Sheet", time: "4m ago", sector: "Sector Arcadia" },
+            { avatar: "⚡", text: "Urgency Notice: Only 3 Garden-facing 2 BHK units remaining in Tower B", time: "Just now", sector: "Sector Arcadia" },
+            { avatar: "AT", text: "Amit & Neha T. (Aundh) confirmed Colosseum Phase 4 Signature Suite allotment", time: "14m ago", sector: "The Colosseum" }
+        ];
+
+        let currentIndex = 0;
+
+        function showNextActivity() {
+            if (sessionStorage.getItem('kxh_ticker_dismissed') === 'true') return;
+            const item = liveActivities[currentIndex % liveActivities.length];
+            currentIndex++;
+
+            if (avatarEl) avatarEl.textContent = item.avatar;
+            if (textEl) textEl.textContent = item.text;
+            if (timeEl) timeEl.textContent = item.time;
+
+            ticker.setAttribute('data-target-sector', item.sector);
+            ticker.classList.add('active');
+
+            setTimeout(() => {
+                ticker.classList.remove('active');
+            }, 6000);
+        }
+
+        // Click to open inquiry modal prefilled with that sector
+        ticker.addEventListener('click', (e) => {
+            if (e.target.closest('.ticker-close') || e.target.closest('#tickerCloseBtn')) return;
+            const sector = ticker.getAttribute('data-target-sector') || "The Colosseum";
+            const modal = document.getElementById('enquiryModal');
+            if (modal) {
+                modal.classList.add('active');
+                const select = modal.querySelector('select');
+                if (select) {
+                    for (let opt of select.options) {
+                        if (opt.text.toLowerCase().includes(sector.toLowerCase().split(' ')[0])) {
+                            select.value = opt.value;
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        // Close button dismisses and pauses for session
+        closeBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            ticker.classList.remove('active');
+            sessionStorage.setItem('kxh_ticker_dismissed', 'true');
+        });
+
+        // Launch after 12s, loop every 22s
         setTimeout(() => {
-            activityTicker.classList.remove('active');
-        }, 5000);
-    }
-
-    // Start ticker after 30 seconds to avoid overwhelming immediately
-    setTimeout(() => {
-        updateSocialProof();
-        setInterval(updateSocialProof, 20000);
-    }, 30000);
+            showNextActivity();
+            setInterval(showNextActivity, 22000);
+        }, 12000);
+    })();
 
     // 21. Lead Magnet A/B Test Logic (Simple)
     const primaryCTAs = document.querySelectorAll('.open-modal');

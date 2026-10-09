@@ -628,6 +628,9 @@
                     <button class="btn-primary open-modal" aria-haspopup="dialog">
                         <i class="ph ph-file-pdf"></i>&nbsp; Request Price Sheet
                     </button>
+                    <a href="#cost-calculator" class="btn-secondary">
+                        <i class="ph ph-calculator"></i>&nbsp; Cost Sheet Calculator
+                    </a>
                     <a href="tel:+917744009295" class="btn-outline">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg>&nbsp; Call Concierge
                     </a>
@@ -888,77 +891,253 @@
     <!-- ══════════════════════════════════════
          EMI CALCULATOR
     ══════════════════════════════════════ -->
-    <section class="section" aria-labelledby="emi-calc-heading">
+    <section class="section" aria-labelledby="emi-calc-heading" id="cost-calculator">
         <div class="container">
             <div class="section-title text-center">
-                <span class="badge"><i class="ph ph-calculator"></i>&nbsp; Financial Planning Tool</span>
-                <h2 id="emi-calc-heading" style="margin-top:16px;">Home Loan EMI Calculator</h2>
+                <span class="badge"><i class="ph ph-calculator"></i>&nbsp; Official Statutory Cost &amp; Mortgage Suite</span>
+                <h2 id="emi-calc-heading" style="margin-top:16px;">Maharashtra All-Inclusive Cost Sheet &amp; EMI Optimizer</h2>
                 <div class="title-line"></div>
-                <p class="subtitle">Estimate your monthly EMI. Adjust loan amount, interest rate &amp; tenure in real time.</p>
+                <p class="subtitle">Accurate MahaRERA Ready-Reckoner statutory breakup (Stamp Duty, Metro Cess, Registration &amp; GST) with real-time pre-approved bank mortgage rates.</p>
             </div>
 
-            <div class="emi-calc-wrap scroll-reveal">
-                <!-- Loan Amount -->
-                <div class="emi-field">
-                    <label for="emi-principal">Loan Amount</label>
-                    <input type="range" id="emi-principal" min="2000000" max="40000000" step="100000" value="8000000"
-                        oninput="calcEMI()" aria-label="Loan amount slider">
-                    <div class="range-val">
-                        <span>₹20 L</span>
-                        <strong id="emi-principal-val">₹80 L</strong>
-                        <span>₹4 Cr</span>
-                    </div>
+            <div class="cost-calc-container scroll-reveal">
+                <!-- Navigation Tabs -->
+                <div class="calc-tabs-header">
+                    <button type="button" class="calc-tab-pill active" id="tabCostSheetBtn" onclick="switchCalcTab('costSheet')">
+                        <i class="ph ph-receipt"></i>&nbsp; All-Inclusive Cost Sheet Breakup
+                    </button>
+                    <button type="button" class="calc-tab-pill" id="tabMortgageBtn" onclick="switchCalcTab('mortgage')">
+                        <i class="ph ph-bank"></i>&nbsp; Bank EMI &amp; Loan Comparison
+                    </button>
                 </div>
-                <!-- Interest Rate -->
-                <div class="emi-field">
-                    <label for="emi-rate">Interest Rate (p.a.)</label>
-                    <input type="range" id="emi-rate" min="6.5" max="12" step="0.1" value="8.5"
-                        oninput="calcEMI()" aria-label="Interest rate slider">
-                    <div class="range-val">
-                        <span>6.5%</span>
-                        <strong id="emi-rate-val">8.5%</strong>
-                        <span>12%</span>
-                    </div>
-                </div>
-                <!-- Tenure -->
-                <div class="emi-field">
-                    <label for="emi-tenure">Loan Tenure</label>
-                    <input type="range" id="emi-tenure" min="5" max="30" step="1" value="20"
-                        oninput="calcEMI()" aria-label="Loan tenure slider">
-                    <div class="range-val">
-                        <span>5 years</span>
-                        <strong id="emi-tenure-val">20 years</strong>
-                        <span>30 years</span>
+
+                <!-- Unit Presets -->
+                <div class="unit-preset-selector">
+                    <label style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); display:block; margin-bottom:10px;">
+                        Select Township Residence Configuration:
+                    </label>
+                    <div class="unit-chip-cluster" id="unitChipCluster">
+                        <button type="button" class="unit-chip-btn active" data-price="7900000" data-name="2 BHK Luxury — Sector Arcadia">
+                            <strong>2 BHK Luxury</strong>
+                            <span>Arcadia • ₹79 Lakh*</span>
+                        </button>
+                        <button type="button" class="unit-chip-btn" data-price="8500000" data-name="The Colosseum Signature 3 BHK (Phase 4)">
+                            <strong>The Colosseum</strong>
+                            <span>Roman Landmark • ₹85 Lakh*</span>
+                        </button>
+                        <button type="button" class="unit-chip-btn" data-price="11800000" data-name="3 BHK Grande — Sector Arcadia">
+                            <strong>3 BHK Grande</strong>
+                            <span>Arcadia • ₹1.18 Crore*</span>
+                        </button>
+                        <button type="button" class="unit-chip-btn" data-price="21000000" data-name="4 BHK Duplex Mansion — Sector Icon">
+                            <strong>4 BHK Duplex</strong>
+                            <span>Icon Sky Residence • ₹2.10 Cr*</span>
+                        </button>
+                        <button type="button" class="unit-chip-btn" data-price="15000000" data-name="Della Bespoke Equestrian Villa Plot">
+                            <strong>Della Villa Plot</strong>
+                            <span>Equestrian Estate • ₹1.50 Cr*</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Result -->
-                <div class="emi-result" id="emi-result" aria-live="polite">
-                    <div class="emi-label">Monthly EMI</div>
-                    <div class="emi-amount" id="emi-amount">₹69,434</div>
-                    <div class="emi-sub">Based on ₹80L loan @ 8.5% for 20 years</div>
-                </div>
-                <div class="emi-grid" id="emi-stats">
-                    <div class="emi-stat">
-                        <div class="es-label">Total Interest Payable</div>
-                        <div class="es-value" id="emi-interest">₹86.64 L</div>
+                <!-- TAB 1: ALL-INCLUSIVE COST SHEET -->
+                <div id="costSheetTabPane">
+                    <div class="emi-field" style="margin-top:20px;">
+                        <label for="customAgreementVal">Base Agreement Value</label>
+                        <input type="range" id="customAgreementVal" min="5000000" max="40000000" step="100000" value="7900000"
+                            oninput="onPriceSliderChange()" aria-label="Base Agreement Value slider">
+                        <div class="range-val">
+                            <span>₹50 L</span>
+                            <strong id="displayAgreementVal">₹79.00 L</strong>
+                            <span>₹4.00 Cr</span>
+                        </div>
                     </div>
-                    <div class="emi-stat">
-                        <div class="es-label">Total Amount Payable</div>
-                        <div class="es-value" id="emi-total">₹1.67 Cr</div>
+
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin:20px 0;">
+                        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:12px 16px;">
+                            <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">Stamp Duty Regime</label>
+                            <select id="stampDutyRate" onchange="recalculateAll()" style="width:100%; background:rgba(8,8,10,0.8); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:8px 12px; border-radius:6px; font-size:0.88rem; outline:none;">
+                                <option value="0.07" selected>7% (6% Stamp Duty + 1% Pune Metro Cess)</option>
+                                <option value="0.06">6% Standard Maharashtra Residential</option>
+                            </select>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:12px 16px;">
+                            <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">View &amp; Preferred Location (PLC)</label>
+                            <select id="plcOption" onchange="recalculateAll()" style="width:100%; background:rgba(8,8,10,0.8); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:8px 12px; border-radius:6px; font-size:0.88rem; outline:none;">
+                                <option value="0" selected>Standard Premium Facing (0% PLC)</option>
+                                <option value="0.03">Racecourse &amp; Sahyadri View (+3% PLC)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Statutory Cost Sheet Breakdown -->
+                    <div class="cost-breakdown-card">
+                        <table class="cost-breakdown-table" aria-label="MahaRERA Statutory Cost Breakdown">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Base Agreement Value</strong>
+                                        <span class="statutory-note">Calculated unit base cost according to carpet area &amp; layout</span>
+                                    </td>
+                                    <td id="tableAgreement">₹79,00,000</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Preferred Location Charges (PLC)</strong>
+                                        <span class="statutory-note" id="plcNote">Standard view included</span>
+                                    </td>
+                                    <td id="tablePLC">₹0</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Maharashtra Stamp Duty</strong>
+                                        <span class="statutory-note" id="stampDutyNote">6% + 1% Metro Cess (PCMC / PMC Statutory)</span>
+                                    </td>
+                                    <td id="tableStampDuty">₹5,53,000</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Govt Registration Fee</strong>
+                                        <span class="statutory-note">Statutory ceiling capped by Govt of Maharashtra</span>
+                                    </td>
+                                    <td id="tableReg">₹30,000</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>GST (Goods &amp; Services Tax)</strong>
+                                        <span class="statutory-note">5% standard under-construction MahaRERA rate (Zero ITC)</span>
+                                    </td>
+                                    <td id="tableGST">₹3,95,000</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Infrastructure, Society &amp; Corpus Fund</strong>
+                                        <span class="statutory-note">Covered clubhouse access, legal documentation, electric &amp; water share</span>
+                                    </td>
+                                    <td id="tableInfra">₹2,50,000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="cost-grand-total-box">
+                            <div>
+                                <span class="cgt-label">Estimated All-Inclusive On-Road Total</span>
+                                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">*Subject to floor rise &amp; prevailing MahaRERA booking terms</div>
+                            </div>
+                            <div class="cgt-amount" id="tableGrandTotal">₹91,28,000</div>
+                        </div>
                     </div>
                 </div>
-                <p style="font-size:0.76rem;color:var(--text-muted);text-align:center;margin-top:16px;">
-                    * Indicative calculation only. Actual EMI may vary based on your credit profile, bank policies &amp; processing fees. Contact our finance team for pre-approval assistance.
-                </p>
-                <div style="text-align:center;margin-top:20px;">
-                    <a href="tel:+917744009295" class="btn-outline" style="margin-right:12px;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg>&nbsp; Speak to Finance Team
+
+                <!-- TAB 2: BANK MORTGAGE & EMI OPTIMIZER -->
+                <div id="mortgageTabPane" style="display:none;">
+                    <!-- Down Payment & Loan Amount Split -->
+                    <div class="emi-field" style="margin-top:20px;">
+                        <label for="emi-downpayment">Down Payment Share: <span id="downpayment-percent-txt" style="color:var(--gold-light);">20%</span> (<span id="downpayment-rupee-txt" style="color:#fff;">₹15.80 L</span>)</label>
+                        <input type="range" id="emi-downpayment" min="10" max="50" step="5" value="20"
+                            oninput="onDownPaymentChange()" aria-label="Down Payment percentage slider">
+                        <div class="range-val">
+                            <span>10% (Min)</span>
+                            <strong id="loan-amount-txt">Net Loan: ₹63.20 L</strong>
+                            <span>50% (Max)</span>
+                        </div>
+                    </div>
+
+                    <!-- Bank Presets -->
+                    <div style="margin:20px 0 10px;">
+                        <label style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); display:block; margin-bottom:8px;">
+                            Pre-Approved Township Lenders (Click to compare rates):
+                        </label>
+                        <div class="bank-presets-container">
+                            <button type="button" class="bank-card-pill active" onclick="selectBankRate(8.40, this)">
+                                <strong>SBI Home Loan</strong>
+                                <span>8.40% p.a.</span>
+                            </button>
+                            <button type="button" class="bank-card-pill" onclick="selectBankRate(8.50, this)">
+                                <strong>HDFC Bank</strong>
+                                <span>8.50% p.a.</span>
+                            </button>
+                            <button type="button" class="bank-card-pill" onclick="selectBankRate(8.55, this)">
+                                <strong>ICICI Bank</strong>
+                                <span>8.55% p.a.</span>
+                            </button>
+                            <button type="button" class="bank-card-pill" onclick="selectBankRate(8.45, this)">
+                                <strong>Bank of Baroda</strong>
+                                <span>8.45% p.a.</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Interest Rate Slider -->
+                    <div class="emi-field">
+                        <label for="emi-rate">Interest Rate (Annual %)</label>
+                        <input type="range" id="emi-rate" min="6.5" max="12" step="0.05" value="8.40"
+                            oninput="recalculateEMIOnly()" aria-label="Interest rate slider">
+                        <div class="range-val">
+                            <span>6.5%</span>
+                            <strong id="emi-rate-val">8.40%</strong>
+                            <span>12%</span>
+                        </div>
+                    </div>
+
+                    <!-- Tenure Slider -->
+                    <div class="emi-field">
+                        <label for="emi-tenure">Loan Tenure</label>
+                        <input type="range" id="emi-tenure" min="5" max="30" step="1" value="20"
+                            oninput="recalculateEMIOnly()" aria-label="Loan tenure slider">
+                        <div class="range-val">
+                            <span>5 years</span>
+                            <strong id="emi-tenure-val">20 years</strong>
+                            <span>30 years</span>
+                        </div>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div class="emi-result" id="emi-result" aria-live="polite">
+                        <div class="emi-label">Estimated Monthly EMI</div>
+                        <div class="emi-amount" id="emi-amount">₹54,490</div>
+                        <div class="emi-sub" id="emi-sub-summary">Based on ₹63.20 L loan @ 8.40% for 20 years</div>
+                    </div>
+
+                    <!-- Amortization Visual Bar -->
+                    <div class="amortization-progress-wrap">
+                        <div class="amort-legend">
+                            <span><span class="dot-p"></span> Principal: <strong id="legendPrincipal" style="color:#fff; margin-left:4px;">₹63.20 L</strong></span>
+                            <span><span class="dot-i"></span> Total Interest: <strong id="legendInterest" style="color:var(--gold-light); margin-left:4px;">₹67.58 L</strong></span>
+                        </div>
+                        <div class="amortization-track">
+                            <div class="amort-p-fill" id="barPrincipal" style="width:48%;"></div>
+                            <div class="amort-i-fill" id="barInterest" style="width:52%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="emi-grid" id="emi-stats">
+                        <div class="emi-stat">
+                            <div class="es-label">Total Interest Payable</div>
+                            <div class="es-value" id="emi-interest">₹67.58 L</div>
+                        </div>
+                        <div class="emi-stat">
+                            <div class="es-label">Total Repayment Amount</div>
+                            <div class="es-value" id="emi-total">₹1.31 Cr</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- High-Conversion Action CTAs -->
+                <div class="calc-action-buttons">
+                    <button type="button" class="btn-outline" onclick="window.print()" style="padding:12px 20px;">
+                        <i class="ph ph-printer"></i>&nbsp; Print / Save PDF Cost Sheet
+                    </button>
+                    <a href="https://wa.me/917744009295" target="_blank" class="btn-secondary" id="calcWhatsAppBtn" style="padding:12px 20px;">
+                        <i class="ph ph-whatsapp-logo"></i>&nbsp; Share Breakdown on WhatsApp
                     </a>
-                    <button class="btn-primary open-modal">
-                        <i class="ph ph-file-arrow-down"></i>&nbsp; Get Loan Eligibility
+                    <button type="button" class="btn-primary open-modal" id="calcLockOfferBtn" style="padding:12px 24px;">
+                        <i class="ph ph-ticket"></i>&nbsp; Lock Pre-Launch Allotment
                     </button>
                 </div>
+
+                <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;margin-top:20px; line-height:1.4;">
+                    * All calculations comply with Maharashtra Real Estate Regulatory Authority (MahaRERA) guidelines and Ready Reckoner rules for Pune / PCMC. Bank loan eligibility is subject to credit assessment and processing criteria.
+                </p>
             </div>
         </div>
     </section>
@@ -1392,36 +1571,179 @@
          INLINE SCRIPTS
     ══════════════════════════════════════ -->
     <script>
-        /* ── EMI Calculator ────────────────────────── */
-        function calcEMI() {
-            const P = parseFloat(document.getElementById('emi-principal').value);
-            const annualRate = parseFloat(document.getElementById('emi-rate').value);
-            const years = parseInt(document.getElementById('emi-tenure').value);
-            const r = annualRate / 12 / 100;
-            const n = years * 12;
-            const emi = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
-            const totalPay = emi * n;
-            const totalInterest = totalPay - P;
+        /* ── All-Inclusive Statutory Cost Sheet & Mortgage Planner Engine ── */
+        let currentUnitName = "2 BHK Luxury — Sector Arcadia";
+        let currentAgreementVal = 7900000;
+        let currentStampDutyRate = 0.07;
+        let currentPLC = 0;
+        let currentDownPaymentPercent = 20;
+        let currentInterestRate = 8.40;
+        let currentTenureYears = 20;
 
-            // Update display values
-            document.getElementById('emi-principal-val').textContent = '₹' + formatAmount(P);
-            document.getElementById('emi-rate-val').textContent = annualRate.toFixed(1) + '%';
-            document.getElementById('emi-tenure-val').textContent = years + ' years';
-            document.getElementById('emi-amount').textContent = '₹' + Math.round(emi).toLocaleString('en-IN');
-            document.getElementById('emi-interest').textContent = '₹' + formatAmount(totalInterest);
-            document.getElementById('emi-total').textContent = '₹' + formatAmount(totalPay);
-            document.querySelector('.emi-sub').textContent =
-                'Based on ₹' + formatAmount(P) + ' loan @ ' + annualRate.toFixed(1) + '% for ' + years + ' years';
+        function formatINR(val) {
+            return '₹' + Math.round(val).toLocaleString('en-IN');
         }
 
-        function formatAmount(val) {
-            if (val >= 10000000) return (val / 10000000).toFixed(2) + ' Cr';
-            if (val >= 100000) return (val / 100000).toFixed(2) + ' L';
-            return Math.round(val).toLocaleString('en-IN');
+        function formatLakhCr(val) {
+            if (val >= 10000000) return '₹' + (val / 10000000).toFixed(2) + ' Cr';
+            if (val >= 100000) return '₹' + (val / 100000).toFixed(2) + ' L';
+            return formatINR(val);
         }
 
-        // Init on load
-        calcEMI();
+        function switchCalcTab(tab) {
+            const costTabBtn = document.getElementById('tabCostSheetBtn');
+            const mortTabBtn = document.getElementById('tabMortgageBtn');
+            const costPane = document.getElementById('costSheetTabPane');
+            const mortPane = document.getElementById('mortgageTabPane');
+
+            if (tab === 'costSheet') {
+                costTabBtn.classList.add('active');
+                mortTabBtn.classList.remove('active');
+                costPane.style.display = 'block';
+                mortPane.style.display = 'none';
+            } else {
+                costTabBtn.classList.remove('active');
+                mortTabBtn.classList.add('active');
+                costPane.style.display = 'none';
+                mortPane.style.display = 'block';
+                recalculateEMIOnly();
+            }
+        }
+
+        function onPriceSliderChange() {
+            currentAgreementVal = parseFloat(document.getElementById('customAgreementVal').value);
+            document.getElementById('displayAgreementVal').textContent = formatLakhCr(currentAgreementVal);
+            // Deselect chip if custom value doesn't match
+            document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(btn => {
+                if (parseFloat(btn.dataset.price) === currentAgreementVal) {
+                    btn.classList.add('active');
+                    currentUnitName = btn.dataset.name;
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            recalculateAll();
+        }
+
+        function selectBankRate(rate, btn) {
+            currentInterestRate = rate;
+            document.querySelectorAll('.bank-card-pill').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            document.getElementById('emi-rate').value = rate;
+            document.getElementById('emi-rate-val').textContent = rate.toFixed(2) + '%';
+            recalculateEMIOnly();
+        }
+
+        function onDownPaymentChange() {
+            currentDownPaymentPercent = parseInt(document.getElementById('emi-downpayment').value);
+            document.getElementById('downpayment-percent-txt').textContent = currentDownPaymentPercent + '%';
+            recalculateEMIOnly();
+        }
+
+        function recalculateAll() {
+            currentStampDutyRate = parseFloat(document.getElementById('stampDutyRate').value);
+            currentPLC = parseFloat(document.getElementById('plcOption').value);
+
+            const agreement = currentAgreementVal;
+            const plcVal = Math.round(agreement * currentPLC);
+            const effectiveAgreement = agreement + plcVal;
+            const stampDuty = Math.round(effectiveAgreement * currentStampDutyRate);
+            const registration = 30000; // Flat Maharashtra residential cap
+            const gst = Math.round(effectiveAgreement * 0.05); // 5% RERA residential
+            const infra = 250000;
+            const grandTotal = effectiveAgreement + stampDuty + registration + gst + infra;
+
+            // Update Cost Sheet Table
+            document.getElementById('tableAgreement').textContent = formatINR(agreement);
+            document.getElementById('tablePLC').textContent = plcVal > 0 ? formatINR(plcVal) : '₹0';
+            document.getElementById('plcNote').textContent = plcVal > 0 ? '+3% Preferred Location Charges applied' : 'Standard premium view included';
+            document.getElementById('tableStampDuty').textContent = formatINR(stampDuty);
+            document.getElementById('stampDutyNote').textContent = currentStampDutyRate === 0.07 ? '6% Standard + 1% Pune Metro Cess (7% Total)' : '6% Standard Maharashtra Residential';
+            document.getElementById('tableReg').textContent = formatINR(registration);
+            document.getElementById('tableGST').textContent = formatINR(gst);
+            document.getElementById('tableInfra').textContent = formatINR(infra);
+            document.getElementById('tableGrandTotal').textContent = formatINR(grandTotal);
+
+            // Update Mortgage inputs
+            recalculateEMIOnly(grandTotal, effectiveAgreement);
+
+            // Sync WhatsApp Share Link
+            const waText = encodeURIComponent(
+                `Hi, I calculated the All-Inclusive Cost Sheet for "${currentUnitName}" on your official portal:\n` +
+                `• Agreement Value: ${formatINR(agreement)}\n` +
+                `• Stamp Duty & Metro Cess: ${formatINR(stampDuty)}\n` +
+                `• Registration: ${formatINR(registration)}\n` +
+                `• GST (5%): ${formatINR(gst)}\n` +
+                `• Estimated On-Road Total: ${formatINR(grandTotal)}\n\n` +
+                `Please share the confirmed developer payment schedule and available inventory.`
+            );
+            const waBtn = document.getElementById('calcWhatsAppBtn');
+            if (waBtn) waBtn.href = `https://wa.me/917744009295?text=${waText}`;
+
+            // Sync Lock Offer modal button
+            const lockBtn = document.getElementById('calcLockOfferBtn');
+            if (lockBtn) {
+                lockBtn.setAttribute('data-unit', currentUnitName);
+                lockBtn.setAttribute('data-price', formatINR(grandTotal));
+            }
+        }
+
+        function recalculateEMIOnly() {
+            const agreement = currentAgreementVal * (1 + currentPLC);
+            currentDownPaymentPercent = parseInt(document.getElementById('emi-downpayment').value);
+            const downpaymentVal = Math.round(agreement * (currentDownPaymentPercent / 100));
+            const loanPrincipal = Math.max(agreement - downpaymentVal, 500000);
+
+            document.getElementById('downpayment-percent-txt').textContent = currentDownPaymentPercent + '%';
+            document.getElementById('downpayment-rupee-txt').textContent = formatLakhCr(downpaymentVal);
+            document.getElementById('loan-amount-txt').textContent = 'Net Loan: ' + formatLakhCr(loanPrincipal);
+
+            currentInterestRate = parseFloat(document.getElementById('emi-rate').value);
+            document.getElementById('emi-rate-val').textContent = currentInterestRate.toFixed(2) + '%';
+
+            currentTenureYears = parseInt(document.getElementById('emi-tenure').value);
+            document.getElementById('emi-tenure-val').textContent = currentTenureYears + ' years';
+
+            const P = loanPrincipal;
+            const r = (currentInterestRate / 100) / 12;
+            const n = currentTenureYears * 12;
+            const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            const totalRepayment = emi * n;
+            const totalInterest = totalRepayment - P;
+
+            document.getElementById('emi-amount').textContent = formatINR(emi);
+            document.getElementById('emi-sub-summary').textContent =
+                `Based on ${formatLakhCr(P)} loan @ ${currentInterestRate.toFixed(2)}% for ${currentTenureYears} years`;
+            document.getElementById('legendPrincipal').textContent = formatLakhCr(P);
+            document.getElementById('legendInterest').textContent = formatLakhCr(totalInterest);
+            document.getElementById('emi-interest').textContent = formatLakhCr(totalInterest);
+            document.getElementById('emi-total').textContent = formatLakhCr(totalRepayment);
+
+            // Progress bar
+            const principalPct = Math.min(Math.max(Math.round((P / totalRepayment) * 100), 10), 90);
+            const interestPct = 100 - principalPct;
+            const barP = document.getElementById('barPrincipal');
+            const barI = document.getElementById('barInterest');
+            if (barP) barP.style.width = principalPct + '%';
+            if (barI) barI.style.width = interestPct + '%';
+        }
+
+        // Chip button listeners
+        document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentUnitName = btn.dataset.name;
+                currentAgreementVal = parseFloat(btn.dataset.price);
+                const slider = document.getElementById('customAgreementVal');
+                if (slider) slider.value = currentAgreementVal;
+                document.getElementById('displayAgreementVal').textContent = formatLakhCr(currentAgreementVal);
+                recalculateAll();
+            });
+        });
+
+        // Initialize on load
+        recalculateAll();
 
         /* ── FAQ Accordion ─────────────────────────── */
         function toggleFaq(btn) {
