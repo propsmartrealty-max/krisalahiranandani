@@ -1,14 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 0. Google Analytics 4 & Google Ads dataLayer Telemetry
+    // 0a. W3C Speculation Rules API: Instantaneous 0ms Page Prerendering (Chrome & Android)
+    try {
+        if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+            const specScript = document.createElement('script');
+            specScript.type = 'speculationrules';
+            specScript.textContent = JSON.stringify({
+                prerender: [
+                    {
+                        source: "list",
+                        urls: [
+                            "/pricing",
+                            "/colosseum",
+                            "/arcadia",
+                            "/icon",
+                            "/della",
+                            "/gallery",
+                            "/neighborhood",
+                            "/connectivity"
+                        ],
+                        eagerness: "moderate"
+                    }
+                ],
+                prefetch: [
+                    {
+                        source: "document",
+                        where: {
+                            and: [
+                                { href_matches: "/*" },
+                                { not: { href_matches: "/api/*" } },
+                                { not: { href_matches: "/thank-you*" } }
+                            ]
+                        },
+                        eagerness: "conservative"
+                    }
+                ]
+            });
+            document.head.appendChild(specScript);
+        }
+    } catch (e) {
+        // Graceful fallback for non-supporting browsers
+    }
+
+    // 0b. Enterprise Universal dataLayer Telemetry Suite
     window.dataLayer = window.dataLayer || [];
 
-    // Track WhatsApp conversions
+    // Track WhatsApp conversions with active page contextual payload
     document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
         link.addEventListener('click', () => {
             window.dataLayer.push({
                 event: 'contact',
                 method: 'whatsapp',
                 action: 'initiate_chat',
+                page_location: window.location.pathname,
                 value: 8500000,
                 currency: 'INR'
             });
@@ -22,11 +65,87 @@ document.addEventListener('DOMContentLoaded', () => {
                 event: 'contact',
                 method: 'phone_call',
                 action: 'click_to_call',
+                phone_number: '+917744009295',
+                page_location: window.location.pathname,
                 value: 8500000,
                 currency: 'INR'
             });
         });
     });
+
+    // Track Brochure downloads
+    document.querySelectorAll('a[href*=".pdf"], a[download]').forEach(link => {
+        link.addEventListener('click', () => {
+            window.dataLayer.push({
+                event: 'file_download',
+                file_name: link.getAttribute('href') || 'township-brochure.pdf',
+                file_extension: 'pdf',
+                page_location: window.location.pathname
+            });
+        });
+    });
+
+    // 0c. PWA IndexedDB Offline Lead Resilience Engine
+    const DB_NAME = 'kxh_offline_leads_db';
+    const DB_VERSION = 1;
+    const STORE_NAME = 'pending_leads';
+
+    function openLeadDB() {
+        return new Promise((resolve) => {
+            if (!('indexedDB' in window)) return resolve(null);
+            const req = indexedDB.open(DB_NAME, DB_VERSION);
+            req.onupgradeneeded = (e) => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains(STORE_NAME)) {
+                    db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                }
+            };
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => resolve(null);
+        });
+    }
+
+    window.queueLeadOffline = async function(leadData) {
+        const db = await openLeadDB();
+        if (!db) return false;
+        return new Promise((resolve) => {
+            const tx = db.transaction(STORE_NAME, 'readwrite');
+            const store = tx.objectStore(STORE_NAME);
+            store.add({ ...leadData, queuedAt: new Date().toISOString() });
+            tx.oncomplete = () => resolve(true);
+            tx.onerror = () => resolve(false);
+        });
+    };
+
+    window.flushOfflineLeads = async function() {
+        if (!navigator.onLine) return;
+        const db = await openLeadDB();
+        if (!db) return;
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        const store = tx.objectStore(STORE_NAME);
+        const getAllReq = store.getAll();
+        getAllReq.onsuccess = async () => {
+            const leads = getAllReq.result || [];
+            for (const lead of leads) {
+                try {
+                    const res = await fetch('/api/lead', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(lead)
+                    });
+                    if (res.ok) {
+                        const delTx = db.transaction(STORE_NAME, 'readwrite');
+                        delTx.objectStore(STORE_NAME).delete(lead.id);
+                    }
+                } catch (err) {
+                    break;
+                }
+            }
+        };
+    };
+
+    window.addEventListener('online', window.flushOfflineLeads);
+    window.flushOfflineLeads();
 
     // 1. Custom Cursor Logic
     const cursorDot = document.querySelector('[data-cursor-dot]');
@@ -1463,12 +1582,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const dynamicMsg = `Hi, I am inquiring about ${topic} at Krisala Hiranandani Township Hinjewadi. Please share available inventory, floor plans, and current pricing.`;
         const encoded = encodeURIComponent(dynamicMsg);
 
-        document.querySelectorAll('a.float-whatsapp, a[data-whatsapp-smart]').forEach(waLink => {
+        document.querySelectorAll('a[href*="wa.me"], a.float-whatsapp, a[data-whatsapp-smart]').forEach(waLink => {
             waLink.href = `https://wa.me/917744009295?text=${encoded}`;
         });
     })();
 
-    // ── Zero-Latency Edge Lead Form Submissions ───────────────
+    // ── Zero-Latency Edge Lead Form Submissions & Offline Resilience ───────────────
     (function initEdgeLeadSubmission() {
         document.querySelectorAll('form.enquiry-form, form#leadForm, form#exitForm, form#enquiryForm, form.modal-form').forEach(form => {
             form.addEventListener('submit', async (e) => {
@@ -1479,7 +1598,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Submitting...';
                 }
 
-                // If user submits via standard form action, allow graceful progressive enhancement
+                // Push conversion event to dataLayer
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        event: 'generate_lead',
+                        form_id: form.id || 'lead_enquiry_form',
+                        page_location: window.location.pathname,
+                        value: 8500000,
+                        currency: 'INR'
+                    });
+                }
+
                 try {
                     const formData = new FormData(form);
                     formData.append('_source', window.location.href);
@@ -1493,9 +1622,25 @@ document.addEventListener('DOMContentLoaded', () => {
                         e.preventDefault();
                         window.location.href = '/thank-you';
                         return;
+                    } else {
+                        throw new Error('API non-200');
                     }
                 } catch (err) {
-                    // Fall back to native form POST if edge endpoint fails or is offline
+                    // Offline or network error: gracefully queue lead in IndexedDB
+                    try {
+                        const formData = new FormData(form);
+                        const leadObj = {};
+                        formData.forEach((val, key) => { leadObj[key] = val; });
+                        leadObj._source = window.location.href;
+                        if (window.queueLeadOffline) {
+                            await window.queueLeadOffline(leadObj);
+                        }
+                        e.preventDefault();
+                        window.location.href = '/thank-you';
+                        return;
+                    } catch (queueErr) {
+                        // Progressive enhancement fallback to standard form submit
+                    }
                 } finally {
                     if (btn) {
                         btn.disabled = false;

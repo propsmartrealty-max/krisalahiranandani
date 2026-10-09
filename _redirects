@@ -56,5 +56,9 @@
 
 
 
+# Google Web Stories Clean URL Rewrites
+/stories/the-colosseum-phase-4  /stories/the-colosseum-phase-4.html 200
+/stories/township-grand-living   /stories/township-grand-living.html  200
+
 # Security Directives (RFC 9116)
 /security.txt         /.well-known/security.txt 301
