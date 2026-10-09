@@ -127,6 +127,97 @@ function isPostRateLimited(clientIp) {
     return false;
 }
 
+/**
+ * Cloudflare Streaming HTMLRewriter Engine
+ * Intercepts HTML at the edge to enforce:
+ * - Dynamic Canonical URLs
+ * - Google Site Verification token permanence
+ * - Core Web Vitals (Lazy loading + async decoding on non-hero images)
+ * - Safe tabnabbing defense (rel="noopener noreferrer" on external links)
+ * - Meta tag harmonization (OpenGraph, Twitter Cards, Googlebot)
+ */
+function applyEdgeHtmlRewriter(response, url, isWhitelistedBot) {
+    const path = url.pathname.toLowerCase();
+    const cleanPath = path === '/index.html' ? '/' : (path.endsWith('.html') ? path.slice(0, -5) : path);
+    const canonicalUrl = `https://krisalahiranandanitownships.com${cleanPath}`;
+    const isPrivateOrErrorRoute = path.includes('thank-you') ||
+                                  path.includes('analytics') ||
+                                  path.includes('404') ||
+                                  response.status === 404 ||
+                                  response.status === 403;
+
+    let hasCanonical = false;
+    let hasGsc = false;
+
+    const rewriter = new HTMLRewriter()
+        .on('link[rel="canonical"]', {
+            element(el) {
+                hasCanonical = true;
+                el.setAttribute('href', canonicalUrl);
+            }
+        })
+        .on('meta[name="google-site-verification"]', {
+            element(el) {
+                hasGsc = true;
+                el.setAttribute('content', 'DXqQqarOyiJM8YjM1deNCBtB4JbBj-T6Fn9Yac99CUI');
+            }
+        })
+        .on('meta[property="og:url"]', {
+            element(el) {
+                el.setAttribute('content', canonicalUrl);
+            }
+        })
+        .on('meta[name="twitter:url"]', {
+            element(el) {
+                el.setAttribute('content', canonicalUrl);
+            }
+        })
+        .on('meta[name="robots"]', {
+            element(el) {
+                if (isPrivateOrErrorRoute) {
+                    el.setAttribute('content', 'noindex, nofollow');
+                } else {
+                    el.setAttribute('content', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+                }
+            }
+        })
+        .on('head', {
+            element(el) {
+                el.onEndTag(endTag => {
+                    if (!hasCanonical) {
+                        endTag.before(`<link rel="canonical" href="${canonicalUrl}">\n`, { html: true });
+                    }
+                    if (!hasGsc) {
+                        endTag.before(`<meta name="google-site-verification" content="DXqQqarOyiJM8YjM1deNCBtB4JbBj-T6Fn9Yac99CUI">\n`, { html: true });
+                    }
+                });
+            }
+        })
+        .on('img', {
+            element(el) {
+                const priority = el.getAttribute('fetchpriority');
+                const loading = el.getAttribute('loading');
+                if (!loading && priority !== 'high') {
+                    el.setAttribute('loading', 'lazy');
+                }
+                if (!el.getAttribute('decoding')) {
+                    el.setAttribute('decoding', 'async');
+                }
+            }
+        })
+        .on('a[target="_blank"]', {
+            element(el) {
+                const rel = el.getAttribute('rel') || '';
+                const tokens = new Set(rel.split(/\s+/).filter(Boolean));
+                tokens.add('noopener');
+                tokens.add('noreferrer');
+                el.setAttribute('rel', Array.from(tokens).join(' '));
+            }
+        });
+
+    return rewriter.transform(response);
+}
+
 export async function onRequest(context) {
     const { request, next } = context;
     const url = new URL(request.url);
@@ -354,9 +445,17 @@ export async function onRequest(context) {
     newHeaders.delete('x-powered-by');
     newHeaders.delete('server');
 
-    return new Response(response.body, {
+    const modifiedResponse = new Response(response.body, {
         status: response.status,
         statusText: response.statusText,
         headers: newHeaders
     });
+
+    // Run Streaming Edge HTMLRewriter on HTML responses
+    const contentType = (newHeaders.get('content-type') || response.headers.get('content-type') || '').toLowerCase();
+    if (isHtmlRoute || contentType.includes('text/html')) {
+        return applyEdgeHtmlRewriter(modifiedResponse, url, isWhitelistedBot);
+    }
+
+    return modifiedResponse;
 }
