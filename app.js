@@ -562,17 +562,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 18. Dynamic Inventory HUD
+    // 18. Dynamic Inventory HUD (Scoped strictly to Della Precinct)
     function initInventoryHUD() {
+        if (!window.location.pathname.includes('/della')) return;
         const hud = document.createElement('div');
         hud.className = 'inventory-hud scroll-reveal';
         hud.innerHTML = `
             <div class="hud-content">
                 <i class="ph ph-warning-circle gold-icon"></i>
                 <span>Only <strong>12 Della Villa Plots</strong> remaining for March 2026.</span>
+                <button class="close-hud-btn" style="background:none; border:none; color:#a0aec0; cursor:pointer; font-size:1.1rem; line-height:1; padding:0 0 0 8px;" aria-label="Dismiss">&times;</button>
             </div>
         `;
         document.body.appendChild(hud);
+        hud.querySelector('.close-hud-btn')?.addEventListener('click', () => hud.remove());
 
         // Show after 10 seconds
         setTimeout(() => {
