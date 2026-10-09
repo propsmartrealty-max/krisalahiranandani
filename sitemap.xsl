@@ -181,7 +181,7 @@
                             <xsl:when test="sitemap:sitemapindex">
                                 <h1>Master Sitemap Index</h1>
                                 <p class="desc">
-                                    This sitemap index coordinates all primary residential corridors, floor plan typologies, infrastructure links, and 10,000 programmatic real estate exploration pages for <strong>Krisala Hiranandani Township Hinjewadi, Pune</strong>.
+                                    This sitemap index coordinates all primary residential corridors, floor plan typologies, infrastructure links, and 15,000+ programmatic real estate exploration pages for <strong>Krisala Hiranandani Township Hinjewadi, Pune</strong>.
                                 </p>
                                 <div class="stats-bar">
                                     <div class="stat-item">Total Sub-Sitemaps: <strong><xsl:value-of select="count(sitemap:sitemapindex/sitemap:sitemap)"/></strong></div>

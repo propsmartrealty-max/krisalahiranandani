@@ -219,3 +219,19 @@ Sitemap: https://krisalahiranandanitownships.com/sitemap-index.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap.xml
 Sitemap: https://krisalahiranandanitownships.com/image-sitemap.xml
 Sitemap: https://krisalahiranandanitownships.com/video-sitemap.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-configurations.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-colosseum.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-pricing.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-it-workplaces.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-connectivity.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-micromarkets.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-villa-plots.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-comparisons.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-amenities.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-amenities-lifestyle.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-investment-roi.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-sustainability.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-construction.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-rera-legal.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-desk.xml
+
