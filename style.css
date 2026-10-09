@@ -4640,3 +4640,59 @@ body.menu-open {
         display: none !important;
     }
 }
+
+/* ==============================================================================
+   HIGH-FIDELITY PRINT & PDF EXPORT STYLES
+   Ensures floor plans, pricing sheets, and dossiers print cleanly for HNIs/NRIs
+   ============================================================================== */
+@media print {
+    *, *::before, *::after {
+        background: transparent !important;
+        color: #111 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    body {
+        background: #fff !important;
+        color: #111 !important;
+        font-size: 11pt !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Suppress interactive chrome, popups & navigation */
+    .nav, nav, .navbar, .header, .floating-actions, .cookie-banner,
+    .modal, .modal-backdrop, .quiz-modal, .exit-modal, .toast,
+    .mobile-dock, .concierge-float, .cursor-dot, .cursor-outline,
+    .btn, button, .close-modal, .hero-scroll-indicator, .whatsapp-btn,
+    .floating-cta, #cookieConsent, #exitIntentModal {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Clean typography & link formatting */
+    a, a:visited {
+        text-decoration: underline !important;
+        color: #1a365d !important;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        color: #0b1a2d !important;
+    }
+
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    .pricing-card, .plan-card, .spec-table, .rera-block, .table, table {
+        page-break-inside: avoid;
+        border: 1px solid #ddd !important;
+    }
+
+    @page {
+        margin: 1.5cm;
+        size: auto;
+    }
+}

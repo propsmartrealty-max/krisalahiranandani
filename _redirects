@@ -55,3 +55,6 @@
 /catalog              /products.json         301
 
 
+
+# Security Directives (RFC 9116)
+/security.txt         /.well-known/security.txt 301
