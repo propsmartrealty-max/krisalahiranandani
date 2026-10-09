@@ -49,6 +49,9 @@ def main():
     elif cf_key and cf_email:
         run_step("4. Cloudflare Cache Purge (Global Key)", f"python3 scripts/purge_edge_cache.py --all --key '{cf_key}' --email '{cf_email}'")
 
+    # 5. Automated Google SERP Keyword Rank Tracker
+    run_step("5. Google SERP Keyword Ranking Tracker", "python3 scripts/keyword_rank_tracker.py")
+
     print("\n" + "=" * 70)
     print(f"SEO Ecosystem Sweep Completed at {datetime.now(timezone.utc).isoformat()}")
     print("=" * 70)

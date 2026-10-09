@@ -1,11 +1,11 @@
 /**
  * Cloudflare Pages API Endpoint: /api/lead
  * High-performance edge ingestion for real estate leads with spam protection,
- * IP intelligence, and zero-downtime routing.
+ * IP intelligence, and sub-second multi-channel routing (Telegram, Google Sheets, CRM & FormSubmit).
  */
 export async function onRequestPost(context) {
     const { request, env } = context;
-    const clientIp = request.headers.get('CF-Connecting-IP') || 'unknown';
+    const clientIp = request.headers.get('CF-Connecting-IP') || request.headers.get('x-forwarded-for') || 'unknown';
     const userAgent = request.headers.get('User-Agent') || 'unknown';
     const country = request.cf?.country || 'IN';
     const city = request.cf?.city || 'Unknown';
@@ -32,7 +32,7 @@ export async function onRequestPost(context) {
         }
 
         // Input sanitisation helper: strip HTML tags and script injections
-        const sanitize = (str, maxLen = 100) => {
+        const sanitize = (str, maxLen = 120) => {
             if (!str || typeof str !== 'string') return '';
             return str.replace(/<[^>]*>?/gm, '').replace(/[\\'";`]/g, '').trim().slice(0, maxLen);
         };
@@ -41,8 +41,8 @@ export async function onRequestPost(context) {
         const rawPhone = (formData.phone || '').trim();
         const phone = rawPhone.replace(/[^0-9+\s-]/g, '').slice(0, 20);
         const email = sanitize(formData.email || '', 100);
-        const config = sanitize(formData.configuration || formData.interest || '', 100);
-        const sourceUrl = sanitize(formData._source || formData.source || request.headers.get('Referer') || '', 150);
+        const config = sanitize(formData.configuration || formData.interest || formData._subject || '', 120);
+        const sourceUrl = sanitize(formData._source || formData.source || request.headers.get('Referer') || '', 180);
 
         // Validate basic inputs: phone must contain at least 7 digits
         const digitsOnly = phone.replace(/[^0-9]/g, '');
@@ -53,9 +53,13 @@ export async function onRequestPost(context) {
             });
         }
 
+        const now = new Date();
+        const istTime = now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+
         const leadPayload = {
-            timestamp: new Date().toISOString(),
-            name: name || 'Valued Visitor',
+            timestamp: now.toISOString(),
+            timeIST: istTime,
+            name: name || 'Valued Buyer',
             phone: phone,
             email: email || 'N/A',
             interest: config || 'Krisala Hiranandani Township General Enquiry',
@@ -65,9 +69,67 @@ export async function onRequestPost(context) {
             ua: sanitize(userAgent, 200)
         };
 
-        // Forward to backup FormSubmit / webhook if configured
-        try {
-            await fetch('https://formsubmit.co/ajax/propsmartrealty@gmail.com', {
+        // Multi-Channel Dispatch Tasks
+        const dispatchTasks = [];
+
+        // 1. Instant Telegram Bot Dispatch (Sub-second mobile push alert for sales team)
+        const tgToken = env?.TELEGRAM_BOT_TOKEN;
+        const tgChatId = env?.TELEGRAM_CHAT_ID;
+        if (tgToken && tgChatId) {
+            const tgMessage = 
+                `🏰 *NEW TOWNSHIP LEAD RECEIVED*\n` +
+                `━━━━━━━━━━━━━━━━━━━━\n` +
+                `👤 *Name:* ${leadPayload.name}\n` +
+                `📞 *Phone:* [${leadPayload.phone}](tel:${leadPayload.phone.replace(/[^0-9+]/g, '')})\n` +
+                `💬 *WhatsApp:* [Click to Chat](https://wa.me/${leadPayload.phone.replace(/[^0-9]/g, '')})\n` +
+                `📧 *Email:* ${leadPayload.email}\n` +
+                `🏢 *Interest:* ${leadPayload.interest}\n` +
+                `📍 *Location:* ${leadPayload.location}\n` +
+                `🕒 *Time:* ${leadPayload.timeIST}\n` +
+                `🔗 *Source:* ${leadPayload.sourceUrl}`;
+
+            dispatchTasks.push(
+                fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: tgChatId,
+                        text: tgMessage,
+                        parse_mode: 'Markdown',
+                        disable_web_page_preview: true
+                    })
+                }).catch(() => {})
+            );
+        }
+
+        // 2. Google Sheets Webhook Dispatch (Real-time spreadsheet logging)
+        const sheetsWebhook = env?.GOOGLE_SHEETS_WEBHOOK_URL;
+        if (sheetsWebhook) {
+            dispatchTasks.push(
+                fetch(sheetsWebhook, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(leadPayload)
+                }).catch(() => {})
+            );
+        }
+
+        // 3. Custom CRM / Zapier Webhook Dispatch
+        const crmWebhook = env?.CRM_WEBHOOK_URL;
+        if (crmWebhook) {
+            dispatchTasks.push(
+                fetch(crmWebhook, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(leadPayload)
+                }).catch(() => {})
+            );
+        }
+
+        // 4. Primary Email Dispatch via FormSubmit
+        const targetEmail = env?.LEAD_EMAIL || 'propsmartrealty@gmail.com';
+        dispatchTasks.push(
+            fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -77,10 +139,11 @@ export async function onRequestPost(context) {
                     _subject: `New Lead: ${leadPayload.name} (${leadPayload.phone}) - ${leadPayload.interest}`,
                     ...leadPayload
                 })
-            });
-        } catch (e) {
-            // Silently swallow webhook network lag so user response is instantaneous
-        }
+            }).catch(() => {})
+        );
+
+        // Execute all dispatches concurrently without blocking user experience
+        context.waitUntil ? context.waitUntil(Promise.allSettled(dispatchTasks)) : await Promise.allSettled(dispatchTasks);
 
         return new Response(JSON.stringify({
             success: true,

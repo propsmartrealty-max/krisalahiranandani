@@ -60,6 +60,10 @@ jobs:
           curl -s "https://www.bing.com/ping?sitemap=https://krisalahiranandanitownships.com/video-sitemap.xml" || true
           echo "Search engine sitemap ping completed."
 
+      - name: Track Google Keyword Rankings & Generate Audit Report
+        run: |
+          python scripts/keyword_rank_tracker.py || true
+
       - name: Run Google Indexing API (If Service Account Key is Present)
         env:
           GOOGLE_SA_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
