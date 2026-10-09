@@ -4078,3 +4078,149 @@ img.loaded {
     border-color: var(--gold-light);
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
 }
+
+/* ════════════════════════════════════════════════════
+   GLOBAL TOWNSHIP COMMAND HUB & GLASSMORPHIC FLOW
+════════════════════════════════════════════════════ */
+.township-hub-nav {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.township-hub-tab {
+    background: rgba(18, 20, 28, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    color: var(--text-muted);
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.township-hub-tab:hover {
+    color: #fff;
+    border-color: var(--gold-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(197, 160, 89, 0.2);
+}
+
+.township-hub-tab.active {
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.25), rgba(138, 106, 49, 0.15));
+    border-color: var(--gold-primary);
+    color: var(--gold-light);
+    font-weight: 600;
+    box-shadow: 0 8px 30px rgba(197, 160, 89, 0.3);
+}
+
+.township-hub-pane {
+    display: none;
+    animation: fadeInHub 0.5s ease forwards;
+}
+
+.township-hub-pane.active {
+    display: block;
+}
+
+@keyframes fadeInHub {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hub-glass-stage {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    background: radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.08) 0%, rgba(9, 10, 15, 0.98) 80%);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.hub-stage-image {
+    width: 100%;
+    max-height: 720px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hub-glass-stage:hover .hub-stage-image {
+    transform: scale(1.015);
+}
+
+.hub-badge-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg, rgba(8, 9, 14, 0.95) 0%, rgba(8, 9, 14, 0.75) 70%, transparent 100%);
+    padding: 30px 24px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.hub-feature-pill {
+    background: rgba(12, 14, 20, 0.85);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(6px);
+}
+
+.hub-feature-pill i {
+    color: var(--gold-primary);
+}
+
+/* Glassmorphic flow cards */
+.glass-flow-card {
+    background: rgba(18, 20, 28, 0.65);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-flow-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.glass-flow-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(197, 160, 89, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(197, 160, 89, 0.15);
+}
+
+.glass-flow-card:hover::before {
+    opacity: 1;
+}

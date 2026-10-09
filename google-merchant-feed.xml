@@ -3,130 +3,294 @@
   <channel>
     <title>Krisala x Hiranandani Township Hinjewadi Inventory Feed</title>
     <link>https://krisalahiranandanitownships.com/</link>
-    <description>Official Google Merchant Center Product Feed for Krisala Hiranandani 105-Acre Integrated Neoclassical Township in Hinjewadi, Pune. Featuring luxury 2 BHK, 3 BHK, 4 BHK duplex apartments and Della equestrian villa plots.</description>
-    
-    <!-- Item 1: 2 BHK Luxury Residence -->
+    <description>Official Google Merchant Center Product Feed for Krisala Hiranandani 105-Acre Integrated Neoclassical Township in Hinjewadi, Pune. Featuring luxury 2 BHK, 3 BHK, 4 BHK duplex apartments, The Colosseum Phase 4, Sector Icon, Sector Arcadia, and Della equestrian villa plots.</description>
     <item>
-      <g:id>KXH-2BHK-LUXURY</g:id>
-      <g:title>Krisala Hiranandani 2 BHK Luxury Residence Hinjewadi Pune</g:title>
-      <g:description>Palatial 2 BHK luxury neoclassical residence with 780-840 sq.ft. carpet area, Italian marble flooring, 10.5 ft floor-to-ceiling heights, and panoramic podium views in 105-acre mega integrated township Hinjewadi Phase 3, Pune. MahaRERA PR1260002502438.</g:description>
-      <g:link>https://krisalahiranandanitownships.com/arcadia</g:link>
-      <g:image_link>https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_living_hq.webp</g:image_link>
-      <g:additional_image_link>https://krisalahiranandanitownships.com/public/imported/Krisala-x-Hiranandani-Township-Brochure-1.webp</g:additional_image_link>
+      <g:id>KXH-COL-2BHK-SM</g:id>
+      <g:title>Krisala Hiranandani The Colosseum 2 BHK Small Residence Hinjewadi</g:title>
+      <g:description>Phase 4 Codename The Colosseum pre-launch 2 BHK Small residence (765 sq.ft. carpet area). Roman-inspired amphitheater podium living, Sahyadri views, 45m boulevard access in 105-acre township North Hinjewadi. Diwali Benefit: Rs 5 Lacs. Token: Rs 2.70 Lacs.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/colosseum</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp</g:image_link>
       <g:availability>in_stock</g:availability>
-      <g:price>8500000.00 INR</g:price>
+      <g:price>8299000.00 INR</g:price>
+      <g:sale_price>7799000.00 INR</g:sale_price>
       <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
       <g:brand>Krisala x Hiranandani</g:brand>
       <g:condition>new</g:condition>
       <g:identifier_exists>false</g:identifier_exists>
-      <g:custom_label_0>Sector Arcadia</g:custom_label_0>
-      <g:custom_label_1>2 BHK Luxury</g:custom_label_1>
+      <g:custom_label_0>Codename The Colosseum</g:custom_label_0>
+      <g:custom_label_1>2 BHK Small (765 sq.ft)</g:custom_label_1>
       <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
-      <g:custom_label_3>MahaRERA PR1260002502438</g:custom_label_3>
-      <g:custom_label_4>Possession 2029</g:custom_label_4>
+      <g:custom_label_3>PR1260002500600</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
     </item>
-
-    <!-- Item 2: 3 BHK Royale Residence -->
     <item>
-      <g:id>KXH-3BHK-ROYALE</g:id>
-      <g:title>Krisala Hiranandani 3 BHK Royale Grand Residence Hinjewadi Pune</g:title>
-      <g:description>Expansive 3 BHK Royale residence with 1050-1180 sq.ft. carpet area, master suite with walk-in wardrobe, wrap-around sundeck, and smart home automation in 105-acre mega township Hinjewadi, Pune. MahaRERA PR1260002502438 / PR1260002600818.</g:description>
-      <g:link>https://krisalahiranandanitownships.com/icon</g:link>
-      <g:image_link>https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_bedroom_hq.webp</g:image_link>
-      <g:additional_image_link>https://krisalahiranandanitownships.com/public/imported/krisala-hiranandani-banner.webp</g:additional_image_link>
+      <g:id>KXH-COL-2BHK-LG</g:id>
+      <g:title>Krisala Hiranandani The Colosseum 2 BHK Large Residence Hinjewadi</g:title>
+      <g:description>Phase 4 Codename The Colosseum pre-launch 2 BHK Large residence (819 sq.ft. carpet area). Master bedroom with walk-in closet space, expansive sundeck, Mivan RCC monolithic structure. Diwali Benefit: Rs 6 Lacs. Token: Rs 2.70 Lacs.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/colosseum</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp</g:image_link>
       <g:availability>in_stock</g:availability>
-      <g:price>12500000.00 INR</g:price>
+      <g:price>9399000.00 INR</g:price>
+      <g:sale_price>8799000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:custom_label_0>Codename The Colosseum</g:custom_label_0>
+      <g:custom_label_1>2 BHK Large (819 sq.ft)</g:custom_label_1>
+      <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
+      <g:custom_label_3>PR1260002500600</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>KXH-COL-3BHK-SM</g:id>
+      <g:title>Krisala Hiranandani The Colosseum 3 BHK Small Residence Hinjewadi</g:title>
+      <g:description>Phase 4 Codename The Colosseum pre-launch 3 BHK Small residence (1,025 sq.ft. carpet area). Cross-ventilated layout, 3 bedrooms, 3 bathrooms, large living deck facing lush valley greens. Diwali Benefit: Rs 7 Lacs. Token: Rs 2.70 Lacs.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/colosseum</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/township_grand/township_master_layout_plan_official.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>11200000.00 INR</g:price>
+      <g:sale_price>10500000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:custom_label_0>Codename The Colosseum</g:custom_label_0>
+      <g:custom_label_1>3 BHK Small (1,025 sq.ft)</g:custom_label_1>
+      <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
+      <g:custom_label_3>PR1260002500600</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>KXH-COL-3BHK-LG</g:id>
+      <g:title>Krisala Hiranandani The Colosseum 3 BHK Large Residence Hinjewadi</g:title>
+      <g:description>Phase 4 Codename The Colosseum 3 BHK Large residence (1,150 sq.ft. carpet area). Generous dining alcove, expansive living terrace, double-entry foyer. Diwali Benefit: Rs 8 Lacs. Token: Rs 2.70 Lacs.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/colosseum</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/township_grand/township_master_layout_plan_official.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>13000000.00 INR</g:price>
+      <g:sale_price>12200000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:custom_label_0>Codename The Colosseum</g:custom_label_0>
+      <g:custom_label_1>3 BHK Large (1,150 sq.ft)</g:custom_label_1>
+      <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
+      <g:custom_label_3>PR1260002500600</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>KXH-COL-3BHK-ULTRA</g:id>
+      <g:title>Krisala Hiranandani The Colosseum Premium 3 BHK Ultra Luxury Residence</g:title>
+      <g:description>Limited Collection (90 residences only) Premium 3 BHK Ultra (1,330 sq.ft. carpet area). 270-degree panoramic horizons, private foyer, Italian marble flooring. Diwali Benefit: Rs 9 Lacs. Token: Rs 3.60 Lacs.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/colosseum</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/township_grand/township_grand_entrance_gate_hq.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>15500000.00 INR</g:price>
+      <g:sale_price>14600000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:custom_label_0>Codename The Colosseum</g:custom_label_0>
+      <g:custom_label_1>Premium 3 BHK Ultra (1,330 sq.ft)</g:custom_label_1>
+      <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
+      <g:custom_label_3>PR1260002500600</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>KXH-COL-4BHK-ULTRA</g:id>
+      <g:title>Krisala Hiranandani The Colosseum Premium 4 BHK Ultra Luxury Sky Residence</g:title>
+      <g:description>Limited Collection (90 residences only) Premium 4 BHK Ultra (1,600 sq.ft. carpet area) offering spectacular 270-degree unhindered racecourse and valley views. Diwali Benefit: Rs 9 Lacs. Token: Rs 3.60 Lacs.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/colosseum</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/township_grand/township_grand_entrance_gate_hq.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>18500000.00 INR</g:price>
+      <g:sale_price>17600000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:custom_label_0>Codename The Colosseum</g:custom_label_0>
+      <g:custom_label_1>Premium 4 BHK Ultra (1,600 sq.ft)</g:custom_label_1>
+      <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
+      <g:custom_label_3>PR1260002500600</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>KXH-ICON-3BHK-GRANDE</g:id>
+      <g:title>Krisala Hiranandani Sector Icon 3 BHK Grande Residence Hinjewadi</g:title>
+      <g:description>Sector Icon flagship 3 BHK Grande residence in Tower A &amp; B (1,250 sq.ft. carpet area). Italian marble, private lift foyer, 52 curated amenities including Floating Deck and Aether Pods. MahaRERA PR1260002600818.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/icon</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>18500000.00 INR</g:price>
+      <g:sale_price>18500000.00 INR</g:sale_price>
       <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
       <g:brand>Krisala x Hiranandani</g:brand>
       <g:condition>new</g:condition>
       <g:identifier_exists>false</g:identifier_exists>
       <g:custom_label_0>Sector Icon</g:custom_label_0>
-      <g:custom_label_1>3 BHK Royale</g:custom_label_1>
+      <g:custom_label_1>3 BHK Grande (1,250 sq.ft)</g:custom_label_1>
       <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
-      <g:custom_label_3>MahaRERA PR1260002600818</g:custom_label_3>
-      <g:custom_label_4>Possession 2029</g:custom_label_4>
+      <g:custom_label_3>PR1260002600818</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
     </item>
-
-    <!-- Item 3: 4 BHK Sky Duplex Penthouse -->
     <item>
-      <g:id>KXH-4BHK-DUPLEX</g:id>
-      <g:title>Krisala Hiranandani 4 BHK Sky Duplex Penthouse Hinjewadi Pune</g:title>
-      <g:description>Regal double-height 4 BHK Sky Duplex with 1650-1850 sq.ft. carpet area, private rooftop terrace, personal elevator foyer, and unhindered Sahyadri valley views. MahaRERA PR1260002502438.</g:description>
+      <g:id>KXH-ICON-4BHK-ULTRA</g:id>
+      <g:title>Krisala Hiranandani Sector Icon 4 BHK Ultra-Luxury Suite Hinjewadi</g:title>
+      <g:description>Sector Icon 4 BHK Ultra-Luxury suite in Tower B &amp; C (1,850 sq.ft. carpet area). Private sundeck facing 8-acre integrated racecourse and Sahyadri horizon. MahaRERA PR1260002600818.</g:description>
       <g:link>https://krisalahiranandanitownships.com/icon</g:link>
-      <g:image_link>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp</g:image_link>
-      <g:additional_image_link>https://krisalahiranandanitownships.com/public/imported/main-entrance.webp</g:additional_image_link>
+      <g:image_link>https://krisalahiranandani.townships.com/public/icon_official/icon_towers_daylight_architectural_elevation.webp</g:image_link>
       <g:availability>in_stock</g:availability>
-      <g:price>21000000.00 INR</g:price>
+      <g:price>28500000.00 INR</g:price>
+      <g:sale_price>28500000.00 INR</g:sale_price>
       <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
       <g:brand>Krisala x Hiranandani</g:brand>
       <g:condition>new</g:condition>
       <g:identifier_exists>false</g:identifier_exists>
-      <g:custom_label_0>Sky Villas</g:custom_label_0>
-      <g:custom_label_1>4 BHK Duplex</g:custom_label_1>
+      <g:custom_label_0>Sector Icon</g:custom_label_0>
+      <g:custom_label_1>4 BHK Ultra-Luxury (1,850 sq.ft)</g:custom_label_1>
       <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
-      <g:custom_label_3>MahaRERA PR1260002502438</g:custom_label_3>
-      <g:custom_label_4>Possession 2029</g:custom_label_4>
+      <g:custom_label_3>PR1260002600818</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
     </item>
-
-    <!-- Item 4: Della Collection Equestrian Villa Plot -->
+    <item>
+      <g:id>KXH-ICON-DUPLEX</g:id>
+      <g:title>Krisala Hiranandani Sector Icon Presidential Duplex Penthouse Hinjewadi</g:title>
+      <g:description>Presidential Duplex Sky Villa in Tower C (2,600-3,400 sq.ft. carpet area). Soaring 18-foot double-height living room, floating staircase, sky lounge, and private racecourse view. MahaRERA PR1260002600818.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/icon</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/icon_official/icon_floating_deck_clubhouse_facade.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>42000000.00 INR</g:price>
+      <g:sale_price>42000000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:custom_label_0>Sector Icon</g:custom_label_0>
+      <g:custom_label_1>Presidential Duplex (2,600 sq.ft)</g:custom_label_1>
+      <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
+      <g:custom_label_3>PR1260002600818</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>KXH-ARC-2BHK-LUX</g:id>
+      <g:title>Krisala Hiranandani Sector Arcadia 2 BHK Luxury Residence Hinjewadi</g:title>
+      <g:description>Sector Arcadia Phase 1 residential towers featuring 2 BHK luxury residences (780 sq.ft. carpet area) with Roman colonnades and wellness clubhouses. MahaRERA PR1260002502438.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/arcadia</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_living_hq.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>7900000.00 INR</g:price>
+      <g:sale_price>7900000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:custom_label_0>Sector Arcadia</g:custom_label_0>
+      <g:custom_label_1>2 BHK Luxury (780 sq.ft)</g:custom_label_1>
+      <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
+      <g:custom_label_3>PR1260002502438</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
+    </item>
+    <item>
+      <g:id>KXH-ARC-3BHK-ROY</g:id>
+      <g:title>Krisala Hiranandani Sector Arcadia 3 BHK Royale Residence Hinjewadi</g:title>
+      <g:description>Sector Arcadia Phase 1 3 BHK Royale residence (1,065 sq.ft. carpet area). 3 bedrooms, private sundeck, MIVAN formwork precision, close to Hinjawadi Phase 3. MahaRERA PR1260002502438.</g:description>
+      <g:link>https://krisalahiranandanitownships.com/arcadia</g:link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_bedroom_hq.webp</g:image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>11500000.00 INR</g:price>
+      <g:sale_price>11500000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:custom_label_0>Sector Arcadia</g:custom_label_0>
+      <g:custom_label_1>3 BHK Royale (1,065 sq.ft)</g:custom_label_1>
+      <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
+      <g:custom_label_3>PR1260002502438</g:custom_label_3>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
+    </item>
     <item>
       <g:id>KXH-DELLA-VILLA-PLOT</g:id>
       <g:title>The Della Collection Resort Equestrian Villa Plot Hinjewadi Pune</g:title>
-      <g:description>Exclusive 2000-5000 sq.ft. resort-themed equestrian villa plots curated by Della Resorts with access to 8-acre championship polo track, horse stables, and private 5-star concierge club. MahaRERA Registered.</g:description>
+      <g:description>Exclusive 2,500-5,000 sq.ft. resort-themed equestrian villa plots curated by Della Resorts with access to 8-acre championship polo track, horse stables, and private 5-star concierge club. MahaRERA Registered.</g:description>
       <g:link>https://krisalahiranandanitownships.com/della</g:link>
-      <g:image_link>https://krisalahiranandanitownships.com/public/imported/della-racecource.webp</g:image_link>
-      <g:additional_image_link>https://krisalahiranandanitownships.com/public/imported/Dell-Township-Pune-Logo.webp</g:additional_image_link>
+      <g:image_link>https://krisalahiranandanitownships.com/public/township_grand/della_resort_villas_equestrian_official.webp</g:image_link>
       <g:availability>in_stock</g:availability>
       <g:price>35000000.00 INR</g:price>
-      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Land &amp; Plots</g:google_product_category>
-      <g:brand>Della x Krisala Hiranandani</g:brand>
+      <g:sale_price>35000000.00 INR</g:sale_price>
+      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
+      <g:brand>Krisala x Hiranandani</g:brand>
       <g:condition>new</g:condition>
       <g:identifier_exists>false</g:identifier_exists>
       <g:custom_label_0>Della Collection</g:custom_label_0>
-      <g:custom_label_1>Equestrian Villa Plots</g:custom_label_1>
+      <g:custom_label_1>Villa Plot (2,500 sq.ft)</g:custom_label_1>
       <g:custom_label_2>Hinjewadi Pune</g:custom_label_2>
       <g:custom_label_3>MahaRERA Registered</g:custom_label_3>
-      <g:custom_label_4>Limited 50 Plots</g:custom_label_4>
-    </item>
-
-    <!-- Item 5: 5 BHK Imperial Signature Penthouse -->
-    <item>
-      <g:id>KXH-5BHK-PENTHOUSE</g:id>
-      <g:title>Krisala Hiranandani 5 BHK Imperial Signature Sky Mansion Hinjewadi Pune</g:title>
-      <g:description>Palatial 5 BHK sky mansion penthouse with 2800-3800 sq.ft. usable carpet, private lap pool, 24 ft double-height living room, and private elevator access commanding 360-degree racecourse and valley views. Sector Icon Flagship.</g:description>
-      <g:link>https://krisalahiranandanitownships.com/icon</g:link>
-      <g:image_link>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp</g:image_link>
-      <g:availability>in_stock</g:availability>
-      <g:price>32000000.00 INR</g:price>
-      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
-      <g:brand>Krisala x Hiranandani</g:brand>
-      <g:condition>new</g:condition>
-      <g:identifier_exists>false</g:identifier_exists>
-      <g:custom_label_0>Sector Icon</g:custom_label_0>
-      <g:custom_label_1>5 BHK Penthouse</g:custom_label_1>
-      <g:custom_label_2>Pune West</g:custom_label_2>
-      <g:custom_label_3>MahaRERA PR1260002502438</g:custom_label_3>
-      <g:custom_label_4>Possession 2029</g:custom_label_4>
-    </item>
-
-    <!-- Item 6: Simplex Executive Suite -->
-    <item>
-      <g:id>KXH-SIMPLEX-SUITE</g:id>
-      <g:title>Krisala Hiranandani Simplex Executive Luxury Suite Hinjewadi Pune</g:title>
-      <g:description>Single-level executive luxury suite with 920-1150 sq.ft. carpet area, zero-hallway wastage floorplate, Mivan monolithic walls, and signal-free commute to Hinjewadi Phase 1 &amp; Mahalunge.</g:description>
-      <g:link>https://krisalahiranandanitownships.com/arcadia</g:link>
-      <g:image_link>https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_living_hq.webp</g:image_link>
-      <g:availability>in_stock</g:availability>
-      <g:price>9800000.00 INR</g:price>
-      <g:google_product_category>Real Estate &gt; Residential Properties &gt; Apartments</g:google_product_category>
-      <g:brand>Krisala x Hiranandani</g:brand>
-      <g:condition>new</g:condition>
-      <g:identifier_exists>false</g:identifier_exists>
-      <g:custom_label_0>Sector Arcadia</g:custom_label_0>
-      <g:custom_label_1>Simplex Executive</g:custom_label_1>
-      <g:custom_label_2>North Hinjawadi</g:custom_label_2>
-      <g:custom_label_3>MahaRERA PR1260002502438</g:custom_label_3>
-      <g:custom_label_4>Possession 2029</g:custom_label_4>
+      <g:custom_label_4>Possession 2028-2030</g:custom_label_4>
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Site Visit &amp; Allotment</g:service>
+        <g:price>0.00 INR</g:price>
+      </g:shipping>
     </item>
   </channel>
 </rss>

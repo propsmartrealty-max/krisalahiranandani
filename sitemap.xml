@@ -167,7 +167,7 @@
     </image:image>
   </url>
 
-  <!-- 8-Acre Private Racecourse & Polo Club Silo -->
+  <!-- 8-Acre Private Racecourse &amp; Polo Club Silo -->
   <url>
     <loc>https://krisalahiranandanitownships.com/racecourse</loc>
     <lastmod>2026-10-05T00:00:00+00:00</lastmod>
@@ -180,7 +180,7 @@
     </image:image>
   </url>
 
-  <!-- Photo Gallery & Media Silo -->
+  <!-- Photo Gallery &amp; Media Silo -->
   <url>
     <loc>https://krisalahiranandanitownships.com/gallery</loc>
     <lastmod>2026-10-05T00:00:00+00:00</lastmod>
@@ -219,7 +219,7 @@
     </image:image>
   </url>
 
-  <!-- Strategic Connectivity & Transit Matrix Silo -->
+  <!-- Strategic Connectivity &amp; Transit Matrix Silo -->
   <url>
     <loc>https://krisalahiranandanitownships.com/connectivity</loc>
     <lastmod>2026-10-05T00:00:00+00:00</lastmod>
@@ -229,6 +229,203 @@
       <image:loc>https://krisalahiranandanitownships.com/public/imported/proximity-to-pune-mumbai.webp</image:loc>
       <image:title>Strategic Connectivity and Transit Matrix</image:title>
       <image:caption>5 mins to Expressway, 4 mins to Metro Line 3, 3 mins to PMRDA Ring Road, and Hinjewadi IT Park commute</image:caption>
+    </image:image>
+  </url>
+
+
+
+  <!-- Programmatic SEO: The Colosseum Phase 4 Pre-Launch Hinjewadi -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/the-colosseum</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp</image:loc>
+      <image:title>The Colosseum Phase 4 Pre-Launch Hinjewadi</image:title>
+      <image:caption>The Colosseum Phase 4 Pre-Launch Hinjewadi at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Sector Icon Ultra Luxury Residences Towers A, B, C -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/sector-icon</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp</image:loc>
+      <image:title>Sector Icon Ultra Luxury Residences Towers A, B, C</image:title>
+      <image:caption>Sector Icon Ultra Luxury Residences Towers A, B, C at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Sector Arcadia Neoclassical Luxury Apartments -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/sector-arcadia</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_master_layout_plan_official.webp</image:loc>
+      <image:title>Sector Arcadia Neoclassical Luxury Apartments</image:title>
+      <image:caption>Sector Arcadia Neoclassical Luxury Apartments at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: The Della Resort &amp; 8-Acre Private Racecourse Villa Plots -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/della-equestrian</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/della_resort_villas_equestrian_official.webp</image:loc>
+      <image:title>The Della Resort &amp; 8-Acre Private Racecourse Villa Plots</image:title>
+      <image:caption>The Della Resort &amp; 8-Acre Private Racecourse Villa Plots at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Sector Everlyn Family Sanctuary Residences Hinjewadi -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/sector-everlyn</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp</image:loc>
+      <image:title>Sector Everlyn Family Sanctuary Residences Hinjewadi</image:title>
+      <image:caption>Sector Everlyn Family Sanctuary Residences Hinjewadi at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Hiranandani Everland Darumbre Township MahaRERA PR1260002500600 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/everland</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_master_layout_plan_official.webp</image:loc>
+      <image:title>Hiranandani Everland Darumbre Township MahaRERA PR1260002500600</image:title>
+      <image:caption>Hiranandani Everland Darumbre Township MahaRERA PR1260002500600 at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Kasarsai Dam Waterfront Residential Corridor Hinjewadi -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/kasarsai-dam</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>Kasarsai Dam Waterfront Residential Corridor Hinjewadi</image:title>
+      <image:caption>Kasarsai Dam Waterfront Residential Corridor Hinjewadi at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Pune Metro Line 3 Depot Direct Access Hinjewadi -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/metro-line-3-depot</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>Pune Metro Line 3 Depot Direct Access Hinjewadi</image:title>
+      <image:caption>Pune Metro Line 3 Depot Direct Access Hinjewadi at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: 2 BHK Luxury Apartments Hinjewadi Pune -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/2-bhk</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_master_layout_plan_official.webp</image:loc>
+      <image:title>2 BHK Luxury Apartments Hinjewadi Pune</image:title>
+      <image:caption>2 BHK Luxury Apartments Hinjewadi Pune at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: 3 BHK Grande Residences Hinjewadi Pune -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/3-bhk</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp</image:loc>
+      <image:title>3 BHK Grande Residences Hinjewadi Pune</image:title>
+      <image:caption>3 BHK Grande Residences Hinjewadi Pune at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: 4 BHK Luxury Suites Hinjewadi Pune -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/4-bhk</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/icon_official/icon_towers_daylight_architectural_elevation.webp</image:loc>
+      <image:title>4 BHK Luxury Suites Hinjewadi Pune</image:title>
+      <image:caption>4 BHK Luxury Suites Hinjewadi Pune at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Presidential Sky Duplex Penthouses 18ft Ceilings Hinjewadi -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/duplex</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/icon_official/icon_floating_deck_clubhouse_facade.webp</image:loc>
+      <image:title>Presidential Sky Duplex Penthouses 18ft Ceilings Hinjewadi</image:title>
+      <image:caption>Presidential Sky Duplex Penthouses 18ft Ceilings Hinjewadi at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Della Equestrian Villa Plots Hinjewadi Pune -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/explore/della-plots</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/della_resort_villas_equestrian_official.webp</image:loc>
+      <image:title>Della Equestrian Villa Plots Hinjewadi Pune</image:title>
+      <image:caption>Della Equestrian Villa Plots Hinjewadi Pune at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Google Shopping Real Estate Inventory Feed Catalog -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/products.json</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp</image:loc>
+      <image:title>Google Shopping Real Estate Inventory Feed Catalog</image:title>
+      <image:caption>Google Shopping Real Estate Inventory Feed Catalog at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Programmatic SEO: Google Merchant Center XML Product Feed -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/google-merchant-feed.xml</loc>
+    <lastmod>2026-10-09T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_master_layout_plan_official.webp</image:loc>
+      <image:title>Google Merchant Center XML Product Feed</image:title>
+      <image:caption>Google Merchant Center XML Product Feed at Krisala Hiranandani Township Hinjewadi</image:caption>
     </image:image>
   </url>
 

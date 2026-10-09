@@ -50,5 +50,8 @@
 /phase-4              /colosseum             301
 /colosseum-brochure   /public/brochure/Krisala-Hiranandani-The-Colosseum-Phase4-Dossier.pdf 302
 /colosseum-dossier    /public/brochure/Krisala-Hiranandani-The-Colosseum-Phase4-Dossier.pdf 302
+/merchant-feed        /google-merchant-feed.xml 301
+/google-shopping      /google-merchant-feed.xml 301
+/catalog              /products.json         301
 
 

@@ -1121,3 +1121,14 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
 });
 
+/* Interactive Multi-Perspective Township Command Hub */
+window.switchTownshipView = function(viewId, btn) {
+    const tabs = document.querySelectorAll('.township-hub-tab');
+    const panes = document.querySelectorAll('.township-hub-pane');
+    tabs.forEach(t => t.classList.remove('active'));
+    panes.forEach(p => p.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    const target = document.getElementById(viewId);
+    if (target) target.classList.add('active');
+};
+

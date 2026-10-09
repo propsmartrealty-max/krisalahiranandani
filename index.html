@@ -917,43 +917,124 @@
                 </p>
             </div>
 
+            <!-- Multi-Perspective Township Command Hub -->
+            <div class="township-hub-nav scroll-reveal">
+                <button class="township-hub-tab active" data-view="view-aerial" onclick="switchTownshipView('view-aerial', this)">
+                    <i class="ph ph-airplane-tilt"></i> 3D Master Aerial View (105+ Acres)
+                </button>
+                <button class="township-hub-tab" data-view="view-layout" onclick="switchTownshipView('view-layout', this)">
+                    <i class="ph ph-map-trifold"></i> 2D Official Sector Zonation Plan
+                </button>
+                <button class="township-hub-tab" data-view="view-connectivity" onclick="switchTownshipView('view-connectivity', this)">
+                    <i class="ph ph-train"></i> Metro Line-3 &amp; Location Intel
+                </button>
+                <button class="township-hub-tab" data-view="view-gateway" onclick="switchTownshipView('view-gateway', this)">
+                    <i class="ph ph-columns"></i> Grand Royal Entrance Gateway
+                </button>
+            </div>
+
             <div class="master-layout-showcase scroll-reveal">
-                <div class="master-layout-image-wrap">
-                    <img loading="lazy" decodings="async" src="/public/imported/Krisala-x-Hiranandani-Township-Brochure-1.webp" onerror="this.src='/public/imported/Krisala-x-Hiranandani-Township-Brochure-1.jpg'"
-                        alt="105-Acre Krisala Hiranandani Master Township Layout Hinjewadi Pune">
+                <!-- Pane 1: 3D Aerial View -->
+                <div class="township-hub-pane active" id="view-aerial">
+                    <div class="hub-glass-stage">
+                        <img loading="lazy" decodings="async" src="/public/township_grand/township_aerial_birds_eye_master_view.webp"
+                            alt="105-Acre Krisala Hiranandani Master Township 3D Aerial View with Integrated Equestrian Racecourse Hinjewadi" class="hub-stage-image">
+                        <div class="hub-badge-bar">
+                            <span class="hub-feature-pill"><i class="ph ph-horse"></i> 8-Acre Integrated Racecourse &amp; Polo Club</span>
+                            <span class="hub-feature-pill"><i class="ph ph-tent"></i> Della 40-Acre 5-Star Resort &amp; Villas</span>
+                            <span class="hub-feature-pill"><i class="ph ph-crown"></i> Sector Icon (Towers A, B &amp; C)</span>
+                            <span class="hub-feature-pill"><i class="ph ph-buildings"></i> Sector Arcadia (Roman Colonnades)</span>
+                            <span class="hub-feature-pill"><i class="ph ph-shield-star"></i> The Colosseum (Phase 4 Pre-Launch)</span>
+                            <span class="hub-feature-pill"><i class="ph ph-drop"></i> Natural Lake &amp; Water Reservoirs</span>
+                        </div>
+                    </div>
                 </div>
 
+                <!-- Pane 2: 2D Master Layout Plan -->
+                <div class="township-hub-pane" id="view-layout">
+                    <div class="hub-glass-stage">
+                        <img loading="lazy" decodings="async" src="/public/township_grand/township_master_layout_plan_official.webp"
+                            alt="Official 2D Master Layout Plan Krisala Hiranandani Township Hinjewadi Sectors Arcadia Icon Everlyn Everland" class="hub-stage-image">
+                        <div class="hub-badge-bar">
+                            <span class="hub-feature-pill"><i class="ph ph-map-pin"></i> Sector Arcadia &amp; Sector Icon (NE Quadrant)</span>
+                            <span class="hub-feature-pill"><i class="ph ph-butterfly"></i> Sector Everlyn (Butterfly Precinct NW)</span>
+                            <span class="hub-feature-pill"><i class="ph ph-horse"></i> Sector Everland (Horse Crest South - PR1260002500600)</span>
+                            <span class="hub-feature-pill"><i class="ph ph-circle"></i> Central Oval Resort &amp; Racecourse Arena</span>
+                            <span class="hub-feature-pill"><i class="ph ph-road-horizon"></i> 45M Wide DP Road &amp; 24M Boulevard Rings</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pane 3: Connectivity & Metro Line-3 Map -->
+                <div class="township-hub-pane" id="view-connectivity">
+                    <div class="hub-glass-stage">
+                        <img loading="lazy" decodings="async" src="/public/township_grand/township_connectivity_location_map_official.webp"
+                            alt="Strategic Location and Connectivity Map Krisala Hiranandani Township with Pune Metro Line-3 Depot and Kasarsai Dam" class="hub-stage-image">
+                        <div class="hub-badge-bar">
+                            <span class="hub-feature-pill"><i class="ph ph-train"></i> Pune Metro Line-3 Depot Direct Access</span>
+                            <span class="hub-feature-pill"><i class="ph ph-waves"></i> Kasarsai Dam Waterfront Horizon</span>
+                            <span class="hub-feature-pill"><i class="ph ph-briefcase"></i> IT Hubs: Capgemini, Wipro, Cognizant</span>
+                            <span class="hub-feature-pill"><i class="ph ph-path"></i> Mumbai-Pune Highway via Ravet &amp; Tathawade</span>
+                            <span class="hub-feature-pill"><i class="ph ph-shopping-bag"></i> Phoenix Mall of the Millennium (Wakad)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pane 4: Royal Entrance Gateway -->
+                <div class="township-hub-pane" id="view-gateway">
+                    <div class="hub-glass-stage">
+                        <img loading="lazy" decodings="async" src="/public/township_grand/township_grand_entrance_gate_hq.webp"
+                            alt="Grand Neoclassical Entrance Archway Krisala Hiranandani Township North Hinjewadi" class="hub-stage-image">
+                        <div class="hub-badge-bar">
+                            <span class="hub-feature-pill"><i class="ph ph-columns"></i> Neoclassical Roman Columns &amp; Pediments</span>
+                            <span class="hub-feature-pill"><i class="ph ph-shield-check"></i> 24/7 Monitored Multi-Tier Security Portico</span>
+                            <span class="hub-feature-pill"><i class="ph ph-drop"></i> Ceremonial Water Sculpture &amp; Fountains</span>
+                            <span class="hub-feature-pill"><i class="ph ph-mountains"></i> Panoramic Sahyadri Mountain Horizon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6 Comprehensive Sector Enclaves -->
                 <div class="master-layout-legend-grid">
                     <div class="layout-sector-item">
-                        <h4><i class="ph ph-buildings" style="color: var(--gold-primary);"></i> Sector Arcadia (Everlyn)</h4>
-                        <p>Phase 1 residential towers featuring luxury 2 &amp; 3 BHK residences with panoramic green sundecks and wellness clubhouses. MahaRERA: PR1260002502438.</p>
-                    </div>
-                    <div class="layout-sector-item">
                         <h4><i class="ph ph-crown" style="color: var(--gold-primary);"></i> Sector Icon (Flagship)</h4>
-                        <p>Ultra-spacious 3 &amp; 4 BHK residences and presidential double-height duplexes (up to 1,862 sq.ft). MahaRERA Reg: PR1260002600818.</p>
+                        <p>Ultra-luxury 3 &amp; 4 BHK residences &amp; Presidential Duplexes across Towers A, B &amp; C. 18-ft ceilings, Italian marble, 52 lifestyle amenities. MahaRERA: PR1260002600818.</p>
+                        <a href="/icon" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore Sector Icon &rarr;</a>
                     </div>
                     <div class="layout-sector-item">
-                        <h4><i class="ph ph-shield-star" style="color: var(--gold-primary);"></i> The Colosseum (Phase 4 Launch)</h4>
-                        <p>Monumental B+G+27 storey Roman-inspired towers offering 2, 3 &amp; 4 BHK simplex and duplex homes (750 to 1,860 sq.ft) starting ₹75.99L*.</p>
+                        <h4><i class="ph ph-buildings" style="color: var(--gold-primary);"></i> Sector Arcadia (Neoclassical)</h4>
+                        <p>Phase 1 residential towers with classical Greco-Roman architecture, 2 &amp; 3 BHK layouts with private sundecks and wellness clubhouses. MahaRERA: PR1260002502438.</p>
+                        <a href="/arcadia" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore Sector Arcadia &rarr;</a>
+                    </div>
+                    <div class="layout-sector-item">
+                        <h4><i class="ph ph-shield-star" style="color: var(--gold-primary);"></i> The Colosseum (Phase 4 Pre-Launch)</h4>
+                        <p>Monumental B+G+27 Roman-themed towers (765–1,600 sq.ft) with exclusive Diwali pre-launch window, ₹5L–₹9L benefits, and token early-access from ₹82.99L*.</p>
+                        <a href="/colosseum" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore The Colosseum &rarr;</a>
                     </div>
                     <div class="layout-sector-item">
                         <h4><i class="ph ph-horse" style="color: var(--gold-primary);"></i> Della 40-Acre Resort &amp; Racecourse</h4>
-                        <p>India's first 8-acre private racecourse inside a township, paired with Della 5-star resort hospitality and villa plots.</p>
+                        <p>India's first 8-acre private equestrian racecourse &amp; polo arena inside a township, paired with Della 5-star glamping resort and 100 private villa plots.</p>
+                        <a href="/della" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore Della Plots &rarr;</a>
+                    </div>
+                    <div class="layout-sector-item">
+                        <h4><i class="ph ph-butterfly" style="color: var(--gold-primary);"></i> Sector Everlyn (Family Enclave)</h4>
+                        <p>Integrated community living featuring the signature Butterfly Park, multipurpose clubhouse, infinity pools, and expansive family floorplans.</p>
+                        <a href="/everlyn" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore Everlyn &rarr;</a>
                     </div>
                     <div class="layout-sector-item">
                         <h4><i class="ph ph-certificate" style="color: var(--gold-primary);"></i> Hiranandani Everland (Darumbre)</h4>
-                        <p>Sanctioned integrated residential enclave registered under MahaRERA PR1260002500600 with possession timeline through Dec 2030.</p>
-                    </div>
-                    <div class="layout-sector-item">
-                        <h4><i class="ph ph-tree" style="color: var(--gold-primary);"></i> Green Ribbons &amp; Civic Artery</h4>
-                        <p>70% open green expanses, 45m Town Planning DP roads, and pedestrianized tree-lined neoclassical boulevards.</p>
+                        <p>Sanctioned integrated master enclave registered under MahaRERA PR1260002500600, engineered with Mivan RCC precision through Dec 2030 possession.</p>
+                        <a href="/masterplan" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">View Master Enclave &rarr;</a>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 30px;">
-                    <a href="masterplan" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
-                        Explore Interactive Masterplan <i class="ph ph-arrow-right"></i>
+                <div style="text-align: center; margin-top: 36px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+                    <a href="/masterplan" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                        <i class="ph ph-compass"></i> Full Interactive Masterplan
                     </a>
+                    <button class="btn-gold open-modal" data-magnet="masterplan" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="ph ph-download-simple"></i> Download High-Res Master Dossier
+                    </button>
                 </div>
             </div>
         </div>
@@ -962,7 +1043,7 @@
     <!-- Grand Classical Entrance Boulevard Banner -->
     <section class="container scroll-reveal" style="padding-top: 0; padding-bottom: 0;">
         <div class="grand-entrance-banner">
-            <img src="/public/imported/main-entrance.webp" onerror="this.src='/public/imported/main-entrance.jpg'" alt="Krisala Hiranandani Grand Classical Entrance Archway" loading="lazy">
+            <img src="/public/township_grand/township_grand_entrance_gate_hq.webp" alt="Krisala Hiranandani Grand Classical Entrance Archway North Hinjewadi" loading="lazy">
             <div class="grand-entrance-overlay">
                 <div class="grand-entrance-content">
                     <span class="badge" style="background: rgba(9, 10, 15, 0.7);"><i class="ph ph-columns"></i> Neoclassical Grandeur</span>
@@ -1302,50 +1383,65 @@
         <div class="container della-grid">
             <div class="della-content scroll-reveal">
                 <div style="margin-bottom: 15px;">
-                    <img src="/public/imported/Dell-Township-Pune-Logo.webp" alt="Della Township Pune Logo" style="height: 38px; width: auto;" loading="lazy">
+                    <img src="/public/imported/Dell-Township-Pune-Logo.webp" alt="Della Township Pune Logo" style="height: 42px; width: auto;" loading="lazy">
                 </div>
-                <span class="badge">The Zenith of Luxury</span>
+                <span class="badge"><i class="ph ph-crown"></i> The Resort Narrative &bull; 40-Acre Ecosystem</span>
                 <h2 class="section-title" data-en="The Della <span>Collection</span>"
                     data-mr="डेला <span>कलेक्शन</span>">The Della <span>Collection</span></h2>
-                <p class="section-desc">A limited edition of 100 Ultra-Premium Villa Plots and 168 Branded Residences.
-                    This is where high-stakes polo meets 5-star hospitality.</p>
-                <a href="della" class="btn-text" style="display: block; margin: 15px 0; font-weight: 600;">Explore
-                    Della Legacy <i class="ph ph-arrow-right"></i></a>
+                <div style="width: 50px; height: 3px; background: var(--gold-primary); margin: 14px 0 18px;"></div>
+                
+                <h4 style="color: var(--gold-light); font-size: 1.15rem; margin: 0 0 8px; font-weight: 600;">The Resort Narrative</h4>
+                <p class="section-desc" style="margin-bottom: 18px; line-height: 1.8;">
+                    Everyday living, engineered to feel like an escape. Bordered by coveted Della Villas exists within a refined hospitality and leisure ecosystem. The energy of a premier resort, anchored by the stillness of private residences.
+                </p>
+
+                <h4 style="color: var(--gold-light); font-size: 1.15rem; margin: 0 0 8px; font-weight: 600;">Pursuits of the Privileged</h4>
+                <p class="section-desc" style="margin-bottom: 24px; line-height: 1.8;">
+                    A commanding lifestyle requires an extraordinary arena. The integrated racecourse for Polo &amp; Equestrian brings a world-class sporting culture directly into the township ecosystem. It is not merely an amenity; it is a statement of stature.
+                </p>
 
                 <div class="della-features">
                     <div class="della-feature-item">
                         <i class="ph ph-horse gold-icon"></i>
-                        <h4>8-Acre Private Racecourse</h4>
-                        <p>India's first equestrian-themed township. Host private derbies, equestrian training, and polo matches at your
-                            doorstep.</p>
+                        <h4>Professional Equestrian Infrastructure</h4>
+                        <p>Integrated racecourse for Polo &amp; Equestrian derbies, dressage training, and championship polo events right at your doorstep.</p>
+                    </div>
+                    <div class="della-feature-item">
+                        <i class="ph ph-eye gold-icon"></i>
+                        <h4>Uninterrupted Arena Views</h4>
+                        <p>Panoramic vantage points from private villa sundecks and Sector Icon residences overlooking the central turf arena.</p>
                     </div>
                     <div class="della-feature-item">
                         <i class="ph ph-tent gold-icon"></i>
-                        <h4>5-Star Glamping Resort</h4>
-                        <p>Access to Della's world-famous luxury hospitality, signature restaurants, and 12 MICE venues.
-                        </p>
-                    </div>
-                    <div class="della-feature-item">
-                        <i class="ph ph-house-line gold-icon"></i>
-                        <h4>Ultra-Premium Villa Plots</h4>
-                        <p>Bespoke living spaces designed for the elite, part of a curated 40-acre gated ecosystem.</p>
+                        <h4>5-Star Della Resort &amp; Glamping</h4>
+                        <p>Bespoke hospitality privileges, 12 MICE venues, signature fine dining, and access to Jimmy Mistry's iconic leisure realm.</p>
                     </div>
                 </div>
+
+                <div style="margin-top: 24px; display: flex; gap: 14px; flex-wrap: wrap;">
+                    <a href="della" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none;">
+                        Explore Della Legacy <i class="ph ph-arrow-right"></i>
+                    </a>
+                    <button class="btn-gold open-modal" data-magnet="della_plots">
+                        Request Villa Plot Inventory
+                    </button>
+                </div>
             </div>
+
             <div class="della-visual glass-panel scroll-reveal right">
                 <picture>
-                    <source media="(max-width: 768px)" srcset="/public/imported/mobile-view-della.webp">
-                    <img loading="lazy" decodings="async" src="/public/imported/della-racecource.webp" onerror="this.src='/public/everlyn/masterplan/aerial_layout_hq.webp'"
-                        alt="Della Resorts 8-Acre Private Racecourse at Krisala Hiranandani Township Pune">
+                    <source media="(max-width: 768px)" srcset="/public/township_grand/della_resort_villas_equestrian_official.webp">
+                    <img loading="lazy" decodings="async" src="/public/township_grand/della_resort_villas_equestrian_official.webp"
+                        alt="Della Resorts 8-Acre Private Racecourse and Resort Living at Krisala Hiranandani Township Pune">
                 </picture>
                 <div class="visual-overlay">
                     <div class="visual-stat">
                         <h3>100</h3>
-                        <p>Limited Villa Plots</p>
+                        <p>Coveted Villa Plots</p>
                     </div>
                     <div class="visual-stat">
-                        <h3>8</h3>
-                        <p>Acre Polo Club</p>
+                        <h3>8-Acre</h3>
+                        <p>Polo &amp; Equestrian Arena</p>
                     </div>
                 </div>
             </div>

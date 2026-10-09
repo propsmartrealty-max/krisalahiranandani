@@ -199,8 +199,9 @@
 
     <nav class="masterplan-nav" style="position: absolute; top: 20px; left: 20px; z-index: 100; display: flex; gap: 8px; flex-wrap: wrap;" aria-label="Masterplan Navigation">
         <a href="/" class="back-btn"><i class="ph ph-arrow-left"></i> Township</a>
+        <a href="/colosseum" class="back-btn" style="border-color: var(--gold-primary); color: var(--gold-light);"><i class="ph ph-shield-star"></i> The Colosseum (Phase 4)</a>
+        <a href="/icon" class="back-btn">Icon (Towers A, B &amp; C)</a>
         <a href="/arcadia" class="back-btn">Arcadia (2 &amp; 3 BHK)</a>
-        <a href="/icon" class="back-btn">Icon (Duplex)</a>
         <a href="/della" class="back-btn">Della Plots</a>
         <a href="/racecourse" class="back-btn">8-Acre Racecourse</a>
         <a href="/pricing" class="back-btn">Price List</a>
@@ -216,20 +217,23 @@
 
     <div class="map-container" id="mapContainer" role="region" aria-label="105-Acre Township Interactive Layout">
         <div class="map-wrapper" id="mapWrapper">
-            <img fetchpriority="high" src="/public/everlyn/masterplan/master_layout_hq.webp" alt="Krisala Hiranandani 105-Acre Masterplan Layout Map" class="map-img" draggable="false" width="3000" height="1875">
+            <img fetchpriority="high" src="/public/township_grand/township_aerial_birds_eye_master_view.webp" alt="Krisala Hiranandani 105-Acre Masterplan Layout Map" class="map-img" draggable="false" width="3000" height="1875">
 
             <!-- Interactive Hotspots -->
-            <div class="hotspot" style="top: 25%; left: 32%;" onclick="window.location.href='/arcadia'" role="button" aria-label="Explore Sector Arcadia 2 and 3 BHK">
-                Sector Arcadia (2 &amp; 3 BHK)
+            <div class="hotspot" style="top: 22%; left: 28%;" onclick="window.location.href='/colosseum'" role="button" aria-label="Explore The Colosseum Phase 4">
+                The Colosseum<br><span style="font-size:0.75rem; color: var(--gold-light);">Phase 4 Launch</span>
             </div>
-            <div class="hotspot" style="top: 30%; left: 45%;" onclick="window.location.href='/icon'" role="button" aria-label="Explore Sector Icon Presidential Duplex">
-                Sector Icon (Duplex Sky Villas)
+            <div class="hotspot" style="top: 25%; left: 45%;" onclick="window.location.href='/arcadia'" role="button" aria-label="Explore Sector Arcadia 2 and 3 BHK">
+                Sector Arcadia<br><span style="font-size:0.75rem;">(2 &amp; 3 BHK)</span>
             </div>
-            <div class="hotspot" style="top: 15%; left: 62%;" onclick="window.location.href='/della'" role="button" aria-label="Explore The Della Collection Villa Plots">
-                The Della Collection (Villa Plots)
+            <div class="hotspot" style="top: 30%; left: 62%;" onclick="window.location.href='/icon'" role="button" aria-label="Explore Sector Icon Presidential Duplex">
+                Sector Icon<br><span style="font-size:0.75rem; color: var(--gold-light);">(Towers A, B &amp; C)</span>
             </div>
-            <div class="hotspot" style="top: 55%; left: 45%;" onclick="window.location.href='/racecourse'" role="button" aria-label="Explore 8-Acre Private Racecourse & Polo Club">
-                8-Acre Private Racecourse &amp; Polo Club
+            <div class="hotspot" style="top: 48%; left: 35%;" onclick="window.location.href='/della'" role="button" aria-label="Explore The Della Collection Villa Plots">
+                Della Precinct<br><span style="font-size:0.75rem;">(Villa Plots)</span>
+            </div>
+            <div class="hotspot" style="top: 52%; left: 52%;" onclick="window.location.href='/racecourse'" role="button" aria-label="Explore 8-Acre Private Racecourse & Polo Club">
+                8-Acre Racecourse<br><span style="font-size:0.75rem; color: var(--gold-light);">&amp; Polo Arena</span>
             </div>
         </div>
     </div>
@@ -248,8 +252,11 @@
         const toggleBtn = document.getElementById('toggleLayoutBtn');
         let currentMap = 0;
         const layoutMaps = [
-            '/public/imported/Krisala-x-Hiranandani-Township-Brochure-1.webp',
-            '/public/everlyn/masterplan/master_layout_hq.webp'
+            '/public/township_grand/township_aerial_birds_eye_master_view.webp',
+            '/public/township_grand/township_master_layout_plan_official.webp',
+            '/public/icon_official/icon_sector_master_layout_plan_numbered.webp',
+            '/public/township_grand/township_connectivity_location_map_official.webp',
+            '/public/township_grand/township_grand_entrance_gate_hq.webp'
         ];
 
         if (toggleBtn && mapImg) {

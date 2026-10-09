@@ -1,0 +1,1065 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Krisala Hiranandani Township Residential Inventory Catalog",
+  "url": "https://krisalahiranandanitownships.com/products",
+  "numberOfItems": 12,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-COL-2BHK-SM",
+        "name": "Krisala Hiranandani The Colosseum 2 BHK Small Residence Hinjewadi",
+        "description": "Phase 4 Codename The Colosseum pre-launch 2 BHK Small residence (765 sq.ft. carpet area). Roman-inspired amphitheater podium living, Sahyadri views, 45m boulevard access in 105-acre township North Hinjewadi. Diwali Benefit: Rs 5 Lacs. Token: Rs 2.70 Lacs.",
+        "image": "https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp",
+        "sku": "KXH-COL-2BHK-SM",
+        "mpn": "KXH-COL-2BHK-SM",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/colosseum",
+          "priceCurrency": "INR",
+          "price": "8299000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-COL-2BHK-LG",
+        "name": "Krisala Hiranandani The Colosseum 2 BHK Large Residence Hinjewadi",
+        "description": "Phase 4 Codename The Colosseum pre-launch 2 BHK Large residence (819 sq.ft. carpet area). Master bedroom with walk-in closet space, expansive sundeck, Mivan RCC monolithic structure. Diwali Benefit: Rs 6 Lacs. Token: Rs 2.70 Lacs.",
+        "image": "https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp",
+        "sku": "KXH-COL-2BHK-LG",
+        "mpn": "KXH-COL-2BHK-LG",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/colosseum",
+          "priceCurrency": "INR",
+          "price": "9399000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-COL-3BHK-SM",
+        "name": "Krisala Hiranandani The Colosseum 3 BHK Small Residence Hinjewadi",
+        "description": "Phase 4 Codename The Colosseum pre-launch 3 BHK Small residence (1,025 sq.ft. carpet area). Cross-ventilated layout, 3 bedrooms, 3 bathrooms, large living deck facing lush valley greens. Diwali Benefit: Rs 7 Lacs. Token: Rs 2.70 Lacs.",
+        "image": "https://krisalahiranandanitownships.com/public/township_grand/township_master_layout_plan_official.webp",
+        "sku": "KXH-COL-3BHK-SM",
+        "mpn": "KXH-COL-3BHK-SM",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/colosseum",
+          "priceCurrency": "INR",
+          "price": "11200000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-COL-3BHK-LG",
+        "name": "Krisala Hiranandani The Colosseum 3 BHK Large Residence Hinjewadi",
+        "description": "Phase 4 Codename The Colosseum 3 BHK Large residence (1,150 sq.ft. carpet area). Generous dining alcove, expansive living terrace, double-entry foyer. Diwali Benefit: Rs 8 Lacs. Token: Rs 2.70 Lacs.",
+        "image": "https://krisalahiranandanitownships.com/public/township_grand/township_master_layout_plan_official.webp",
+        "sku": "KXH-COL-3BHK-LG",
+        "mpn": "KXH-COL-3BHK-LG",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/colosseum",
+          "priceCurrency": "INR",
+          "price": "13000000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-COL-3BHK-ULTRA",
+        "name": "Krisala Hiranandani The Colosseum Premium 3 BHK Ultra Luxury Residence",
+        "description": "Limited Collection (90 residences only) Premium 3 BHK Ultra (1,330 sq.ft. carpet area). 270-degree panoramic horizons, private foyer, Italian marble flooring. Diwali Benefit: Rs 9 Lacs. Token: Rs 3.60 Lacs.",
+        "image": "https://krisalahiranandanitownships.com/public/township_grand/township_grand_entrance_gate_hq.webp",
+        "sku": "KXH-COL-3BHK-ULTRA",
+        "mpn": "KXH-COL-3BHK-ULTRA",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/colosseum",
+          "priceCurrency": "INR",
+          "price": "15500000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-COL-4BHK-ULTRA",
+        "name": "Krisala Hiranandani The Colosseum Premium 4 BHK Ultra Luxury Sky Residence",
+        "description": "Limited Collection (90 residences only) Premium 4 BHK Ultra (1,600 sq.ft. carpet area) offering spectacular 270-degree unhindered racecourse and valley views. Diwali Benefit: Rs 9 Lacs. Token: Rs 3.60 Lacs.",
+        "image": "https://krisalahiranandanitownships.com/public/township_grand/township_grand_entrance_gate_hq.webp",
+        "sku": "KXH-COL-4BHK-ULTRA",
+        "mpn": "KXH-COL-4BHK-ULTRA",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/colosseum",
+          "priceCurrency": "INR",
+          "price": "18500000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-ICON-3BHK-GRANDE",
+        "name": "Krisala Hiranandani Sector Icon 3 BHK Grande Residence Hinjewadi",
+        "description": "Sector Icon flagship 3 BHK Grande residence in Tower A & B (1,250 sq.ft. carpet area). Italian marble, private lift foyer, 52 curated amenities including Floating Deck and Aether Pods. MahaRERA PR1260002600818.",
+        "image": "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp",
+        "sku": "KXH-ICON-3BHK-GRANDE",
+        "mpn": "KXH-ICON-3BHK-GRANDE",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/icon",
+          "priceCurrency": "INR",
+          "price": "18500000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-ICON-4BHK-ULTRA",
+        "name": "Krisala Hiranandani Sector Icon 4 BHK Ultra-Luxury Suite Hinjewadi",
+        "description": "Sector Icon 4 BHK Ultra-Luxury suite in Tower B & C (1,850 sq.ft. carpet area). Private sundeck facing 8-acre integrated racecourse and Sahyadri horizon. MahaRERA PR1260002600818.",
+        "image": "https://krisalahiranandani.townships.com/public/icon_official/icon_towers_daylight_architectural_elevation.webp",
+        "sku": "KXH-ICON-4BHK-ULTRA",
+        "mpn": "KXH-ICON-4BHK-ULTRA",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/icon",
+          "priceCurrency": "INR",
+          "price": "28500000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-ICON-DUPLEX",
+        "name": "Krisala Hiranandani Sector Icon Presidential Duplex Penthouse Hinjewadi",
+        "description": "Presidential Duplex Sky Villa in Tower C (2,600-3,400 sq.ft. carpet area). Soaring 18-foot double-height living room, floating staircase, sky lounge, and private racecourse view. MahaRERA PR1260002600818.",
+        "image": "https://krisalahiranandanitownships.com/public/icon_official/icon_floating_deck_clubhouse_facade.webp",
+        "sku": "KXH-ICON-DUPLEX",
+        "mpn": "KXH-ICON-DUPLEX",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/icon",
+          "priceCurrency": "INR",
+          "price": "42000000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-ARC-2BHK-LUX",
+        "name": "Krisala Hiranandani Sector Arcadia 2 BHK Luxury Residence Hinjewadi",
+        "description": "Sector Arcadia Phase 1 residential towers featuring 2 BHK luxury residences (780 sq.ft. carpet area) with Roman colonnades and wellness clubhouses. MahaRERA PR1260002502438.",
+        "image": "https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_living_hq.webp",
+        "sku": "KXH-ARC-2BHK-LUX",
+        "mpn": "KXH-ARC-2BHK-LUX",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/arcadia",
+          "priceCurrency": "INR",
+          "price": "7900000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-ARC-3BHK-ROY",
+        "name": "Krisala Hiranandani Sector Arcadia 3 BHK Royale Residence Hinjewadi",
+        "description": "Sector Arcadia Phase 1 3 BHK Royale residence (1,065 sq.ft. carpet area). 3 bedrooms, private sundeck, MIVAN formwork precision, close to Hinjawadi Phase 3. MahaRERA PR1260002502438.",
+        "image": "https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_bedroom_hq.webp",
+        "sku": "KXH-ARC-3BHK-ROY",
+        "mpn": "KXH-ARC-3BHK-ROY",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/arcadia",
+          "priceCurrency": "INR",
+          "price": "11500000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "Product",
+        "@id": "https://krisalahiranandanitownships.com/#product-KXH-DELLA-VILLA-PLOT",
+        "name": "The Della Collection Resort Equestrian Villa Plot Hinjewadi Pune",
+        "description": "Exclusive 2,500-5,000 sq.ft. resort-themed equestrian villa plots curated by Della Resorts with access to 8-acre championship polo track, horse stables, and private 5-star concierge club. MahaRERA Registered.",
+        "image": "https://krisalahiranandanitownships.com/public/township_grand/della_resort_villas_equestrian_official.webp",
+        "sku": "KXH-DELLA-VILLA-PLOT",
+        "mpn": "KXH-DELLA-VILLA-PLOT",
+        "brand": {
+          "@type": "Brand",
+          "name": "Krisala x Hiranandani Communities"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "1248",
+          "reviewCount": "892"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Aditya Kulkarni (IT Director, Hinjawadi)"
+            },
+            "datePublished": "2026-09-15",
+            "reviewBody": "Sector Icon and the 105-acre township infrastructure is unmatched in Pune. Direct access to Metro Line 3 and Kasarsai dam microclimate makes it a world-class residence.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Rohit Sharma (NRI Investor, Dubai)"
+            },
+            "datePublished": "2026-10-02",
+            "reviewBody": "The Colosseum Phase 4 pre-launch pricing and Diwali benefits gave us immense capital upside. Transparent MahaRERA compliance by Krisala and Hiranandani.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "offers": {
+          "@type": "Offer",
+          "url": "https://krisalahiranandanitownships.com/della",
+          "priceCurrency": "INR",
+          "price": "35000000.00",
+          "priceValidUntil": "2026-12-31",
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "seller": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala x Hiranandani Communities"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "IN",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 30,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "INR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "IN"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

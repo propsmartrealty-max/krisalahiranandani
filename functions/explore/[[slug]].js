@@ -79,6 +79,63 @@ const ENTITY_DICTIONARY = {
         spec: "Neoclassical Roman Façade, Panoramic 8-Acre Racecourse Views, IGBC Platinum Design",
         desc: "The monumental residential enclave within the 105-acre township, inspired by neoclassical Roman amphitheater aesthetics with sweeping Sahyadri vistas and high-street lifestyle promenades."
     },
+    "the-colosseum": {
+        name: "Codename The Colosseum (Phase 4 Pre-Launch)",
+        carpet: "765 – 1,600 sq.ft.",
+        price: "₹82.99 Lakhs* onwards (Diwali Window)",
+        sector: "The Colosseum &bull; Phase 4",
+        floors: "B + G + 27 Storeys",
+        spec: "Diwali Benefits ₹5L–₹9L, Tokens ₹2.70L–₹3.60L, Roman Amphitheater Podium, 270° Horizons",
+        desc: "Private Pre-Launch Opportunity (11 Oct – 1 Nov 2026). Four core configurations plus 90 exclusive residences in the Premium Collection."
+    },
+    "sector-icon": {
+        name: "Sector Icon Ultra-Luxury Flagship (Tower A, B & C)",
+        carpet: "1,250 – 3,400 sq.ft.",
+        price: "₹1.85 Cr* onwards",
+        sector: "Sector Icon Flagship Triad",
+        floors: "Tower A, B & C High-Rise Pinnacles",
+        spec: "52 Numbered Amenities, Lookout Pod Aether Deck, Floating Deck Clubhouse, Italian Marble, 18ft Duplex Ceilings",
+        desc: "The ultra-luxury flagship enclave of Krisala Hiranandani Township. 3 & 4 BHK residences and Presidential Duplexes with MahaRERA PR1260002600818."
+    },
+    "sector-arcadia": {
+        name: "Sector Arcadia Neoclassical Towers",
+        carpet: "780 – 1,280 sq.ft.",
+        price: "₹79 Lakhs* onwards",
+        sector: "Sector Arcadia",
+        floors: "G + 32 Storeys",
+        spec: "Greco-Roman Colonnades, Wellness Clubhouses, Sundecks, MahaRERA PR1260002502438",
+        desc: "Phase 1 neoclassical towers offering 2 & 3 BHK residences embedded with lush landscaped podium gardens and swift arterial connectivity."
+    },
+    "sector-everlyn": {
+        name: "Sector Everlyn Butterfly Sanctuary Residences",
+        carpet: "740 – 1,320 sq.ft.",
+        price: "₹76.5 Lakhs* onwards",
+        sector: "Sector Everlyn",
+        floors: "G + 32 Storeys",
+        spec: "Butterfly Theme Park, Direct Access to Central Lake, Mivan RCC Precision",
+        desc: "Family-first residential sector nestled along the northwest green ribbon, featuring serene nature trails and high-street convenience."
+    },
+    "della-equestrian": {
+        name: "The Della Resort & 8-Acre Private Racecourse",
+        carpet: "2,000 – 5,000 sq.ft. Villa Plots",
+        price: "₹1.80 Cr – ₹3.50 Cr*",
+        sector: "Della 40-Acre Hospitality Precinct",
+        floors: "G + 2 Independent Villa Permissions",
+        spec: "Pursuits of the Privileged, Professional Equestrian Derby Track, 5-Star Glamping & Concierge",
+        desc: "India's first equestrian-themed township featuring an 8-acre championship polo oval and 100 bespoke villa plots curated by Della Resorts."
+    },
+    "kasarsai-dam": {
+        landmark: "Kasarsai Dam & Eco Waterfront Horizon",
+        distance: "1.2 km",
+        time: "3 mins",
+        route: "Direct Township Scenic Boulevard Connector"
+    },
+    "metro-line-3-depot": {
+        landmark: "Pune Metro Line-3 Depot & Terminus",
+        distance: "2.1 km",
+        time: "4 mins",
+        route: "Direct Arterial Link to North Hinjewadi Corridor"
+    },
     "everland": {
         name: "Hiranandani Everland / Everlyn Precinct",
         carpet: "740 – 1,420 sq.ft.",
