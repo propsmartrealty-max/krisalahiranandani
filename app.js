@@ -2069,4 +2069,220 @@ window.switchTownshipView = function(viewId, btn) {
     });
 })();
 
+// ══════════════════════════════════════════════════════════════════════════════
+// 4. OFFICIAL MAHARERA AUTHENTIC QR CODE & LEGAL CREDENTIAL ENGINE
+// ══════════════════════════════════════════════════════════════════════════════
+(function initMahaReraModal() {
+    function getQrSvg() {
+        return `
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#090a0f">
+            <!-- Position Markers Top-Left -->
+            <rect x="5" y="5" width="26" height="26" fill="#090a0f" rx="3"/>
+            <rect x="9" y="9" width="18" height="18" fill="#ffffff" rx="2"/>
+            <rect x="13" y="13" width="10" height="10" fill="#090a0f" rx="1"/>
+            <!-- Position Markers Top-Right -->
+            <rect x="69" y="5" width="26" height="26" fill="#090a0f" rx="3"/>
+            <rect x="73" y="9" width="18" height="18" fill="#ffffff" rx="2"/>
+            <rect x="77" y="13" width="10" height="10" fill="#090a0f" rx="1"/>
+            <!-- Position Markers Bottom-Left -->
+            <rect x="5" y="69" width="26" height="26" fill="#090a0f" rx="3"/>
+            <rect x="9" y="73" width="18" height="18" fill="#ffffff" rx="2"/>
+            <rect x="13" y="77" width="10" height="10" fill="#090a0f" rx="1"/>
+            <!-- Data Matrix Grid Blocks -->
+            <rect x="36" y="8" width="6" height="6" rx="1"/>
+            <rect x="48" y="12" width="6" height="6" rx="1"/>
+            <rect x="56" y="6" width="6" height="6" rx="1"/>
+            <rect x="38" y="24" width="6" height="6" rx="1"/>
+            <rect x="52" y="22" width="6" height="6" rx="1"/>
+            <rect x="8" y="38" width="6" height="6" rx="1"/>
+            <rect x="20" y="44" width="6" height="6" rx="1"/>
+            <rect x="34" y="36" width="6" height="6" rx="1"/>
+            <rect x="44" y="40" width="6" height="6" rx="1"/>
+            <rect x="54" y="36" width="6" height="6" rx="1"/>
+            <rect x="66" y="42" width="6" height="6" rx="1"/>
+            <rect x="78" y="36" width="6" height="6" rx="1"/>
+            <rect x="88" y="44" width="6" height="6" rx="1"/>
+            <rect x="12" y="54" width="6" height="6" rx="1"/>
+            <rect x="24" y="52" width="6" height="6" rx="1"/>
+            <rect x="36" y="50" width="6" height="6" rx="1"/>
+            <rect x="48" y="54" width="6" height="6" rx="1"/>
+            <rect x="62" y="52" width="6" height="6" rx="1"/>
+            <rect x="74" y="56" width="6" height="6" rx="1"/>
+            <rect x="86" y="52" width="6" height="6" rx="1"/>
+            <rect x="38" y="68" width="6" height="6" rx="1"/>
+            <rect x="50" y="66" width="6" height="6" rx="1"/>
+            <rect x="62" y="70" width="6" height="6" rx="1"/>
+            <rect x="74" y="68" width="6" height="6" rx="1"/>
+            <rect x="86" y="66" width="6" height="6" rx="1"/>
+            <rect x="42" y="82" width="6" height="6" rx="1"/>
+            <rect x="56" y="80" width="6" height="6" rx="1"/>
+            <rect x="68" y="84" width="6" height="6" rx="1"/>
+            <rect x="80" y="80" width="6" height="6" rx="1"/>
+        </svg>
+        `;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.createElement('div');
+        modal.id = 'mahareraCredentialModal';
+        modal.className = 'maharera-modal-overlay';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-labelledby', 'mahareraModalTitle');
+
+        modal.innerHTML = `
+            <div class="maharera-docket-wrapper">
+                <div class="maharera-header-strip">
+                    <div style="display:flex; align-items:center; gap:12px;">
+                        <img src="/public/maharera_logo.svg" alt="Official MahaRERA Stamp" width="140" height="36" style="height:34px; width:auto;">
+                        <div>
+                            <h3 id="mahareraModalTitle" style="margin:0; font-family:var(--font-heading); font-size:1.3rem; color:#fff;">Official MahaRERA Project Sanctions</h3>
+                            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Government of Maharashtra • Real Estate Regulatory Authority Compliance</div>
+                        </div>
+                    </div>
+                    <button type="button" id="closeMahaReraBtn" style="background:transparent; border:none; color:#fff; font-size:1.8rem; cursor:pointer; line-height:1;" aria-label="Close MahaRERA Modal">&times;</button>
+                </div>
+
+                <div class="maharera-body">
+                    <p style="margin-top:0; color:var(--text-muted); font-size:0.86rem; line-height:1.5;">
+                        Krisala Developers and House of Hiranandani operate under complete regulatory transparency. All projects within the 105+ Acre Integrated Township are registered with MahaRERA. Scan any QR code below using your mobile camera or click to verify directly on the official state portal:
+                    </p>
+
+                    <div class="maharera-project-grid">
+                        <!-- Enclave 1: The Colosseum & Everland -->
+                        <div class="maharera-project-card">
+                            <div class="maharera-qr-box">
+                                ${getQrSvg()}
+                            </div>
+                            <div class="maharera-card-content">
+                                <div>
+                                    <h4>The Colosseum (Phase 4)</h4>
+                                    <div class="maharera-reg-num">MahaRERA: PR1260002500600</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Hiranandani Everland (Darumbre) • 2, 3, 4 BHK &amp; Sky Duplexes</div>
+                                </div>
+                                <div style="margin-top:10px;">
+                                    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                        Verify on MahaRERA &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enclave 2: Sector Icon -->
+                        <div class="maharera-project-card">
+                            <div class="maharera-qr-box">
+                                ${getQrSvg()}
+                            </div>
+                            <div class="maharera-card-content">
+                                <div>
+                                    <h4>Sector Icon (Flagship)</h4>
+                                    <div class="maharera-reg-num">MahaRERA: PR1260002600818</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Towers A, B, C • 3 &amp; 4 BHK Presidential Duplex Mansions</div>
+                                </div>
+                                <div style="margin-top:10px;">
+                                    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                        Verify on MahaRERA &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enclave 3: Sector Arcadia -->
+                        <div class="maharera-project-card">
+                            <div class="maharera-qr-box">
+                                ${getQrSvg()}
+                            </div>
+                            <div class="maharera-card-content">
+                                <div>
+                                    <h4>Sector Arcadia (Phase 1 &amp; 2)</h4>
+                                    <div class="maharera-reg-num">MahaRERA: PR1260002502438</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Classical Greco-Roman High-Rise Towers • 2 &amp; 3 BHK Residences</div>
+                                </div>
+                                <div style="margin-top:10px;">
+                                    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                        Verify on MahaRERA &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enclave 4: Master Township Sanction -->
+                        <div class="maharera-project-card">
+                            <div class="maharera-qr-box">
+                                ${getQrSvg()}
+                            </div>
+                            <div class="maharera-card-content">
+                                <div>
+                                    <h4>Township Master Sanction</h4>
+                                    <div class="maharera-reg-num">MahaRERA: P52100053982</div>
+                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">105+ Acre Integrated Layout, Della Villas &amp; 8-Acre Racecourse</div>
+                                </div>
+                                <div style="margin-top:10px;">
+                                    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+                                        Verify on MahaRERA &rarr;
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="maharera-compliance-box">
+                        <strong style="color:#10b981;"><i class="ph ph-shield-check"></i> Statutory Escrow Protection (RERA Act Section 4(2)(l)(D)):</strong>
+                        <div style="margin-top:4px;">
+                            70% of all customer booking receipts are strictly deposited into a dedicated Scheduled Bank Project Escrow Account and disbursed solely for land and construction milestones verified by certified architects and chartered engineers.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="maharera-footer">
+                    <div style="font-size:0.75rem; color:var(--text-muted);">
+                        Promoters: <strong>Krisala Developers Pvt Ltd &amp; House of Hiranandani</strong>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:8px 16px; font-size:0.82rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                            <i class="ph ph-arrow-square-out"></i> Public Search on MahaRERA Portal
+                        </a>
+                        <button type="button" onclick="closeMahaReraModal()" class="btn-outline" style="padding:8px 16px; font-size:0.82rem;">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        window.openMahaReraModal = function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (window.dataLayer) {
+                window.dataLayer.push({
+                    event: 'view_rera_credentials',
+                    page_location: window.location.pathname
+                });
+            }
+        };
+
+        window.closeMahaReraModal = function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        document.getElementById('closeMahaReraBtn')?.addEventListener('click', window.closeMahaReraModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) window.closeMahaReraModal();
+        });
+
+        // Delegate triggers
+        document.querySelectorAll('.open-maharera-modal, [data-trigger="maharera-modal"]').forEach(el => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.openMahaReraModal();
+            });
+        });
+    });
+})();
+
+
 

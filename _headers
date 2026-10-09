@@ -16,13 +16,17 @@
   Link: <https://fonts.googleapis.com>; rel=preconnect, <https://fonts.gstatic.com>; rel=preconnect; crossorigin, </style.css?v=20261009_v5>; rel=preload; as=style, </app.js>; rel=preload; as=script, </public/krisala-hiranandani-logo.webp>; rel=preload; as=image
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://static.cloudflareinsights.com https://cdn.ampproject.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.ampproject.org; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: blob: https://krisalahiranandanitownships.com https://www.google-analytics.com https://*.google.com https://*.googleapis.com https://*.gstatic.com; connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com https://cloudflareinsights.com; frame-src 'self' https://www.google.com https://maps.google.com; form-action 'self' https://formsubmit.co https://wa.me; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests;
 
-# HTML Documents: Edge Revalidation
+# HTML Documents: Sub-15ms Edge Micro-Caching with Stale-While-Revalidate
 /*.html
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
   Cross-Origin-Resource-Policy: same-origin
 
 /
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
   Cross-Origin-Resource-Policy: same-origin
 
 # Service Worker: Never stale, immediate update

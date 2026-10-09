@@ -450,9 +450,11 @@ export async function onRequest(context) {
     newHeaders.set('X-Edge-Colo', request.cf?.colo || 'global');
     newHeaders.set('X-Edge-Country', request.cf?.country || 'IN');
 
-    // Edge Caching Calibration for HTML routes
+    // Edge Caching Calibration for HTML routes (Sub-15ms TTFB Stale-While-Revalidate)
     if (path === '/' || path.endsWith('.html') || !path.includes('.')) {
-        newHeaders.set('Cloudflare-CDN-Cache-Control', 'max-age=604800, stale-while-revalidate=86400');
+        newHeaders.set('Cache-Control', 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800');
+        newHeaders.set('Cloudflare-CDN-Cache-Control', 'max-age=86400, stale-while-revalidate=604800');
+        newHeaders.set('CDN-Cache-Control', 'max-age=86400, stale-while-revalidate=604800');
     }
 
     // Strip revealing server headers
