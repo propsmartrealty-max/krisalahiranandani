@@ -30,17 +30,16 @@
     <link rel="search" type="application/opensearchdescription+xml" title="Krisala Hiranandani" href="/opensearch.xml">
 
     <!-- Preloads & Performance -->
-    <link rel="preload" href="/public/everlyn/masterplan/master_layout_hq.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="/public/township_grand/township_aerial_birds_eye_master_view.webp" as="image" fetchpriority="high">
     <link rel="preload" href="/style.css?v=20261009_v5" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
         rel="stylesheet">
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="/style.css?v=20261009_v5">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#08080a">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#07111e">
 
     <!-- Social & OpenGraph Meta Tags -->
     <meta property="og:type" content="website">
@@ -89,293 +88,1144 @@
     </script>
 
     <style>
+        :root {
+            --gold-primary: #c5a059;
+            --gold-light: #e6ca85;
+            --gold-glow: rgba(197, 160, 89, 0.45);
+            --bg-deep: #050b14;
+            --panel-glass: rgba(8, 18, 32, 0.88);
+            --panel-border: rgba(197, 160, 89, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background: #000;
+            background: var(--bg-deep);
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
-        .map-container {
+        /* ── Map Viewport & Container ── */
+        .map-viewport {
             width: 100vw;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: grab;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0c1a2e 0%, #03070d 100%);
+            cursor: grab;
         }
 
-        .map-wrapper {
-            transition: transform 0.1s ease-out;
-            transform-origin: center;
+        .map-viewport.is-dragging {
+            cursor: grabbing;
+        }
+
+        .map-stage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: center center;
+            transition: transform 0.08s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: transform;
+        }
+
+        .map-surface {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2200px;
+            height: 1375px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            overflow: visible;
         }
 
         .map-img {
-            max-width: none;
-            height: auto;
-            width: 3000px;
-            user-select: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+            pointer-events: none;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            filter: contrast(1.08) saturate(1.15) brightness(1.02);
+            transition: opacity 0.35s ease, filter 0.35s ease;
         }
 
-        .controls {
+        .map-grid-overlay {
             position: absolute;
-            bottom: 30px;
+            inset: 0;
+            pointer-events: none;
+            background-image: 
+                linear-gradient(rgba(197, 160, 89, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 160, 89, 0.04) 1px, transparent 1px);
+            background-size: 80px 80px;
+            border-radius: 8px;
+        }
+
+        /* ── Master Cyber-Glass HUD Bar ── */
+        .master-hud {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            z-index: 120;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        .hud-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            pointer-events: auto;
+        }
+
+        .hud-glass-panel {
+            background: var(--panel-glass);
+            border: 1px solid var(--panel-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 40px;
+            padding: 6px 12px;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hud-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .hud-btn:hover {
+            background: rgba(197, 160, 89, 0.2);
+            border-color: var(--gold-primary);
+            color: var(--gold-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(197, 160, 89, 0.3);
+        }
+
+        .hud-btn.active {
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.95), rgba(163, 126, 44, 0.95));
+            border-color: #ffd88a;
+            color: #07111e;
+            font-weight: 700;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .hud-brand-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--gold-light);
+            text-transform: uppercase;
+        }
+
+        .hud-brand-pill .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #28d07e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #28d07e;
+            animation: pulse-ring 2s infinite;
+        }
+
+        /* ── Enclave Quick Switcher Dropdown ── */
+        .enclave-select-wrap {
+            position: relative;
+        }
+
+        .enclave-dropdown-trigger {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--panel-border);
+            color: var(--gold-light);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .enclave-dropdown-trigger:hover {
+            background: rgba(197, 160, 89, 0.15);
+            border-color: var(--gold-primary);
+        }
+
+        .enclave-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            width: 280px;
+            background: rgba(7, 16, 28, 0.96);
+            border: 1px solid var(--panel-border);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
+            padding: 8px;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 150;
+        }
+
+        .enclave-menu.show {
+            display: flex;
+            animation: slideDownFade 0.2s ease-out;
+        }
+
+        .enclave-menu a {
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: #e0e6ed;
+            text-decoration: none;
+            font-size: 0.84rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+        }
+
+        .enclave-menu a:hover {
+            background: rgba(197, 160, 89, 0.15);
+            color: var(--gold-light);
+            padding-left: 18px;
+        }
+
+        .enclave-menu a span.tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: rgba(197, 160, 89, 0.2);
+            color: var(--gold-light);
+        }
+
+        /* ── Dynamic Radar Pulse Hotspots ── */
+        .radar-hotspot {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 50;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .radar-hotspot:hover {
+            transform: translate(-50%, -50%) scale(1.12);
+            z-index: 80;
+        }
+
+        .radar-pulse-core {
+            position: relative;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+        }
+
+        .radar-ripple-1,
+        .radar-ripple-2 {
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-primary);
+            opacity: 0;
+            animation: radar-expand 2.6s infinite cubic-bezier(0.2, 0.7, 0.3, 1);
+        }
+
+        .radar-ripple-2 {
+            animation-delay: 1.3s;
+        }
+
+        .radar-icon-disk {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(20, 36, 60, 0.95), rgba(7, 14, 25, 0.95));
+            border: 2px solid var(--gold-primary);
+            box-shadow: 0 0 16px var(--gold-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Hotspot Info Label */
+        .radar-label {
+            position: absolute;
+            top: calc(100% + 8px);
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(197, 160, 89, 0.3);
+            background: rgba(6, 14, 25, 0.94);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            padding: 6px 14px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.75);
+            white-space: nowrap;
+            text-align: center;
+            transition: all 0.25s ease;
         }
 
-        .control-btn {
-            background: none;
-            border: none;
+        .radar-hotspot:hover .radar-label {
+            border-color: var(--gold-primary);
+            background: rgba(10, 24, 44, 0.98);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.35);
+        }
+
+        .radar-label .title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.86rem;
+            font-weight: 700;
             color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            display: block;
         }
 
-        .control-btn:hover {
-            color: var(--gold-primary);
-        }
-
-        .back-btn {
-            background: rgba(15, 15, 18, 0.85);
-            padding: 10px 18px;
-            border-radius: 8px;
-            color: #fff;
-            text-decoration: none;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(197, 160, 89, 0.4);
-            font-size: 0.9rem;
+        .radar-label .sub {
+            font-size: 0.72rem;
+            color: var(--gold-light);
             font-weight: 500;
-            transition: all 0.3s;
+            display: block;
+            margin-top: 2px;
         }
 
-        .back-btn:hover {
+        .radar-label .price-badge {
+            display: inline-block;
+            background: rgba(197, 160, 89, 0.2);
+            color: #ffd88a;
+            border-radius: 8px;
+            padding: 1px 6px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            margin-top: 3px;
+        }
+
+        /* Sector specific color accents */
+        .radar-hotspot[data-sector="colosseum"] .radar-icon-disk { border-color: #f3a838; color: #f3a838; }
+        .radar-hotspot[data-sector="colosseum"] .radar-ripple-1,
+        .radar-hotspot[data-sector="colosseum"] .radar-ripple-2 { border-color: #f3a838; }
+
+        .radar-hotspot[data-sector="arcadia"] .radar-icon-disk { border-color: #2ed573; color: #2ed573; }
+        .radar-hotspot[data-sector="arcadia"] .radar-ripple-1,
+        .radar-hotspot[data-sector="arcadia"] .radar-ripple-2 { border-color: #2ed573; }
+
+        .radar-hotspot[data-sector="icon"] .radar-icon-disk { border-color: #38bdf8; color: #38bdf8; }
+        .radar-hotspot[data-sector="icon"] .radar-ripple-1,
+        .radar-hotspot[data-sector="icon"] .radar-ripple-2 { border-color: #38bdf8; }
+
+        .radar-hotspot[data-sector="della"] .radar-icon-disk { border-color: #e056fd; color: #e056fd; }
+        .radar-hotspot[data-sector="della"] .radar-ripple-1,
+        .radar-hotspot[data-sector="della"] .radar-ripple-2 { border-color: #e056fd; }
+
+        .radar-hotspot[data-sector="racecourse"] .radar-icon-disk { border-color: #ff4757; color: #ff4757; }
+        .radar-hotspot[data-sector="racecourse"] .radar-ripple-1,
+        .radar-hotspot[data-sector="racecourse"] .radar-ripple-2 { border-color: #ff4757; }
+
+        /* ── Dynamic Interactive Legend Drawer ── */
+        .legend-drawer {
+            position: absolute;
+            top: 86px;
+            left: 20px;
+            width: 340px;
+            max-height: calc(100vh - 120px);
+            background: var(--panel-glass);
+            border: 1px solid var(--panel-border);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85);
+            padding: 18px;
+            z-index: 110;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-primary) transparent;
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
+        }
+
+        .legend-drawer.collapsed {
+            transform: translateX(-380px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .legend-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            margin-bottom: 14px;
+        }
+
+        .legend-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .legend-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .legend-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legend-item:hover,
+        .legend-item.active {
+            background: rgba(197, 160, 89, 0.12);
+            border-color: var(--gold-primary);
+            transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .legend-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .legend-item-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-badge {
+            font-size: 0.66rem;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 10px;
+            background: rgba(197, 160, 89, 0.25);
+            color: #ffd88a;
+        }
+
+        .legend-desc {
+            font-size: 0.74rem;
+            color: #a0aec0;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .legend-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.76rem;
+            color: var(--gold-light);
+            font-weight: 600;
+        }
+
+        /* ── Dynamic Sector Intel Modal (Click Card) ── */
+        .sector-modal {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120%);
+            width: min(520px, calc(100vw - 32px));
+            background: rgba(8, 18, 32, 0.96);
+            border: 1px solid var(--gold-primary);
+            border-radius: 20px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 30px var(--gold-glow);
+            padding: 20px;
+            z-index: 180;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sector-modal.open {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .sector-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .sector-modal-close:hover {
             background: var(--gold-primary);
             color: #000;
         }
 
-        .hotspot {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border: 2px dashed var(--gold-primary);
-            border-radius: 50%;
-            background: rgba(197, 160, 89, 0.15);
+        .sector-modal-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .sector-modal-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(197, 160, 89, 0.2), rgba(197, 160, 89, 0.05));
+            border: 1px solid var(--gold-primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #fff;
-            font-weight: 600;
-            text-shadow: 0 0 10px #000;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            padding: 10px;
-            box-sizing: border-box;
+            font-size: 1.5rem;
+            color: var(--gold-light);
         }
 
-        .hotspot:hover {
-            background: rgba(197, 160, 89, 0.45);
-            transform: scale(1.1);
+        .sector-modal-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
         }
-    </style>
-    <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
-    <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+
+        .sector-modal-tagline {
+            font-size: 0.78rem;
+            color: var(--gold-light);
+            margin: 2px 0 0;
+        }
+
+        .sector-modal-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .spec-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        .spec-box .label {
+            font-size: 0.65rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .spec-box .val {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 3px;
+            display: block;
+        }
+
+        .sector-modal-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sector-btn-primary {
+            flex: 1;
+            background: linear-gradient(135deg, #c5a059, #a37e2c);
+            color: #07111e;
+            font-weight: 700;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .sector-btn-primary:hover {
+            box-shadow: 0 0 20px var(--gold-glow);
+            transform: translateY(-1px);
+        }
+
+        .sector-btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--panel-border);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.84rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .sector-btn-secondary:hover {
+            background: rgba(197, 160, 89, 0.2);
+            color: var(--gold-light);
+        }
+
+        /* ── Map Navigation Dock (Bottom-Right) ── */
+        .map-dock {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dock-pill {
+            background: var(--panel-glass);
+            border: 1px solid var(--panel-border);
+            border-radius: 40px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .dock-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+
+        .dock-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+            transform: scale(1.08);
+            box-shadow: 0 0 16px var(--gold-glow);
+        }
+
+        /* ── Floating Concierge Contacts ── */
+        .concierge-dock {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            z-index: 100;
+            display: flex;
+            gap: 12px;
+        }
+
+        .concierge-float-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .concierge-float-btn:hover {
+            transform: translateY(-4px) scale(1.1);
+        }
+
+        .concierge-float-btn.whatsapp {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .concierge-float-btn.phone {
+            background: var(--gold-primary);
+            color: #07111e;
+            box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
+        }
+
+        .concierge-float-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* ── Animations ── */
+        @keyframes radar-expand {
+            0% {
+                transform: scale(0.6);
+                opacity: 0.9;
+            }
+            70% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(40, 208, 126, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(40, 208, 126, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 208, 126, 0); }
+        }
+
+        @keyframes slideDownFade {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Responsive Adaptations ── */
+        @media (max-width: 900px) {
+            .hud-view-toggle { display: none; }
+            .legend-drawer { width: 300px; }
+            .master-hud { flex-wrap: wrap; }
+        }
+
+        @media (max-width: 600px) {
+            .legend-drawer { width: calc(100vw - 32px); left: 16px; }
+            .radar-label .sub { display: none; }
+            .radar-pulse-core { width: 44px; height: 44px; }
+            .radar-icon-disk { width: 36px; height: 36px; font-size: 0.75rem; }
+            .concierge-dock { bottom: 80px; }
         }
     </style>
 </head>
 
 <body>
     <!-- Accessibility Skip Link -->
-    <a href="#mapContainer" class="skip-link">Skip to Interactive Map</a>
+    <a href="#mapViewport" class="skip-link">Skip to Interactive Masterplan</a>
 
     <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">105-Acre Integrated Masterplan Layout | Krisala × Hiranandani Township Hinjewadi</h1>
 
-    <div class="masterplan-header-badge" style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 100; background: rgba(0,0,0,0.8); border: 1px solid rgba(197,160,89,0.4); padding: 8px 22px; border-radius: 30px; backdrop-filter: blur(10px); pointer-events: none; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-        <span style="color: #d4b877; font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;">105-Acre Masterplan • Sector Zoning Map</span>
-    </div>
+    <!-- ── Top Cyber-Luxury Command HUD ── -->
+    <header class="master-hud" role="banner">
+        <!-- Left Group: Navigation & Enclave Picker -->
+        <div class="hud-group">
+            <div class="hud-glass-panel">
+                <a href="/" class="hud-btn" aria-label="Return to Township Home">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Township Home
+                </a>
 
-    <nav class="masterplan-nav" style="position: absolute; top: 20px; left: 20px; z-index: 100; display: flex; gap: 8px; flex-wrap: wrap;" aria-label="Masterplan Navigation">
-        <a href="/" class="back-btn"><i class="ph ph-arrow-left"></i> Township</a>
-        <a href="/colosseum" class="back-btn" style="border-color: var(--gold-primary); color: var(--gold-light);"><i class="ph ph-shield-star"></i> The Colosseum (Phase 4)</a>
-        <a href="/icon" class="back-btn">Icon (Towers A, B &amp; C)</a>
-        <a href="/arcadia" class="back-btn">Arcadia (2 &amp; 3 BHK)</a>
-        <a href="/della" class="back-btn">Della Plots</a>
-        <a href="/racecourse" class="back-btn">8-Acre Racecourse</a>
-        <a href="/pricing" class="back-btn">Price List</a>
-        <a href="/amenities" class="back-btn">Amenities</a>
-        <a href="/gallery" class="back-btn">Photo Gallery</a>
-        <a href="/connectivity" class="back-btn">Connectivity</a>
-        <a href="/nri" class="back-btn">NRI Desk</a>
-        <a href="/neighborhood" class="back-btn">Location</a>
-        <a href="/compare" class="back-btn">Compare</a>
-        <a href="/knowledge-hub" class="back-btn">Research</a>
-        <a href="/blog" class="back-btn">Blog</a>
-    </nav>
+                <!-- Quick Enclave Dropdown -->
+                <div class="enclave-select-wrap">
+                    <button class="enclave-dropdown-trigger" id="enclaveTrigger" aria-haspopup="true" aria-expanded="false">
+                        <span>Select Enclave</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="enclave-menu" id="enclaveMenu">
+                        <a href="/colosseum">
+                            <span>The Colosseum</span>
+                            <span class="tag">Phase 4 Launch</span>
+                        </a>
+                        <a href="/arcadia">
+                            <span>Sector Arcadia</span>
+                            <span class="tag">2 &amp; 3 BHK</span>
+                        </a>
+                        <a href="/icon">
+                            <span>Sector Icon</span>
+                            <span class="tag">Flagship Duplex</span>
+                        </a>
+                        <a href="/della">
+                            <span>The Della Precinct</span>
+                            <span class="tag">Villa Plots</span>
+                        </a>
+                        <a href="/racecourse">
+                            <span>8-Acre Racecourse</span>
+                            <span class="tag">Polo Club</span>
+                        </a>
+                        <a href="/amenities">
+                            <span>Master Amenities</span>
+                            <span class="tag">60+ Features</span>
+                        </a>
+                        <a href="/pricing">
+                            <span>Pricing &amp; Cost Sheet</span>
+                            <span class="tag">From ₹79 L*</span>
+                        </a>
+                        <a href="/gallery">
+                            <span>Photo &amp; Video Gallery</span>
+                            <span class="tag">Visuals</span>
+                        </a>
+                        <a href="/connectivity">
+                            <span>Transit &amp; Metro Line 3</span>
+                            <span class="tag">Connectivity</span>
+                        </a>
+                        <a href="/nri">
+                            <span>NRI Investment Desk</span>
+                            <span class="tag">High ROI</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="map-container" id="mapContainer" role="region" aria-label="105-Acre Township Interactive Layout">
-        <div class="map-wrapper" id="mapWrapper">
-            <img fetchpriority="high" src="/public/township_grand/township_aerial_birds_eye_master_view.webp" alt="Krisala Hiranandani 105-Acre Masterplan Layout Map" class="map-img" draggable="false" width="3000" height="1875">
+        <!-- Center Group: View Mode Switcher -->
+        <div class="hud-group hud-view-toggle">
+            <div class="hud-glass-panel">
+                <button class="hud-btn active" data-view="aerial" id="viewAerialBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    3D Aerial Master
+                </button>
+                <button class="hud-btn" data-view="blueprint" id="viewBlueprintBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    Zoning Blueprint
+                </button>
+                <button class="hud-btn" data-view="icon" id="viewIconBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    Icon Sector Detailed
+                </button>
+                <button class="hud-btn" data-view="transit" id="viewTransitBtn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20M2 12h20"/></svg>
+                    Transit Corridor
+                </button>
+            </div>
+        </div>
 
-            <!-- Interactive Hotspots -->
-            <div class="hotspot" style="top: 22%; left: 28%;" onclick="window.location.href='/colosseum'" role="button" aria-label="Explore The Colosseum Phase 4">
-                The Colosseum<br><span style="font-size:0.75rem; color: var(--gold-light);">Phase 4 Launch</span>
+        <!-- Right Group: Legend HUD Toggle & High-Res PDF -->
+        <div class="hud-group">
+            <div class="hud-glass-panel">
+                <button class="hud-btn" id="toggleLegendBtn" aria-label="Toggle Sector Legend">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    Sector Intel &amp; Legend
+                </button>
+                <button class="hud-btn open-modal" data-magnet="brochure" style="border-color: var(--gold-primary); color: var(--gold-light);" aria-label="Download High-Res Masterplan PDF">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Masterplan PDF
+                </button>
             </div>
-            <div class="hotspot" style="top: 25%; left: 45%;" onclick="window.location.href='/arcadia'" role="button" aria-label="Explore Sector Arcadia 2 and 3 BHK">
-                Sector Arcadia<br><span style="font-size:0.75rem;">(2 &amp; 3 BHK)</span>
+        </div>
+    </header>
+
+    <!-- ── Interactive Map Viewport ── -->
+    <main class="map-viewport" id="mapViewport" role="region" aria-label="105-Acre Interactive Masterplan Layout">
+        <div class="map-stage" id="mapStage">
+            <div class="map-surface" id="mapSurface">
+                <!-- Master Layout Base Image -->
+                <img id="activeMapImg" fetchpriority="high" src="/public/township_grand/township_aerial_birds_eye_master_view.webp" alt="Krisala Hiranandani 105-Acre Masterplan Layout Map" class="map-img" draggable="false" width="2200" height="1375">
+                <div class="map-grid-overlay"></div>
+
+                <!-- ── Dynamic Holographic Hotspots ── -->
+                <!-- 01: The Colosseum Phase 4 -->
+                <div class="radar-hotspot" data-sector="colosseum" style="top: 25%; left: 32%;" role="button" tabindex="0" aria-label="The Colosseum Phase 4">
+                    <div class="radar-pulse-core">
+                        <div class="radar-ripple-1"></div>
+                        <div class="radar-ripple-2"></div>
+                        <div class="radar-icon-disk">01</div>
+                    </div>
+                    <div class="radar-label">
+                        <span class="title">The Colosseum</span>
+                        <span class="sub">Phase 4 Launch • Roman Architecture</span>
+                        <span class="price-badge">From ₹82.99 L*</span>
+                    </div>
+                </div>
+
+                <!-- 02: Sector Arcadia -->
+                <div class="radar-hotspot" data-sector="arcadia" style="top: 29%; left: 50%;" role="button" tabindex="0" aria-label="Sector Arcadia 2 and 3 BHK">
+                    <div class="radar-pulse-core">
+                        <div class="radar-ripple-1"></div>
+                        <div class="radar-ripple-2"></div>
+                        <div class="radar-icon-disk">02</div>
+                    </div>
+                    <div class="radar-label">
+                        <span class="title">Sector Arcadia</span>
+                        <span class="sub">2 &amp; 3 BHK Neoclassical Suites</span>
+                        <span class="price-badge">From ₹79 L*</span>
+                    </div>
+                </div>
+
+                <!-- 03: Sector Icon Triad -->
+                <div class="radar-hotspot" data-sector="icon" style="top: 36%; left: 68%;" role="button" tabindex="0" aria-label="Sector Icon Palatial Towers">
+                    <div class="radar-pulse-core">
+                        <div class="radar-ripple-1"></div>
+                        <div class="radar-ripple-2"></div>
+                        <div class="radar-icon-disk">03</div>
+                    </div>
+                    <div class="radar-label">
+                        <span class="title">Sector Icon</span>
+                        <span class="sub">3, 4 BHK &amp; Duplex Penthouses</span>
+                        <span class="price-badge">From ₹1.85 Cr*</span>
+                    </div>
+                </div>
+
+                <!-- 04: The Della Precinct & Villa Plots -->
+                <div class="radar-hotspot" data-sector="della" style="top: 54%; left: 38%;" role="button" tabindex="0" aria-label="The Della Collection Resort & Villas">
+                    <div class="radar-pulse-core">
+                        <div class="radar-ripple-1"></div>
+                        <div class="radar-ripple-2"></div>
+                        <div class="radar-icon-disk">04</div>
+                    </div>
+                    <div class="radar-label">
+                        <span class="title">Della Precinct</span>
+                        <span class="sub">40-Acre Resort &amp; Villa Plots</span>
+                        <span class="price-badge">From ₹1.80 Cr*</span>
+                    </div>
+                </div>
+
+                <!-- 05: 8-Acre Private Racecourse & Polo Club -->
+                <div class="radar-hotspot" data-sector="racecourse" style="top: 58%; left: 58%;" role="button" tabindex="0" aria-label="8-Acre Championship Racecourse">
+                    <div class="radar-pulse-core">
+                        <div class="radar-ripple-1"></div>
+                        <div class="radar-ripple-2"></div>
+                        <div class="radar-icon-disk">05</div>
+                    </div>
+                    <div class="radar-label">
+                        <span class="title">8-Acre Racecourse</span>
+                        <span class="sub">Championship Polo &amp; Private Stables</span>
+                        <span class="price-badge">India's 1st Estate</span>
+                    </div>
+                </div>
+
+                <!-- 06: Grand Neoclassical Entrance Plaza -->
+                <div class="radar-hotspot" data-sector="boulevard" style="top: 76%; left: 24%;" role="button" tabindex="0" aria-label="Grand Neoclassical Boulevard Gateway">
+                    <div class="radar-pulse-core">
+                        <div class="radar-ripple-1"></div>
+                        <div class="radar-ripple-2"></div>
+                        <div class="radar-icon-disk">06</div>
+                    </div>
+                    <div class="radar-label">
+                        <span class="title">Grand Boulevard</span>
+                        <span class="sub">100-ft Palm Avenue &amp; Security Gate</span>
+                        <span class="price-badge">Main Entry Gateway</span>
+                    </div>
+                </div>
             </div>
-            <div class="hotspot" style="top: 30%; left: 62%;" onclick="window.location.href='/icon'" role="button" aria-label="Explore Sector Icon Presidential Duplex">
-                Sector Icon<br><span style="font-size:0.75rem; color: var(--gold-light);">(Towers A, B &amp; C)</span>
+        </div>
+    </main>
+
+    <!-- ── Left Floating Dynamic Legend Drawer ── -->
+    <aside class="legend-drawer" id="legendDrawer" aria-label="Masterplan Sector Directory">
+        <div class="legend-header">
+            <span class="legend-title">Township Zoning Intel</span>
+            <button id="closeLegendBtn" style="background:none; border:none; color:#a0aec0; cursor:pointer;" aria-label="Close Legend">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="legend-list">
+            <div class="legend-item" data-sector="colosseum">
+                <div class="legend-item-head">
+                    <span class="legend-item-name" style="color: #f3a838;">01. The Colosseum</span>
+                    <span class="legend-badge">Phase 4 Launch</span>
+                </div>
+                <div class="legend-desc">Roman amphitheatre precinct, G+34 storeys with Sahyadri views. Zero-wastage layouts.</div>
+                <div class="legend-price-row">
+                    <span>2 &amp; 3 BHK Grande</span>
+                    <span style="color:#ffd88a;">₹82.99 L* onwards</span>
+                </div>
             </div>
-            <div class="hotspot" style="top: 48%; left: 35%;" onclick="window.location.href='/della'" role="button" aria-label="Explore The Della Collection Villa Plots">
-                Della Precinct<br><span style="font-size:0.75rem;">(Villa Plots)</span>
+
+            <div class="legend-item" data-sector="arcadia">
+                <div class="legend-item-head">
+                    <span class="legend-item-name" style="color: #2ed573;">02. Sector Arcadia</span>
+                    <span class="legend-badge">Under Const.</span>
+                </div>
+                <div class="legend-desc">Neoclassical architecture with monolithic Mivan structure. Signal-free transit to Phase 1 &amp; 2.</div>
+                <div class="legend-price-row">
+                    <span>2 &amp; 3 BHK Modern</span>
+                    <span style="color:#ffd88a;">₹79 L* onwards</span>
+                </div>
             </div>
-            <div class="hotspot" style="top: 52%; left: 52%;" onclick="window.location.href='/racecourse'" role="button" aria-label="Explore 8-Acre Private Racecourse & Polo Club">
-                8-Acre Racecourse<br><span style="font-size:0.75rem; color: var(--gold-light);">&amp; Polo Arena</span>
+
+            <div class="legend-item" data-sector="icon">
+                <div class="legend-item-head">
+                    <span class="legend-item-name" style="color: #38bdf8;">03. Sector Icon</span>
+                    <span class="legend-badge">Flagship Luxury</span>
+                </div>
+                <div class="legend-desc">Triad of towers (A, B, C) featuring 22-ft double-height living ceilings and private elevator foyers.</div>
+                <div class="legend-price-row">
+                    <span>3, 4 BHK &amp; Duplex</span>
+                    <span style="color:#ffd88a;">₹1.85 Cr* onwards</span>
+                </div>
             </div>
+
+            <div class="legend-item" data-sector="della">
+                <div class="legend-item-head">
+                    <span class="legend-item-name" style="color: #e056fd;">04. Della Precinct</span>
+                    <span class="legend-badge">Villa Enclave</span>
+                </div>
+                <div class="legend-desc">Curated by Jimmy Mistry. 40-Acre resort-style gated district with limited 100 bespoke villa plots.</div>
+                <div class="legend-price-row">
+                    <span>Villa Plots &amp; Suites</span>
+                    <span style="color:#ffd88a;">₹1.80 Cr* onwards</span>
+                </div>
+            </div>
+
+            <div class="legend-item" data-sector="racecourse">
+                <div class="legend-item-head">
+                    <span class="legend-item-name" style="color: #ff4757;">05. 8-Acre Racecourse</span>
+                    <span class="legend-badge">Equestrian</span>
+                </div>
+                <div class="legend-desc">India’s first private residential championship polo track, stables, clubhouse, and equestrian academy.</div>
+                <div class="legend-price-row">
+                    <span>Polo Club &amp; Arena</span>
+                    <span style="color:#ffd88a;">Master Amenity</span>
+                </div>
+            </div>
+
+            <div class="legend-item" data-sector="boulevard">
+                <div class="legend-item-head">
+                    <span class="legend-item-name" style="color: #00d2d3;">06. Grand Boulevard</span>
+                    <span class="legend-badge">Arterial Hub</span>
+                </div>
+                <div class="legend-desc">100-foot multi-lane entry gateway connecting directly to Darumbre / Marunji arterial corridor.</div>
+                <div class="legend-price-row">
+                    <span>Main Access Plaza</span>
+                    <span style="color:#ffd88a;">Infrastructure</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ── Sector Intelligence Modal / Popover ── -->
+    <div class="sector-modal" id="sectorModal" role="dialog" aria-modal="true" aria-labelledby="modalSectorTitle">
+        <button class="sector-modal-close" id="sectorModalClose" aria-label="Close Sector Overview">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="sector-modal-header">
+            <div class="sector-modal-icon" id="modalSectorIcon">🏛</div>
+            <div>
+                <h3 class="sector-modal-title" id="modalSectorTitle">Sector Overview</h3>
+                <p class="sector-modal-tagline" id="modalSectorTagline">Krisala × Hiranandani Master Township</p>
+            </div>
+        </div>
+        <div class="sector-modal-specs">
+            <div class="spec-box">
+                <span class="label">Typology</span>
+                <span class="val" id="modalSpecTypology">2 &amp; 3 BHK</span>
+            </div>
+            <div class="spec-box">
+                <span class="label">Carpet Area</span>
+                <span class="val" id="modalSpecCarpet">740 - 1,280 sq.ft.</span>
+            </div>
+            <div class="spec-box">
+                <span class="label">Starting Price</span>
+                <span class="val" id="modalSpecPrice" style="color: #ffd88a;">₹79 L* onwards</span>
+            </div>
+        </div>
+        <div class="sector-modal-actions">
+            <a href="#" class="sector-btn-primary" id="modalExploreLink">
+                Explore Enclave
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <button class="sector-btn-secondary open-modal" data-magnet="brochure">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                PDF Dossier
+            </button>
         </div>
     </div>
 
-    <div class="controls" aria-label="Map Zoom and View Controls">
-        <button class="control-btn" id="toggleLayoutBtn" title="Switch Layout Plan" aria-label="Toggle Layout View"><i class="ph ph-swap"></i></button>
-        <button class="control-btn" onclick="zoom(0.1)" aria-label="Zoom in on masterplan"><i class="ph ph-plus"></i></button>
-        <button class="control-btn" onclick="zoom(-0.1)" aria-label="Zoom out on masterplan"><i class="ph ph-minus"></i></button>
-        <button class="control-btn" onclick="resetZoom()" aria-label="Reset masterplan zoom to default"><i class="ph ph-arrows-out"></i></button>
+    <!-- ── Bottom Right Map Dock Controls ── -->
+    <div class="map-dock" role="toolbar" aria-label="Map Navigation Tools">
+        <div class="dock-pill">
+            <button class="dock-btn" id="zoomInBtn" title="Zoom In (+)" aria-label="Zoom In">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button class="dock-btn" id="zoomOutBtn" title="Zoom Out (-)" aria-label="Zoom Out">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+            <button class="dock-btn" id="resetZoomBtn" title="Reset Center View" aria-label="Reset Map View">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </button>
+            <button class="dock-btn" id="togglePinsBtn" title="Toggle Hotspots On/Off" aria-label="Toggle Hotspots">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+        </div>
     </div>
 
-    <script>
-        const wrapper = document.getElementById('mapWrapper');
-        const container = document.getElementById('mapContainer');
-        const mapImg = document.querySelector('.map-img');
-        const toggleBtn = document.getElementById('toggleLayoutBtn');
-        let currentMap = 0;
-        const layoutMaps = [
-            '/public/township_grand/township_aerial_birds_eye_master_view.webp',
-            '/public/township_grand/township_master_layout_plan_official.webp',
-            '/public/icon_official/icon_sector_master_layout_plan_numbered.webp',
-            '/public/township_grand/township_connectivity_location_map_official.webp',
-            '/public/township_grand/township_grand_entrance_gate_hq.webp'
-        ];
-
-        if (toggleBtn && mapImg) {
-            toggleBtn.addEventListener('click', () => {
-                currentMap = (currentMap + 1) % layoutMaps.length;
-                mapImg.src = layoutMaps[currentMap];
-                resetZoom();
-            });
-        }
-
-        let scale = 1;
-        let isDragging = false;
-        let startX, startY, translateX = 0, translateY = 0;
-
-        function updateTransform() {
-            wrapper.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-        }
-
-        function zoom(delta) {
-            scale = Math.min(Math.max(0.5, scale + delta), 3);
-            updateTransform();
-        }
-
-        function resetZoom() {
-            scale = 1; translateX = 0; translateY = 0;
-            updateTransform();
-        }
-
-        // Panning Logic
-        container.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX - translateX;
-            startY = e.clientY - translateY;
-            container.style.cursor = 'grabbing';
-        });
-
-        window.addEventListener('mouseup', () => {
-            isDragging = false;
-            container.style.cursor = 'grab';
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            translateX = e.clientX - startX;
-            translateY = e.clientY - startY;
-            updateTransform();
-        });
-
-        // Touch Support for Mobile Drag
-        container.addEventListener('touchstart', (e) => {
-            if (e.touches.length === 1) {
-                isDragging = true;
-                startX = e.touches[0].clientX - translateX;
-                startY = e.touches[0].clientY - translateY;
-            }
-        }, { passive: true });
-
-        window.addEventListener('touchend', () => {
-            isDragging = false;
-        });
-
-        window.addEventListener('touchmove', (e) => {
-            if (!isDragging || e.touches.length !== 1) return;
-            translateX = e.touches[0].clientX - startX;
-            translateY = e.touches[0].clientY - startY;
-            updateTransform();
-        }, { passive: true });
-
-        // Scroll Zoom
-        container.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            const delta = e.deltaY > 0 ? -0.05 : 0.05;
-            zoom(delta);
-        }, { passive: false });
-    </script>
-
-    <!-- Floating Actions -->
-        <!-- Mobile Sticky Conversion Bar -->
-    <div class="mobile-sticky-bar" id="mobileStickyBar" role="navigation" aria-label="Quick Mobile Actions">
-        <a href="tel:+917744009295" class="sticky-bar-btn sticky-call" aria-label="Direct Phone Call">
-            <i class="ph ph-phone-call"></i>
-            <span>Call</span>
+    <!-- ── Floating WhatsApp & Concierge Assistance ── -->
+    <div class="concierge-dock" role="navigation" aria-label="Concierge Contacts">
+        <a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20exploring%20the%20Masterplan%20for%20Krisala%20Hiranandani%20Township.%20Please%20share%20verified%20floor%20plans%20and%20pricing." class="concierge-float-btn whatsapp" target="_blank" rel="noopener" aria-label="Chat with Concierge on WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"/></svg>
         </a>
-        <a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township.%20Please%20share%20verified%20floor%20plans%20and%20pricing." target="_blank" class="sticky-bar-btn sticky-whatsapp" aria-label="Chat on WhatsApp">
-            <i class="ph ph-whatsapp-logo"></i>
-            <span>WhatsApp</span>
-        </a>
-        <button class="sticky-bar-btn sticky-enquire open-modal" data-magnet="brochure" aria-label="Request Brochure &amp; Price List">
-            <i class="ph ph-download-simple"></i>
-            <span>Enquire</span>
-        </button>
-    </div>
-
-    <div class="floating-actions">
-        <a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20exploring%20the%20Masterplan%20for%20Krisala%20Hiranandani" class="float-btn float-whatsapp" target="_blank"
-            aria-label="Chat on WhatsApp">
-            <i class="ph ph-whatsapp-logo" aria-hidden="true"></i>
-        </a>
-        <a href="tel:+917744009295" class="float-btn float-call" aria-label="Call Assistance">
-            <i class="ph ph-phone" aria-hidden="true"></i>
+        <a href="tel:+917744009295" class="concierge-float-btn phone" aria-label="Call Sales Concierge">
+            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg>
         </a>
     </div>
-    <!-- Enquiry Modal -->
+
+    <!-- ── Enquiry Modal ── -->
     <div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-container glass-panel" role="document">
             <button class="close-modal" aria-label="Close Modal"><i class="ph ph-x"></i></button>
@@ -418,6 +1268,306 @@
         </div>
     </div>
 
+    <!-- ── Interactive Map Engine JS ── -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const viewport = document.getElementById('mapViewport');
+            const stage = document.getElementById('mapStage');
+            const mapSurface = document.getElementById('mapSurface');
+            const mapImg = document.getElementById('activeMapImg');
+
+            // Layer URLs
+            const LAYERS = {
+                aerial: '/public/township_grand/township_aerial_birds_eye_master_view.webp',
+                blueprint: '/public/everlyn/masterplan/master_layout_legend.webp',
+                icon: '/public/icon_official/icon_sector_master_layout_plan_numbered.webp',
+                transit: '/public/township_grand/township_connectivity_location_map_official.webp'
+            };
+
+            // Sector Knowledge Database
+            const SECTOR_INTEL = {
+                colosseum: {
+                    icon: '🏛',
+                    title: 'The Colosseum (Phase 4)',
+                    tagline: 'Roman Grandeur Landmark Enclave • Pre-Launch Offer',
+                    typology: '2 & 3 BHK Roman Suites',
+                    carpet: '760 – 1,180 sq.ft.',
+                    price: '₹82.99 Lakhs* onwards',
+                    url: '/colosseum',
+                    coords: { x: -380, y: -260, scale: 1.55 }
+                },
+                arcadia: {
+                    icon: '🌿',
+                    title: 'Sector Arcadia',
+                    tagline: 'Neoclassical Architecture • Signal-Free IT Transit',
+                    typology: '2 & 3 BHK Neoclassical',
+                    carpet: '740 – 1,280 sq.ft.',
+                    price: '₹79 Lakhs* onwards',
+                    url: '/arcadia',
+                    coords: { x: 0, y: -200, scale: 1.55 }
+                },
+                icon: {
+                    icon: '👑',
+                    title: 'Sector Icon Flagship',
+                    tagline: 'Towers A, B & C • Palatial Residences & Sky Duplex',
+                    typology: '3, 4 BHK & Duplex',
+                    carpet: '1,250 – 3,400 sq.ft.',
+                    price: '₹1.85 Cr* onwards',
+                    url: '/icon',
+                    coords: { x: 380, y: -120, scale: 1.55 }
+                },
+                della: {
+                    icon: '🏇',
+                    title: 'The Della Collection',
+                    tagline: 'Curated by Jimmy Mistry • 40-Acre Resort Living',
+                    typology: 'Bespoke Villa Plots',
+                    carpet: '2,000 – 5,000 sq.ft.',
+                    price: '₹1.80 Cr* onwards',
+                    url: '/della',
+                    coords: { x: -260, y: 140, scale: 1.55 }
+                },
+                racecourse: {
+                    icon: '🐎',
+                    title: '8-Acre Private Racecourse',
+                    tagline: 'India’s 1st Residential Equestrian Polo Club & Arena',
+                    typology: 'Championship Track',
+                    carpet: '8+ Landscaped Acres',
+                    price: 'Master Amenity',
+                    url: '/racecourse',
+                    coords: { x: 180, y: 160, scale: 1.55 }
+                },
+                boulevard: {
+                    icon: '🌳',
+                    title: 'Grand Neoclassical Boulevard',
+                    tagline: '100-Foot Palm-Lined Gateway & Security Control',
+                    typology: 'Grand Entry Portal',
+                    carpet: 'Township Gateway',
+                    price: 'Infrastructure',
+                    url: '/connectivity',
+                    coords: { x: -480, y: 320, scale: 1.55 }
+                }
+            };
+
+            // Pan & Zoom State
+            let scale = 1;
+            let posX = 0;
+            let posY = 0;
+            let isDragging = false;
+            let startX, startY;
+            let showPins = true;
+
+            // Fit initial scale based on viewport
+            function initScale() {
+                const vpW = viewport.clientWidth;
+                const vpH = viewport.clientHeight;
+                const naturalW = 2200;
+                const naturalH = 1375;
+                const scaleW = vpW / naturalW;
+                const scaleH = vpH / naturalH;
+                scale = Math.max(scaleW, scaleH) * 1.05;
+                posX = 0;
+                posY = 0;
+                applyTransform();
+            }
+
+            function applyTransform() {
+                stage.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
+            }
+
+            initScale();
+            window.addEventListener('resize', initScale);
+
+            // Drag Panning
+            viewport.addEventListener('mousedown', (e) => {
+                // Ignore if clicked on buttons or overlays
+                if (e.target.closest('.hud-btn, .sector-modal, .legend-drawer, .map-dock, .concierge-dock, .enclave-menu')) return;
+                isDragging = true;
+                viewport.classList.add('is-dragging');
+                startX = e.clientX - posX;
+                startY = e.clientY - posY;
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+                viewport.classList.remove('is-dragging');
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                posX = e.clientX - startX;
+                posY = e.clientY - startY;
+                applyTransform();
+            });
+
+            // Touch Dragging for Mobile
+            viewport.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) {
+                    if (e.target.closest('.hud-btn, .sector-modal, .legend-drawer, .map-dock, .concierge-dock, .enclave-menu')) return;
+                    isDragging = true;
+                    startX = e.touches[0].clientX - posX;
+                    startY = e.touches[0].clientY - posY;
+                }
+            }, { passive: true });
+
+            window.addEventListener('touchend', () => { isDragging = false; });
+
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging || e.touches.length !== 1) return;
+                posX = e.touches[0].clientX - startX;
+                posY = e.touches[0].clientY - startY;
+                applyTransform();
+            }, { passive: true });
+
+            // Smooth Wheel Zoom
+            viewport.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const zoomFactor = e.deltaY < 0 ? 1.08 : 0.92;
+                scale = Math.min(Math.max(0.6, scale * zoomFactor), 2.8);
+                applyTransform();
+            }, { passive: false });
+
+            // Dock Zoom Controls
+            document.getElementById('zoomInBtn').addEventListener('click', () => {
+                scale = Math.min(2.8, scale + 0.18);
+                applyTransform();
+            });
+
+            document.getElementById('zoomOutBtn').addEventListener('click', () => {
+                scale = Math.max(0.6, scale - 0.18);
+                applyTransform();
+            });
+
+            document.getElementById('resetZoomBtn').addEventListener('click', () => {
+                initScale();
+                closeSectorModal();
+            });
+
+            // Toggle Pins
+            const togglePinsBtn = document.getElementById('togglePinsBtn');
+            togglePinsBtn.addEventListener('click', () => {
+                showPins = !showPins;
+                document.querySelectorAll('.radar-hotspot').forEach(pin => {
+                    pin.style.display = showPins ? 'block' : 'none';
+                });
+                togglePinsBtn.style.color = showPins ? '#fff' : '#f87171';
+            });
+
+            // Layer Switching
+            const viewButtons = [
+                { id: 'viewAerialBtn', layer: 'aerial' },
+                { id: 'viewBlueprintBtn', layer: 'blueprint' },
+                { id: 'viewIconBtn', layer: 'icon' },
+                { id: 'viewTransitBtn', layer: 'transit' }
+            ];
+
+            viewButtons.forEach(btnConfig => {
+                const btn = document.getElementById(btnConfig.id);
+                if (!btn) return;
+                btn.addEventListener('click', () => {
+                    viewButtons.forEach(b => document.getElementById(b.id)?.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Crossfade map image
+                    mapImg.style.opacity = '0.3';
+                    setTimeout(() => {
+                        mapImg.src = LAYERS[btnConfig.layer];
+                        mapImg.style.opacity = '1';
+                    }, 180);
+                });
+            });
+
+            // Enclave Dropdown
+            const enclaveTrigger = document.getElementById('enclaveTrigger');
+            const enclaveMenu = document.getElementById('enclaveMenu');
+            if (enclaveTrigger && enclaveMenu) {
+                enclaveTrigger.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    enclaveMenu.classList.toggle('show');
+                });
+                document.addEventListener('click', () => {
+                    enclaveMenu.classList.remove('show');
+                });
+            }
+
+            // Legend Drawer Toggle
+            const toggleLegendBtn = document.getElementById('toggleLegendBtn');
+            const legendDrawer = document.getElementById('legendDrawer');
+            const closeLegendBtn = document.getElementById('closeLegendBtn');
+
+            if (toggleLegendBtn && legendDrawer) {
+                toggleLegendBtn.addEventListener('click', () => {
+                    legendDrawer.classList.toggle('collapsed');
+                });
+            }
+            if (closeLegendBtn && legendDrawer) {
+                closeLegendBtn.addEventListener('click', () => {
+                    legendDrawer.classList.add('collapsed');
+                });
+            }
+
+            // Sector Modal & Focus Mechanics
+            const sectorModal = document.getElementById('sectorModal');
+            const sectorModalClose = document.getElementById('sectorModalClose');
+            const modalTitle = document.getElementById('modalSectorTitle');
+            const modalTagline = document.getElementById('modalSectorTagline');
+            const modalIcon = document.getElementById('modalSectorIcon');
+            const modalTypology = document.getElementById('modalSpecTypology');
+            const modalCarpet = document.getElementById('modalSpecCarpet');
+            const modalPrice = document.getElementById('modalSpecPrice');
+            const modalExploreLink = document.getElementById('modalExploreLink');
+
+            function openSector(sectorKey) {
+                const data = SECTOR_INTEL[sectorKey];
+                if (!data) return;
+
+                // Smooth pan & zoom to sector
+                scale = data.coords.scale;
+                posX = data.coords.x;
+                posY = data.coords.y;
+                applyTransform();
+
+                // Fill modal info
+                modalTitle.textContent = data.title;
+                modalTagline.textContent = data.tagline;
+                modalIcon.textContent = data.icon;
+                modalTypology.textContent = data.typology;
+                modalCarpet.textContent = data.carpet;
+                modalPrice.textContent = data.price;
+                modalExploreLink.href = data.url;
+
+                // Highlight corresponding legend item
+                document.querySelectorAll('.legend-item').forEach(item => {
+                    item.classList.toggle('active', item.dataset.sector === sectorKey);
+                });
+
+                sectorModal.classList.add('open');
+            }
+
+            function closeSectorModal() {
+                sectorModal.classList.remove('open');
+                document.querySelectorAll('.legend-item').forEach(item => item.classList.remove('active'));
+            }
+
+            sectorModalClose.addEventListener('click', closeSectorModal);
+
+            // Hotspot click event
+            document.querySelectorAll('.radar-hotspot').forEach(hotspot => {
+                hotspot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const sectorKey = hotspot.dataset.sector;
+                    openSector(sectorKey);
+                });
+            });
+
+            // Legend item click event
+            document.querySelectorAll('.legend-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const sectorKey = item.dataset.sector;
+                    openSector(sectorKey);
+                });
+            });
+        });
+    </script>
     <script src="/app.js" defer></script>
 </body>
 
