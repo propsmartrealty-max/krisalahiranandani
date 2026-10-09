@@ -103,6 +103,102 @@ def add_dns_record(headers, zone_id, record_data, existing_records):
     else:
         print(f"  [✗] Failed to add DNS {record_data['type']} {record_data['name']}: {res.get('errors')}")
 
+def delete_dns_record(headers, zone_id, record_id, record_desc=""):
+    url = f"{API_BASE}/zones/{zone_id}/dns_records/{record_id}"
+    res = make_request(url, method="DELETE", headers=headers)
+    if res.get("success"):
+        print(f"  [✓] Removed conflicting DNS record: {record_desc}")
+    else:
+        print(f"  [✗] Failed to delete record {record_id}: {res.get('errors')}")
+
+def update_dns_record(headers, zone_id, record_id, record_data):
+    url = f"{API_BASE}/zones/{zone_id}/dns_records/{record_id}"
+    res = make_request(url, method="PUT", headers=headers, data=record_data)
+    if res.get("success"):
+        print(f"  [✓] Updated DNS {record_data['type']} {record_data['name']} -> {record_data.get('content')}")
+    else:
+        print(f"  [✗] Failed to update DNS {record_data['type']} {record_data['name']}: {res.get('errors')}")
+
+def sync_routing_records(headers, zone_id, zone_name, pages_target="krisalahiranandani.pages.dev"):
+    """
+    Ensures apex and www point to Cloudflare Pages host with orange cloud proxy enabled.
+    Cleans up any conflicting A/AAAA records on apex or www.
+    """
+    records = list_dns_records(headers, zone_id)
+    apex_targets = [zone_name, f"@{zone_name}"]
+    www_target = f"www.{zone_name}"
+
+    # 1. Audit and clean conflicting A/AAAA records
+    for r in records:
+        r_name = r.get("name", "").lower()
+        r_type = r.get("type", "").upper()
+        r_id = r.get("id")
+        if r_type in ["A", "AAAA"]:
+            if r_name == zone_name.lower() or r_name == www_target.lower():
+                print(f"  [!] Found conflicting {r_type} record for {r_name} pointing to {r.get('content')}. Removing...")
+                delete_dns_record(headers, zone_id, r_id, f"{r_type} {r_name}")
+
+    # Refresh after potential deletions
+    records = list_dns_records(headers, zone_id)
+
+    # 2. Sync Apex CNAME
+    apex_cname = next((r for r in records if r.get("type") == "CNAME" and r.get("name", "").lower() == zone_name.lower()), None)
+    if apex_cname:
+        needs_update = (apex_cname.get("content", "").strip(".").lower() != pages_target.lower()) or not apex_cname.get("proxied", False)
+        if needs_update:
+            update_data = {
+                "type": "CNAME",
+                "name": "@",
+                "content": pages_target,
+                "proxied": True,
+                "ttl": 1
+            }
+            update_dns_record(headers, zone_id, apex_cname["id"], update_data)
+        else:
+            print(f"  [✓] Apex CNAME ({zone_name}) already routed to {pages_target} (Proxied).")
+    else:
+        create_data = {
+            "type": "CNAME",
+            "name": "@",
+            "content": pages_target,
+            "proxied": True,
+            "ttl": 1
+        }
+        res = make_request(f"{API_BASE}/zones/{zone_id}/dns_records", method="POST", headers=headers, data=create_data)
+        if res.get("success"):
+            print(f"  [✓] Created Apex CNAME -> {pages_target} (Proxied)")
+        else:
+            print(f"  [✗] Failed to create Apex CNAME: {res.get('errors')}")
+
+    # 3. Sync www CNAME
+    www_cname = next((r for r in records if r.get("type") == "CNAME" and r.get("name", "").lower() == www_target.lower()), None)
+    if www_cname:
+        needs_update = (www_cname.get("content", "").strip(".").lower() != pages_target.lower()) or not www_cname.get("proxied", False)
+        if needs_update:
+            update_data = {
+                "type": "CNAME",
+                "name": "www",
+                "content": pages_target,
+                "proxied": True,
+                "ttl": 1
+            }
+            update_dns_record(headers, zone_id, www_cname["id"], update_data)
+        else:
+            print(f"  [✓] www CNAME ({www_target}) already routed to {pages_target} (Proxied).")
+    else:
+        create_data = {
+            "type": "CNAME",
+            "name": "www",
+            "content": pages_target,
+            "proxied": True,
+            "ttl": 1
+        }
+        res = make_request(f"{API_BASE}/zones/{zone_id}/dns_records", method="POST", headers=headers, data=create_data)
+        if res.get("success"):
+            print(f"  [✓] Created www CNAME -> {pages_target} (Proxied)")
+        else:
+            print(f"  [✗] Failed to create www CNAME: {res.get('errors')}")
+
 def purge_cache(headers, zone_id):
     url = f"{API_BASE}/zones/{zone_id}/purge_cache"
     res = make_request(url, method="POST", headers=headers, data={"purge_everything": True})
@@ -165,7 +261,10 @@ def main():
     for setting_id, val in settings_to_apply:
         update_zone_setting(headers, zone_id, setting_id, val)
         
-    print("\n==> 2. Auditing & Hardening DNS Records (CAA, SPF, DMARC)...")
+    print("\n==> 2. Synchronizing Pages Routing DNS Records (@ and www)...")
+    sync_routing_records(headers, zone_id, args.zone, "krisalahiranandani.pages.dev")
+        
+    print("\n==> 3. Auditing & Hardening DNS Records (CAA, SPF, DMARC)...")
     existing_records = list_dns_records(headers, zone_id)
     
     dns_hardening_records = [
@@ -186,7 +285,7 @@ def main():
     for r in dns_hardening_records:
         add_dns_record(headers, zone_id, r, existing_records)
         
-    print("\n==> 3. Purging Edge Cache...")
+    print("\n==> 4. Purging Edge Cache...")
     purge_cache(headers, zone_id)
     
     print("\n[✓] All Cloudflare Edge & DNS Hardening Tasks Completed Successfully!")

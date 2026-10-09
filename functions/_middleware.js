@@ -53,13 +53,26 @@ const BLOCKED_USER_AGENTS = [
     'petalbot'
 ];
 
-// Verified search engines, AI retrieval agents, and social card previews
+// Comprehensive list of Google Search, AI retrieval, and major search engine crawlers
 const WHITELISTED_CRAWLERS = [
+    // Google Official Crawler Fleet (Search, Inspection, Mobile, Ads, Images, Videos, News, AI)
     'googlebot',
-    'google-extended',
+    'google-inspectiontool',    // Google Search Console "Test Live URL" & URL Inspection Tool
+    'googleother',              // Google Other generic web crawler
+    'googleother-image',
+    'googleother-video',
+    'google-extended',          // Google Gemini & Vertex AI crawler
     'adsbot-google',
+    'adsbot-google-mobile',
     'mediapartners-google',
-    'storebot-google',
+    'storebot-google',          // Google Merchant Feed & Shopping
+    'feedfetcher-google',       // Google Feeds & RSS
+    'google-read-aloud',
+    'google-site-verification',
+    'apis-google',
+    'duplexweb-google',
+    
+    // Other Major Search Engines & AI Retrieval
     'bingbot',
     'bingpreview',
     'msnbot',
@@ -76,6 +89,8 @@ const WHITELISTED_CRAWLERS = [
     'duckduckbot',
     'yandexbot',
     'baiduspider',
+    
+    // Social OpenGraph & Messaging Card Fetchers
     'facebookexternalhit',
     'twitterbot',
     'linkedinbot',
@@ -117,7 +132,17 @@ export async function onRequest(context) {
     const url = new URL(request.url);
     const path = url.pathname.toLowerCase();
     const userAgent = (request.headers.get('user-agent') || '').toLowerCase();
-    const isWhitelistedBot = WHITELISTED_CRAWLERS.some(bot => userAgent.includes(bot));
+    
+    // Priority Googlebot & Verified Search Engine Detection
+    const isCloudflareVerifiedBot = request.cf?.isVerifiedBot === true;
+    const isGoogleCrawler = userAgent.includes('googlebot') ||
+                            userAgent.includes('google-inspectiontool') ||
+                            userAgent.includes('googleother') ||
+                            userAgent.includes('google-extended') ||
+                            userAgent.includes('adsbot-google') ||
+                            userAgent.includes('storebot-google') ||
+                            userAgent.includes('feedfetcher-google');
+    const isWhitelistedBot = isCloudflareVerifiedBot || isGoogleCrawler || WHITELISTED_CRAWLERS.some(bot => userAgent.includes(bot));
 
     // 1. Canonical Host Normalization & HTTPS Edge Upgrade
     // Enforce apex domain https://krisalahiranandanitownships.com globally
