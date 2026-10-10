@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Story 1: The Colosseum Phase 4 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/stories/the-colosseum-phase-4.html</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp</image:loc>
+      <image:title>The Colosseum Roman Architecture Landmark Phase 4</image:title>
+      <image:caption>Neoclassical Roman archway and grand entrance at Krisala Hiranandani Township Hinjewadi</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Story 2: 105-Acre Master Township Grand Living -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/stories/township-grand-living.html</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>105-Acre Integrated Township Master Plan Hinjewadi</image:title>
+      <image:caption>Strategic connectivity, 40-acre Della adventure park, and multi-tier infrastructure</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Story 3: Sector Icon Sky Residences -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/stories/sector-icon-sky-residences.html</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_skyline_infinity_pool_deck_sunset.webp</image:loc>
+      <image:title>Sector Icon Ultra-Luxury 3 &amp; 4 BHK Duplex Mansions</image:title>
+      <image:caption>MahaRERA PR1260002600818 registered sky mansions with 18-ft double-height living rooms</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Story 4: Sector Arcadia Luxury Living -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/stories/sector-arcadia-luxury-living.html</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp</image:loc>
+      <image:title>Sector Arcadia Premium 2 &amp; 3 BHK High-Rise Residences</image:title>
+      <image:caption>MahaRERA PR1260002502438 neoclassical towers 15 minutes from Hinjewadi IT Park</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Story 5: Della Equestrian Villa Plots -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/stories/della-equestrian-villa-plots.html</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>Della Equestrian &amp; Adventure Villa Plots Hinjewadi</image:title>
+      <image:caption>8-acre private equestrian racecourse and polo ground beside 40-acre Della adventure park</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Story 6: Hinjewadi IT Investment ROI -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/stories/hinjewadi-it-investment-roi.html</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>Hinjewadi 5-Year Real Estate Investment ROI &amp; Rental Yields</image:title>
+      <image:caption>4.8% to 5.4% rental yields, Metro Line 3, and 128km PMRDA Ring Road infrastructure</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Story 7: MahaRERA Legal Sanctions Guide -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/stories/maharera-legal-sanctions-guide.html</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_grand_atrium_marble_lobby_interior.webp</image:loc>
+      <image:title>MahaRERA Sanctions &amp; Title Verification Guide</image:title>
+      <image:caption>MahaRERA PR1260002500600 &amp; PR1260002600818 statutory disclosures and 70% escrow protection</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Story 8: NRI Investment Desk Pune -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/stories/nri-investment-desk-pune.html</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp</image:loc>
+      <image:title>NRI Real Estate Investment Desk Pune</image:title>
+      <image:caption>FEMA compliant NRI &amp; OCI luxury real estate acquisition in Hinjewadi Pune</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

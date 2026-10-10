@@ -66,9 +66,18 @@ URL_LIST = [
     f"https://{HOST}/explore/della-plots",
     f"https://{HOST}/explore/apartments-near-infosys-hinjewadi",
     f"https://{HOST}/explore/apartments-near-mumbai-pune-expressway",
-    f"https://{HOST}/explore/apartments-near-hinjewadi-metro-line-3",
+    f"https://{HOST}/sitemap-stories.xml",
     f"https://{HOST}/explore/vs-godrej-river-royale-mahalunge",
-    f"https://{HOST}/explore/luxury-apartments-in-hinjewadi-phase-1"
+    f"https://{HOST}/explore/luxury-apartments-in-hinjewadi-phase-1",
+    # Google Web Stories Suite
+    f"https://{HOST}/stories/the-colosseum-phase-4.html",
+    f"https://{HOST}/stories/township-grand-living.html",
+    f"https://{HOST}/stories/sector-icon-sky-residences.html",
+    f"https://{HOST}/stories/sector-arcadia-luxury-living.html",
+    f"https://{HOST}/stories/della-equestrian-villa-plots.html",
+    f"https://{HOST}/stories/hinjewadi-it-investment-roi.html",
+    f"https://{HOST}/stories/maharera-legal-sanctions-guide.html",
+    f"https://{HOST}/stories/nri-investment-desk-pune.html"
 ]
 
 def main():

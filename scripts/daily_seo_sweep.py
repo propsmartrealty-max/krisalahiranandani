@@ -54,17 +54,21 @@ def main():
     # 3. IndexNow Real-Time Broadcast (Bing, Yandex, Seznam, Naver)
     run_step("3. IndexNow Multi-Engine Broadcast", "python3 scripts/indexnow_notify.py")
 
-    # 4. Cloudflare Edge Cache Purge (if Token or Global Key is set)
+    # 4. Trigger Cloudflare Edge Cron & Programmatic Indexing Engine
+    cron_key = os.getenv("CRON_SECRET", "kxh_cron_2026")
+    run_step("4. Cloudflare Edge Cron Indexing Engine", f"curl -s -f 'https://krisalahiranandanitownships.com/api/cron/index-engine?key={cron_key}' || true")
+
+    # 5. Cloudflare Edge Cache Purge (if Token or Global Key is set)
     cf_token = os.getenv("CLOUDFLARE_API_TOKEN")
     cf_key = os.getenv("CLOUDFLARE_GLOBAL_API_KEY") or os.getenv("CLOUDFLARE_API_KEY")
     cf_email = os.getenv("CLOUDFLARE_EMAIL")
     if cf_token:
-        run_step("4. Cloudflare Cache Purge (API Token)", "python3 scripts/purge_edge_cache.py --all")
+        run_step("5. Cloudflare Cache Purge (API Token)", "python3 scripts/purge_edge_cache.py --all")
     elif cf_key and cf_email:
-        run_step("4. Cloudflare Cache Purge (Global Key)", f"python3 scripts/purge_edge_cache.py --all --key '{cf_key}' --email '{cf_email}'")
+        run_step("5. Cloudflare Cache Purge (Global Key)", f"python3 scripts/purge_edge_cache.py --all --key '{cf_key}' --email '{cf_email}'")
 
-    # 5. Automated Google SERP Keyword Rank Tracker
-    run_step("5. Google SERP Keyword Ranking Tracker", "python3 scripts/keyword_rank_tracker.py")
+    # 6. Automated Google SERP Keyword Rank Tracker
+    run_step("6. Google SERP Keyword Ranking Tracker", "python3 scripts/keyword_rank_tracker.py")
 
     print("\n" + "=" * 70)
     print(f"SEO Ecosystem Sweep Completed at {datetime.now(timezone.utc).isoformat()}")

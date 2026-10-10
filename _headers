@@ -226,4 +226,17 @@
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=3600
 
+# Google Web Stories Suite (AMP Fast-Indexing)
+/stories/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  Cache-Tag: kxh-stories, kxh-amp, kxh-google-stories
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+
+# Cloudflare Pages Edge Cron Endpoint
+/api/cron/*
+  Cache-Control: no-store, no-cache, must-revalidate
+  X-Robots-Tag: noindex, nofollow
+
 

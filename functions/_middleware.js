@@ -269,7 +269,7 @@ export async function onRequest(context) {
         return Response.redirect(canonicalUrl.toString(), 301);
     }
 
-    if (path.endsWith('.html') && !path.startsWith('/404') && !path.startsWith('/offline')) {
+    if (path.endsWith('.html') && !path.startsWith('/404') && !path.startsWith('/offline') && !path.startsWith('/stories/')) {
         const canonicalUrl = new URL(request.url);
         canonicalUrl.pathname = path.slice(0, -5);
         return Response.redirect(canonicalUrl.toString(), 301);
@@ -473,7 +473,11 @@ export async function onRequest(context) {
         headers: newHeaders
     });
 
-    // Run Streaming Edge HTMLRewriter on HTML responses
+    // Run Streaming Edge HTMLRewriter on standard HTML responses (preserve pristine AMP on /stories/)
+    if (path.startsWith('/stories/')) {
+        return modifiedResponse;
+    }
+
     const contentType = (newHeaders.get('content-type') || response.headers.get('content-type') || '').toLowerCase();
     if (isHtmlRoute || contentType.includes('text/html')) {
         return applyEdgeHtmlRewriter(modifiedResponse, url, isWhitelistedBot, request);

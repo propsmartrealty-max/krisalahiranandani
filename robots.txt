@@ -43,6 +43,7 @@ Allow: /connectivity
 Allow: /neighborhood
 Allow: /compare
 Allow: /knowledge-hub
+Allow: /stories/
 Allow: /public/
 
 User-agent: Googlebot-Image
@@ -234,4 +235,5 @@ Sitemap: https://krisalahiranandanitownships.com/sitemap-sustainability.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-construction.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-rera-legal.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-desk.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-stories.xml
 

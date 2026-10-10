@@ -61,7 +61,16 @@ PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-vs-godrej-river-royale-mahalunge",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-vs-vtp-earth-one-mahalunge",
     "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-vs-lodha-sylvan-hinjewadi",
-    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hadapsar-comparison"
+    "https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hadapsar-comparison",
+    # Google Web Stories Suite (AMP Fast-Indexing)
+    "https://krisalahiranandanitownships.com/stories/the-colosseum-phase-4.html",
+    "https://krisalahiranandanitownships.com/stories/township-grand-living.html",
+    "https://krisalahiranandanitownships.com/stories/sector-icon-sky-residences.html",
+    "https://krisalahiranandanitownships.com/stories/sector-arcadia-luxury-living.html",
+    "https://krisalahiranandanitownships.com/stories/della-equestrian-villa-plots.html",
+    "https://krisalahiranandanitownships.com/stories/hinjewadi-it-investment-roi.html",
+    "https://krisalahiranandanitownships.com/stories/maharera-legal-sanctions-guide.html",
+    "https://krisalahiranandanitownships.com/stories/nri-investment-desk-pune.html"
 ]
 
 def load_ledger():
