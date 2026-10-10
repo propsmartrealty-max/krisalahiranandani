@@ -77,7 +77,21 @@ URL_LIST = [
     f"https://{HOST}/stories/della-equestrian-villa-plots.html",
     f"https://{HOST}/stories/hinjewadi-it-investment-roi.html",
     f"https://{HOST}/stories/maharera-legal-sanctions-guide.html",
-    f"https://{HOST}/stories/nri-investment-desk-pune.html"
+    f"https://{HOST}/stories/nri-investment-desk-pune.html",
+    # Google Articles & Research Hub Standalone Pages
+    f"https://{HOST}/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune",
+    f"https://{HOST}/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi",
+    f"https://{HOST}/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi",
+    f"https://{HOST}/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure",
+    f"https://{HOST}/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan",
+    f"https://{HOST}/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide",
+    f"https://{HOST}/blog/the-colosseum-hinjewadi-phase-4-investment-guide",
+    f"https://{HOST}/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle",
+    # New Feeds & Sitemaps
+    f"https://{HOST}/sitemap-news.xml",
+    f"https://{HOST}/sitemap-blog.xml",
+    f"https://{HOST}/atom.xml",
+    f"https://{HOST}/feed.json"
 ]
 
 def main():

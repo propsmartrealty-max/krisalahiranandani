@@ -1,0 +1,108 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Krisala Hiranandani Township Hinjewadi • Official Real Estate Research",
+  "home_page_url": "https://krisalahiranandanitownships.com/",
+  "feed_url": "https://krisalahiranandanitownships.com/feed.json",
+  "description": "Authoritative research, real estate market data, infrastructure analysis, and official releases for the 105-Acre Krisala Hiranandani Integrated Equestrian Township in North Hinjewadi, Pune.",
+  "user_comment": "This feed allows real-time syndication of Pune real estate insights and Krisala Hiranandani project releases.",
+  "icon": "https://krisalahiranandanitownships.com/favicon-192.png",
+  "favicon": "https://krisalahiranandanitownships.com/favicon.png",
+  "authors": [
+    {
+      "name": "Dr. Vikas Yewle",
+      "url": "https://krisalahiranandanitownships.com/",
+      "avatar": "https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp"
+    }
+  ],
+  "language": "en-IN",
+  "items": [
+    {
+      "id": "https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune",
+      "url": "https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune",
+      "title": "The Hinjewadi & Mahalunge Mega Corridor: Why West Pune Outperforms East Pune",
+      "content_html": "<p>Macroeconomic analysis of Hinjewadi, Mahalunge, and Darumbre vs East Pune (Hadapsar, Kharadi). Metro Line 3, PMRDA Ring Road, and capital appreciation at Krisala Hiranandani Township Hinjewadi.</p>",
+      "summary": "Why West Pune's tech corridor commands 4.8%-5.4% rental yields and superior livability over East Pune.",
+      "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp",
+      "date_published": "2026-01-15T09:00:00+05:30",
+      "date_modified": "2026-10-10T12:00:00+05:30",
+      "tags": ["Market Intelligence", "Hinjewadi", "Mahalunge", "Real Estate"]
+    },
+    {
+      "id": "https://krisalahiranandanitownships.com/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi",
+      "url": "https://krisalahiranandanitownships.com/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi",
+      "title": "2 BHK, 3 BHK & 4 BHK Price Trends in Hinjewadi, Mahalunge & Baner: What Does Your Rupee Buy?",
+      "content_html": "<p>Detailed carpet area and price comparison for 2 BHK, 3 BHK, 4 BHK and Duplex homes across Hinjewadi, Mahalunge and Baner with Mivan construction analysis.</p>",
+      "summary": "True usable carpet areas and monolithic Mivan formwork engineering at Krisala Hiranandani Township.",
+      "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp",
+      "date_published": "2026-02-10T10:00:00+05:30",
+      "date_modified": "2026-10-10T12:00:00+05:30",
+      "tags": ["Pricing", "Floor Plans", "2 BHK", "3 BHK", "4 BHK"]
+    },
+    {
+      "id": "https://krisalahiranandanitownships.com/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi",
+      "url": "https://krisalahiranandanitownships.com/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi",
+      "title": "Neoclassical Architecture vs Generic Glass Boxes: Why Hiranandani Townships Command 55x Historical ROI",
+      "content_html": "<p>Case study comparing neoclassical precast architecture of Hiranandani Powai and Thane against generic modern glass buildings in terms of maintenance and appreciation.</p>",
+      "summary": "Historical capital appreciation analysis and thermal performance of neoclassical Hiranandani elevations.",
+      "image": "https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp",
+      "date_published": "2026-03-01T11:00:00+05:30",
+      "date_modified": "2026-10-10T12:00:00+05:30",
+      "tags": ["Architecture", "ROI", "Hiranandani Legacy", "Powai", "Thane"]
+    },
+    {
+      "id": "https://krisalahiranandanitownships.com/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure",
+      "url": "https://krisalahiranandanitownships.com/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure",
+      "title": "PMRDA 128m Ring Road & Metro Line 3: The Infrastructure Catalysts For North Hinjawadi & Darumbre",
+      "content_html": "<p>Connectivity analysis of Metro Line 3 terminal, PMRDA 128-meter Ring Road, and Mumbai-Pune Expressway bypass impacting Darumbre and North Hinjewadi real estate.</p>",
+      "summary": "Strategic transit infrastructure placing Krisala Hiranandani Township at the epicenter of Pune West.",
+      "image": "https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp",
+      "date_published": "2026-03-18T14:00:00+05:30",
+      "date_modified": "2026-10-10T12:00:00+05:30",
+      "tags": ["Infrastructure", "Metro Line 3", "PMRDA Ring Road", "Connectivity"]
+    },
+    {
+      "id": "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan",
+      "url": "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan",
+      "title": "Krisala Hiranandani vs Godrej River Royale, VTP Earth One & Lodha Sylvan: 2026 Comparative Audit",
+      "content_html": "<p>Head-to-head comparison of township scale, equestrian amenities, TERI eco-hydrology, and pricing against Godrej River Royale, VTP Earth One, and Lodha Sylvan.</p>",
+      "summary": "105-acre integrated township scale versus standalone residential high-rises in Hinjewadi & Mahalunge.",
+      "image": "https://krisalahiranandanitownships.com/public/imported/della-racecource.webp",
+      "date_published": "2026-04-02T10:30:00+05:30",
+      "date_modified": "2026-10-10T12:00:00+05:30",
+      "tags": ["Competitor Audit", "Godrej", "VTP", "Lodha", "Hinjewadi"]
+    },
+    {
+      "id": "https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide",
+      "url": "https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide",
+      "title": "MahaRERA PR1260002500600 & PR1260002600818 Verification & NRI Real Estate Portfolio Playbook",
+      "content_html": "<p>Legal audit of MahaRERA registrations PR1260002500600 and PR1260002600818, digital KYC, NRE/NRO repatriation processes under FEMA, and NRI property management in Pune.</p>",
+      "summary": "Section 4(2)(l)(D) 70% Escrow Account security and FEMA repatriation protocols for overseas Indians.",
+      "image": "https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_grand_atrium_marble_lobby_interior.webp",
+      "date_published": "2026-04-20T12:00:00+05:30",
+      "date_modified": "2026-10-10T12:00:00+05:30",
+      "tags": ["MahaRERA", "NRI Advisory", "FEMA", "Escrow Protection"]
+    },
+    {
+      "id": "https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide",
+      "url": "https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide",
+      "title": "The Colosseum Phase 4: Roman Architecture & Luxury Living at Krisala Hiranandani Township Hinjewadi",
+      "content_html": "<p>Explore B+G+27 residential towers, an iconic Roman triumphal archway, and luxury 2 & 3 BHK floor plans starting ₹77.99 Lakhs* at Krisala Hiranandani Township Hinjewadi.</p>",
+      "summary": "Phase 4 Roman monumental elevation and amphitheater podium gardens in North Hinjewadi.",
+      "image": "https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp",
+      "date_published": "2026-05-10T10:00:00+05:30",
+      "date_modified": "2026-10-10T12:00:00+05:30",
+      "tags": ["The Colosseum", "Phase 4", "Roman Architecture", "2 BHK", "3 BHK"]
+    },
+    {
+      "id": "https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle",
+      "url": "https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle",
+      "title": "Della Equestrian Villa Plots & 8-Acre Racecourse: Ultra-Luxury Living in Krisala Hiranandani Township Hinjewadi",
+      "content_html": "<p>Exclusive villa plots (2,000 to 5,000 sq.ft.) overlooking India’s first integrated private equestrian track and Della adventure park in North Hinjewadi.</p>",
+      "summary": "100 bespoke villa plots with private polo track privileges in Pune West.",
+      "image": "https://krisalahiranandanitownships.com/public/imported/della-racecource.webp",
+      "date_published": "2026-06-05T11:00:00+05:30",
+      "date_modified": "2026-10-10T12:00:00+05:30",
+      "tags": ["Della Collection", "Villa Plots", "Equestrian", "Racecourse", "Luxury"]
+    }
+  ]
+}

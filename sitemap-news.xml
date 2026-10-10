@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- News Article 1 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T09:00:00+05:30</news:publication_date>
+      <news:title>The Hinjewadi &amp; Mahalunge Mega Corridor: Why West Pune Outperforms East Pune</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp</image:loc>
+      <image:title>Hinjewadi Mahalunge Corridor Real Estate Analysis</image:title>
+    </image:image>
+  </url>
+
+  <!-- News Article 2 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T09:15:00+05:30</news:publication_date>
+      <news:title>2 BHK, 3 BHK &amp; 4 BHK Price Trends in Hinjewadi, Mahalunge &amp; Baner</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp</image:loc>
+      <image:title>2 BHK, 3 BHK, 4 BHK Flat Price Trends Hinjewadi</image:title>
+    </image:image>
+  </url>
+
+  <!-- News Article 3 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T09:30:00+05:30</news:publication_date>
+      <news:title>Neoclassical Architecture vs Generic Glass Boxes: Why Hiranandani Townships Command 55x Historical ROI</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp</image:loc>
+      <image:title>Neoclassical Architecture Hiranandani Townships</image:title>
+    </image:image>
+  </url>
+
+  <!-- News Article 4 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T09:45:00+05:30</news:publication_date>
+      <news:title>PMRDA 128m Ring Road &amp; Metro Line 3: The Infrastructure Catalysts For North Hinjawadi &amp; Darumbre</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>PMRDA Ring Road &amp; Metro Line 3 Map</image:title>
+    </image:image>
+  </url>
+
+  <!-- News Article 5 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T10:00:00+05:30</news:publication_date>
+      <news:title>Krisala Hiranandani vs Godrej River Royale, VTP Earth One &amp; Lodha Sylvan: 2026 Comparative Audit</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/della-racecource.webp</image:loc>
+      <image:title>Krisala Hiranandani Competitor Benchmark</image:title>
+    </image:image>
+  </url>
+
+  <!-- News Article 6 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T10:15:00+05:30</news:publication_date>
+      <news:title>MahaRERA PR1260002500600 &amp; PR1260002600818 Verification &amp; NRI Real Estate Portfolio Playbook</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_grand_atrium_marble_lobby_interior.webp</image:loc>
+      <image:title>MahaRERA Sanctions &amp; NRI Investment Guide</image:title>
+    </image:image>
+  </url>
+
+  <!-- News Article 7 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T10:30:00+05:30</news:publication_date>
+      <news:title>The Colosseum Phase 4: Roman Architecture &amp; Luxury Living at Krisala Hiranandani Township Hinjewadi</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp</image:loc>
+      <image:title>The Colosseum Phase 4 Elevation</image:title>
+    </image:image>
+  </url>
+
+  <!-- News Article 8 -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-10T10:45:00+05:30</news:publication_date>
+      <news:title>Della Equestrian Villa Plots &amp; 8-Acre Racecourse: Ultra-Luxury Living in Krisala Hiranandani Township Hinjewadi</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/della-racecource.webp</image:loc>
+      <image:title>Della Villa Plots &amp; 8-Acre Racecourse</image:title>
+    </image:image>
+  </url>
+
+</urlset>

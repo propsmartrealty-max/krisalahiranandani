@@ -236,4 +236,6 @@ Sitemap: https://krisalahiranandanitownships.com/sitemap-construction.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-rera-legal.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-desk.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-stories.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-news.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-blog.xml
 

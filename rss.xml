@@ -1,128 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" 
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>Krisala Hiranandani Township Hinjewadi • Official Project Dispatches</title>
-    <link>https://krisalahiranandanitownships.com/</link>
-    <description>Official dispatches, construction updates, phase releases, and architectural developments for the 105-Acre Krisala Hiranandani Integrated Equestrian Township in North Hinjewadi, Pune.</description>
-    <language>en-in</language>
-    <lastBuildDate>Fri, 09 Oct 2026 12:00:00 GMT</lastBuildDate>
+    <title>Krisala Hiranandani Township Hinjewadi • Official Research &amp; Dispatches</title>
     <atom:link href="https://krisalahiranandanitownships.com/rss.xml" rel="self" type="application/rss+xml"/>
-
-    <!-- Item 1: Official Township Launch -->
-    <item>
-      <title>Official Release: 105-Acre Krisala Hiranandani Master Township Unveiled in North Hinjewadi, Pune</title>
+    <link>https://krisalahiranandanitownships.com/</link>
+    <description>Authoritative research, real estate market data, infrastructure analysis, and official releases for the 105-Acre Krisala Hiranandani Integrated Equestrian Township in North Hinjewadi, Pune.</description>
+    <lastBuildDate>Sat, 10 Oct 2026 12:00:00 +0530</lastBuildDate>
+    <language>en-in</language>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    <generator>Krisala Hiranandani Publication Engine v3.0</generator>
+    <image>
+      <url>https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp</url>
+      <title>Krisala Hiranandani Township Hinjewadi</title>
       <link>https://krisalahiranandanitownships.com/</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/#launch-dispatch</guid>
-      <pubDate>Mon, 05 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Krisala Developers and Hiranandani Communities announce the formal launch of Pune's first integrated neoclassical equestrian township featuring Sector Arcadia, Sector Icon, and India's first 8-acre private racecourse.</description>
+      <width>220</width>
+      <height>32</height>
+    </image>
+
+    <!-- Article 1 -->
+    <item>
+      <title>The Hinjewadi &amp; Mahalunge Mega Corridor: Why West Pune Outperforms East Pune</title>
+      <link>https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 09:00:00 +0530</pubDate>
+      <category><![CDATA[Real Estate Market Intelligence]]></category>
+      <category><![CDATA[Hinjewadi]]></category>
+      <category><![CDATA[Mahalunge]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune</guid>
+      <description><![CDATA[Macroeconomic analysis of Hinjewadi, Mahalunge, and Darumbre vs East Pune (Hadapsar, Kharadi). Metro Line 3, PMRDA Ring Road, and capital appreciation at Krisala Hiranandani Township Hinjewadi.]]></description>
+      <content:encoded><![CDATA[<p>Pune’s real estate landscape in 2026 is witnessing an unprecedented geographic pivot. West Pune, anchored by Hinjewadi, Mahalunge, and Darumbre, is surging ahead of East Pune with 4.8%-5.4% rental yields and 14%-18% capital appreciation at Krisala Hiranandani Township Hinjewadi.</p>]]></content:encoded>
+      <media:content url="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" medium="image" width="1200" height="630">
+        <media:title>Hinjewadi Mahalunge Corridor Analysis</media:title>
+      </media:content>
     </item>
 
-    <!-- Item 2: Everlyn Residences -->
+    <!-- Article 2 -->
     <item>
-      <title>Everlyn Residences Phase 3: Premium 2 &amp; 3 BHK Floor Plans Released for Sector Arcadia</title>
-      <link>https://krisalahiranandanitownships.com/everlyn</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/everlyn#phase-3-release</guid>
-      <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Detailed Mivan architectural blueprints and starting price guidance (₹79 Lakhs* onwards) released for Sector Arcadia 2 and 3 BHK homes overlooking landscaped podium gardens.</description>
+      <title>2 BHK, 3 BHK &amp; 4 BHK Price Trends in Hinjewadi, Mahalunge &amp; Baner: What Does Your Rupee Buy?</title>
+      <link>https://krisalahiranandanitownships.com/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 09:15:00 +0530</pubDate>
+      <category><![CDATA[Pricing & Typology Audit]]></category>
+      <category><![CDATA[2 BHK Hinjewadi]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi</guid>
+      <description><![CDATA[Detailed carpet area and price comparison for 2 BHK, 3 BHK, 4 BHK and Duplex homes across Hinjewadi, Mahalunge and Baner with Mivan construction analysis at Krisala Hiranandani Township Hinjewadi.]]></description>
+      <content:encoded><![CDATA[<p>Discover true usable carpet areas, monolithic Mivan formwork advantages, and cost per square foot breakdowns across Hinjewadi, Mahalunge, and Baner at Krisala Hiranandani Township.</p>]]></content:encoded>
+      <media:content url="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp" medium="image" width="1200" height="630">
+        <media:title>Flat Price Trends Hinjewadi</media:title>
+      </media:content>
     </item>
 
-    <!-- Item 3: The Della Collection -->
+    <!-- Article 3 -->
     <item>
-      <title>The Della Collection: Limited 100 Equestrian Villa Plots with Private Polo Track Membership</title>
-      <link>https://krisalahiranandanitownships.com/della</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/della#villa-dispatch</guid>
-      <pubDate>Sat, 03 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Curated by Della Resorts, 2,000 to 5,000 sq.ft. luxury villa plots open for priority allocation with exclusive privileges at the 8-acre championship equestrian track.</description>
+      <title>Neoclassical Architecture vs Generic Glass Boxes: Why Hiranandani Townships Command 55x Historical ROI</title>
+      <link>https://krisalahiranandanitownships.com/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 09:30:00 +0530</pubDate>
+      <category><![CDATA[Architectural Economics]]></category>
+      <category><![CDATA[Hiranandani Legacy]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi</guid>
+      <description><![CDATA[Case study analyzing neoclassical precast architectural capital preservation from Powai and Thane to Krisala Hiranandani Township Hinjewadi, Pune.]]></description>
+      <content:encoded><![CDATA[<p>Why Hiranandani precast neoclassical facades command higher resale values, superior thermal mass, and lower lifetime maintenance than generic glass facade towers.</p>]]></content:encoded>
+      <media:content url="https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp" medium="image" width="1200" height="630">
+        <media:title>Neoclassical Architecture Krisala Hiranandani</media:title>
+      </media:content>
     </item>
 
-    <!-- Item 4: Master Plan Analysis -->
+    <!-- Article 4 -->
     <item>
-      <title>Interactive Masterplan &amp; Zoning Blueprint: 70% Open Space &amp; TERI 50-Year Hydrology</title>
-      <link>https://krisalahiranandanitownships.com/masterplan</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/masterplan#blueprint-dispatch</guid>
-      <pubDate>Fri, 02 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Explore the 105-acre zoning masterplan highlighting low-density residential sectors, civic arteries, solar corridors, and eco-resilience reservoirs.</description>
+      <title>PMRDA 128m Ring Road &amp; Metro Line 3: The Infrastructure Catalysts For North Hinjawadi &amp; Darumbre</title>
+      <link>https://krisalahiranandanitownships.com/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 09:45:00 +0530</pubDate>
+      <category><![CDATA[Infrastructure & Transit]]></category>
+      <category><![CDATA[Metro Line 3]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure</guid>
+      <description><![CDATA[Connectivity analysis of Metro Line 3 terminal, PMRDA 128-meter Ring Road, and Mumbai-Pune Expressway bypass impacting Darumbre and North Hinjewadi real estate.]]></description>
+      <content:encoded><![CDATA[<p>Transit analysis highlighting the strategic location of Krisala Hiranandani Township Hinjewadi directly beside the 128m PMRDA Ring Road and 10 minutes from Metro Line 3.</p>]]></content:encoded>
+      <media:content url="https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp" medium="image" width="1200" height="630">
+        <media:title>PMRDA Ring Road Connectivity Map</media:title>
+      </media:content>
     </item>
 
-    <!-- Item 5: ROI Analysis -->
+    <!-- Article 5 -->
     <item>
-      <title>Investment Whitepaper: Why Hinjewadi Phase 3 Integrated Townships Command 16% YoY Appreciation</title>
-      <link>https://krisalahiranandanitownships.com/knowledge-hub</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/knowledge-hub#roi-whitepaper</guid>
-      <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
-      <description>Comprehensive real estate analysis exploring capital growth multipliers driven by the upcoming Hinjewadi-Shivajinagar Metro Line 3 and PMRDA 128m Ring Road.</description>
+      <title>Krisala Hiranandani vs Godrej River Royale, VTP Earth One &amp; Lodha Sylvan: 2026 Comparative Audit</title>
+      <link>https://krisalahiranandanitownships.com/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 10:00:00 +0530</pubDate>
+      <category><![CDATA[Comparative Real Estate Audits]]></category>
+      <category><![CDATA[Competitor Benchmark]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan</guid>
+      <description><![CDATA[Head-to-head comparison of township scale, equestrian amenities, TERI eco-hydrology, and pricing against Godrej River Royale, VTP Earth One, and Lodha Sylvan.]]></description>
+      <content:encoded><![CDATA[<p>Detailed matrix comparing 105+ acre integrated township scale and 8-acre racecourse living against standalone high-rises in Hinjewadi and Mahalunge.</p>]]></content:encoded>
+      <media:content url="https://krisalahiranandanitownships.com/public/imported/della-racecource.webp" medium="image" width="1200" height="630">
+        <media:title>Comparative Project Matrix</media:title>
+      </media:content>
     </item>
 
-    <!-- Item 6: Pune Real Estate Research Blog -->
+    <!-- Article 6 -->
     <item>
-      <title>Pune Real Estate Research Blog: Hinjewadi &amp; Mahalunge Price Trends, Metro Line 3 Catalysts, and MahaRERA PR1260002502438 Audits</title>
-      <link>https://krisalahiranandanitownships.com/blog</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog#dispatch</guid>
-      <pubDate>Mon, 05 Oct 2026 08:00:00 GMT</pubDate>
-      <description>Authoritative 6-part Pune real estate research dossier covering Hinjewadi vs Mahalunge vs Baner vs Hadapsar market dynamics, 2, 3, 4, 5 BHK pricing benchmarks, and neoclassical architectural appreciation case studies.</description>
+      <title>MahaRERA PR1260002500600 &amp; PR1260002600818 Verification &amp; NRI Real Estate Portfolio Playbook</title>
+      <link>https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 10:15:00 +0530</pubDate>
+      <category><![CDATA[Legal & NRI Advisory]]></category>
+      <category><![CDATA[MahaRERA]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide</guid>
+      <description><![CDATA[Legal audit of MahaRERA registrations PR1260002500600 and PR1260002600818, digital KYC, NRE/NRO repatriation processes under FEMA, and NRI property management in Pune.]]></description>
+      <content:encoded><![CDATA[<p>Complete statutory disclosures, Section 4(2)(l)(D) 70% Escrow Account security, and FEMA repatriation playbook for global NRI investors at Krisala Hiranandani Township.</p>]]></content:encoded>
+      <media:content url="https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_grand_atrium_marble_lobby_interior.webp" medium="image" width="1200" height="630">
+        <media:title>MahaRERA Legal Verification</media:title>
+      </media:content>
     </item>
 
-    <!-- Item 7: Sector Arcadia Release -->
+    <!-- Article 7 -->
     <item>
-      <title>Sector Arcadia Residences: 2 &amp; 3 BHK Monolithic Mivan Homes in 105-Acre Integrated Township</title>
-      <link>https://krisalahiranandanitownships.com/arcadia</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/arcadia#dispatch</guid>
-      <pubDate>Mon, 05 Oct 2026 09:00:00 GMT</pubDate>
-      <description>Sector Arcadia features high-speed Mivan monolithic construction, 780 to 1,180 sq.ft. carpet residences, zero hallway dead-space floor plans, and low-density podium greens.</description>
+      <title>The Colosseum Phase 4: Roman Architecture &amp; Luxury Living at Krisala Hiranandani Township Hinjewadi</title>
+      <link>https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 10:30:00 +0530</pubDate>
+      <category><![CDATA[Project Spotlight]]></category>
+      <category><![CDATA[The Colosseum]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide</guid>
+      <description><![CDATA[Comprehensive investment handbook for The Colosseum Phase 4: Neoclassical elevations, 2 & 3 BHK unit layouts, amphitheater podium, and MahaRERA PR1260002500600 disclosures.]]></description>
+      <content:encoded><![CDATA[<p>Explore B+G+27 residential towers, an iconic Roman triumphal archway, and luxury 2 & 3 BHK floor plans starting ₹77.99 Lakhs* at Krisala Hiranandani Township Hinjewadi.</p>]]></content:encoded>
+      <media:content url="https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp" medium="image" width="1200" height="630">
+        <media:title>The Colosseum Elevation</media:title>
+      </media:content>
     </item>
 
-    <!-- Item 8: Sector Icon Sky Villas -->
+    <!-- Article 8 -->
     <item>
-      <title>Sector Icon Ultra-Luxury Sky Villas &amp; 18-Ft Double-Height Duplexes Unveiled</title>
-      <link>https://krisalahiranandanitownships.com/icon</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/icon#dispatch</guid>
-      <pubDate>Mon, 05 Oct 2026 10:00:00 GMT</pubDate>
-      <description>Sector Icon introduces limited 3, 4 &amp; 5 BHK duplex sky mansions with private rooftop decks, high-speed elevators, and front-row views of the 8-acre championship racecourse. MahaRERA PR1260002600818.</description>
+      <title>Della Equestrian Villa Plots &amp; 8-Acre Racecourse: Ultra-Luxury Living in Krisala Hiranandani Township Hinjewadi</title>
+      <link>https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 10:45:00 +0530</pubDate>
+      <category><![CDATA[Luxury Villa Plots]]></category>
+      <category><![CDATA[Equestrian Living]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle</guid>
+      <description><![CDATA[An exhaustive guide to The Della Collection at Krisala Hiranandani Township Hinjewadi: 100 private villa plots, 8-acre equestrian racecourse, and 40-acre adventure resort hospitality.]]></description>
+      <content:encoded><![CDATA[<p>Exclusive villa plots (2,000 to 5,000 sq.ft.) overlooking India’s first integrated private equestrian track and Della adventure park in North Hinjewadi.</p>]]></content:encoded>
+      <media:content url="https://krisalahiranandanitownships.com/public/imported/della-racecource.webp" medium="image" width="1200" height="630">
+        <media:title>Della Equestrian Racecourse</media:title>
+      </media:content>
     </item>
 
-    <!-- Item 9: 2026 Price List & Milestone Schedule -->
+    <!-- Google Web Stories Suite Syndication -->
     <item>
-      <title>2026 Comprehensive Price List, Payment Milestones, and Bank Approvals Published</title>
-      <link>https://krisalahiranandanitownships.com/pricing</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/pricing#dispatch</guid>
-      <pubDate>Mon, 05 Oct 2026 11:00:00 GMT</pubDate>
-      <description>Official pricing matrix starting ₹79 Lakhs*, construction-linked payment (CLP) plans, interactive EMI calculator, and loan pre-approvals from SBI, HDFC, ICICI, and Axis Bank.</description>
+      <title>Visual Web Story: Sector Icon Sky Residences</title>
+      <link>https://krisalahiranandanitownships.com/stories/sector-icon-sky-residences.html</link>
+      <dc:creator>Krisala Hiranandani Visual Desk</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 11:00:00 +0530</pubDate>
+      <category><![CDATA[Google Web Stories]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/stories/sector-icon-sky-residences.html</guid>
+      <description><![CDATA[Full-screen visual story: Sector Icon 3 & 4 BHK Duplex Mansions with 18-ft ceilings and Aether Lookout Pod at Krisala Hiranandani Township Hinjewadi.]]></description>
+      <media:content url="https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_skyline_infinity_pool_deck_sunset.webp" medium="image" width="720" height="1280"/>
     </item>
 
-    <!-- Item 10: 8-Acre Racecourse & Polo Club -->
     <item>
-      <title>India's 1st Residential 8-Acre Private Racecourse &amp; Polo Club at Krisala Hiranandani</title>
-      <link>https://krisalahiranandanitownships.com/racecourse</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/racecourse#dispatch</guid>
-      <pubDate>Mon, 05 Oct 2026 12:00:00 GMT</pubDate>
-      <description>Exclusive equestrian lifestyle with a 6-furlong turf track, professional horse riding academy, dressage arenas, and private clubhouse viewing lounges curated with Della Resorts.</description>
+      <title>Visual Web Story: The Colosseum Phase 4</title>
+      <link>https://krisalahiranandanitownships.com/stories/the-colosseum-phase-4.html</link>
+      <dc:creator>Krisala Hiranandani Visual Desk</dc:creator>
+      <pubDate>Sat, 10 Oct 2026 11:15:00 +0530</pubDate>
+      <category><![CDATA[Google Web Stories]]></category>
+      <guid isPermaLink="true">https://krisalahiranandanitownships.com/stories/the-colosseum-phase-4.html</guid>
+      <description><![CDATA[Full-screen visual story: Roman elegance, amphitheater podium, and 2 & 3 BHK residences at Codename The Colosseum.]]></description>
+      <media:content url="https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp" medium="image" width="720" height="1280"/>
     </item>
 
-    <!-- Item 11: Codename The Colosseum Phase 4 Pre-Launch -->
-    <item>
-      <title>Codename The Colosseum (Phase 4): Neoclassical Roman Towers &amp; Festive Diwali Benefits Released</title>
-      <link>https://krisalahiranandanitownships.com/colosseum</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/colosseum#dispatch-20261009</guid>
-      <pubDate>Fri, 09 Oct 2026 09:00:00 GMT</pubDate>
-      <description>Official pre-launch window (11 Oct – 1 Nov 2026) for Phase 4 monumental B+G+27 towers starting ₹82.99L* with ₹5L–₹9L early bird advantages, Roman amphitheatre podium, and 270-degree racecourse horizon views.</description>
-    </item>
-
-    <!-- Item 12: Masterplan 2.0 Architecture -->
-    <item>
-      <title>Masterplan 2.0 Unveiled: Responsive Viewport Scaling, Cyber-Luxury Glass HUD &amp; 4-Layer Zoning</title>
-      <link>https://krisalahiranandanitownships.com/masterplan</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/masterplan#dispatch-20261009</guid>
-      <pubDate>Fri, 09 Oct 2026 10:30:00 GMT</pubDate>
-      <description>Interactive 105-acre master layout upgraded with dynamic layer filters (All, Residential, Amenities, Della Equestrian), radar pins, and high-contrast glass HUD for immersive homebuyer navigation.</description>
-    </item>
-
-    <!-- Item 13: 15,000+ Programmatic Exploration Engine -->
-    <item>
-      <title>Programmatic Real Estate Knowledge Portal: 15,000+ Verified Semantic Exploration Corridors</title>
-      <link>https://krisalahiranandanitownships.com/explore/the-colosseum</link>
-      <guid isPermaLink="true">https://krisalahiranandanitownships.com/explore/#dispatch-20261009</guid>
-      <pubDate>Fri, 09 Oct 2026 12:00:00 GMT</pubDate>
-      <description>Edge-powered Cloudflare HTMLRewriter engine serving 15,000+ hyper-targeted corridors covering unit layouts, commute timelines to Infosys, Wipro, TCS, and competitive benchmarks against Godrej River Royale and VTP Earth One.</description>
-    </item>
   </channel>
 </rss>

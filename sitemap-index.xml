@@ -77,4 +77,12 @@
     <loc>https://krisalahiranandanitownships.com/sitemap-stories.xml</loc>
     <lastmod>2026-10-10</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-news.xml</loc>
+    <lastmod>2026-10-10</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-blog.xml</loc>
+    <lastmod>2026-10-10</lastmod>
+  </sitemap>
 </sitemapindex>

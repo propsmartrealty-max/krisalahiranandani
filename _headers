@@ -239,4 +239,33 @@
   Cache-Control: no-store, no-cache, must-revalidate
   X-Robots-Tag: noindex, nofollow
 
+# Google Articles & Research Hub Pages
+/blog/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  Cache-Tag: kxh-blog, kxh-articles, kxh-news, kxh-research
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+
+# Google Feeds & Syndication Endpoints
+/atom.xml
+  Content-Type: application/atom+xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/feed.json
+  Content-Type: application/feed+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/sitemap-news.xml
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/sitemap-blog.xml
+  Content-Type: application/xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
 

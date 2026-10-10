@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp</image:loc>
+      <image:title>Pune Real Estate Research Hub Krisala Hiranandani</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp</image:loc>
+      <image:title>Hinjewadi Mahalunge Corridor Analysis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp</image:loc>
+      <image:title>2, 3 &amp; 4 BHK Flat Price Trends Hinjewadi</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp</image:loc>
+      <image:title>Neoclassical Architecture Hiranandani ROI</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>PMRDA Ring Road &amp; Metro Line 3 Infrastructure</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/della-racecource.webp</image:loc>
+      <image:title>Krisala Hiranandani Competitor Benchmark</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_grand_atrium_marble_lobby_interior.webp</image:loc>
+      <image:title>MahaRERA Sanctions &amp; NRI Investment Guide</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/the_colosseum/the_colosseum_elevation_architectural_monument_daylight.webp</image:loc>
+      <image:title>The Colosseum Phase 4 Roman Living</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle</loc>
+    <lastmod>2026-10-10T12:00:00+05:30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/imported/della-racecource.webp</image:loc>
+      <image:title>Della Equestrian Villa Plots &amp; Racecourse</image:title>
+    </image:image>
+  </url>
+
+</urlset>

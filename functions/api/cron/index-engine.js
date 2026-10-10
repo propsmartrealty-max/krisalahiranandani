@@ -32,6 +32,15 @@ const CRITICAL_INDEXING_URLS = [
     `https://${HOST}/compare`,
     `https://${HOST}/knowledge-hub`,
     `https://${HOST}/blog`,
+    // Google Articles & Research Hub Standalone Pages
+    `https://${HOST}/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune`,
+    `https://${HOST}/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi`,
+    `https://${HOST}/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi`,
+    `https://${HOST}/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure`,
+    `https://${HOST}/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan`,
+    `https://${HOST}/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide`,
+    `https://${HOST}/blog/the-colosseum-hinjewadi-phase-4-investment-guide`,
+    `https://${HOST}/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle`,
     // Google Web Stories Suite (8 Comprehensive AMP Stories)
     `https://${HOST}/stories/the-colosseum-phase-4.html`,
     `https://${HOST}/stories/township-grand-living.html`,
@@ -45,10 +54,14 @@ const CRITICAL_INDEXING_URLS = [
     `https://${HOST}/sitemap-index.xml`,
     `https://${HOST}/sitemap.xml`,
     `https://${HOST}/sitemap-stories.xml`,
+    `https://${HOST}/sitemap-news.xml`,
+    `https://${HOST}/sitemap-blog.xml`,
     `https://${HOST}/image-sitemap.xml`,
     `https://${HOST}/video-sitemap.xml`,
     `https://${HOST}/llms.txt`,
-    `https://${HOST}/rss.xml`
+    `https://${HOST}/rss.xml`,
+    `https://${HOST}/atom.xml`,
+    `https://${HOST}/feed.json`
 ];
 
 // Helper to authenticate request
@@ -108,7 +121,9 @@ async function submitIndexNow() {
 async function pingSitemaps() {
     const sitemaps = [
         `https://${HOST}/sitemap-index.xml`,
-        `https://${HOST}/sitemap-stories.xml`
+        `https://${HOST}/sitemap-stories.xml`,
+        `https://${HOST}/sitemap-news.xml`,
+        `https://${HOST}/sitemap-blog.xml`
     ];
 
     const pingEndpoints = [];

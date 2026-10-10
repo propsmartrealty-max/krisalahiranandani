@@ -70,7 +70,16 @@ PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/stories/della-equestrian-villa-plots.html",
     "https://krisalahiranandanitownships.com/stories/hinjewadi-it-investment-roi.html",
     "https://krisalahiranandanitownships.com/stories/maharera-legal-sanctions-guide.html",
-    "https://krisalahiranandanitownships.com/stories/nri-investment-desk-pune.html"
+    "https://krisalahiranandanitownships.com/stories/nri-investment-desk-pune.html",
+    # Google Articles & Research Hub Standalone Pages
+    "https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune",
+    "https://krisalahiranandanitownships.com/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi",
+    "https://krisalahiranandanitownships.com/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi",
+    "https://krisalahiranandanitownships.com/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure",
+    "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan",
+    "https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide",
+    "https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide",
+    "https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle"
 ]
 
 def load_ledger():
