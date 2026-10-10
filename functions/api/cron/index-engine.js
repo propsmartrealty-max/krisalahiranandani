@@ -58,6 +58,8 @@ const CRITICAL_INDEXING_URLS = [
     `https://${HOST}/sitemap-blog.xml`,
     `https://${HOST}/image-sitemap.xml`,
     `https://${HOST}/video-sitemap.xml`,
+    `https://${HOST}/sitemap-geo.xml`,
+    `https://${HOST}/locations.kml`,
     `https://${HOST}/llms.txt`,
     `https://${HOST}/rss.xml`,
     `https://${HOST}/atom.xml`,

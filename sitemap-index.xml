@@ -85,4 +85,8 @@
     <loc>https://krisalahiranandanitownships.com/sitemap-blog.xml</loc>
     <lastmod>2026-10-10</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-geo.xml</loc>
+    <lastmod>2026-10-10</lastmod>
+  </sitemap>
 </sitemapindex>

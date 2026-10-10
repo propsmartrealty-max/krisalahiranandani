@@ -79,7 +79,10 @@ PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-vs-godrej-river-royale-vtp-earth-one-lodha-sylvan",
     "https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide",
     "https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide",
-    "https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle"
+    "https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle",
+    # Geospatial KML & Geo Sitemap
+    "https://krisalahiranandanitownships.com/sitemap-geo.xml",
+    "https://krisalahiranandanitownships.com/locations.kml"
 ]
 
 def load_ledger():

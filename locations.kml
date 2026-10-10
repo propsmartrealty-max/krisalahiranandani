@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+  <Document>
+    <name>Krisala Hiranandani Township Hinjewadi — 105-Acre Master Planned Megapolis</name>
+    <atom:author>
+      <atom:name>Krisala × Hiranandani Master Township Consortium</atom:name>
+    </atom:author>
+    <atom:link href="https://krisalahiranandanitownships.com" rel="related" />
+    <description><![CDATA[Official Geospatial Map & Boundary Registry for the 105-acre Krisala × Hiranandani Master Township in North Hinjawadi, Pune (MahaRERA: PR1260002500600 & PR1260002600818). Features Neoclassical residential enclaves (Sector Arcadia, Sector Icon, The Colosseum Phase 4), Della Equestrian Estate with 8-Acre private racecourse, Club Olympus, direct PMRDA 128m Ring Road corridor, and Hinjewadi-Shivajinagar Metro Line 3 connectivity.]]></description>
+
+    <!-- Styles -->
+    <Style id="townshipBoundaryStyle">
+      <LineStyle>
+        <color>ff1e88e5</color>
+        <width>4</width>
+      </LineStyle>
+      <PolyStyle>
+        <color>40c5a059</color>
+      </PolyStyle>
+    </Style>
+
+    <Style id="sectorArcadiaStyle">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>https://maps.google.com/mapfiles/kml/paddle/blu-circle.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>1.0</scale>
+      </LabelStyle>
+    </Style>
+
+    <Style id="sectorIconStyle">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon>
+          <href>https://maps.google.com/mapfiles/kml/paddle/ylw-stars.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>1.0</scale>
+      </LabelStyle>
+    </Style>
+
+    <Style id="colosseumStyle">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon>
+          <href>https://maps.google.com/mapfiles/kml/paddle/red-stars.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>1.0</scale>
+      </LabelStyle>
+    </Style>
+
+    <Style id="dellaEquestrianStyle">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon>
+          <href>https://maps.google.com/mapfiles/kml/paddle/grn-diamond.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>1.0</scale>
+      </LabelStyle>
+    </Style>
+
+    <Style id="clubhouseStyle">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>https://maps.google.com/mapfiles/kml/paddle/purple-diamond.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>1.0</scale>
+      </LabelStyle>
+    </Style>
+
+    <Style id="transitStyle">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href>
+        </Icon>
+      </IconStyle>
+      <LabelStyle>
+        <color>ffffffff</color>
+        <scale>0.9</scale>
+      </LabelStyle>
+    </Style>
+
+    <!-- 105-Acre Township Boundary Polygon -->
+    <Placemark>
+      <name>Krisala Hiranandani Township 105-Acre Perimeter</name>
+      <styleUrl>#townshipBoundaryStyle</styleUrl>
+      <description><![CDATA[<b>105-Acre Integrated Master Township Footprint</b><br/>
+      North Hinjawadi / Marunji / Darumbre Corridor, Pune 410506.<br/>
+      Includes Neoclassical High-Rise Enclaves, Luxury Villa Plots, Private Racecourse, Central Botanical Park & Commercial Hub.<br/>
+      <a href="https://krisalahiranandanitownships.com">Visit Official Township Portal</a>]]></description>
+      <Polygon>
+        <extrude>1</extrude>
+        <altitudeMode>clampToGround</altitudeMode>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              73.7350,18.5948,0
+              73.7425,18.5952,0
+              73.7445,18.5915,0
+              73.7410,18.5875,0
+              73.7340,18.5880,0
+              73.7350,18.5948,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <!-- Landmark Placemarks -->
+    <Placemark>
+      <name>Grand Neoclassical Entrance Portal &amp; Sales Experience Centre</name>
+      <styleUrl>#sectorIconStyle</styleUrl>
+      <description><![CDATA[<b>Krisala Hiranandani Experience Centre & Grand Arch</b><br/>
+      Main Boulevard Access, North Hinjawadi, Pune 410506.<br/>
+      Phone: +91 7744009295<br/>
+      <a href="https://krisalahiranandanitownships.com/contact">Schedule VIP Site Visit</a>]]></description>
+      <Point>
+        <coordinates>73.7375,18.5938,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Sector Arcadia — 2 &amp; 3 BHK Luxury Residences</name>
+      <styleUrl>#sectorArcadiaStyle</styleUrl>
+      <description><![CDATA[<b>Sector Arcadia (Towers A, B, C)</b><br/>
+      Mivan Monolithic RCC High-Rise Towers.<br/>
+      Configurations: 2 BHK Luxury (740-820 sq.ft) & 3 BHK Premium (980-1,180 sq.ft).<br/>
+      Starting at ₹79 Lakhs*.<br/>
+      <a href="https://krisalahiranandanitownships.com/arcadia">Explore Arcadia Floor Plans</a>]]></description>
+      <Point>
+        <coordinates>73.7380,18.5925,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Sector Icon — Presidential Duplex &amp; Ultra-Luxury Sky Mansions</name>
+      <styleUrl>#sectorIconStyle</styleUrl>
+      <description><![CDATA[<b>Sector Icon (Towers A, B, C)</b><br/>
+      18ft Double-Height Living Rooms, Private Lift Lobbies & Racecourse Facing Sundecks.<br/>
+      Configurations: 3 BHK Grande & 4 BHK Presidential Duplex (1,550-2,650 sq.ft).<br/>
+      Starting at ₹1.85 Cr*.<br/>
+      MahaRERA: PR1260002600818.<br/>
+      <a href="https://krisalahiranandanitownships.com/icon">Explore Icon Duplex Suites</a>]]></description>
+      <Point>
+        <coordinates>73.7395,18.5918,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>The Colosseum — Phase 4 Roman Architectural Landmark</name>
+      <styleUrl>#colosseumStyle</styleUrl>
+      <description><![CDATA[<b>Codename The Colosseum (Phase 4)</b><br/>
+      B+G+27 Storey Neoclassical Towers in Hinjewadi Phase 4.<br/>
+      2, 3 & 4 BHK residences with 270-degree Sahyadri Foothill views.<br/>
+      Starting at ₹82.99 Lakhs* with pre-launch early access benefits.<br/>
+      <a href="https://krisalahiranandanitownships.com/colosseum">Explore The Colosseum Phase 4</a>]]></description>
+      <Point>
+        <coordinates>73.7410,18.5932,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>The Della Collection — 8-Acre Private Racecourse &amp; Equestrian Club</name>
+      <styleUrl>#dellaEquestrianStyle</styleUrl>
+      <description><![CDATA[<b>The Della Equestrian Collection by Della Resorts</b><br/>
+      40-Acre Equestrian & Resort Precinct featuring Pune's only private 8-acre racecourse, polo club, luxury equine stables & bespoke 4,200 sq.ft. villa plots.<br/>
+      <a href="https://krisalahiranandanitownships.com/della">Explore Della Villa Plots</a>]]></description>
+      <Point>
+        <coordinates>73.7375,18.5895,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Club Olympus — 45,000 Sq.Ft. Master Clubhouse</name>
+      <styleUrl>#clubhouseStyle</styleUrl>
+      <description><![CDATA[<b>Club Olympus</b><br/>
+      Multi-tier resort clubhouse featuring temperature-controlled indoor pool, Olympic-length outdoor infinity pool, badminton courts, squash court, banquet hall & wellness spa.<br/>
+      <a href="https://krisalahiranandanitownships.com/amenities">View 100+ Township Amenities</a>]]></description>
+      <Point>
+        <coordinates>73.7385,18.5910,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>PMRDA 128m Ring Road Direct Access Interchange</name>
+      <styleUrl>#transitStyle</styleUrl>
+      <description><![CDATA[<b>PMRDA 128-Metre Wide Ring Road Interchange</b><br/>
+      Strategic corridor providing signal-free access to Mumbai-Pune Expressway (8 mins) and Balewadi-Baner High Street (12 mins).<br/>
+      <a href="https://krisalahiranandanitownships.com/connectivity">View Connectivity Matrix</a>]]></description>
+      <Point>
+        <coordinates>73.7405,18.5880,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Hinjewadi-Shivajinagar Metro Line 3 Megapolis Junction</name>
+      <styleUrl>#transitStyle</styleUrl>
+      <description><![CDATA[<b>Pune Metro Line 3 Transit Station Link</b><br/>
+      Direct connectivity to Hinjewadi Phase 1, Phase 2, Phase 3 IT clusters, Aundh, University Circle & Shivajinagar.<br/>
+      <a href="https://krisalahiranandanitownships.com/connectivity">Explore Metro Commute Times</a>]]></description>
+      <Point>
+        <coordinates>73.7345,18.5865,0</coordinates>
+      </Point>
+    </Placemark>
+
+  </Document>
+</kml>

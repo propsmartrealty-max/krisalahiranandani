@@ -968,19 +968,35 @@
                         </div>
                     </div>
 
-                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin:20px 0;">
+                    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin:20px 0;">
                         <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:12px 16px;">
-                            <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">Stamp Duty Regime</label>
+                            <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">
+                                <i class="ph ph-stamp" style="color:var(--gold-primary);"></i> Stamp Duty &amp; Metro Cess Regime
+                            </label>
                             <select id="stampDutyRate" onchange="recalculateAll()" style="width:100%; background:rgba(8,8,10,0.8); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:8px 12px; border-radius:6px; font-size:0.88rem; outline:none;">
-                                <option value="0.07" selected>7% (6% Stamp Duty + 1% Pune Metro Cess)</option>
-                                <option value="0.06">6% Standard Maharashtra Residential</option>
+                                <option value="0.07" selected>7% Standard (6% Stamp Duty + 1% Pune Metro Cess)</option>
+                                <option value="0.06">6% Female Homebuyer Concession (1% Govt Rebate)</option>
+                                <option value="0.06-std">6% Rural / Non-Cess Jurisdiction</option>
                             </select>
                         </div>
                         <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:12px 16px;">
-                            <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">View &amp; Preferred Location (PLC)</label>
+                            <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">
+                                <i class="ph ph-buildings" style="color:var(--gold-primary);"></i> Floor Rise Premium
+                            </label>
+                            <select id="floorRiseOption" onchange="recalculateAll()" style="width:100%; background:rgba(8,8,10,0.8); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:8px 12px; border-radius:6px; font-size:0.88rem; outline:none;">
+                                <option value="0" selected>Ground to 5th Floor (₹0 Floor Rise)</option>
+                                <option value="75000">6th to 15th Mid-Rise Deck (+₹75,000)</option>
+                                <option value="150000">16th to 27th Sky Deck (+₹1,50,000)</option>
+                            </select>
+                        </div>
+                        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:12px 16px;">
+                            <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">
+                                <i class="ph ph-compass" style="color:var(--gold-primary);"></i> View &amp; Preferred Location (PLC)
+                            </label>
                             <select id="plcOption" onchange="recalculateAll()" style="width:100%; background:rgba(8,8,10,0.8); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:8px 12px; border-radius:6px; font-size:0.88rem; outline:none;">
                                 <option value="0" selected>Standard Premium Facing (0% PLC)</option>
                                 <option value="0.03">Racecourse &amp; Sahyadri View (+3% PLC)</option>
+                                <option value="0.05">Podium Amphitheater Corner (+5% PLC)</option>
                             </select>
                         </div>
                     </div>
@@ -1005,7 +1021,14 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <strong>Maharashtra Stamp Duty</strong>
+                                        <strong>Floor Rise Premium</strong>
+                                        <span class="statutory-note" id="floorRiseNote">Ground to 5th floor baseline</span>
+                                    </td>
+                                    <td id="tableFloorRise">₹0</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Maharashtra Stamp Duty &amp; Metro Cess</strong>
                                         <span class="statutory-note" id="stampDutyNote">6% + 1% Metro Cess (PCMC / PMC Statutory)</span>
                                     </td>
                                     <td id="tableStampDuty">₹5,53,000</td>
@@ -1036,9 +1059,29 @@
                         <div class="cost-grand-total-box">
                             <div>
                                 <span class="cgt-label">Estimated All-Inclusive On-Road Total</span>
-                                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">*Subject to floor rise &amp; prevailing MahaRERA booking terms</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">*Subject to exact carpet area certification &amp; prevailing MahaRERA allotment terms</div>
                             </div>
                             <div class="cgt-amount" id="tableGrandTotal">₹91,28,000</div>
+                        </div>
+
+                        <!-- Maharashtra 2026 Statutory Advisory Grid -->
+                        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-top:20px;">
+                            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(197,160,89,0.15); border-radius:8px; padding:12px 14px;">
+                                <div style="color:var(--gold-light); font-size:0.8rem; font-weight:700; margin-bottom:4px;"><i class="ph ph-shield-check"></i> 7% Pune Stamp Duty</div>
+                                <p style="font-size:0.75rem; color:var(--text-muted); margin:0; line-height:1.4;">Comprises 6% State Duty + 1% Pune Metro Cess. Female sole/co-owners save 1% on Stamp Duty under MH Govt GR.</p>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(197,160,89,0.15); border-radius:8px; padding:12px 14px;">
+                                <div style="color:var(--gold-light); font-size:0.8rem; font-weight:700; margin-bottom:4px;"><i class="ph ph-receipt"></i> ₹30,000 Registration Cap</div>
+                                <p style="font-size:0.75rem; color:var(--text-muted); margin:0; line-height:1.4;">Under Maharashtra Registration Rules, statutory fees for properties exceeding ₹30L are strictly capped at ₹30,000.</p>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(197,160,89,0.15); border-radius:8px; padding:12px 14px;">
+                                <div style="color:var(--gold-light); font-size:0.8rem; font-weight:700; margin-bottom:4px;"><i class="ph ph-percent"></i> 5% GST (Zero ITC)</div>
+                                <p style="font-size:0.75rem; color:var(--text-muted); margin:0; line-height:1.4;">Levied strictly on under-construction agreements. No hidden tax or escalation clause across construction milestones.</p>
+                            </div>
+                            <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(197,160,89,0.15); border-radius:8px; padding:12px 14px;">
+                                <div style="color:var(--gold-light); font-size:0.8rem; font-weight:700; margin-bottom:4px;"><i class="ph ph-lock-key"></i> 70% Escrow Protection</div>
+                                <p style="font-size:0.75rem; color:var(--text-muted); margin:0; line-height:1.4;">70% of buyer funds are ring-fenced under MahaRERA Section 4(2)(l)(D) in dedicated project escrow accounts.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1715,13 +1758,17 @@
         let lastCalculatedBreakdown = null;
 
         function recalculateAll() {
-            currentStampDutyRate = parseFloat(document.getElementById('stampDutyRate').value);
+            const rawStampDuty = document.getElementById('stampDutyRate').value;
+            currentStampDutyRate = parseFloat(rawStampDuty);
             currentPLC = parseFloat(document.getElementById('plcOption').value);
+            const floorRiseVal = parseFloat(document.getElementById('floorRiseOption') ? document.getElementById('floorRiseOption').value : 0);
 
             const agreement = currentAgreementVal;
             const plcVal = Math.round(agreement * currentPLC);
-            const effectiveAgreement = agreement + plcVal;
+            const effectiveAgreement = agreement + plcVal + floorRiseVal;
             const stampDuty = Math.round(effectiveAgreement * currentStampDutyRate);
+            const standardStampDuty = Math.round(effectiveAgreement * 0.07);
+            const femaleSavings = (rawStampDuty === '0.06') ? (standardStampDuty - stampDuty) : 0;
             const registration = 30000; // Flat Maharashtra residential cap
             const gst = Math.round(effectiveAgreement * 0.05); // 5% RERA residential
             const infra = 250000;
@@ -1731,8 +1778,10 @@
                 unitName: currentUnitName,
                 agreement,
                 plcVal,
+                floorRiseVal,
                 effectiveAgreement,
                 stampDuty,
+                femaleSavings,
                 registration,
                 gst,
                 infra,
@@ -1743,9 +1792,22 @@
             // Update Cost Sheet Table
             document.getElementById('tableAgreement').textContent = formatCurrency(agreement);
             document.getElementById('tablePLC').textContent = plcVal > 0 ? formatCurrency(plcVal) : (currentCurrency === 'INR' ? '₹0' : '0');
-            document.getElementById('plcNote').textContent = plcVal > 0 ? '+3% Preferred Location Charges applied' : 'Standard premium view included';
+            document.getElementById('plcNote').textContent = plcVal > 0 ? (currentPLC === 0.03 ? '+3% Racecourse & Sahyadri View applied' : '+5% Podium Corner View applied') : 'Standard premium view included';
+            
+            const tableFloorRiseEl = document.getElementById('tableFloorRise');
+            if (tableFloorRiseEl) tableFloorRiseEl.textContent = floorRiseVal > 0 ? formatCurrency(floorRiseVal) : (currentCurrency === 'INR' ? '₹0' : '0');
+            const floorRiseNoteEl = document.getElementById('floorRiseNote');
+            if (floorRiseNoteEl) floorRiseNoteEl.textContent = floorRiseVal === 150000 ? '16th to 27th Sky Deck floor rise applied' : (floorRiseVal === 75000 ? '6th to 15th Mid-Rise floor rise applied' : 'Ground to 5th floor baseline');
+
             document.getElementById('tableStampDuty').textContent = formatCurrency(stampDuty);
-            document.getElementById('stampDutyNote').textContent = currentStampDutyRate === 0.07 ? '6% Standard + 1% Pune Metro Cess (7% Total)' : '6% Standard Maharashtra Residential';
+            if (rawStampDuty === '0.06') {
+                document.getElementById('stampDutyNote').innerHTML = `<span style="color:#4ade80; font-weight:600;"><i class="ph ph-sparkle"></i> 1% Female Homebuyer Rebate Applied (Saved ${formatCurrency(femaleSavings)})</span>`;
+            } else if (rawStampDuty === '0.06-std') {
+                document.getElementById('stampDutyNote').textContent = '6% Standard Maharashtra Non-Metro Jurisdiction';
+            } else {
+                document.getElementById('stampDutyNote').textContent = '6% Standard + 1% Pune Metro Cess (7% Total PMC/PCMC)';
+            }
+
             document.getElementById('tableReg').textContent = formatCurrency(registration);
             document.getElementById('tableGST').textContent = formatCurrency(gst);
             document.getElementById('tableInfra').textContent = formatCurrency(infra);
@@ -1755,13 +1817,20 @@
             recalculateEMIOnly(grandTotal, effectiveAgreement);
 
             // Sync WhatsApp Share Link
+            let waRebateMsg = '';
+            if (femaleSavings > 0) {
+                waRebateMsg = `• Female Buyer Rebate: Saved ${formatDualCurrency(femaleSavings)} (1% MH Govt Concession)\n`;
+            }
             const waText = encodeURIComponent(
                 `Hi, I calculated the All-Inclusive Cost Sheet for "${currentUnitName}" on your official portal:\n` +
-                `• Agreement Value: ${formatDualCurrency(agreement)}\n` +
+                `• Base Agreement Value: ${formatDualCurrency(agreement)}\n` +
+                (plcVal > 0 ? `• Preferred Location Charge: ${formatDualCurrency(plcVal)}\n` : '') +
+                (floorRiseVal > 0 ? `• Floor Rise Premium: ${formatDualCurrency(floorRiseVal)}\n` : '') +
                 `• Stamp Duty & Metro Cess: ${formatDualCurrency(stampDuty)}\n` +
-                `• Registration: ${formatDualCurrency(registration)}\n` +
-                `• GST (5%): ${formatDualCurrency(gst)}\n` +
-                `• Infrastructure Fund: ${formatDualCurrency(infra)}\n` +
+                waRebateMsg +
+                `• Govt Registration Fee: ${formatDualCurrency(registration)} (Capped)\n` +
+                `• GST (5% Under-Construction): ${formatDualCurrency(gst)}\n` +
+                `• Infrastructure & Corpus: ${formatDualCurrency(infra)}\n` +
                 `• Estimated On-Road Total: ${formatDualCurrency(grandTotal)}\n\n` +
                 `Please share the confirmed developer payment schedule, allotment availability, and official MahaRERA docket.`
             );

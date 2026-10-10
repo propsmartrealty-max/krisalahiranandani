@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:geo="http://www.google.com/geo/schemas/sitemap/1.0">
+  <!-- Official Geospatial KML Document for Google Earth & Maps Engine -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/locations.kml</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
+  <!-- Township Main Portal Geo Anchor -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
+  <!-- Sector Arcadia Geo Anchor -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/arcadia</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
+  <!-- Sector Icon Geo Anchor -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/icon</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
+  <!-- The Colosseum Geo Anchor -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/colosseum</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
+  <!-- Della Equestrian Estate Geo Anchor -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/della</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
+  <!-- Connectivity & Infrastructure Matrix Geo Anchor -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/connectivity</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
+</urlset>

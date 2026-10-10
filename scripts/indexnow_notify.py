@@ -90,6 +90,8 @@ URL_LIST = [
     # New Feeds & Sitemaps
     f"https://{HOST}/sitemap-news.xml",
     f"https://{HOST}/sitemap-blog.xml",
+    f"https://{HOST}/sitemap-geo.xml",
+    f"https://{HOST}/locations.kml",
     f"https://{HOST}/atom.xml",
     f"https://{HOST}/feed.json"
 ]
