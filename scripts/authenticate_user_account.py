@@ -20,8 +20,7 @@ USER_TOKEN_FILE = os.path.join(SCRIPT_DIR, "user_token.json")
 
 SCOPES = [
     "https://www.googleapis.com/auth/indexing",
-    "https://www.googleapis.com/auth/webmasters",
-    "https://www.googleapis.com/auth/cloud-platform"
+    "https://www.googleapis.com/auth/webmasters"
 ]
 
 REDIRECT_URI = "http://localhost:8080/"
