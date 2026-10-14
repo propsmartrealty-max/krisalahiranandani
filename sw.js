@@ -1,9 +1,11 @@
-const CACHE_NAME = 'krisala-hiranandani-v6';
+const CACHE_NAME = 'krisala-hiranandani-v7';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
     '/',
-    '/style.css?v=20261009_v5',
+    '/style.min.css?v=20261014_v1',
+    '/app.min.js?v=20261014_v1',
+    '/style.css',
     '/app.js',
     '/offline.html',
     '/manifest.json',
@@ -14,6 +16,8 @@ const CORE_ASSETS = [
 ];
 
 const SILO_ASSETS = [
+    '/pune-real-estate',
+    '/hinjewadi-real-estate',
     '/colosseum',
     '/everlyn',
     '/arcadia',
