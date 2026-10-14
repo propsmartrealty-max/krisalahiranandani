@@ -31,14 +31,21 @@
 
     <!-- Preloads & Performance -->
     <link rel="preload" href="/public/everlyn/hero/hero_exterior.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="/style.css?v=20261009_v5" as="style">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <!-- Fonts (Non-Blocking High Performance) -->
+    <link rel=preconnect href="https://fonts.googleapis.com">
+    <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+    <link rel=preload as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    </noscript>
+
+    <!-- Icons & Stylesheets (Non-blocking) -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    </noscript>
+    <link rel="stylesheet" href="/style.min.css?v=20261014_v1">
     <link rel="stylesheet" href="/style.css?v=20261009_v5">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#08080a">
@@ -435,7 +442,7 @@
                         </h2>
                         <div style="width: 50px; height: 3px; background: var(--gold-primary); margin-bottom: 22px;"></div>
                         
-                        <h4 style="color: var(--gold-primary); font-size: 1.2rem; margin: 0 0 10px; font-weight: 600;">The Resort Narrative</h4>
+                        <h3 style="color: var(--gold-primary); font-size: 1.2rem; margin: 0 0 10px; font-weight: 600;">The Resort Narrative</h3>
                         <p style="color: var(--text-light); line-height: 1.85; margin-bottom: 22px; font-size: 1.02rem;">
                             Everyday living, engineered to feel like an escape. Bordered by coveted Della Villas exists within a refined hospitality and leisure ecosystem. The energy of a premier resort, anchored by the stillness of private residences.
                         </p>
@@ -478,7 +485,7 @@
             <div class="grid-3" style="margin-top: 50px;">
                 <div class="scroll-reveal delay-1">
                     <i class="ph ph-horse" style="font-size: 3rem; color: var(--gold-light); margin-bottom: 20px;"></i>
-                    <h4>Polo Training Academy</h4>
+                    <h3>Polo Training Academy</h3>
                     <p>Professional equestrian coaching for the sport of kings, featuring certified international instructors and riding arenas.</p>
                 </div>
                 <div class="scroll-reveal delay-2">
@@ -632,7 +639,7 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h4>The Township</h4>
+                    <h3>The Township</h3>
                     <a href="/">Township Overview</a>
                     <a href="/pune-real-estate" style="color: var(--gold-light); font-weight: 600;">Pune Real Estate 2026 Guide</a>
                     <a href="/hinjewadi-real-estate" style="color: var(--gold-light); font-weight: 600;">Hinjewadi Real Estate Hub</a>
@@ -734,19 +741,19 @@
                 <p>Register for exclusive access to villa plot inventory.</p>
             </div>
             <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com"
-                method="POST">
+                method="POST" toolname="register_lead_enquiry" tooldescription="Submit user enquiry to receive Krisala Hiranandani Township brochures, price lists, and priority pre-launch allocations">
                 <input type="hidden" name="_subject" value="New Enquiry for The Della Collection">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name *" required>
+                    <input type="text" name="name" placeholder="Full Name *" required aria-label="Full Name" toolparamdescription="Full legal name of the prospective buyer">
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Phone Number *" required>
+                    <input type="tel" name="phone" placeholder="Phone Number *" required aria-label="Phone Number" toolparamdescription="Valid mobile phone number with country code">
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address">
+                    <input type="email" name="email" placeholder="Email Address" aria-label="Email Address" toolparamdescription="Email address for digital brochure dispatch">
                 </div>
                 <input type="hidden" name="source" value="della_silo">
                 <button type="submit" class="btn-primary w-100">Claim Your Membership</button>
@@ -781,7 +788,7 @@
         </a>
     </div>
 
-    <script defer src="/app.js"></script>
+    <script defer src="/app.min.js?v=20261014_v1"></script>
 </body>
 
 </html>

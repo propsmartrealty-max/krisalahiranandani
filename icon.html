@@ -31,14 +31,21 @@
 
     <!-- Preloads & Performance -->
     <link rel="preload" href="/public/everlyn/hero/hero_main_hq.webp" as="image" fetchpriority="high">
-    <link rel="preload" href="/style.css?v=20261009_v5" as="style">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <!-- Fonts (Non-Blocking High Performance) -->
+    <link rel=preconnect href="https://fonts.googleapis.com">
+    <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+    <link rel=preload as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    </noscript>
+
+    <!-- Icons & Stylesheets (Non-blocking) -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    </noscript>
+    <link rel="stylesheet" href="/style.min.css?v=20261014_v1">
     <link rel="stylesheet" href="/style.css?v=20261009_v5">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#08080a">
@@ -1301,7 +1308,7 @@
 
                 <div class="amenity-index-grid">
                     <div class="amenity-cat-card">
-                        <h5><i class="ph ph-drop" style="color: var(--gold-primary);"></i> Grand Arrival &amp; Water Plaza</h5>
+                        <h3><i class="ph ph-drop" style="color: var(--gold-primary);"></i> Grand Arrival &amp; Water Plaza</h3>
                         <ul class="amenity-list-items">
                             <li><span class="amenity-num">01</span> Water Cascade Focal Point</li>
                             <li><span class="amenity-num">02</span> Serpentine Water Rill</li>
@@ -1312,7 +1319,7 @@
                     </div>
 
                     <div class="amenity-cat-card">
-                        <h5><i class="ph ph-barbell" style="color: var(--gold-primary);"></i> Sports &amp; Active Arena</h5>
+                        <h3><i class="ph ph-barbell" style="color: var(--gold-primary);"></i> Sports &amp; Active Arena</h3>
                         <ul class="amenity-list-items">
                             <li><span class="amenity-num">22</span> Multipurpose Sports / Basketball Court</li>
                             <li><span class="amenity-num">23</span> Professional Putting Green</li>
@@ -1323,7 +1330,7 @@
                     </div>
 
                     <div class="amenity-cat-card">
-                        <h5><i class="ph ph-swimming-pool" style="color: var(--gold-primary);"></i> Aquatic Haven &amp; Sun Decks</h5>
+                        <h3><i class="ph ph-swimming-pool" style="color: var(--gold-primary);"></i> Aquatic Haven &amp; Sun Decks</h3>
                         <ul class="amenity-list-items">
                             <li><span class="amenity-num">26</span> Lap &amp; Leisure Swimming Pool</li>
                             <li><span class="amenity-num">27</span> Sunken Pool Lounge &amp; Cabana</li>
@@ -1334,7 +1341,7 @@
                     </div>
 
                     <div class="amenity-cat-card">
-                        <h5><i class="ph ph-users-three" style="color: var(--gold-primary);"></i> Social Gatherings &amp; Events</h5>
+                        <h3><i class="ph ph-users-three" style="color: var(--gold-primary);"></i> Social Gatherings &amp; Events</h3>
                         <ul class="amenity-list-items">
                             <li><span class="amenity-num">28</span> Alfresco Party &amp; Celebration Lawn</li>
                             <li><span class="amenity-num">29</span> Outdoor Barbecue &amp; Dining Plaza</li>
@@ -1345,7 +1352,7 @@
                     </div>
 
                     <div class="amenity-cat-card">
-                        <h5><i class="ph ph-flower-lotus" style="color: var(--gold-primary);"></i> Wellness, Nature &amp; Serenity</h5>
+                        <h3><i class="ph ph-flower-lotus" style="color: var(--gold-primary);"></i> Wellness, Nature &amp; Serenity</h3>
                         <ul class="amenity-list-items">
                             <li><span class="amenity-num">10</span> Reflexology Stepping Stone Path</li>
                             <li><span class="amenity-num">13</span> Labyrinth / Fragrance Maze Garden</li>
@@ -1356,7 +1363,7 @@
                     </div>
 
                     <div class="amenity-cat-card">
-                        <h5><i class="ph ph-balloon" style="color: var(--gold-primary);"></i> Kids Adventure &amp; Towers</h5>
+                        <h3><i class="ph ph-balloon" style="color: var(--gold-primary);"></i> Kids Adventure &amp; Towers</h3>
                         <ul class="amenity-list-items">
                             <li><span class="amenity-num">14</span> Toddlers' Soft-Paved Play Zone</li>
                             <li><span class="amenity-num">17</span> Adventure Treehouse &amp; Climbing Net</li>
@@ -1390,7 +1397,7 @@
                         <span class="arch-card-tag"><i class="ph ph-eye"></i> Lookout Pod | Aether Deck</span>
                     </div>
                     <div class="arch-card-body">
-                        <h4>Lookout Pod &amp; Aether Deck</h4>
+                        <h3>Lookout Pod &amp; Aether Deck</h3>
                         <p>Teardrop-sculpted wooden architectural relaxation pods nestled amidst flowering plumeria foliage, illuminated with warm twilight lamps beside a cascading stone waterfall.</p>
                     </div>
                 </div>
@@ -1402,7 +1409,7 @@
                         <span class="arch-card-tag"><i class="ph ph-drop"></i> Floating Deck &amp; Clubhouse</span>
                     </div>
                     <div class="arch-card-body">
-                        <h4>Floating Deck &amp; Clubhouse Facade</h4>
+                        <h3>Floating Deck &amp; Clubhouse Facade</h3>
                         <p>Cantilevered timber sun decks hovering above clear azure water channels, paired with the regal Neoclassical Clubhouse boasting grand triple-height Roman jaali filigree archways.</p>
                     </div>
                 </div>
@@ -1414,7 +1421,7 @@
                         <span class="arch-card-tag"><i class="ph ph-shield-check"></i> Grand Entrance Portico</span>
                     </div>
                     <div class="arch-card-body">
-                        <h4>Grand Entrance Gate &amp; Drop-off</h4>
+                        <h3>Grand Entrance Gate &amp; Drop-off</h3>
                         <p>Majestic entry portal with official "KRISALA × HIRANANDANI COMMUNITIES — ICON" signage, circular concentric cobblestone pavers, cascading fountains, and royal palm trees.</p>
                     </div>
                 </div>
@@ -1426,7 +1433,7 @@
                         <span class="arch-card-tag"><i class="ph ph-sun-horizon"></i> Sunset Skyline Triad</span>
                     </div>
                     <div class="arch-card-body">
-                        <h4>Sunset Towers Perspective</h4>
+                        <h3>Sunset Towers Perspective</h3>
                         <p>Tower A, Tower B, and Tower C rising gracefully into golden twilight skies, featuring classical vaulted pediment crowns, panoramic sundecks, and tree-lined boulevards.</p>
                     </div>
                 </div>
@@ -1438,7 +1445,7 @@
                         <span class="arch-card-tag"><i class="ph ph-buildings"></i> Classical Symmetry</span>
                     </div>
                     <div class="arch-card-body">
-                        <h4>Daylight Architectural Symmetry</h4>
+                        <h3>Daylight Architectural Symmetry</h3>
                         <p>Pristine daylight view of the trio of towers against the Sahyadri mountains, revealing rhythmic Roman colonnades, intricate vertical jaali lattices, and expansive private sundecks.</p>
                     </div>
                 </div>
@@ -1450,7 +1457,7 @@
                         <span class="arch-card-tag"><i class="ph ph-columns"></i> Roman Colonnades</span>
                     </div>
                     <div class="arch-card-body">
-                        <h4>Neoclassical Roman Colonnade</h4>
+                        <h3>Neoclassical Roman Colonnade</h3>
                         <p>Fluted Corinthian columns, monumental arched porticos, and illuminated ceiling rosettes that infuse timeless Roman classical grandeur into everyday arrival and walking promenades.</p>
                     </div>
                 </div>
@@ -1615,7 +1622,7 @@
                 <div class="icon-spec-item scroll-reveal">
                     <div class="icon-spec-icon"><i class="ph ph-arrows-vertical"></i></div>
                     <div class="icon-spec-text">
-                        <h4>Double-Height Living Ceilings</h4>
+                        <h3>Double-Height Living Ceilings</h3>
                         <p>An awe-inspiring 18-foot soaring ceiling in the main living room of Presidential Duplex residences creates a dramatic volume of light and air found nowhere else in the Hinjewadi real estate landscape.</p>
                     </div>
                 </div>
@@ -1623,7 +1630,7 @@
                 <div class="icon-spec-item scroll-reveal delay-1">
                     <div class="icon-spec-icon"><i class="ph ph-horse"></i></div>
                     <div class="icon-spec-text">
-                        <h4>Private Racecourse Sundecks</h4>
+                        <h3>Private Racecourse Sundecks</h3>
                         <p>Select units and all Duplex residences feature private sundecks with direct sight-lines to Krisala × Hiranandani's exclusive 8-acre private racecourse — a view that is both a luxury and a legacy asset.</p>
                     </div>
                 </div>
@@ -1631,7 +1638,7 @@
                 <div class="icon-spec-item scroll-reveal delay-2">
                     <div class="icon-spec-icon"><i class="ph ph-diamond"></i></div>
                     <div class="icon-spec-text">
-                        <h4>Italian Marble Flooring</h4>
+                        <h3>Italian Marble Flooring</h3>
                         <p>Full-slab imported Italian marble, laid in an opus classico pattern across all living areas and master suites, creates a timeless elegance that is as practical as it is beautiful in Pune's climate.</p>
                     </div>
                 </div>
@@ -1639,7 +1646,7 @@
                 <div class="icon-spec-item scroll-reveal">
                     <div class="icon-spec-icon"><i class="ph ph-elevator"></i></div>
                     <div class="icon-spec-text">
-                        <h4>Dedicated Private Lift Lobbies</h4>
+                        <h3>Dedicated Private Lift Lobbies</h3>
                         <p>Each floor in Tower A, Tower B and Tower C serves a maximum of two residences, with a dedicated private foyer and lift lobby per family — offering a bungalow-like sense of arrival and exclusivity at every floor.</p>
                     </div>
                 </div>
@@ -1647,7 +1654,7 @@
                 <div class="icon-spec-item scroll-reveal delay-1">
                     <div class="icon-spec-icon"><i class="ph ph-robot"></i></div>
                     <div class="icon-spec-text">
-                        <h4>Smart Home Automation</h4>
+                        <h3>Smart Home Automation</h3>
                         <p>Fully integrated smart home systems control lighting, climate, security, and entertainment from a single interface, with voice and app control. Pre-wired for premium automation ecosystems.</p>
                     </div>
                 </div>
@@ -1655,7 +1662,7 @@
                 <div class="icon-spec-item scroll-reveal delay-2">
                     <div class="icon-spec-icon"><i class="ph ph-mountains"></i></div>
                     <div class="icon-spec-text">
-                        <h4>Panoramic Sahyadri Views</h4>
+                        <h3>Panoramic Sahyadri Views</h3>
                         <p>Positioned at the northern edge of Hinjewadi's urban canopy, Tower A, B and C residences on upper floors command uninterrupted views of the Sahyadri mountain range — a living landscape painting at every sunrise.</p>
                     </div>
                 </div>
@@ -1761,37 +1768,37 @@
             <div class="grid-3" style="gap: 24px;">
                 <div class="amenity-icon-card scroll-reveal">
                     <div class="icon-wrap"><i class="ph ph-swimming-pool"></i></div>
-                    <h4>Infinity Edge Rooftop Pool</h4>
+                    <h3>Infinity Edge Rooftop Pool</h3>
                     <p>A sky-level infinity pool on Tower C's crown, exclusively for Icon residents, offering unparalleled views of the racecourse and the Sahyadri horizon — India's most luxurious township pool experience.</p>
                 </div>
 
                 <div class="amenity-icon-card scroll-reveal delay-1">
                     <div class="icon-wrap"><i class="ph ph-couch"></i></div>
-                    <h4>Exclusive Resident Lounge</h4>
+                    <h3>Exclusive Resident Lounge</h3>
                     <p>A members-only residents' lounge designed with bespoke furnishings and curated art. A quiet sanctuary for networking, celebrations, or simply unwinding above the world.</p>
                 </div>
 
                 <div class="amenity-icon-card scroll-reveal delay-2">
                     <div class="icon-wrap"><i class="ph ph-martini"></i></div>
-                    <h4>Private Cigar Lounge</h4>
+                    <h3>Private Cigar Lounge</h3>
                     <p>A sophisticated cigar and cognac lounge with premium ventilation, leather seating, and a curated selections list — the rarest amenity in any Pune residential project.</p>
                 </div>
 
                 <div class="amenity-icon-card scroll-reveal">
                     <div class="icon-wrap"><i class="ph ph-film-strip"></i></div>
-                    <h4>Private Home Theatre</h4>
+                    <h3>Private Home Theatre</h3>
                     <p>A dedicated private screening room with THX-certified audio, recliner seating for 12, and direct booking access for Icon residents. Perfect for private premieres and family movie evenings.</p>
                 </div>
 
                 <div class="amenity-icon-card scroll-reveal delay-1">
                     <div class="icon-wrap"><i class="ph ph-bell-ringing"></i></div>
-                    <h4>24/7 Concierge Service</h4>
+                    <h3>24/7 Concierge Service</h3>
                     <p>A dedicated lifestyle concierge team available round the clock for restaurant reservations, travel coordination, housekeeping scheduling, and bespoke personal services — living that truly takes care of itself.</p>
                 </div>
 
                 <div class="amenity-icon-card scroll-reveal delay-2">
                     <div class="icon-wrap"><i class="ph ph-crown"></i></div>
-                    <h4>Icon Members' Club</h4>
+                    <h3>Icon Members' Club</h3>
                     <p>Exclusive access to the Krisala × Hiranandani members' club with privileges at the polo club, racecourse events, golf academy, and curated social gatherings — a lifestyle ecosystem beyond the home.</p>
                 </div>
             </div>
@@ -1815,11 +1822,11 @@
                         The Resort Narrative &amp; <span style="color: var(--gold-primary);">Pursuits of the Privileged</span>
                     </h2>
                     <div style="width: 60px; height: 3px; background: var(--gold-primary); margin-bottom: 20px;"></div>
-                    <h4 style="color: var(--gold-light); font-size: 1.1rem; margin: 0 0 10px; font-weight: 600;">The Resort Narrative</h4>
+                    <h3 style="color: var(--gold-light); font-size: 1.1rem; margin: 0 0 10px; font-weight: 600;">The Resort Narrative</h3>
                     <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; font-size: 0.95rem;">
                         Everyday living, engineered to feel like an escape. Bordered by coveted Della Villas exists within a refined hospitality and leisure ecosystem. The energy of a premier resort, anchored by the stillness of private residences.
                     </p>
-                    <h4 style="color: var(--gold-light); font-size: 1.1rem; margin: 0 0 10px; font-weight: 600;">Pursuits of the Privileged</h4>
+                    <h3 style="color: var(--gold-light); font-size: 1.1rem; margin: 0 0 10px; font-weight: 600;">Pursuits of the Privileged</h3>
                     <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 22px; font-size: 0.95rem;">
                         A commanding lifestyle requires an extraordinary arena. The integrated racecourse for Polo &amp; Equestrian brings a world-class sporting culture directly into the township ecosystem. It is not merely an amenity; it is a statement of stature.
                     </p>
@@ -1863,7 +1870,7 @@
                         alt="Tower A & B Floor Plan Sector Icon Krisala Hiranandani Hinjewadi"
                         loading="lazy" width="600" height="340">
                     <div class="floor-plan-card-info">
-                        <h4>Tower A &amp; Tower B Floor Plan</h4>
+                        <h3>Tower A &amp; Tower B Floor Plan</h3>
                         <p>Houses 3 BHK Grande and 4 BHK Ultra-Luxury residences. Upper floors feature racecourse-facing units with dedicated private lift lobbies serving 2 homes per floor.</p>
                         <div style="display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;">
                             <span class="config-spec-chip"><i class="ph ph-bed" style="font-size:0.85rem;"></i>&nbsp; 3 BHK + 4 BHK</span>
@@ -1881,7 +1888,7 @@
                         alt="Tower C Floor Plan Presidential Duplex Sector Icon Krisala Hiranandani"
                         loading="lazy" width="600" height="340">
                     <div class="floor-plan-card-info">
-                        <h4>Tower C Floor Plan — Crown Presidential</h4>
+                        <h3>Tower C Floor Plan — Crown Presidential</h3>
                         <p>Home to the ultra-exclusive Presidential Duplex residences and select 4 BHK suites. The upper crown floors house the duplex residences with double-height living rooms and sky lounges.</p>
                         <div style="display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap;">
                             <span class="config-spec-chip"><i class="ph ph-crown" style="font-size:0.85rem;"></i>&nbsp; Presidential Duplex</span>
@@ -2002,7 +2009,7 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h4>The Township</h4>
+                    <h3>The Township</h3>
                     <a href="/">Township Overview</a>
                     <a href="/pune-real-estate" style="color: var(--gold-light); font-weight: 600;">Pune Real Estate 2026 Guide</a>
                     <a href="/hinjewadi-real-estate" style="color: var(--gold-light); font-weight: 600;">Hinjewadi Real Estate Hub</a>
@@ -2017,7 +2024,7 @@
                     <a href="/blog">Research Blog</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Corridors &amp; Typologies</h4>
+                    <h3>Corridors &amp; Typologies</h3>
                     <a href="/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1">2 BHK Residences</a>
                     <a href="/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1">3 BHK Grande</a>
                     <a href="/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi">4 BHK Palatial</a>
@@ -2028,7 +2035,7 @@
                     <a href="/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway">Expressway Corridor</a>
                 </div>
                 <div class="footer-contact">
-                    <h4>Sales Concierge</h4>
+                    <h3>Sales Concierge</h3>
                     <p><a href="tel:+917744009295" style="color: var(--gold-primary); text-decoration: none;"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg> +91 7744009295</a></p>
                     <p><a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Sector%20Icon%20at%20Krisala%20Hiranandani" target="_blank" style="color: #25D366; text-decoration: none;"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"/></svg> WhatsApp Concierge</a></p>
                     <button class="btn-outline open-modal" aria-haspopup="dialog" style="margin-top: 10px;">Open Enquiry Form</button>
@@ -2044,7 +2051,7 @@
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; text-align: left;">
                     <div>
-                        <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Residential Typologies</h4>
+                        <h3 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Residential Typologies</h3>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
                             <li><a href="/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1" style="color: var(--text-muted); text-decoration: none;">2 BHK Flats in Hinjewadi Phase 1</a></li>
                             <li><a href="/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1" style="color: var(--text-muted); text-decoration: none;">3 BHK Flats in Mahalunge Corridor</a></li>
@@ -2055,7 +2062,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Tech Park Corridors</h4>
+                        <h3 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Tech Park Corridors</h3>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
                             <li><a href="/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Flats near Infosys Phase 1 &amp; 2</a></li>
                             <li><a href="/explore/krisala-hiranandani-apartments-near-wipro-circle-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Apartments near Wipro Circle</a></li>
@@ -2066,7 +2073,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Transit &amp; Highways</h4>
+                        <h3 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Transit &amp; Highways</h3>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
                             <li><a href="/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway" style="color: var(--text-muted); text-decoration: none;">Apartments near Mumbai-Pune Expressway</a></li>
                             <li><a href="/explore/krisala-hiranandani-apartments-near-metro-line-3-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Flats near Hinjewadi Metro Line 3</a></li>
@@ -2077,7 +2084,7 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Market Comparisons</h4>
+                        <h3 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Market Comparisons</h3>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
                             <li><a href="/explore/krisala-hiranandani-vs-godrej-river-royale-mahalunge" style="color: var(--text-muted); text-decoration: none;">Krisala Hiranandani vs Godrej River Royale</a></li>
                             <li><a href="/explore/krisala-hiranandani-vs-vtp-earth-one-mahalunge" style="color: var(--text-muted); text-decoration: none;">Krisala Hiranandani vs VTP Earth One</a></li>
@@ -2107,19 +2114,19 @@
                 <h2 id="modalTitle">Inquire about Sector Icon</h2>
                 <p>Register for priority access to floor plan selection and pre-launch pricing.</p>
             </div>
-            <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com" method="POST">
+            <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com" method="POST" toolname="register_lead_enquiry" tooldescription="Submit user enquiry to receive Krisala Hiranandani Township brochures, price lists, and priority pre-launch allocations">
                 <input type="hidden" name="_subject" value="New Enquiry — Sector Icon at Krisala × Hiranandani">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name *" required autocomplete="name">
+                    <input type="text" name="name" placeholder="Full Name *" required autocomplete="name" aria-label="Full Name" toolparamdescription="Full legal name of the prospective buyer">
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Phone Number *" required autocomplete="tel">
+                    <input type="tel" name="phone" placeholder="Phone Number *" required autocomplete="tel" aria-label="Phone Number" toolparamdescription="Valid mobile phone number with country code">
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address" autocomplete="email">
+                    <input type="email" name="email" placeholder="Email Address" autocomplete="email" aria-label="Email Address" toolparamdescription="Email address for digital brochure dispatch">
                 </div>
                 <div class="form-group">
                     <select name="configuration" style="width:100%; padding: 14px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(197,160,89,0.3); border-radius: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem; outline: none;">
@@ -2171,7 +2178,7 @@
         </a>
     </div>
 
-    <script defer src="/app.js"></script>
+    <script defer src="/app.min.js?v=20261014_v1"></script>
 </body>
 
 </html>

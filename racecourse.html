@@ -62,14 +62,21 @@
     <link rel="preload" href="/public/imported/della-racecource.webp" as="image" fetchpriority="high">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <!-- Fonts (Non-Blocking High Performance) -->
+    <link rel=preconnect href="https://fonts.googleapis.com">
+    <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+    <link rel=preload as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    </noscript>
 
-    <!-- Phosphor Icons -->
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css?v=20261009_v5">
-    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
-
+    <!-- Icons & Stylesheets (Non-blocking) -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    </noscript>
+    <link rel="stylesheet" href="/style.min.css?v=20261014_v1">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/style.css?v=20261009_v5">
     <link rel="manifest" href="manifest.json">
@@ -1495,7 +1502,7 @@
     <section style="padding:60px 0;background:rgba(197,160,89,0.03);border-top:1px solid rgba(197,160,89,0.1);">
         <div class="container">
             <div class="scroll-reveal">
-                <h4 style="font-family:var(--font-heading,'Cinzel',serif);color:var(--gold-light,#EDD97D);font-size:1.05rem;margin-bottom:16px;letter-spacing:0.06em;">Explore Krisala Hiranandani Township:</h4>
+                <h3 style="font-family:var(--font-heading,'Cinzel',serif);color:var(--gold-light,#EDD97D);font-size:1.05rem;margin-bottom:16px;letter-spacing:0.06em;">Explore Krisala Hiranandani Township:</h3>
                 <div style="display:flex;flex-wrap:wrap;gap:10px;">
                     <a href="/" style="font-size:0.8rem;padding:6px 14px;border-radius:20px;background:rgba(197,160,89,0.08);border:1px solid rgba(197,160,89,0.2);color:var(--text-muted,#a0a0b0);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--gold-primary)'" onmouseout="this.style.color='var(--text-muted)'">Krisala Hiranandani Township</a>
                     <a href="/everlyn" style="font-size:0.8rem;padding:6px 14px;border-radius:20px;background:rgba(197,160,89,0.08);border:1px solid rgba(197,160,89,0.2);color:var(--text-muted,#a0a0b0);text-decoration:none;" onmouseover="this.style.color='var(--gold-primary)'" onmouseout="this.style.color='var(--text-muted)'">Everlyn Residences</a>
@@ -1566,7 +1573,7 @@
                 </div>
 
                 <div class="footer-links">
-                    <h4>The Township</h4>
+                    <h3>The Township</h3>
                     <a href="/">Township Overview</a>
                     <a href="/everlyn">Everlyn Residences</a>
                     <a href="/della">The Della Collection</a>
@@ -1670,23 +1677,23 @@
                 <h2 id="modalTitle">Enquire About Racecourse Residences</h2>
                 <p>Register your interest for exclusive racecourse view inventory at Krisala Hiranandani Township.</p>
             </div>
-            <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com" method="POST">
+            <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com" method="POST" toolname="register_lead_enquiry" tooldescription="Submit user enquiry to receive Krisala Hiranandani Township brochures, price lists, and priority pre-launch allocations">
                 <input type="hidden" name="_subject" value="Racecourse Page Enquiry — Krisala Hiranandani Township">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="source" value="racecourse_page">
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name *" required autocomplete="name">
+                    <input type="text" name="name" placeholder="Full Name *" required autocomplete="name" aria-label="Full Name" toolparamdescription="Full legal name of the prospective buyer">
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Phone Number *" required autocomplete="tel">
+                    <input type="tel" name="phone" placeholder="Phone Number *" required autocomplete="tel" aria-label="Phone Number" toolparamdescription="Valid mobile phone number with country code">
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address" autocomplete="email">
+                    <input type="email" name="email" placeholder="Email Address" autocomplete="email" aria-label="Email Address" toolparamdescription="Email address for digital brochure dispatch">
                 </div>
                 <div class="form-group">
-                    <select name="interest" required>
+                    <select name="interest" required aria-label="Interested Sector or Typology" toolparamdescription="Selected township sector or configuration">
                         <option value="" disabled selected>Residence of Interest *</option>
                         <option value="sector-icon-duplex-racecourse-view">Sector Icon — 4 BHK Duplex (Racecourse View)</option>
                         <option value="sector-icon-3bhk-racecourse-view">Sector Icon — 3 BHK (Racecourse View)</option>
@@ -1741,7 +1748,7 @@
     <!-- ═══════════════════════════════════════════════
          APP.JS
     ═══════════════════════════════════════════════ -->
-    <script defer src="/app.js"></script>
+    <script defer src="/app.min.js?v=20261014_v1"></script>
 </body>
 
 </html>

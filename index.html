@@ -2769,22 +2769,24 @@
                 <p>Register now for exclusive priority access.</p>
             </div>
             <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com"
-                method="POST">
+                method="POST"
+                toolname="register_lead_enquiry"
+                tooldescription="Submit user enquiry to receive Krisala Hiranandani Township brochures, price lists, and priority pre-launch allocations">
                 <input type="hidden" name="_subject" value="New Enquiry from Krisala Hiranandani Website">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                 <div class="form-group">
-                    <input type="text" name="name" id="enquiry-name" placeholder="Full Name *" aria-label="Full Name" required>
+                    <input type="text" name="name" id="enquiry-name" placeholder="Full Name *" aria-label="Full Name" toolparamdescription="Full legal name of the prospective buyer" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" id="enquiry-phone" placeholder="Phone Number *" aria-label="Phone Number" required>
+                    <input type="tel" name="phone" id="enquiry-phone" placeholder="Phone Number *" aria-label="Phone Number" toolparamdescription="Valid mobile phone number with country code" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" id="enquiry-email" placeholder="Email Address" aria-label="Email Address">
+                    <input type="email" name="email" id="enquiry-email" placeholder="Email Address" aria-label="Email Address" toolparamdescription="Email address for digital brochure dispatch">
                 </div>
                 <div class="form-group">
-                    <select name="interest" id="enquiry-interest" aria-label="Interested Sector or Typology" required>
+                    <select name="interest" id="enquiry-interest" aria-label="Interested Sector or Typology" toolparamdescription="Selected township sector or apartment configuration" required>
                         <option value="" disabled selected>Interested Sector/Typology *</option>
                         <option value="colosseum-phase4">The Colosseum - Phase 4 (2, 3, 4 BHK &amp; Duplex)</option>
                         <option value="everlyn-tower">Everlyn - Tower A-E (New Launch)</option>

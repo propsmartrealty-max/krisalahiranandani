@@ -30,14 +30,20 @@
     <link rel="search" type="application/opensearchdescription+xml" title="Krisala Hiranandani" href="/opensearch.xml">
 
     <!-- Fonts & Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link rel="preload" href="/style.css?v=20261009_v5" as="style">
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+        <!-- Fonts (Non-Blocking High Performance) -->
+    <link rel=preconnect href="https://fonts.googleapis.com">
+    <link rel=preconnect href="https://fonts.gstatic.com" crossorigin>
+    <link rel=preload as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    <link rel=stylesheet href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    </noscript>
+
+    <!-- Icons & Stylesheets (Non-blocking) -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        </noscript>
+    <link rel="stylesheet" href="/style.min.css?v=20261014_v1">
     <link rel="stylesheet" href="/style.css?v=20261009_v5">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#08080a">
@@ -803,7 +809,7 @@
                     </div>
                     <div class="article-card-body">
                         <div>
-                            <h3 style="color: var(--gold-light);">Pune Real Estate 2026: Macro Trends, Price Index &amp; Townships</h3>
+                            <h2 style="color: var(--gold-light);">Pune Real Estate 2026: Macro Trends, Price Index &amp; Townships</h2>
                             <p>Exhaustive study of Pune's $69B+ GDDP, West vs East Pune rental yield divergence (5.2% vs 3.1%), 7% Stamp Duty + Metro Cess calculation, and integrated township appreciation.</p>
                         </div>
                         <a href="/pune-real-estate" class="btn-read-analysis" style="font-weight: 600;">Open Master Guide <i class="ph ph-arrow-right"></i></a>
@@ -1621,19 +1627,19 @@
                 <p>Register to receive our confidential 48-page masterplan, financial model, and cost sheets.</p>
             </div>
             <form class="enquiry-form" id="leadForm" action="https://formsubmit.co/propsmartrealty@gmail.com"
-                method="POST">
+                method="POST" toolname="register_lead_enquiry" tooldescription="Submit user enquiry to receive Krisala Hiranandani Township brochures, price lists, and priority pre-launch allocations">
                 <input type="hidden" name="_subject" value="New Enquiry from Knowledge Hub Research Portal">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name *" required>
+                    <input type="text" name="name" placeholder="Full Name *" required aria-label="Full Name" toolparamdescription="Full legal name of the prospective buyer">
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Phone Number (e.g. +91 98765 43210) *" required>
+                    <input type="tel" name="phone" placeholder="Phone Number (e.g. +91 98765 43210) *" required aria-label="Phone Number" toolparamdescription="Valid mobile phone number with country code">
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address (for instant dossier delivery)">
+                    <input type="email" name="email" placeholder="Email Address (for instant dossier delivery)" aria-label="Email Address" toolparamdescription="Email address for digital brochure dispatch">
                 </div>
                 <button type="submit" class="btn-primary w-100">Download Dossier &amp; Price Sheet</button>
             </form>
@@ -1667,7 +1673,7 @@
         </a>
     </div>
 
-    <script defer src="/app.js"></script>
+    <script defer src="/app.min.js?v=20261014_v1"></script>
 </body>
 
 </html>

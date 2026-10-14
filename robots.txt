@@ -9,7 +9,9 @@ User-agent: *
 Allow: /
 Allow: /public/
 Allow: /style.css
+Allow: /style.min.css
 Allow: /app.js
+Allow: /app.min.js
 Allow: /manifest.json
 Allow: /llms.txt
 Allow: /llms-full.txt
