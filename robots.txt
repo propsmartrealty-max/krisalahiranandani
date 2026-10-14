@@ -73,6 +73,7 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /blog
 Allow: /knowledge-hub
 
@@ -116,10 +117,12 @@ Allow: /
 User-agent: Applebot
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
 
 User-agent: Applebot-Extended
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
 
 # ------------------------------------------------------------------------------
 # AI Search Engines & Generative Search Overviews (GEO Optimized)
@@ -127,6 +130,14 @@ Allow: /llms.txt
 User-agent: GPTBot
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /blog
+Allow: /knowledge-hub
+
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /blog
 Allow: /knowledge-hub
 
@@ -136,33 +147,49 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /blog
 Allow: /knowledge-hub
 
 User-agent: ClaudeBot
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /blog
 Allow: /knowledge-hub
 
 User-agent: Claude-Web
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
 
 User-agent: anthropic-ai
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
 
 User-agent: Amazonbot
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Meta-ExternalFetcher
+Allow: /
 
 User-agent: cohere-ai
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
 
 User-agent: Bytespider
 Allow: /
 Allow: /llms.txt
+Allow: /llms-full.txt
 
 # ------------------------------------------------------------------------------
 # Social Media & Rich Card Snippet Bots

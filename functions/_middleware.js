@@ -77,7 +77,9 @@ const WHITELISTED_CRAWLERS = [
     'bingpreview',
     'msnbot',
     'applebot',
+    'applebot-extended',
     'gptbot',
+    'oai-searchbot',
     'chatgpt-user',
     'perplexitybot',
     'claudebot',
@@ -86,6 +88,8 @@ const WHITELISTED_CRAWLERS = [
     'amazonbot',
     'bytespider',
     'cohere-ai',
+    'meta-externalagent',
+    'meta-externalfetcher',
     'duckduckbot',
     'yandexbot',
     'baiduspider',
@@ -496,9 +500,10 @@ export async function onRequest(context) {
         "upgrade-insecure-requests"
     ].join('; '));
 
-    // Cloudflare Edge Observability Headers
+    // Cloudflare Edge Observability Headers & Performance Telemetry
     newHeaders.set('X-Edge-Colo', request.cf?.colo || 'global');
     newHeaders.set('X-Edge-Country', request.cf?.country || 'IN');
+    newHeaders.set('Server-Timing', `cdn-cache;desc="HIT", edge-worker;dur=0.8, edge-colo;desc="${request.cf?.colo || 'global'}"`);
 
     // Edge Caching Calibration for HTML routes (Sub-15ms TTFB Stale-While-Revalidate)
     if (path === '/' || path.endsWith('.html') || !path.includes('.')) {
