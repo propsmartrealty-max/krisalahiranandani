@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.krisalahiranandani.indexing</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/vikasyewle/Documents/desktop items/krisalahiranandani/scripts/run_permanent_indexing_cron.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/vikasyewle/Documents/desktop items/krisalahiranandani</string>
+
+    <!-- Run every 6 hours (21,600 seconds) -->
+    <key>StartInterval</key>
+    <integer>21600</integer>
+
+    <!-- Also run daily at 04:30 AM IST (23:00 UTC) -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>4</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/vikasyewle/Documents/desktop items/krisalahiranandani/logs/launchd_stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/vikasyewle/Documents/desktop items/krisalahiranandani/logs/launchd_stderr.log</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+
+    <key>LowPriorityIO</key>
+    <true/>
+</dict>
+</plist>
