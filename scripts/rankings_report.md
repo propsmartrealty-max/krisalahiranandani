@@ -1,5 +1,5 @@
 # Krisala × Hiranandani Township — Search Engine Ranking Audit
-**Audit Timestamp:** 2026-10-14T06:12:33.550752+00:00  
+**Audit Timestamp:** 2026-10-14T18:19:31.123289+00:00  
 **Target Property Domain:** `https://krisalahiranandanitownships.com/`  
 
 ## Organic SERP Positioning Overview

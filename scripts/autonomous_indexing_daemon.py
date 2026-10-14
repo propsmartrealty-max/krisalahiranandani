@@ -150,8 +150,8 @@ def execute_autonomous_cycle():
     try:
         in_payload = {
             "host": "krisalahiranandanitownships.com",
-            "key": "4a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d",
-            "keyLocation": "https://krisalahiranandanitownships.com/4a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d.txt",
+            "key": "e2b9c79fa4d84b90a6e4d77c15243890",
+            "keyLocation": "https://krisalahiranandanitownships.com/e2b9c79fa4d84b90a6e4d77c15243890.txt",
             "urlList": CORE_DISCOVERY_URLS
         }
         res_in = requests.post(INDEXNOW_ENDPOINT, json=in_payload, timeout=10)
