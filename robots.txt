@@ -12,6 +12,7 @@ Allow: /style.css
 Allow: /app.js
 Allow: /manifest.json
 Allow: /llms.txt
+Allow: /llms-full.txt
 Allow: /favicon.ico
 Allow: /favicon.png
 Allow: /apple-touch-icon.png

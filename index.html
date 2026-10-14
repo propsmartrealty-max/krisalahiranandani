@@ -27,14 +27,18 @@
     <link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/">
     <link rel="alternate" hreflang="x-default" href="https://krisalahiranandanitownships.com/">
     <link rel="alternate" type="application/rss+xml" title="Krisala Hiranandani Dispatches" href="/rss.xml">
+    <link rel="alternate" type="application/atom+xml" title="Krisala Hiranandani Atom Feed" href="/atom.xml">
     <link rel="search" type="application/opensearchdescription+xml" title="Krisala Hiranandani" href="/opensearch.xml">
     <meta name="google-site-verification" content="DXqQqarOyiJM8YjM1deNCBtB4JbBj-T6Fn9Yac99CUI">
 
-    <!-- Critical Asset Preloading for Core Web Vitals (LCP Improvement) -->
+    <!-- Critical Asset Preloading & Resource Hints for Core Web Vitals (LCP/INP) -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="preload" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" as="image" type="image/webp" fetchpriority="high">
 
     <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -3034,6 +3038,41 @@
         <i class="ph ph-share-network"></i> Share
     </button>
 
+    <!-- W3C Speculation Rules API — Instant 0ms Page Navigation for Google Chrome & Chromium -->
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": [
+            "/pune-real-estate",
+            "/hinjewadi-real-estate",
+            "/pricing",
+            "/colosseum",
+            "/arcadia",
+            "/icon"
+          ],
+          "eagerness": "moderate"
+        }
+      ],
+      "prefetch": [
+        {
+          "source": "list",
+          "urls": [
+            "/della",
+            "/racecourse",
+            "/amenities",
+            "/connectivity",
+            "/masterplan",
+            "/gallery",
+            "/compare",
+            "/blog"
+          ],
+          "eagerness": "moderate"
+        }
+      ]
+    }
+    </script>
     <script defer src="/app.js"></script>
 </body>
 

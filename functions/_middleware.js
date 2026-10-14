@@ -446,9 +446,15 @@ export async function onRequest(context) {
         newHeaders.set('X-Crawler-Status', 'whitelisted');
     }
 
-    // Cloudflare Early Hints / HTTP 103 Resource Preloading (HTML pages only)
+    // Cloudflare Early Hints / HTTP 103 Resource Preloading & Edge Canonical Header (RFC 6596)
     if (isHtmlRoute) {
+        const cleanCanonicalPath = path === '/' ? '/' : path.replace(/\.html$/, '');
+        const canonicalUrl = `https://krisalahiranandanitownships.com${cleanCanonicalPath}`;
         newHeaders.set('Link', [
+            `<${canonicalUrl}>; rel="canonical"`,
+            '</rss.xml>; rel="alternate"; type="application/rss+xml"',
+            '</atom.xml>; rel="alternate"; type="application/atom+xml"',
+            '</opensearch.xml>; rel="search"; type="application/opensearchdescription+xml"',
             '<https://fonts.googleapis.com>; rel=preconnect',
             '<https://fonts.gstatic.com>; rel=preconnect; crossorigin',
             '</style.css?v=20261009_v5>; rel=preload; as=style',
