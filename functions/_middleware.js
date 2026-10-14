@@ -363,11 +363,34 @@ export async function onRequest(context) {
     if (response.status === 404 && !path.startsWith('/explore/') && !path.startsWith('/api/') && !path.startsWith('/public/') && !path.includes('.')) {
         const cleanSlug = path.replace(/^\/+|\/+$/g, '');
         const realEstateKeywords = [
-            'krisala', 'hiranandani', 'hinjewadi', 'hinjawadi', 'pune', 
-            'township', 'arcadia', 'icon', 'colosseum', 'della', 'everlyn',
-            'bhk', 'flat', 'apartment', 'residence', 'duplex', 'penthouse',
-            'villa', 'plot', 'price', 'floor-plan', 'masterplan', 'racecourse',
-            'infosys', 'wipro', 'tcs', 'metro', 'expressway', 'mahalunge'
+            // Brand Permutations, Sub-Brands & Verified Search Typos
+            'krisala', 'krisla', 'hiranandani', 'hiranajdani', 'hiranadani', 'hirnandani', 
+            'dr-niranjan', 'niranjan-hiranandani', 'krisala-developers', 'hiranandani-communities',
+            
+            // Township Sectors, Enclaves & Amenities
+            'arcadia', 'icon', 'colosseum', 'della', 'everlyn', 'olympus', 'club-olympus',
+            'racecourse', 'equestrian', 'polo',
+            
+            // Pune Macro Corridors & Micro-Markets
+            'pune', 'pcmc', 'hinjewadi', 'hinjawadi', 'north-hinjewadi', 'darumbre', 'marunji',
+            'kasarsai', 'nere', 'maan', 'mahalunge', 'baner', 'balewadi', 'wakad', 'tathawade',
+            'punawale', 'ravet', 'kiwale', 'mamurdi', 'gahunje', 'bavdhan', 'pashan', 'aundh',
+            'kothrud', 'shivajinagar', 'model-colony', 'prabhat-road', 'boat-club-road',
+            'koregaon-park', 'kharadi', 'viman-nagar', 'kalyani-nagar', 'magarpatta', 'hadapsar',
+            'undri', 'nibm', 'kondhwa', 'pimpri', 'chinchwad', 'chakan', 'talegaon',
+            
+            // Typologies & Buying Intent Queries
+            'real-estate', 'property', 'properties', 'township', 'townships',
+            'bhk', '1bhk', '2bhk', '3bhk', '4bhk', '5bhk',
+            'flat', 'flats', 'apartment', 'apartments', 'residence', 'residences',
+            'duplex', 'penthouse', 'villa', 'villas', 'plot', 'plots', 'row-house',
+            'price', 'prices', 'pricing', 'cost-sheet', 'cost', 'payment-plan',
+            'floor-plan', 'floorplan', 'masterplan', 'master-plan', 'layout', 'carpet-area',
+            'possession', 'ready-possession', 'under-construction', 'new-launch',
+            'rera', 'maharera', 'review', 'reviews', 'brochure', 'booking', 'contact',
+            'site-address', 'location', 'connectivity', 'metro', 'ring-road', 'expressway',
+            'infosys', 'wipro', 'tcs', 'cognizant', 'infotech', 'tech-park',
+            'investment', 'roi', 'rental-yield', 'nri'
         ];
         
         const isTargetQuery = realEstateKeywords.some(kw => cleanSlug.includes(kw));

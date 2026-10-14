@@ -112,10 +112,41 @@
 /krisala-township                       / 301
 /krisala-township-hinjewadi             / 301
 /krisala-township-pune                  / 301
-/krisala-pune                           / 301
-/krisala-developers                     / 301
-/hiranandani-communities                / 301
-/dr-niranjan-hiranandani-pune           / 301
+# Brand Typo & Phonetical Permutations (Universal Coverage)
+/krisala-hiranajdani                    / 301
+/krisala-hiranajdani-township           / 301
+/krisala-hiranajdani-hinjewadi          / 301
+/krisala-hiranajdani-pune               / 301
+/krisala-hiranadani                     / 301
+/krisala-hiranadani-township            / 301
+/krisala-hiranadani-hinjewadi           / 301
+/krisala-hiranadani-pune                / 301
+/krisala-hirnandani                     / 301
+/krisala-hirnandani-township            / 301
+/krisla-hiranandani                     / 301
+/krisla-hiranandani-township            / 301
+
+# Pune Real Estate Macro Market Permutations
+/pune-real-estate-market                /pune-real-estate 301
+/pune-property-rates                    /pune-real-estate 301
+/pune-property-price-trends             /pune-real-estate 301
+/flats-for-sale-in-pune                 /pune-real-estate 301
+/luxury-apartments-in-pune              /pune-real-estate 301
+/integrated-townships-in-pune           /pune-real-estate 301
+/best-township-in-pune                  /pune-real-estate 301
+/property-investment-in-pune            /pune-real-estate 301
+/west-pune-real-estate                  /pune-real-estate 301
+
+# Hinjewadi Real Estate Micro Market Permutations
+/hinjewadi-property-rates               /hinjewadi-real-estate 301
+/hinjewadi-real-estate-market           /hinjewadi-real-estate 301
+/flats-in-hinjewadi-phase-1             /hinjewadi-real-estate 301
+/flats-in-hinjewadi-phase-2             /hinjewadi-real-estate 301
+/flats-in-hinjewadi-phase-3             /hinjewadi-real-estate 301
+/north-hinjewadi-real-estate            /hinjewadi-real-estate 301
+/apartments-near-infosys-hinjewadi      /hinjewadi-real-estate 301
+/apartments-near-wipro-hinjewadi        /hinjewadi-real-estate 301
+/apartments-near-tcs-hinjewadi          /hinjewadi-real-estate 301
 
 # Enclave & Sector Permutations
 /krisala-hiranandani-colosseum          /colosseum 301
