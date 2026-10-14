@@ -26,6 +26,8 @@ REPORT_FILE = os.path.join(SCRIPT_DIR, "rankings_report.md")
 PRIORITY_KEYWORDS = [
     # Core Brand & Signature Silos
     "Krisala Hiranandani",
+    "Krisala Hiranandani Township Hinjewadi",
+    "Krisala Hiranandani Township Hinjewadi Pune",
     "Krisala Hiranandani Colosseum",
     "Krisala Hiranandani Arcadia",
     "Krisala Hiranandani Della",
@@ -35,13 +37,27 @@ PRIORITY_KEYWORDS = [
     "Krisala Hiranandani masterplan",
     "Krisala Hiranandani contact number",
     
-    # High-Intent Commercial Micromarket Queries
+    # Pune Real Estate Macro Market Queries
+    "Pune real estate",
+    "Pune real estate market 2026",
+    "flats for sale in Pune",
+    "luxury apartments in Pune",
+    "integrated townships in Pune",
+    "best residential projects in Pune",
+    "Pune property price trends 2026",
+    "West Pune real estate",
+    
+    # Hinjewadi Real Estate IT Corridor Queries
+    "Hinjewadi real estate",
+    "Hinjewadi real estate market",
+    "flats for sale in Hinjewadi",
+    "apartments in Hinjewadi Phase 1",
+    "flats near Hinjawadi IT Park Pune",
+    "luxury apartments near Hinjawadi Phase 1",
     "Colosseum Hinjewadi 3 BHK floor plan",
     "The Colosseum Phase 4 Hinjewadi",
     "Arcadia Hinjewadi 2 BHK price",
     "Della villa plots Hinjewadi",
-    "luxury apartments near Hinjawadi Phase 1",
-    "flats near Hinjawadi IT Park Pune",
     "Krisala Hiranandani stamp duty GST breakup",
     "Hiranandani integrated township Pune",
     "ready reckoner rate Hinjewadi residential 2026",

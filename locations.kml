@@ -220,5 +220,27 @@
       </Point>
     </Placemark>
 
+    <Placemark>
+      <name>Hinjewadi Real Estate &amp; Rajiv Gandhi Infotech Park Gateway</name>
+      <styleUrl>#transitStyle</styleUrl>
+      <description><![CDATA[<b>Hinjewadi Real Estate Master Gateway</b><br/>
+      Strategic IT Park corridor housing 400,000+ tech professionals across Infosys, Wipro, TCS, Cognizant, and Barclays with 5.4% rental yields.<br/>
+      <a href="https://krisalahiranandanitownships.com/hinjewadi-real-estate">View Hinjewadi Real Estate Guide</a>]]></description>
+      <Point>
+        <coordinates>73.7380,18.5900,0</coordinates>
+      </Point>
+    </Placemark>
+
+    <Placemark>
+      <name>Pune Real Estate — 105-Acre Township Landmark</name>
+      <styleUrl>#townshipBoundaryStyle</styleUrl>
+      <description><![CDATA[<b>Pune Real Estate Integrated Benchmark</b><br/>
+      Krisala Hiranandani 105-Acre Master Development featuring neoclassical architecture, 8-acre private racecourse, and 40-acre Della hospitality district.<br/>
+      <a href="https://krisalahiranandanitownships.com/pune-real-estate">View Pune Real Estate Market Report</a>]]></description>
+      <Point>
+        <coordinates>73.7389,18.5913,0</coordinates>
+      </Point>
+    </Placemark>
+
   </Document>
 </kml>

@@ -121,7 +121,7 @@ SILOS = [
     {
         "name": "micromarkets",
         "file": "sitemap-micromarkets.xml",
-        "hubs": ["/neighborhood"],
+        "hubs": ["/pune-real-estate", "/hinjewadi-real-estate", "/neighborhood"],
         "bases": ["luxury-apartments-hinjewadi-phase-1", "premium-flats-hinjewadi-phase-2", "gated-community-hinjewadi-phase-3", "waterfront-homes-mahalunge-smart-city", "nature-residences-north-hinjewadi"],
         "modifiers": ["near-metro-line-3-station", "near-wipro-circle", "near-infosys-phase-2", "near-pmrda-ring-road", "near-mumbai-pune-expressway", "near-della-adventure-racecourse", "with-italian-marble", "with-clubhouse-amenities", "with-zero-traffic-commute", "with-teri-green-certification"],
         "localities": ["marunji-gateway", "darumbre-interchange", "wakad-bridge-link", "balewadi-high-street-access", "baner-pashan-link", "punawale-connector", "tathawade-it-belt", "ravet-pradhikaran", "somatane-phata", "kasarsai-dam-belt", "maan-village-corridor", "blueridge-adjacent", "megapolis-circle", "quadron-tech-park", "embassy-zone", "tcs-sahyadri-belt", "cognizant-circle", "barclays-hq", "tech-mahindra-campus", "capgemini-park"]
@@ -146,6 +146,26 @@ CORE_STATIC_PAGES = [
             "loc": f"{BASE_URL}/public/everlyn/hero/hero_main_hq.webp",
             "title": "Krisala Hiranandani Township Hinjewadi Aerial View",
             "caption": "105-Acre Krisala Hiranandani Township in Pune featuring Premium 2, 3, and 4 BHK Apartments and Della Villa Plots"
+        }
+    },
+    {
+        "url": f"{BASE_URL}/pune-real-estate",
+        "changefreq": "daily",
+        "priority": "0.98",
+        "image": {
+            "loc": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+            "title": "Pune Real Estate 2026 Market Intelligence Guide",
+            "caption": "The definitive guide to Pune real estate market trends, price index, micro-market analysis, and integrated townships"
+        }
+    },
+    {
+        "url": f"{BASE_URL}/hinjewadi-real-estate",
+        "changefreq": "daily",
+        "priority": "0.98",
+        "image": {
+            "loc": f"{BASE_URL}/public/township_grand/township_connectivity_location_map_official.webp",
+            "title": "Hinjewadi Real Estate 2026 Property Rates & IT Corridors",
+            "caption": "Comprehensive handbook on Hinjewadi real estate, Rajiv Gandhi Infotech Park Phase 1-4, Metro Line 3, and Krisala Hiranandani Township"
         }
     },
     {

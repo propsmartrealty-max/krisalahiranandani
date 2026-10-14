@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         source: "list",
                         urls: [
                             "/pricing",
+                            "/pune-real-estate",
+                            "/hinjewadi-real-estate",
                             "/colosseum",
                             "/arcadia",
                             "/icon",

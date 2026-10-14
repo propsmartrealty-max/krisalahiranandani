@@ -43,6 +43,8 @@ Allow: /amenities
 Allow: /nri
 Allow: /connectivity
 Allow: /neighborhood
+Allow: /pune-real-estate
+Allow: /hinjewadi-real-estate
 Allow: /compare
 Allow: /knowledge-hub
 Allow: /stories/

@@ -71,4 +71,24 @@
       <geo:format>kml</geo:format>
     </geo:geo>
   </url>
+  <!-- Pune Real Estate Macro Market Geo Anchor -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/pune-real-estate</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
+  <!-- Hinjewadi Real Estate IT Corridor Geo Anchor -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/hinjewadi-real-estate</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <geo:geo>
+      <geo:format>kml</geo:format>
+    </geo:geo>
+  </url>
 </urlset>

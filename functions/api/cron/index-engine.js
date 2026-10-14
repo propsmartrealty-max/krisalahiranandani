@@ -17,6 +17,8 @@ const DEFAULT_CRON_SECRET = 'kxh_cron_2026';
 // Master list of high-priority ecosystem URLs & all 8 Google Web Stories
 const CRITICAL_INDEXING_URLS = [
     `https://${HOST}/`,
+    `https://${HOST}/pune-real-estate`,
+    `https://${HOST}/hinjewadi-real-estate`,
     `https://${HOST}/arcadia`,
     `https://${HOST}/colosseum`,
     `https://${HOST}/icon`,
@@ -33,6 +35,10 @@ const CRITICAL_INDEXING_URLS = [
     `https://${HOST}/knowledge-hub`,
     `https://${HOST}/blog`,
     // Google Articles & Research Hub Standalone Pages
+    `https://${HOST}/blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026`,
+    `https://${HOST}/blog/krisala-hiranandani-township-hinjewadi-flats-price-list-cost-sheet`,
+    `https://${HOST}/blog/krisala-hiranandani-township-hinjewadi-location-connectivity-it-parks`,
+    `https://${HOST}/blog/krisala-hiranandani-township-hinjewadi-sample-flat-floor-plans-carpet-area`,
     `https://${HOST}/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune`,
     `https://${HOST}/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi`,
     `https://${HOST}/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi`,

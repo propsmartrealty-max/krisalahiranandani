@@ -24,6 +24,8 @@ MAX_DAILY_BATCH = 190  # Safe buffer below Google's default 200/day project quot
 # Core Authority Pillars & Strategic Corridors
 PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/",
+    "https://krisalahiranandanitownships.com/pune-real-estate",
+    "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
     "https://krisalahiranandanitownships.com/arcadia",
     "https://krisalahiranandanitownships.com/colosseum",
     "https://krisalahiranandanitownships.com/icon",

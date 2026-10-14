@@ -181,7 +181,11 @@ const ENTITY_DICTIONARY = {
     "mercedes-benz": { landmark: "Mercedes-Benz International School", distance: "4.8 km", time: "8 mins", route: "Via Phase 1 Flyover" },
     "podar": { landmark: "Podar International School Hinjewadi", distance: "3.6 km", time: "6 mins", route: "Via Marunji Arterial" },
     "symbiosis": { landmark: "Symbiosis Institute Hinjewadi", distance: "5.2 km", time: "9 mins", route: "Via Rajiv Gandhi Infotech Corridor" },
-    "phoenix-mall": { landmark: "Phoenix Mall of the Millennium Wakad", distance: "7.8 km", time: "14 mins", route: "Via Bhumkar Chowk" }
+    "phoenix-mall": { landmark: "Phoenix Mall of the Millennium Wakad", distance: "7.8 km", time: "14 mins", route: "Via Bhumkar Chowk" },
+
+    // Primary Authority Entities
+    "pune-real-estate": { landmark: "Pune Real Estate Macro Market & Investment Hub", distance: "0 km", time: "Direct", route: "Official Western Pune Growth Corridor" },
+    "hinjewadi-real-estate": { landmark: "Hinjewadi Real Estate IT Park & Metro 3 Corridor", distance: "0 km", time: "Direct", route: "Rajiv Gandhi Infotech Park & Darumbre Arterial" }
 };
 
 const COMPETITOR_BENCHMARKS = {

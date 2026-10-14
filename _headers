@@ -200,6 +200,14 @@
   Cache-Tag: kxh-township, kxh-html, kxh-neighborhood
   Cache-Control: public, max-age=0, must-revalidate
 
+/pune-real-estate
+  Cache-Tag: kxh-township, kxh-html, kxh-pune-real-estate
+  Cache-Control: public, max-age=0, must-revalidate
+
+/hinjewadi-real-estate
+  Cache-Tag: kxh-township, kxh-html, kxh-hinjewadi-real-estate
+  Cache-Control: public, max-age=0, must-revalidate
+
 /masterplan
   Cache-Tag: kxh-township, kxh-html, kxh-masterplan
   Cache-Control: public, max-age=0, must-revalidate

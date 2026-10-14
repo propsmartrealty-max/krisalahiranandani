@@ -16,6 +16,8 @@ ENDPOINT = "https://api.indexnow.org/indexnow"
 
 URL_LIST = [
     f"https://{HOST}/",
+    f"https://{HOST}/pune-real-estate",
+    f"https://{HOST}/hinjewadi-real-estate",
     f"https://{HOST}/arcadia",
     f"https://{HOST}/colosseum",
     f"https://{HOST}/icon",

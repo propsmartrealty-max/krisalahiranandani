@@ -52,9 +52,15 @@
 /colosseum-dossier    /public/brochure/Krisala-Hiranandani-The-Colosseum-Phase4-Dossier.pdf 302
 /merchant-feed        /google-merchant-feed.xml 301
 /google-shopping      /google-merchant-feed.xml 301
-/catalog              /products.json         301
-
-
+# Real Estate Master Hub Aliases
+/pune                 /pune-real-estate      301
+/pune-property        /pune-real-estate      301
+/pune-realestate      /pune-real-estate      301
+/pune-market          /pune-real-estate      301
+/hinjewadi            /hinjewadi-real-estate 301
+/hinjawadi            /hinjewadi-real-estate 301
+/hinjewadi-property   /hinjewadi-real-estate 301
+/hinjewadi-realestate /hinjewadi-real-estate 301
 
 # Security Directives (RFC 9116)
 /security.txt         /.well-known/security.txt 301
