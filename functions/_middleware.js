@@ -359,6 +359,27 @@ export async function onRequest(context) {
     // 5. Proceed with request through Cloudflare Pages asset pipeline
     const response = await next();
 
+    // 5b. Universal Permutation & Combination Routing for Real Estate & Brand Queries
+    if (response.status === 404 && !path.startsWith('/explore/') && !path.startsWith('/api/') && !path.startsWith('/public/') && !path.includes('.')) {
+        const cleanSlug = path.replace(/^\/+|\/+$/g, '');
+        const realEstateKeywords = [
+            'krisala', 'hiranandani', 'hinjewadi', 'hinjawadi', 'pune', 
+            'township', 'arcadia', 'icon', 'colosseum', 'della', 'everlyn',
+            'bhk', 'flat', 'apartment', 'residence', 'duplex', 'penthouse',
+            'villa', 'plot', 'price', 'floor-plan', 'masterplan', 'racecourse',
+            'infosys', 'wipro', 'tcs', 'metro', 'expressway', 'mahalunge'
+        ];
+        
+        const isTargetQuery = realEstateKeywords.some(kw => cleanSlug.includes(kw));
+        if (isTargetQuery) {
+            const targetSlug = cleanSlug.startsWith('krisala-hiranandani-') 
+                ? cleanSlug 
+                : `krisala-hiranandani-${cleanSlug}`;
+            const targetUrl = new URL(`/explore/${targetSlug}`, request.url);
+            return Response.redirect(targetUrl.toString(), 301);
+        }
+    }
+
     // 6. Clone and inject hardened headers onto the outgoing response
     const newHeaders = new Headers(response.headers);
 

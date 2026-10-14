@@ -57,10 +57,100 @@
 /pune-property        /pune-real-estate      301
 /pune-realestate      /pune-real-estate      301
 /pune-market          /pune-real-estate      301
+/pune-real-estate-market /pune-real-estate   301
+/pune-real-estate-2026   /pune-real-estate   301
+/pune-property-market    /pune-real-estate   301
+/flats-in-pune           /pune-real-estate   301
+/flats-for-sale-in-pune  /pune-real-estate   301
+/luxury-apartments-in-pune /pune-real-estate 301
+/integrated-townships-in-pune /pune-real-estate 301
+/best-residential-projects-in-pune /pune-real-estate 301
+/pune-property-price-trends /pune-real-estate 301
+/west-pune-real-estate   /pune-real-estate   301
+
 /hinjewadi            /hinjewadi-real-estate 301
 /hinjawadi            /hinjewadi-real-estate 301
 /hinjewadi-property   /hinjewadi-real-estate 301
 /hinjewadi-realestate /hinjewadi-real-estate 301
+/hinjewadi-real-estate-market /hinjewadi-real-estate 301
+/hinjewadi-real-estate-2026   /hinjewadi-real-estate 301
+/flats-in-hinjewadi    /hinjewadi-real-estate 301
+/flats-for-sale-in-hinjewadi /hinjewadi-real-estate 301
+/flats-in-hinjawadi    /hinjewadi-real-estate 301
+/flats-for-sale-in-hinjawadi /hinjewadi-real-estate 301
+/apartments-in-hinjewadi /hinjewadi-real-estate 301
+/apartments-in-hinjawadi /hinjewadi-real-estate 301
+/flats-near-hinjewadi-it-park /hinjewadi-real-estate 301
+/flats-near-hinjawadi-it-park /hinjewadi-real-estate 301
+/hinjewadi-phase-1-flats /hinjewadi-real-estate 301
+/hinjewadi-phase-2-flats /hinjewadi-real-estate 301
+/hinjewadi-phase-3-flats /hinjewadi-real-estate 301
+/north-hinjewadi-flats /hinjewadi-real-estate 301
+/north-hinjawadi-flats /hinjewadi-real-estate 301
+
+# Primary Brand & Township Permutations
+/krisala-hiranandani                    / 301
+/krisala-hiranandani-township           / 301
+/krisala-hiranandani-township-pune      / 301
+/krisala-hiranandani-township-hinjewadi / 301
+/krisala-hiranandani-township-hinjawadi / 301
+/krisala-hiranandani-pune               / 301
+/krisala-hiranandani-hinjewadi          / 301
+/krisala-hiranandani-hinjawadi          / 301
+/krisala-hiranandani-darumbre           / 301
+/krisala-hiranandani-marunji            / 301
+/hiranandani-krisala                    / 301
+/hiranandani-krisala-township           / 301
+/hiranandani-krisala-pune               / 301
+/hiranandani-krisala-hinjewadi          / 301
+/hiranandani-hinjewadi                  / 301
+/hiranandani-hinjawadi                  / 301
+/hiranandani-pune                       / 301
+/hiranandani-township                   / 301
+/hiranandani-township-pune              / 301
+/hiranandani-township-hinjewadi         / 301
+/krisala-township                       / 301
+/krisala-township-hinjewadi             / 301
+/krisala-township-pune                  / 301
+/krisala-pune                           / 301
+/krisala-developers                     / 301
+/hiranandani-communities                / 301
+/dr-niranjan-hiranandani-pune           / 301
+
+# Enclave & Sector Permutations
+/krisala-hiranandani-colosseum          /colosseum 301
+/the-colosseum-hinjewadi                /colosseum 301
+/colosseum-phase-4                      /colosseum 301
+/codename-the-colosseum                 /colosseum 301
+/krisala-hiranandani-arcadia            /arcadia 301
+/sector-arcadia-hinjewadi               /arcadia 301
+/arcadia-hinjewadi                      /arcadia 301
+/krisala-hiranandani-icon               /icon 301
+/sector-icon-hinjewadi                  /icon 301
+/icon-hinjewadi                         /icon 301
+/krisala-hiranandani-duplex             /icon 301
+/krisala-hiranandani-della              /della 301
+/della-villa-plots                      /della 301
+/della-collection                       /della 301
+/della-resorts-hinjewadi                /della 301
+/krisala-hiranandani-everlyn            /everlyn 301
+/sector-everlyn-hinjewadi               /everlyn 301
+/everlyn-hinjewadi                      /everlyn 301
+/krisala-hiranandani-everland           /everlyn 301
+
+# Transaction & Buying Intent Permutations
+/krisala-hiranandani-price              /pricing 301
+/krisala-hiranandani-price-list         /pricing 301
+/krisala-hiranandani-cost-sheet         /pricing 301
+/krisala-hiranandani-payment-plan       /pricing 301
+/krisala-hiranandani-floor-plans        /#floorplans 301
+/krisala-hiranandani-sample-flat        /blog/krisala-hiranandani-township-hinjewadi-sample-flat-floor-plans-carpet-area 301
+/krisala-hiranandani-brochure           /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
+/krisala-hiranandani-contact            /#footer 301
+/krisala-hiranandani-phone              /#footer 301
+/krisala-hiranandani-rera               /blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026 301
+/krisala-hiranandani-possession         /blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026 301
+/krisala-hiranandani-reviews            /blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026 301
 
 # Security Directives (RFC 9116)
 /security.txt         /.well-known/security.txt 301
