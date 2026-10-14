@@ -10,3 +10,6 @@ __pycache__/
 *.pyc
 indexing_ledger.json
 scripts/service_accounts/
+*client_secret*.json
+*token*.json
+oauth_credentials.json
