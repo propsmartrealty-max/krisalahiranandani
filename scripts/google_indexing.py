@@ -74,6 +74,10 @@ PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/stories/maharera-legal-sanctions-guide.html",
     "https://krisalahiranandanitownships.com/stories/nri-investment-desk-pune.html",
     # Google Articles & Research Hub Standalone Pages
+    "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026",
+    "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-flats-price-list-cost-sheet",
+    "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-location-connectivity-it-parks",
+    "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-sample-flat-floor-plans-carpet-area",
     "https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune",
     "https://krisalahiranandanitownships.com/blog/pune-flat-price-trends-2-3-4-bhk-hinjewadi",
     "https://krisalahiranandanitownships.com/blog/neoclassical-architecture-hiranandani-powai-thane-pune-roi",
@@ -82,8 +86,13 @@ PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide",
     "https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide",
     "https://krisalahiranandanitownships.com/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle",
-    # Geospatial KML & Geo Sitemap
+    # Geospatial KML, News, Blog & Master Sitemaps
+    "https://krisalahiranandanitownships.com/sitemap.xml",
+    "https://krisalahiranandanitownships.com/sitemap-news.xml",
+    "https://krisalahiranandanitownships.com/sitemap-blog.xml",
     "https://krisalahiranandanitownships.com/sitemap-geo.xml",
+    "https://krisalahiranandanitownships.com/rss.xml",
+    "https://krisalahiranandanitownships.com/atom.xml",
     "https://krisalahiranandanitownships.com/locations.kml"
 ]
 
