@@ -10,8 +10,8 @@
     --gold-gradient: linear-gradient(135deg, #dfc07b 0%, #c5a059 50%, #9e7d3b 100%);
     --champagne-tint: #fcfbf7;
     --text-main: #fcfbf7;
-    --text-muted: #9e9ea8;
-    --text-subtle: #737382;
+    --text-muted: #a6a6b2;
+    --text-subtle: #9494a4;
 
     /* Typography - Neoclassical Editorial & Optical Geometric Sans */
     --font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
@@ -48,6 +48,22 @@ a:focus-visible,
 [tabindex="0"]:focus-visible {
     outline: 2px solid var(--gold-primary);
     outline-offset: 4px;
+}
+
+/* Accessibility: WCAG 2.1 Link Distinguishability for Colorblind Users */
+p a:not(.btn-primary):not(.btn-secondary):not(.btn-outline),
+.section-desc a,
+.rera-footer-content a,
+.disclaimer a {
+    text-decoration: underline;
+    text-decoration-color: rgba(197, 160, 89, 0.6);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+}
+p a:hover,
+.section-desc a:hover,
+.disclaimer a:hover {
+    text-decoration-color: var(--gold-bright);
 }
 
 * {
@@ -562,7 +578,8 @@ ul {
     margin-bottom: 64px;
 }
 
-.stat-item h3 {
+.stat-item h3,
+.stat-item .stat-number {
     font-size: 3.5rem;
     color: var(--gold-primary);
     margin-bottom: 4px;
@@ -3038,14 +3055,23 @@ ul {
 
 .preloader-fill {
     height: 100%;
-    width: 0%;
+    width: 100%;
     background: var(--gold-primary);
-    animation: preloaderFill 2s ease-out forwards;
+    transform-origin: left;
+    transform: scaleX(0);
+    animation: preloaderFill 0.4s ease-out forwards;
+    will-change: transform;
 }
 
 @keyframes preloaderFill {
     to {
-        width: 100%;
+        transform: scaleX(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .preloader {
+        display: none !important;
     }
 }
 
@@ -3589,7 +3615,8 @@ img.loaded {
         z-index: 998 !important;
     }
 
-    .stat-item h3 {
+    .stat-item h3,
+    .stat-item .stat-number {
         font-size: 2rem;
     }
 
@@ -3655,7 +3682,8 @@ img.loaded {
         font-size: 1.8rem;
     }
 
-    .stat-item h3 {
+    .stat-item h3,
+    .stat-item .stat-number {
         font-size: 1.6rem;
     }
 
@@ -4820,7 +4848,8 @@ body.menu-open {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
     }
-    .hero-stats .stat-item h3 {
+    .hero-stats .stat-item h3,
+    .hero-stats .stat-item .stat-number {
         font-size: 1.8rem !important;
     }
     .hero-stats .stat-item p {

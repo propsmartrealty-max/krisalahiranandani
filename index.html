@@ -35,15 +35,24 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://unpkg.com">
-    <link rel="preload" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="preload" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero_mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" as="image" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
 
-    <!-- Fonts -->
+    <!-- Fonts (Non-Blocking High Performance) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@400;500;600&display=swap">
+    </noscript>
 
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <link rel="stylesheet" href="/style.css?v=20261009_v5">
+    <!-- Icons & Stylesheets (Non-blocking) -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    </noscript>
+    <link rel="stylesheet" href="/style.min.css?v=20261014_v1">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#08080a">
 
@@ -963,12 +972,12 @@
 
             <div class="hero-stats reveal delay-3">
                 <div class="stat-item">
-                    <h3>105+</h3>
+                    <div class="stat-number">105+</div>
                     <p>Acres of Grandeur</p>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <h3>70%</h3>
+                    <div class="stat-number">70%</div>
                     <p>Open Green Spaces</p>
                 </div>
                 <div class="stat-divider"></div>
@@ -979,11 +988,11 @@
                     </div>
                     <div class="ticker-content" id="appTicker">
                         <div class="ticker-slide active">
-                            <h3>55x</h3>
+                            <div class="stat-number">55x</div>
                             <p>Appreciation Legacy</p>
                         </div>
                         <div class="ticker-slide">
-                            <h3>100%</h3>
+                            <div class="stat-number">100%</div>
                             <p>Sustainable Design</p>
                         </div>
                     </div>
@@ -1089,7 +1098,7 @@
                         "Pune has always been a city of immense potential, and this marks my first township here — an ecosystem envisioned with the same conviction that shaped Powai decades ago. What gives me complete confidence is the leadership at Krisala; together, we are crafting a master-planned sanctuary where architecture, nature, and equine elegance coexist in perpetual harmony."
                     </blockquote>
                     <div class="founder-quote-author">
-                        <h4>Dr. Niranjan Hiranandani</h4>
+                        <h3>Dr. Niranjan Hiranandani</h3>
                         <span>CMD – Hiranandani Communities | Chairman – NAREDCO</span>
                     </div>
                 </div>
@@ -1102,7 +1111,7 @@
                         <img src="/public/imported/mr-Sagar-Agrawal.webp" alt="Mr. Sagar Agarwal Managing Director Krisala Developers" loading="lazy" width="699" height="450">
                     </div>
                     <div class="leader-info">
-                        <h4>Mr. Sagar Agarwal</h4>
+                        <h3>Mr. Sagar Agarwal</h3>
                         <p>Managing Director • Krisala Developers</p>
                     </div>
                 </div>
@@ -1111,7 +1120,7 @@
                         <img src="/public/imported/mr-Akash-agarwa.webp" alt="Mr. Aakash Agarwal Director Krisala Developers" loading="lazy" width="699" height="450">
                     </div>
                     <div class="leader-info">
-                        <h4>Mr. Aakash Agarwal</h4>
+                        <h3>Mr. Aakash Agarwal</h3>
                         <p>Director • Krisala Developers</p>
                     </div>
                 </div>
@@ -1120,7 +1129,7 @@
                         <img src="/public/imported/mr-Vishal-Agrawal.webp" alt="Mr. Vishal Agarwal Director Krisala Developers" loading="lazy" width="699" height="450">
                     </div>
                     <div class="leader-info">
-                        <h4>Mr. Vishal Agarwal</h4>
+                        <h3>Mr. Vishal Agarwal</h3>
                         <p>Director • Krisala Developers</p>
                     </div>
                 </div>
@@ -1220,32 +1229,32 @@
                 <!-- 6 Comprehensive Sector Enclaves -->
                 <div class="master-layout-legend-grid">
                     <div class="layout-sector-item">
-                        <h4><i class="ph ph-crown" style="color: var(--gold-primary);"></i> Sector Icon (Flagship)</h4>
+                        <h3><i class="ph ph-crown" style="color: var(--gold-primary);"></i> Sector Icon (Flagship)</h3>
                         <p>Ultra-luxury 3 &amp; 4 BHK residences &amp; Presidential Duplexes across Towers A, B &amp; C. 18-ft ceilings, Italian marble, 52 lifestyle amenities. MahaRERA: PR1260002600818.</p>
                         <a href="/icon" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore Sector Icon &rarr;</a>
                     </div>
                     <div class="layout-sector-item">
-                        <h4><i class="ph ph-buildings" style="color: var(--gold-primary);"></i> Sector Arcadia (Neoclassical)</h4>
+                        <h3><i class="ph ph-buildings" style="color: var(--gold-primary);"></i> Sector Arcadia (Neoclassical)</h3>
                         <p>Phase 1 residential towers with classical Greco-Roman architecture, 2 &amp; 3 BHK layouts with private sundecks and wellness clubhouses. MahaRERA: PR1260002502438.</p>
                         <a href="/arcadia" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore Sector Arcadia &rarr;</a>
                     </div>
                     <div class="layout-sector-item">
-                        <h4><i class="ph ph-shield-star" style="color: var(--gold-primary);"></i> The Colosseum (Phase 4 Pre-Launch)</h4>
+                        <h3><i class="ph ph-shield-star" style="color: var(--gold-primary);"></i> The Colosseum (Phase 4 Pre-Launch)</h3>
                         <p>Monumental B+G+27 Roman-themed towers (765–1,600 sq.ft) with exclusive Diwali pre-launch window, ₹5L–₹9L benefits, and token early-access from ₹82.99L*.</p>
                         <a href="/colosseum" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore The Colosseum &rarr;</a>
                     </div>
                     <div class="layout-sector-item">
-                        <h4><i class="ph ph-horse" style="color: var(--gold-primary);"></i> Della 40-Acre Resort &amp; Racecourse</h4>
+                        <h3><i class="ph ph-horse" style="color: var(--gold-primary);"></i> Della 40-Acre Resort &amp; Racecourse</h3>
                         <p>India's first 8-acre private equestrian racecourse &amp; polo arena inside a township, paired with Della 5-star glamping resort and 100 private villa plots.</p>
                         <a href="/della" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore Della Plots &rarr;</a>
                     </div>
                     <div class="layout-sector-item">
-                        <h4><i class="ph ph-butterfly" style="color: var(--gold-primary);"></i> Sector Everlyn (Family Enclave)</h4>
+                        <h3><i class="ph ph-butterfly" style="color: var(--gold-primary);"></i> Sector Everlyn (Family Enclave)</h3>
                         <p>Integrated community living featuring the signature Butterfly Park, multipurpose clubhouse, infinity pools, and expansive family floorplans.</p>
                         <a href="/everlyn" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">Explore Everlyn &rarr;</a>
                     </div>
                     <div class="layout-sector-item">
-                        <h4><i class="ph ph-certificate" style="color: var(--gold-primary);"></i> Hiranandani Everland (Darumbre)</h4>
+                        <h3><i class="ph ph-certificate" style="color: var(--gold-primary);"></i> Hiranandani Everland (Darumbre)</h3>
                         <p>Sanctioned integrated master enclave registered under MahaRERA PR1260002500600, engineered with Mivan RCC precision through Dec 2030 possession.</p>
                         <a href="/masterplan" style="color: var(--gold-light); font-size: 0.82rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;">View Master Enclave &rarr;</a>
                     </div>
@@ -1613,12 +1622,12 @@
                     data-mr="डेला <span>कलेक्शन</span>">The Della <span>Collection</span></h2>
                 <div style="width: 50px; height: 3px; background: var(--gold-primary); margin: 14px 0 18px;"></div>
                 
-                <h4 style="color: var(--gold-light); font-size: 1.15rem; margin: 0 0 8px; font-weight: 600;">The Resort Narrative</h4>
+                <h3 style="color: var(--gold-light); font-size: 1.15rem; margin: 0 0 8px; font-weight: 600;">The Resort Narrative</h3>
                 <p class="section-desc" style="margin-bottom: 18px; line-height: 1.8;">
                     Everyday living, engineered to feel like an escape. Bordered by coveted Della Villas exists within a refined hospitality and leisure ecosystem. The energy of a premier resort, anchored by the stillness of private residences.
                 </p>
 
-                <h4 style="color: var(--gold-light); font-size: 1.15rem; margin: 0 0 8px; font-weight: 600;">Pursuits of the Privileged</h4>
+                <h3 style="color: var(--gold-light); font-size: 1.15rem; margin: 0 0 8px; font-weight: 600;">Pursuits of the Privileged</h3>
                 <p class="section-desc" style="margin-bottom: 24px; line-height: 1.8;">
                     A commanding lifestyle requires an extraordinary arena. The integrated racecourse for Polo &amp; Equestrian brings a world-class sporting culture directly into the township ecosystem. It is not merely an amenity; it is a statement of stature.
                 </p>
@@ -1804,17 +1813,17 @@
                     <h3><i class="ph ph-chart-line-up gold-icon"></i> Appreciation Calculator</h3>
                     <div class="calc-body">
                         <div class="input-group">
-                            <label>Investment Amount (Cr)</label>
-                            <input type="number" id="roi-amount" value="1.5" step="0.1">
+                            <label for="roi-amount">Investment Amount (Cr)</label>
+                            <input type="number" id="roi-amount" value="1.5" step="0.1" aria-label="Investment Amount in Crores">
                         </div>
                         <div class="input-group">
-                            <label>Expected Growth (Annual %)</label>
-                            <input type="range" id="roi-growth" min="5" max="25" value="15">
+                            <label for="roi-growth">Expected Growth (Annual %)</label>
+                            <input type="range" id="roi-growth" min="5" max="25" value="15" aria-label="Expected Growth Annual Percentage">
                             <span class="range-val">15%</span>
                         </div>
                         <div class="input-group">
-                            <label>Tenure (Years)</label>
-                            <input type="range" id="roi-years" min="1" max="10" value="5">
+                            <label for="roi-years">Tenure (Years)</label>
+                            <input type="range" id="roi-years" min="1" max="10" value="5" aria-label="Investment Tenure in Years">
                             <span class="range-val">5 Years</span>
                         </div>
                         <div class="calc-result">
@@ -1829,16 +1838,16 @@
                     <h3><i class="ph ph-calculator gold-icon"></i> EMI Estimator</h3>
                     <div class="calc-body">
                         <div class="input-group">
-                            <label>Loan Amount (Lakhs)</label>
-                            <input type="number" id="emi-amount" value="80">
+                            <label for="emi-amount">Loan Amount (Lakhs)</label>
+                            <input type="number" id="emi-amount" value="80" aria-label="Loan Amount in Lakhs">
                         </div>
                         <div class="input-group">
-                            <label>Interest Rate (%)</label>
-                            <input type="number" id="emi-rate" value="8.5" step="0.1">
+                            <label for="emi-rate">Interest Rate (%)</label>
+                            <input type="number" id="emi-rate" value="8.5" step="0.1" aria-label="Interest Rate Percentage">
                         </div>
                         <div class="input-group">
-                            <label>Tenure (Years)</label>
-                            <input type="number" id="emi-tenure" value="20">
+                            <label for="emi-tenure">Tenure (Years)</label>
+                            <input type="number" id="emi-tenure" value="20" aria-label="Loan Tenure in Years">
                         </div>
                         <div class="calc-result">
                             <span>Monthly EMI</span>
@@ -1896,22 +1905,22 @@
                 <div class="loc-stats-grid">
                     <div class="loc-stat-box" tabindex="0">
                         <i class="ph ph-briefcase" aria-hidden="true"></i>
-                        <h4>5-11 Km</h4>
+                        <h3>5-11 Km</h3>
                         <p>Hinjawadi Phase 1 & Wakad</p>
                     </div>
                     <div class="loc-stat-box" tabindex="0">
                         <i class="ph ph-buildings" aria-hidden="true"></i>
-                        <h4>11-15 Km</h4>
+                        <h3>11-15 Km</h3>
                         <p>Balewadi High Street & Baner</p>
                     </div>
                     <div class="loc-stat-box" tabindex="0">
                         <i class="ph ph-train" aria-hidden="true"></i>
-                        <h4>16-19 Km</h4>
+                        <h3>16-19 Km</h3>
                         <p>PCMC & Shivaji Nagar</p>
                     </div>
                     <div class="loc-stat-box" tabindex="0">
                         <i class="ph ph-airplane" aria-hidden="true"></i>
-                        <h4>Direct Access</h4>
+                        <h3>Direct Access</h3>
                         <p>To Mumbai-Pune Expressway</p>
                     </div>
                 </div>
@@ -2598,7 +2607,7 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h4>The Township</h4>
+                    <h3>The Township</h3>
                     <a href="/">Township Overview</a>
                     <a href="/pune-real-estate" style="color: var(--gold-light); font-weight: 600;">Pune Real Estate 2026 Guide</a>
                     <a href="/hinjewadi-real-estate" style="color: var(--gold-light); font-weight: 600;">Hinjewadi Real Estate Hub</a>
@@ -2616,7 +2625,7 @@
                     <a href="/blog">Research Blog</a>
                 </div>
                 <div class="footer-links">
-                    <h4>Corridors &amp; Typologies</h4>
+                    <h3>Corridors &amp; Typologies</h3>
                     <a href="/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1">2 BHK Residences</a>
                     <a href="/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1">3 BHK Grande</a>
                     <a href="/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi">4 BHK Palatial</a>
@@ -2626,7 +2635,7 @@
                     <a href="/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway">Expressway Corridor</a>
                 </div>
                 <div class="footer-contact">
-                    <h4>Sales Concierge</h4>
+                    <h3>Sales Concierge</h3>
                     <p><a href="tel:+917744009295" style="color: var(--gold-primary); text-decoration: none;"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"/></svg> +91 7744009295</a></p>
                     <p><a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani" target="_blank" style="color: #25D366; text-decoration: none;"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"/></svg> WhatsApp Concierge</a></p>
                     <button class="btn-outline open-modal" aria-haspopup="dialog" style="margin-top: 10px;">Open Enquiry Form</button>
@@ -2766,16 +2775,16 @@
                 <input type="hidden" name="_honey" style="display:none">
                 <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name *" required>
+                    <input type="text" name="name" id="enquiry-name" placeholder="Full Name *" aria-label="Full Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Phone Number *" required>
+                    <input type="tel" name="phone" id="enquiry-phone" placeholder="Phone Number *" aria-label="Phone Number" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address">
+                    <input type="email" name="email" id="enquiry-email" placeholder="Email Address" aria-label="Email Address">
                 </div>
                 <div class="form-group">
-                    <select name="interest" required>
+                    <select name="interest" id="enquiry-interest" aria-label="Interested Sector or Typology" required>
                         <option value="" disabled selected>Interested Sector/Typology *</option>
                         <option value="colosseum-phase4">The Colosseum - Phase 4 (2, 3, 4 BHK &amp; Duplex)</option>
                         <option value="everlyn-tower">Everlyn - Tower A-E (New Launch)</option>
@@ -2960,8 +2969,7 @@
         <div class="modal-container glass-panel" style="max-width: 920px; padding: 25px;">
             <button class="close-modal close-video-modal" aria-label="Close Video"><i class="ph ph-x"></i></button>
             <div style="aspect-ratio: 16/9; width: 100%; border-radius: 8px; overflow: hidden; background: #000; box-shadow: 0 15px 40px rgba(0,0,0,0.8);">
-                <video id="townshipFilmPlayer" controls playsinline preload="metadata" poster="/public/imported/video-thumbnail.webp" style="width: 100%; height: 100%; object-fit: contain;">
-                    <source src="/public/imported/u8323264961_httpss.mj_.rundqik694D-FI_aerial_view_of_dense_gre_cdda2115-7b10-495a-84ac-39089bcdc5a2_2.mp4" type="video/mp4">
+                <video id="townshipFilmPlayer" controls playsinline preload="none" poster="/public/imported/video-thumbnail.webp" style="width: 100%; height: 100%; object-fit: contain;">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -2996,7 +3004,7 @@
                     <input type="hidden" name="_honey" style="display:none">
                     <input type="hidden" name="_next" value="https://krisalahiranandanitownships.com/thank-you">
                     <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Mobile Number for Report Link *" required>
+                        <input type="tel" name="phone" id="exit-phone" placeholder="Mobile Number for Report Link *" aria-label="Mobile Number for Report Link" required>
                     </div>
                     <button type="submit" class="btn-primary w-100">Send Report via WhatsApp</button>
                 </form>
@@ -3073,7 +3081,7 @@
       ]
     }
     </script>
-    <script defer src="/app.js"></script>
+    <script defer src="/app.min.js?v=20261014_v1"></script>
 </body>
 
 </html>
