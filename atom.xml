@@ -5,7 +5,7 @@
   <link href="https://krisalahiranandanitownships.com/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://krisalahiranandanitownships.com/" rel="alternate" type="text/html"/>
   <id>https://krisalahiranandanitownships.com/</id>
-  <updated>2026-10-10T13:48:00+05:30</updated>
+  <updated>2026-10-14T11:00:00+05:30</updated>
   <author>
     <name>Dr. Vikas Yewle</name>
     <email>propsmartrealty@gmail.com</email>
@@ -14,6 +14,30 @@
   <icon>https://krisalahiranandanitownships.com/favicon-192.png</icon>
   <logo>https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp</logo>
   <rights>© 2026 Krisala Developers &amp; Hiranandani Communities. All Rights Reserved.</rights>
+
+  <!-- Master Authority Entry 1: Pune Real Estate -->
+  <entry>
+    <title>Pune Real Estate 2026: Property Market Trends, Price Index &amp; Integrated Townships</title>
+    <link href="https://krisalahiranandanitownships.com/pune-real-estate" rel="alternate" type="text/html"/>
+    <id>https://krisalahiranandanitownships.com/pune-real-estate</id>
+    <published>2026-10-14T09:00:00+05:30</published>
+    <updated>2026-10-14T11:00:00+05:30</updated>
+    <summary>The definitive 2026 Pune Real Estate Market Authority Guide: West vs East Pune ROI, Ready Reckoner rates, Metro Line 3, and integrated townships.</summary>
+    <content type="html"><![CDATA[<p>Exhaustive macroeconomic evaluation of Pune residential property: micro-market appreciation trends, Ready Reckoner rate revisions, and why 100+ acre integrated townships outperform standalone developments.</p>]]></content>
+    <category term="Pune Real Estate"/>
+  </entry>
+
+  <!-- Master Authority Entry 2: Hinjewadi Real Estate -->
+  <entry>
+    <title>Hinjewadi Real Estate 2026: Property Rates, IT Park Corridors, Metro Line 3 &amp; Top Projects</title>
+    <link href="https://krisalahiranandanitownships.com/hinjewadi-real-estate" rel="alternate" type="text/html"/>
+    <id>https://krisalahiranandanitownships.com/hinjewadi-real-estate</id>
+    <published>2026-10-14T09:15:00+05:30</published>
+    <updated>2026-10-14T11:00:00+05:30</updated>
+    <summary>Comprehensive authority guide on Hinjewadi real estate covering Phase 1-4 zoning, commute times to Infosys/Wipro/TCS, Metro Line 3 Megapolis terminal, and the Krisala Hiranandani Township.</summary>
+    <content type="html"><![CDATA[<p>Complete handbook to Hinjewadi property investment: rental yields of 4.8%-5.4%, infrastructure timelines for PMRDA Ring Road, and master township residential inventory.</p>]]></content>
+    <category term="Hinjewadi Real Estate"/>
+  </entry>
 
   <!-- Cornerstone Entry A: Master Plan -->
   <entry>

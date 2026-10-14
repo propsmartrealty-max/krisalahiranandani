@@ -4,6 +4,108 @@
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
+  <!-- Authority Hub 1: Pune Real Estate -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/pune-real-estate</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T09:00:00+05:30</news:publication_date>
+      <news:title>Pune Real Estate 2026: Property Market Trends, Price Index &amp; Integrated Townships</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp</image:loc>
+      <image:title>Pune Real Estate 2026 Market Intelligence Guide</image:title>
+    </image:image>
+  </url>
+
+  <!-- Authority Hub 2: Hinjewadi Real Estate -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/hinjewadi-real-estate</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-14T09:15:00+05:30</news:publication_date>
+      <news:title>Hinjewadi Real Estate 2026: Property Rates, IT Park Corridors, Metro Line 3 &amp; Top Projects</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>Hinjewadi Real Estate 2026 Property Rates &amp; IT Corridors</image:title>
+    </image:image>
+  </url>
+
+  <!-- Cornerstone Article 1: Master Plan -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-13T10:00:00+05:30</news:publication_date>
+      <news:title>Krisala Hiranandani Township Hinjewadi Master Plan 2026: 105-Acre Zoning, MahaRERA Sanctions &amp; Phase Delivery</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_master_plan_aerial_view.webp</image:loc>
+      <image:title>Krisala Hiranandani Township Hinjewadi Master Plan Review</image:title>
+    </image:image>
+  </url>
+
+  <!-- Cornerstone Article 2: Price List -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-flats-price-list-cost-sheet</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-13T10:30:00+05:30</news:publication_date>
+      <news:title>Krisala Hiranandani Township Hinjewadi Flat Prices 2026: 2, 3, 4 BHK All-Inclusive Cost Sheet</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp</image:loc>
+      <image:title>Krisala Hiranandani Township Hinjewadi Flat Prices 2026 Cost Sheet</image:title>
+    </image:image>
+  </url>
+
+  <!-- Cornerstone Article 3: Location & Connectivity -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-location-connectivity-it-parks</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-13T11:00:00+05:30</news:publication_date>
+      <news:title>Krisala Hiranandani Township Hinjewadi Location Guide: Phase 4 Connectivity, Metro Line 3 &amp; PMRDA Ring Road</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp</image:loc>
+      <image:title>Krisala Hiranandani Township Hinjewadi Location Guide</image:title>
+    </image:image>
+  </url>
+
+  <!-- Cornerstone Article 4: Sample Flat Floor Plans -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-sample-flat-floor-plans-carpet-area</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Krisala Hiranandani Real Estate Dispatches</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-13T11:30:00+05:30</news:publication_date>
+      <news:title>Krisala Hiranandani Township Hinjewadi Sample Flat Tour &amp; Floor Plans: Carpet Area, Layouts &amp; Mivan Construction</news:title>
+    </news:news>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp</image:loc>
+      <image:title>Krisala Hiranandani Township Hinjewadi Floor Plans Carpet Area</image:title>
+    </image:image>
+  </url>
+
   <!-- News Article 1 -->
   <url>
     <loc>https://krisalahiranandanitownships.com/blog/hinjewadi-mahalunge-mega-corridor-vs-east-pune</loc>
