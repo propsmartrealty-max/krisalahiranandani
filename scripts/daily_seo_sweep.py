@@ -48,8 +48,8 @@ def main():
     # 1. Regenerate 15,000+ Programmatic Sitemaps & Master Index
     run_step("1. Regenerate 15k Sharded Sitemaps", "python3 scripts/generate_programmatic_sitemaps.py")
 
-    # 2. Quota-Aware Google Indexing API Publishing
-    run_step("2. Google Indexing API Batch Publication", "python3 scripts/google_indexing.py")
+    # 2. Autonomous Multi-Tier Google Indexing & Discovery Suite
+    run_step("2. Autonomous Google Indexing & GSC Sitemaps Sync", "python3 scripts/autonomous_indexing_daemon.py")
 
     # 3. IndexNow Real-Time Broadcast (Bing, Yandex, Seznam, Naver)
     run_step("3. IndexNow Multi-Engine Broadcast", "python3 scripts/indexnow_notify.py")
