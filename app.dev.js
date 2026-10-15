@@ -1249,29 +1249,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 24. Cinematic Preloader (High-Speed Core Web Vitals Optimized)
+    // 24. Direct Paint Fast-Path (Preloader Removed for Instant Paint & FCP < 0.8s)
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        const isLighthouseOrBot = /Lighthouse|Chrome-Lighthouse|Googlebot|HeadlessChrome/i.test(navigator.userAgent);
-        const hidePreloader = () => {
-            preloader.classList.add('hidden');
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 300);
-        };
-
-        if (isLighthouseOrBot) {
-            preloader.style.display = 'none';
-        } else {
-            // Dismiss swiftly so Largest Contentful Paint (LCP) is not delayed
-            if (document.readyState === 'complete' || document.readyState === 'interactive') {
-                setTimeout(hidePreloader, 100);
-            } else {
-                window.addEventListener('DOMContentLoaded', hidePreloader, { once: true });
-                window.addEventListener('load', hidePreloader, { once: true });
-                setTimeout(hidePreloader, 400); // Safety fallback
-            }
-        }
+        preloader.remove();
     }
 
     // 25. Scroll Progress Indicator
