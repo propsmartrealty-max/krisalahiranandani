@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Phosphor";
+    font-display: swap;
+}
+
 :root {
     /* Colors - Hiranandani Imperial Obsidian & Antique Gold Palette */
     --bg-dark: #090a0f;
@@ -1375,7 +1380,8 @@ ul {
 .disclaimer {
     font-size: 0.8rem;
     margin-bottom: 24px;
-    opacity: 0.6;
+    opacity: 1;
+    color: #c5c5d8;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -1505,6 +1511,12 @@ ul {
     opacity: 0;
     transform: translateY(50px);
     transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
 }
 
 .scroll-reveal.right {
@@ -1978,7 +1990,7 @@ ul {
     justify-content: center;
     gap: 40px;
     margin: 40px 0;
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .trust-item {
@@ -1988,6 +2000,10 @@ ul {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.trust-item span {
+    color: #dfc07b !important;
 }
 
 .trust-item img {
@@ -3300,8 +3316,7 @@ img.loaded {
     }
 
     .floating-share {
-        bottom: 80px;
-        right: 15px;
+        display: none !important;
     }
 }
 

@@ -52,12 +52,46 @@
     <noscript>
         <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
     </noscript>
-    <link rel="stylesheet" href="/style.min.css?v=20261014_v1">
+    <link rel="stylesheet" href="/style.min.css?v=20261015_v2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#08080a">
 
-    <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
+    <!-- Critical Above-The-Fold Zero-Latency CSS -->
     <style>
+        :root {
+            --bg-dark: #090a0f;
+            --bg-dark-deep: #050608;
+            --bg-surface: rgba(16, 18, 26, 0.75);
+            --gold-primary: #c5a059;
+            --gold-light: #e6d5b8;
+            --gold-bright: #dfc07b;
+            --gold-deep: #9e7d3b;
+            --text-main: #fcfbf7;
+            --text-muted: #b8b8cc;
+            --text-subtle: #a8a8ba;
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Montserrat', -apple-system, sans-serif;
+            --font-accent: 'Cinzel', serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .container { padding: 0 20px; } }
+        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 18px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        .header-logo { height: 42px !important; max-width: 310px !important; width: auto !important; object-fit: contain !important; display: block !important; }
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; }
+        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .hero .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
         .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
         .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
         .nav-dropdown:hover > .nav-dropdown-menu,
@@ -821,7 +855,6 @@
 
 <body>
     <!-- Cinematic Preloader Bypassed for Instant Paint -->
-    </div>
 
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" id="scrollProgress"></div>
@@ -997,13 +1030,13 @@
             <div class="hero-cta reveal delay-4">
                 <div class="hero-actions">
                     <button class="btn-primary open-modal" data-en="Unveil the Vision" data-mr="दृष्टी उलगडा"
-                        aria-label="Register for 2.5 BHK and 3 BHK Premium Flats in Hinjewadi">Unveil the
+                        aria-label="Unveil the Vision - Register for 2.5 BHK and 3 BHK Premium Flats in Hinjewadi">Unveil the
                         Vision</button>
                     <button class="btn-secondary open-modal" data-magnet="brochure" data-en="Download Brochure"
-                        data-mr="माहिती पुस्तिका" aria-label="Download Krisala Hiranandani Township Pune Brochure">
+                        data-mr="माहिती पुस्तिका" aria-label="Download Brochure - Krisala Hiranandani Township Pune Floor Plans">
                         <i class="ph ph-download-simple"></i> Download Brochure
                     </button>
-                    <button class="btn-secondary open-video-modal" aria-label="Watch 4K Cinematic Township Film" style="background: rgba(197, 160, 89, 0.15); border-color: var(--gold-primary);">
+                    <button class="btn-secondary open-video-modal" aria-label="Watch 4K Film - Cinematic Krisala Hiranandani Township Tour" style="background: rgba(197, 160, 89, 0.15); border-color: var(--gold-primary);">
                         <i class="ph ph-play-circle" style="color: var(--gold-primary);"></i> Watch 4K Film
                     </button>
                 </div>
@@ -2069,15 +2102,15 @@
         </div>
 
         <div class="masonry-grid">
-            <div class="masonry-item item-short glass-panel scroll-reveal"><img
+            <div class="masonry-item item-short glass-panel scroll-reveal"><img loading="lazy" decodings="async"
                     src="/public/everlyn/gallery/clubhouse_exterior.webp" alt="Krisala Hiranandani 50,000 Sq.Ft. Neoclassical Clubhouse Exterior View" width="480" height="384"></div>
-            <div class="masonry-item item-tall glass-panel scroll-reveal delay-1"><img
+            <div class="masonry-item item-tall glass-panel scroll-reveal delay-1"><img loading="lazy" decodings="async"
                     src="/public/everlyn/gallery/elevation_2.webp" alt="Krisala Hiranandani Sector Arcadia Neoclassical Tower Elevation" width="1600" height="201"></div>
-            <div class="masonry-item item-short glass-panel scroll-reveal delay-2"><img
+            <div class="masonry-item item-short glass-panel scroll-reveal delay-2"><img loading="lazy" decodings="async"
                     src="/public/everlyn/gallery/elevation_3.webp" alt="Krisala Hiranandani Sector Icon Sunset Elevation Hinjewadi Pune" width="942" height="824"></div>
-            <div class="masonry-item item-tall glass-panel scroll-reveal"><img
+            <div class="masonry-item item-tall glass-panel scroll-reveal"><img loading="lazy" decodings="async"
                     src="/public/everlyn/gallery/elevation_4.webp" alt="The Colosseum Phase 4 Roman Architectural Elevation Krisala Hiranandani" width="942" height="825"></div>
-            <div class="masonry-item item-short glass-panel scroll-reveal delay-1"><img
+            <div class="masonry-item item-short glass-panel scroll-reveal delay-1"><img loading="lazy" decodings="async"
                     src="/public/everlyn/gallery/lounge_interior.webp" alt="Luxury Double-Height Living Lounge Interior Krisala Hiranandani Sector Icon" width="480" height="384"></div>
         </div>
     </div>
@@ -2806,15 +2839,15 @@
 
     <!-- Mobile Sticky Conversion Bar -->
     <div class="mobile-sticky-bar" id="mobileStickyBar" role="navigation" aria-label="Quick Mobile Actions">
-        <a href="tel:+917744009295" class="sticky-bar-btn sticky-call" aria-label="Direct Phone Call">
+        <a href="tel:+917744009295" class="sticky-bar-btn sticky-call" aria-label="Call - Direct Phone Assistance">
             <i class="ph ph-phone-call"></i>
             <span>Call</span>
         </a>
-        <a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township.%20Please%20share%20verified%20floor%20plans%20and%20pricing." target="_blank" class="sticky-bar-btn sticky-whatsapp" aria-label="Chat on WhatsApp">
+        <a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township.%20Please%20share%20verified%20floor%20plans%20and%20pricing." target="_blank" class="sticky-bar-btn sticky-whatsapp" aria-label="WhatsApp - Instant Chat with Sales Concierge">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"/></svg>
             <span>WhatsApp</span>
         </a>
-        <button class="sticky-bar-btn sticky-enquire open-modal" data-magnet="brochure" aria-label="Request Brochure &amp; Price List">
+        <button class="sticky-bar-btn sticky-enquire open-modal" data-magnet="brochure" aria-label="Enquire - Request Brochure &amp; Price List">
             <i class="ph ph-download-simple"></i>
             <span>Enquire</span>
         </button>
@@ -3059,7 +3092,7 @@
             "/arcadia",
             "/icon"
           ],
-          "eagerness": "moderate"
+          "eagerness": "conservative"
         }
       ],
       "prefetch": [
@@ -3075,12 +3108,12 @@
             "/compare",
             "/blog"
           ],
-          "eagerness": "moderate"
+          "eagerness": "conservative"
         }
       ]
     }
     </script>
-    <script defer src="/app.min.js?v=20261014_v1"></script>
+    <script defer src="/app.min.js?v=20261015_v2"></script>
 </body>
 
 </html>

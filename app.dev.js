@@ -10,48 +10,42 @@ if (window.top !== window.self) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 0a. W3C Speculation Rules API: Instantaneous 0ms Page Prerendering (Chrome & Android)
-    try {
-        if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
-            const specScript = document.createElement('script');
-            specScript.type = 'speculationrules';
-            specScript.textContent = JSON.stringify({
-                prerender: [
-                    {
-                        source: "list",
-                        urls: [
-                            "/pricing",
-                            "/pune-real-estate",
-                            "/hinjewadi-real-estate",
-                            "/colosseum",
-                            "/arcadia",
-                            "/icon",
-                            "/della",
-                            "/gallery",
-                            "/neighborhood",
-                            "/connectivity"
-                        ],
-                        eagerness: "moderate"
-                    }
-                ],
-                prefetch: [
-                    {
-                        source: "document",
-                        where: {
-                            and: [
-                                { href_matches: "/*" },
-                                { not: { href_matches: "/api/*" } },
-                                { not: { href_matches: "/thank-you*" } }
-                            ]
-                        },
-                        eagerness: "conservative"
-                    }
-                ]
-            });
-            document.head.appendChild(specScript);
-        }
-    } catch (e) {
-        // Graceful fallback for non-supporting browsers
+    // 0a. W3C Speculation Rules API (Conservative Idle-Only Navigation Fast-Path)
+    const initSpeculationRules = () => {
+        try {
+            if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+                const specScript = document.createElement('script');
+                specScript.type = 'speculationrules';
+                specScript.textContent = JSON.stringify({
+                    prerender: [
+                        {
+                            source: "list",
+                            urls: ["/pricing", "/colosseum"],
+                            eagerness: "conservative"
+                        }
+                    ],
+                    prefetch: [
+                        {
+                            source: "document",
+                            where: {
+                                and: [
+                                    { href_matches: "/*" },
+                                    { not: { href_matches: "/api/*" } },
+                                    { not: { href_matches: "/thank-you*" } }
+                                ]
+                            },
+                            eagerness: "conservative"
+                        }
+                    ]
+                });
+                document.head.appendChild(specScript);
+            }
+        } catch (e) {}
+    };
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(initSpeculationRules, { timeout: 4000 });
+    } else {
+        setTimeout(initSpeculationRules, 3000);
     }
 
     // 0b. Enterprise Universal dataLayer Telemetry Suite
@@ -158,45 +152,50 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('online', window.flushOfflineLeads);
-    window.flushOfflineLeads();
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(window.flushOfflineLeads, { timeout: 5000 });
+    } else {
+        setTimeout(window.flushOfflineLeads, 3000);
+    }
 
-    // 1. Custom Cursor Logic
-    const cursorDot = document.querySelector('[data-cursor-dot]');
-    const cursorOutline = document.querySelector('[data-cursor-outline]');
+    // 1. Custom Cursor Logic (Scoped strictly to Desktop Fine-Pointer Devices)
+    if (window.matchMedia('(pointer: fine)').matches) {
+        const cursorDot = document.querySelector('[data-cursor-dot]');
+        const cursorOutline = document.querySelector('[data-cursor-outline]');
 
-    window.addEventListener('mousemove', (e) => {
-        if (!cursorDot || !cursorOutline) return;
-        const posX = e.clientX;
-        const posY = e.clientY;
+        window.addEventListener('mousemove', (e) => {
+            if (!cursorDot || !cursorOutline) return;
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
 
-        // Slight delay for the outline for a smooth effect
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        }, { passive: true });
 
-    // Make cursor bigger on interactive elements
-    const interactables = document.querySelectorAll('a, button, .slider-btn, .am-item, .phase-slide');
-    interactables.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            if (cursorOutline) {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.6)';
-                cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
-                cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.8)';
-            }
+        // Make cursor bigger on interactive elements
+        const interactables = document.querySelectorAll('a, button, .slider-btn, .am-item, .phase-slide');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                if (cursorOutline) {
+                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.6)';
+                    cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+                    cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.8)';
+                }
+            }, { passive: true });
+            el.addEventListener('mouseleave', () => {
+                if (cursorOutline) {
+                    cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+                    cursorOutline.style.backgroundColor = 'transparent';
+                    cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.5)';
+                }
+            }, { passive: true });
         });
-        el.addEventListener('mouseleave', () => {
-            if (cursorOutline) {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursorOutline.style.backgroundColor = 'transparent';
-                cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.5)';
-            }
-        });
-    });
+    }
 
     // 2. Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
@@ -1665,7 +1664,7 @@ window.switchTownshipView = function(viewId, btn) {
 // 1. CLOUDFLARE EDGE GEO-PERSONALIZATION ENGINE (NRI VS METRO DESK)
 // ══════════════════════════════════════════════════════════════════════════════
 (function initEdgeGeoPersonalization() {
-    document.addEventListener('DOMContentLoaded', () => {
+    const runGeo = () => {
         const country = (document.body.getAttribute('data-geo-country') || 'IN').toUpperCase();
         const city = document.body.getAttribute('data-geo-city') || '';
         const isDismissed = sessionStorage.getItem('kxh_nri_banner_dismissed');
@@ -1729,21 +1728,26 @@ window.switchTownshipView = function(viewId, btn) {
                 else if (country === 'SG') tzSelect.value = 'SGT (UTC+08:00) - Singapore';
             }
         }
-    });
+    };
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(runGeo, { timeout: 3000 });
+    } else {
+        setTimeout(runGeo, 2000);
+    }
 })();
 
 // ══════════════════════════════════════════════════════════════════════════════
 // 2. AI REAL ESTATE CONCIERGE ("ARIA") FLOATING INTERACTIVE ENGINE
 // ══════════════════════════════════════════════════════════════════════════════
 (function initAriaConcierge() {
-    document.addEventListener('DOMContentLoaded', () => {
+    const setupAria = () => {
         // Build floating launcher pill
         const launcher = document.createElement('div');
         launcher.id = 'ariaLauncher';
         launcher.className = 'aria-concierge-launcher';
         launcher.setAttribute('role', 'button');
         launcher.setAttribute('tabindex', '0');
-        launcher.setAttribute('aria-label', 'Open Aria AI Real Estate Concierge');
+        launcher.setAttribute('aria-label', 'Ask Aria • AI Concierge - Luxury Real Estate Assistant');
         launcher.innerHTML = `
             <div class="aria-avatar-ring">
                 <span class="aria-status-dot"></span>
@@ -1929,14 +1933,19 @@ window.switchTownshipView = function(viewId, btn) {
                 }
             }, 350);
         });
-    });
+    };
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(setupAria, { timeout: 2500 });
+    } else {
+        setTimeout(setupAria, 1500);
+    }
 })();
 
 // ══════════════════════════════════════════════════════════════════════════════
 // 3. INTERACTIVE SECTOR NAVIGATOR ENGINE (INDEX & MASTERPLAN)
 // ══════════════════════════════════════════════════════════════════════════════
 (function initSectorNavigator() {
-    document.addEventListener('DOMContentLoaded', () => {
+    const setupNavigator = () => {
         const legendGrid = document.querySelector('.master-layout-legend-grid');
         if (!legendGrid) return;
 
@@ -2053,7 +2062,12 @@ window.switchTownshipView = function(viewId, btn) {
                 if (selected) renderSpotlight(selected);
             });
         });
-    });
+    };
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(setupNavigator, { timeout: 3500 });
+    } else {
+        setTimeout(setupNavigator, 2000);
+    }
 })();
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -2109,8 +2123,11 @@ window.switchTownshipView = function(viewId, btn) {
         `;
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.createElement('div');
+    function ensureMahaReraModal() {
+        let modal = document.getElementById('mahareraCredentialModal');
+        if (modal) return modal;
+
+        modal = document.createElement('div');
         modal.id = 'mahareraCredentialModal';
         modal.className = 'maharera-modal-overlay';
         modal.setAttribute('role', 'dialog');
@@ -2239,35 +2256,43 @@ window.switchTownshipView = function(viewId, btn) {
 
         document.body.appendChild(modal);
 
-        window.openMahaReraModal = function() {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            if (window.dataLayer) {
-                window.dataLayer.push({
-                    event: 'view_rera_credentials',
-                    page_location: window.location.pathname
-                });
-            }
-        };
-
-        window.closeMahaReraModal = function() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        };
-
         document.getElementById('closeMahaReraBtn')?.addEventListener('click', window.closeMahaReraModal);
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) window.closeMahaReraModal();
         });
 
-        // Delegate triggers
-        document.querySelectorAll('.open-maharera-modal, [data-trigger="maharera-modal"]').forEach(el => {
-            el.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.openMahaReraModal();
+        return modal;
+    }
+
+    window.openMahaReraModal = function() {
+        const modal = ensureMahaReraModal();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (window.dataLayer) {
+            window.dataLayer.push({
+                event: 'view_rera_credentials',
+                page_location: window.location.pathname
             });
-        });
+        }
+    };
+
+    window.closeMahaReraModal = function() {
+        const modal = document.getElementById('mahareraCredentialModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    // Delegate triggers
+    document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('.open-maharera-modal, [data-trigger="maharera-modal"]');
+        if (trigger) {
+            e.preventDefault();
+            window.openMahaReraModal();
+        }
+    });
 
         // 36. WebMCP (Web Model Context Protocol) Autonomous Agent Interface
         if (typeof navigator !== 'undefined' && 'modelContext' in navigator && typeof navigator.modelContext.registerTool === 'function') {
@@ -2294,7 +2319,6 @@ window.switchTownshipView = function(viewId, btn) {
                 // Ignore gracefully on non-supporting runtimes
             }
         }
-    });
 })();
 
 
