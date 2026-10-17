@@ -705,7 +705,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                 "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp",
                 "hasMap": "https://maps.google.com/?q=18.5913,73.7389",
                 "sameAs": [
-                    "https://maharera.mahaonline.gov.in/",
+                    "https://maharera.maharashtra.gov.in/",
                     "https://en.wikipedia.org/wiki/Hiranandani_Group",
                     "https://en.wikipedia.org/wiki/Hinjawadi",
                     "https://maps.google.com/?q=18.5913,73.7389",
@@ -766,7 +766,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                     "longitude": "73.7389"
                 },
                 "sameAs": [
-                    "https://maharera.mahaonline.gov.in/",
+                    "https://maharera.maharashtra.gov.in/",
                     "https://en.wikipedia.org/wiki/Hiranandani_Group",
                     "https://en.wikipedia.org/wiki/Hinjawadi",
                     "https://maps.google.com/?q=18.5913,73.7389",
