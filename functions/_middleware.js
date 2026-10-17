@@ -365,7 +365,12 @@ export async function onRequest(context) {
 
     // 5b. Universal Permutation & Combination Routing for Real Estate & Brand Queries
     if (response.status === 404 && !path.startsWith('/explore/') && !path.startsWith('/api/') && !path.startsWith('/public/') && !path.includes('.')) {
-        const cleanSlug = path.replace(/^\/+|\/+$/g, '');
+        let cleanSlug = path.replace(/^\/+|\/+$/g, '');
+        const isBlogRoute = cleanSlug.startsWith('blog/');
+        if (isBlogRoute) {
+            cleanSlug = cleanSlug.replace(/^blog\//, '');
+        }
+
         const realEstateKeywords = [
             // Brand Permutations, Sub-Brands & Verified Search Typos
             'krisala', 'krisla', 'hiranandani', 'hiranajdani', 'hiranadani', 'hirnandani', 
@@ -394,11 +399,11 @@ export async function onRequest(context) {
             'rera', 'maharera', 'review', 'reviews', 'brochure', 'booking', 'contact',
             'site-address', 'location', 'connectivity', 'metro', 'ring-road', 'expressway',
             'infosys', 'wipro', 'tcs', 'cognizant', 'infotech', 'tech-park',
-            'investment', 'roi', 'rental-yield', 'nri'
+            'investment', 'roi', 'rental-yield', 'nri', 'guide', 'review', 'trends'
         ];
         
-        const isTargetQuery = realEstateKeywords.some(kw => cleanSlug.includes(kw));
-        if (isTargetQuery) {
+        const isTargetQuery = isBlogRoute || realEstateKeywords.some(kw => cleanSlug.includes(kw));
+        if (isTargetQuery && cleanSlug) {
             let targetSlug = cleanSlug;
             if (targetSlug.startsWith('krisala-hiranandani-')) {
                 // already has full canonical prefix
@@ -468,8 +473,8 @@ export async function onRequest(context) {
             '</opensearch.xml>; rel="search"; type="application/opensearchdescription+xml"',
             '<https://fonts.googleapis.com>; rel=preconnect',
             '<https://fonts.gstatic.com>; rel=preconnect; crossorigin',
-            '</style.min.css?v=20261017_v2>; rel=preload; as=style',
-            '</app.min.js?v=20261017_v2>; rel=preload; as=script',
+            '</style.min.css?v=20261017_v3>; rel=preload; as=style',
+            '</app.min.js?v=20261017_v3>; rel=preload; as=script',
             '</public/krisala-hiranandani-logo.webp>; rel=preload; as=image'
         ].join(', '));
     }

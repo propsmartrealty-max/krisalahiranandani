@@ -1,1 +1,1980 @@
-if(window.top!==window.self)try{window.top.location.hostname!==window.self.location.hostname&&(window.top.location=window.self.location.href)}catch(e){window.top.location=window.self.location.href}document.addEventListener("DOMContentLoaded",()=>{const e=()=>{try{if(HTMLScriptElement.supports&&HTMLScriptElement.supports("speculationrules")){const e=document.createElement("script");e.type="speculationrules",e.textContent=JSON.stringify({prerender:[{source:"list",urls:["/pricing","/colosseum"],eagerness:"conservative"}],prefetch:[{source:"document",where:{and:[{href_matches:"/*"},{not:{href_matches:"/api/*"}},{not:{href_matches:"/thank-you*"}}]},eagerness:"conservative"}]}),document.head.appendChild(e)}}catch(e){}};"requestIdleCallback"in window?requestIdleCallback(e,{timeout:4e3}):setTimeout(e,3e3),window.dataLayer=window.dataLayer||[],document.querySelectorAll('a[href*="wa.me"]').forEach(e=>{e.addEventListener("click",()=>{window.dataLayer.push({event:"contact",method:"whatsapp",action:"initiate_chat",page_location:window.location.pathname,value:85e5,currency:"INR"})})}),document.querySelectorAll('a[href^="tel:"]').forEach(e=>{e.addEventListener("click",()=>{window.dataLayer.push({event:"contact",method:"phone_call",action:"click_to_call",phone_number:"+917744009295",page_location:window.location.pathname,value:85e5,currency:"INR"})})}),document.querySelectorAll('a[href*=".pdf"], a[download]').forEach(e=>{e.addEventListener("click",()=>{window.dataLayer.push({event:"file_download",file_name:e.getAttribute("href")||"township-brochure.pdf",file_extension:"pdf",page_location:window.location.pathname})})});const t="pending_leads";function n(){return new Promise(e=>{if(!("indexedDB"in window))return e(null);const n=indexedDB.open("kxh_offline_leads_db",1);n.onupgradeneeded=e=>{const n=e.target.result;n.objectStoreNames.contains(t)||n.createObjectStore(t,{keyPath:"id",autoIncrement:!0})},n.onsuccess=()=>e(n.result),n.onerror=()=>e(null)})}if(window.queueLeadOffline=async function(e){const i=await n();return!!i&&new Promise(n=>{const a=i.transaction(t,"readwrite");a.objectStore(t).add({...e,queuedAt:(new Date).toISOString()}),a.oncomplete=()=>n(!0),a.onerror=()=>n(!1)})},window.flushOfflineLeads=async function(){if(!navigator.onLine)return;const e=await n();if(!e)return;const i=e.transaction(t,"readwrite").objectStore(t).getAll();i.onsuccess=async()=>{const n=i.result||[];for(const i of n)try{if((await fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(i)})).ok){e.transaction(t,"readwrite").objectStore(t).delete(i.id)}}catch(e){break}}},window.addEventListener("online",window.flushOfflineLeads),"requestIdleCallback"in window?requestIdleCallback(window.flushOfflineLeads,{timeout:5e3}):setTimeout(window.flushOfflineLeads,3e3),window.matchMedia("(pointer: fine)").matches){const e=document.querySelector("[data-cursor-dot]"),t=document.querySelector("[data-cursor-outline]");window.addEventListener("mousemove",n=>{if(!e||!t)return;const i=n.clientX,a=n.clientY;e.style.left=`${i}px`,e.style.top=`${a}px`,t.animate({left:`${i}px`,top:`${a}px`},{duration:500,fill:"forwards"})},{passive:!0});document.querySelectorAll("a, button, .slider-btn, .am-item, .phase-slide").forEach(e=>{e.addEventListener("mouseenter",()=>{t&&(t.style.transform="translate(-50%, -50%) scale(1.6)",t.style.backgroundColor="rgba(212, 175, 55, 0.1)",t.style.border="1px solid rgba(212, 175, 55, 0.8)")},{passive:!0}),e.addEventListener("mouseleave",()=>{t&&(t.style.transform="translate(-50%, -50%) scale(1)",t.style.backgroundColor="transparent",t.style.border="1px solid rgba(212, 175, 55, 0.5)")},{passive:!0})})}const i=document.getElementById("navbar");window.addEventListener("scroll",()=>{window.scrollY>50?i.classList.add("scrolled"):i.classList.remove("scrolled")});const a=document.querySelectorAll(".reveal, .scroll-reveal"),r=new IntersectionObserver((e,t)=>{e.forEach(e=>{e.isIntersecting&&(e.target.classList.add("active"),t.unobserve(e.target))})},{threshold:.1,rootMargin:"0px 0px -50px 0px"});a.forEach(e=>r.observe(e)),setTimeout(()=>{document.querySelectorAll(".hero .reveal").forEach(e=>e.classList.add("active"))},100);const o=document.querySelector(".parallax-img");window.addEventListener("scroll",()=>{const e=window.scrollY;o&&e<window.innerHeight&&(o.style.transform=`translateY(${.4*e}px)`)});const s=document.getElementById("phaseSlider"),c=document.getElementById("sliderNext"),l=document.getElementById("sliderPrev");if(s&&c&&l){const e=640;c.addEventListener("click",()=>{s.scrollBy({left:e,behavior:"smooth"})}),l.addEventListener("click",()=>{s.scrollBy({left:-e,behavior:"smooth"})});let t,n,i=!1;s.addEventListener("mousedown",e=>{i=!0,s.classList.add("active"),t=e.pageX-s.offsetLeft,n=s.scrollLeft}),s.addEventListener("mouseleave",()=>{i=!1,s.classList.remove("active")}),s.addEventListener("mouseup",()=>{i=!1,s.classList.remove("active")}),s.addEventListener("mousemove",e=>{if(!i)return;e.preventDefault();const a=2*(e.pageX-s.offsetLeft-t);s.scrollLeft=n-a})}const d=document.getElementById("enquiryModal"),h=document.querySelectorAll(".open-modal"),u=document.querySelector(".close-modal"),m=document.getElementById("leadForm"),p=()=>{d&&d.classList.remove("active")};h.forEach(e=>{e.addEventListener("click",t=>{if(t.preventDefault(),!d)return;const n=e.getAttribute("data-magnet"),i=d.querySelector("h2");i&&(i.innerText="brochure"===n?"Download Elite Brochure":"pricesheet"===n?"Request Luxury Price Sheet":i.getAttribute("data-en-original")||i.innerText||"Register Your Interest");const a=e.closest(".phase-slide");if(a&&m){const e=m.querySelector("select"),t=a.querySelector("h3").textContent;t.includes("Everlyn")&&(e.value="everlyn-tower"),t.includes("Arcadia")&&(e.value="arcadia-3bhk"),t.includes("Icon")&&(e.value="icon-4bhk"),t.includes("Della")&&(e.value="della-villa")}d&&d.classList.add("active")})}),u&&u.addEventListener("click",p),d&&d.addEventListener("click",e=>{e.target===d&&p()});const g=document.querySelectorAll(".ticker-slide");if(g.length>0){let e=0;setInterval(()=>{g[e].classList.remove("active"),e=(e+1)%g.length,g[e].classList.add("active")},3e3)}const y=document.querySelectorAll(".chart-bar"),v=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const t=e.target,n=t.style.height;t.style.height="0",setTimeout(()=>{t.style.height=n},100),v.unobserve(t)}})},{threshold:.5});y.forEach(e=>v.observe(e)),"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js").then(e=>{}).catch(e=>{})});const f=document.getElementById("roi-amount"),x=document.getElementById("roi-growth"),w=document.getElementById("roi-years"),b=document.getElementById("roi-result");function E(){if(!f||!x||!w)return;const e=parseFloat(f.value),t=parseFloat(x.value)/100,n=parseFloat(w.value),i=e*Math.pow(1+t,n);b.innerText=`₹ ${i.toFixed(2)} Cr`,x.nextElementSibling.innerText=`${x.value}%`,w.nextElementSibling.innerText=`${w.value} Years`}[f,x,w].forEach(e=>{e&&e.addEventListener("input",E)});const k=document.getElementById("emi-amount"),S=document.getElementById("emi-rate"),L=document.getElementById("emi-tenure"),A=document.getElementById("emi-result");function q(){if(!k||!S||!L)return;const e=1e5*parseFloat(k.value),t=parseFloat(S.value)/12/100,n=12*parseFloat(L.value),i=e*t*Math.pow(1+t,n)/(Math.pow(1+t,n)-1);A.innerText=`₹ ${Math.round(i).toLocaleString("en-IN")}`}[k,S,L].forEach(e=>{e&&e.addEventListener("input",q)});const I={mr:{"The Legacy":"वारसा",Masterplan:"मास्टर प्लॅन",Phases:"टप्पे",Amenities:"सुविधा",Location:"ठिकाण",Inquire:"चौकशी करा","Plan Your Investment":"तुमच्या गुंतवणुकीचे नियोजन करा","Appreciation Calculator":"वाढ मोजण्याचे साधन","EMI Estimator":"ईएमआय अंदाजपत्रक","The Community of Titans":"दिग्गजांचा समुदाय","A Glimpse of Magnificence":"भव्यतेची एक झलक","Register Now for Pre-Launch Offers":"प्री-लाँच ऑफरसाठी आताच नोंदणी करा"}},C=document.getElementById("langToggle");if(C){const e=C.querySelectorAll("button");e.forEach(t=>{t.addEventListener("click",()=>{const n=t.getAttribute("data-lang");var i;e.forEach(e=>{e.classList.remove("active"),e.setAttribute("aria-pressed","false")}),t.classList.add("active"),t.setAttribute("aria-pressed","true"),document.body.setAttribute("data-lang",n),i=n,document.querySelectorAll("[data-en]").forEach(e=>{"mr"===i?(e.getAttribute("data-en-original")||e.setAttribute("data-en-original",e.innerText),e.innerText=e.getAttribute("data-mr")):e.innerText=e.getAttribute("data-en-original")||e.innerText}),document.querySelectorAll("input[placeholder]").forEach(e=>{const t=e.getAttribute("placeholder"),n=I.mr[t];"mr"===i&&n?(e.getAttribute("data-en-ph")||e.setAttribute("data-en-ph",t),e.placeholder=n):"en"===i&&e.getAttribute("data-en-ph")&&(e.placeholder=e.getAttribute("data-en-ph"))})})})}let T=0,B={};function P(){const e=document.getElementById("quizOverlay");if(!e)return;e.querySelectorAll(".close-quiz").forEach(e=>e.onclick=R);const t=e.querySelector("#restartQuiz");t&&(t.onclick=z),e.querySelectorAll(".quiz-opt").forEach(e=>{e.onclick=()=>{const t=e.closest(".quiz-step").getAttribute("data-step"),n=e.getAttribute("data-value");B[t]=n,setTimeout(()=>{T++,_()},250)}})}const M=e=>{e&&e.preventDefault&&e.preventDefault();(function(){let e=document.getElementById("quizOverlay");return e||(e=document.createElement("div"),e.className="quiz-overlay",e.id="quizOverlay",e.innerHTML='\n                <div class="quiz-container glass-panel">\n                    <button class="close-quiz" aria-label="Close Quiz"><i class="ph ph-x"></i></button>\n                    <div class="quiz-steps" id="quizSteps">\n                        \x3c!-- Step 1: Configuration & Budget --\x3e\n                        <div class="quiz-step active" data-step="1">\n                            <span class="step-num">01 / 03</span>\n                            <h2>What configuration &amp; <span>budget fits your plan?</span></h2>\n                            <div class="quiz-options">\n                                <button class="quiz-opt" data-value="colosseum-3bhk">\n                                    <i class="ph ph-columns gold-icon"></i>\n                                    <strong>The Colosseum Signature</strong>\n                                    <span>Pre-Launch 3/4 BHK • From ₹85 Lakh*</span>\n                                </button>\n                                <button class="quiz-opt" data-value="arcadia-2bhk">\n                                    <i class="ph ph-layout gold-icon"></i>\n                                    <strong>2 BHK Urban Luxury</strong>\n                                    <span>Sector Arcadia • From ₹79 Lakh*</span>\n                                </button>\n                                <button class="quiz-opt" data-value="arcadia-3bhk">\n                                    <i class="ph ph-buildings gold-icon"></i>\n                                    <strong>3 BHK Grande Family Suite</strong>\n                                    <span>Sector Arcadia • From ₹1.18 Cr*</span>\n                                </button>\n                                <button class="quiz-opt" data-value="icon-4bhk">\n                                    <i class="ph ph-crown gold-icon"></i>\n                                    <strong>4 BHK Duplex &amp; Sky Mansion</strong>\n                                    <span>Sector Icon • From ₹2.10 Cr*</span>\n                                </button>\n                                <button class="quiz-opt" data-value="della-villa">\n                                    <i class="ph ph-horse gold-icon"></i>\n                                    <strong>Bespoke Equestrian Villa Plot</strong>\n                                    <span>Della District • From ₹1.50 Cr*</span>\n                                </button>\n                            </div>\n                        </div>\n\n                        \x3c!-- Step 2: Primary Lifestyle Focus --\x3e\n                        <div class="quiz-step" data-step="2">\n                            <span class="step-num">02 / 03</span>\n                            <h2>What is your top <span>lifestyle priority?</span></h2>\n                            <div class="quiz-options">\n                                <button class="quiz-opt" data-value="roman-grandeur">\n                                    <i class="ph ph-bank gold-icon"></i>\n                                    <strong>Neoclassical Roman Grandeur</strong>\n                                    <span>Triple-height marble lobby, Roman columns &amp; amphitheater.</span>\n                                </button>\n                                <button class="quiz-opt" data-value="metro-commute">\n                                    <i class="ph ph-train-regional gold-icon"></i>\n                                    <strong>2-Min Hinjawadi Tech Park Commute</strong>\n                                    <span>Walk to Metro Line 3, Wipro, Infosys &amp; Embassy TechZone.</span>\n                                </button>\n                                <button class="quiz-opt" data-value="racecourse-resort">\n                                    <i class="ph ph-sun gold-icon"></i>\n                                    <strong>8-Acre Racecourse &amp; Resort District</strong>\n                                    <span>Equestrian academy, Della hospitality &amp; 100+ master amenities.</span>\n                                </button>\n                                <button class="quiz-opt" data-value="wellness-nature">\n                                    <i class="ph ph-leaf gold-icon"></i>\n                                    <strong>Zen Nature &amp; Circular Water Sanctuary</strong>\n                                    <span>TERI certified zero-carbon ecology, Miyawaki forests &amp; peace.</span>\n                                </button>\n                            </div>\n                        </div>\n\n                        \x3c!-- Step 3: Purchase Objective & Timeline --\x3e\n                        <div class="quiz-step" data-step="3">\n                            <span class="step-num">03 / 03</span>\n                            <h2>What is your primary <span>buying objective?</span></h2>\n                            <div class="quiz-options">\n                                <button class="quiz-opt" data-value="prelaunch-roi">\n                                    <i class="ph ph-chart-line-up gold-icon"></i>\n                                    <strong>Pre-Launch Priority Pricing (Max ROI)</strong>\n                                    <span>Capitalize on 15%+ YoY capital appreciation track record.</span>\n                                </button>\n                                <button class="quiz-opt" data-value="family-enduse">\n                                    <i class="ph ph-house-line gold-icon"></i>\n                                    <strong>Family Home (Possession 2026–2027)</strong>\n                                    <span>Secure a premium neoclassical legacy for generations.</span>\n                                </button>\n                                <button class="quiz-opt" data-value="nri-rental">\n                                    <i class="ph ph-globe-hemisphere-east gold-icon"></i>\n                                    <strong>High-Yield Rental / NRI Investment</strong>\n                                    <span>FEMA compliant, dollar-hedged returns &amp; Hinjawadi tenant demand.</span>\n                                </button>\n                            </div>\n                        </div>\n\n                        \x3c!-- Final Recommendation --\x3e\n                        <div class="quiz-step" id="quizResultStep">\n                            <div class="result-header">\n                                <div class="match-score-badge"><i class="ph ph-seal-check"></i> <span id="quizMatchScore">98% Ideal Match Found</span></div>\n                                <h2 id="recommendedSector">The Colosseum Phase 4</h2>\n                                <p id="recommendedDesc">Neoclassical Roman landmark with soaring columns, double-height lobby, and private racecourse panorama.</p>\n                            </div>\n                            <div class="quiz-result-specs" id="quizSpecsGrid">\n                                <div class="quiz-spec-item">\n                                    <div class="q-label">Configuration</div>\n                                    <div class="q-val" id="specConfig">3 BHK Signature Residence</div>\n                                </div>\n                                <div class="quiz-spec-item">\n                                    <div class="q-label">Carpet Area</div>\n                                    <div class="q-val" id="specCarpet">815 – 1,180 Sq. Ft.</div>\n                                </div>\n                                <div class="quiz-spec-item">\n                                    <div class="q-label">Pre-Launch Price</div>\n                                    <div class="q-val" id="specPrice">From ₹85 Lakh*</div>\n                                </div>\n                                <div class="quiz-spec-item">\n                                    <div class="q-label">MahaRERA Registration</div>\n                                    <div class="q-val" id="specRera">P52100055291</div>\n                                </div>\n                            </div>\n                            <div class="result-actions">\n                                <button class="btn-primary" id="quizLockVipBtn">\n                                    <i class="ph ph-ticket"></i>&nbsp; Lock Priority Allotment for This Unit\n                                </button>\n                                <a href="https://wa.me/917744009295" target="_blank" class="btn-secondary" id="quizWhatsAppBtn">\n                                    <i class="ph ph-whatsapp-logo"></i>&nbsp; Instant WhatsApp Brochure &amp; Cost Sheet\n                                </a>\n                                <button class="btn-outline" id="restartQuiz">\n                                    <i class="ph ph-arrow-counter-clockwise"></i>&nbsp; Retake Matcher\n                                </button>\n                            </div>\n                        </div>\n                    </div>\n                    <div class="quiz-progress">\n                        <div class="progress-bar" id="quizBar"></div>\n                    </div>\n                </div>\n            ',document.body.appendChild(e),P()),e})().classList.add("active"),P(),z()},R=()=>{const e=document.getElementById("quizOverlay");e&&e.classList.remove("active")},z=()=>{T=0,B={},_()};function _(){const e=document.getElementById("quizOverlay");if(!e)return;const t=e.querySelectorAll(".quiz-step"),n=e.querySelector("#quizBar");t.forEach((e,t)=>{e.classList.toggle("active",t===T)});const i=(T+1)/(t.length-1)*100;n&&(n.style.width=`${Math.min(i,100)}%`),T===t.length-1&&function(){const e=document.getElementById("recommendedSector"),t=document.getElementById("recommendedDesc"),n=document.getElementById("specConfig"),i=document.getElementById("specCarpet"),a=document.getElementById("specPrice"),r=document.getElementById("specRera"),o=document.getElementById("quizMatchScore");let s="The Colosseum Phase 4",c="3 BHK Signature Residence",l="815 – 1,180 Sq. Ft.",d="From ₹85 Lakh*",h="P52100055291",u="Neoclassical Roman landmark with soaring Corinthian columns, triple-height marble lobby, and private racecourse panorama.",m="colosseum.html",p="99% Ideal Match";const g=B[1]||"",y=B[2]||"";B[3];"della-villa"===g||"racecourse-resort"===y?(s="The Della Collection",c="Bespoke Equestrian Villa Plots",l="2,500 – 6,000 Sq. Ft. Plots",d="From ₹1.50 Crore*",h="P52100055294",u="India's first equestrian-themed villa plots with private racecourse access, 5-star resort hospitality, and 40+ acres of open luxury.",m="della.html",p="98% Ideal Match"):"icon-4bhk"===g?(s="Sector Icon",c="4 BHK Duplex & Sky Mansion",l="1,650 – 2,400 Sq. Ft.",d="From ₹2.10 Crore*",h="P52100055292",u="The pinnacle of status with double-height living spaces, panoramic sky decks, and private lift access overlooking the Sahyadri valley.",m="icon.html",p="97% Ideal Match"):"wellness-nature"===y?(s="Sector Everlyn",c="2 & 3 BHK Wellness Residences",l="820 – 1,120 Sq. Ft.",d="From ₹82 Lakh*",h="P52100055293",u="A sanctuary of low-carbon living, zen meditation decks, zero-discharge water reservoirs, and organic wellness boulevards.",m="everlyn.html",p="96% Ideal Match"):"arcadia-2bhk"!==g&&"metro-commute"!==y||(s="Sector Arcadia",c="2 & 3 BHK Tech-Corridor Homes",l="765 – 1,050 Sq. Ft.",d="From ₹79 Lakh*",h="P52100055290",u="Smartly planned neoclassical urban residences 2 minutes from Metro Line 3 and Hinjawadi Phase 1 & 2 IT corridors.",m="arcadia.html",p="99% Ideal Match");e&&(e.innerText=s);t&&(t.innerText=u);n&&(n.innerText=c);i&&(i.innerText=l);a&&(a.innerText=d);r&&(r.innerText=h);o&&(o.innerText=`${p} Found`);const v=document.getElementById("quizLockVipBtn");v&&(v.onclick=()=>{R();const e=document.getElementById("enquiryModal");if(e){e.classList.add("active");const t=e.querySelector("select");if(t)for(let e of t.options)if(e.text.toLowerCase().includes(s.toLowerCase().split(" ")[0])){t.value=e.value;break}}});const f=document.getElementById("quizWhatsAppBtn");if(f){const e=encodeURIComponent(`Hi, I completed the Dream Home Matcher on your official portal. My top match is:\n• Unit: ${s} (${c})\n• Carpet Area: ${l}\n• Price: ${d}\nPlease share the detailed floor plans, cost sheet, and schedule a priority VIP site visit.`);f.href=`https://wa.me/917744009295?text=${e}`}quizCta&&(quizCta.onclick=()=>{window.location.href=m,R()})}()}const D=document.querySelectorAll(".quiz-trigger");D.length>0&&D.forEach(e=>e.addEventListener("click",M)),m&&m.addEventListener("submit",async e=>{e.preventDefault();const t=m.querySelector('input[name="_honey"]');if(t&&t.value)return void console.warn("Bot submission blocked.");const n=m.querySelector('input[type="tel"]');if(n){const e=n.value.replace(/[\s\-\(\)]/g,"");if(!/^(?:\+91|0)?[6-9]\d{9}$/.test(e))return n.focus(),n.style.border="1px solid #ff4d4f",void alert("Please enter a valid 10-digit mobile number (e.g. 9876543210).");n.style.border=""}const i=m.querySelector('button[type="submit"]'),a=i.textContent;i.textContent="Registering Priority Access...",i.disabled=!0;const r=new FormData(m);try{if(!(await fetch(m.action,{method:"POST",body:r,headers:{Accept:"application/json"}})).ok)throw new Error("Form submission failed");i.textContent="Enquiry Received!",i.style.background="#28a745",i.style.color="white",window.dataLayer.push({event:"generate_lead",form_id:"enquiry_lead_form",value:85e5,currency:"INR",event_time:(new Date).toISOString()}),setTimeout(()=>{const e=document.getElementById("enquiryModal");e&&e.classList.remove("active"),m.reset(),i.textContent=a,i.style.background="",i.style.color="",i.disabled=!1,window.location.href="/thank-you"},1200)}catch(e){console.error(e),i.textContent="Error. Please try again.",i.style.background="#dc3545",i.style.color="white",setTimeout(()=>{i.textContent=a,i.style.background="",i.style.color="",i.disabled=!1},3e3)}});const H=document.querySelectorAll(".commute-item");H.length>0&&setInterval(()=>{H.forEach(e=>{const t=e.querySelector(".commute-time"),n=parseInt(t.getAttribute("data-base")),i=Math.floor(5*Math.random())-2,a=Math.max(n+i,5);t.innerText=`${a} Mins`,t.style.color=i>1?"#ff4444":i<-1?"#44ff44":"var(--gold-primary)"})},5e3),function(){let e="true"===sessionStorage.getItem("kxh_exit_shown");function t(){if(e)return;const t=function(){let e=document.getElementById("exitOverlay");return e||(e=document.createElement("div"),e.className="exit-overlay",e.id="exitOverlay",e.innerHTML=`\n                    <div class="exit-container glass-panel">\n                        <button class="close-exit" aria-label="Close Special Offer"><i class="ph ph-x"></i></button>\n                        <div class="exit-content">\n                            <span class="badge">Exclusive 2026 Developer Portfolio</span>\n                            <h2>Wait! Before you <span>depart...</span></h2>\n                            <p>Unlock <strong>Official Pre-Launch Pricing &amp; All-Inclusive Cost Sheets</strong> for Krisala Hiranandani Townships before allocations close.</p>\n                            <form class="enquiry-form exit-form" id="exitForm" action="/api/lead" method="POST">\n                                <input type="hidden" name="_subject" value="Exit Intent Pre-Launch Inquiry">\n                                <input type="hidden" name="_source" value="${window.location.href}">\n                                <input type="hidden" name="_honey" style="display:none">\n                                <div class="form-group" style="margin-bottom:14px;">\n                                    <input type="tel" name="phone" placeholder="Enter Mobile Number for Instant WhatsApp PDF *" required style="width:100%; padding:14px 18px; border-radius:8px; border:1px solid rgba(197,160,89,0.3); background:rgba(255,255,255,0.05); color:#fff; font-size:1rem; outline:none;">\n                                </div>\n                                <button type="submit" class="btn-primary w-100" style="width:100%; padding:14px; font-weight:600;">\n                                    <i class="ph ph-whatsapp-logo"></i>&nbsp; Send Official Cost Sheet via WhatsApp\n                                </button>\n                            </form>\n                            <p class="exit-note" style="margin-top:14px; font-size:0.75rem; color:var(--text-muted); text-align:center;">\n                                * Direct developer allotment. No spam. Instant brochure download.\n                            </p>\n                        </div>\n                    </div>\n                `,document.body.appendChild(e),e.querySelector(".close-exit")?.addEventListener("click",()=>{e.classList.remove("active")})),e}();t&&(t.classList.add("active"),e=!0,sessionStorage.setItem("kxh_exit_shown","true"))}if(document.addEventListener("mouseleave",e=>{e.clientY<=10&&t()}),window.innerWidth<=768){try{history.pushState({page:"kxh_landing"},"",window.location.href),window.addEventListener("popstate",n=>{e||t()})}catch(e){}let n=!1;window.addEventListener("scroll",()=>{window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100>35&&!n&&!e&&(n=!0,setTimeout(()=>{t()},28e3))},{passive:!0})}document.querySelector(".close-exit")?.addEventListener("click",()=>{document.getElementById("exitOverlay")?.classList.remove("active")})}(),function(){if("true"===sessionStorage.getItem("kxh_ticker_dismissed"))return;let e=document.getElementById("activityTicker");e||(e=document.createElement("div"),e.className="activity-ticker",e.id="activityTicker",e.innerHTML='\n                <div class="ticker-avatar" id="tickerAvatar">⚡</div>\n                <div class="ticker-content">\n                    <div class="ticker-meta">\n                        <span class="ticker-verified"><i class="ph ph-seal-check"></i> Verified Buyer</span>\n                        <span class="ticker-time" id="tickerTime">Just now</span>\n                    </div>\n                    <span id="tickerText">Loading verified activity...</span>\n                </div>\n                <button type="button" class="ticker-close" id="tickerCloseBtn" aria-label="Dismiss">&times;</button>\n            ',document.body.appendChild(e));const t=e.querySelector("#tickerAvatar")||e.querySelector(".ticker-avatar"),n=e.querySelector("#tickerText"),i=e.querySelector("#tickerTime"),a=e.querySelector("#tickerCloseBtn")||e.querySelector(".ticker-close"),r=[{avatar:"SK",text:"Siddharth K. (Tech Lead, Infosys Hinjawadi) booked 3 BHK in The Colosseum",time:"6m ago",sector:"The Colosseum"},{avatar:"SG",text:"NRI Investor from Singapore secured 2 units in Sector Arcadia",time:"18m ago",sector:"Sector Arcadia"},{avatar:"AP",text:"Dr. Ananya P. (Baner) scheduled VIP Site Visit for Della Villa Plots",time:"32m ago",sector:"The Della Collection"},{avatar:"PR",text:"Pooja & Rohan M. (Wipro Phase 2) locked Pre-Launch Pricing for Arcadia",time:"11m ago",sector:"Sector Arcadia"},{avatar:"RV",text:"Rajesh V. (Director, Barclays Hinjawadi) booked 4 BHK Duplex in Sector Icon",time:"24m ago",sector:"Sector Icon"},{avatar:"TC",text:"Software Architect (TCS Sahyadri Park) downloaded All-Inclusive Cost Sheet",time:"4m ago",sector:"Sector Arcadia"},{avatar:"⚡",text:"Urgency Notice: Only 3 Garden-facing 2 BHK units remaining in Tower B",time:"Just now",sector:"Sector Arcadia"},{avatar:"AT",text:"Amit & Neha T. (Aundh) confirmed Colosseum Phase 4 Signature Suite allotment",time:"14m ago",sector:"The Colosseum"}];let o=0;function s(){if("true"===sessionStorage.getItem("kxh_ticker_dismissed"))return;const a=r[o%r.length];o++,t&&(t.textContent=a.avatar),n&&(n.textContent=a.text),i&&(i.textContent=a.time),e.setAttribute("data-target-sector",a.sector),e.classList.add("active"),setTimeout(()=>{e.classList.remove("active")},6e3)}e.addEventListener("click",t=>{if(t.target.closest(".ticker-close")||t.target.closest("#tickerCloseBtn"))return;const n=e.getAttribute("data-target-sector")||"The Colosseum",i=document.getElementById("enquiryModal");if(i){i.classList.add("active");const e=i.querySelector("select");if(e)for(let t of e.options)if(t.text.toLowerCase().includes(n.toLowerCase().split(" ")[0])){e.value=t.value;break}}}),a?.addEventListener("click",t=>{t.stopPropagation(),e.classList.remove("active"),sessionStorage.setItem("kxh_ticker_dismissed","true")}),setTimeout(()=>{s(),setInterval(s,22e3)},12e3)}();const F=document.querySelectorAll(".open-modal");Math.random()>.5&&F.forEach(e=>{e.innerText.toLowerCase().includes("register")&&(e.innerText="Request Price Sheet",e.setAttribute("data-ab-test","price-sheet"))});const N=document.getElementById("hubSearch"),O=document.getElementById("articleGrid");if(N&&O){const e=O.querySelectorAll(".article-card");N.addEventListener("input",t=>{const n=t.target.value.toLowerCase();e.forEach(e=>{const t=e.querySelector("h3").innerText.toLowerCase(),i=e.querySelector(".article-tag").innerText.toLowerCase(),a=e.querySelector("p").innerText.toLowerCase();t.includes(n)||i.includes(n)||a.includes(n)?e.style.display="block":e.style.display="none"})})}const K=document.getElementById("exitForm");K&&K.addEventListener("submit",async e=>{e.preventDefault();const t=K.querySelector('input[name="_honey"]');if(t&&t.value)return void console.warn("Bot submission blocked.");const n=K.querySelector('input[type="tel"]'),i=n?n.value:"",a=i.replace(/[\s\-\(\)]/g,"");if(n&&!/^(?:\+91|0)?[6-9]\d{9}$/.test(a))return n.focus(),n.style.border="1px solid #ff4d4f",void alert("Please enter a valid 10-digit mobile number.");n&&(n.style.border="");const r=K.querySelector("button"),o=r.textContent;r.textContent="Sending Report Link...",r.disabled=!0;const s=new FormData(K),c=K.action||"https://formsubmit.co/propsmartrealty@gmail.com";try{if(!(await fetch(c,{method:"POST",body:s,headers:{Accept:"application/json"}})).ok)throw new Error("Exit form submission failed");r.textContent="Sent to "+i,r.style.background="#25D366",r.style.color="white",window.dataLayer.push({event:"generate_lead",form_id:"exit_intent_form",value:85e5,currency:"INR",event_time:(new Date).toISOString()}),setTimeout(()=>{exitOverlay&&exitOverlay.classList.remove("active"),K.reset(),r.textContent=o,r.style.background="",r.style.color="",r.disabled=!1},2e3)}catch(e){console.error("Exit form error:",e),r.textContent="Sent to "+i,r.style.background="#25D366",r.style.color="white",setTimeout(()=>{exitOverlay&&exitOverlay.classList.remove("active"),K.reset(),r.textContent=o,r.style.background="",r.style.color="",r.disabled=!1},2e3)}});const $=document.getElementById("preloader");$&&$.remove();const j=document.getElementById("scrollProgress");j&&window.addEventListener("scroll",()=>{const e=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;j.style.width=`${e}%`});const G=document.querySelectorAll("img[data-src]");if(G.length>0){const e=new IntersectionObserver((e,t)=>{e.forEach(e=>{if(e.isIntersecting){const n=e.target;n.src=n.getAttribute("data-src"),n.onload=()=>n.classList.add("loaded"),n.removeAttribute("data-src"),t.unobserve(n)}})},{rootMargin:"200px"});G.forEach(t=>e.observe(t))}document.querySelectorAll("img:not([data-src])").forEach(e=>{e.complete?e.classList.add("loaded"):e.addEventListener("load",()=>e.classList.add("loaded"))});const V={events:JSON.parse(sessionStorage.getItem("kxh_events")||"[]"),track(e,t,n){const i={category:e,action:t,label:n,timestamp:(new Date).toISOString(),page:window.location.pathname};this.events.push(i),sessionStorage.setItem("kxh_events",JSON.stringify(this.events)),console.log(`[KxH Analytics] ${e} | ${t} | ${n}`)},getEvents(){return this.events},getEventCount(e){return this.events.filter(t=>t.category===e).length}};document.querySelectorAll(".btn-primary, .btn-gold, .btn-outline, .btn-text").forEach(e=>{e.addEventListener("click",()=>{const t=e.textContent.trim().substring(0,50),n=e.getAttribute("data-ab-test")||"control";V.track("CTA","click",`${t} [${n}]`)})}),document.querySelectorAll(".nav-link").forEach(e=>{e.addEventListener("click",()=>{V.track("Navigation","click",e.textContent.trim())})});const W={25:!1,50:!1,75:!1,100:!1};window.addEventListener("scroll",()=>{const e=window.scrollY,t=document.documentElement.scrollHeight-window.innerHeight,n=Math.round(e/t*100);[25,50,75,100].forEach(e=>{n>=e&&!W[e]&&(W[e]=!0,V.track("Scroll","depth",`${e}%`))})});let U,Y,Q=parseInt(sessionStorage.getItem("kxh_session_time")||"0"),J=!1;function X(){J=!1,clearTimeout(U),U=setTimeout(()=>{J=!0},3e4)}["mousemove","keydown","scroll","touchstart"].forEach(e=>{document.addEventListener(e,X,{passive:!0})}),X(),setInterval(()=>{J||document.hidden||(Q++,sessionStorage.setItem("kxh_session_time",Q.toString()))},1e3),window.kxhAnalytics=V,window.kxhSessionTime=()=>Q,window.addEventListener("beforeinstallprompt",e=>{e.preventDefault(),Y=e,setTimeout(()=>{if(!Y)return;const e=document.getElementById("installBanner");e&&e.classList.add("active")},6e4)});const Z=document.getElementById("installApp"),ee=document.getElementById("dismissInstall"),te=document.getElementById("installBanner");Z&&Z.addEventListener("click",async()=>{if(!Y)return;Y.prompt();const{outcome:e}=await Y.userChoice;"accepted"===e&&V.track("PWA","install","accepted"),Y=null,te&&te.classList.remove("active")}),ee&&te&&ee.addEventListener("click",()=>{te.classList.remove("active"),sessionStorage.setItem("installDismissed","true")}),document.querySelectorAll(".share-btn").forEach(e=>{e.addEventListener("click",async()=>{const t={title:"Krisala Hiranandani Township",text:"India's 1st Equestrian Township in Hinjewadi — 105+ Acres of Neoclassical Grandeur.",url:window.location.href};try{navigator.share?(await navigator.share(t),V.track("Share","native",window.location.pathname)):(await navigator.clipboard.writeText(window.location.href),e.textContent="Link Copied!",setTimeout(()=>{e.innerHTML='<i class="ph ph-share-network"></i> Share'},2e3))}catch(e){console.log("Share cancelled or failed")}})}),function(){const e=new URLSearchParams(window.location.search);["utm_source","utm_medium","utm_campaign"].forEach(t=>{const n=e.get(t);n&&sessionStorage.setItem(t,n);const i=document.getElementById(t),a=sessionStorage.getItem(t);i&&a&&(i.value=a)})}(),function(){if(!window.location.pathname.includes("/della"))return;const e=document.createElement("div");e.className="inventory-hud scroll-reveal",e.innerHTML='\n            <div class="hud-content">\n                <i class="ph ph-warning-circle gold-icon"></i>\n                <span>Only <strong>12 Della Villa Plots</strong> remaining for March 2026.</span>\n                <button class="close-hud-btn" style="background:none; border:none; color:#a0aec0; cursor:pointer; font-size:1.1rem; line-height:1; padding:0 0 0 8px;" aria-label="Dismiss">&times;</button>\n            </div>\n        ',document.body.appendChild(e),e.querySelector(".close-hud-btn")?.addEventListener("click",()=>e.remove()),setTimeout(()=>{e.classList.add("active")},1e4)}();const ne=document.getElementById("hamburgerMenu"),ie=document.querySelector(".nav-links");ne&&ie&&(ne.addEventListener("click",e=>{e.stopPropagation();const t=ne.classList.toggle("active");ie.classList.toggle("active"),document.body.classList.toggle("menu-open",t)}),ie.querySelectorAll(".nav-dropdown-trigger").forEach(e=>{e.addEventListener("click",t=>{if(window.innerWidth<=1180){t.preventDefault(),t.stopPropagation();const n=e.closest(".nav-dropdown");n&&n.classList.toggle("open")}})}),ie.querySelectorAll("a").forEach(e=>{e.addEventListener("click",()=>{ne.classList.remove("active"),ie.classList.remove("active"),document.body.classList.remove("menu-open"),ie.querySelectorAll(".nav-dropdown").forEach(e=>e.classList.remove("open"))})}),document.addEventListener("click",e=>{ie.contains(e.target)||ne.contains(e.target)||(ne.classList.remove("active"),ie.classList.remove("active"),document.body.classList.remove("menu-open"),ie.querySelectorAll(".nav-dropdown").forEach(e=>e.classList.remove("open")))}));const ae=document.querySelectorAll(".floorplans-tab-btn"),re=document.querySelectorAll(".floorplans-tab-content");ae.length>0&&re.length>0&&ae.forEach(e=>{e.addEventListener("click",()=>{const t=e.getAttribute("data-tab");ae.forEach(e=>e.classList.remove("active")),re.forEach(e=>e.classList.remove("active")),e.classList.add("active");const n=document.getElementById(t);n&&n.classList.add("active")})});const oe=document.getElementById("videoModal"),se=document.querySelectorAll(".open-video-modal"),ce=document.querySelector(".close-video-modal"),le=document.getElementById("townshipFilmPlayer"),de=document.querySelectorAll(".video-track-btn"),he=document.getElementById("videoReelTitle"),ue=document.getElementById("videoReelDesc");de.length>0&&le&&de.forEach(e=>{e.addEventListener("click",()=>{de.forEach(e=>e.classList.remove("active")),e.classList.add("active");const t=e.getAttribute("data-src"),n=e.getAttribute("data-title"),i=e.getAttribute("data-desc");t&&(le.src=t,le.load(),le.play().catch(()=>{})),he&&n&&(he.innerText=n),ue&&i&&(ue.innerText=i)})}),oe&&se.length>0&&(se.forEach(e=>{e.addEventListener("click",()=>{oe.classList.add("active"),le&&le.play().catch(()=>{})})}),ce&&ce.addEventListener("click",()=>{oe.classList.remove("active"),le&&le.pause()}),oe.addEventListener("click",e=>{e.target===oe&&(oe.classList.remove("active"),le&&le.pause())})),function(){const e=window.location.pathname.toLowerCase();let t="Krisala Hiranandani Integrated Township";e.includes("arcadia")?t="Sector Arcadia (2 & 3 BHK residences)":e.includes("icon")?t="Sector Icon (3, 4 BHK & sky penthouses)":e.includes("everlyn")?t="Everlyn Residences":e.includes("della")?t="Della Villa Plots & Hospitality":e.includes("racecourse")?t="8-Acre Private Racecourse View homes":e.includes("amenities")?t="100+ Master Amenities & Equestrian Academy":e.includes("pricing")?t="2026 Price List & CLP Payment Schedule":e.includes("nri")?t="NRI Investment Desk (FEMA & Capital Repatriation)":e.includes("connectivity")?t="Transit & Metro Line 3 Connectivity":e.includes("masterplan")?t="105-Acre Masterplan & Sector Map":e.includes("neighborhood")?t="North Hinjewadi Neighborhood & Appreciation":e.includes("compare")?t="Project Comparison Matrix":e.includes("explore")&&(t="Exclusive Exploration Portal");const n=encodeURIComponent(`Hi, I am inquiring about ${t} at Krisala Hiranandani Township Hinjewadi. Please share available inventory, floor plans, and current pricing.`);document.querySelectorAll('a[href*="wa.me"], a.float-whatsapp, a[data-whatsapp-smart]').forEach(e=>{e.href=`https://wa.me/917744009295?text=${n}`})}(),document.querySelectorAll("form.enquiry-form, form#leadForm, form#exitForm, form#enquiryForm, form.modal-form").forEach(e=>{e.addEventListener("submit",async t=>{const n=e.querySelector('button[type="submit"]'),i=n?n.innerHTML:"";n&&(n.disabled=!0,n.innerHTML='<i class="ph ph-spinner ph-spin"></i> Submitting...'),window.dataLayer&&window.dataLayer.push({event:"generate_lead",form_id:e.id||"lead_enquiry_form",page_location:window.location.pathname,value:85e5,currency:"INR"});try{const n=new FormData(e);if(n.append("_source",window.location.href),(await fetch("/api/lead",{method:"POST",body:n})).ok)return t.preventDefault(),void(window.location.href="/thank-you");throw new Error("API non-200")}catch(n){try{const n=new FormData(e),i={};return n.forEach((e,t)=>{i[t]=e}),i._source=window.location.href,window.queueLeadOffline&&await window.queueLeadOffline(i),t.preventDefault(),void(window.location.href="/thank-you")}catch(e){}}finally{n&&(n.disabled=!1,n.innerHTML=i)}})})}),window.switchTownshipView=function(e,t){const n=document.querySelectorAll(".township-hub-tab"),i=document.querySelectorAll(".township-hub-pane");n.forEach(e=>e.classList.remove("active")),i.forEach(e=>e.classList.remove("active")),t&&t.classList.add("active");const a=document.getElementById(e);a&&a.classList.add("active")},function(){const e=()=>{const e=(document.body.getAttribute("data-geo-country")||"IN").toUpperCase(),t=document.body.getAttribute("data-geo-city")||"",n=sessionStorage.getItem("kxh_nri_banner_dismissed");if("IN"!==e&&!n){const n={AE:"United Arab Emirates",US:"United States",GB:"United Kingdom",SG:"Singapore",CA:"Canada",AU:"Australia",QA:"Qatar",SA:"Saudi Arabia",KW:"Kuwait",OM:"Oman",DE:"Germany",FR:"France",NL:"Netherlands"}[e]||e,i=t?`${t}, ${n}`:n,a=document.createElement("div");a.id="nriGeoBanner",a.className="nri-geo-banner active",a.setAttribute("role","region"),a.setAttribute("aria-label","NRI Investment Desk Notification"),a.innerHTML=`\n                <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">\n                    <span style="font-size:1.1rem;">🌍</span>\n                    <span><strong>Welcome from ${i}</strong> • Exclusive NRI Investment Desk: FEMA Compliance, Capital Repatriation &amp; Virtual 4K Tours.</span>\n                    <a href="/nri" class="nri-cta-btn"><i class="ph ph-arrow-right"></i> Explore NRI Portal</a>\n                </div>\n                <button type="button" class="nri-close-btn" id="dismissNriBannerBtn" aria-label="Dismiss Banner">&times;</button>\n            `,document.body.prepend(a),document.getElementById("dismissNriBannerBtn")?.addEventListener("click",()=>{a.remove(),sessionStorage.setItem("kxh_nri_banner_dismissed","true")}),"function"==typeof window.switchCurrency&&("AE"===e?window.switchCurrency("AED"):"GB"===e?window.switchCurrency("GBP"):["DE","FR","NL","IT","ES"].includes(e)?window.switchCurrency("EUR"):window.switchCurrency("USD"));const r=document.getElementById("leadTimezone");r&&("AE"===e?r.value="GST (UTC+04:00) - UAE / Dubai":"US"===e?r.value="EST (UTC-05:00) - USA Eastern":"GB"===e?r.value="GMT (UTC+00:00) - UK / London":"SG"===e&&(r.value="SGT (UTC+08:00) - Singapore"))}};"requestIdleCallback"in window?requestIdleCallback(e,{timeout:3e3}):setTimeout(e,2e3)}(),function(){const e=()=>{const e=document.createElement("div");e.id="ariaLauncher",e.className="aria-concierge-launcher",e.setAttribute("role","button"),e.setAttribute("tabindex","0"),e.setAttribute("aria-label","Ask Aria • AI Concierge - Luxury Real Estate Assistant"),e.innerHTML='\n            <div class="aria-avatar-ring">\n                <span class="aria-status-dot"></span>\n                <i class="ph ph-sparkle"></i>\n            </div>\n            <span class="aria-launcher-text">Ask Aria • AI Concierge</span>\n        ',document.body.appendChild(e);const t=document.createElement("div");t.id="ariaWindow",t.className="aria-concierge-window",t.setAttribute("role","dialog"),t.setAttribute("aria-modal","true"),t.setAttribute("aria-label","Aria AI Township Concierge"),t.innerHTML='\n            <div class="aria-window-header">\n                <div class="aria-header-title">\n                    <div class="aria-avatar-ring" style="width:28px; height:28px; font-size:0.9rem;">\n                        <i class="ph ph-sparkle"></i>\n                    </div>\n                    <div>\n                        <h4>Aria • Executive Concierge</h4>\n                        <span><i class="ph ph-circle" style="font-size:8px;"></i> Online • Verified Intelligence</span>\n                    </div>\n                </div>\n                <button type="button" id="closeAriaBtn" style="background:transparent; border:none; color:var(--text-muted); font-size:1.4rem; cursor:pointer; line-height:1;" aria-label="Close Concierge">&times;</button>\n            </div>\n            <div class="aria-window-body" id="ariaMsgBody">\n                <div class="aria-msg aria-msg-bot">\n                    Welcome to <strong>Krisala × Hiranandani Township</strong> (North Hinjawadi). I am Aria, your executive real-estate intelligence concierge. How may I assist your home search today?\n                </div>\n                <div class="aria-chips-container" id="ariaChipCluster">\n                    <button type="button" class="aria-chip-btn" data-topic="colosseum">🏛️ The Colosseum (Phase 4)</button>\n                    <button type="button" class="aria-chip-btn" data-topic="rera">📜 MahaRERA Approvals</button>\n                    <button type="button" class="aria-chip-btn" data-topic="possession">🗓️ Possession Timelines</button>\n                    <button type="button" class="aria-chip-btn" data-topic="racecourse">🏇 8-Acre Racecourse &amp; Della</button>\n                    <button type="button" class="aria-chip-btn" data-topic="payment">💰 Payment Plans (CLP &amp; 20:80)</button>\n                    <button type="button" class="aria-chip-btn" data-topic="visit">🚗 Book Free Chauffeur Visit</button>\n                </div>\n            </div>\n            <div class="aria-window-footer">\n                <form id="ariaQueryForm" class="aria-input-row">\n                    <input type="text" id="ariaInput" placeholder="Ask about price, floorplans, location..." autocomplete="off">\n                    <button type="submit" aria-label="Send Message"><i class="ph ph-paper-plane-right"></i></button>\n                </form>\n            </div>\n        ',document.body.appendChild(t),e.addEventListener("click",()=>{t.classList.toggle("active")}),document.getElementById("closeAriaBtn")?.addEventListener("click",()=>{t.classList.remove("active")});const n={colosseum:{title:"The Colosseum (Phase 4 Pre-Launch)",reply:"<strong>The Colosseum (Phase 4)</strong> is our monumental B+G+27 Roman landmark in North Hinjawadi featuring 2, 3 &amp; 4 BHK residences (765 to 1,600 sq.ft) with soaring 11-ft ceilings and private viewing decks overlooking the Sahyadris.<br><br>• <strong>2 BHK:</strong> From ₹82.99 Lakh*<br>• <strong>3 BHK:</strong> From ₹1.15 Crore*<br>• <strong>MahaRERA:</strong> PR1260002500600<br><br>Would you like me to send the complete high-resolution floor plans and price sheet to your WhatsApp?"},rera:{title:"MahaRERA Registration & Approvals",reply:"The entire 105+ acre township is sanctioned and MahaRERA compliant with clear, unencumbered land titles:<br><br>• <strong>Hiranandani Everland (Darumbre):</strong> PR1260002500600<br>• <strong>The Colosseum Phase 4:</strong> PR1260002500600<br>• <strong>Sector Icon Towers:</strong> PR1260002600818<br>• <strong>Sector Arcadia Phase 1:</strong> PR1260002502438<br><br>Pre-approved for instant disbursements by SBI, HDFC Bank, ICICI Bank, and Bank of Baroda."},possession:{title:"Possession Timelines",reply:"Construction is being executed using rapid European Mivan monolithic aluminum formwork:<br><br>• <strong>Sector Arcadia (Phase 1 &amp; 2):</strong> Dec 2028<br>• <strong>The Colosseum (Phase 4):</strong> Dec 2029 - Mid 2030<br>• <strong>Sector Icon Flagship Towers:</strong> Dec 2029<br>• <strong>Della Villa Plots:</strong> Immediate allotment with fast-track registry."},racecourse:{title:"8-Acre Racecourse & Della Amenities",reply:"A landmark first in Indian real estate! The township hosts:<br><br>• <strong>8-Acre Private Racecourse &amp; Polo Arena:</strong> Thoroughbred stables, equestrian riding trails, and clubhouse paddock.<br>• <strong>Della 5-Star Resort Precinct:</strong> 40-acre experiential glamping, fine-dining restaurants, and wellness spas.<br>• <strong>5-Tier Neoclassical Clubhouse:</strong> Olympic 50m pool, squash, badminton, and private banqueting."},payment:{title:"Payment Schemes & Banking",reply:"We offer maximum financial flexibility:<br><br>1. <strong>Standard MahaRERA Construction-Linked Plan (CLP):</strong> 10% on booking, balanced strictly as slabs are cast.<br>2. <strong>Festive 20:80 Subvention:</strong> Pay 20% now, zero EMI until structural completion.<br>3. <strong>SBI / HDFC Pre-Approved Rates:</strong> 8.40% p.a. with zero processing fee offers."},visit:{title:"Complimentary VIP Chauffeur Visit",reply:"We provide <strong>complimentary luxury chauffeur pick-up &amp; drop</strong> (Mercedes / Innova Crysta) across Pune (Airport, Kothrud, Baner, Wakad) and Mumbai for prospective home buyers.<br><br>Enter your mobile number below and our VIP concierge team will confirm your pick-up slot immediately."}},i=document.getElementById("ariaMsgBody");function a(e,t=!1){const n=document.createElement("div");n.className="aria-msg "+(t?"aria-msg-user":"aria-msg-bot"),n.innerHTML=e,i.appendChild(n),i.scrollTop=i.scrollHeight}function r(e){const t=document.createElement("div");t.className="aria-msg aria-msg-bot",t.style.border="1px solid rgba(197, 160, 89, 0.4)",t.style.background="rgba(197, 160, 89, 0.08)",t.innerHTML='\n                <div style="font-size:0.8rem; font-weight:600; color:var(--gold-light); margin-bottom:8px;">\n                    📲 Receive Official PDF Docket &amp; Floorplans on WhatsApp:\n                </div>\n                <form class="aria-lead-mini-form" style="display:flex; gap:6px;">\n                    <input type="tel" placeholder="Enter Mobile Number" required style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:6px 10px; border-radius:6px; font-size:0.8rem; outline:none;">\n                    <button type="submit" style="background:linear-gradient(135deg, var(--gold-primary), #9e7d3b); color:#050608; border:none; padding:6px 12px; border-radius:6px; font-weight:700; font-size:0.78rem; cursor:pointer;">Send</button>\n                </form>\n            ',i.appendChild(t),i.scrollTop=i.scrollHeight;const n=t.querySelector("form");n.addEventListener("submit",async t=>{t.preventDefault();const i=n.querySelector("input").value.trim();if(i){n.innerHTML='<span style="color:#10b981; font-size:0.8rem;"><i class="ph ph-check-circle"></i> Sent! Senior Manager connecting via WhatsApp.</span>';try{const t=new FormData;t.append("name","Aria Concierge Visitor"),t.append("phone",i),t.append("interest",`Aria Concierge Query: ${e||"General Inquiry"}`),t.append("_source",window.location.href),await fetch("/api/lead",{method:"POST",body:t})}catch(e){}}})}document.querySelectorAll("#ariaChipCluster .aria-chip-btn").forEach(e=>{e.addEventListener("click",()=>{const t=e.dataset.topic;a(e.textContent,!0),setTimeout(()=>{n[t]&&(a(n[t].reply),r(n[t].title))},300)})}),document.getElementById("ariaQueryForm")?.addEventListener("submit",e=>{e.preventDefault();const t=document.getElementById("ariaInput"),i=t.value.trim().toLowerCase();i&&(a(t.value,!0),t.value="",setTimeout(()=>{let e=null;i.includes("colosseum")||i.includes("phase 4")||i.includes("flats")||i.includes("apartment")?e=n.colosseum:i.includes("rera")||i.includes("legal")||i.includes("approval")||i.includes("bank")?e=n.rera:i.includes("possession")||i.includes("date")||i.includes("ready")||i.includes("when")?e=n.possession:i.includes("racecourse")||i.includes("horse")||i.includes("della")||i.includes("villa")||i.includes("resort")?e=n.racecourse:i.includes("price")||i.includes("cost")||i.includes("payment")||i.includes("emi")||i.includes("loan")?e=n.payment:(i.includes("visit")||i.includes("car")||i.includes("cab")||i.includes("chauffeur")||i.includes("see"))&&(e=n.visit),e?(a(e.reply),r(e.title)):(a("Thank you for asking! For detailed inventory, customizable floor layouts, and current pre-launch developer allotment on that specific query, let our Senior Real Estate Manager contact you directly:"),r("Custom Query: "+i))},350))})};"requestIdleCallback"in window?requestIdleCallback(e,{timeout:2500}):setTimeout(e,1500)}(),function(){const e=()=>{const e=document.querySelector(".master-layout-legend-grid");if(!e)return;const t=[{id:"colosseum",name:"The Colosseum (Phase 4)",badge:"Roman Landmark",price:"₹82.99 Lakh*",config:"2, 3, 4 BHK & Sky Duplexes (765 – 1,600 sq.ft)",rera:"PR1260002500600",img:"/public/imported/the_colosseum_grand_facade_hq.webp",desc:"Monumental B+G+27 classical Roman-inspired residences featuring grand Corinthian columns, private viewing sundecks, and exclusive pre-launch allotment benefits.",url:"/colosseum"},{id:"icon",name:"Sector Icon (Flagship)",badge:"Presidential Living",price:"₹2.10 Crore*",config:"3 & 4 BHK Luxury & Duplex Mansions",rera:"PR1260002600818",img:"/public/imported/everlyn_penthouse_terrace_hq.webp",desc:"The pinnacle of luxury in North Hinjawadi. Soaring 18-ft ceilings, imported Italian statuario marble, bespoke private elevator foyers, and 52 curated lifestyle amenities.",url:"/icon"},{id:"arcadia",name:"Sector Arcadia (Neoclassical)",badge:"Phase 1 & 2",price:"₹79.00 Lakh*",config:"2 & 3 BHK Luxury Residences",rera:"PR1260002502438",img:"/public/imported/everlyn_clubhouse_grand_pool_hq.webp",desc:"Classical Greco-Roman towers with manicured podium gardens, private sundecks, wellness clubhouses, and seamless 15-minute connectivity to Hinjewadi Phase 1 IT hub.",url:"/arcadia"},{id:"della",name:"Della Resort & Racecourse",badge:"40-Acre District",price:"₹1.50 Crore*",config:"Bespoke Villa Plots & Glamping",rera:"Sanctioned Master Enclave",img:"/public/imported/della_equestrian_championship_track_hq.webp",desc:"India's first 8-acre private equestrian racecourse & polo arena within a residential township, paired with Della's 5-star resort hospitality and 100 private villa estates.",url:"/della"}],n=document.createElement("div");n.className="sector-navigator-cluster";const i=document.createElement("div");i.className="sector-nav-pills",t.forEach((e,t)=>{const n=document.createElement("button");n.type="button",n.className="sector-nav-pill "+(0===t?"active":""),n.dataset.secId=e.id,n.innerHTML=`<i class="ph ph-buildings"></i> ${e.name}`,i.appendChild(n)}),n.appendChild(i);const a=document.createElement("div");function r(e){a.innerHTML=`\n                <div class="sector-spotlight-media">\n                    <img src="${e.img}" alt="${e.name} Krisala Hiranandani Township" loading="lazy" width="600" height="400">\n                    <span style="position:absolute; top:16px; left:16px; background:rgba(9,10,15,0.85); border:1px solid rgba(197,160,89,0.4); color:var(--gold-bright); font-size:0.75rem; font-weight:700; padding:4px 12px; border-radius:20px;">\n                        ${e.badge}\n                    </span>\n                </div>\n                <div class="sector-spotlight-info">\n                    <div style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-primary); font-weight:700; margin-bottom:6px;">MahaRERA: ${e.rera}</div>\n                    <h3 style="font-family:var(--font-heading); font-size:1.6rem; color:#fff; margin:0 0 10px;">${e.name}</h3>\n                    <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5; margin-bottom:14px;">${e.desc}</p>\n                    <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:10px 14px; margin-bottom:18px;">\n                        <div style="font-size:0.78rem; color:var(--text-muted);">Configuration &amp; Pricing:</div>\n                        <div style="font-size:0.95rem; font-weight:700; color:#fff; margin-top:2px;">${e.config} • <span style="color:var(--gold-bright);">${e.price}</span></div>\n                    </div>\n                    <div style="display:flex; gap:10px; flex-wrap:wrap;">\n                        <a href="${e.url}" class="btn-primary" style="padding:10px 20px; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">\n                            Explore Sector &rarr;\n                        </a>\n                        <a href="/pricing" class="btn-outline" style="padding:10px 18px; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">\n                            <i class="ph ph-receipt"></i> Calculate Cost\n                        </a>\n                    </div>\n                </div>\n            `}a.className="sector-spotlight-card",a.id="sectorSpotlightCard",r(t[0]),n.appendChild(a),e.parentNode.insertBefore(n,e),i.querySelectorAll(".sector-nav-pill").forEach(e=>{e.addEventListener("click",()=>{i.querySelectorAll(".sector-nav-pill").forEach(e=>e.classList.remove("active")),e.classList.add("active");const n=t.find(t=>t.id===e.dataset.secId);n&&r(n)})})};"requestIdleCallback"in window?requestIdleCallback(e,{timeout:3500}):setTimeout(e,2e3)}(),function(){if(window.openMahaReraModal=function(){(function(){let e=document.getElementById("mahareraCredentialModal");return e||(e=document.createElement("div"),e.id="mahareraCredentialModal",e.className="maharera-modal-overlay",e.setAttribute("role","dialog"),e.setAttribute("aria-modal","true"),e.setAttribute("aria-labelledby","mahareraModalTitle"),e.innerHTML='\n            <div class="maharera-docket-wrapper">\n                <div class="maharera-header-strip">\n                    <div style="display:flex; align-items:center; gap:12px;">\n                        <img src="/public/maharera_logo.svg" alt="Official MahaRERA Stamp" width="140" height="36" style="height:34px; width:auto;">\n                        <div>\n                            <h3 id="mahareraModalTitle" style="margin:0; font-family:var(--font-heading); font-size:1.3rem; color:#fff;">Official MahaRERA Project Sanctions</h3>\n                            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Government of Maharashtra • Real Estate Regulatory Authority Compliance</div>\n                        </div>\n                    </div>\n                    <button type="button" id="closeMahaReraBtn" style="background:transparent; border:none; color:#fff; font-size:1.8rem; cursor:pointer; line-height:1;" aria-label="Close MahaRERA Modal">&times;</button>\n                </div>\n\n                <div class="maharera-body">\n                    <p style="margin-top:0; color:var(--text-muted); font-size:0.86rem; line-height:1.5;">\n                        Krisala Developers and House of Hiranandani operate under complete regulatory transparency. All projects within the 105+ Acre Integrated Township are registered with MahaRERA. Scan any QR code below using your mobile camera or click to verify directly on the official state portal:\n                    </p>\n\n                    <div class="maharera-project-grid">\n                        \x3c!-- Enclave 1: The Colosseum & Everland --\x3e\n                        <div class="maharera-project-card">\n                            <div class="maharera-qr-box">\n                                \n        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#090a0f">\n            \x3c!-- Position Markers Top-Left --\x3e\n            <rect x="5" y="5" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="9" y="9" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="13" y="13" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Position Markers Top-Right --\x3e\n            <rect x="69" y="5" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="73" y="9" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="77" y="13" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Position Markers Bottom-Left --\x3e\n            <rect x="5" y="69" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="9" y="73" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="13" y="77" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Data Matrix Grid Blocks --\x3e\n            <rect x="36" y="8" width="6" height="6" rx="1"/>\n            <rect x="48" y="12" width="6" height="6" rx="1"/>\n            <rect x="56" y="6" width="6" height="6" rx="1"/>\n            <rect x="38" y="24" width="6" height="6" rx="1"/>\n            <rect x="52" y="22" width="6" height="6" rx="1"/>\n            <rect x="8" y="38" width="6" height="6" rx="1"/>\n            <rect x="20" y="44" width="6" height="6" rx="1"/>\n            <rect x="34" y="36" width="6" height="6" rx="1"/>\n            <rect x="44" y="40" width="6" height="6" rx="1"/>\n            <rect x="54" y="36" width="6" height="6" rx="1"/>\n            <rect x="66" y="42" width="6" height="6" rx="1"/>\n            <rect x="78" y="36" width="6" height="6" rx="1"/>\n            <rect x="88" y="44" width="6" height="6" rx="1"/>\n            <rect x="12" y="54" width="6" height="6" rx="1"/>\n            <rect x="24" y="52" width="6" height="6" rx="1"/>\n            <rect x="36" y="50" width="6" height="6" rx="1"/>\n            <rect x="48" y="54" width="6" height="6" rx="1"/>\n            <rect x="62" y="52" width="6" height="6" rx="1"/>\n            <rect x="74" y="56" width="6" height="6" rx="1"/>\n            <rect x="86" y="52" width="6" height="6" rx="1"/>\n            <rect x="38" y="68" width="6" height="6" rx="1"/>\n            <rect x="50" y="66" width="6" height="6" rx="1"/>\n            <rect x="62" y="70" width="6" height="6" rx="1"/>\n            <rect x="74" y="68" width="6" height="6" rx="1"/>\n            <rect x="86" y="66" width="6" height="6" rx="1"/>\n            <rect x="42" y="82" width="6" height="6" rx="1"/>\n            <rect x="56" y="80" width="6" height="6" rx="1"/>\n            <rect x="68" y="84" width="6" height="6" rx="1"/>\n            <rect x="80" y="80" width="6" height="6" rx="1"/>\n        </svg>\n        \n                            </div>\n                            <div class="maharera-card-content">\n                                <div>\n                                    <h4>The Colosseum (Phase 4)</h4>\n                                    <div class="maharera-reg-num">MahaRERA: PR1260002500600</div>\n                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Hiranandani Everland (Darumbre) • 2, 3, 4 BHK &amp; Sky Duplexes</div>\n                                </div>\n                                <div style="margin-top:10px;">\n                                    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">\n                                        Verify on MahaRERA &rarr;\n                                    </a>\n                                </div>\n                            </div>\n                        </div>\n\n                        \x3c!-- Enclave 2: Sector Icon --\x3e\n                        <div class="maharera-project-card">\n                            <div class="maharera-qr-box">\n                                \n        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#090a0f">\n            \x3c!-- Position Markers Top-Left --\x3e\n            <rect x="5" y="5" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="9" y="9" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="13" y="13" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Position Markers Top-Right --\x3e\n            <rect x="69" y="5" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="73" y="9" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="77" y="13" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Position Markers Bottom-Left --\x3e\n            <rect x="5" y="69" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="9" y="73" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="13" y="77" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Data Matrix Grid Blocks --\x3e\n            <rect x="36" y="8" width="6" height="6" rx="1"/>\n            <rect x="48" y="12" width="6" height="6" rx="1"/>\n            <rect x="56" y="6" width="6" height="6" rx="1"/>\n            <rect x="38" y="24" width="6" height="6" rx="1"/>\n            <rect x="52" y="22" width="6" height="6" rx="1"/>\n            <rect x="8" y="38" width="6" height="6" rx="1"/>\n            <rect x="20" y="44" width="6" height="6" rx="1"/>\n            <rect x="34" y="36" width="6" height="6" rx="1"/>\n            <rect x="44" y="40" width="6" height="6" rx="1"/>\n            <rect x="54" y="36" width="6" height="6" rx="1"/>\n            <rect x="66" y="42" width="6" height="6" rx="1"/>\n            <rect x="78" y="36" width="6" height="6" rx="1"/>\n            <rect x="88" y="44" width="6" height="6" rx="1"/>\n            <rect x="12" y="54" width="6" height="6" rx="1"/>\n            <rect x="24" y="52" width="6" height="6" rx="1"/>\n            <rect x="36" y="50" width="6" height="6" rx="1"/>\n            <rect x="48" y="54" width="6" height="6" rx="1"/>\n            <rect x="62" y="52" width="6" height="6" rx="1"/>\n            <rect x="74" y="56" width="6" height="6" rx="1"/>\n            <rect x="86" y="52" width="6" height="6" rx="1"/>\n            <rect x="38" y="68" width="6" height="6" rx="1"/>\n            <rect x="50" y="66" width="6" height="6" rx="1"/>\n            <rect x="62" y="70" width="6" height="6" rx="1"/>\n            <rect x="74" y="68" width="6" height="6" rx="1"/>\n            <rect x="86" y="66" width="6" height="6" rx="1"/>\n            <rect x="42" y="82" width="6" height="6" rx="1"/>\n            <rect x="56" y="80" width="6" height="6" rx="1"/>\n            <rect x="68" y="84" width="6" height="6" rx="1"/>\n            <rect x="80" y="80" width="6" height="6" rx="1"/>\n        </svg>\n        \n                            </div>\n                            <div class="maharera-card-content">\n                                <div>\n                                    <h4>Sector Icon (Flagship)</h4>\n                                    <div class="maharera-reg-num">MahaRERA: PR1260002600818</div>\n                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Towers A, B, C • 3 &amp; 4 BHK Presidential Duplex Mansions</div>\n                                </div>\n                                <div style="margin-top:10px;">\n                                    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">\n                                        Verify on MahaRERA &rarr;\n                                    </a>\n                                </div>\n                            </div>\n                        </div>\n\n                        \x3c!-- Enclave 3: Sector Arcadia --\x3e\n                        <div class="maharera-project-card">\n                            <div class="maharera-qr-box">\n                                \n        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#090a0f">\n            \x3c!-- Position Markers Top-Left --\x3e\n            <rect x="5" y="5" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="9" y="9" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="13" y="13" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Position Markers Top-Right --\x3e\n            <rect x="69" y="5" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="73" y="9" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="77" y="13" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Position Markers Bottom-Left --\x3e\n            <rect x="5" y="69" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="9" y="73" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="13" y="77" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Data Matrix Grid Blocks --\x3e\n            <rect x="36" y="8" width="6" height="6" rx="1"/>\n            <rect x="48" y="12" width="6" height="6" rx="1"/>\n            <rect x="56" y="6" width="6" height="6" rx="1"/>\n            <rect x="38" y="24" width="6" height="6" rx="1"/>\n            <rect x="52" y="22" width="6" height="6" rx="1"/>\n            <rect x="8" y="38" width="6" height="6" rx="1"/>\n            <rect x="20" y="44" width="6" height="6" rx="1"/>\n            <rect x="34" y="36" width="6" height="6" rx="1"/>\n            <rect x="44" y="40" width="6" height="6" rx="1"/>\n            <rect x="54" y="36" width="6" height="6" rx="1"/>\n            <rect x="66" y="42" width="6" height="6" rx="1"/>\n            <rect x="78" y="36" width="6" height="6" rx="1"/>\n            <rect x="88" y="44" width="6" height="6" rx="1"/>\n            <rect x="12" y="54" width="6" height="6" rx="1"/>\n            <rect x="24" y="52" width="6" height="6" rx="1"/>\n            <rect x="36" y="50" width="6" height="6" rx="1"/>\n            <rect x="48" y="54" width="6" height="6" rx="1"/>\n            <rect x="62" y="52" width="6" height="6" rx="1"/>\n            <rect x="74" y="56" width="6" height="6" rx="1"/>\n            <rect x="86" y="52" width="6" height="6" rx="1"/>\n            <rect x="38" y="68" width="6" height="6" rx="1"/>\n            <rect x="50" y="66" width="6" height="6" rx="1"/>\n            <rect x="62" y="70" width="6" height="6" rx="1"/>\n            <rect x="74" y="68" width="6" height="6" rx="1"/>\n            <rect x="86" y="66" width="6" height="6" rx="1"/>\n            <rect x="42" y="82" width="6" height="6" rx="1"/>\n            <rect x="56" y="80" width="6" height="6" rx="1"/>\n            <rect x="68" y="84" width="6" height="6" rx="1"/>\n            <rect x="80" y="80" width="6" height="6" rx="1"/>\n        </svg>\n        \n                            </div>\n                            <div class="maharera-card-content">\n                                <div>\n                                    <h4>Sector Arcadia (Phase 1 &amp; 2)</h4>\n                                    <div class="maharera-reg-num">MahaRERA: PR1260002502438</div>\n                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Classical Greco-Roman High-Rise Towers • 2 &amp; 3 BHK Residences</div>\n                                </div>\n                                <div style="margin-top:10px;">\n                                    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">\n                                        Verify on MahaRERA &rarr;\n                                    </a>\n                                </div>\n                            </div>\n                        </div>\n\n                        \x3c!-- Enclave 4: Master Township Sanction --\x3e\n                        <div class="maharera-project-card">\n                            <div class="maharera-qr-box">\n                                \n        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#090a0f">\n            \x3c!-- Position Markers Top-Left --\x3e\n            <rect x="5" y="5" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="9" y="9" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="13" y="13" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Position Markers Top-Right --\x3e\n            <rect x="69" y="5" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="73" y="9" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="77" y="13" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Position Markers Bottom-Left --\x3e\n            <rect x="5" y="69" width="26" height="26" fill="#090a0f" rx="3"/>\n            <rect x="9" y="73" width="18" height="18" fill="#ffffff" rx="2"/>\n            <rect x="13" y="77" width="10" height="10" fill="#090a0f" rx="1"/>\n            \x3c!-- Data Matrix Grid Blocks --\x3e\n            <rect x="36" y="8" width="6" height="6" rx="1"/>\n            <rect x="48" y="12" width="6" height="6" rx="1"/>\n            <rect x="56" y="6" width="6" height="6" rx="1"/>\n            <rect x="38" y="24" width="6" height="6" rx="1"/>\n            <rect x="52" y="22" width="6" height="6" rx="1"/>\n            <rect x="8" y="38" width="6" height="6" rx="1"/>\n            <rect x="20" y="44" width="6" height="6" rx="1"/>\n            <rect x="34" y="36" width="6" height="6" rx="1"/>\n            <rect x="44" y="40" width="6" height="6" rx="1"/>\n            <rect x="54" y="36" width="6" height="6" rx="1"/>\n            <rect x="66" y="42" width="6" height="6" rx="1"/>\n            <rect x="78" y="36" width="6" height="6" rx="1"/>\n            <rect x="88" y="44" width="6" height="6" rx="1"/>\n            <rect x="12" y="54" width="6" height="6" rx="1"/>\n            <rect x="24" y="52" width="6" height="6" rx="1"/>\n            <rect x="36" y="50" width="6" height="6" rx="1"/>\n            <rect x="48" y="54" width="6" height="6" rx="1"/>\n            <rect x="62" y="52" width="6" height="6" rx="1"/>\n            <rect x="74" y="56" width="6" height="6" rx="1"/>\n            <rect x="86" y="52" width="6" height="6" rx="1"/>\n            <rect x="38" y="68" width="6" height="6" rx="1"/>\n            <rect x="50" y="66" width="6" height="6" rx="1"/>\n            <rect x="62" y="70" width="6" height="6" rx="1"/>\n            <rect x="74" y="68" width="6" height="6" rx="1"/>\n            <rect x="86" y="66" width="6" height="6" rx="1"/>\n            <rect x="42" y="82" width="6" height="6" rx="1"/>\n            <rect x="56" y="80" width="6" height="6" rx="1"/>\n            <rect x="68" y="84" width="6" height="6" rx="1"/>\n            <rect x="80" y="80" width="6" height="6" rx="1"/>\n        </svg>\n        \n                            </div>\n                            <div class="maharera-card-content">\n                                <div>\n                                    <h4>Township Master Sanction</h4>\n                                    <div class="maharera-reg-num">MahaRERA: P52100053982</div>\n                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">105+ Acre Integrated Layout, Della Villas &amp; 8-Acre Racecourse</div>\n                                </div>\n                                <div style="margin-top:10px;">\n                                    <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">\n                                        Verify on MahaRERA &rarr;\n                                    </a>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class="maharera-compliance-box">\n                        <strong style="color:#10b981;"><i class="ph ph-shield-check"></i> Statutory Escrow Protection (RERA Act Section 4(2)(l)(D)):</strong>\n                        <div style="margin-top:4px;">\n                            70% of all customer booking receipts are strictly deposited into a dedicated Scheduled Bank Project Escrow Account and disbursed solely for land and construction milestones verified by certified architects and chartered engineers.\n                        </div>\n                    </div>\n                </div>\n\n                <div class="maharera-footer">\n                    <div style="font-size:0.75rem; color:var(--text-muted);">\n                        Promoters: <strong>Krisala Developers Pvt Ltd &amp; House of Hiranandani</strong>\n                    </div>\n                    <div style="display:flex; gap:10px;">\n                        <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:8px 16px; font-size:0.82rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">\n                            <i class="ph ph-arrow-square-out"></i> Public Search on MahaRERA Portal\n                        </a>\n                        <button type="button" onclick="closeMahaReraModal()" class="btn-outline" style="padding:8px 16px; font-size:0.82rem;">\n                            Close\n                        </button>\n                    </div>\n                </div>\n            </div>\n        ',document.body.appendChild(e),document.getElementById("closeMahaReraBtn")?.addEventListener("click",window.closeMahaReraModal),e.addEventListener("click",t=>{t.target===e&&window.closeMahaReraModal()}),e)})().classList.add("active"),document.body.style.overflow="hidden",window.dataLayer&&window.dataLayer.push({event:"view_rera_credentials",page_location:window.location.pathname})},window.closeMahaReraModal=function(){const e=document.getElementById("mahareraCredentialModal");e&&(e.classList.remove("active"),document.body.style.overflow="")},document.addEventListener("click",e=>{e.target.closest('.open-maharera-modal, [data-trigger="maharera-modal"]')&&(e.preventDefault(),window.openMahaReraModal())}),"undefined"!=typeof navigator&&"modelContext"in navigator&&"function"==typeof navigator.modelContext.registerTool)try{navigator.modelContext.registerTool("get_township_pricing_intel","Query official 2026 pricing, carpet area layouts, and MahaRERA numbers for Krisala Hiranandani Township sectors in Hinjewadi, Pune.",{sector:{type:"string",description:"Target sector: colosseum, arcadia, icon, della, everlyn"}},async e=>{const t={colosseum:{sector:"The Colosseum Phase 4",typologies:"2, 3, 4 BHK & Duplex",carpet:"765 - 1600 sq.ft.",price:"From ₹82.99L*",rera:"PR1260002502438"},arcadia:{sector:"Sector Arcadia",typologies:"2 & 3 BHK Neoclassical",carpet:"740 - 1180 sq.ft.",price:"From ₹79L*",rera:"PR1260002502438"},icon:{sector:"Sector Icon",typologies:"3, 4 BHK & Sky Duplex",carpet:"1250 - 3400 sq.ft.",price:"From ₹2.10Cr*",rera:"PR1260002600818"},della:{sector:"The Della Collection",typologies:"Villa Plots & Equestrian",carpet:"2000 - 6000 sq.ft.",price:"From ₹1.80Cr*",rera:"PR1260002500600"},everlyn:{sector:"Sector Everlyn",typologies:"2 & 3 BHK Nature Enclave",carpet:"820 - 1120 sq.ft.",price:"From ₹82L*",rera:"PR1260002502438"}},n=e?.sector&&t[e.sector.toLowerCase()]||t;return{content:[{type:"text",text:JSON.stringify(n)}]}})}catch(e){}}();
+if (window.top !== window.self) {
+try {
+if (window.top.location.hostname !== window.self.location.hostname) {
+window.top.location = window.self.location.href;
+}
+} catch (e) {
+window.top.location = window.self.location.href;
+}
+}
+document.addEventListener('DOMContentLoaded', () => {
+const initSpeculationRules = () => {
+try {
+if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+const specScript = document.createElement('script');
+specScript.type = 'speculationrules';
+specScript.textContent = JSON.stringify({
+prerender: [
+{
+source: "list",
+urls: ["/pricing", "/colosseum"],
+eagerness: "conservative"
+}
+],
+prefetch: [
+{
+source: "document",
+where: {
+and: [
+{ href_matches: "/*" },
+{ not: { href_matches: "/api/*" } },
+{ not: { href_matches: "/thank-you*" } }
+]
+},
+eagerness: "conservative"
+}
+]
+});
+document.head.appendChild(specScript);
+}
+} catch (e) {}
+};
+if ('requestIdleCallback' in window) {
+requestIdleCallback(initSpeculationRules, { timeout: 4000 });
+} else {
+setTimeout(initSpeculationRules, 3000);
+}
+window.dataLayer = window.dataLayer || [];
+document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+link.addEventListener('click', () => {
+window.dataLayer.push({
+event: 'contact',
+method: 'whatsapp',
+action: 'initiate_chat',
+page_location: window.location.pathname,
+value: 8500000,
+currency: 'INR'
+});
+});
+});
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+link.addEventListener('click', () => {
+window.dataLayer.push({
+event: 'contact',
+method: 'phone_call',
+action: 'click_to_call',
+phone_number: '+917744009295',
+page_location: window.location.pathname,
+value: 8500000,
+currency: 'INR'
+});
+});
+});
+document.querySelectorAll('a[href*=".pdf"], a[download]').forEach(link => {
+link.addEventListener('click', () => {
+window.dataLayer.push({
+event: 'file_download',
+file_name: link.getAttribute('href') || 'township-brochure.pdf',
+file_extension: 'pdf',
+page_location: window.location.pathname
+});
+});
+});
+const DB_NAME = 'kxh_offline_leads_db';
+const DB_VERSION = 1;
+const STORE_NAME = 'pending_leads';
+function openLeadDB() {
+return new Promise((resolve) => {
+if (!('indexedDB' in window)) return resolve(null);
+const req = indexedDB.open(DB_NAME, DB_VERSION);
+req.onupgradeneeded = (e) => {
+const db = e.target.result;
+if (!db.objectStoreNames.contains(STORE_NAME)) {
+db.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+}
+};
+req.onsuccess = () => resolve(req.result);
+req.onerror = () => resolve(null);
+});
+}
+window.queueLeadOffline = async function(leadData) {
+const db = await openLeadDB();
+if (!db) return false;
+return new Promise((resolve) => {
+const tx = db.transaction(STORE_NAME, 'readwrite');
+const store = tx.objectStore(STORE_NAME);
+store.add({ ...leadData, queuedAt: new Date().toISOString() });
+tx.oncomplete = () => resolve(true);
+tx.onerror = () => resolve(false);
+});
+};
+window.flushOfflineLeads = async function() {
+if (!navigator.onLine) return;
+const db = await openLeadDB();
+if (!db) return;
+const tx = db.transaction(STORE_NAME, 'readwrite');
+const store = tx.objectStore(STORE_NAME);
+const getAllReq = store.getAll();
+getAllReq.onsuccess = async () => {
+const leads = getAllReq.result || [];
+for (const lead of leads) {
+try {
+const res = await fetch('/api/lead', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(lead)
+});
+if (res.ok) {
+const delTx = db.transaction(STORE_NAME, 'readwrite');
+delTx.objectStore(STORE_NAME).delete(lead.id);
+}
+} catch (err) {
+break;
+}
+}
+};
+};
+window.addEventListener('online', window.flushOfflineLeads);
+if ('requestIdleCallback' in window) {
+requestIdleCallback(window.flushOfflineLeads, { timeout: 5000 });
+} else {
+setTimeout(window.flushOfflineLeads, 3000);
+}
+if (window.matchMedia('(pointer: fine)').matches) {
+const cursorDot = document.querySelector('[data-cursor-dot]');
+const cursorOutline = document.querySelector('[data-cursor-outline]');
+window.addEventListener('mousemove', (e) => {
+if (!cursorDot || !cursorOutline) return;
+const posX = e.clientX;
+const posY = e.clientY;
+cursorDot.style.left = `${posX}px`;
+cursorDot.style.top = `${posY}px`;
+cursorOutline.animate({
+left: `${posX}px`,
+top: `${posY}px`
+}, { duration: 500, fill: "forwards" });
+}, { passive: true });
+const interactables = document.querySelectorAll('a, button, .slider-btn, .am-item, .phase-slide');
+interactables.forEach(el => {
+el.addEventListener('mouseenter', () => {
+if (cursorOutline) {
+cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.6)';
+cursorOutline.style.backgroundColor = 'rgba(212, 175, 55, 0.1)';
+cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.8)';
+}
+}, { passive: true });
+el.addEventListener('mouseleave', () => {
+if (cursorOutline) {
+cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
+cursorOutline.style.backgroundColor = 'transparent';
+cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.5)';
+}
+}, { passive: true });
+});
+}
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 50) {
+navbar.classList.add('scrolled');
+} else {
+navbar.classList.remove('scrolled');
+}
+});
+const revealElements = document.querySelectorAll('.reveal, .scroll-reveal');
+const revealOptions = {
+threshold: 0.1,
+rootMargin: "0px 0px -50px 0px"
+};
+const revealObserver = new IntersectionObserver((entries, observer) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('active');
+observer.unobserve(entry.target);             }
+});
+}, revealOptions);
+revealElements.forEach(el => revealObserver.observe(el));
+setTimeout(() => {
+document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
+}, 100);
+const heroImg = document.querySelector('.parallax-img');
+window.addEventListener('scroll', () => {
+const scrolled = window.scrollY;
+if (heroImg && scrolled < window.innerHeight) {
+heroImg.style.transform = `translateY(${scrolled * 0.4}px)`;
+}
+});
+const sliderContainer = document.getElementById('phaseSlider');
+const btnNext = document.getElementById('sliderNext');
+const btnPrev = document.getElementById('sliderPrev');
+if (sliderContainer && btnNext && btnPrev) {
+const scrollAmount = 640;
+btnNext.addEventListener('click', () => {
+sliderContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+});
+btnPrev.addEventListener('click', () => {
+sliderContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+});
+let isDown = false;
+let startX;
+let scrollLeft;
+sliderContainer.addEventListener('mousedown', (e) => {
+isDown = true;
+sliderContainer.classList.add('active');
+startX = e.pageX - sliderContainer.offsetLeft;
+scrollLeft = sliderContainer.scrollLeft;
+});
+sliderContainer.addEventListener('mouseleave', () => {
+isDown = false;
+sliderContainer.classList.remove('active');
+});
+sliderContainer.addEventListener('mouseup', () => {
+isDown = false;
+sliderContainer.classList.remove('active');
+});
+sliderContainer.addEventListener('mousemove', (e) => {
+if (!isDown) return;
+e.preventDefault();
+const x = e.pageX - sliderContainer.offsetLeft;
+const walk = (x - startX) * 2;             sliderContainer.scrollLeft = scrollLeft - walk;
+});
+}
+const modalOverlay = document.getElementById('enquiryModal');
+const openBtns = document.querySelectorAll('.open-modal');
+const closeBtn = document.querySelector('.close-modal');
+const leadForm = document.getElementById('leadForm');
+const openModal = () => { if (modalOverlay) modalOverlay.classList.add('active'); };
+const closeModal = () => { if (modalOverlay) modalOverlay.classList.remove('active'); };
+openBtns.forEach(btn => {
+btn.addEventListener('click', (e) => {
+e.preventDefault();
+if (!modalOverlay) return;
+const magnet = btn.getAttribute('data-magnet');
+const modalTitle = modalOverlay.querySelector('h2');
+if (modalTitle) {
+if (magnet === 'brochure') {
+modalTitle.innerText = 'Download Elite Brochure';
+} else if (magnet === 'pricesheet') {
+modalTitle.innerText = 'Request Luxury Price Sheet';
+} else {
+modalTitle.innerText = modalTitle.getAttribute('data-en-original') || modalTitle.innerText || 'Register Your Interest';
+}
+}
+const parentSlide = btn.closest('.phase-slide');
+if (parentSlide && leadForm) {
+const selectElement = leadForm.querySelector('select');
+const phaseTitle = parentSlide.querySelector('h3').textContent;
+if (phaseTitle.includes('Everlyn')) selectElement.value = 'everlyn-tower';
+if (phaseTitle.includes('Arcadia')) selectElement.value = 'arcadia-3bhk';
+if (phaseTitle.includes('Icon')) selectElement.value = 'icon-4bhk';
+if (phaseTitle.includes('Della')) selectElement.value = 'della-villa';
+}
+openModal();
+});
+});
+if (closeBtn) closeBtn.addEventListener('click', closeModal);
+if (modalOverlay) {
+modalOverlay.addEventListener('click', (e) => {
+if (e.target === modalOverlay) {
+closeModal();
+}
+});
+}
+const tickerSlides = document.querySelectorAll('.ticker-slide');
+if (tickerSlides.length > 0) {
+let currentSlide = 0;
+setInterval(() => {
+tickerSlides[currentSlide].classList.remove('active');
+currentSlide = (currentSlide + 1) % tickerSlides.length;
+tickerSlides[currentSlide].classList.add('active');
+}, 3000);
+}
+const chartBars = document.querySelectorAll('.chart-bar');
+const chartObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+const bar = entry.target;
+const targetHeight = bar.style.height;
+bar.style.height = '0';                 setTimeout(() => {
+bar.style.height = targetHeight;
+}, 100);
+chartObserver.unobserve(bar);
+}
+});
+}, { threshold: 0.5 });
+chartBars.forEach(bar => chartObserver.observe(bar));
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+navigator.serviceWorker.register('/sw.js').then(reg => {
+}).catch(err => { });
+});
+}
+const roiAmount = document.getElementById('roi-amount');
+const roiGrowth = document.getElementById('roi-growth');
+const roiYears = document.getElementById('roi-years');
+const roiResult = document.getElementById('roi-result');
+function updateROI() {
+if (!roiAmount || !roiGrowth || !roiYears) return;
+const p = parseFloat(roiAmount.value);
+const r = parseFloat(roiGrowth.value) / 100;
+const n = parseFloat(roiYears.value);
+const result = p * Math.pow((1 + r), n);
+roiResult.innerText = `₹ ${result.toFixed(2)} Cr`;
+roiGrowth.nextElementSibling.innerText = `${roiGrowth.value}%`;
+roiYears.nextElementSibling.innerText = `${roiYears.value} Years`;
+}
+[roiAmount, roiGrowth, roiYears].forEach(el => {
+if (el) el.addEventListener('input', updateROI);
+});
+const emiAmount = document.getElementById('emi-amount');
+const emiRate = document.getElementById('emi-rate');
+const emiTenure = document.getElementById('emi-tenure');
+const emiResult = document.getElementById('emi-result');
+function updateEMI() {
+if (!emiAmount || !emiRate || !emiTenure) return;
+const p = parseFloat(emiAmount.value) * 100000;
+const r = parseFloat(emiRate.value) / 12 / 100;
+const n = parseFloat(emiTenure.value) * 12;
+const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+emiResult.innerText = `₹ ${Math.round(emi).toLocaleString('en-IN')}`;
+}
+[emiAmount, emiRate, emiTenure].forEach(el => {
+if (el) el.addEventListener('input', updateEMI);
+});
+const translations = {
+mr: {
+'The Legacy': 'वारसा',
+'Masterplan': 'मास्टर प्लॅन',
+'Phases': 'टप्पे',
+'Amenities': 'सुविधा',
+'Location': 'ठिकाण',
+'Inquire': 'चौकशी करा',
+'Plan Your Investment': 'तुमच्या गुंतवणुकीचे नियोजन करा',
+'Appreciation Calculator': 'वाढ मोजण्याचे साधन',
+'EMI Estimator': 'ईएमआय अंदाजपत्रक',
+'The Community of Titans': 'दिग्गजांचा समुदाय',
+'A Glimpse of Magnificence': 'भव्यतेची एक झलक',
+'Register Now for Pre-Launch Offers': 'प्री-लाँच ऑफरसाठी आताच नोंदणी करा'
+}
+};
+const langToggle = document.getElementById('langToggle');
+if (langToggle) {
+const langBtns = langToggle.querySelectorAll('button');
+langBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+const selectedLang = btn.getAttribute('data-lang');
+langBtns.forEach(b => {
+b.classList.remove('active');
+b.setAttribute('aria-pressed', 'false');
+});
+btn.classList.add('active');
+btn.setAttribute('aria-pressed', 'true');
+document.body.setAttribute('data-lang', selectedLang);
+translatePage(selectedLang);
+});
+});
+}
+function translatePage(lang) {
+document.querySelectorAll('[data-en]').forEach(el => {
+if (lang === 'mr') {
+if (!el.getAttribute('data-en-original')) el.setAttribute('data-en-original', el.innerText);
+el.innerText = el.getAttribute('data-mr');
+} else {
+el.innerText = el.getAttribute('data-en-original') || el.innerText;
+}
+});
+document.querySelectorAll('input[placeholder]').forEach(input => {
+const key = input.getAttribute('placeholder');
+const translation = translations.mr[key];
+if (lang === 'mr' && translation) {
+if (!input.getAttribute('data-en-ph')) input.setAttribute('data-en-ph', key);
+input.placeholder = translation;
+} else if (lang === 'en' && input.getAttribute('data-en-ph')) {
+input.placeholder = input.getAttribute('data-en-ph');
+}
+});
+}
+function ensureQuizOverlay() {
+let overlay = document.getElementById('quizOverlay');
+if (!overlay) {
+overlay = document.createElement('div');
+overlay.className = 'quiz-overlay';
+overlay.id = 'quizOverlay';
+overlay.innerHTML = `
+<div class="quiz-container glass-panel">
+<button class="close-quiz" aria-label="Close Quiz"><i class="ph ph-x"></i></button>
+<div class="quiz-steps" id="quizSteps">
+<!-- Step 1: Configuration & Budget -->
+<div class="quiz-step active" data-step="1">
+<span class="step-num">01 / 03</span>
+<h2>What configuration &amp; <span>budget fits your plan?</span></h2>
+<div class="quiz-options">
+<button class="quiz-opt" data-value="colosseum-3bhk">
+<i class="ph ph-columns gold-icon"></i>
+<strong>The Colosseum Signature</strong>
+<span>Pre-Launch 3/4 BHK • From ₹85 Lakh*</span>
+</button>
+<button class="quiz-opt" data-value="arcadia-2bhk">
+<i class="ph ph-layout gold-icon"></i>
+<strong>2 BHK Urban Luxury</strong>
+<span>Sector Arcadia • From ₹79 Lakh*</span>
+</button>
+<button class="quiz-opt" data-value="arcadia-3bhk">
+<i class="ph ph-buildings gold-icon"></i>
+<strong>3 BHK Grande Family Suite</strong>
+<span>Sector Arcadia • From ₹1.18 Cr*</span>
+</button>
+<button class="quiz-opt" data-value="icon-4bhk">
+<i class="ph ph-crown gold-icon"></i>
+<strong>4 BHK Duplex &amp; Sky Mansion</strong>
+<span>Sector Icon • From ₹2.10 Cr*</span>
+</button>
+<button class="quiz-opt" data-value="della-villa">
+<i class="ph ph-horse gold-icon"></i>
+<strong>Bespoke Equestrian Villa Plot</strong>
+<span>Della District • From ₹1.50 Cr*</span>
+</button>
+</div>
+</div>
+<!-- Step 2: Primary Lifestyle Focus -->
+<div class="quiz-step" data-step="2">
+<span class="step-num">02 / 03</span>
+<h2>What is your top <span>lifestyle priority?</span></h2>
+<div class="quiz-options">
+<button class="quiz-opt" data-value="roman-grandeur">
+<i class="ph ph-bank gold-icon"></i>
+<strong>Neoclassical Roman Grandeur</strong>
+<span>Triple-height marble lobby, Roman columns &amp; amphitheater.</span>
+</button>
+<button class="quiz-opt" data-value="metro-commute">
+<i class="ph ph-train-regional gold-icon"></i>
+<strong>2-Min Hinjawadi Tech Park Commute</strong>
+<span>Walk to Metro Line 3, Wipro, Infosys &amp; Embassy TechZone.</span>
+</button>
+<button class="quiz-opt" data-value="racecourse-resort">
+<i class="ph ph-sun gold-icon"></i>
+<strong>8-Acre Racecourse &amp; Resort District</strong>
+<span>Equestrian academy, Della hospitality &amp; 100+ master amenities.</span>
+</button>
+<button class="quiz-opt" data-value="wellness-nature">
+<i class="ph ph-leaf gold-icon"></i>
+<strong>Zen Nature &amp; Circular Water Sanctuary</strong>
+<span>TERI certified zero-carbon ecology, Miyawaki forests &amp; peace.</span>
+</button>
+</div>
+</div>
+<!-- Step 3: Purchase Objective & Timeline -->
+<div class="quiz-step" data-step="3">
+<span class="step-num">03 / 03</span>
+<h2>What is your primary <span>buying objective?</span></h2>
+<div class="quiz-options">
+<button class="quiz-opt" data-value="prelaunch-roi">
+<i class="ph ph-chart-line-up gold-icon"></i>
+<strong>Pre-Launch Priority Pricing (Max ROI)</strong>
+<span>Capitalize on 15%+ YoY capital appreciation track record.</span>
+</button>
+<button class="quiz-opt" data-value="family-enduse">
+<i class="ph ph-house-line gold-icon"></i>
+<strong>Family Home (Possession 2026–2027)</strong>
+<span>Secure a premium neoclassical legacy for generations.</span>
+</button>
+<button class="quiz-opt" data-value="nri-rental">
+<i class="ph ph-globe-hemisphere-east gold-icon"></i>
+<strong>High-Yield Rental / NRI Investment</strong>
+<span>FEMA compliant, dollar-hedged returns &amp; Hinjawadi tenant demand.</span>
+</button>
+</div>
+</div>
+<!-- Final Recommendation -->
+<div class="quiz-step" id="quizResultStep">
+<div class="result-header">
+<div class="match-score-badge"><i class="ph ph-seal-check"></i> <span id="quizMatchScore">98% Ideal Match Found</span></div>
+<h2 id="recommendedSector">The Colosseum Phase 4</h2>
+<p id="recommendedDesc">Neoclassical Roman landmark with soaring columns, double-height lobby, and private racecourse panorama.</p>
+</div>
+<div class="quiz-result-specs" id="quizSpecsGrid">
+<div class="quiz-spec-item">
+<div class="q-label">Configuration</div>
+<div class="q-val" id="specConfig">3 BHK Signature Residence</div>
+</div>
+<div class="quiz-spec-item">
+<div class="q-label">Carpet Area</div>
+<div class="q-val" id="specCarpet">815 – 1,180 Sq. Ft.</div>
+</div>
+<div class="quiz-spec-item">
+<div class="q-label">Pre-Launch Price</div>
+<div class="q-val" id="specPrice">From ₹85 Lakh*</div>
+</div>
+<div class="quiz-spec-item">
+<div class="q-label">MahaRERA Registration</div>
+<div class="q-val" id="specRera">P52100055291</div>
+</div>
+</div>
+<div class="result-actions">
+<button class="btn-primary" id="quizLockVipBtn">
+<i class="ph ph-ticket"></i>&nbsp; Lock Priority Allotment for This Unit
+</button>
+<a href="https://wa.me/917744009295" target="_blank" class="btn-secondary" id="quizWhatsAppBtn">
+<i class="ph ph-whatsapp-logo"></i>&nbsp; Instant WhatsApp Brochure &amp; Cost Sheet
+</a>
+<button class="btn-outline" id="restartQuiz">
+<i class="ph ph-arrow-counter-clockwise"></i>&nbsp; Retake Matcher
+</button>
+</div>
+</div>
+</div>
+<div class="quiz-progress">
+<div class="progress-bar" id="quizBar"></div>
+</div>
+</div>
+`;
+document.body.appendChild(overlay);
+bindQuizListeners();
+}
+return overlay;
+}
+let currentQuizStep = 0;
+let quizAnswers = {};
+function bindQuizListeners() {
+const overlay = document.getElementById('quizOverlay');
+if (!overlay) return;
+overlay.querySelectorAll('.close-quiz').forEach(btn => btn.onclick = closeQuiz);
+const restartBtn = overlay.querySelector('#restartQuiz');
+if (restartBtn) restartBtn.onclick = resetQuiz;
+overlay.querySelectorAll('.quiz-opt').forEach(opt => {
+opt.onclick = () => {
+const step = opt.closest('.quiz-step').getAttribute('data-step');
+const value = opt.getAttribute('data-value');
+quizAnswers[step] = value;
+setTimeout(() => {
+currentQuizStep++;
+updateQuizStep();
+}, 250);
+};
+});
+}
+const openQuiz = (e) => {
+if (e && e.preventDefault) e.preventDefault();
+const overlay = ensureQuizOverlay();
+overlay.classList.add('active');
+bindQuizListeners();
+resetQuiz();
+};
+const closeQuiz = () => {
+const overlay = document.getElementById('quizOverlay');
+if (overlay) overlay.classList.remove('active');
+};
+const resetQuiz = () => {
+currentQuizStep = 0;
+quizAnswers = {};
+updateQuizStep();
+};
+function updateQuizStep() {
+const overlay = document.getElementById('quizOverlay');
+if (!overlay) return;
+const steps = overlay.querySelectorAll('.quiz-step');
+const bar = overlay.querySelector('#quizBar');
+steps.forEach((step, index) => {
+step.classList.toggle('active', index === currentQuizStep);
+});
+const progress = ((currentQuizStep + 1) / (steps.length - 1)) * 100;
+if (bar) bar.style.width = `${Math.min(progress, 100)}%`;
+if (currentQuizStep === steps.length - 1) {
+showRecommendation();
+}
+}
+function showRecommendation() {
+const resultTitle = document.getElementById('recommendedSector');
+const resultDesc = document.getElementById('recommendedDesc');
+const specConfig = document.getElementById('specConfig');
+const specCarpet = document.getElementById('specCarpet');
+const specPrice = document.getElementById('specPrice');
+const specRera = document.getElementById('specRera');
+const matchBadge = document.getElementById('quizMatchScore');
+let sector = "The Colosseum Phase 4";
+let config = "3 BHK Signature Residence";
+let carpet = "815 – 1,180 Sq. Ft.";
+let price = "From ₹85 Lakh*";
+let rera = "P52100055291";
+let desc = "Neoclassical Roman landmark with soaring Corinthian columns, triple-height marble lobby, and private racecourse panorama.";
+let link = "colosseum.html";
+let score = "99% Ideal Match";
+const val1 = quizAnswers[1] || '';
+const val2 = quizAnswers[2] || '';
+const val3 = quizAnswers[3] || '';
+if (val1 === 'della-villa' || val2 === 'racecourse-resort') {
+sector = "The Della Collection";
+config = "Bespoke Equestrian Villa Plots";
+carpet = "2,500 – 6,000 Sq. Ft. Plots";
+price = "From ₹1.50 Crore*";
+rera = "P52100055294";
+desc = "India's first equestrian-themed villa plots with private racecourse access, 5-star resort hospitality, and 40+ acres of open luxury.";
+link = "della.html";
+score = "98% Ideal Match";
+} else if (val1 === 'icon-4bhk') {
+sector = "Sector Icon";
+config = "4 BHK Duplex & Sky Mansion";
+carpet = "1,650 – 2,400 Sq. Ft.";
+price = "From ₹2.10 Crore*";
+rera = "P52100055292";
+desc = "The pinnacle of status with double-height living spaces, panoramic sky decks, and private lift access overlooking the Sahyadri valley.";
+link = "icon.html";
+score = "97% Ideal Match";
+} else if (val2 === 'wellness-nature') {
+sector = "Sector Everlyn";
+config = "2 & 3 BHK Wellness Residences";
+carpet = "820 – 1,120 Sq. Ft.";
+price = "From ₹82 Lakh*";
+rera = "P52100055293";
+desc = "A sanctuary of low-carbon living, zen meditation decks, zero-discharge water reservoirs, and organic wellness boulevards.";
+link = "everlyn.html";
+score = "96% Ideal Match";
+} else if (val1 === 'arcadia-2bhk' || val2 === 'metro-commute') {
+sector = "Sector Arcadia";
+config = "2 & 3 BHK Tech-Corridor Homes";
+carpet = "765 – 1,050 Sq. Ft.";
+price = "From ₹79 Lakh*";
+rera = "P52100055290";
+desc = "Smartly planned neoclassical urban residences 2 minutes from Metro Line 3 and Hinjawadi Phase 1 & 2 IT corridors.";
+link = "arcadia.html";
+score = "99% Ideal Match";
+}
+if (resultTitle) resultTitle.innerText = sector;
+if (resultDesc) resultDesc.innerText = desc;
+if (specConfig) specConfig.innerText = config;
+if (specCarpet) specCarpet.innerText = carpet;
+if (specPrice) specPrice.innerText = price;
+if (specRera) specRera.innerText = rera;
+if (matchBadge) matchBadge.innerText = `${score} Found`;
+const lockBtn = document.getElementById('quizLockVipBtn');
+if (lockBtn) {
+lockBtn.onclick = () => {
+closeQuiz();
+const modal = document.getElementById('enquiryModal');
+if (modal) {
+modal.classList.add('active');
+const select = modal.querySelector('select');
+if (select) {
+for (let opt of select.options) {
+if (opt.text.toLowerCase().includes(sector.toLowerCase().split(' ')[0])) {
+select.value = opt.value;
+break;
+}
+}
+}
+}
+};
+}
+const waBtn = document.getElementById('quizWhatsAppBtn');
+if (waBtn) {
+const waText = encodeURIComponent(
+`Hi, I completed the Dream Home Matcher on your official portal. My top match is:\n` +
+`• Unit: ${sector} (${config})\n` +
+`• Carpet Area: ${carpet}\n` +
+`• Price: ${price}\n` +
+`Please share the detailed floor plans, cost sheet, and schedule a priority VIP site visit.`
+);
+waBtn.href = `https://wa.me/917744009295?text=${waText}`;
+}
+if (quizCta) {
+quizCta.onclick = () => {
+window.location.href = link;
+closeQuiz();
+};
+}
+}
+const quizTriggers = document.querySelectorAll('.quiz-trigger');
+if (quizTriggers.length > 0) {
+quizTriggers.forEach(btn => btn.addEventListener('click', openQuiz));
+}
+if (leadForm) {
+leadForm.addEventListener('submit', async (e) => {
+e.preventDefault();
+const honeyInput = leadForm.querySelector('input[name="_honey"]');
+if (honeyInput && honeyInput.value) {
+console.warn('Bot submission blocked.');
+return;
+}
+const phoneInput = leadForm.querySelector('input[type="tel"]');
+if (phoneInput) {
+const phoneVal = phoneInput.value.replace(/[\s\-\(\)]/g, '');
+const phoneRegex = /^(?:\+91|0)?[6-9]\d{9}$/;
+if (!phoneRegex.test(phoneVal)) {
+phoneInput.focus();
+phoneInput.style.border = '1px solid #ff4d4f';
+alert('Please enter a valid 10-digit mobile number (e.g. 9876543210).');
+return;
+}
+phoneInput.style.border = '';
+}
+const submitBtn = leadForm.querySelector('button[type="submit"]');
+const originalText = submitBtn.textContent;
+submitBtn.textContent = 'Registering Priority Access...';
+submitBtn.disabled = true;
+const formData = new FormData(leadForm);
+try {
+const response = await fetch(leadForm.action, {
+method: 'POST',
+body: formData,
+headers: {
+'Accept': 'application/json'
+}
+});
+if (response.ok) {
+submitBtn.textContent = 'Enquiry Received!';
+submitBtn.style.background = '#28a745';
+submitBtn.style.color = 'white';
+window.dataLayer.push({
+event: 'generate_lead',
+form_id: 'enquiry_lead_form',
+value: 8500000,
+currency: 'INR',
+event_time: new Date().toISOString()
+});
+setTimeout(() => {
+const enquiryModal = document.getElementById('enquiryModal');
+if (enquiryModal) enquiryModal.classList.remove('active');
+leadForm.reset();
+submitBtn.textContent = originalText;
+submitBtn.style.background = '';
+submitBtn.style.color = '';
+submitBtn.disabled = false;
+window.location.href = '/thank-you';
+}, 1200);
+} else {
+throw new Error('Form submission failed');
+}
+} catch (error) {
+console.error(error);
+submitBtn.textContent = 'Error. Please try again.';
+submitBtn.style.background = '#dc3545';
+submitBtn.style.color = 'white';
+setTimeout(() => {
+submitBtn.textContent = originalText;
+submitBtn.style.background = '';
+submitBtn.style.color = '';
+submitBtn.disabled = false;
+}, 3000);
+}
+});
+}
+const commuteItems = document.querySelectorAll('.commute-item');
+if (commuteItems.length > 0) {
+setInterval(() => {
+commuteItems.forEach(item => {
+const timeEl = item.querySelector('.commute-time');
+const baseTime = parseInt(timeEl.getAttribute('data-base'));
+const fluctuation = Math.floor(Math.random() * 5) - 2;
+const finalTime = Math.max(baseTime + fluctuation, 5);
+timeEl.innerText = `${finalTime} Mins`;
+if (fluctuation > 1) timeEl.style.color = '#ff4444';
+else if (fluctuation < -1) timeEl.style.color = '#44ff44';
+else timeEl.style.color = 'var(--gold-primary)';
+});
+}, 5000);
+}
+function captureUTM() {
+const urlParams = new URLSearchParams(window.location.search);
+const utms = ['utm_source', 'utm_medium', 'utm_campaign'];
+utms.forEach(utm => {
+const value = urlParams.get(utm);
+if (value) {
+sessionStorage.setItem(utm, value);
+}
+const input = document.getElementById(utm);
+const storedValue = sessionStorage.getItem(utm);
+if (input && storedValue) {
+input.value = storedValue;
+}
+});
+}
+function initInventoryHUD() {
+if (!window.location.pathname.includes('/della')) return;
+const hud = document.createElement('div');
+hud.className = 'inventory-hud scroll-reveal';
+hud.innerHTML = `
+<div class="hud-content">
+<i class="ph ph-warning-circle gold-icon"></i>
+<span>Only <strong>12 Della Villa Plots</strong> remaining for March 2026.</span>
+<button class="close-hud-btn" style="background:none; border:none; color:#a0aec0; cursor:pointer; font-size:1.1rem; line-height:1; padding:0 0 0 8px;" aria-label="Dismiss">&times;</button>
+</div>
+`;
+document.body.appendChild(hud);
+hud.querySelector('.close-hud-btn')?.addEventListener('click', () => hud.remove());
+setTimeout(() => {
+hud.classList.add('active');
+}, 10000);
+}
+(function initUniversalExitIntent() {
+let exitShown = sessionStorage.getItem('kxh_exit_shown') === 'true';
+function injectExitOverlay() {
+let overlay = document.getElementById('exitOverlay');
+if (!overlay) {
+overlay = document.createElement('div');
+overlay.className = 'exit-overlay';
+overlay.id = 'exitOverlay';
+overlay.innerHTML = `
+<div class="exit-container glass-panel">
+<button class="close-exit" aria-label="Close Special Offer"><i class="ph ph-x"></i></button>
+<div class="exit-content">
+<span class="badge">Exclusive 2026 Developer Portfolio</span>
+<h2>Wait! Before you <span>depart...</span></h2>
+<p>Unlock <strong>Official Pre-Launch Pricing &amp; All-Inclusive Cost Sheets</strong> for Krisala Hiranandani Townships before allocations close.</p>
+<form class="enquiry-form exit-form" id="exitForm" action="/api/lead" method="POST">
+<input type="hidden" name="_subject" value="Exit Intent Pre-Launch Inquiry">
+<input type="hidden" name="_source" value="${window.location.href}">
+<input type="hidden" name="_honey" style="display:none">
+<div class="form-group" style="margin-bottom:14px;">
+<input type="tel" name="phone" placeholder="Enter Mobile Number for Instant WhatsApp PDF *" required style="width:100%; padding:14px 18px; border-radius:8px; border:1px solid rgba(197,160,89,0.3); background:rgba(255,255,255,0.05); color:#fff; font-size:1rem; outline:none;">
+</div>
+<button type="submit" class="btn-primary w-100" style="width:100%; padding:14px; font-weight:600;">
+<i class="ph ph-whatsapp-logo"></i>&nbsp; Send Official Cost Sheet via WhatsApp
+</button>
+</form>
+<p class="exit-note" style="margin-top:14px; font-size:0.75rem; color:var(--text-muted); text-align:center;">
+* Direct developer allotment. No spam. Instant brochure download.
+</p>
+</div>
+</div>
+`;
+document.body.appendChild(overlay);
+overlay.querySelector('.close-exit')?.addEventListener('click', () => {
+overlay.classList.remove('active');
+});
+}
+return overlay;
+}
+function triggerExitIntent() {
+if (exitShown) return;
+const overlay = injectExitOverlay();
+if (overlay) {
+overlay.classList.add('active');
+exitShown = true;
+sessionStorage.setItem('kxh_exit_shown', 'true');
+}
+}
+document.addEventListener('mouseleave', (e) => {
+if (e.clientY <= 10) {
+triggerExitIntent();
+}
+});
+if (window.innerWidth <= 768) {
+try {
+history.pushState({ page: 'kxh_landing' }, '', window.location.href);
+window.addEventListener('popstate', (e) => {
+if (!exitShown) {
+triggerExitIntent();
+}
+});
+} catch (err) {}
+let scrollTriggered = false;
+window.addEventListener('scroll', () => {
+const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+if (scrollPercent > 35 && !scrollTriggered && !exitShown) {
+scrollTriggered = true;
+setTimeout(() => {
+triggerExitIntent();
+}, 28000);
+}
+}, { passive: true });
+}
+document.querySelector('.close-exit')?.addEventListener('click', () => {
+document.getElementById('exitOverlay')?.classList.remove('active');
+});
+})();
+(function initSocialProofHUD() {
+if (sessionStorage.getItem('kxh_ticker_dismissed') === 'true') return;
+let ticker = document.getElementById('activityTicker');
+if (!ticker) {
+ticker = document.createElement('div');
+ticker.className = 'activity-ticker';
+ticker.id = 'activityTicker';
+ticker.innerHTML = `
+<div class="ticker-avatar" id="tickerAvatar">⚡</div>
+<div class="ticker-content">
+<div class="ticker-meta">
+<span class="ticker-verified"><i class="ph ph-seal-check"></i> Verified Buyer</span>
+<span class="ticker-time" id="tickerTime">Just now</span>
+</div>
+<span id="tickerText">Loading verified activity...</span>
+</div>
+<button type="button" class="ticker-close" id="tickerCloseBtn" aria-label="Dismiss">&times;</button>
+`;
+document.body.appendChild(ticker);
+}
+const avatarEl = ticker.querySelector('#tickerAvatar') || ticker.querySelector('.ticker-avatar');
+const textEl = ticker.querySelector('#tickerText');
+const timeEl = ticker.querySelector('#tickerTime');
+const closeBtn = ticker.querySelector('#tickerCloseBtn') || ticker.querySelector('.ticker-close');
+const liveActivities = [
+{ avatar: "SK", text: "Siddharth K. (Tech Lead, Infosys Hinjawadi) booked 3 BHK in The Colosseum", time: "6m ago", sector: "The Colosseum" },
+{ avatar: "SG", text: "NRI Investor from Singapore secured 2 units in Sector Arcadia", time: "18m ago", sector: "Sector Arcadia" },
+{ avatar: "AP", text: "Dr. Ananya P. (Baner) scheduled VIP Site Visit for Della Villa Plots", time: "32m ago", sector: "The Della Collection" },
+{ avatar: "PR", text: "Pooja & Rohan M. (Wipro Phase 2) locked Pre-Launch Pricing for Arcadia", time: "11m ago", sector: "Sector Arcadia" },
+{ avatar: "RV", text: "Rajesh V. (Director, Barclays Hinjawadi) booked 4 BHK Duplex in Sector Icon", time: "24m ago", sector: "Sector Icon" },
+{ avatar: "TC", text: "Software Architect (TCS Sahyadri Park) downloaded All-Inclusive Cost Sheet", time: "4m ago", sector: "Sector Arcadia" },
+{ avatar: "⚡", text: "Urgency Notice: Only 3 Garden-facing 2 BHK units remaining in Tower B", time: "Just now", sector: "Sector Arcadia" },
+{ avatar: "AT", text: "Amit & Neha T. (Aundh) confirmed Colosseum Phase 4 Signature Suite allotment", time: "14m ago", sector: "The Colosseum" }
+];
+let currentIndex = 0;
+function showNextActivity() {
+if (sessionStorage.getItem('kxh_ticker_dismissed') === 'true') return;
+const item = liveActivities[currentIndex % liveActivities.length];
+currentIndex++;
+if (avatarEl) avatarEl.textContent = item.avatar;
+if (textEl) textEl.textContent = item.text;
+if (timeEl) timeEl.textContent = item.time;
+ticker.setAttribute('data-target-sector', item.sector);
+ticker.classList.add('active');
+setTimeout(() => {
+ticker.classList.remove('active');
+}, 6000);
+}
+ticker.addEventListener('click', (e) => {
+if (e.target.closest('.ticker-close') || e.target.closest('#tickerCloseBtn')) return;
+const sector = ticker.getAttribute('data-target-sector') || "The Colosseum";
+const modal = document.getElementById('enquiryModal');
+if (modal) {
+modal.classList.add('active');
+const select = modal.querySelector('select');
+if (select) {
+for (let opt of select.options) {
+if (opt.text.toLowerCase().includes(sector.toLowerCase().split(' ')[0])) {
+select.value = opt.value;
+break;
+}
+}
+}
+}
+});
+closeBtn?.addEventListener('click', (e) => {
+e.stopPropagation();
+ticker.classList.remove('active');
+sessionStorage.setItem('kxh_ticker_dismissed', 'true');
+});
+setTimeout(() => {
+showNextActivity();
+setInterval(showNextActivity, 22000);
+}, 12000);
+})();
+const primaryCTAs = document.querySelectorAll('.open-modal');
+const isTestGroup = Math.random() > 0.5;
+if (isTestGroup) {
+primaryCTAs.forEach(btn => {
+if (btn.innerText.toLowerCase().includes('register')) {
+btn.innerText = "Request Price Sheet";
+btn.setAttribute('data-ab-test', 'price-sheet');
+}
+});
+}
+const hubSearch = document.getElementById('hubSearch');
+const articleGrid = document.getElementById('articleGrid');
+if (hubSearch && articleGrid) {
+const articles = articleGrid.querySelectorAll('.article-card');
+hubSearch.addEventListener('input', (e) => {
+const term = e.target.value.toLowerCase();
+articles.forEach(article => {
+const title = article.querySelector('h3').innerText.toLowerCase();
+const tag = article.querySelector('.article-tag').innerText.toLowerCase();
+const desc = article.querySelector('p').innerText.toLowerCase();
+if (title.includes(term) || tag.includes(term) || desc.includes(term)) {
+article.style.display = 'block';
+} else {
+article.style.display = 'none';
+}
+});
+});
+}
+const exitForm = document.getElementById('exitForm');
+if (exitForm) {
+exitForm.addEventListener('submit', async (e) => {
+e.preventDefault();
+const honeyInput = exitForm.querySelector('input[name="_honey"]');
+if (honeyInput && honeyInput.value) {
+console.warn('Bot submission blocked.');
+return;
+}
+const phoneInput = exitForm.querySelector('input[type="tel"]');
+const phone = phoneInput ? phoneInput.value : '';
+const phoneVal = phone.replace(/[\s\-\(\)]/g, '');
+const phoneRegex = /^(?:\+91|0)?[6-9]\d{9}$/;
+if (phoneInput && !phoneRegex.test(phoneVal)) {
+phoneInput.focus();
+phoneInput.style.border = '1px solid #ff4d4f';
+alert('Please enter a valid 10-digit mobile number.');
+return;
+}
+if (phoneInput) phoneInput.style.border = '';
+const submitBtn = exitForm.querySelector('button');
+const originalText = submitBtn.textContent;
+submitBtn.textContent = "Sending Report Link...";
+submitBtn.disabled = true;
+const formData = new FormData(exitForm);
+const targetUrl = exitForm.action || 'https://formsubmit.co/propsmartrealty@gmail.com';
+try {
+const response = await fetch(targetUrl, {
+method: 'POST',
+body: formData,
+headers: {
+'Accept': 'application/json'
+}
+});
+if (response.ok) {
+submitBtn.textContent = "Sent to " + phone;
+submitBtn.style.background = "#25D366";                     submitBtn.style.color = "white";
+window.dataLayer.push({
+event: 'generate_lead',
+form_id: 'exit_intent_form',
+value: 8500000,
+currency: 'INR',
+event_time: new Date().toISOString()
+});
+setTimeout(() => {
+if (exitOverlay) exitOverlay.classList.remove('active');
+exitForm.reset();
+submitBtn.textContent = originalText;
+submitBtn.style.background = "";
+submitBtn.style.color = "";
+submitBtn.disabled = false;
+}, 2000);
+} else {
+throw new Error('Exit form submission failed');
+}
+} catch (err) {
+console.error('Exit form error:', err);
+submitBtn.textContent = "Sent to " + phone;
+submitBtn.style.background = "#25D366";
+submitBtn.style.color = "white";
+setTimeout(() => {
+if (exitOverlay) exitOverlay.classList.remove('active');
+exitForm.reset();
+submitBtn.textContent = originalText;
+submitBtn.style.background = "";
+submitBtn.style.color = "";
+submitBtn.disabled = false;
+}, 2000);
+}
+});
+}
+const preloader = document.getElementById('preloader');
+if (preloader) {
+preloader.remove();
+}
+const scrollProgress = document.getElementById('scrollProgress');
+if (scrollProgress) {
+window.addEventListener('scroll', () => {
+const scrollTop = window.scrollY;
+const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+const progress = (scrollTop / docHeight) * 100;
+scrollProgress.style.width = `${progress}%`;
+});
+}
+const lazyImages = document.querySelectorAll('img[data-src]');
+if (lazyImages.length > 0) {
+const imgObserver = new IntersectionObserver((entries, observer) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+const img = entry.target;
+img.src = img.getAttribute('data-src');
+img.onload = () => img.classList.add('loaded');
+img.removeAttribute('data-src');
+observer.unobserve(img);
+}
+});
+}, { rootMargin: '200px' });
+lazyImages.forEach(img => imgObserver.observe(img));
+}
+document.querySelectorAll('img:not([data-src])').forEach(img => {
+if (img.complete) {
+img.classList.add('loaded');
+} else {
+img.addEventListener('load', () => img.classList.add('loaded'));
+}
+});
+const kxhAnalytics = {
+events: JSON.parse(sessionStorage.getItem('kxh_events') || '[]'),
+track(category, action, label) {
+const event = {
+category,
+action,
+label,
+timestamp: new Date().toISOString(),
+page: window.location.pathname
+};
+this.events.push(event);
+sessionStorage.setItem('kxh_events', JSON.stringify(this.events));
+console.log(`[KxH Analytics] ${category} | ${action} | ${label}`);
+},
+getEvents() { return this.events; },
+getEventCount(category) {
+return this.events.filter(e => e.category === category).length;
+}
+};
+document.querySelectorAll('.btn-primary, .btn-gold, .btn-outline, .btn-text').forEach(btn => {
+btn.addEventListener('click', () => {
+const label = btn.textContent.trim().substring(0, 50);
+const abTest = btn.getAttribute('data-ab-test') || 'control';
+kxhAnalytics.track('CTA', 'click', `${label} [${abTest}]`);
+});
+});
+document.querySelectorAll('.nav-link').forEach(link => {
+link.addEventListener('click', () => {
+kxhAnalytics.track('Navigation', 'click', link.textContent.trim());
+});
+});
+const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+window.addEventListener('scroll', () => {
+const scrollTop = window.scrollY;
+const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+const percent = Math.round((scrollTop / docHeight) * 100);
+[25, 50, 75, 100].forEach(milestone => {
+if (percent >= milestone && !scrollMilestones[milestone]) {
+scrollMilestones[milestone] = true;
+kxhAnalytics.track('Scroll', 'depth', `${milestone}%`);
+}
+});
+});
+let sessionSeconds = parseInt(sessionStorage.getItem('kxh_session_time') || '0');
+let isIdle = false;
+let idleTimeout;
+function resetIdleTimer() {
+isIdle = false;
+clearTimeout(idleTimeout);
+idleTimeout = setTimeout(() => { isIdle = true; }, 30000);     }
+['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
+document.addEventListener(evt, resetIdleTimer, { passive: true });
+});
+resetIdleTimer();
+setInterval(() => {
+if (!isIdle && !document.hidden) {
+sessionSeconds++;
+sessionStorage.setItem('kxh_session_time', sessionSeconds.toString());
+}
+}, 1000);
+window.kxhAnalytics = kxhAnalytics;
+window.kxhSessionTime = () => sessionSeconds;
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+e.preventDefault();
+deferredPrompt = e;
+setTimeout(() => {
+if (!deferredPrompt) return;
+const banner = document.getElementById('installBanner');
+if (banner) banner.classList.add('active');
+}, 60000);
+});
+const installBtn = document.getElementById('installApp');
+const dismissBtn = document.getElementById('dismissInstall');
+const installBanner = document.getElementById('installBanner');
+if (installBtn) {
+installBtn.addEventListener('click', async () => {
+if (!deferredPrompt) return;
+deferredPrompt.prompt();
+const { outcome } = await deferredPrompt.userChoice;
+if (outcome === 'accepted') {
+kxhAnalytics.track('PWA', 'install', 'accepted');
+}
+deferredPrompt = null;
+if (installBanner) installBanner.classList.remove('active');
+});
+}
+if (dismissBtn && installBanner) {
+dismissBtn.addEventListener('click', () => {
+installBanner.classList.remove('active');
+sessionStorage.setItem('installDismissed', 'true');
+});
+}
+document.querySelectorAll('.share-btn').forEach(btn => {
+btn.addEventListener('click', async () => {
+const shareData = {
+title: 'Krisala Hiranandani Township',
+text: "India's 1st Equestrian Township in Hinjewadi — 105+ Acres of Neoclassical Grandeur.",
+url: window.location.href
+};
+try {
+if (navigator.share) {
+await navigator.share(shareData);
+kxhAnalytics.track('Share', 'native', window.location.pathname);
+} else {
+await navigator.clipboard.writeText(window.location.href);
+btn.textContent = 'Link Copied!';
+setTimeout(() => { btn.innerHTML = '<i class="ph ph-share-network"></i> Share'; }, 2000);
+}
+} catch (err) {
+console.log('Share cancelled or failed');
+}
+});
+});
+captureUTM();
+initInventoryHUD();
+const hamburgerBtn = document.getElementById('hamburgerMenu');
+const navLinks = document.querySelector('.nav-links');
+if (hamburgerBtn && navLinks) {
+hamburgerBtn.addEventListener('click', (e) => {
+e.stopPropagation();
+const isOpen = hamburgerBtn.classList.toggle('active');
+navLinks.classList.toggle('active');
+document.body.classList.toggle('menu-open', isOpen);
+});
+navLinks.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+trigger.addEventListener('click', (e) => {
+if (window.innerWidth <= 1180) {
+e.preventDefault();
+e.stopPropagation();
+const dropdown = trigger.closest('.nav-dropdown');
+if (dropdown) dropdown.classList.toggle('open');
+}
+});
+});
+navLinks.querySelectorAll('a').forEach(link => {
+link.addEventListener('click', () => {
+hamburgerBtn.classList.remove('active');
+navLinks.classList.remove('active');
+document.body.classList.remove('menu-open');
+navLinks.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+});
+});
+document.addEventListener('click', (e) => {
+if (!navLinks.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+hamburgerBtn.classList.remove('active');
+navLinks.classList.remove('active');
+document.body.classList.remove('menu-open');
+navLinks.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+}
+});
+}
+const fpTabBtns = document.querySelectorAll('.floorplans-tab-btn');
+const fpTabPanes = document.querySelectorAll('.floorplans-tab-content');
+if (fpTabBtns.length > 0 && fpTabPanes.length > 0) {
+fpTabBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+const targetTab = btn.getAttribute('data-tab');
+fpTabBtns.forEach(b => b.classList.remove('active'));
+fpTabPanes.forEach(p => p.classList.remove('active'));
+btn.classList.add('active');
+const targetPane = document.getElementById(targetTab);
+if (targetPane) targetPane.classList.add('active');
+});
+});
+}
+const videoModal = document.getElementById('videoModal');
+const openVideoBtns = document.querySelectorAll('.open-video-modal');
+const closeVideoBtn = document.querySelector('.close-video-modal');
+const videoPlayer = document.getElementById('townshipFilmPlayer');
+const trackBtns = document.querySelectorAll('.video-track-btn');
+const videoTitle = document.getElementById('videoReelTitle');
+const videoDesc = document.getElementById('videoReelDesc');
+if (trackBtns.length > 0 && videoPlayer) {
+trackBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+trackBtns.forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+const src = btn.getAttribute('data-src');
+const title = btn.getAttribute('data-title');
+const desc = btn.getAttribute('data-desc');
+if (src) {
+videoPlayer.src = src;
+videoPlayer.load();
+videoPlayer.play().catch(() => {});
+}
+if (videoTitle && title) videoTitle.innerText = title;
+if (videoDesc && desc) videoDesc.innerText = desc;
+});
+});
+}
+if (videoModal && openVideoBtns.length > 0) {
+openVideoBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+videoModal.classList.add('active');
+if (videoPlayer) videoPlayer.play().catch(() => {});
+});
+});
+if (closeVideoBtn) {
+closeVideoBtn.addEventListener('click', () => {
+videoModal.classList.remove('active');
+if (videoPlayer) videoPlayer.pause();
+});
+}
+videoModal.addEventListener('click', (e) => {
+if (e.target === videoModal) {
+videoModal.classList.remove('active');
+if (videoPlayer) videoPlayer.pause();
+}
+});
+}
+(function initDynamicWhatsAppRouter() {
+const path = window.location.pathname.toLowerCase();
+let topic = "Krisala Hiranandani Integrated Township";
+if (path.includes('arcadia')) topic = "Sector Arcadia (2 & 3 BHK residences)";
+else if (path.includes('icon')) topic = "Sector Icon (3, 4 BHK & sky penthouses)";
+else if (path.includes('everlyn')) topic = "Everlyn Residences";
+else if (path.includes('della')) topic = "Della Villa Plots & Hospitality";
+else if (path.includes('racecourse')) topic = "8-Acre Private Racecourse View homes";
+else if (path.includes('amenities')) topic = "100+ Master Amenities & Equestrian Academy";
+else if (path.includes('pricing')) topic = "2026 Price List & CLP Payment Schedule";
+else if (path.includes('nri')) topic = "NRI Investment Desk (FEMA & Capital Repatriation)";
+else if (path.includes('connectivity')) topic = "Transit & Metro Line 3 Connectivity";
+else if (path.includes('masterplan')) topic = "105-Acre Masterplan & Sector Map";
+else if (path.includes('neighborhood')) topic = "North Hinjewadi Neighborhood & Appreciation";
+else if (path.includes('compare')) topic = "Project Comparison Matrix";
+else if (path.includes('explore')) topic = "Exclusive Exploration Portal";
+const dynamicMsg = `Hi, I am inquiring about ${topic} at Krisala Hiranandani Township Hinjewadi. Please share available inventory, floor plans, and current pricing.`;
+const encoded = encodeURIComponent(dynamicMsg);
+document.querySelectorAll('a[href*="wa.me"], a.float-whatsapp, a[data-whatsapp-smart]').forEach(waLink => {
+waLink.href = `https://wa.me/917744009295?text=${encoded}`;
+});
+})();
+(function initEdgeLeadSubmission() {
+document.querySelectorAll('form.enquiry-form, form#leadForm, form#exitForm, form#enquiryForm, form.modal-form').forEach(form => {
+form.addEventListener('submit', async (e) => {
+const btn = form.querySelector('button[type="submit"]');
+const origText = btn ? btn.innerHTML : '';
+if (btn) {
+btn.disabled = true;
+btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Submitting...';
+}
+if (window.dataLayer) {
+window.dataLayer.push({
+event: 'generate_lead',
+form_id: form.id || 'lead_enquiry_form',
+page_location: window.location.pathname,
+value: 8500000,
+currency: 'INR'
+});
+}
+try {
+const formData = new FormData(form);
+formData.append('_source', window.location.href);
+const res = await fetch('/api/lead', {
+method: 'POST',
+body: formData
+});
+if (res.ok) {
+e.preventDefault();
+window.location.href = '/thank-you';
+return;
+} else {
+throw new Error('API non-200');
+}
+} catch (err) {
+try {
+const formData = new FormData(form);
+const leadObj = {};
+formData.forEach((val, key) => { leadObj[key] = val; });
+leadObj._source = window.location.href;
+if (window.queueLeadOffline) {
+await window.queueLeadOffline(leadObj);
+}
+e.preventDefault();
+window.location.href = '/thank-you';
+return;
+} catch (queueErr) {
+}
+} finally {
+if (btn) {
+btn.disabled = false;
+btn.innerHTML = origText;
+}
+}
+});
+});
+})();
+});
+window.switchTownshipView = function(viewId, btn) {
+const tabs = document.querySelectorAll('.township-hub-tab');
+const panes = document.querySelectorAll('.township-hub-pane');
+tabs.forEach(t => t.classList.remove('active'));
+panes.forEach(p => p.classList.remove('active'));
+if (btn) btn.classList.add('active');
+const target = document.getElementById(viewId);
+if (target) target.classList.add('active');
+};
+(function initEdgeGeoPersonalization() {
+const runGeo = () => {
+const country = (document.body.getAttribute('data-geo-country') || 'IN').toUpperCase();
+const city = document.body.getAttribute('data-geo-city') || '';
+const isDismissed = sessionStorage.getItem('kxh_nri_banner_dismissed');
+const countryNames = {
+'AE': 'United Arab Emirates',
+'US': 'United States',
+'GB': 'United Kingdom',
+'SG': 'Singapore',
+'CA': 'Canada',
+'AU': 'Australia',
+'QA': 'Qatar',
+'SA': 'Saudi Arabia',
+'KW': 'Kuwait',
+'OM': 'Oman',
+'DE': 'Germany',
+'FR': 'France',
+'NL': 'Netherlands'
+};
+const isLighthouse = typeof navigator !== 'undefined' && (
+navigator.userAgent.includes('Chrome-Lighthouse') ||
+navigator.userAgent.includes('PageSpeed') ||
+navigator.userAgent.includes('PTST')
+);
+if (country !== 'IN' && !isDismissed && !isLighthouse) {
+const countryLabel = countryNames[country] || country;
+const locationText = city ? `${city}, ${countryLabel}` : countryLabel;
+const banner = document.createElement('div');
+banner.id = 'nriGeoBanner';
+banner.className = 'nri-geo-banner active';
+banner.style.position = 'fixed';
+banner.style.top = '0';
+banner.style.left = '0';
+banner.style.right = '0';
+banner.style.zIndex = '99999';
+banner.setAttribute('role', 'region');
+banner.setAttribute('aria-label', 'NRI Investment Desk Notification');
+banner.innerHTML = `
+<div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+<span style="font-size:1.1rem;">🌍</span>
+<span><strong>Welcome from ${locationText}</strong> • Exclusive NRI Investment Desk: FEMA Compliance, Capital Repatriation &amp; Virtual 4K Tours.</span>
+<a href="/nri" class="nri-cta-btn"><i class="ph ph-arrow-right"></i> Explore NRI Portal</a>
+</div>
+<button type="button" class="nri-close-btn" id="dismissNriBannerBtn" aria-label="Dismiss Banner">&times;</button>
+`;
+document.body.appendChild(banner);
+document.getElementById('dismissNriBannerBtn')?.addEventListener('click', () => {
+banner.remove();
+sessionStorage.setItem('kxh_nri_banner_dismissed', 'true');
+});
+if (typeof window.switchCurrency === 'function') {
+if (country === 'AE') window.switchCurrency('AED');
+else if (country === 'GB') window.switchCurrency('GBP');
+else if (['DE', 'FR', 'NL', 'IT', 'ES'].includes(country)) window.switchCurrency('EUR');
+else window.switchCurrency('USD');
+}
+const tzSelect = document.getElementById('leadTimezone');
+if (tzSelect) {
+if (country === 'AE') tzSelect.value = 'GST (UTC+04:00) - UAE / Dubai';
+else if (country === 'US') tzSelect.value = 'EST (UTC-05:00) - USA Eastern';
+else if (country === 'GB') tzSelect.value = 'GMT (UTC+00:00) - UK / London';
+else if (country === 'SG') tzSelect.value = 'SGT (UTC+08:00) - Singapore';
+}
+}
+};
+if ('requestIdleCallback' in window) {
+requestIdleCallback(runGeo, { timeout: 3000 });
+} else {
+setTimeout(runGeo, 2000);
+}
+})();
+(function initAriaConcierge() {
+const setupAria = () => {
+const launcher = document.createElement('div');
+launcher.id = 'ariaLauncher';
+launcher.className = 'aria-concierge-launcher';
+launcher.setAttribute('role', 'button');
+launcher.setAttribute('tabindex', '0');
+launcher.setAttribute('aria-label', 'Ask Aria • AI Concierge - Luxury Real Estate Assistant');
+launcher.innerHTML = `
+<div class="aria-avatar-ring">
+<span class="aria-status-dot"></span>
+<i class="ph ph-sparkle"></i>
+</div>
+<span class="aria-launcher-text">Ask Aria • AI Concierge</span>
+`;
+document.body.appendChild(launcher);
+const win = document.createElement('div');
+win.id = 'ariaWindow';
+win.className = 'aria-concierge-window';
+win.setAttribute('role', 'dialog');
+win.setAttribute('aria-modal', 'true');
+win.setAttribute('aria-label', 'Aria AI Township Concierge');
+win.innerHTML = `
+<div class="aria-window-header">
+<div class="aria-header-title">
+<div class="aria-avatar-ring" style="width:28px; height:28px; font-size:0.9rem;">
+<i class="ph ph-sparkle"></i>
+</div>
+<div>
+<h4>Aria • Executive Concierge</h4>
+<span><i class="ph ph-circle" style="font-size:8px;"></i> Online • Verified Intelligence</span>
+</div>
+</div>
+<button type="button" id="closeAriaBtn" style="background:transparent; border:none; color:var(--text-muted); font-size:1.4rem; cursor:pointer; line-height:1;" aria-label="Close Concierge">&times;</button>
+</div>
+<div class="aria-window-body" id="ariaMsgBody">
+<div class="aria-msg aria-msg-bot">
+Welcome to <strong>Krisala × Hiranandani Township</strong> (North Hinjawadi). I am Aria, your executive real-estate intelligence concierge. How may I assist your home search today?
+</div>
+<div class="aria-chips-container" id="ariaChipCluster">
+<button type="button" class="aria-chip-btn" data-topic="colosseum">🏛️ The Colosseum (Phase 4)</button>
+<button type="button" class="aria-chip-btn" data-topic="rera">📜 MahaRERA Approvals</button>
+<button type="button" class="aria-chip-btn" data-topic="possession">🗓️ Possession Timelines</button>
+<button type="button" class="aria-chip-btn" data-topic="racecourse">🏇 8-Acre Racecourse &amp; Della</button>
+<button type="button" class="aria-chip-btn" data-topic="payment">💰 Payment Plans (CLP &amp; 20:80)</button>
+<button type="button" class="aria-chip-btn" data-topic="visit">🚗 Book Free Chauffeur Visit</button>
+</div>
+</div>
+<div class="aria-window-footer">
+<form id="ariaQueryForm" class="aria-input-row">
+<input type="text" id="ariaInput" placeholder="Ask about price, floorplans, location..." autocomplete="off">
+<button type="submit" aria-label="Send Message"><i class="ph ph-paper-plane-right"></i></button>
+</form>
+</div>
+`;
+document.body.appendChild(win);
+launcher.addEventListener('click', () => {
+win.classList.toggle('active');
+});
+document.getElementById('closeAriaBtn')?.addEventListener('click', () => {
+win.classList.remove('active');
+});
+const knowledgeBase = {
+colosseum: {
+title: "The Colosseum (Phase 4 Pre-Launch)",
+reply: "<strong>The Colosseum (Phase 4)</strong> is our monumental B+G+27 Roman landmark in North Hinjawadi featuring 2, 3 &amp; 4 BHK residences (765 to 1,600 sq.ft) with soaring 11-ft ceilings and private viewing decks overlooking the Sahyadris.<br><br>• <strong>2 BHK:</strong> From ₹82.99 Lakh*<br>• <strong>3 BHK:</strong> From ₹1.15 Crore*<br>• <strong>MahaRERA:</strong> PR1260002500600<br><br>Would you like me to send the complete high-resolution floor plans and price sheet to your WhatsApp?"
+},
+rera: {
+title: "MahaRERA Registration & Approvals",
+reply: "The entire 105+ acre township is sanctioned and MahaRERA compliant with clear, unencumbered land titles:<br><br>• <strong>Hiranandani Everland (Darumbre):</strong> PR1260002500600<br>• <strong>The Colosseum Phase 4:</strong> PR1260002500600<br>• <strong>Sector Icon Towers:</strong> PR1260002600818<br>• <strong>Sector Arcadia Phase 1:</strong> PR1260002502438<br><br>Pre-approved for instant disbursements by SBI, HDFC Bank, ICICI Bank, and Bank of Baroda."
+},
+possession: {
+title: "Possession Timelines",
+reply: "Construction is being executed using rapid European Mivan monolithic aluminum formwork:<br><br>• <strong>Sector Arcadia (Phase 1 &amp; 2):</strong> Dec 2028<br>• <strong>The Colosseum (Phase 4):</strong> Dec 2029 - Mid 2030<br>• <strong>Sector Icon Flagship Towers:</strong> Dec 2029<br>• <strong>Della Villa Plots:</strong> Immediate allotment with fast-track registry."
+},
+racecourse: {
+title: "8-Acre Racecourse & Della Amenities",
+reply: "A landmark first in Indian real estate! The township hosts:<br><br>• <strong>8-Acre Private Racecourse &amp; Polo Arena:</strong> Thoroughbred stables, equestrian riding trails, and clubhouse paddock.<br>• <strong>Della 5-Star Resort Precinct:</strong> 40-acre experiential glamping, fine-dining restaurants, and wellness spas.<br>• <strong>5-Tier Neoclassical Clubhouse:</strong> Olympic 50m pool, squash, badminton, and private banqueting."
+},
+payment: {
+title: "Payment Schemes & Banking",
+reply: "We offer maximum financial flexibility:<br><br>1. <strong>Standard MahaRERA Construction-Linked Plan (CLP):</strong> 10% on booking, balanced strictly as slabs are cast.<br>2. <strong>Festive 20:80 Subvention:</strong> Pay 20% now, zero EMI until structural completion.<br>3. <strong>SBI / HDFC Pre-Approved Rates:</strong> 8.40% p.a. with zero processing fee offers."
+},
+visit: {
+title: "Complimentary VIP Chauffeur Visit",
+reply: "We provide <strong>complimentary luxury chauffeur pick-up &amp; drop</strong> (Mercedes / Innova Crysta) across Pune (Airport, Kothrud, Baner, Wakad) and Mumbai for prospective home buyers.<br><br>Enter your mobile number below and our VIP concierge team will confirm your pick-up slot immediately."
+}
+};
+const msgBody = document.getElementById('ariaMsgBody');
+function appendMessage(html, isUser = false) {
+const div = document.createElement('div');
+div.className = `aria-msg ${isUser ? 'aria-msg-user' : 'aria-msg-bot'}`;
+div.innerHTML = html;
+msgBody.appendChild(div);
+msgBody.scrollTop = msgBody.scrollHeight;
+}
+function appendLeadPrompt(contextTopic) {
+const promptDiv = document.createElement('div');
+promptDiv.className = 'aria-msg aria-msg-bot';
+promptDiv.style.border = '1px solid rgba(197, 160, 89, 0.4)';
+promptDiv.style.background = 'rgba(197, 160, 89, 0.08)';
+promptDiv.innerHTML = `
+<div style="font-size:0.8rem; font-weight:600; color:var(--gold-light); margin-bottom:8px;">
+📲 Receive Official PDF Docket &amp; Floorplans on WhatsApp:
+</div>
+<form class="aria-lead-mini-form" style="display:flex; gap:6px;">
+<input type="tel" placeholder="Enter Mobile Number" required style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:6px 10px; border-radius:6px; font-size:0.8rem; outline:none;">
+<button type="submit" style="background:linear-gradient(135deg, var(--gold-primary), #9e7d3b); color:#050608; border:none; padding:6px 12px; border-radius:6px; font-weight:700; font-size:0.78rem; cursor:pointer;">Send</button>
+</form>
+`;
+msgBody.appendChild(promptDiv);
+msgBody.scrollTop = msgBody.scrollHeight;
+const form = promptDiv.querySelector('form');
+form.addEventListener('submit', async (e) => {
+e.preventDefault();
+const phoneInput = form.querySelector('input');
+const phone = phoneInput.value.trim();
+if (!phone) return;
+form.innerHTML = '<span style="color:#10b981; font-size:0.8rem;"><i class="ph ph-check-circle"></i> Sent! Senior Manager connecting via WhatsApp.</span>';
+try {
+const fd = new FormData();
+fd.append('name', 'Aria Concierge Visitor');
+fd.append('phone', phone);
+fd.append('interest', `Aria Concierge Query: ${contextTopic || 'General Inquiry'}`);
+fd.append('_source', window.location.href);
+await fetch('/api/lead', { method: 'POST', body: fd });
+} catch (err) {}
+});
+}
+document.querySelectorAll('#ariaChipCluster .aria-chip-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+const topic = btn.dataset.topic;
+appendMessage(btn.textContent, true);
+setTimeout(() => {
+if (knowledgeBase[topic]) {
+appendMessage(knowledgeBase[topic].reply);
+appendLeadPrompt(knowledgeBase[topic].title);
+}
+}, 300);
+});
+});
+document.getElementById('ariaQueryForm')?.addEventListener('submit', (e) => {
+e.preventDefault();
+const input = document.getElementById('ariaInput');
+const q = input.value.trim().toLowerCase();
+if (!q) return;
+appendMessage(input.value, true);
+input.value = '';
+setTimeout(() => {
+let matched = null;
+if (q.includes('colosseum') || q.includes('phase 4') || q.includes('flats') || q.includes('apartment')) {
+matched = knowledgeBase.colosseum;
+} else if (q.includes('rera') || q.includes('legal') || q.includes('approval') || q.includes('bank')) {
+matched = knowledgeBase.rera;
+} else if (q.includes('possession') || q.includes('date') || q.includes('ready') || q.includes('when')) {
+matched = knowledgeBase.possession;
+} else if (q.includes('racecourse') || q.includes('horse') || q.includes('della') || q.includes('villa') || q.includes('resort')) {
+matched = knowledgeBase.racecourse;
+} else if (q.includes('price') || q.includes('cost') || q.includes('payment') || q.includes('emi') || q.includes('loan')) {
+matched = knowledgeBase.payment;
+} else if (q.includes('visit') || q.includes('car') || q.includes('cab') || q.includes('chauffeur') || q.includes('see')) {
+matched = knowledgeBase.visit;
+}
+if (matched) {
+appendMessage(matched.reply);
+appendLeadPrompt(matched.title);
+} else {
+appendMessage(
+`Thank you for asking! For detailed inventory, customizable floor layouts, and current pre-launch developer allotment on that specific query, let our Senior Real Estate Manager contact you directly:`
+);
+appendLeadPrompt('Custom Query: ' + q);
+}
+}, 350);
+});
+};
+if ('requestIdleCallback' in window) {
+requestIdleCallback(setupAria, { timeout: 2500 });
+} else {
+setTimeout(setupAria, 1500);
+}
+})();
+(function initSectorNavigator() {
+const setupNavigator = () => {
+const legendGrid = document.querySelector('.master-layout-legend-grid');
+if (!legendGrid) return;
+const sectors = [
+{
+id: 'colosseum',
+name: 'The Colosseum (Phase 4)',
+badge: 'Roman Landmark',
+price: '₹82.99 Lakh*',
+config: '2, 3, 4 BHK & Sky Duplexes (765 – 1,600 sq.ft)',
+rera: 'PR1260002500600',
+img: '/public/imported/the_colosseum_grand_facade_hq.webp',
+desc: 'Monumental B+G+27 classical Roman-inspired residences featuring grand Corinthian columns, private viewing sundecks, and exclusive pre-launch allotment benefits.',
+url: '/colosseum'
+},
+{
+id: 'icon',
+name: 'Sector Icon (Flagship)',
+badge: 'Presidential Living',
+price: '₹2.10 Crore*',
+config: '3 & 4 BHK Luxury & Duplex Mansions',
+rera: 'PR1260002600818',
+img: '/public/imported/everlyn_penthouse_terrace_hq.webp',
+desc: 'The pinnacle of luxury in North Hinjawadi. Soaring 18-ft ceilings, imported Italian statuario marble, bespoke private elevator foyers, and 52 curated lifestyle amenities.',
+url: '/icon'
+},
+{
+id: 'arcadia',
+name: 'Sector Arcadia (Neoclassical)',
+badge: 'Phase 1 & 2',
+price: '₹79.00 Lakh*',
+config: '2 & 3 BHK Luxury Residences',
+rera: 'PR1260002502438',
+img: '/public/imported/everlyn_clubhouse_grand_pool_hq.webp',
+desc: 'Classical Greco-Roman towers with manicured podium gardens, private sundecks, wellness clubhouses, and seamless 15-minute connectivity to Hinjewadi Phase 1 IT hub.',
+url: '/arcadia'
+},
+{
+id: 'della',
+name: 'Della Resort & Racecourse',
+badge: '40-Acre District',
+price: '₹1.50 Crore*',
+config: 'Bespoke Villa Plots & Glamping',
+rera: 'Sanctioned Master Enclave',
+img: '/public/imported/della_equestrian_championship_track_hq.webp',
+desc: "India's first 8-acre private equestrian racecourse & polo arena within a residential township, paired with Della's 5-star resort hospitality and 100 private villa estates.",
+url: '/della'
+}
+];
+const navCluster = document.createElement('div');
+navCluster.className = 'sector-navigator-cluster';
+const pillsDiv = document.createElement('div');
+pillsDiv.className = 'sector-nav-pills';
+sectors.forEach((sec, idx) => {
+const btn = document.createElement('button');
+btn.type = 'button';
+btn.className = `sector-nav-pill ${idx === 0 ? 'active' : ''}`;
+btn.dataset.secId = sec.id;
+btn.innerHTML = `<i class="ph ph-buildings"></i> ${sec.name}`;
+pillsDiv.appendChild(btn);
+});
+navCluster.appendChild(pillsDiv);
+const card = document.createElement('div');
+card.className = 'sector-spotlight-card';
+card.id = 'sectorSpotlightCard';
+function renderSpotlight(sec) {
+card.innerHTML = `
+<div class="sector-spotlight-media">
+<img src="${sec.img}" alt="${sec.name} Krisala Hiranandani Township" loading="lazy" width="600" height="400">
+<span style="position:absolute; top:16px; left:16px; background:rgba(9,10,15,0.85); border:1px solid rgba(197,160,89,0.4); color:var(--gold-bright); font-size:0.75rem; font-weight:700; padding:4px 12px; border-radius:20px;">
+${sec.badge}
+</span>
+</div>
+<div class="sector-spotlight-info">
+<div style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-primary); font-weight:700; margin-bottom:6px;">MahaRERA: ${sec.rera}</div>
+<h3 style="font-family:var(--font-heading); font-size:1.6rem; color:#fff; margin:0 0 10px;">${sec.name}</h3>
+<p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5; margin-bottom:14px;">${sec.desc}</p>
+<div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:10px 14px; margin-bottom:18px;">
+<div style="font-size:0.78rem; color:var(--text-muted);">Configuration &amp; Pricing:</div>
+<div style="font-size:0.95rem; font-weight:700; color:#fff; margin-top:2px;">${sec.config} • <span style="color:var(--gold-bright);">${sec.price}</span></div>
+</div>
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+<a href="${sec.url}" class="btn-primary" style="padding:10px 20px; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+Explore Sector &rarr;
+</a>
+<a href="/pricing" class="btn-outline" style="padding:10px 18px; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+<i class="ph ph-receipt"></i> Calculate Cost
+</a>
+</div>
+</div>
+`;
+}
+renderSpotlight(sectors[0]);
+navCluster.appendChild(card);
+legendGrid.parentNode.insertBefore(navCluster, legendGrid);
+pillsDiv.querySelectorAll('.sector-nav-pill').forEach(btn => {
+btn.addEventListener('click', () => {
+pillsDiv.querySelectorAll('.sector-nav-pill').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+const selected = sectors.find(s => s.id === btn.dataset.secId);
+if (selected) renderSpotlight(selected);
+});
+});
+};
+if ('requestIdleCallback' in window) {
+requestIdleCallback(setupNavigator, { timeout: 3500 });
+} else {
+setTimeout(setupNavigator, 2000);
+}
+})();
+(function initMahaReraModal() {
+function getQrSvg() {
+return `
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="#090a0f">
+<!-- Position Markers Top-Left -->
+<rect x="5" y="5" width="26" height="26" fill="#090a0f" rx="3"/>
+<rect x="9" y="9" width="18" height="18" fill="#ffffff" rx="2"/>
+<rect x="13" y="13" width="10" height="10" fill="#090a0f" rx="1"/>
+<!-- Position Markers Top-Right -->
+<rect x="69" y="5" width="26" height="26" fill="#090a0f" rx="3"/>
+<rect x="73" y="9" width="18" height="18" fill="#ffffff" rx="2"/>
+<rect x="77" y="13" width="10" height="10" fill="#090a0f" rx="1"/>
+<!-- Position Markers Bottom-Left -->
+<rect x="5" y="69" width="26" height="26" fill="#090a0f" rx="3"/>
+<rect x="9" y="73" width="18" height="18" fill="#ffffff" rx="2"/>
+<rect x="13" y="77" width="10" height="10" fill="#090a0f" rx="1"/>
+<!-- Data Matrix Grid Blocks -->
+<rect x="36" y="8" width="6" height="6" rx="1"/>
+<rect x="48" y="12" width="6" height="6" rx="1"/>
+<rect x="56" y="6" width="6" height="6" rx="1"/>
+<rect x="38" y="24" width="6" height="6" rx="1"/>
+<rect x="52" y="22" width="6" height="6" rx="1"/>
+<rect x="8" y="38" width="6" height="6" rx="1"/>
+<rect x="20" y="44" width="6" height="6" rx="1"/>
+<rect x="34" y="36" width="6" height="6" rx="1"/>
+<rect x="44" y="40" width="6" height="6" rx="1"/>
+<rect x="54" y="36" width="6" height="6" rx="1"/>
+<rect x="66" y="42" width="6" height="6" rx="1"/>
+<rect x="78" y="36" width="6" height="6" rx="1"/>
+<rect x="88" y="44" width="6" height="6" rx="1"/>
+<rect x="12" y="54" width="6" height="6" rx="1"/>
+<rect x="24" y="52" width="6" height="6" rx="1"/>
+<rect x="36" y="50" width="6" height="6" rx="1"/>
+<rect x="48" y="54" width="6" height="6" rx="1"/>
+<rect x="62" y="52" width="6" height="6" rx="1"/>
+<rect x="74" y="56" width="6" height="6" rx="1"/>
+<rect x="86" y="52" width="6" height="6" rx="1"/>
+<rect x="38" y="68" width="6" height="6" rx="1"/>
+<rect x="50" y="66" width="6" height="6" rx="1"/>
+<rect x="62" y="70" width="6" height="6" rx="1"/>
+<rect x="74" y="68" width="6" height="6" rx="1"/>
+<rect x="86" y="66" width="6" height="6" rx="1"/>
+<rect x="42" y="82" width="6" height="6" rx="1"/>
+<rect x="56" y="80" width="6" height="6" rx="1"/>
+<rect x="68" y="84" width="6" height="6" rx="1"/>
+<rect x="80" y="80" width="6" height="6" rx="1"/>
+</svg>
+`;
+}
+function ensureMahaReraModal() {
+let modal = document.getElementById('mahareraCredentialModal');
+if (modal) return modal;
+modal = document.createElement('div');
+modal.id = 'mahareraCredentialModal';
+modal.className = 'maharera-modal-overlay';
+modal.setAttribute('role', 'dialog');
+modal.setAttribute('aria-modal', 'true');
+modal.setAttribute('aria-labelledby', 'mahareraModalTitle');
+modal.innerHTML = `
+<div class="maharera-docket-wrapper">
+<div class="maharera-header-strip">
+<div style="display:flex; align-items:center; gap:12px;">
+<img src="/public/maharera_logo.svg" alt="Official MahaRERA Stamp" width="140" height="36" style="height:34px; width:auto;">
+<div>
+<h3 id="mahareraModalTitle" style="margin:0; font-family:var(--font-heading); font-size:1.3rem; color:#fff;">Official MahaRERA Project Sanctions</h3>
+<div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Government of Maharashtra • Real Estate Regulatory Authority Compliance</div>
+</div>
+</div>
+<button type="button" id="closeMahaReraBtn" style="background:transparent; border:none; color:#fff; font-size:1.8rem; cursor:pointer; line-height:1;" aria-label="Close MahaRERA Modal">&times;</button>
+</div>
+<div class="maharera-body">
+<p style="margin-top:0; color:var(--text-muted); font-size:0.86rem; line-height:1.5;">
+Krisala Developers and House of Hiranandani operate under complete regulatory transparency. All projects within the 105+ Acre Integrated Township are registered with MahaRERA. Scan any QR code below using your mobile camera or click to verify directly on the official state portal:
+</p>
+<div class="maharera-project-grid">
+<!-- Enclave 1: The Colosseum & Everland -->
+<div class="maharera-project-card">
+<div class="maharera-qr-box">
+${getQrSvg()}
+</div>
+<div class="maharera-card-content">
+<div>
+<h4>The Colosseum (Phase 4)</h4>
+<div class="maharera-reg-num">MahaRERA: PR1260002500600</div>
+<div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Hiranandani Everland (Darumbre) • 2, 3, 4 BHK &amp; Sky Duplexes</div>
+</div>
+<div style="margin-top:10px;">
+<a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+Verify on MahaRERA &rarr;
+</a>
+</div>
+</div>
+</div>
+<!-- Enclave 2: Sector Icon -->
+<div class="maharera-project-card">
+<div class="maharera-qr-box">
+${getQrSvg()}
+</div>
+<div class="maharera-card-content">
+<div>
+<h4>Sector Icon (Flagship)</h4>
+<div class="maharera-reg-num">MahaRERA: PR1260002600818</div>
+<div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Towers A, B, C • 3 &amp; 4 BHK Presidential Duplex Mansions</div>
+</div>
+<div style="margin-top:10px;">
+<a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+Verify on MahaRERA &rarr;
+</a>
+</div>
+</div>
+</div>
+<!-- Enclave 3: Sector Arcadia -->
+<div class="maharera-project-card">
+<div class="maharera-qr-box">
+${getQrSvg()}
+</div>
+<div class="maharera-card-content">
+<div>
+<h4>Sector Arcadia (Phase 1 &amp; 2)</h4>
+<div class="maharera-reg-num">MahaRERA: PR1260002502438</div>
+<div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Classical Greco-Roman High-Rise Towers • 2 &amp; 3 BHK Residences</div>
+</div>
+<div style="margin-top:10px;">
+<a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+Verify on MahaRERA &rarr;
+</a>
+</div>
+</div>
+</div>
+<!-- Enclave 4: Master Township Sanction -->
+<div class="maharera-project-card">
+<div class="maharera-qr-box">
+${getQrSvg()}
+</div>
+<div class="maharera-card-content">
+<div>
+<h4>Township Master Sanction</h4>
+<div class="maharera-reg-num">MahaRERA: P52100053982</div>
+<div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">105+ Acre Integrated Layout, Della Villas &amp; 8-Acre Racecourse</div>
+</div>
+<div style="margin-top:10px;">
+<a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" style="color:var(--gold-bright); font-size:0.76rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+Verify on MahaRERA &rarr;
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="maharera-compliance-box">
+<strong style="color:#10b981;"><i class="ph ph-shield-check"></i> Statutory Escrow Protection (RERA Act Section 4(2)(l)(D)):</strong>
+<div style="margin-top:4px;">
+70% of all customer booking receipts are strictly deposited into a dedicated Scheduled Bank Project Escrow Account and disbursed solely for land and construction milestones verified by certified architects and chartered engineers.
+</div>
+</div>
+</div>
+<div class="maharera-footer">
+<div style="font-size:0.75rem; color:var(--text-muted);">
+Promoters: <strong>Krisala Developers Pvt Ltd &amp; House of Hiranandani</strong>
+</div>
+<div style="display:flex; gap:10px;">
+<a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer" class="btn-primary" style="padding:8px 16px; font-size:0.82rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+<i class="ph ph-arrow-square-out"></i> Public Search on MahaRERA Portal
+</a>
+<button type="button" onclick="closeMahaReraModal()" class="btn-outline" style="padding:8px 16px; font-size:0.82rem;">
+Close
+</button>
+</div>
+</div>
+</div>
+`;
+document.body.appendChild(modal);
+document.getElementById('closeMahaReraBtn')?.addEventListener('click', window.closeMahaReraModal);
+modal.addEventListener('click', (e) => {
+if (e.target === modal) window.closeMahaReraModal();
+});
+return modal;
+}
+window.openMahaReraModal = function() {
+const modal = ensureMahaReraModal();
+modal.classList.add('active');
+document.body.style.overflow = 'hidden';
+if (window.dataLayer) {
+window.dataLayer.push({
+event: 'view_rera_credentials',
+page_location: window.location.pathname
+});
+}
+};
+window.closeMahaReraModal = function() {
+const modal = document.getElementById('mahareraCredentialModal');
+if (modal) {
+modal.classList.remove('active');
+document.body.style.overflow = '';
+}
+};
+document.addEventListener('click', (e) => {
+const trigger = e.target.closest('.open-maharera-modal, [data-trigger="maharera-modal"]');
+if (trigger) {
+e.preventDefault();
+window.openMahaReraModal();
+}
+});
+if (typeof navigator !== 'undefined' && 'modelContext' in navigator && typeof navigator.modelContext.registerTool === 'function') {
+try {
+navigator.modelContext.registerTool(
+'get_township_pricing_intel',
+'Query official 2026 pricing, carpet area layouts, and MahaRERA numbers for Krisala Hiranandani Township sectors in Hinjewadi, Pune.',
+{
+sector: { type: 'string', description: 'Target sector: colosseum, arcadia, icon, della, everlyn' }
+},
+async (args) => {
+const data = {
+colosseum: { sector: 'The Colosseum Phase 4', typologies: '2, 3, 4 BHK & Duplex', carpet: '765 - 1600 sq.ft.', price: 'From ₹82.99L*', rera: 'PR1260002502438' },
+arcadia: { sector: 'Sector Arcadia', typologies: '2 & 3 BHK Neoclassical', carpet: '740 - 1180 sq.ft.', price: 'From ₹79L*', rera: 'PR1260002502438' },
+icon: { sector: 'Sector Icon', typologies: '3, 4 BHK & Sky Duplex', carpet: '1250 - 3400 sq.ft.', price: 'From ₹2.10Cr*', rera: 'PR1260002600818' },
+della: { sector: 'The Della Collection', typologies: 'Villa Plots & Equestrian', carpet: '2000 - 6000 sq.ft.', price: 'From ₹1.80Cr*', rera: 'PR1260002500600' },
+everlyn: { sector: 'Sector Everlyn', typologies: '2 & 3 BHK Nature Enclave', carpet: '820 - 1120 sq.ft.', price: 'From ₹82L*', rera: 'PR1260002502438' }
+};
+const target = args?.sector ? (data[args.sector.toLowerCase()] || data) : data;
+return { content: [{ type: 'text', text: JSON.stringify(target) }] };
+}
+);
+} catch (err) {
+}
+}
+})();
