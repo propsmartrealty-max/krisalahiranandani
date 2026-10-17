@@ -1,12 +1,12 @@
 # Krisala × Hiranandani Township — Search Engine Ranking Audit
-**Audit Timestamp:** 2026-10-15T11:18:38.362461+00:00  
+**Audit Timestamp:** 2026-10-17T07:17:25.481294+00:00  
 **Target Property Domain:** `https://krisalahiranandanitownships.com/`  
 
 ## Organic SERP Positioning Overview
 
 | Keyword Query | Current Rank | Previous | Movement | Target Ranking URL | Status |
 | :--- | :---: | :---: | :---: | :--- | :---: |
-| **Krisala Hiranandani** | `> 30` | `> 30` | `—` | [—](—) | NETWORK_OFFLINE: HTTPSConnectionPool(host='www.google.com |
+| **Krisala Hiranandani** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
 | **Krisala Hiranandani Township Hinjewadi** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
 | **Krisala Hiranandani Township Hinjewadi Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
 | **Krisala Hiranandani Colosseum** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
