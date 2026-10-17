@@ -461,8 +461,8 @@ export async function onRequest(context) {
             '</opensearch.xml>; rel="search"; type="application/opensearchdescription+xml"',
             '<https://fonts.googleapis.com>; rel=preconnect',
             '<https://fonts.gstatic.com>; rel=preconnect; crossorigin',
-            '</style.min.css?v=20261014_v1>; rel=preload; as=style',
-            '</app.min.js?v=20261014_v1>; rel=preload; as=script',
+            '</style.min.css?v=20261017_v2>; rel=preload; as=style',
+            '</app.min.js?v=20261017_v2>; rel=preload; as=script',
             '</public/krisala-hiranandani-logo.webp>; rel=preload; as=image'
         ].join(', '));
     }
