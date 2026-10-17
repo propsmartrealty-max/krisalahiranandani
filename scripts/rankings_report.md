@@ -1,5 +1,5 @@
 # Krisala × Hiranandani Township — Search Engine Ranking Audit
-**Audit Timestamp:** 2026-10-17T07:17:25.481294+00:00  
+**Audit Timestamp:** 2026-10-17T11:11:38.614978+00:00  
 **Target Property Domain:** `https://krisalahiranandanitownships.com/`  
 
 ## Organic SERP Positioning Overview
@@ -17,6 +17,19 @@
 | **Krisala Hiranandani price list 2026** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
 | **Krisala Hiranandani masterplan** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
 | **Krisala Hiranandani contact number** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani Hinjewadi** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani Township Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani Township Hinjewadi** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **House of Hiranandani Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani Communities Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Dr Niranjan Hiranandani Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani new launch Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani flats in Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani apartments Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani projects in Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani price list 2026** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
+| **Hiranandani brochure download** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
 | **Pune real estate** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
 | **Pune real estate market 2026** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |
 | **flats for sale in Pune** | `> 30` | `> 30` | `—` | [—](—) | NOT_IN_TOP_30 |

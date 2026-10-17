@@ -393,28 +393,42 @@
           "endDate": "2026-11-01T20:00:00+05:30",
           "eventStatus": "https://schema.org/EventScheduled",
           "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-          "location": {
-            "@type": "Place",
-            "name": "Krisala Hiranandani Township Experience Centre",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "North Hinjawadi, Darumbre",
-              "addressLocality": "Pune",
-              "addressRegion": "Maharashtra",
-              "postalCode": "410506",
-              "addressCountry": "IN"
+          "location": [
+            {
+              "@type": "Place",
+              "name": "Krisala Hiranandani Township Experience Centre",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "North Hinjawadi, Darumbre",
+                "addressLocality": "Pune",
+                "addressRegion": "Maharashtra",
+                "postalCode": "410506",
+                "addressCountry": "IN"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": "18.5913",
+                "longitude": "73.7389"
+              }
             },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "18.5913",
-              "longitude": "73.7389"
+            {
+              "@type": "VirtualLocation",
+              "url": "https://krisalahiranandanitownships.com/colosseum"
             }
-          },
-          "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp",
+          ],
+          "image": [
+            "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp",
+            "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp",
+            "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp"
+          ],
           "organizer": {
             "@type": "Organization",
             "name": "Krisala Developers & Hiranandani Communities",
             "url": "https://krisalahiranandanitownships.com/"
+          },
+          "performer": {
+            "@type": "Person",
+            "name": "Dr. Niranjan Hiranandani"
           },
           "offers": {
             "@type": "Offer",
