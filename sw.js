@@ -1,10 +1,10 @@
-const CACHE_NAME = 'krisala-hiranandani-v8';
+const CACHE_NAME = 'krisala-hiranandani-v9';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
     '/',
-    '/style.min.css?v=20261015_v2',
-    '/app.min.js?v=20261015_v2',
+    '/style.min.css?v=20261017_v2',
+    '/app.min.js?v=20261017_v2',
     '/style.css',
     '/app.js',
     '/offline.html',
