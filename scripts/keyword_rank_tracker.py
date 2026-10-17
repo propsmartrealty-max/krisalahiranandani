@@ -37,6 +37,21 @@ PRIORITY_KEYWORDS = [
     "Krisala Hiranandani masterplan",
     "Krisala Hiranandani contact number",
     
+    # Pure Hiranandani Search Queries & Entity Dominance
+    "Hiranandani Pune",
+    "Hiranandani Hinjewadi",
+    "Hiranandani Township Pune",
+    "Hiranandani Township Hinjewadi",
+    "House of Hiranandani Pune",
+    "Hiranandani Communities Pune",
+    "Dr Niranjan Hiranandani Pune",
+    "Hiranandani new launch Pune",
+    "Hiranandani flats in Pune",
+    "Hiranandani apartments Pune",
+    "Hiranandani projects in Pune",
+    "Hiranandani price list 2026",
+    "Hiranandani brochure download",
+    
     # Pune Real Estate Macro Market Queries
     "Pune real estate",
     "Pune real estate market 2026",

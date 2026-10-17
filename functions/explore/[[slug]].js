@@ -373,6 +373,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     const isPricingIntent = cleanSlug.includes('price') || cleanSlug.includes('cost') || cleanSlug.includes('payment') || cleanSlug.includes('clp') || cleanSlug.includes('loan') || cleanSlug.includes('stamp-duty');
     const isLegalIntent = cleanSlug.includes('rera') || cleanSlug.includes('legal') || cleanSlug.includes('title') || cleanSlug.includes('pr1260002502438') || cleanSlug.includes('pr1260002600818');
     const isRacecourseIntent = cleanSlug.includes('racecourse') || cleanSlug.includes('polo') || cleanSlug.includes('equestrian') || cleanSlug.includes('derby');
+    const isHiranandaniBrandIntent = cleanSlug.includes('hiranandani') || cleanSlug.includes('niranjan') || cleanSlug.includes('house-of-hiranandani');
 
     const unit = ENTITY_DICTIONARY[unitKey];
     const work = workKey ? ENTITY_DICTIONARY[workKey] : null;
@@ -392,6 +393,10 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         h1 = `Krisala Hiranandani vs ${comp.name} • Township Benchmark Analysis`;
         metaTitle = `${comp.comparisonTitle} | Krisala Hiranandani Pune`;
         metaDescription = `Comprehensive real estate comparison: Krisala Hiranandani vs ${comp.name}. Compare usable carpet area, 8-acre racecourse amenities, density, Mivan construction, and 2026-2035 appreciation ROI.`;
+    } else if (isPricingIntent && isHiranandaniBrandIntent) {
+        h1 = `Hiranandani Pune Price List 2026 • Official Cost Sheets & Payment Plans`;
+        metaTitle = `Hiranandani Pune Price List 2026 | All-Inclusive Cost Sheets & Payment Plans`;
+        metaDescription = `Official Hiranandani Pune 2026 price list and cost sheets for Krisala Hiranandani Hinjewadi: 2 BHK from ₹79L, 3 BHK from ₹1.25 Cr, 4 BHK from ₹2.10 Cr, and Della Villa plots. MahaRERA PR1260002502438.`;
     } else if (isPricingIntent) {
         h1 = `Krisala Hiranandani Price List 2026 • Cost Sheets & Payment Plans`;
         metaTitle = `Krisala Hiranandani Price List 2026 | All-Inclusive Cost Sheets & Payment Plans`;
@@ -404,6 +409,10 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         h1 = `8-Acre Private Racecourse & Equestrian Polo Club • Krisala Hiranandani`;
         metaTitle = `8-Acre Private Racecourse & International Polo Club | Krisala Hiranandani`;
         metaDescription = `India's first residential equestrian township: 8-acre private racecourse, championship polo oval, air-cooled stables, and Della Resorts concierge in Hinjewadi, Pune.`;
+    } else if (isHiranandaniBrandIntent) {
+        h1 = `${formattedSubject} • Official Hiranandani Pune Township`;
+        metaTitle = `${formattedSubject} | Official Hiranandani Pune Project`;
+        metaDescription = `Official Hiranandani Pune project by Dr. Niranjan Hiranandani & Krisala Developers: 105-Acre integrated township in Hinjewadi North with 8-acre private racecourse, Della Polo Club, 2, 3 & 4 BHK luxury residences. MahaRERA PR1260002502438.`;
     }
 
     const metaKeywords = [
@@ -412,6 +421,14 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         "Krisala Hiranandani Township",
         "Krisala Hiranandani Hinjewadi",
         "Hiranandani Pune",
+        "Hiranandani Hinjewadi",
+        "Hiranandani Township Pune",
+        "House of Hiranandani Pune",
+        "Dr Niranjan Hiranandani Pune",
+        "Hiranandani Communities Pune",
+        "Hiranandani flats in Pune",
+        "Hiranandani apartments Pune",
+        "Hiranandani projects in Pune",
         "Krisala Developers Wakad",
         unit.name,
         unit.sector,
@@ -524,6 +541,39 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                 <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px;"><span style="color: var(--gold-light); font-weight: 700;">Equine Stables</span><br><span style="font-size: 0.9rem; color: var(--text-muted);">Air-cooled stables &amp; vet care</span></div>
                 <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px;"><span style="color: var(--gold-light); font-weight: 700;">Riding Academy</span><br><span style="font-size: 0.9rem; color: var(--text-muted);">Professional training for all ages</span></div>
                 <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 4px;"><span style="color: var(--gold-light); font-weight: 700;">Della Privileges</span><br><span style="font-size: 0.9rem; color: var(--text-muted);">5-Star resort hospitality &amp; dining</span></div>
+            </div>
+        </div>`;
+    }
+
+    // Dynamic Official Hiranandani Brand Dominance Card
+    if (isHiranandaniBrandIntent) {
+        editorialHtml += `
+        <div style="background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(20,20,20,0.85)); border: 1px solid var(--gold-primary); padding: 24px; border-radius: 8px; margin: 25px 0;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span class="badge" style="background: var(--gold-primary); color: #000; font-weight: 700; text-transform: uppercase;"><i class="ph ph-crown"></i> Official Hiranandani Project Pune</span>
+                <span style="color: var(--gold-light); font-weight: 600;">Dr. Niranjan Hiranandani &amp; Krisala Developers Joint Venture</span>
+            </div>
+            <h3 style="color: #fff; font-size: 1.35rem; margin: 8px 0;">The Premier Hiranandani Mega Township in West Pune</h3>
+            <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 14px;">
+                Krisala Hiranandani Township represents the authoritative expansion of the legendary Hiranandani standard of excellence into West Pune. Spanning <strong>105+ integrated acres</strong> in North Hinjewadi (Darumbre), this landmark development unites Dr. Niranjan Hiranandani's four-decade legacy of neoclassical architecture with Krisala Developers' engineering precision.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 14px;">
+                <div style="background: rgba(0,0,0,0.35); padding: 12px; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <strong style="color: #fff;">105-Acre Masterplan</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Self-contained integrated ecosystem with Roman colonnades and high-street retail.</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.35); padding: 12px; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <strong style="color: #fff;">8-Acre Private Racecourse</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">India's first equestrian township with Della Resorts Polo Club partnership.</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.35); padding: 12px; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <strong style="color: #fff;">MahaRERA Certifications</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Fully approved under MahaRERA PR1260002502438 &amp; PR1260002600818.</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.35); padding: 12px; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <strong style="color: #fff;">Direct Developer Desk</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Official transparent pricing, zero brokerage, and priority allotment pass.</span>
+                </div>
             </div>
         </div>`;
     }
@@ -777,10 +827,32 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                 "@type": "ApartmentComplex",
                 "@id": "https://krisalahiranandanitownships.com/#complex",
                 "name": "Krisala Hiranandani Township Hinjewadi",
+                "alternateName": [
+                    "Krisala Hiranandani",
+                    "Hiranandani Pune",
+                    "Hiranandani Hinjewadi",
+                    "Hiranandani Township Pune",
+                    "House of Hiranandani Pune",
+                    "Hiranandani Communities Pune",
+                    "Dr Niranjan Hiranandani Pune Project",
+                    "Krisala Developers Pune"
+                ],
                 "description": "105-acre neoclassical integrated equestrian township in North Hinjewadi, Pune West.",
                 "url": "https://krisalahiranandanitownships.com/",
                 "telephone": "+917744009295",
                 "hasMap": "https://maps.google.com/?q=18.5913,73.7389",
+                "sameAs": [
+                    "https://maharera.maharashtra.gov.in/",
+                    "https://en.wikipedia.org/wiki/Hiranandani_Group",
+                    "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
+                    "https://www.wikidata.org/wiki/Q7036662",
+                    "https://hiranandani.com/",
+                    "https://houseofhiranandani.com/",
+                    "https://www.hiranandanicommunities.com/",
+                    "https://en.wikipedia.org/wiki/Hinjawadi",
+                    "https://maps.google.com/?q=18.5913,73.7389",
+                    "https://www.openstreetmap.org/#map=16/18.5913/73.7389"
+                ],
                 "geo": {
                     "@type": "GeoCoordinates",
                     "latitude": "18.5913",

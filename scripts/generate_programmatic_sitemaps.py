@@ -132,7 +132,73 @@ SILOS = [
         "hubs": ["/della"],
         "bases": ["the-della-collection-villa-plots", "equestrian-estate-plots-hinjewadi", "resort-living-villa-land", "custom-g-plus-2-luxury-villas", "polo-club-facing-villa-parcels"],
         "modifiers": ["2000-sqft-exclusive-plot", "3000-sqft-estate-parcel", "5000-sqft-presidential-plot", "8-acre-racecourse-access", "della-5-star-resort-privileges", "clear-demarcated-title", "maharera-approved-plots", "high-cagr-land-appreciation", "nri-preferred-villa-land", "private-gated-security"],
-        "localities": ["hinjewadi-darumbre", "mahalunge-annexe", "north-hinjewadi-greens", "sahyadri-valley-facing", "equestrian-polo-grounds", "pune-mumbai-corridor", "dubai-nri-investors", "bay-area-tech-leaders", "london-hni-clients", "singapore-expats", "c-suite-executives", "family-office-estates", "exclusive-100-plots", "immediate-possession-ready", "zero-encumbrance-land", "direct-developer-allotment", "private-club-membership", "helipad-accessibility", "equine-stable-access", "lifetime-legacy-asset"]
+        "localities": ["the-della-collection", "hinjewadi-phase-3", "north-hinjewadi", "darumbre-estate", "marunji-gateway", "kasarsai-dam-view", "mahalunge-smart-city", "wakad-extension", "baner-balewadi", "punawale-annexe", "mumbai-investors", "dubai-nri-desk", "presidential-enclave", "equestrian-valley", "exclusive-100-plots", "dr-niranjan-hiranandani-plots", "krisala-land-parcels", "rera-sanctioned-plots", "ready-possession-plots", "custom-villa-architects"]
+    },
+    {
+        "name": "hiranandani-brand",
+        "file": "sitemap-hiranandani-brand.xml",
+        "hubs": ["/", "/pune-real-estate", "/hinjewadi-real-estate", "/colosseum", "/pricing", "/masterplan"],
+        "bases": [
+            "hiranandani-pune",
+            "hiranandani-hinjewadi",
+            "hiranandani-township-pune",
+            "hiranandani-township-hinjewadi",
+            "house-of-hiranandani-pune",
+            "hiranandani-communities-pune",
+            "dr-niranjan-hiranandani-pune",
+            "hiranandani-new-launch-pune",
+            "hiranandani-flats-in-pune",
+            "hiranandani-apartments-pune",
+            "hiranandani-projects-in-pune",
+            "hiranandani-north-hinjewadi",
+            "hiranandani-della-pune",
+            "hiranandani-racecourse-pune",
+            "hiranandani-price-list-2026",
+            "hiranandani-brochure-download",
+            "hiranandani-floor-plans",
+            "hiranandani-2-bhk-pune",
+            "hiranandani-3-bhk-pune",
+            "hiranandani-4-bhk-pune",
+            "hiranandani-villa-plots-pune",
+            "hiranandani-booking-office",
+            "hiranandani-site-address-pune",
+            "hiranandani-sample-flat-video",
+            "hiranandani-reviews-pune"
+        ],
+        "modifiers": [
+            "official-website",
+            "price-list-and-floor-plans",
+            "maharera-registered",
+            "105-acre-integrated-township",
+            "8-acre-private-racecourse",
+            "della-resorts-partnership",
+            "possession-timeline-2028-2029",
+            "near-infosys-wipro-circle",
+            "near-metro-line-3-station",
+            "investment-and-rental-yield",
+            "sample-flat-virtual-tour",
+            "direct-developer-booking",
+            "schedule-vip-site-visit",
+            "all-inclusive-cost-sheet",
+            "rera-escrow-approved"
+        ],
+        "localities": [
+            "hinjewadi-phase-1",
+            "hinjewadi-phase-2",
+            "hinjewadi-phase-3",
+            "north-hinjewadi",
+            "darumbre-marunji",
+            "mahalunge-smart-city",
+            "wakad-extension",
+            "baner-balewadi",
+            "pune-west-corridor",
+            "mumbai-pune-expressway",
+            "pmrda-ring-road",
+            "nri-investors-pune",
+            "it-leaders-pune",
+            "luxury-buyers-pune",
+            "first-equestrian-township"
+        ]
     }
 ]
 
@@ -405,7 +471,34 @@ TIER1_PROGRAMMATIC_CORRIDORS = [
     ("price-list-2026", "Verified 2026 Price List & All-Inclusive Cost Sheets", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.85"),
     ("construction-linked-payment-plan", "Construction Linked Payment Plan (CLP) & Bank Offers", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.85"),
     ("gross-rental-yield-analysis", "Gross Rental Yield & IT Tenant Demand Forecast 2026-2035", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp", "0.85"),
-    ("the-colosseum-diwali-pre-launch", "Codename The Colosseum Diwali Early Bird Pre-Launch Offer", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp", "0.90")
+    ("the-colosseum-diwali-pre-launch", "Codename The Colosseum Diwali Early Bird Pre-Launch Offer", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp", "0.90"),
+
+    # High-Priority Hiranandani Brand Dominance Corridors
+    ("hiranandani-pune", "Hiranandani Pune Official Township Website | Krisala Hiranandani", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98"),
+    ("hiranandani-hinjewadi", "Hiranandani Hinjewadi Pune Official Website | 105-Acre Integrated Township", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98"),
+    ("hiranandani-township-pune", "Hiranandani Township Pune | 105 Acres Luxury Living & Racecourse", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp", "0.98"),
+    ("hiranandani-township-hinjewadi", "Hiranandani Township Hinjewadi | 2, 3 & 4 BHK Luxury Apartments", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp", "0.98"),
+    ("house-of-hiranandani-pune", "House of Hiranandani Pune | Joint Venture Krisala Developers", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98"),
+    ("hiranandani-communities-pune", "Hiranandani Communities Pune Official Project | Hinjewadi North", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98"),
+    ("dr-niranjan-hiranandani-pune", "Dr. Niranjan Hiranandani Pune Project | Krisala Hiranandani Township", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98"),
+    ("hiranandani-new-launch-pune", "Hiranandani New Launch Pune 2026 | Sector Icon & The Colosseum", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_daylight_architectural_elevation.webp", "0.98"),
+    ("hiranandani-flats-in-pune", "Hiranandani Flats in Pune | Price List, Floor Plans & Reviews", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp", "0.98"),
+    ("hiranandani-apartments-pune", "Hiranandani Apartments Pune | Luxury 2, 3 & 4 BHK Residences", "https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_living_hq.webp", "0.98"),
+    ("hiranandani-projects-in-pune", "Hiranandani Projects in Pune | Hinjewadi 105-Acre Township", "https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp", "0.98"),
+    ("hiranandani-north-hinjewadi", "Hiranandani North Hinjewadi Darumbre | Price & Location", "https://krisalahiranandanitownships.com/public/imported/proximity-to-pune-mumbai.webp", "0.98"),
+    ("hiranandani-della-pune", "Hiranandani Della Pune | 8-Acre Private Racecourse & Polo Club", "https://krisalahiranandanitownships.com/public/township_grand/della_resort_villas_equestrian_official.webp", "0.98"),
+    ("hiranandani-racecourse-pune", "Hiranandani Racecourse Pune | Della Equestrian Residences", "https://krisalahiranandanitownships.com/public/imported/della-racecource.webp", "0.98"),
+    ("hiranandani-price-list-2026", "Hiranandani Price List 2026 | Cost Sheet & Payment Plans", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98"),
+    ("hiranandani-brochure-download", "Hiranandani Brochure Download | PDF Floor Plans & Masterplan", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98"),
+    ("hiranandani-floor-plans", "Hiranandani Floor Plans Pune | 2, 3, 4 BHK & Villa Plots", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp", "0.98"),
+    ("hiranandani-2-bhk-pune", "Hiranandani 2 BHK Pune Hinjewadi | Price, Carpet Area & Tour", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp", "0.98"),
+    ("hiranandani-3-bhk-pune", "Hiranandani 3 BHK Pune Hinjewadi | Grande & Royale Layouts", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp", "0.98"),
+    ("hiranandani-4-bhk-pune", "Hiranandani 4 BHK Pune Hinjewadi | Palatial Sky Duplexes", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_daylight_architectural_elevation.webp", "0.98"),
+    ("hiranandani-villa-plots-pune", "Hiranandani Villa Plots Pune | The Della Collection Land", "https://krisalahiranandanitownships.com/public/township_grand/della_resort_villas_equestrian_official.webp", "0.98"),
+    ("hiranandani-booking-office", "Hiranandani Booking Office Pune | Direct Developer Sales Desk", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98"),
+    ("hiranandani-site-address-pune", "Hiranandani Site Address & Location Map | Hinjewadi North Pune", "https://krisalahiranandanitownships.com/public/imported/proximity-to-pune-mumbai.webp", "0.98"),
+    ("hiranandani-sample-flat-video", "Hiranandani Sample Flat Video Tour 4K | Experience Center", "https://krisalahiranandanitownships.com/public/everlyn/gallery/gallery_living_hq.webp", "0.98"),
+    ("hiranandani-reviews-pune", "Hiranandani Reviews Pune | Investment Potential & Buyer Ratings", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.98")
 ]
 
 

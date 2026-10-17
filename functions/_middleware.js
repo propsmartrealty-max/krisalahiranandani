@@ -399,9 +399,16 @@ export async function onRequest(context) {
         
         const isTargetQuery = realEstateKeywords.some(kw => cleanSlug.includes(kw));
         if (isTargetQuery) {
-            const targetSlug = cleanSlug.startsWith('krisala-hiranandani-') 
-                ? cleanSlug 
-                : `krisala-hiranandani-${cleanSlug}`;
+            let targetSlug = cleanSlug;
+            if (targetSlug.startsWith('krisala-hiranandani-')) {
+                // already has full canonical prefix
+            } else if (targetSlug.startsWith('hiranandani-')) {
+                targetSlug = `krisala-${targetSlug}`;
+            } else if (targetSlug.startsWith('krisala-')) {
+                targetSlug = `krisala-hiranandani-${targetSlug.slice(8)}`;
+            } else {
+                targetSlug = `krisala-hiranandani-${targetSlug}`;
+            }
             const targetUrl = new URL(`/explore/${targetSlug}`, request.url);
             return Response.redirect(targetUrl.toString(), 301);
         }
