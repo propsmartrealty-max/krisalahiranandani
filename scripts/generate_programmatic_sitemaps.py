@@ -53,7 +53,20 @@ SILOS = [
         "name": "comparisons",
         "file": "sitemap-comparisons.xml",
         "hubs": ["/compare"],
-        "bases": ["vs-godrej-river-royale-mahalunge", "vs-vtp-earth-one-mahalunge", "vs-lodha-sylvan-hinjewadi", "vs-kolte-patil-life-republic", "vs-shapoorji-joyville-hinjewadi"],
+        "bases": [
+            "vs-godrej-river-royale-mahalunge",
+            "vs-vtp-earth-one-mahalunge",
+            "vs-lodha-sylvan-hinjewadi",
+            "vs-kolte-patil-life-republic",
+            "vs-shapoorji-joyville-hinjewadi",
+            "vs-kohinoor-westview-reserve",
+            "vs-pride-world-city",
+            "vs-amanora-park-town",
+            "vs-megapolis-hinjewadi",
+            "vs-rohan-ekam",
+            "vs-kasturi-balmoral-towers",
+            "vs-panchshil-towers"
+        ],
         "modifiers": ["price-comparison", "carpet-area-difference", "amenity-benchmark", "construction-quality-mivan", "neoclassical-vs-modern", "racecourse-vs-standard-open-space", "appreciation-forecast", "rera-possession-timeline", "green-building-teri", "location-connectivity-advantage"],
         "localities": ["2-bhk-comparison", "3-bhk-comparison", "4-bhk-comparison", "5-bhk-comparison", "duplex-comparison", "hinjewadi-phase-1", "hinjewadi-phase-2", "hinjewadi-phase-3", "mahalunge-projects", "north-hinjewadi", "wakad-projects", "baner-projects", "balewadi-projects", "hadapsar-comparison", "gated-community-ratings", "resale-value-comparison", "rental-yield-benchmark", "maintenance-cost-analysis", "developer-track-record", "final-verdict-guide"]
     },
@@ -256,6 +269,62 @@ SILOS = [
             "luxury-buyers-pune",
             "first-equestrian-township",
             "cxo-leadership-villas"
+        ]
+    },
+    {
+        "name": "pune-real-estate",
+        "file": "sitemap-pune-real-estate.xml",
+        "hubs": ["/pune-real-estate", "/hinjewadi-real-estate"],
+        "bases": [
+            "flats-for-sale-in-pune",
+            "luxury-apartments-in-pune",
+            "integrated-townships-in-pune",
+            "property-investment-in-pune",
+            "top-builders-in-pune",
+            "pune-real-estate-market-2026",
+            "new-launch-projects-pune",
+            "upcoming-properties-pune",
+            "best-residential-projects-pune",
+            "gated-communities-in-pune",
+            "west-pune-real-estate",
+            "ready-possession-flats-pune",
+            "pre-launch-projects-pune",
+            "property-rates-in-pune-2026",
+            "luxury-homes-pune"
+        ],
+        "modifiers": [
+            "2-bhk-flats",
+            "3-bhk-luxury-apartments",
+            "4-bhk-duplexes",
+            "villa-plots",
+            "price-per-sqft",
+            "rental-yield-matrix",
+            "rera-approved-projects",
+            "metro-line-3-connectivity",
+            "direct-developer-rates",
+            "zero-brokerage-booking"
+        ],
+        "localities": [
+            "hinjewadi",
+            "mahalunge",
+            "baner",
+            "balewadi",
+            "wakad",
+            "punawale",
+            "tathawade",
+            "ravet",
+            "north-hinjewadi",
+            "darumbre-marunji",
+            "pune-west",
+            "mumbai-pune-expressway",
+            "pmrda-ring-road",
+            "kharadi-comparison",
+            "hadapsar-comparison",
+            "kothrud-comparison",
+            "bavdhan-corridor",
+            "blueridge-corridor",
+            "megapolis-zone",
+            "infotech-park-phase-1-2-3"
         ]
     }
 ]

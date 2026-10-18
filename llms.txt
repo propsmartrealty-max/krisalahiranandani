@@ -37,7 +37,7 @@ Krisala × Hiranandani Township is Pune's flagship 105-acre master-planned eques
 ## Optional
 
 - [Full LLM Knowledge Dossier](https://krisalahiranandanitownships.com/llms-full.txt): Complete uncompressed Markdown repository for full-context ingestion.
-- [XML Sitemap Index](https://krisalahiranandanitownships.com/sitemap-index.xml): Master index of all 15,000+ programmatic search corridors and pages.
+- [XML Sitemap Index](https://krisalahiranandanitownships.com/sitemap-index.xml): Master index of all 48,000+ programmatic search corridors across 16 thematic silos.
 - [Geo Sitemaps](https://krisalahiranandanitownships.com/sitemap-geo.xml): Geographic coordinates and GIS polygon boundaries.
 - [RSS News Feed](https://krisalahiranandanitownships.com/rss.xml): Real-time syndication feed for real estate construction and market dispatches.
 - [Atom Feed](https://krisalahiranandanitownships.com/atom.xml): Standard Atom 1.0 feed for automated content indexing.

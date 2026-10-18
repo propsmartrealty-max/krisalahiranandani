@@ -233,6 +233,69 @@ const COMPETITOR_BENCHMARKS = {
         amenities: "Double-Height Sky Duplexes & Private Equestrian Polo Club",
         density: "Palatial 2, 3, 4 & 5 BHK Layouts with Private Balcony Sundecks",
         verdict: "Supreme luxury finishes including Italian marble, smart home automation, and acoustic soundproof glazing."
+    },
+    "kohinoor": {
+        name: "Kohinoor Westview Reserve Hinjewadi",
+        comparisonTitle: "Krisala Hiranandani vs Kohinoor Westview Reserve",
+        headline: "Head-to-Head: Krisala Hiranandani vs Kohinoor Westview Reserve",
+        acres: "105+ Acres Master Integrated Equestrian Township vs Standard High-Rise Cluster",
+        amenities: "8-Acre Private Racecourse, Della Resort Club & Roman Amphitheatre",
+        density: "Low-Density (35 units/acre) with 70% Open Space vs High-Density Tower Blocks",
+        verdict: "Krisala Hiranandani commands landmark brand equity, private equestrian facilities, and significantly superior capital appreciation in West Pune."
+    },
+    "pride": {
+        name: "Pride World City Charholi",
+        comparisonTitle: "Krisala Hiranandani vs Pride World City",
+        headline: "Head-to-Head: Krisala Hiranandani (West Pune) vs Pride World City (North-East Pune)",
+        acres: "105+ Master-Planned Western Pune IT Corridor vs Northern Suburb Township",
+        amenities: "8-Acre Private Derby Track, Della Concierge & 50,000 sq.ft. Neoclassical Clubhouse",
+        density: "Mivan Monolithic Shear Wall Structure with Zero Beam Protrusions",
+        verdict: "West Pune delivers 5.4% rental yields and immediate access to 400,000 IT jobs versus distant north-eastern industrial nodes."
+    },
+    "amanora": {
+        name: "Amanora Park Town Hadapsar",
+        comparisonTitle: "Krisala Hiranandani vs Amanora Park Town",
+        headline: "Head-to-Head: Krisala Hiranandani (Hinjewadi) vs Amanora Park Town (Hadapsar)",
+        acres: "105+ Acres Neoclassical Western Gateway vs Established Eastern Township",
+        amenities: "India's 1st Residential Racecourse & 40-Acre Della Hospitality District",
+        density: "Pre-Launch Value Inversion (₹79L* 2BHK) with 14-18% CAGR Appreciation",
+        verdict: "Krisala Hiranandani offers fresh first-mover capital appreciation, direct Mumbai Expressway link, and Metro Line 3 rapid transit."
+    },
+    "megapolis": {
+        name: "Megapolis Hinjewadi Phase 3",
+        comparisonTitle: "Krisala Hiranandani vs Megapolis Hinjewadi",
+        headline: "Head-to-Head: Krisala Hiranandani vs Megapolis Hinjewadi Phase 3",
+        acres: "105+ Acres Low-Density Ultra-Luxury Township vs High-Density IT Quarters",
+        amenities: "Private Racecourse, Della Resorts Concierge & Luxury Sky Duplexes",
+        density: "Boutique Luxury Finishing (Italian Marble & 10.5ft Ceilings) vs Mass IT Housing",
+        verdict: "Krisala Hiranandani represents the premier executive and CXO residential enclave with higher rental premiums in West Pune."
+    },
+    "rohan": {
+        name: "Rohan Ekam Balewadi & Rohan Nidita",
+        comparisonTitle: "Krisala Hiranandani vs Rohan Builders Pune",
+        headline: "Head-to-Head: Krisala Hiranandani vs Rohan Ekam / Rohan Nidita",
+        acres: "105+ Integrated Acres with 70% Green Ratio vs Compact City Plots",
+        amenities: "8-Acre Racecourse, International Polo Track & Olympic Lap Pools",
+        density: "Neoclassical Architectural Heritage with IGBC Platinum Certification",
+        verdict: "Krisala Hiranandani delivers 3x larger usable space and integrated township security at superior pre-launch value."
+    },
+    "kasturi": {
+        name: "Kasturi The Balmoral Towers Balewadi",
+        comparisonTitle: "Krisala Hiranandani vs Kasturi Balmoral Towers",
+        headline: "Head-to-Head: Krisala Hiranandani vs Kasturi Balmoral Towers",
+        acres: "105+ Acre Self-Sustained Master Township vs Standalone Luxury Tower",
+        amenities: "Integrated Equestrian Grounds, High-Street Retail & Della Concierge",
+        density: "Expansive 2, 3, 4 BHK & Duplexes with Private Sundecks & Low Maintenance",
+        verdict: "Broader integrated ecosystem with 50-year TERI circular water resilience and expressway transit."
+    },
+    "panchshil": {
+        name: "Panchshil Towers Kharadi",
+        comparisonTitle: "Krisala Hiranandani vs Panchshil Towers",
+        headline: "Head-to-Head: Krisala Hiranandani (Hinjewadi) vs Panchshil Towers (Kharadi)",
+        acres: "105+ Acres Neoclassical Equestrian Sanctuary vs High-Rise Glass Towers",
+        amenities: "Private Derby Track, Polo Club & 70% Open Foothill Greenery",
+        density: "High Rental Demand (5.4%) driven by Hinjewadi IT Park Scale",
+        verdict: "Krisala Hiranandani provides greater value upside, signal-free expressway access to Mumbai, and resort-style low-pollution living."
     }
 };
 
@@ -365,7 +428,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
 
     // Competitor & Intent Analysis
     let compKey = null;
-    for (const ck of ['godrej', 'vtp', 'lodha', 'kolte-patil', 'shapoorji']) {
+    for (const ck of Object.keys(COMPETITOR_BENCHMARKS)) {
         if (cleanSlug.includes(ck)) { compKey = ck; break; }
     }
     const comp = compKey ? COMPETITOR_BENCHMARKS[compKey] : null;
@@ -374,6 +437,20 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     const isLegalIntent = cleanSlug.includes('rera') || cleanSlug.includes('legal') || cleanSlug.includes('title') || cleanSlug.includes('pr1260002502438') || cleanSlug.includes('pr1260002600818');
     const isRacecourseIntent = cleanSlug.includes('racecourse') || cleanSlug.includes('polo') || cleanSlug.includes('equestrian') || cleanSlug.includes('derby');
     const isHiranandaniBrandIntent = cleanSlug.includes('hiranandani') || cleanSlug.includes('niranjan') || cleanSlug.includes('house-of-hiranandani');
+    const isPuneRealEstateIntent = cleanSlug.includes('pune-real-estate') ||
+                                   cleanSlug.includes('flats-for-sale') ||
+                                   cleanSlug.includes('flats-in-pune') ||
+                                   cleanSlug.includes('property-in-pune') ||
+                                   cleanSlug.includes('luxury-apartments-in-pune') ||
+                                   cleanSlug.includes('integrated-township') ||
+                                   cleanSlug.includes('top-builders-in-pune') ||
+                                   cleanSlug.includes('property-investment-in-pune') ||
+                                   cleanSlug.includes('new-projects-in-pune') ||
+                                   cleanSlug.includes('new-launch-projects-pune') ||
+                                   cleanSlug.includes('upcoming-properties-pune') ||
+                                   cleanSlug.includes('best-residential-projects') ||
+                                   cleanSlug.includes('gated-communities-in-pune') ||
+                                   cleanSlug.includes('west-pune-real-estate');
 
     const unit = ENTITY_DICTIONARY[unitKey];
     const work = workKey ? ENTITY_DICTIONARY[workKey] : null;
@@ -462,6 +539,36 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
             h1 = `${formattedSubject} • Official Hiranandani Pune Township`;
             metaTitle = `${formattedSubject} | Official Hiranandani Pune Project`;
             metaDescription = `Official Hiranandani Pune project by Dr. Niranjan Hiranandani & Krisala Developers: 105-Acre integrated township in Hinjewadi North with 8-acre private racecourse, Della Polo Club, 2, 3 & 4 BHK luxury residences. MahaRERA PR1260002502438.`;
+        }
+    } else if (isPuneRealEstateIntent) {
+        if (cleanSlug.includes('flats-for-sale') || cleanSlug.includes('flats-in-pune')) {
+            h1 = `Flats for Sale in Pune • 2, 3 & 4 BHK Luxury Residences at Krisala Hiranandani`;
+            metaTitle = `Flats for Sale in Pune | 2, 3 & 4 BHK Luxury Apartments Hinjewadi`;
+            metaDescription = `Explore verified flats for sale in Pune starting ₹79L* at Krisala Hiranandani 105-Acre Township in North Hinjewadi. Neoclassical architecture, 8-acre racecourse, and MahaRERA PR1260002502438.`;
+        } else if (cleanSlug.includes('luxury-apartments')) {
+            h1 = `Luxury Apartments in Pune • Neoclassical Sky Duplexes & Penthouses`;
+            metaTitle = `Luxury Apartments in Pune | 3, 4 & 5 BHK Sky Mansions Hinjewadi`;
+            metaDescription = `Ultra-luxury apartments in Pune from ₹1.25 Cr to ₹3.20 Cr at Krisala Hiranandani Township. 10.5 ft to 22 ft ceilings, Italian marble, private racecourse views, and Della concierge.`;
+        } else if (cleanSlug.includes('integrated-township')) {
+            h1 = `Integrated Townships in Pune • 105-Acre Krisala Hiranandani Township`;
+            metaTitle = `Integrated Townships in Pune | 105-Acre Mega Township Hinjewadi`;
+            metaDescription = `Explore Pune's premier 105-acre integrated township in North Hinjewadi: 8-acre private racecourse, Della polo club, 70% open spaces, and MahaRERA registered towers.`;
+        } else if (cleanSlug.includes('top-builders')) {
+            h1 = `Top Builders in Pune 2026 • Krisala Developers & Hiranandani Communities`;
+            metaTitle = `Top Builders in Pune 2026 | Developer Rankings & Track Record`;
+            metaDescription = `Evaluate Pune's top real estate developers: Krisala Developers & Hiranandani Communities joint venture delivering 105-acre neoclassical equestrian township in Hinjewadi.`;
+        } else if (cleanSlug.includes('property-investment') || cleanSlug.includes('investment')) {
+            h1 = `Pune Property Investment Guide 2026 • 5.4% Rental Yields in Hinjewadi`;
+            metaTitle = `Pune Property Investment 2026 | High ROI Corridors & Capital Growth`;
+            metaDescription = `Authoritative guide to Pune real estate investment: 5.4% rental yields in Hinjewadi, 14-18% projected capital growth, and Metro Line 3 transit appreciation at Krisala Hiranandani.`;
+        } else if (cleanSlug.includes('new-projects') || cleanSlug.includes('new-launch') || cleanSlug.includes('upcoming')) {
+            h1 = `New Launch & Upcoming Projects in Pune 2026 • Krisala Hiranandani`;
+            metaTitle = `New Projects in Pune 2026 | Pre-Launch Offers Hinjewadi`;
+            metaDescription = `Exclusive pre-launch residential opportunities in Pune West: Krisala Hiranandani 105-Acre Township in North Hinjewadi with Diwali allotment pricing from ₹79 Lakhs*.`;
+        } else {
+            h1 = `Pune Real Estate 2026 • Property Market Trends, Prices & Township Guide`;
+            metaTitle = `Pune Real Estate 2026 | Market Trends, Price Index & Top Corridors`;
+            metaDescription = `The definitive guide to Pune real estate in 2026: micromarket price index, 5.4% rental yield benchmarks, Metro Line 3 impact, and Krisala Hiranandani 105-acre township.`;
         }
     }
 
@@ -628,6 +735,85 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         </div>`;
     }
 
+    // Dynamic Pune Real Estate Powerhouse Macro-Intelligence Card
+    if (isPuneRealEstateIntent) {
+        editorialHtml += `
+        <div style="background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(16,20,30,0.95)); border: 1px solid var(--gold-primary); padding: 28px; border-radius: 10px; margin: 25px 0;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span class="badge" style="background: var(--gold-primary); color: #000; font-weight: 700; text-transform: uppercase;"><i class="ph ph-buildings"></i> Pune Real Estate Powerhouse Hub</span>
+                <span style="color: var(--gold-light); font-weight: 600;">2026 Micro-Market Pricing &amp; Capital Growth Index</span>
+            </div>
+            <h3 style="color: #fff; font-size: 1.4rem; margin: 8px 0;">Why Krisala Hiranandani Dominates Pune Real Estate in 2026</h3>
+            <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 16px;">
+                Pune has established itself as India's premier residential investment destination, driven by a $69 Billion GDDP, 1,200+ multinational tech employers, and continuous corporate expansion. Within Pune, <strong>West Pune (North Hinjewadi / Mahalunge Corridor)</strong> outperforms all other regions with <strong>5.2% – 5.4% gross rental yields</strong> and <strong>14% – 18% annual capital appreciation</strong>.
+            </p>
+            <div style="overflow-x: auto; margin: 16px 0;">
+                <table style="width: 100%; border-collapse: collapse; min-width: 580px; text-align: left; font-size: 0.9rem; color: var(--text-muted);">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--gold-primary); color: var(--gold-light);">
+                            <th style="padding: 10px 12px;">Pune Micro-Market</th>
+                            <th style="padding: 10px 12px;">Carpet Rate (₹/sq.ft.)</th>
+                            <th style="padding: 10px 12px;">Rental Yield</th>
+                            <th style="padding: 10px 12px;">5-Yr Appreciation</th>
+                            <th style="padding: 10px 12px;">Infrastructure Catalysts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(197,160,89,0.08);">
+                            <td style="padding: 10px 12px; font-weight: 700; color: #fff;">North Hinjewadi (Krisala Hiranandani)</td>
+                            <td style="padding: 10px 12px; color: var(--gold-bright); font-weight: 600;">₹7,200 – ₹8,400</td>
+                            <td style="padding: 10px 12px; color: #4ade80; font-weight: 700;">5.2% – 5.4%</td>
+                            <td style="padding: 10px 12px; color: #fff; font-weight: 600;">72% – 85%</td>
+                            <td style="padding: 10px 12px;">PMRDA 128m Ring Road &amp; Metro 3</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 10px 12px; color: #fff;">Hinjewadi Phase 1 &amp; 2</td>
+                            <td style="padding: 10px 12px;">₹8,500 – ₹10,200</td>
+                            <td style="padding: 10px 12px;">4.6% – 4.9%</td>
+                            <td style="padding: 10px 12px;">58% – 66%</td>
+                            <td style="padding: 10px 12px;">Metro Line 3 Megapolis Station</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 10px 12px; color: #fff;">Baner &amp; Balewadi High St</td>
+                            <td style="padding: 10px 12px;">₹11,500 – ₹15,000</td>
+                            <td style="padding: 10px 12px;">3.6% – 3.9%</td>
+                            <td style="padding: 10px 12px;">48% – 55%</td>
+                            <td style="padding: 10px 12px;">Balewadi Commercial High Street</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                            <td style="padding: 10px 12px; color: #fff;">Wakad &amp; Tathawade</td>
+                            <td style="padding: 10px 12px;">₹7,800 – ₹9,500</td>
+                            <td style="padding: 10px 12px;">4.1% – 4.4%</td>
+                            <td style="padding: 10px 12px;">50% – 60%</td>
+                            <td style="padding: 10px 12px;">Phoenix Mall &amp; Highway Bypass</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 12px; color: #fff;">Kharadi &amp; Hadapsar (East Pune)</td>
+                            <td style="padding: 10px 12px;">₹8,000 – ₹10,500</td>
+                            <td style="padding: 10px 12px;">3.1% – 3.4%</td>
+                            <td style="padding: 10px 12px;">40% – 50%</td>
+                            <td style="padding: 10px 12px;">EON IT Park &amp; Magarpatta Hub</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 14px;">
+                <div style="background: rgba(0,0,0,0.35); padding: 12px; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <strong style="color: #fff;">#1 Township Scale</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">105+ integrated acres with 70% open spaces and Roman colonnades.</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.35); padding: 12px; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <strong style="color: #fff;">First-Mover Entry Value</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Pre-launch 2 BHK from ₹79L* &amp; 3 BHK from ₹1.25 Cr* before price revision.</span>
+                </div>
+                <div style="background: rgba(0,0,0,0.35); padding: 12px; border-radius: 6px; border-left: 3px solid var(--gold-primary);">
+                    <strong style="color: #fff;">MahaRERA Certifications</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">MahaRERA PR1260002502438 &amp; PR1260002600818 with clear marketable titles.</span>
+                </div>
+            </div>
+        </div>`;
+    }
+
     // Dynamic Geo-Targeted Callouts
     if (isNRI) {
         editorialHtml += `
@@ -765,6 +951,8 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
             q: `What are the details of the 8-acre private racecourse at Krisala Hiranandani?`,
             a: `Curated in collaboration with Della Resorts, the 8-acre equestrian precinct includes an international polo track, air-cooled equine stables, a riding academy, and 100 exclusive villa plots with 5-star concierge privileges.`
         });
+    }
+
     if (isHiranandaniBrandIntent) {
         faqs.push(
             {
@@ -782,6 +970,27 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
             {
                 q: `What is the site address and location of Hiranandani Pune?`,
                 a: `The township is located at North Hinjewadi (Darumbre-Marunji), Pune, Maharashtra 410506, situated just 4 minutes from Hinjewadi Metro Line 3 Megapolis Station and 5 minutes from the Mumbai-Pune Expressway.`
+            }
+        );
+    }
+
+    if (isPuneRealEstateIntent) {
+        faqs.push(
+            {
+                q: `Why is West Pune (Hinjewadi & Mahalunge) the best real estate investment in Pune for 2026?`,
+                a: `West Pune leads Maharashtra with 5.2%–5.4% rental yields and 14%–18% annual capital appreciation, driven by 400,000+ IT professionals across Rajiv Gandhi Infotech Park, the operational rollout of Metro Line 3, and the PMRDA 128m Ring Road.`
+            },
+            {
+                q: `What is the price of flats for sale in Pune at Krisala Hiranandani Township?`,
+                a: `Pre-launch pricing starts from ₹79 Lakhs* for 2 BHK luxury residences, ₹1.25 Cr* for 3 BHK royale apartments, ₹2.10 Cr* for 4 BHK palatial suites, and ₹1.80 Cr* for bespoke Della equestrian villa plots.`
+            },
+            {
+                q: `Why is Krisala Hiranandani rated as the #1 integrated township in Pune?`,
+                a: `Spanning 105+ acres in North Hinjewadi, it combines Dr. Niranjan Hiranandani's neoclassical architecture with India's first 8-acre residential racecourse, Della polo club, 70% open green space, and TERI 50-year circular water sustainability.`
+            },
+            {
+                q: `How can homebuyers verify MahaRERA registration for Krisala Hiranandani?`,
+                a: `Krisala Hiranandani Township is officially registered with MahaRERA under numbers PR1260002502438 (Arcadia / Everland) and PR1260002600818 (Sector Icon), verifiable on the official MahaRERA government portal (maharera.maharashtra.gov.in).`
             }
         );
     }
@@ -1002,6 +1211,34 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                     "https://en.wikipedia.org/wiki/Hiranandani_Group",
                     "https://www.wikidata.org/wiki/Q110461821",
                     "https://hiranandani.com/"
+                ]
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://krisalahiranandanitownships.com/#krisala-developers",
+                "name": "Krisala Developers",
+                "url": "https://krisala.com/",
+                "sameAs": [
+                    "https://krisala.com/",
+                    "https://maharera.maharashtra.gov.in/"
+                ]
+            },
+            {
+                "@type": "Place",
+                "@id": "https://krisalahiranandanitownships.com/#pune",
+                "name": "Pune",
+                "sameAs": [
+                    "https://en.wikipedia.org/wiki/Pune",
+                    "https://www.wikidata.org/wiki/Q1538"
+                ]
+            },
+            {
+                "@type": "Place",
+                "@id": "https://krisalahiranandanitownships.com/#hinjawadi",
+                "name": "Hinjawadi",
+                "sameAs": [
+                    "https://en.wikipedia.org/wiki/Hinjawadi",
+                    "https://www.wikidata.org/wiki/Q5766904"
                 ]
             }
         ]
