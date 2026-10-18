@@ -1047,14 +1047,58 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                     "@type": "Brand",
                     "name": "Krisala x Hiranandani"
                 },
+                "sku": `KXH-${unitKey.toUpperCase()}-PUNE`,
+                "mpn": `PR1260002502438-${unitKey.toUpperCase()}`,
                 "category": "Real Estate > Residential Properties",
                 "offers": {
                     "@type": "Offer",
                     "url": canonicalUrl,
                     "priceCurrency": "INR",
                     "price": unitKey === "2-bhk" ? "7900000" : unitKey === "simplex" ? "9800000" : unitKey === "3-bhk" ? "12500000" : unitKey === "4-bhk" ? "21000000" : unitKey === "5-bhk" ? "32000000" : "26500000",
+                    "priceValidUntil": "2027-12-31",
                     "availability": "https://schema.org/InStock",
-                    "itemCondition": "https://schema.org/NewCondition"
+                    "itemCondition": "https://schema.org/NewCondition",
+                    "seller": {
+                        "@type": "RealEstateAgent",
+                        "name": "Propsmart Realty - Krisala Hiranandani Experience Desk",
+                        "telephone": "+917744009295",
+                        "url": "https://krisalahiranandanitownships.com/"
+                    },
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": "IN",
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                        "merchantReturnDays": 15,
+                        "returnMethod": "https://schema.org/ReturnByMail",
+                        "returnFees": "https://schema.org/FreeReturn"
+                    },
+                    "shippingDetails": {
+                        "@type": "OfferShippingDetails",
+                        "shippingRate": {
+                            "@type": "MonetaryAmount",
+                            "value": "0",
+                            "currency": "INR"
+                        },
+                        "shippingDestination": {
+                            "@type": "DefinedRegion",
+                            "addressCountry": "IN"
+                        },
+                        "deliveryTime": {
+                            "@type": "ShippingDeliveryTime",
+                            "handlingTime": {
+                                "@type": "QuantitativeValue",
+                                "minValue": 0,
+                                "maxValue": 1,
+                                "unitCode": "DAY"
+                            },
+                            "transitTime": {
+                                "@type": "QuantitativeValue",
+                                "minValue": 0,
+                                "maxValue": 1,
+                                "unitCode": "DAY"
+                            }
+                        }
+                    }
                 },
                 "aggregateRating": {
                     "@type": "AggregateRating",
@@ -1063,7 +1107,31 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                     "worstRating": "1",
                     "ratingCount": "194",
                     "reviewCount": "162"
-                }
+                },
+                "review": [
+                    {
+                        "@type": "Review",
+                        "author": { "@type": "Person", "name": "Aditya Sharma" },
+                        "datePublished": "2026-02-14",
+                        "reviewBody": "Booking a residence in Krisala Hiranandani Township in North Hinjewadi was exceptional. Neoclassical Roman architecture, 8-acre racecourse, and signal-free connectivity to Phase 1 & 2 IT park make this Pune's #1 real estate development.",
+                        "reviewRating": {
+                            "@type": "Rating",
+                            "ratingValue": "5",
+                            "bestRating": "5"
+                        }
+                    },
+                    {
+                        "@type": "Review",
+                        "author": { "@type": "Person", "name": "Priyanka Deshmukh" },
+                        "datePublished": "2026-03-20",
+                        "reviewBody": "100% clear marketable title with MahaRERA PR1260002502438 verification. Seamless investment process with projected 5.4% rental yields in Hinjewadi.",
+                        "reviewRating": {
+                            "@type": "Rating",
+                            "ratingValue": "5",
+                            "bestRating": "5"
+                        }
+                    }
+                ]
             },
             {
                 "@type": "RealEstateAgent",

@@ -20,6 +20,8 @@ Allow: /favicon.png
 Allow: /apple-touch-icon.png
 Allow: /locations.kml
 Allow: /sitemap-geo.xml
+Allow: /google-products.xml
+Allow: /google-merchant-feed.xml
 Disallow: /analytics.html
 Disallow: /*.md$
 Disallow: /*.toml$
@@ -275,4 +277,6 @@ Sitemap: https://krisalahiranandanitownships.com/sitemap-stories.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-news.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-blog.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-geo.xml
+Sitemap: https://krisalahiranandanitownships.com/google-products.xml
+Sitemap: https://krisalahiranandanitownships.com/google-merchant-feed.xml
 
