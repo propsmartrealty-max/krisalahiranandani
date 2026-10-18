@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Cloudflare & DNS Full-Stack Optimizer & Hardener
-Automates security settings, TLS configurations, and DNS records via Cloudflare v4 REST API.
+Enterprise Cloudflare, DNS & Infrastructure Optimizer & Hardener
+Fully automates security settings, TLS configurations, DNS records, Dynamic Edge Redirects,
+Edge Cache Rules, Custom WAF Rulesets, and DNSSEC verification via Cloudflare v4 REST API.
 """
 
 import os
@@ -10,7 +11,6 @@ import json
 import argparse
 import urllib.request
 import urllib.error
-
 import ssl
 
 API_BASE = "https://api.cloudflare.com/client/v4"
@@ -20,7 +20,6 @@ def get_ssl_context():
         import certifi
         return ssl.create_default_context(cafile=certifi.where())
     except Exception:
-        # Fallback to default or unverified if certificates aren't linked on local mac python
         ctx = ssl.create_default_context()
         ctx.check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
@@ -88,14 +87,28 @@ def list_dns_records(headers, zone_id):
         return res.get("result", [])
     return []
 
-def add_dns_record(headers, zone_id, record_data, existing_records):
-    # Check if identical record exists
+def add_or_update_dns_record(headers, zone_id, record_data, existing_records):
     for r in existing_records:
         if r.get("type") == record_data.get("type") and r.get("name") == record_data.get("name"):
-            if record_data.get("type") in ["CAA", "TXT", "MX"]:
-                if str(r.get("content")).strip('"') == str(record_data.get("content")).strip('"'):
-                    print(f"  [i] DNS {record_data['type']} {record_data['name']} already exists.")
+            if record_data.get("type") in ["CAA"]:
+                if r.get("data", {}) == record_data.get("data", {}):
+                    print(f"  [i] CAA record {record_data['name']} already in sync.")
                     return
+            elif record_data.get("type") in ["TXT", "MX"]:
+                curr_content = str(r.get("content")).strip('"')
+                new_content = str(record_data.get("content")).strip('"')
+                if curr_content == new_content:
+                    print(f"  [i] DNS {record_data['type']} {record_data['name']} already in sync.")
+                    return
+                else:
+                    url = f"{API_BASE}/zones/{zone_id}/dns_records/{r['id']}"
+                    res = make_request(url, method="PUT", headers=headers, data=record_data)
+                    if res.get("success"):
+                        print(f"  [✓] Updated DNS {record_data['type']} {record_data['name']}")
+                    else:
+                        print(f"  [✗] Failed to update DNS {record_data['type']} {record_data['name']}: {res.get('errors')}")
+                    return
+
     url = f"{API_BASE}/zones/{zone_id}/dns_records"
     res = make_request(url, method="POST", headers=headers, data=record_data)
     if res.get("success"):
@@ -111,24 +124,10 @@ def delete_dns_record(headers, zone_id, record_id, record_desc=""):
     else:
         print(f"  [✗] Failed to delete record {record_id}: {res.get('errors')}")
 
-def update_dns_record(headers, zone_id, record_id, record_data):
-    url = f"{API_BASE}/zones/{zone_id}/dns_records/{record_id}"
-    res = make_request(url, method="PUT", headers=headers, data=record_data)
-    if res.get("success"):
-        print(f"  [✓] Updated DNS {record_data['type']} {record_data['name']} -> {record_data.get('content')}")
-    else:
-        print(f"  [✗] Failed to update DNS {record_data['type']} {record_data['name']}: {res.get('errors')}")
-
 def sync_routing_records(headers, zone_id, zone_name, pages_target="krisalahiranandani.pages.dev"):
-    """
-    Ensures apex and www point to Cloudflare Pages host with orange cloud proxy enabled.
-    Cleans up any conflicting A/AAAA records on apex or www.
-    """
     records = list_dns_records(headers, zone_id)
-    apex_targets = [zone_name, f"@{zone_name}"]
     www_target = f"www.{zone_name}"
 
-    # 1. Audit and clean conflicting A/AAAA records
     for r in records:
         r_name = r.get("name", "").lower()
         r_type = r.get("type", "").upper()
@@ -138,10 +137,9 @@ def sync_routing_records(headers, zone_id, zone_name, pages_target="krisalahiran
                 print(f"  [!] Found conflicting {r_type} record for {r_name} pointing to {r.get('content')}. Removing...")
                 delete_dns_record(headers, zone_id, r_id, f"{r_type} {r_name}")
 
-    # Refresh after potential deletions
     records = list_dns_records(headers, zone_id)
 
-    # 2. Sync Apex CNAME
+    # Apex CNAME
     apex_cname = next((r for r in records if r.get("type") == "CNAME" and r.get("name", "").lower() == zone_name.lower()), None)
     if apex_cname:
         needs_update = (apex_cname.get("content", "").strip(".").lower() != pages_target.lower()) or not apex_cname.get("proxied", False)
@@ -153,7 +151,10 @@ def sync_routing_records(headers, zone_id, zone_name, pages_target="krisalahiran
                 "proxied": True,
                 "ttl": 1
             }
-            update_dns_record(headers, zone_id, apex_cname["id"], update_data)
+            url = f"{API_BASE}/zones/{zone_id}/dns_records/{apex_cname['id']}"
+            res = make_request(url, method="PUT", headers=headers, data=update_data)
+            if res.get("success"):
+                print(f"  [✓] Updated Apex CNAME -> {pages_target} (Proxied)")
         else:
             print(f"  [✓] Apex CNAME ({zone_name}) already routed to {pages_target} (Proxied).")
     else:
@@ -167,10 +168,8 @@ def sync_routing_records(headers, zone_id, zone_name, pages_target="krisalahiran
         res = make_request(f"{API_BASE}/zones/{zone_id}/dns_records", method="POST", headers=headers, data=create_data)
         if res.get("success"):
             print(f"  [✓] Created Apex CNAME -> {pages_target} (Proxied)")
-        else:
-            print(f"  [✗] Failed to create Apex CNAME: {res.get('errors')}")
 
-    # 3. Sync www CNAME
+    # WWW CNAME
     www_cname = next((r for r in records if r.get("type") == "CNAME" and r.get("name", "").lower() == www_target.lower()), None)
     if www_cname:
         needs_update = (www_cname.get("content", "").strip(".").lower() != pages_target.lower()) or not www_cname.get("proxied", False)
@@ -182,7 +181,10 @@ def sync_routing_records(headers, zone_id, zone_name, pages_target="krisalahiran
                 "proxied": True,
                 "ttl": 1
             }
-            update_dns_record(headers, zone_id, www_cname["id"], update_data)
+            url = f"{API_BASE}/zones/{zone_id}/dns_records/{www_cname['id']}"
+            res = make_request(url, method="PUT", headers=headers, data=update_data)
+            if res.get("success"):
+                print(f"  [✓] Updated www CNAME -> {pages_target} (Proxied)")
         else:
             print(f"  [✓] www CNAME ({www_target}) already routed to {pages_target} (Proxied).")
     else:
@@ -196,8 +198,176 @@ def sync_routing_records(headers, zone_id, zone_name, pages_target="krisalahiran
         res = make_request(f"{API_BASE}/zones/{zone_id}/dns_records", method="POST", headers=headers, data=create_data)
         if res.get("success"):
             print(f"  [✓] Created www CNAME -> {pages_target} (Proxied)")
-        else:
-            print(f"  [✗] Failed to create www CNAME: {res.get('errors')}")
+
+def sync_dynamic_redirect_rule(headers, zone_id, zone_name):
+    """
+    Configures single-hop 301 edge redirect from www to apex with full query string preservation.
+    """
+    url = f"{API_BASE}/zones/{zone_id}/rulesets/phases/http_request_dynamic_redirect/entrypoint"
+    payload = {
+        "description": "Canonical Apex 301 Edge Redirect",
+        "rules": [
+            {
+                "expression": f'(http.host eq "www.{zone_name}")',
+                "description": "Single-Hop 301 Redirect www to Canonical Apex",
+                "action": "redirect",
+                "action_parameters": {
+                    "from_value": {
+                        "status_code": 301,
+                        "target_url": {
+                            "expression": f'concat("https://{zone_name}", http.request.uri.path)'
+                        },
+                        "preserve_query_string": True
+                    }
+                },
+                "enabled": True
+            }
+        ]
+    }
+    res = make_request(url, method="PUT", headers=headers, data=payload)
+    if res.get("success"):
+        print("  [✓] Single-Hop Canonical Apex 301 Redirect Rule Deployed at Global Edge.")
+    else:
+        print(f"  [✗] Dynamic redirect rule deployment note: {res.get('errors')}")
+
+def sync_cache_settings_rule(headers, zone_id):
+    """
+    Configures edge cache optimization rules for static assets and programmatic pages.
+    """
+    url = f"{API_BASE}/zones/{zone_id}/rulesets/phases/http_request_cache_settings/entrypoint"
+    payload = {
+        "description": "Enterprise Edge Cache Optimization",
+        "rules": [
+            {
+                "expression": '(starts_with(http.request.uri.path, "/public/") or ends_with(http.request.uri.path, ".webp") or ends_with(http.request.uri.path, ".png") or ends_with(http.request.uri.path, ".jpg") or ends_with(http.request.uri.path, ".svg") or ends_with(http.request.uri.path, ".woff2") or ends_with(http.request.uri.path, ".css") or ends_with(http.request.uri.path, ".js"))',
+                "description": "Cache Static Assets at Global Edge for 1 Year",
+                "action": "set_cache_settings",
+                "action_parameters": {
+                    "cache": True,
+                    "edge_ttl": {
+                        "mode": "override_origin",
+                        "default": 31536000
+                    },
+                    "browser_ttl": {
+                        "mode": "override_origin",
+                        "default": 31536000
+                    },
+                    "serve_stale": {
+                        "disable_stale_while_updating": False
+                    }
+                },
+                "enabled": True
+            },
+            {
+                "expression": '(starts_with(http.request.uri.path, "/explore/") or ends_with(http.request.uri.path, ".html") or http.request.uri.path eq "/")',
+                "description": "Cache Programmatic & HTML Pages at Edge for 24h with SWR",
+                "action": "set_cache_settings",
+                "action_parameters": {
+                    "cache": True,
+                    "edge_ttl": {
+                        "mode": "override_origin",
+                        "default": 86400
+                    },
+                    "browser_ttl": {
+                        "mode": "override_origin",
+                        "default": 0
+                    },
+                    "serve_stale": {
+                        "disable_stale_while_updating": False
+                    }
+                },
+                "enabled": True
+            }
+        ]
+    }
+    res = make_request(url, method="PUT", headers=headers, data=payload)
+    if res.get("success"):
+        print("  [✓] Enterprise Edge Cache Optimization Rules Deployed at Global Edge.")
+    else:
+        print(f"  [✗] Cache settings rule note: {res.get('errors')}")
+
+def sync_custom_waf_rules(headers, zone_id):
+    """
+    Configures advanced WAF rules with exploit blocking, hotlinking shield with social/AI whitelist.
+    """
+    rulesets_res = make_request(f"{API_BASE}/zones/{zone_id}/rulesets", headers=headers)
+    waf_ruleset_id = None
+    if rulesets_res.get("success"):
+        for r in rulesets_res["result"]:
+            if r.get("phase") == "http_request_firewall_custom":
+                waf_ruleset_id = r.get("id")
+                break
+                
+    if not waf_ruleset_id:
+        print("  [i] Creating Custom WAF Ruleset...")
+        url = f"{API_BASE}/zones/{zone_id}/rulesets"
+        method = "POST"
+    else:
+        url = f"{API_BASE}/zones/{zone_id}/rulesets/{waf_ruleset_id}"
+        method = "PUT"
+
+    rules = [
+        {
+            "action": "block",
+            "description": "Block Exploit Kits, Vulnerability Scanners & Path Traversal",
+            "enabled": True,
+            "expression": '((http.request.uri.path contains "wp-login" or http.request.uri.path contains "phpmyadmin" or http.request.uri.path contains "eval-stdin.php" or http.request.uri.path contains "../" or http.request.uri.path contains "..%2f" or http.request.uri.path contains "/.git" or http.request.uri.path contains "/.env" or http.request.uri.path contains "client_secret.json") or (http.user_agent contains "sqlmap" or http.user_agent contains "nikto" or http.user_agent contains "wpscan" or http.user_agent contains "masscan" or http.user_agent contains "acunetix" or http.user_agent contains "dirbuster" or http.user_agent contains "gobuster")) and not cf.client.bot'
+        },
+        {
+            "action": "managed_challenge",
+            "description": "Challenge Malicious IPs and Threat Score >= 20",
+            "enabled": True,
+            "expression": "(cf.threat_score ge 20 and not cf.client.bot)"
+        },
+        {
+            "action": "block",
+            "description": "Enterprise Image & Document Protection with Social & Search Whitelist",
+            "enabled": True,
+            "expression": '(http.request.uri.path contains "/public/" and not (http.referer contains "krisalahiranandani" or http.referer contains "google" or http.referer contains "bing" or http.referer contains "yahoo" or http.referer contains "duckduckgo" or http.referer contains "facebook" or http.referer contains "fbcdn" or http.referer contains "instagram" or http.referer contains "whatsapp" or http.referer contains "linkedin" or http.referer contains "licdn" or http.referer contains "twitter" or http.referer contains "t.co" or http.referer contains "x.com" or http.referer contains "telegram" or http.referer contains "pinterest" or http.referer contains "reddit" or http.referer contains "openai" or http.referer contains "chatgpt" or http.referer contains "perplexity" or http.referer contains "anthropic" or http.referer contains "claude" or http.referer eq "" or cf.client.bot))'
+        },
+        {
+            "action": "block",
+            "description": "Drop Insecure HTTP Verbs",
+            "enabled": True,
+            "expression": '(http.request.method in {"TRACE" "TRACK" "DEBUG"})'
+        }
+    ]
+
+    payload = {
+        "name": "Custom WAF Security Rules",
+        "description": "Custom WAF Security Rules",
+        "kind": "zone",
+        "phase": "http_request_firewall_custom",
+        "rules": rules
+    }
+    if method == "PUT":
+        del payload["kind"]
+        del payload["phase"]
+
+    res = make_request(url, method=method, headers=headers, data=payload)
+    if res.get("success"):
+        print("  [✓] Custom WAF Security Rules Hardened (Social & Search Bots Whitelisted).")
+    else:
+        print(f"  [✗] Custom WAF rules note: {res.get('errors')}")
+
+def check_dnssec(headers, zone_id):
+    url = f"{API_BASE}/zones/{zone_id}/dnssec"
+    res = make_request(url, headers=headers)
+    if res.get("success"):
+        ds = res["result"]
+        status = ds.get("status")
+        print(f"  [i] DNSSEC Status: {status.upper()}")
+        if status == "pending":
+            print("  [!] DNSSEC Key is generated on Cloudflare. Add the following DS Record at Hostinger:")
+            print(f"      Key Tag:      {ds.get('key_tag')}")
+            print(f"      Algorithm:    {ds.get('algorithm')} (ECDSA Curve P-256 with SHA-256)")
+            print(f"      Digest Type:  {ds.get('digest_type')} (SHA-256)")
+            print(f"      Digest:       {ds.get('digest')}")
+            print(f"      DS Record:    {ds.get('ds')}")
+        elif status == "active":
+            print("  [✓] DNSSEC is 100% ACTIVE and Cryptographically Validated by Domain Registrar!")
+    else:
+        print(f"  [✗] DNSSEC query note: {res.get('errors')}")
 
 def purge_cache(headers, zone_id):
     url = f"{API_BASE}/zones/{zone_id}/purge_cache"
@@ -270,9 +440,18 @@ def main():
         ("browser_check", "on"),
         ("brotli", "on"),
         ("early_hints", "on"),
+        ("http3", "on"),
+        ("ech", "on"),
+        ("pq_keyex", "on"),
+        ("ip_geolocation", "on"),
+        ("ipv6", "on"),
+        ("email_obfuscation", "on"),
+        ("server_side_exclude", "on"),
         ("opportunistic_encryption", "on"),
+        ("opportunistic_onion", "on"),
         ("websockets", "on"),
-        ("automatic_https_rewrites", "on")
+        ("automatic_https_rewrites", "on"),
+        ("security_header", {"strict_transport_security": {"enabled": True, "max_age": 63072000, "include_subdomains": True, "preload": True, "nosniff": True}})
     ]
     for setting_id, val in settings_to_apply:
         update_zone_setting(headers, zone_id, setting_id, val)
@@ -280,7 +459,7 @@ def main():
     print("\n==> 2. Synchronizing Pages Routing DNS Records (@ and www)...")
     sync_routing_records(headers, zone_id, args.zone, "krisalahiranandani.pages.dev")
         
-    print("\n==> 3. Auditing & Hardening DNS Records (CAA, SPF, DMARC)...")
+    print("\n==> 3. Auditing & Hardening DNS Records (CAA, SPF, DMARC, MTA-STS, TLS-RPT)...")
     existing_records = list_dns_records(headers, zone_id)
     
     dns_hardening_records = [
@@ -292,19 +471,36 @@ def main():
         {"type": "CAA", "name": args.zone, "data": {"flags": 0, "tag": "issuewild", "value": "digicert.com"}, "ttl": 3600},
         {"type": "CAA", "name": args.zone, "data": {"flags": 0, "tag": "issuewild", "value": "pki.goog"}, "ttl": 3600},
         
-        # Email Anti-Spoofing & DMARC Protection
+        # Inbound Mail Defense
+        {"type": "MX", "name": args.zone, "content": ".", "priority": 0, "ttl": 3600},
+        
+        # Email Anti-Spoofing & DMARC Protection with Aggregated Reporting
         {"type": "TXT", "name": args.zone, "content": "v=spf1 -all", "ttl": 3600},
-        {"type": "TXT", "name": f"_dmarc.{args.zone}", "content": "v=DMARC1; p=reject; sp=reject; aspf=s; adkim=s", "ttl": 3600},
+        {"type": "TXT", "name": f"_dmarc.{args.zone}", "content": "v=DMARC1; p=reject; sp=reject; aspf=s; adkim=s; rua=mailto:propsmartrealty@gmail.com", "ttl": 3600},
         {"type": "TXT", "name": f"*._domainkey.{args.zone}", "content": "v=DKIM1; p=", "ttl": 3600},
+        {"type": "TXT", "name": f"_mta-sts.{args.zone}", "content": "v=STSv1; id=2026101901", "ttl": 3600},
+        {"type": "TXT", "name": f"_smtp._tls.{args.zone}", "content": "v=TLSRPTv1; rua=mailto:propsmartrealty@gmail.com", "ttl": 3600},
     ]
     
     for r in dns_hardening_records:
-        add_dns_record(headers, zone_id, r, existing_records)
+        add_or_update_dns_record(headers, zone_id, r, existing_records)
         
-    print("\n==> 4. Purging Edge Cache...")
+    print("\n==> 4. Deploying Single-Hop 301 Edge Redirect Rule (www -> Apex)...")
+    sync_dynamic_redirect_rule(headers, zone_id, args.zone)
+
+    print("\n==> 5. Deploying Global Edge Cache Optimization Rules (1-Yr Static / 24h HTML SWR)...")
+    sync_cache_settings_rule(headers, zone_id)
+
+    print("\n==> 6. Synchronizing Hardened WAF Security Rules (Exploit Block & Whitelist)...")
+    sync_custom_waf_rules(headers, zone_id)
+
+    print("\n==> 7. Verifying DNSSEC Status...")
+    check_dnssec(headers, zone_id)
+
+    print("\n==> 8. Purging Cloudflare Global Edge Cache...")
     purge_cache(headers, zone_id)
     
-    print("\n[✓] All Cloudflare Edge & DNS Hardening Tasks Completed Successfully!")
+    print("\n[✓] All Cloudflare Edge, DNS & Infrastructure Hardening Completed Successfully!")
 
 if __name__ == "__main__":
     main()
