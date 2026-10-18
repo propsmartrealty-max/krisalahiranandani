@@ -94,7 +94,7 @@ CRITICAL_CSS = """    <style>
         @font-face {
             font-family: 'Phosphor';
             font-display: swap;
-            src: url('https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/Phosphor.woff2') format('woff2');
+            src: url('/public/fonts/Phosphor.woff2') format('woff2');
         }
     </style>"""
 

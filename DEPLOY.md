@@ -31,8 +31,8 @@ The repository includes enterprise-grade Cloudflare configuration:
 
 ## 3. Security & CSP Whitelist
 The Content Security Policy allows:
-- **Scripts**: `'self'`, `'unsafe-inline'`, `https://unpkg.com` (Phosphor icons)
-- **Styles/Fonts**: `https://fonts.googleapis.com`, `https://fonts.gstatic.com`, `https://unpkg.com`
+- **Scripts**: `'self'`, `'unsafe-inline'`, `https://www.googletagmanager.com`, `https://static.cloudflareinsights.com`
+- **Styles/Fonts**: `'self'` (self-hosted Phosphor woff2), `https://fonts.googleapis.com`, `https://fonts.gstatic.com`
 - **Images**: `'self'`, `data:`, `https://images.unsplash.com`, `https://maharera.mahaonline.gov.in`, `https://krisalahiranandani.com`, `https://krisalahiranandanitownships.com`
 - **Connect & Forms**: `https://formsubmit.co` (for lead submission)
 - **Manifest**: `'self'`

@@ -445,7 +445,7 @@ def main():
         ("pq_keyex", "on"),
         ("ip_geolocation", "on"),
         ("ipv6", "on"),
-        ("email_obfuscation", "on"),
+        ("email_obfuscation", "off"),
         ("server_side_exclude", "on"),
         ("opportunistic_encryption", "on"),
         ("opportunistic_onion", "on"),

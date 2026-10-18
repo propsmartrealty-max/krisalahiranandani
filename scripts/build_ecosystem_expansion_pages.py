@@ -230,8 +230,8 @@ def generate_amenities_page():
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+    <link rel="stylesheet" href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/public/fonts/phosphor.min.css"></noscript>
     <link rel="stylesheet" href="/style.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#08080a">
@@ -734,8 +734,8 @@ def generate_nri_page():
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+    <link rel="stylesheet" href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/public/fonts/phosphor.min.css"></noscript>
     <link rel="stylesheet" href="/style.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#08080a">
@@ -1035,8 +1035,8 @@ def generate_connectivity_page():
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+    <link rel="stylesheet" href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/public/fonts/phosphor.min.css"></noscript>
     <link rel="stylesheet" href="/style.css?v=2">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#08080a">

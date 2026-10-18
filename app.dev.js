@@ -1257,14 +1257,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 25. Scroll Progress Indicator
-    // 25. Scroll Progress Indicator (rAF Batched, Zero Reflow)
+    // 25. Scroll Progress Indicator & Document Geometry (rAF Batched, Zero Reflow)
+    let cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+    window.addEventListener('resize', () => {
+        cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+    }, { passive: true });
+
     const scrollProgress = document.getElementById('scrollProgress');
     if (scrollProgress) {
         let progTicking = false;
-        let cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
-        window.addEventListener('resize', () => {
-            cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
-        }, { passive: true });
         window.addEventListener('scroll', () => {
             if (!progTicking) {
                 window.requestAnimationFrame(() => {
@@ -1347,15 +1348,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 28. Scroll Depth Milestone Tracker (rAF Batched, Passive)
+    // 28. Scroll Depth Milestone Tracker (rAF Batched, Passive, Zero Forced Reflow)
     const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
     let depthTicking = false;
     window.addEventListener('scroll', () => {
         if (!depthTicking) {
             window.requestAnimationFrame(() => {
-                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                if (docHeight > 0) {
-                    const percent = Math.round((window.scrollY / docHeight) * 100);
+                if (cachedDocHeight > 0) {
+                    const percent = Math.round((window.scrollY / cachedDocHeight) * 100);
                     [25, 50, 75, 100].forEach(milestone => {
                         if (percent >= milestone && !scrollMilestones[milestone]) {
                             scrollMilestones[milestone] = true;
