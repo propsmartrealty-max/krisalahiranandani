@@ -414,6 +414,9 @@ export async function onRequest(context) {
             } else {
                 targetSlug = `krisala-hiranandani-${targetSlug}`;
             }
+            targetSlug = targetSlug.replace(/hiranandani-hiranandani/g, 'hiranandani');
+            targetSlug = targetSlug.replace(/krisala-krisala/g, 'krisala');
+            targetSlug = targetSlug.replace(/-+/g, '-').replace(/^-|-$/g, '');
             const targetUrl = new URL(`/explore/${targetSlug}`, request.url);
             return Response.redirect(targetUrl.toString(), 301);
         }

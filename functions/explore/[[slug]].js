@@ -410,9 +410,59 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         metaTitle = `8-Acre Private Racecourse & International Polo Club | Krisala Hiranandani`;
         metaDescription = `India's first residential equestrian township: 8-acre private racecourse, championship polo oval, air-cooled stables, and Della Resorts concierge in Hinjewadi, Pune.`;
     } else if (isHiranandaniBrandIntent) {
-        h1 = `${formattedSubject} • Official Hiranandani Pune Township`;
-        metaTitle = `${formattedSubject} | Official Hiranandani Pune Project`;
-        metaDescription = `Official Hiranandani Pune project by Dr. Niranjan Hiranandani & Krisala Developers: 105-Acre integrated township in Hinjewadi North with 8-acre private racecourse, Della Polo Club, 2, 3 & 4 BHK luxury residences. MahaRERA PR1260002502438.`;
+        if (isPricingIntent) {
+            h1 = `Hiranandani Pune Price List 2026 • Official Cost Sheets & Payment Plans`;
+            metaTitle = `Hiranandani Pune Price List 2026 | All-Inclusive Cost Sheets & Payment Plans`;
+            metaDescription = `Official Hiranandani Pune 2026 price list and cost sheets for Krisala Hiranandani Hinjewadi: 2 BHK from ₹79L, 3 BHK from ₹1.25 Cr, 4 BHK from ₹2.10 Cr, and Della Villa plots. MahaRERA PR1260002502438.`;
+        } else if (cleanSlug.includes('brochure') || cleanSlug.includes('pdf')) {
+            h1 = `Hiranandani Pune Brochure Download • Official 2026 Floor Plans PDF`;
+            metaTitle = `Hiranandani Brochure Download Pune | Official 2026 PDF & Floor Plans`;
+            metaDescription = `Download official Krisala Hiranandani Township Pune 2026 brochure PDF. Explore 105-acre master plan, 2, 3 & 4 BHK floor plans, Della villa plots, and MahaRERA PR1260002502438 specifications.`;
+        } else if (cleanSlug.includes('floor-plan') || cleanSlug.includes('layout')) {
+            h1 = `Hiranandani Floor Plans Pune • 2, 3, 4 BHK & Villa Plots Blueprints`;
+            metaTitle = `Hiranandani Floor Plans Pune | 2, 3 & 4 BHK Layouts Hinjewadi`;
+            metaDescription = `Official floor plans and carpet area specifications for Hiranandani Pune: 2 BHK (740-840 sq.ft.), 3 BHK (1,050-1,280 sq.ft.), 4 BHK Presidential Suites, and Della villa plots in North Hinjewadi.`;
+        } else if (cleanSlug.includes('sample-flat') || cleanSlug.includes('video') || cleanSlug.includes('virtual-tour')) {
+            h1 = `Hiranandani Sample Flat Video Pune • 4K Virtual Walkthrough`;
+            metaTitle = `Hiranandani Sample Flat Video Pune | 3D 4K Virtual Tour Hinjewadi`;
+            metaDescription = `Watch the official 4K sample flat walkthrough for Krisala Hiranandani Township Hinjewadi, Pune. Explore luxury finishes, Italian marble living rooms, sundecks, and racecourse views.`;
+        } else if (cleanSlug.includes('review') || cleanSlug.includes('rating')) {
+            h1 = `Hiranandani Pune Reviews & Ratings • 55x Appreciation Legacy`;
+            metaTitle = `Hiranandani Reviews Pune | Genuine Buyer Ratings & Investment Analysis`;
+            metaDescription = `In-depth buyer reviews and investment potential for Hiranandani Pune in North Hinjewadi. 55x historical appreciation legacy, Mivan construction quality, and 14-18% projected CAGR returns.`;
+        } else if (cleanSlug.includes('site-address') || cleanSlug.includes('location') || cleanSlug.includes('contact') || cleanSlug.includes('booking')) {
+            h1 = `Hiranandani Site Address & Location Map Pune • Sales Experience Center`;
+            metaTitle = `Hiranandani Site Address Pune | Location Map & Directions Hinjewadi`;
+            metaDescription = `Official site address, location map, and contact details for Krisala Hiranandani Township Hinjewadi, Pune. 4 mins from Metro Line 3, 5 mins from Mumbai-Pune Expressway. Open daily 9 AM - 8 PM.`;
+        } else if (cleanSlug.includes('2-bhk') || cleanSlug.includes('2bhk')) {
+            h1 = `Hiranandani 2 BHK Pune Hinjewadi • Neoclassical Luxury Residences`;
+            metaTitle = `Hiranandani 2 BHK in Pune | Price, Carpet Area & Floor Plans Hinjewadi`;
+            metaDescription = `Book official Hiranandani 2 BHK flats in Pune at Krisala Hiranandani Hinjewadi: 740-840 sq.ft. carpet area starting ₹79L*. Zero wastage layouts, sundecks, and 100+ amenities. MahaRERA PR1260002502438.`;
+        } else if (cleanSlug.includes('3-bhk') || cleanSlug.includes('3bhk')) {
+            h1 = `Hiranandani 3 BHK Pune Hinjewadi • Grande & Royale Residences`;
+            metaTitle = `Hiranandani 3 BHK in Pune | Price, Carpet Area & Floor Plans Hinjewadi`;
+            metaDescription = `Official Hiranandani 3 BHK luxury residences in Pune at Krisala Hiranandani Hinjewadi: 1,050-1,280 sq.ft. starting ₹1.25 Cr*. Italian marble, double balconies, and 8-acre racecourse views.`;
+        } else if (cleanSlug.includes('4-bhk') || cleanSlug.includes('4bhk')) {
+            h1 = `Hiranandani 4 BHK Pune Hinjewadi • Palatial Sky Duplexes`;
+            metaTitle = `Hiranandani 4 BHK in Pune | Palatial Duplexes & Penthouses Hinjewadi`;
+            metaDescription = `Palatial Hiranandani 4 BHK luxury residences and double-height sky duplexes in Pune starting ₹2.10 Cr*. Private elevators, 360-degree racecourse and Sahyadri mountain vistas.`;
+        } else if (cleanSlug.includes('flat') || cleanSlug.includes('apartment')) {
+            h1 = `Hiranandani Flats & Apartments in Pune • Luxury Hinjewadi Residences`;
+            metaTitle = `Hiranandani Flats in Pune | Luxury Apartments in Hinjewadi`;
+            metaDescription = `Explore luxury Hiranandani flats and apartments in Pune at Krisala Hiranandani Hinjewadi: 2, 3 & 4 BHK residences starting ₹79 Lakhs*. 105-acre neoclassical township with 8-acre racecourse.`;
+        } else if (cleanSlug.includes('township')) {
+            h1 = `Hiranandani Township Pune • 105-Acre Integrated Equestrian Township`;
+            metaTitle = `Hiranandani Township Pune | 105-Acre Integrated Hinjewadi Township`;
+            metaDescription = `Official Hiranandani Township in Pune: India's first 105-acre equestrian township in North Hinjewadi with 8-acre private racecourse, Della Polo Club, and 2, 3 & 4 BHK luxury homes.`;
+        } else if (cleanSlug.includes('communities') || cleanSlug.includes('house-of-hiranandani') || cleanSlug.includes('niranjan')) {
+            h1 = `Dr. Niranjan Hiranandani Pune Project • Hiranandani Communities`;
+            metaTitle = `Dr. Niranjan Hiranandani Pune Project | Hiranandani Communities`;
+            metaDescription = `Official joint venture by Dr. Niranjan Hiranandani (Hiranandani Communities) and Krisala Developers in North Hinjewadi, Pune: 105-acre landmark neoclassical township with Della Resorts.`;
+        } else {
+            h1 = `${formattedSubject} • Official Hiranandani Pune Township`;
+            metaTitle = `${formattedSubject} | Official Hiranandani Pune Project`;
+            metaDescription = `Official Hiranandani Pune project by Dr. Niranjan Hiranandani & Krisala Developers: 105-Acre integrated township in Hinjewadi North with 8-acre private racecourse, Della Polo Club, 2, 3 & 4 BHK luxury residences. MahaRERA PR1260002502438.`;
+        }
     }
 
     const metaKeywords = [
@@ -715,6 +765,25 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
             q: `What are the details of the 8-acre private racecourse at Krisala Hiranandani?`,
             a: `Curated in collaboration with Della Resorts, the 8-acre equestrian precinct includes an international polo track, air-cooled equine stables, a riding academy, and 100 exclusive villa plots with 5-star concierge privileges.`
         });
+    if (isHiranandaniBrandIntent) {
+        faqs.push(
+            {
+                q: `Is Krisala Hiranandani an official project by Dr. Niranjan Hiranandani in Pune?`,
+                a: `Yes, Krisala Hiranandani Township in North Hinjewadi, Pune is an official landmark 105+ acre joint venture between Dr. Niranjan Hiranandani (Hiranandani Communities) and Krisala Developers, created in partnership with Della Resorts.`
+            },
+            {
+                q: `What configurations and starting prices are available at Hiranandani Pune?`,
+                a: `Hiranandani Pune features 2 BHK (740–840 sq.ft. from ₹79L*), 3 BHK (1,050–1,280 sq.ft. from ₹1.25 Cr*), 4 BHK Palatial Residences (1,850–2,300 sq.ft. from ₹2.10 Cr*), double-height Sky Duplexes, and 100 bespoke Della Equestrian Villa plots.`
+            },
+            {
+                q: `What is the MahaRERA registration number for Hiranandani Hinjewadi Pune?`,
+                a: `The project is fully sanctioned and registered under MahaRERA registration numbers PR1260002502438 (The Colosseum & Sector Arcadia) and PR1260002600818 (Sector Icon) with 100% clear marketable land title.`
+            },
+            {
+                q: `What is the site address and location of Hiranandani Pune?`,
+                a: `The township is located at North Hinjewadi (Darumbre-Marunji), Pune, Maharashtra 410506, situated just 4 minutes from Hinjewadi Metro Line 3 Megapolis Station and 5 minutes from the Mumbai-Pune Expressway.`
+            }
+        );
     }
 
     faqs.push(
@@ -901,6 +970,38 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                         "name": formattedSubject,
                         "item": canonicalUrl
                     }
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://krisalahiranandanitownships.com/#niranjan-hiranandani",
+                "name": "Dr. Niranjan Hiranandani",
+                "jobTitle": "Co-Founder & Managing Director",
+                "affiliation": {
+                    "@type": "Organization",
+                    "name": "Hiranandani Communities"
+                },
+                "sameAs": [
+                    "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
+                    "https://www.wikidata.org/wiki/Q16733367",
+                    "https://www.wikidata.org/wiki/Q7036662",
+                    "https://www.crunchbase.com/person/niranjan-hiranandani",
+                    "https://twitter.com/N_Hiranandani",
+                    "https://www.linkedin.com/in/niranjanhiranandani/"
+                ]
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://krisalahiranandanitownships.com/#hiranandani-communities",
+                "name": "Hiranandani Communities",
+                "url": "https://www.hiranandanicommunities.com/",
+                "founder": {
+                    "@id": "https://krisalahiranandanitownships.com/#niranjan-hiranandani"
+                },
+                "sameAs": [
+                    "https://en.wikipedia.org/wiki/Hiranandani_Group",
+                    "https://www.wikidata.org/wiki/Q110461821",
+                    "https://hiranandani.com/"
                 ]
             }
         ]
