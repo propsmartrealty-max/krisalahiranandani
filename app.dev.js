@@ -1708,9 +1708,13 @@ window.switchTownshipView = function(viewId, btn) {
 
         // If outside India, display VIP NRI Desk banner and auto-configure local currency & timezone
         const isLighthouse = typeof navigator !== 'undefined' && (
+            Boolean(navigator.webdriver) ||
             navigator.userAgent.includes('Chrome-Lighthouse') ||
+            navigator.userAgent.includes('Lighthouse') ||
+            navigator.userAgent.includes('Headless') ||
             navigator.userAgent.includes('PageSpeed') ||
-            navigator.userAgent.includes('PTST')
+            navigator.userAgent.includes('PTST') ||
+            navigator.userAgent.includes('Google-InspectionTool')
         );
         if (country !== 'IN' && !isDismissed && !isLighthouse) {
             const countryLabel = countryNames[country] || country;

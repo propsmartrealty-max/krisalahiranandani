@@ -3613,12 +3613,13 @@ img.loaded {
     }
 
     .hero-content {
-        padding-top: 80px;
+        padding-top: 90px;
     }
 
     .hero-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 30px;
+        font-size: 0.95rem;
+        margin-bottom: 24px;
+        line-height: 1.55;
     }
 
     .legacy-card {

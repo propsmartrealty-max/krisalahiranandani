@@ -87,6 +87,16 @@ CRITICAL_CSS = """    <style>
             .nav-dropdown-menu { position: static !important; transform: none !important; }
             .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
         }
+        @media (max-width: 768px) {
+            .hero { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: stretch !important; min-height: 100vh !important; height: auto !important; }
+            .hero-content { padding-top: 90px !important; padding-bottom: 40px !important; margin: 0 auto !important; width: 100% !important; }
+            .hero-title { font-size: 2.2rem !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
+            .hero-subtitle { font-size: 0.95rem !important; margin-bottom: 24px !important; }
+            .hero-stats { gap: 16px !important; margin-bottom: 24px !important; }
+            .hero-actions { flex-direction: column !important; width: 100% !important; gap: 12px !important; margin-bottom: 24px !important; }
+            .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100% !important; }
+            .hero-img { height: 100% !important; animation: none !important; }
+        }
         .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
         .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
         .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
