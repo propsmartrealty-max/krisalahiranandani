@@ -8,32 +8,15 @@ window.top.location = window.self.location.href;
 }
 }
 document.addEventListener('DOMContentLoaded', () => {
+if (!document.querySelector('script[type="speculationrules"]')) {
 const initSpeculationRules = () => {
 try {
 if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
 const specScript = document.createElement('script');
 specScript.type = 'speculationrules';
 specScript.textContent = JSON.stringify({
-prerender: [
-{
-source: "list",
-urls: ["/pricing", "/colosseum"],
-eagerness: "conservative"
-}
-],
-prefetch: [
-{
-source: "document",
-where: {
-and: [
-{ href_matches: "/*" },
-{ not: { href_matches: "/api/*" } },
-{ not: { href_matches: "/thank-you*" } }
-]
-},
-eagerness: "conservative"
-}
-]
+prerender: [{ source: "list", urls: ["/pricing", "/colosseum"], eagerness: "conservative" }],
+prefetch: [{ source: "document", where: { and: [{ href_matches: "/*" }, { not: { href_matches: "/api/*" } }, { not: { href_matches: "/thank-you*" } }] }, eagerness: "conservative" }]
 });
 document.head.appendChild(specScript);
 }
@@ -43,6 +26,7 @@ if ('requestIdleCallback' in window) {
 requestIdleCallback(initSpeculationRules, { timeout: 4000 });
 } else {
 setTimeout(initSpeculationRules, 3000);
+}
 }
 window.dataLayer = window.dataLayer || [];
 document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
@@ -173,13 +157,23 @@ cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.5)';
 });
 }
 const navbar = document.getElementById('navbar');
+if (navbar) {
+let navTicking = false;
+let isScrolled = false;
 window.addEventListener('scroll', () => {
-if (window.scrollY > 50) {
-navbar.classList.add('scrolled');
-} else {
-navbar.classList.remove('scrolled');
+if (!navTicking) {
+window.requestAnimationFrame(() => {
+const shouldBeScrolled = window.scrollY > 50;
+if (shouldBeScrolled !== isScrolled) {
+isScrolled = shouldBeScrolled;
+navbar.classList.toggle('scrolled', isScrolled);
 }
+navTicking = false;
 });
+navTicking = true;
+}
+}, { passive: true });
+}
 const revealElements = document.querySelectorAll('.reveal, .scroll-reveal');
 const revealOptions = {
 threshold: 0.1,
@@ -197,12 +191,21 @@ setTimeout(() => {
 document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
 }, 100);
 const heroImg = document.querySelector('.parallax-img');
+if (heroImg && window.innerWidth > 992 && !('ontouchstart' in window)) {
+let pTicking = false;
 window.addEventListener('scroll', () => {
+if (!pTicking) {
+window.requestAnimationFrame(() => {
 const scrolled = window.scrollY;
-if (heroImg && scrolled < window.innerHeight) {
-heroImg.style.transform = `translateY(${scrolled * 0.4}px)`;
+if (scrolled < 800) {
+heroImg.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
 }
+pTicking = false;
 });
+pTicking = true;
+}
+}, { passive: true });
+}
 const sliderContainer = document.getElementById('phaseSlider');
 const btnNext = document.getElementById('sliderNext');
 const btnPrev = document.getElementById('sliderPrev');
@@ -868,8 +871,7 @@ triggerExitIntent();
 } catch (err) {}
 let scrollTriggered = false;
 window.addEventListener('scroll', () => {
-const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-if (scrollPercent > 35 && !scrollTriggered && !exitShown) {
+if (!scrollTriggered && !exitShown && window.scrollY > 1200) {
 scrollTriggered = true;
 setTimeout(() => {
 triggerExitIntent();
@@ -1061,12 +1063,23 @@ preloader.remove();
 }
 const scrollProgress = document.getElementById('scrollProgress');
 if (scrollProgress) {
+let progTicking = false;
+let cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+window.addEventListener('resize', () => {
+cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+}, { passive: true });
 window.addEventListener('scroll', () => {
-const scrollTop = window.scrollY;
-const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-const progress = (scrollTop / docHeight) * 100;
+if (!progTicking) {
+window.requestAnimationFrame(() => {
+if (cachedDocHeight > 0) {
+const progress = (window.scrollY / cachedDocHeight) * 100;
 scrollProgress.style.width = `${progress}%`;
+}
+progTicking = false;
 });
+progTicking = true;
+}
+}, { passive: true });
 }
 const lazyImages = document.querySelectorAll('img[data-src]');
 if (lazyImages.length > 0) {
@@ -1122,17 +1135,25 @@ kxhAnalytics.track('Navigation', 'click', link.textContent.trim());
 });
 });
 const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+let depthTicking = false;
 window.addEventListener('scroll', () => {
-const scrollTop = window.scrollY;
+if (!depthTicking) {
+window.requestAnimationFrame(() => {
 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-const percent = Math.round((scrollTop / docHeight) * 100);
+if (docHeight > 0) {
+const percent = Math.round((window.scrollY / docHeight) * 100);
 [25, 50, 75, 100].forEach(milestone => {
 if (percent >= milestone && !scrollMilestones[milestone]) {
 scrollMilestones[milestone] = true;
 kxhAnalytics.track('Scroll', 'depth', `${milestone}%`);
 }
 });
+}
+depthTicking = false;
 });
+depthTicking = true;
+}
+}, { passive: true });
 let sessionSeconds = parseInt(sessionStorage.getItem('kxh_session_time') || '0');
 let isIdle = false;
 let idleTimeout;

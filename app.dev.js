@@ -10,42 +10,26 @@ if (window.top !== window.self) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 0a. W3C Speculation Rules API (Conservative Idle-Only Navigation Fast-Path)
-    const initSpeculationRules = () => {
-        try {
-            if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
-                const specScript = document.createElement('script');
-                specScript.type = 'speculationrules';
-                specScript.textContent = JSON.stringify({
-                    prerender: [
-                        {
-                            source: "list",
-                            urls: ["/pricing", "/colosseum"],
-                            eagerness: "conservative"
-                        }
-                    ],
-                    prefetch: [
-                        {
-                            source: "document",
-                            where: {
-                                and: [
-                                    { href_matches: "/*" },
-                                    { not: { href_matches: "/api/*" } },
-                                    { not: { href_matches: "/thank-you*" } }
-                                ]
-                            },
-                            eagerness: "conservative"
-                        }
-                    ]
-                });
-                document.head.appendChild(specScript);
-            }
-        } catch (e) {}
-    };
-    if ('requestIdleCallback' in window) {
-        requestIdleCallback(initSpeculationRules, { timeout: 4000 });
-    } else {
-        setTimeout(initSpeculationRules, 3000);
+    // 0a. W3C Speculation Rules API (Ensures active if not already in document)
+    if (!document.querySelector('script[type="speculationrules"]')) {
+        const initSpeculationRules = () => {
+            try {
+                if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
+                    const specScript = document.createElement('script');
+                    specScript.type = 'speculationrules';
+                    specScript.textContent = JSON.stringify({
+                        prerender: [{ source: "list", urls: ["/pricing", "/colosseum"], eagerness: "conservative" }],
+                        prefetch: [{ source: "document", where: { and: [{ href_matches: "/*" }, { not: { href_matches: "/api/*" } }, { not: { href_matches: "/thank-you*" } }] }, eagerness: "conservative" }]
+                    });
+                    document.head.appendChild(specScript);
+                }
+            } catch (e) {}
+        };
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(initSpeculationRules, { timeout: 4000 });
+        } else {
+            setTimeout(initSpeculationRules, 3000);
+        }
     }
 
     // 0b. Enterprise Universal dataLayer Telemetry Suite
@@ -197,15 +181,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Navbar Scroll Effect
+    // 2. Navbar Scroll Effect (rAF Batched, Passive, Zero Reflow)
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    if (navbar) {
+        let navTicking = false;
+        let isScrolled = false;
+        window.addEventListener('scroll', () => {
+            if (!navTicking) {
+                window.requestAnimationFrame(() => {
+                    const shouldBeScrolled = window.scrollY > 50;
+                    if (shouldBeScrolled !== isScrolled) {
+                        isScrolled = shouldBeScrolled;
+                        navbar.classList.toggle('scrolled', isScrolled);
+                    }
+                    navTicking = false;
+                });
+                navTicking = true;
+            }
+        }, { passive: true });
+    }
 
     // 3. Scroll Reveal Animations (Intersection Observer)
     const revealElements = document.querySelectorAll('.reveal, .scroll-reveal');
@@ -231,14 +225,23 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
     }, 100);
 
-    // 4. Parallax Effect for Hero Image
+    // 4. Parallax Effect for Hero Image (Desktop Only, rAF Batched, No Mobile Forced Reflow)
     const heroImg = document.querySelector('.parallax-img');
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        if (heroImg && scrolled < window.innerHeight) {
-            heroImg.style.transform = `translateY(${scrolled * 0.4}px)`;
-        }
-    });
+    if (heroImg && window.innerWidth > 992 && !('ontouchstart' in window)) {
+        let pTicking = false;
+        window.addEventListener('scroll', () => {
+            if (!pTicking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.scrollY;
+                    if (scrolled < 800) {
+                        heroImg.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
+                    }
+                    pTicking = false;
+                });
+                pTicking = true;
+            }
+        }, { passive: true });
+    }
 
     // 5. Horizontal Phase Slider Logic
     const sliderContainer = document.getElementById('phaseSlider');
@@ -1014,11 +1017,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             } catch (err) {}
 
-            // Mobile dwell + scroll trigger: If user scrolls >35% and stays idle for 28s
+            // Mobile dwell + scroll trigger: If user scrolls >1200px and stays idle for 28s (Zero Reflow)
             let scrollTriggered = false;
             window.addEventListener('scroll', () => {
-                const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-                if (scrollPercent > 35 && !scrollTriggered && !exitShown) {
+                if (!scrollTriggered && !exitShown && window.scrollY > 1200) {
                     scrollTriggered = true;
                     setTimeout(() => {
                         triggerExitIntent();
@@ -1255,14 +1257,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 25. Scroll Progress Indicator
+    // 25. Scroll Progress Indicator (rAF Batched, Zero Reflow)
     const scrollProgress = document.getElementById('scrollProgress');
     if (scrollProgress) {
+        let progTicking = false;
+        let cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+        window.addEventListener('resize', () => {
+            cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+        }, { passive: true });
         window.addEventListener('scroll', () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (scrollTop / docHeight) * 100;
-            scrollProgress.style.width = `${progress}%`;
-        });
+            if (!progTicking) {
+                window.requestAnimationFrame(() => {
+                    if (cachedDocHeight > 0) {
+                        const progress = (window.scrollY / cachedDocHeight) * 100;
+                        scrollProgress.style.width = `${progress}%`;
+                    }
+                    progTicking = false;
+                });
+                progTicking = true;
+            }
+        }, { passive: true });
     }
 
     // 26. Lazy Loading Images with Blur-Up
@@ -1333,21 +1347,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 28. Scroll Depth Milestone Tracker
+    // 28. Scroll Depth Milestone Tracker (rAF Batched, Passive)
     const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
-
+    let depthTicking = false;
     window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = Math.round((scrollTop / docHeight) * 100);
-
-        [25, 50, 75, 100].forEach(milestone => {
-            if (percent >= milestone && !scrollMilestones[milestone]) {
-                scrollMilestones[milestone] = true;
-                kxhAnalytics.track('Scroll', 'depth', `${milestone}%`);
-            }
-        });
-    });
+        if (!depthTicking) {
+            window.requestAnimationFrame(() => {
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (docHeight > 0) {
+                    const percent = Math.round((window.scrollY / docHeight) * 100);
+                    [25, 50, 75, 100].forEach(milestone => {
+                        if (percent >= milestone && !scrollMilestones[milestone]) {
+                            scrollMilestones[milestone] = true;
+                            kxhAnalytics.track('Scroll', 'depth', `${milestone}%`);
+                        }
+                    });
+                }
+                depthTicking = false;
+            });
+            depthTicking = true;
+        }
+    }, { passive: true });
 
     // 29. Session Engagement Timer with Idle Detection
     let sessionSeconds = parseInt(sessionStorage.getItem('kxh_session_time') || '0');

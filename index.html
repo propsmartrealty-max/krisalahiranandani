@@ -84,7 +84,7 @@
         @font-face {
             font-family: 'Phosphor';
             font-display: swap;
-            src: url('https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/Phosphor.woff2') format('woff2');
+            src: url('/public/fonts/Phosphor.woff2') format('woff2');
         }
     </style>
     <link rel="canonical" href="https://krisalahiranandanitownships.com/" />
@@ -118,7 +118,6 @@
     <!-- Critical Asset Preloading & Resource Hints for Core Web Vitals (LCP/INP) -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="preload" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero_mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
     <link rel="preload" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" as="image" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
     <link rel="preload" href="https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2" as="font" type="font/woff2" crossorigin>
@@ -132,12 +131,12 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;600&display=swap">
     </noscript>
 
-    <!-- Icons & Stylesheets (Non-blocking) -->
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+    <!-- Icons & Stylesheets (Self-Hosted Non-blocking) -->
+    <link rel="stylesheet" href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+        <link rel="stylesheet" href="/public/fonts/phosphor.min.css">
     </noscript>
-        <!-- Asynchronous Global Stylesheet (Non-Blocking Core Web Vitals) -->
+    <!-- Asynchronous Global Stylesheet (Non-Blocking Core Web Vitals) -->
     <link rel="preload" href="/style.min.css?v=20261017_v3" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/style.min.css?v=20261017_v3"></noscript>
     <link rel="manifest" href="/manifest.json">
@@ -198,7 +197,7 @@
             <a href="/" class="logo" style="text-decoration: none;" aria-label="Krisala Hiranandani Home">
                 <img src="/public/krisala-hiranandani-logo.webp"
                     onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';"
-                    alt="Krisala Hiranandani Township Hinjewadi Logo" class="header-logo" width="280" height="38" fetchpriority="high">
+                    alt="Krisala Hiranandani Township Hinjewadi Logo" class="header-logo" width="310" height="42" fetchpriority="high">
             </a>
             <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
                 <a href="/" class="nav-link active" data-en="Township" data-mr="टाउनशिप">Township</a>
@@ -569,7 +568,7 @@
                 <!-- Pane 1: 3D Aerial View -->
                 <div class="township-hub-pane active" id="view-aerial">
                     <div class="hub-glass-stage">
-                        <img loading="lazy" decodings="async" src="/public/township_grand/township_aerial_birds_eye_master_view.webp"
+                        <img loading="lazy" decoding="async" src="/public/township_grand/township_aerial_birds_eye_master_view.webp"
                             alt="105-Acre Krisala Hiranandani Master Township 3D Aerial View with Integrated Equestrian Racecourse Hinjewadi" class="hub-stage-image" width="1024" height="640">
                         <div class="hub-badge-bar">
                             <span class="hub-feature-pill"><i class="ph ph-horse"></i> 8-Acre Integrated Racecourse &amp; Polo Club</span>
@@ -585,7 +584,7 @@
                 <!-- Pane 2: 2D Master Layout Plan -->
                 <div class="township-hub-pane" id="view-layout">
                     <div class="hub-glass-stage">
-                        <img loading="lazy" decodings="async" src="/public/township_grand/township_master_layout_plan_official.webp"
+                        <img loading="lazy" decoding="async" src="/public/township_grand/township_master_layout_plan_official.webp"
                             alt="Official 2D Master Layout Plan Krisala Hiranandani Township Hinjewadi Sectors Arcadia Icon Everlyn Everland" class="hub-stage-image" width="1024" height="640">
                         <div class="hub-badge-bar">
                             <span class="hub-feature-pill"><i class="ph ph-map-pin"></i> Sector Arcadia &amp; Sector Icon (NE Quadrant)</span>
@@ -600,7 +599,7 @@
                 <!-- Pane 3: Connectivity & Metro Line-3 Map -->
                 <div class="township-hub-pane" id="view-connectivity">
                     <div class="hub-glass-stage">
-                        <img loading="lazy" decodings="async" src="/public/township_grand/township_connectivity_location_map_official.webp"
+                        <img loading="lazy" decoding="async" src="/public/township_grand/township_connectivity_location_map_official.webp"
                             alt="Strategic Location and Connectivity Map Krisala Hiranandani Township with Pune Metro Line-3 Depot and Kasarsai Dam" class="hub-stage-image" width="1024" height="640">
                         <div class="hub-badge-bar">
                             <span class="hub-feature-pill"><i class="ph ph-train"></i> Pune Metro Line-3 Depot Direct Access</span>
@@ -615,7 +614,7 @@
                 <!-- Pane 4: Royal Entrance Gateway -->
                 <div class="township-hub-pane" id="view-gateway">
                     <div class="hub-glass-stage">
-                        <img loading="lazy" decodings="async" src="/public/township_grand/township_grand_entrance_gate_hq.webp"
+                        <img loading="lazy" decoding="async" src="/public/township_grand/township_grand_entrance_gate_hq.webp"
                             alt="Grand Neoclassical Entrance Archway Krisala Hiranandani Township North Hinjewadi" class="hub-stage-image" width="1024" height="640">
                         <div class="hub-badge-bar">
                             <span class="hub-feature-pill"><i class="ph ph-columns"></i> Neoclassical Roman Columns &amp; Pediments</span>
@@ -925,7 +924,7 @@
                     <!-- Everlyn (NEW) -->
                     <div class="phase-slide glass-panel">
                         <div class="slide-img">
-                            <img loading="lazy" decodings="async" src="/public/everlyn/gallery/elevation_1.webp"
+                            <img loading="lazy" decoding="async" src="/public/everlyn/gallery/elevation_1.webp"
                                 alt="Everlyn Sector Luxury 2 BHK Apartments in Krisala Hinjewadi" width="824" height="825">
                             <div class="slide-badge">The New Soul of the Township</div>
                         </div>
@@ -944,7 +943,7 @@
                     <!-- Arcadia -->
                     <div class="phase-slide glass-panel">
                         <div class="slide-img">
-                            <img loading="lazy" decodings="async" src="/public/everlyn/hero/hero_alt_1.webp"
+                            <img loading="lazy" decoding="async" src="/public/everlyn/hero/hero_alt_1.webp"
                                 alt="Arcadia Sector 3 BHK Smart Homes in Hiranandani Pune" width="1600" height="800">
                             <div class="slide-badge">Sector: Arcadia</div>
                         </div>
@@ -963,7 +962,7 @@
                     <!-- Icon -->
                     <div class="phase-slide glass-panel">
                         <div class="slide-img">
-                            <img loading="lazy" decodings="async" src="/public/everlyn/hero/hero_alt_2.webp"
+                            <img loading="lazy" decoding="async" src="/public/everlyn/hero/hero_alt_2.webp"
                                 alt="Icon Sector 4 BHK Duplex Flats in Krisala Hiranandani Township" width="1600" height="907">
                             <div class="slide-badge">Sector: Icon</div>
                         </div>
@@ -982,7 +981,7 @@
                     <!-- Della/Everland -->
                     <div class="phase-slide glass-panel">
                         <div class="slide-img">
-                            <img loading="lazy" decodings="async" src="/public/everlyn/masterplan/aerial_layout_hq.webp"
+                            <img loading="lazy" decoding="async" src="/public/everlyn/masterplan/aerial_layout_hq.webp"
                                 alt="Della Resorts Sector 8-Acre Private Racecourse and Villa Plots Pune" width="1600" height="596">
                             <div class="slide-badge">Sector: Della & Everland</div>
                         </div>
@@ -1063,7 +1062,7 @@
             <div class="della-visual glass-panel scroll-reveal right">
                 <picture>
                     <source media="(max-width: 768px)" srcset="/public/township_grand/della_resort_villas_equestrian_official.webp">
-                    <img loading="lazy" decodings="async" src="/public/township_grand/della_resort_villas_equestrian_official.webp"
+                    <img loading="lazy" decoding="async" src="/public/township_grand/della_resort_villas_equestrian_official.webp"
                         alt="Della Resorts 8-Acre Private Racecourse and Resort Living at Krisala Hiranandani Township Pune" width="1024" height="640">
                 </picture>
                 <div class="visual-overlay">
@@ -1134,7 +1133,7 @@
             <div class="amenities-grid">
                 <!-- Large Feature -->
                 <div class="am-item glass-panel am-large scroll-reveal">
-                    <img loading="lazy" decodings="async" src="/public/everlyn/masterplan/aerial_layout_hq.webp"
+                    <img loading="lazy" decoding="async" src="/public/everlyn/masterplan/aerial_layout_hq.webp"
                         alt="8-Acre Private Racecourse and Polo Club at Hiranandani Pune" width="1600" height="596">
                     <div class="am-overlay">
                         <h3>8-Acre Private Racecourse & Polo Club</h3>
@@ -1145,7 +1144,7 @@
 
                 <!-- Regular Items -->
                 <div class="am-item glass-panel scroll-reveal delay-1">
-                    <img loading="lazy" decodings="async" src="/public/everlyn/gallery/amenity_render_1.webp"
+                    <img loading="lazy" decoding="async" src="/public/everlyn/gallery/amenity_render_1.webp"
                         alt="Temperature Controlled Infinity Pool at Krisala Hinjewadi Phase 1" width="1600" height="1600">
                     <div class="am-overlay">
                         <h3>Infinity Edge & Temperature Controlled Pools</h3>
@@ -1153,7 +1152,7 @@
                 </div>
 
                 <div class="am-item glass-panel scroll-reveal delay-2">
-                    <img loading="lazy" decodings="async" src="/public/everlyn/gallery/amenity_render_2.webp"
+                    <img loading="lazy" decoding="async" src="/public/everlyn/gallery/amenity_render_2.webp"
                         alt="World-Class Fitness Center and Gym at Krisala Hiranandani Township" width="1600" height="1600">
                     <div class="am-overlay">
                         <h3>State-of-the-Art Fitness Center</h3>
@@ -1161,7 +1160,7 @@
                 </div>
 
                 <div class="am-item glass-panel scroll-reveal delay-1">
-                    <img loading="lazy" decodings="async" src="/public/everlyn/gallery/amenity_render_3.webp"
+                    <img loading="lazy" decoding="async" src="/public/everlyn/gallery/amenity_render_3.webp"
                         alt="Zen Garden and Yoga Decks for 2 BHK Residents in Hinjewadi" width="1600" height="1600">
                     <div class="am-overlay">
                         <h3>Zen Gardens & Yoga Decks</h3>
@@ -1169,7 +1168,7 @@
                 </div>
 
                 <div class="am-item glass-panel scroll-reveal delay-2">
-                    <img loading="lazy" decodings="async" src="/public/everlyn/gallery/clubhouse_exterior.webp"
+                    <img loading="lazy" decoding="async" src="/public/everlyn/gallery/clubhouse_exterior.webp"
                         alt="Premium Co-working Lounges at Krisala Hiranandani Pune" width="480" height="384">
                     <div class="am-overlay">
                         <h3>Premium Co-working & WFH Lounges</h3>
@@ -1178,7 +1177,7 @@
 
                 <!-- Everlyn Specific Amenities -->
                 <div class="am-item glass-panel scroll-reveal delay-1">
-                    <img loading="lazy" decodings="async" src="/public/everlyn/gallery/elevation_1.webp"
+                    <img loading="lazy" decoding="async" src="/public/everlyn/gallery/elevation_1.webp"
                         alt="Padel and Pickle Ball Courts at KxH Township Hinjewadi" width="824" height="825">
                     <div class="am-overlay">
                         <h3>Padel & Pickle Ball Courts</h3>
@@ -1186,7 +1185,7 @@
                 </div>
 
                 <div class="am-item glass-panel scroll-reveal delay-2">
-                    <img loading="lazy" decodings="async" src="/public/everlyn/gallery/elevation_2.webp"
+                    <img loading="lazy" decoding="async" src="/public/everlyn/gallery/elevation_2.webp"
                         alt="Aromatherapy Gardens and Zen Pods in Hiranandani Communities Pune" width="1600" height="201">
                     <div class="am-overlay">
                         <h3>Zen Pods & Aromatherapy Gardens</h3>
@@ -1474,15 +1473,15 @@
         </div>
 
         <div class="masonry-grid">
-            <div class="masonry-item item-short glass-panel scroll-reveal"><img loading="lazy" decodings="async"
+            <div class="masonry-item item-short glass-panel scroll-reveal"><img loading="lazy" decoding="async"
                     src="/public/everlyn/gallery/clubhouse_exterior.webp" alt="Krisala Hiranandani 50,000 Sq.Ft. Neoclassical Clubhouse Exterior View" width="480" height="384"></div>
-            <div class="masonry-item item-tall glass-panel scroll-reveal delay-1"><img loading="lazy" decodings="async"
+            <div class="masonry-item item-tall glass-panel scroll-reveal delay-1"><img loading="lazy" decoding="async"
                     src="/public/everlyn/gallery/elevation_2.webp" alt="Krisala Hiranandani Sector Arcadia Neoclassical Tower Elevation" width="1600" height="201"></div>
-            <div class="masonry-item item-short glass-panel scroll-reveal delay-2"><img loading="lazy" decodings="async"
+            <div class="masonry-item item-short glass-panel scroll-reveal delay-2"><img loading="lazy" decoding="async"
                     src="/public/everlyn/gallery/elevation_3.webp" alt="Krisala Hiranandani Sector Icon Sunset Elevation Hinjewadi Pune" width="942" height="824"></div>
-            <div class="masonry-item item-tall glass-panel scroll-reveal"><img loading="lazy" decodings="async"
+            <div class="masonry-item item-tall glass-panel scroll-reveal"><img loading="lazy" decoding="async"
                     src="/public/everlyn/gallery/elevation_4.webp" alt="The Colosseum Phase 4 Roman Architectural Elevation Krisala Hiranandani" width="942" height="825"></div>
-            <div class="masonry-item item-short glass-panel scroll-reveal delay-1"><img loading="lazy" decodings="async"
+            <div class="masonry-item item-short glass-panel scroll-reveal delay-1"><img loading="lazy" decoding="async"
                     src="/public/everlyn/gallery/lounge_interior.webp" alt="Luxury Double-Height Living Lounge Interior Krisala Hiranandani Sector Icon" width="480" height="384"></div>
         </div>
     </div>
@@ -1978,7 +1977,7 @@
             <!-- Trust Layer (MahaRERA & Branding) -->
             <div class="trust-badges scroll-reveal delay-1">
                 <div class="trust-item">
-                    <img loading="lazy" decodings="async"
+                    <img loading="lazy" decoding="async"
                         src="/public/maharera_logo.svg" alt="MahaRERA Registered Project PR1260002502438 Official Compliance Badge" width="160" height="40">
                     <span>MahaRERA Registered</span>
                 </div>
@@ -1999,6 +1998,7 @@
                     <img src="/public/krisala-hiranandani-logo.webp"
                         onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';"
                         alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" width="280" height="38"
+                        loading="lazy" decoding="async"
                         style="height: 40px; width: auto; margin-bottom: 20px; display: block;">
                     <p>
                         A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
@@ -2190,7 +2190,7 @@
             <!-- Official MahaRERA Verified Regulatory Cluster -->
             <div class="maharera-verified-footer-cluster" style="margin: 32px 0 20px; padding: 18px 24px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
                 <div style="display: flex; align-items: center; gap: 16px;">
-                    <img src="/public/maharera_logo.svg" alt="Official MahaRERA Registered Project" width="160" height="40" style="height: 38px; width: auto;">
+                    <img src="/public/maharera_logo.svg" alt="Official MahaRERA Registered Project" width="160" height="40" loading="lazy" decoding="async" style="height: 38px; width: auto;">
                     <div>
                         <div style="font-size: 0.9rem; font-weight: 700; color: #fff;">MahaRERA Project Registrations: PR1260002500600 &amp; PR1260002600818</div>
                         <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Sanctioned &amp; Verified by Govt of Maharashtra • Clear &amp; Marketable Land Titles</div>

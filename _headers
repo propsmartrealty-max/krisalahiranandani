@@ -14,7 +14,7 @@
   Cache-Tag: kxh-township, kxh-html, kxh-seo, kxh-edge
   X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
   Server-Timing: cdn-cache;desc="HIT", edge-worker;dur=0.8
-  Link: <https://fonts.googleapis.com>; rel=preconnect, <https://fonts.gstatic.com>; rel=preconnect; crossorigin, </style.min.css?v=20261017_v3>; rel=preload; as=style, </app.min.js?v=20261017_v3>; rel=preload; as=script
+  Link: <https://fonts.googleapis.com>; rel=preconnect, <https://fonts.gstatic.com>; rel=preconnect; crossorigin, </style.min.css?v=20261017_v3>; rel=preload; as=style
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.googletagmanager.com https://static.cloudflareinsights.com https://cdn.ampproject.org; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.ampproject.org; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: blob: https://krisalahiranandanitownships.com https://maharera.maharashtra.gov.in https://www.google-analytics.com https://*.google.com https://*.googleapis.com https://*.gstatic.com; connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com https://cloudflareinsights.com; frame-src 'self' https://www.google.com https://maps.google.com; form-action 'self' https://formsubmit.co https://wa.me; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; manifest-src 'self'; upgrade-insecure-requests;
 
 # HTML Documents: Sub-15ms Edge Micro-Caching with Stale-While-Revalidate
@@ -39,8 +39,34 @@
 # PWA Web Manifest
 /manifest.json
   Content-Type: application/manifest+json; charset=utf-8
-  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
-  Cross-Origin-Resource-Policy: same-origin
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+# Favicons & Icons (1-Year Immutable Cache)
+/favicon.ico
+  Content-Type: image/x-icon
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/favicon.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/favicon-48x48.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/favicon-192.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
+
+/apple-touch-icon.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: cross-origin
 
 # Static Assets: Immutable 1-Year Cache + Cross-Origin Resource Sharing
 /public/*
@@ -64,7 +90,7 @@
   Cross-Origin-Resource-Policy: cross-origin
 
 /*.ico
-  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+  Cache-Control: public, max-age=31536000, immutable
   Cross-Origin-Resource-Policy: cross-origin
 
 # PDF Documents: Brochure & Technical Dockets
