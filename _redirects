@@ -94,21 +94,20 @@
 /krisala-hiranandani-township-pune      / 301
 /krisala-hiranandani-township-hinjewadi / 301
 /krisala-hiranandani-township-hinjawadi / 301
-/krisala-hiranandani-pune               / 301
-/krisala-hiranandani-hinjewadi          / 301
+/krisala-hiranandani-pune               /hiranandani-pune 301
+/krisala-hiranandani-hinjewadi          /hiranandani-pune 301
 /krisala-hiranandani-hinjawadi          / 301
 /krisala-hiranandani-darumbre           / 301
 /krisala-hiranandani-marunji            / 301
 /hiranandani-krisala                    / 301
 /hiranandani-krisala-township           / 301
-/hiranandani-krisala-pune               / 301
-/hiranandani-krisala-hinjewadi          / 301
-/hiranandani-hinjewadi                  / 301
-/hiranandani-hinjawadi                  / 301
-/hiranandani-pune                       / 301
-/hiranandani-township                   / 301
-/hiranandani-township-pune              / 301
-/hiranandani-township-hinjewadi         / 301
+/hiranandani-krisala-pune               /hiranandani-pune 301
+/hiranandani-krisala-hinjewadi          /hiranandani-pune 301
+/hiranandani-hinjewadi                  /hiranandani-pune 301
+/hiranandani-hinjawadi                  /hiranandani-pune 301
+/hiranandani-township                   /hiranandani-pune 301
+/hiranandani-township-pune              /hiranandani-pune 301
+/hiranandani-township-hinjewadi         /hiranandani-pune 301
 /krisala-township                       / 301
 /krisala-township-hinjewadi             / 301
 /krisala-township-pune                  / 301
@@ -171,8 +170,8 @@
 
 # Transaction & Buying Intent Permutations
 /krisala-hiranandani-price              /pricing 301
-/krisala-hiranandani-price-list         /pricing 301
-/krisala-hiranandani-cost-sheet         /pricing 301
+/krisala-hiranandani-price-list         /hiranandani-price-list-2026 301
+/krisala-hiranandani-cost-sheet         /hiranandani-price-list-2026 301
 /krisala-hiranandani-payment-plan       /pricing 301
 /krisala-hiranandani-floor-plans        /#floorplans 301
 /krisala-hiranandani-sample-flat        /blog/krisala-hiranandani-township-hinjewadi-sample-flat-floor-plans-carpet-area 301
