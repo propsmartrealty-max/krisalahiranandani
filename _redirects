@@ -41,7 +41,22 @@
 /nri-guide            /nri                   301
 /transit              /connectivity          301
 /infrastructure       /connectivity          301
-/metro-line-3         /connectivity          301
+# Calculator Silo Aliases
+/emi-calculator         /hiranandani-emi-calculator 301
+/mortgage-calculator    /hiranandani-emi-calculator 301
+/stamp-duty-calculator  /hiranandani-emi-calculator 301
+/krisala-hiranandani-emi /hiranandani-emi-calculator 301
+
+# Competitor Comparison Permutations
+/hiranandani-vs-godrej-hinjewadi            /compare#godrej 301
+/hiranandani-vs-godrej                      /compare#godrej 301
+/hiranandani-vs-lodha-hinjewadi             /compare#lodha 301
+/hiranandani-vs-lodha                       /compare#lodha 301
+/hiranandani-vs-kolte-patil-life-republic   /compare#kolte-patil 301
+/hiranandani-vs-life-republic               /compare#kolte-patil 301
+/hiranandani-vs-vtp-earth-one               /compare#vtp 301
+/hiranandani-vs-vtp                         /compare#vtp 301
+
 # Colosseum Silo Aliases
 /the-colosseum        /colosseum             301
 /codename-colosseum   /colosseum             301

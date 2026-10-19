@@ -32,6 +32,7 @@ AUTHORITY_HUBS = [
     f"{DOMAIN}/",
     f"{DOMAIN}/hiranandani-pune",
     f"{DOMAIN}/hiranandani-price-list-2026",
+    f"{DOMAIN}/hiranandani-emi-calculator",
     f"{DOMAIN}/colosseum",
     f"{DOMAIN}/arcadia",
     f"{DOMAIN}/icon",

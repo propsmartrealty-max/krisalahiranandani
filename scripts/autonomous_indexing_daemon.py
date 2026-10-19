@@ -71,6 +71,7 @@ CORE_DISCOVERY_URLS = [
     "https://krisalahiranandanitownships.com/",
     "https://krisalahiranandanitownships.com/hiranandani-pune",
     "https://krisalahiranandanitownships.com/hiranandani-price-list-2026",
+    "https://krisalahiranandanitownships.com/hiranandani-emi-calculator",
     "https://krisalahiranandanitownships.com/pune-real-estate",
     "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
     "https://krisalahiranandanitownships.com/arcadia",

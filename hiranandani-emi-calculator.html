@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            font-style: normal;
+            font-weight: 700;
+            font-display: optional;
+            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        :root {
+            --bg-dark: #090a0f;
+            --bg-dark-deep: #050608;
+            --bg-surface: rgba(16, 18, 26, 0.85);
+            --gold-primary: #c5a059;
+            --gold-light: #e6d5b8;
+            --gold-bright: #dfc07b;
+            --gold-deep: #9e7d3b;
+            --text-main: #fcfbf7;
+            --text-muted: #b8b8cc;
+            --text-subtle: #a8a8ba;
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+            --font-accent: 'Cinzel', serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; pointer-events: none; }
+        .skip-link { position: absolute; top: -100px; left: 0; z-index: 10000; }
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; pointer-events: none; }
+        @media (hover: none) or (max-width: 1024px) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .container { padding: 0 20px; } }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; overflow: hidden; padding-top: 100px; }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .hero-bg picture, .hero-bg img, .hero-img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.75) 0%, rgba(9,10,15,0.85) 50%, #090a0f 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 40px 20px 20px; }
+        .hero-title { font-family: var(--font-heading); font-size: clamp(2.2rem, 5.5vw, 4.2rem); line-height: 1.15; margin-bottom: 16px; font-weight: 700; color: #fff; }
+        .hero-title span { color: var(--gold-bright); }
+        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.15rem); color: var(--text-muted); margin-bottom: 24px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 16px; }
+        
+        /* Calculator Grid */
+        .calc-section { padding: 40px 0 80px; position: relative; z-index: 2; }
+        .calc-wrapper { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; background: rgba(16, 18, 26, 0.85); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 12px; padding: 40px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); backdrop-filter: blur(16px); }
+        @media (max-width: 992px) {
+            .calc-wrapper { grid-template-columns: 1fr; padding: 24px; gap: 30px; }
+        }
+        .calc-group { margin-bottom: 28px; }
+        .calc-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-weight: 600; color: #fff; }
+        .calc-val-box { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(197, 160, 89, 0.4); padding: 8px 16px; border-radius: 6px; color: var(--gold-bright); font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; min-width: 140px; text-align: right; }
+        .calc-slider { width: 100%; height: 8px; border-radius: 4px; background: rgba(255, 255, 255, 0.1); outline: none; -webkit-appearance: none; accent-color: var(--gold-bright); cursor: pointer; }
+        .calc-presets { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+        .preset-btn { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(197, 160, 89, 0.25); color: var(--text-muted); padding: 6px 14px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; }
+        .preset-btn:hover, .preset-btn.active { background: var(--gold-primary); color: #000; font-weight: 600; border-color: var(--gold-bright); }
+        
+        /* Summary Card */
+        .calc-summary-card { background: linear-gradient(145deg, rgba(25, 28, 40, 0.9) 0%, rgba(12, 14, 20, 0.95) 100%); border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 10px; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
+        .emi-display-box { padding: 24px; border-radius: 8px; background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.3); margin-bottom: 24px; }
+        .emi-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 8px; }
+        .emi-amount { font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; color: var(--gold-bright); line-height: 1; }
+        .breakdown-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.92rem; }
+        .breakdown-row:last-child { border-bottom: none; }
+        .breakdown-label { color: var(--text-muted); }
+        .breakdown-val { font-weight: 600; color: #fff; }
+        .btn-cta { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 700; padding: 14px 24px; border-radius: 4px; text-decoration: none; display: block; margin-top: 24px; text-align: center; }
+        
+        /* Pune Stamp Duty Card */
+        .tax-card { margin-top: 40px; background: rgba(16, 18, 26, 0.7); border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 12px; padding: 32px; }
+        .tax-title { font-family: var(--font-heading); font-size: 1.8rem; color: var(--gold-bright); margin-bottom: 12px; }
+        .tax-desc { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 24px; }
+        .tax-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .tax-box { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(197, 160, 89, 0.2); padding: 20px; border-radius: 8px; text-align: center; }
+        .tax-box h4 { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+        .tax-box .tax-number { font-family: var(--font-heading); font-size: 1.6rem; color: var(--gold-bright); font-weight: 700; }
+        
+        /* FAQ Section */
+        .faq-section { padding: 40px 0 80px; }
+        .faq-title { font-family: var(--font-heading); font-size: 2.2rem; text-align: center; margin-bottom: 30px; color: #fff; }
+        .faq-item { background: rgba(16, 18, 26, 0.75); border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 8px; margin-bottom: 16px; padding: 20px 24px; }
+        .faq-q { font-weight: 600; color: var(--gold-bright); font-size: 1.05rem; margin-bottom: 8px; }
+        .faq-a { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
+        
+        .footer { background: #050608; border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 40px 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+        .footer-logo { max-width: 220px; height: auto; margin-bottom: 16px; }
+    </style>
+
+    <!-- Canonical & Alternate Feeds -->
+    <link rel="canonical" href="https://krisalahiranandanitownships.com/hiranandani-emi-calculator" />
+    <link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/hiranandani-emi-calculator">
+    <link rel="alternate" hreflang="x-default" href="https://krisalahiranandanitownships.com/hiranandani-emi-calculator">
+    <link rel="alternate" type="application/rss+xml" title="Krisala Hiranandani Dispatches" href="/rss.xml">
+    <link rel="alternate" type="application/atom+xml" title="Krisala Hiranandani Atom Feed" href="/atom.xml">
+    <link rel="alternate" type="application/feed+json" title="Township Digital PR Feed" href="/township-press-feed.json">
+    <link rel="alternate" type="application/ld+json" title="Krisala Hiranandani Citation Graph" href="/citations.jsonld">
+    <link rel="alternate" type="application/geo+json" title="Krisala Hiranandani GIS Layer" href="/geo-township.geojson">
+    <link rel="hub" href="https://pubsubhubbub.appspot.com/">
+    <link rel="search" type="application/opensearchdescription+xml" title="Krisala Hiranandani" href="/opensearch.xml">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- SEO Title & Meta -->
+    <title>Hiranandani Pune EMI Calculator & Stamp Duty 2026 | Krisala Hiranandani Mortgage Estimator</title>
+    <meta name="description" content="Official EMI & Mortgage Calculator for Krisala Hiranandani Township Hinjewadi, Pune. Calculate monthly home loan EMIs, interest rates, and Pune 2026 stamp duty breakdown for 2, 3, 4 BHK and Della villa plots.">
+    <meta name="keywords" content="Hiranandani EMI calculator, Krisala Hiranandani mortgage calculator, Hiranandani Pune home loan EMI, Hiranandani Hinjewadi cost calculator, Pune stamp duty calculator 2026, 2 BHK EMI Pune, 3 BHK EMI Hinjewadi, Hiranandani payment plan calculator, SBI home loan Hiranandani Pune, HDFC home loan Krisala Hiranandani">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Preloads -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preload" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero_mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" as="image" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" href="https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Schema.org Structured Data Graph -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "FinancialProduct",
+          "@id": "https://krisalahiranandanitownships.com/hiranandani-emi-calculator#calculator",
+          "name": "Krisala Hiranandani Home Loan & EMI Calculator",
+          "description": "Interactive mortgage and home loan EMI calculator tailored for 2, 3, 4 BHK residences and Della luxury villa plots at Krisala Hiranandani Township Hinjewadi, Pune.",
+          "provider": {
+            "@type": "RealEstateAgent",
+            "name": "Krisala × Hiranandani Township Experience Center",
+            "url": "https://krisalahiranandanitownships.com/"
+          },
+          "annualPercentageRate": 8.5,
+          "feesAndCommissionsSpecification": "Zero processing fee tie-ups with SBI, HDFC, ICICI, and Axis Bank for approved buyers.",
+          "interestRate": 8.5
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://krisalahiranandanitownships.com/hiranandani-emi-calculator#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the starting monthly EMI for a 2 BHK in Krisala Hiranandani Pune?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For a 2 BHK residence starting at ₹79 Lakhs with a 20% down payment (loan amount of ₹63.20 Lakhs) at an 8.5% interest rate over a 25-year tenure, the estimated monthly EMI is approximately ₹50,880."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the Stamp Duty and Registration charge in Pune for 2026?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In Pune (under PMRDA and PMC jurisdiction), the standard stamp duty for residential property is 7% (including 5% basic stamp duty, 1% Local Body Tax, and 1% Metro Cess). Registration fee is ₹30,000 for properties valued above ₹30 Lakhs."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which banks have pre-approved home loans for Krisala Hiranandani Township?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The project is pre-approved by leading institutional lenders including State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, and Bank of Baroda with maximum 80% LTV financing and expedited processing."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <a href="#calculator" class="skip-link">Skip to calculator</a>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" aria-label="Krisala Hiranandani Home">
+                <img src="/public/krisala-hiranandani-logo.webp" alt="Krisala Hiranandani Township Hinjewadi Logo" class="header-logo" width="310" height="42">
+            </a>
+            <div class="header-actions">
+                <a href="/hiranandani-price-list-2026" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Price List 2026</a>
+                <a href="tel:+917744009295" class="btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">Call Sales</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <picture>
+                <source media="(max-width: 768px)" srcset="/public/township_grand/krisala_hiranandani_grand_entrance_hero_mobile.webp">
+                <img src="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" alt="Krisala Hiranandani Township Grand Entrance" class="hero-img" width="1920" height="1080">
+            </picture>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="badge">Official Financial Concierge</div>
+            <h1 class="hero-title">Hiranandani Pune <span>EMI & Mortgage</span> Calculator</h1>
+            <p class="hero-subtitle">Plan your dream home with instant EMI schedules, bank interest rates, and 2026 Pune stamp duty breakdowns.</p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calc-section" id="calculator">
+        <div class="container">
+            <div class="calc-wrapper">
+                <!-- Controls Column -->
+                <div class="calc-controls">
+                    <!-- Unit Preset Selection -->
+                    <div class="calc-group">
+                        <label class="calc-label-row">
+                            <span>Select Unit Configuration</span>
+                        </label>
+                        <div class="calc-presets">
+                            <button type="button" class="preset-btn active" onclick="setPreset(7900000, this)">2 BHK (₹79L)</button>
+                            <button type="button" class="preset-btn" onclick="setPreset(12500000, this)">3 BHK (₹1.25Cr)</button>
+                            <button type="button" class="preset-btn" onclick="setPreset(21000000, this)">4 BHK Duplex (₹2.10Cr)</button>
+                            <button type="button" class="preset-btn" onclick="setPreset(18000000, this)">Villa Plot (₹1.80Cr)</button>
+                        </div>
+                    </div>
+
+                    <!-- Property Value -->
+                    <div class="calc-group">
+                        <div class="calc-label-row">
+                            <span>Total Property Value (₹)</span>
+                            <div class="calc-val-box" id="propValDisplay">₹ 79,00,000</div>
+                        </div>
+                        <input type="range" class="calc-slider" id="propValSlider" min="5000000" max="35000000" step="500000" value="7900000" oninput="updateCalculator()">
+                    </div>
+
+                    <!-- Down Payment -->
+                    <div class="calc-group">
+                        <div class="calc-label-row">
+                            <span>Down Payment (20%)</span>
+                            <div class="calc-val-box" id="downPayDisplay">₹ 15,80,000</div>
+                        </div>
+                        <input type="range" class="calc-slider" id="downPaySlider" min="10" max="50" step="5" value="20" oninput="updateCalculator()">
+                    </div>
+
+                    <!-- Interest Rate -->
+                    <div class="calc-group">
+                        <div class="calc-label-row">
+                            <span>Interest Rate (% per annum)</span>
+                            <div class="calc-val-box" id="rateDisplay">8.50 %</div>
+                        </div>
+                        <input type="range" class="calc-slider" id="rateSlider" min="7.5" max="11.5" step="0.05" value="8.5" oninput="updateCalculator()">
+                    </div>
+
+                    <!-- Tenure -->
+                    <div class="calc-group">
+                        <div class="calc-label-row">
+                            <span>Loan Tenure (Years)</span>
+                            <div class="calc-val-box" id="tenureDisplay">25 Years</div>
+                        </div>
+                        <input type="range" class="calc-slider" id="tenureSlider" min="5" max="30" step="1" value="25" oninput="updateCalculator()">
+                    </div>
+                </div>
+
+                <!-- Summary Card Column -->
+                <div class="calc-summary-card">
+                    <div class="emi-display-box">
+                        <div class="emi-label">Estimated Monthly EMI</div>
+                        <div class="emi-amount" id="emiDisplay">₹ 50,880</div>
+                    </div>
+
+                    <div class="breakdown-list">
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">Loan Amount Required</span>
+                            <span class="breakdown-val" id="loanAmountDisplay">₹ 63,20,000</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">Total Interest Payable</span>
+                            <span class="breakdown-val" id="totalInterestDisplay">₹ 89,44,000</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">Total Principal + Interest</span>
+                            <span class="breakdown-val" id="totalPaymentDisplay">₹ 1,52,64,000</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">Estimated Stamp Duty (7%)</span>
+                            <span class="breakdown-val" id="stampDutyDisplay">₹ 5,53,000</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span class="breakdown-label">MahaRERA Registration Fee</span>
+                            <span class="breakdown-val">₹ 30,000</span>
+                        </div>
+                    </div>
+
+                    <a href="tel:+917744009295" class="btn-cta">Request Pre-Sanction Loan Letter</a>
+                </div>
+            </div>
+
+            <!-- Pune 2026 Stamp Duty & Registration Guide -->
+            <div class="tax-card">
+                <h3 class="tax-title">Pune Ready Reckoner & Statutory Tax Structure 2026</h3>
+                <p class="tax-desc">Under Maharashtra Stamp Act regulations for PMRDA Pune West (Hinjewadi, Marunji, Darumbre), residential purchases adhere to the following statutory fee schedule:</p>
+                
+                <div class="tax-grid">
+                    <div class="tax-box">
+                        <h4>Basic Stamp Duty</h4>
+                        <div class="tax-number">5.0%</div>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">State Government Levy</p>
+                    </div>
+                    <div class="tax-box">
+                        <h4>Local Body Tax (LBT)</h4>
+                        <div class="tax-number">1.0%</div>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">PMRDA Municipal Cess</p>
+                    </div>
+                    <div class="tax-box">
+                        <h4>Metro Transport Cess</h4>
+                        <div class="tax-number">1.0%</div>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Pune Metro Line 3 Infrastructure</p>
+                    </div>
+                    <div class="tax-box">
+                        <h4>Fixed Registration Fee</h4>
+                        <div class="tax-number">₹30,000</div>
+                        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Capped for units &gt; ₹30 Lakhs</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 class="faq-title">Frequently Asked Questions — Home Loans & Taxation</h2>
+                <div class="faq-item">
+                    <div class="faq-q">What is the starting monthly EMI for a 2 BHK in Krisala Hiranandani Pune?</div>
+                    <div class="faq-a">For a 2 BHK residence starting at ₹79 Lakhs with a 20% down payment (loan amount of ₹63.20 Lakhs) at an 8.5% interest rate over a 25-year tenure, the estimated monthly EMI is approximately ₹50,880.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What is the Stamp Duty and Registration charge in Pune for 2026?</div>
+                    <div class="faq-a">In Pune (under PMRDA and PMC jurisdiction), the standard stamp duty for residential property is 7% (including 5% basic stamp duty, 1% Local Body Tax, and 1% Metro Cess). Registration fee is ₹30,000 for properties valued above ₹30 Lakhs.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Which banks have pre-approved home loans for Krisala Hiranandani Township?</div>
+                    <div class="faq-a">The project is pre-approved by leading institutional lenders including State Bank of India (SBI), HDFC Bank, ICICI Bank, Axis Bank, and Bank of Baroda with maximum 80% LTV financing and expedited processing under MahaRERA PR1260002500600.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="/public/krisala-hiranandani-logo.webp" alt="Krisala Hiranandani Logo" class="footer-logo" width="220" height="30">
+            <p>© 2026 Krisala Developers &amp; Hiranandani Communities. All Rights Reserved.</p>
+            <p style="margin-top: 8px;">MahaRERA Certifications: PR1260002500600, PR1260002600818, PR1260002502438</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        function formatINR(val) {
+            return "₹ " + Math.round(val).toLocaleString("en-IN");
+        }
+
+        function setPreset(price, btn) {
+            document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            document.getElementById("propValSlider").value = price;
+            updateCalculator();
+        }
+
+        function updateCalculator() {
+            var propVal = parseFloat(document.getElementById("propValSlider").value);
+            var downPayPct = parseFloat(document.getElementById("downPaySlider").value);
+            var annualRate = parseFloat(document.getElementById("rateSlider").value);
+            var tenureYears = parseFloat(document.getElementById("tenureSlider").value);
+
+            var downPayAmount = propVal * (downPayPct / 100);
+            var loanAmount = propVal - downPayAmount;
+
+            var monthlyRate = (annualRate / 12) / 100;
+            var numMonths = tenureYears * 12;
+
+            var emi = 0;
+            if (monthlyRate > 0) {
+                emi = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, numMonths)) / (Math.pow(1 + monthlyRate, numMonths) - 1);
+            }
+
+            var totalPayment = emi * numMonths;
+            var totalInterest = totalPayment - loanAmount;
+            var stampDuty = propVal * 0.07;
+
+            document.getElementById("propValDisplay").textContent = formatINR(propVal);
+            document.getElementById("downPayDisplay").textContent = formatINR(downPayAmount) + " (" + downPayPct + "%)";
+            document.getElementById("rateDisplay").textContent = annualRate.toFixed(2) + " %";
+            document.getElementById("tenureDisplay").textContent = tenureYears + " Years";
+
+            document.getElementById("emiDisplay").textContent = formatINR(emi);
+            document.getElementById("loanAmountDisplay").textContent = formatINR(loanAmount);
+            document.getElementById("totalInterestDisplay").textContent = formatINR(totalInterest);
+            document.getElementById("totalPaymentDisplay").textContent = formatINR(totalPayment);
+            document.getElementById("stampDutyDisplay").textContent = formatINR(stampDuty);
+        }
+
+        document.addEventListener("DOMContentLoaded", updateCalculator);
+    </script>
+</body>
+
+</html>

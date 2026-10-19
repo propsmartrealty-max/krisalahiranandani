@@ -18,6 +18,7 @@ URL_LIST = [
     f"https://{HOST}/",
     f"https://{HOST}/hiranandani-pune",
     f"https://{HOST}/hiranandani-price-list-2026",
+    f"https://{HOST}/hiranandani-emi-calculator",
     f"https://{HOST}/pune-real-estate",
     f"https://{HOST}/hinjewadi-real-estate",
     f"https://{HOST}/arcadia",
