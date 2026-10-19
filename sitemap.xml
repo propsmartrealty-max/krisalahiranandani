@@ -3,13 +3,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://krisalahiranandanitownships.com/</loc>
-    <lastmod>2026-10-18T00:00:00+00:00</lastmod>
+    <lastmod>2026-10-19T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp</image:loc>
       <image:title>Krisala Hiranandani Township Hinjewadi Aerial View</image:title>
       <image:caption>105-Acre Krisala Hiranandani Township in Pune featuring Premium 2, 3, and 4 BHK Apartments and Della Villa Plots</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/hiranandani-pune</loc>
+    <lastmod>2026-10-19T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp</image:loc>
+      <image:title>Hiranandani Pune Integrated Township Hinjewadi</image:title>
+      <image:caption>Official Portal for Hiranandani Pune Township in North Hinjewadi featuring Neoclassical 2, 3, 4 BHK residences and 8-acre racecourse</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/hiranandani-price-list-2026</loc>
+    <lastmod>2026-10-19T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.99</priority>
+    <image:image>
+      <image:loc>https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp</image:loc>
+      <image:title>Hiranandani Price List 2026 Official Cost Sheet</image:title>
+      <image:caption>Complete 2026 price list and payment plans for 2, 3, 4 BHK residences and Della villa plots at Krisala Hiranandani Township Hinjewadi, Pune</image:caption>
     </image:image>
   </url>
   <url>
