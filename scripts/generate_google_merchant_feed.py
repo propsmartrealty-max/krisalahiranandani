@@ -16,6 +16,30 @@ PUBLIC_DIR = os.path.join(ROOT_DIR, "public")
 
 INVENTORY = [
     {
+        "id": "KXH-PUNE-MASTER",
+        "title": "Hiranandani Pune 105-Acre Flagship Integrated Equestrian Township (Hinjewadi)",
+        "description": "Official Master Township Portal for Krisala Hiranandani Pune in North Hinjewadi. 105+ Acres featuring Neoclassical Greco-Roman architecture, 2, 3, 4 BHK residences, Della luxury villa plots, and India's first 8-acre private racecourse. MahaRERA: PR1260002500600, PR1260002600818, PR1260002502438.",
+        "link": f"{BASE_URL}/hiranandani-pune",
+        "image_link": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+        "price": "7900000.00 INR",
+        "availability": "in stock",
+        "brand": "Krisala x Hiranandani",
+        "product_type": "Real Estate > Integrated Townships > Flagship Master Development",
+        "mpn": "PR1260002500600-TOWNSHIP"
+    },
+    {
+        "id": "KXH-PRICE-2026",
+        "title": "Hiranandani Pune 2026 Official Price List, Cost Sheet & Payment Schedules",
+        "description": "Official 2026 price list and cost sheets for Krisala Hiranandani Township Hinjewadi, Pune. 2 BHK from ₹79L, 3 BHK from ₹1.25Cr, 4 BHK Duplex from ₹2.10Cr, and Della Villa Plots from ₹1.80Cr. All-inclusive cost sheets with stamp duty and RERA milestones.",
+        "link": f"{BASE_URL}/hiranandani-price-list-2026",
+        "image_link": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+        "price": "7900000.00 INR",
+        "availability": "in stock",
+        "brand": "Krisala x Hiranandani",
+        "product_type": "Real Estate > Pricing & Cost Sheets > 2026 Price List",
+        "mpn": "PR1260002500600-PRICELIST2026"
+    },
+    {
         "id": "KXH-ARC-2BHK",
         "title": "Krisala Hiranandani 2 BHK Luxury Neoclassical Apartment (Sector Arcadia)",
         "description": "Official MahaRERA PR1260002502438 verified 2 BHK residence in Sector Arcadia, Krisala Hiranandani Township Hinjewadi, Pune. 740-840 sq.ft. carpet area, Mivan aluminium formwork, private sundeck, 8-acre racecourse access, and signal-free connectivity to Hinjewadi IT Park.",

@@ -7,6 +7,8 @@ Krisala × Hiranandani Township is Pune's flagship 105-acre master-planned eques
 ## Core Authority Pages
 
 - [Official Portal Home](https://krisalahiranandanitownships.com/): Master portal for Krisala Hiranandani Township, project identity, and live updates.
+- [Hiranandani Pune Master Dossier](https://krisalahiranandanitownships.com/hiranandani-pune): Authoritative 105-acre township dossier covering Neoclassical architecture, 55x Powai capital appreciation legacy, 8-acre private racecourse, and Della luxury resort partnership.
+- [Hiranandani Price List 2026](https://krisalahiranandanitownships.com/hiranandani-price-list-2026): Official 2026 cost sheet, unit pricing from ₹79L to ₹2.10Cr+, stamp duty calculation, and payment milestones.
 - [Pune Real Estate 2026 Guide](https://krisalahiranandanitownships.com/pune-real-estate): Comprehensive Pune real estate market intelligence, price trends, Ready Reckoner benchmarks, and micro-market forecasts.
 - [Hinjewadi Real Estate Handbook](https://krisalahiranandanitownships.com/hinjewadi-real-estate): Rajiv Gandhi Infotech Park Phase 1–3 IT corridor analysis, rental yield data, and Metro Line 3 transit infrastructure.
 - [Master Pricing & Cost Sheets](https://krisalahiranandanitownships.com/pricing): Transparent price lists, carpet areas, payment schedules, and cost sheet breakdowns.
@@ -41,3 +43,6 @@ Krisala × Hiranandani Township is Pune's flagship 105-acre master-planned eques
 - [Geo Sitemaps](https://krisalahiranandanitownships.com/sitemap-geo.xml): Geographic coordinates and GIS polygon boundaries.
 - [RSS News Feed](https://krisalahiranandanitownships.com/rss.xml): Real-time syndication feed for real estate construction and market dispatches.
 - [Atom Feed](https://krisalahiranandanitownships.com/atom.xml): Standard Atom 1.0 feed for automated content indexing.
+- [Citation Graph](https://krisalahiranandanitownships.com/citations.jsonld): Machine-readable NAP and Knowledge Graph entity dataset.
+- [GIS Master Dataset](https://krisalahiranandanitownships.com/geo-township.geojson): Spatial GIS polygon boundary and geocoordinates.
+- [Digital PR & Press Feed](https://krisalahiranandanitownships.com/township-press-feed.json): JSON feed of official press releases and media kits.
