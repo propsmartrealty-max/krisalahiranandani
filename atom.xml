@@ -3,6 +3,8 @@
   <title>Krisala Hiranandani Township Hinjewadi • Official Real Estate Research</title>
   <subtitle>Macroeconomic insights, price trends, infrastructure audits, and architectural releases for the 105-Acre Krisala Hiranandani Township in North Hinjewadi, Pune.</subtitle>
   <link href="https://krisalahiranandanitownships.com/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
+  <link href="https://superfeedr.com/hub/publish" rel="hub"/>
   <link href="https://krisalahiranandanitownships.com/" rel="alternate" type="text/html"/>
   <id>https://krisalahiranandanitownships.com/</id>
   <updated>2026-10-14T11:00:00+05:30</updated>

@@ -1,0 +1,88 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "Krisala Hiranandani Township Hinjewadi GIS Master Dataset",
+    "developer": "Krisala Developers & Hiranandani Communities",
+    "updated": "2026-10-19T06:00:00Z",
+    "canonicalUrl": "https://krisalahiranandanitownships.com/hiranandani-pune",
+    "authority": "MahaRERA: PR1260002500600, PR1260002600818, PR1260002502438"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Krisala × Hiranandani Township Experience Center",
+        "category": "Sales & Experience Center",
+        "phone": "+917744009295",
+        "email": "propsmartrealty@gmail.com",
+        "address": "Krisala × Hiranandani Township, North Hinjawadi, Darumbre, Pune 410506",
+        "url": "https://krisalahiranandanitownships.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [73.7389, 18.5913]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "India's First 8-Acre Private Racecourse & Polo Grounds",
+        "category": "Equestrian Amenity",
+        "areaAcres": 8,
+        "url": "https://krisalahiranandanitownships.com/racecourse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [73.7402, 18.5925]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Della Adventure & Luxury Resort Precinct",
+        "category": "Hospitality & Adventure",
+        "areaAcres": 40,
+        "url": "https://krisalahiranandanitownships.com/della"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [73.7415, 18.5938]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "The Colosseum (Phase 4) Residential Enclave",
+        "category": "Residential Sector",
+        "url": "https://krisalahiranandanitownships.com/colosseum",
+        "mahaRera": "PR1260002500600"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [73.7381, 18.5908]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "105-Acre Krisala Hiranandani Master Parcel Perimeter",
+        "category": "Township Boundary",
+        "totalAcres": 105,
+        "url": "https://krisalahiranandanitownships.com/hiranandani-pune"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [73.7350, 18.5880],
+            [73.7440, 18.5895],
+            [73.7455, 18.5960],
+            [73.7370, 18.5975],
+            [73.7335, 18.5920],
+            [73.7350, 18.5880]
+          ]
+        ]
+      }
+    }
+  ]
+}

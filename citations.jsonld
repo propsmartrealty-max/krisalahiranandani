@@ -1,0 +1,146 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "RealEstateAgent",
+      "@id": "https://krisalahiranandanitownships.com/#experience-center",
+      "name": "Krisala × Hiranandani Township Experience Center",
+      "alternateName": [
+        "Krisala Hiranandani Township Hinjewadi",
+        "Hiranandani Pune",
+        "Hiranandani Communities Hinjewadi",
+        "Krisala Developers Experience Center",
+        "The Colosseum Phase 4 Hinjewadi"
+      ],
+      "url": "https://krisalahiranandanitownships.com/",
+      "logo": "https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp",
+      "image": "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+      "telephone": "+917744009295",
+      "email": "propsmartrealty@gmail.com",
+      "priceRange": "₹79 Lakhs - ₹2.10 Cr+",
+      "currenciesAccepted": "INR",
+      "paymentAccepted": "Cheque, Demand Draft, RTGS, NEFT, Net Banking",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Krisala × Hiranandani Township, North Hinjawadi, Darumbre",
+        "addressLocality": "North Hinjewadi",
+        "addressRegion": "Maharashtra",
+        "postalCode": "410506",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 18.5913,
+        "longitude": 73.7389
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ],
+      "sameAs": [
+        "https://maharera.maharashtra.gov.in/",
+        "https://krisala.com/",
+        "https://www.hiranandani.com/",
+        "https://en.wikipedia.org/wiki/Hiranandani_Group",
+        "https://www.wikidata.org/wiki/Q5769389",
+        "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
+        "https://www.wikidata.org/wiki/Q7039912",
+        "https://en.wikipedia.org/wiki/House_of_Hiranandani",
+        "https://www.dellaadventure.com/",
+        "https://en.wikipedia.org/wiki/Jimmy_Mistry",
+        "https://en.wikipedia.org/wiki/Neoclassical_architecture"
+      ],
+      "hasMap": "https://maps.google.com/?q=18.5913,73.7389",
+      "parentOrganization": [
+        {
+          "@type": "Organization",
+          "name": "Hiranandani Communities",
+          "url": "https://www.hiranandani.com/",
+          "sameAs": [
+            "https://en.wikipedia.org/wiki/Hiranandani_Group",
+            "https://www.wikidata.org/wiki/Q5769389",
+            "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
+            "https://www.wikidata.org/wiki/Q7039912"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "name": "Krisala Developers",
+          "url": "https://krisala.com/"
+        }
+      ]
+    },
+    {
+      "@type": "ApartmentComplex",
+      "@id": "https://krisalahiranandanitownships.com/#township-complex",
+      "name": "Krisala Hiranandani Township Hinjewadi",
+      "alternateName": [
+        "Hiranandani Pune Township",
+        "The Colosseum at Krisala Hiranandani",
+        "Sector Arcadia Hinjewadi",
+        "Sector Icon Hinjewadi",
+        "Sector Everlyn Hinjewadi",
+        "Della Villa Plots Hinjewadi"
+      ],
+      "description": "105-Acre flagship integrated equestrian township in North Hinjewadi, Pune featuring Greco-Roman neoclassical architecture, 2, 3 & 4 BHK luxury residences, India's first 8-acre private racecourse, and Della luxury villa plots.",
+      "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Krisala × Hiranandani Township, North Hinjawadi, Darumbre",
+        "addressLocality": "North Hinjewadi, Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "410506",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 18.5913,
+        "longitude": 73.7389
+      },
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Hinjewadi, Pune",
+        "sameAs": "https://en.wikipedia.org/wiki/Hinjawadi"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "India's First 8-Acre Private Racecourse & Polo Pavilion",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "40-Acre Della Adventure & Luxury Resort Precinct",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "40,000 Sq.Ft Neoclassical Grand Clubhouse",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Olympic-Sized Temperature Controlled Swimming Pool",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Signal-Free 8-Minute Commute to Hinjewadi IT Park Phase 1",
+          "value": true
+        }
+      ]
+    }
+  ]
+}

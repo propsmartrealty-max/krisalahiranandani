@@ -22,6 +22,11 @@ Allow: /locations.kml
 Allow: /sitemap-geo.xml
 Allow: /google-products.xml
 Allow: /google-merchant-feed.xml
+Allow: /citations.jsonld
+Allow: /geo-township.geojson
+Allow: /township-press-feed.json
+Allow: /public/widgets/
+Allow: /public/pr/
 Disallow: /analytics.html
 Disallow: /*.md$
 Disallow: /*.toml$

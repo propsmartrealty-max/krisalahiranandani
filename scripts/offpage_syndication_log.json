@@ -1,0 +1,106 @@
+{
+  "timestamp": "2026-10-19T06:50:07.942964+00:00",
+  "websub_results": {
+    "https://pubsubhubbub.appspot.com/publish": [
+      {
+        "feed": "https://krisalahiranandanitownships.com/sitemap-index.xml",
+        "status": 204,
+        "result": "OK"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/sitemap.xml",
+        "status": 204,
+        "result": "OK"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/rss.xml",
+        "status": 204,
+        "result": "OK"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/atom.xml",
+        "status": 204,
+        "result": "OK"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/township-press-feed.json",
+        "status": 204,
+        "result": "OK"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/citations.jsonld",
+        "status": 204,
+        "result": "OK"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/geo-township.geojson",
+        "status": 204,
+        "result": "OK"
+      }
+    ],
+    "https://superfeedr.com/hub/publish": [
+      {
+        "feed": "https://krisalahiranandanitownships.com/sitemap-index.xml",
+        "status": 404,
+        "result": "HTTP_404"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/sitemap.xml",
+        "status": 404,
+        "result": "HTTP_404"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/rss.xml",
+        "status": 404,
+        "result": "HTTP_404"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/atom.xml",
+        "status": 404,
+        "result": "HTTP_404"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/township-press-feed.json",
+        "status": 404,
+        "result": "HTTP_404"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/citations.jsonld",
+        "status": 404,
+        "result": "HTTP_404"
+      },
+      {
+        "feed": "https://krisalahiranandanitownships.com/geo-township.geojson",
+        "status": 404,
+        "result": "HTTP_404"
+      }
+    ]
+  },
+  "search_engine_pings": [
+    {
+      "endpoint": "https://www.bing.com/ping?sitemap=https%3A%2F%2Fkrisalahiranandanitownships.com%2Fsitemap.xml",
+      "status": 410,
+      "result": "OK"
+    },
+    {
+      "endpoint": "https://www.google.com/ping?sitemap=https%3A%2F%2Fkrisalahiranandanitownships.com%2Fsitemap.xml",
+      "status": 404,
+      "result": "OK"
+    },
+    {
+      "endpoint": "https://webmaster.yandex.ru/ping?sitemap=https%3A%2F%2Fkrisalahiranandanitownships.com%2Fsitemap.xml",
+      "notice": "('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))",
+      "result": "RESOLVED"
+    }
+  ],
+  "indexnow_submission": {
+    "status": 202,
+    "urls_count": 15,
+    "result": "OK"
+  },
+  "pr_packages_generated": [
+    "hiranandani-pune-press-release.md",
+    "the-colosseum-hinjewadi-dossier.md"
+  ],
+  "status": "COMPLETED"
+}
