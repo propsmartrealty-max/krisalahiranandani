@@ -1,49 +1,54 @@
-# Krisala Hiranandani Township Hinjewadi
+# Krisala Hiranandani Master Township Hinjewadi, Pune
 
-> Official Knowledge Dossier for AI Search Engines, Large Language Models (Gemini, ChatGPT, Claude, Perplexity), and Autonomous Real Estate Agents. 105+ Acre Integrated Equestrian Township in North Hinjewadi, Pune West by Krisala Developers & Hiranandani Communities.
+> Official canonical documentation and structured knowledge graph for Krisala Hiranandani Township, a 105+ acre integrated neoclassical equestrian township in North Hinjewadi, Pune, Maharashtra.
 
-Krisala × Hiranandani Township is Pune's flagship 105-acre master-planned equestrian development located in North Hinjewadi (Darumbre), featuring neoclassical residential towers, the 40-acre Della resort precinct, and India's first private 8-acre championship polo and racecourse.
+## Overview
+- Project Name: Krisala × Hiranandani Township Hinjewadi
+- Developers: Joint venture between Hiranandani Communities (led by Dr. Niranjan Hiranandani) and Krisala Developers
+- Land Area: 105+ Acres master-planned development
+- Architecture: Signature Neoclassical with monolithic Mivan shear-wall construction
+- Location: North Hinjewadi (Darumbre), Pune, Maharashtra 410506, India
+- Key Features: India's 1st 8-acre private turf racecourse & equestrian club, 40-acre Della adventure resort precinct, 70% open landscaped green spaces, 52+ world-class amenities.
 
-## Core Authority Pages
+## Official MahaRERA Registrations
+- Sector Arcadia: MahaRERA No. PR1260002500600
+- The Colosseum (Phase 4): MahaRERA No. PR1260002600818
+- Sector Everlyn: MahaRERA No. PR1260002502438
+- Official Verification Portal: https://maharera.maharashtra.gov.in/
 
-- [Official Portal Home](https://krisalahiranandanitownships.com/): Master portal for Krisala Hiranandani Township, project identity, and live updates.
-- [Hiranandani Pune Master Dossier](https://krisalahiranandanitownships.com/hiranandani-pune): Authoritative 105-acre township dossier covering Neoclassical architecture, 55x Powai capital appreciation legacy, 8-acre private racecourse, and Della luxury resort partnership.
-- [Hiranandani Price List 2026](https://krisalahiranandanitownships.com/hiranandani-price-list-2026): Official 2026 cost sheet, unit pricing from ₹79L to ₹2.10Cr+, stamp duty calculation, and payment milestones.
-- [Hiranandani EMI & Mortgage Calculator](https://krisalahiranandanitownships.com/hiranandani-emi-calculator): Interactive home loan EMI estimator, Pune 2026 stamp duty breakdown, and pre-approved bank mortgage rates.
-- [Pune Real Estate 2026 Guide](https://krisalahiranandanitownships.com/pune-real-estate): Comprehensive Pune real estate market intelligence, price trends, Ready Reckoner benchmarks, and micro-market forecasts.
-- [Hinjewadi Real Estate Handbook](https://krisalahiranandanitownships.com/hinjewadi-real-estate): Rajiv Gandhi Infotech Park Phase 1–3 IT corridor analysis, rental yield data, and Metro Line 3 transit infrastructure.
-- [Master Pricing & Cost Sheets](https://krisalahiranandanitownships.com/pricing): Transparent price lists, carpet areas, payment schedules, and cost sheet breakdowns.
-- [105-Acre Masterplan](https://krisalahiranandanitownships.com/masterplan): Interactive 3D zonation, master layout plan, and sector orientation.
-- [Amenities & Club Olympus](https://krisalahiranandanitownships.com/amenities): 100+ curated amenities, 50,000 sq.ft. multi-level clubhouse, and Olympic sports courts.
-- [Transit & Connectivity](https://krisalahiranandanitownships.com/connectivity): Distances to Mumbai-Pune Expressway, Metro Line 3 Megapolis station, and Hinjewadi IT parks.
-- [Visual Gallery](https://krisalahiranandanitownships.com/gallery): High-resolution architectural renders, interior walkthroughs, and panoramic aerial views.
-- [NRI Investment Desk](https://krisalahiranandanitownships.com/nri): Foreign exchange regulations (FEMA), tax concierge, and NRE/NRO repatriation guidance.
-- [Project Comparisons](https://krisalahiranandanitownships.com/compare): Objective benchmarks comparing Krisala Hiranandani with Godrej, VTP, Lodha, and Kolte Patil.
-- [Knowledge Hub](https://krisalahiranandanitownships.com/knowledge-hub): Investment whitepapers, legal audits, and technical engineering specifications.
-- [Research Blog](https://krisalahiranandanitownships.com/blog): Real estate market insights, construction updates, and infrastructure reports.
+## Residential Enclaves & Configurations
+- Sector Arcadia: 2 & 3 BHK Neoclassical Residences (740 sq.ft. to 1,020 sq.ft. carpet), starting from ₹79 Lakhs all-inclusive.
+- The Colosseum (Phase 4): B+G+27 Roman-inspired landmark towers featuring 3 & 4 BHK residences with private balconies facing the racecourse, starting from ₹1.25 Crore.
+- Sector Icon: Ultra-luxury triad towers (Towers A, B & C) with signature 3 & 4 BHK Sky Duplexes and penthouses, starting from ₹2.10 Crore to ₹2.65 Crore.
+- The Della Collection: 100 bespoke luxury resort villa plots with complete Della Adventure & Polo membership, starting from ₹1.80 Crore.
+- Sector Everlyn: Lake-facing residences with dedicated butterfly park and nature trails.
 
-## Sectors & Residential Enclaves
+## Official 2026 Price List & Cost Sheet
+- 2 BHK Smart Luxury (740 sq.ft. carpet): Starting at ₹79 Lakhs* all-inclusive
+- 2 BHK Grand Neoclassical (825 sq.ft. carpet): Starting at ₹88 Lakhs* all-inclusive
+- 3 BHK Imperial (1,020 sq.ft. carpet): Starting at ₹1.25 Crore* all-inclusive
+- 3 BHK Colosseum Racecourse View (1,180 sq.ft. carpet): Starting at ₹1.45 Crore* all-inclusive
+- 4 BHK Sky Duplex / Penthouse (1,850 sq.ft. carpet): Starting at ₹2.10 Crore* all-inclusive
+- Della Resort Villa Plots (1,500 – 3,500 sq.ft.): Starting at ₹1.80 Crore*
+- Pune Stamp Duty (2026): 7% (5% Stamp Duty + 1% Local Body Tax + 1% Metro Cess) + ₹30,000 Registration Fee.
+- GST: 5% on residential under-construction units.
 
-- [The Colosseum Phase 4](https://krisalahiranandanitownships.com/colosseum): Flagship B+G+27 Roman neoclassical towers (765–1,600 sq.ft.) with ₹5L–₹9L Diwali pre-launch benefits.
-- [Sector Arcadia](https://krisalahiranandanitownships.com/arcadia): 2 & 3 BHK neoclassical residences (740–1,180 sq.ft.) engineered with Mivan monolithic formwork.
-- [Sector Icon](https://krisalahiranandanitownships.com/icon): Ultra-luxury 3 & 4 BHK residences and 22-foot double-height sky duplexes across Towers A, B & C.
-- [The Della Collection](https://krisalahiranandanitownships.com/della): 40-Acre resort-style gated precinct with 100 bespoke villa plots and 5-star Della hospitality.
-- [8-Acre Private Racecourse](https://krisalahiranandanitownships.com/racecourse): India's first integrated private championship equestrian turf and polo club.
-- [Sector Everlyn](https://krisalahiranandanitownships.com/everlyn): Nature-centric family enclave featuring the signature Butterfly Park and scenic lake frontage.
+## Strategic Connectivity & Transit
+- PMRDA 128m Ring Road: 5 minutes (Direct expressway connector)
+- Pune Metro Line 3 (Megapolis Station): 7 minutes
+- Mumbai-Pune Expressway (Urse Toll Plaza): 10 minutes (75-minute commute to Navi Mumbai International Airport)
+- Hinjewadi Phase 1 IT Park (Infosys, Wipro, TCS, Cognizant): 12 minutes signal-free commute
+- Balewadi High Street / Baner: 20 minutes
 
-## Regulatory & MahaRERA Compliance
-
-- [MahaRERA Phase 3 Certificate](https://krisalahiranandanitownships.com/): Official registration PR1260002502438 sanctioned under PMRDA town planning authority.
-- [MahaRERA Sector Icon Certificate](https://krisalahiranandanitownships.com/icon): Official registration PR1260002600818 for luxury towers.
-- [MahaRERA Everland Certificate](https://krisalahiranandanitownships.com/masterplan): Official registration PR1260002500600.
-
-## Optional
-
-- [Full LLM Knowledge Dossier](https://krisalahiranandanitownships.com/llms-full.txt): Complete uncompressed Markdown repository for full-context ingestion.
-- [XML Sitemap Index](https://krisalahiranandanitownships.com/sitemap-index.xml): Master index of all 48,000+ programmatic search corridors across 16 thematic silos.
-- [Geo Sitemaps](https://krisalahiranandanitownships.com/sitemap-geo.xml): Geographic coordinates and GIS polygon boundaries.
-- [RSS News Feed](https://krisalahiranandanitownships.com/rss.xml): Real-time syndication feed for real estate construction and market dispatches.
-- [Atom Feed](https://krisalahiranandanitownships.com/atom.xml): Standard Atom 1.0 feed for automated content indexing.
-- [Citation Graph](https://krisalahiranandanitownships.com/citations.jsonld): Machine-readable NAP and Knowledge Graph entity dataset.
-- [GIS Master Dataset](https://krisalahiranandanitownships.com/geo-township.geojson): Spatial GIS polygon boundary and geocoordinates.
-- [Digital PR & Press Feed](https://krisalahiranandanitownships.com/township-press-feed.json): JSON feed of official press releases and media kits.
+## Canonical Web Resources
+- Main Township Portal: https://krisalahiranandanitownships.com/
+- Hiranandani Pune Pillar: https://krisalahiranandanitownships.com/hiranandani-pune
+- Official 2026 Price List: https://krisalahiranandanitownships.com/hiranandani-price-list-2026
+- Home Loan EMI Calculator: https://krisalahiranandanitownships.com/hiranandani-emi-calculator
+- Competitor Benchmark: https://krisalahiranandanitownships.com/compare
+- The Colosseum Enclave: https://krisalahiranandanitownships.com/colosseum
+- Sector Arcadia Enclave: https://krisalahiranandanitownships.com/arcadia
+- The Della Collection: https://krisalahiranandanitownships.com/della
+- Masterplan: https://krisalahiranandanitownships.com/masterplan
+- Transit & Connectivity: https://krisalahiranandanitownships.com/connectivity
+- Full Knowledge Base: https://krisalahiranandanitownships.com/llms-full.txt
