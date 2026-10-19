@@ -215,3 +215,47 @@
 
 # Security Directives (RFC 9116)
 /security.txt         /.well-known/security.txt 301
+
+# Comprehensive Explore Silo Redirects (100% Crawl Coverage)
+/explore/hiranandani-pune                /hiranandani-pune 301
+/explore/hiranandani-township-pune       /hiranandani-pune 301
+/explore/hiranandani-hinjewadi           /hiranandani-pune 301
+/explore/hiranandani-communities-pune    /hiranandani-pune 301
+/explore/dr-niranjan-hiranandani-pune    /hiranandani-pune 301
+/explore/hiranandani-group-pune          /hiranandani-pune 301
+/explore/hiranandani-flats-in-pune       /hiranandani-pune 301
+/explore/hiranandani-luxury-apartments-pune /hiranandani-pune 301
+/explore/hiranandani-price-list-2026     /hiranandani-price-list-2026 301
+/explore/krisala-hiranandani-price-list-2026 /hiranandani-price-list-2026 301
+/explore/hiranandani-cost-sheet          /hiranandani-price-list-2026 301
+/explore/hiranandani-brochure-pdf        /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
+/explore/hiranandani-floor-plans         /#floorplans 301
+/explore/hiranandani-sample-flat-video   /gallery 301
+/explore/hiranandani-reviews-pune        /hiranandani-pune 301
+/explore/hiranandani-site-address-pune   /hiranandani-pune 301
+/explore/hiranandani-rera-number-pune    /hiranandani-pune 301
+/explore/hiranandani-contact-number      /#footer 301
+/explore/hiranandani-possession-date-pune /hiranandani-pune 301
+/explore/hiranandani-pre-launch-offers-pune /hiranandani-pune 301
+/explore/hiranandani-colosseum-pune      /colosseum 301
+/explore/hiranandani-2-bhk-pune          /arcadia 301
+/explore/hiranandani-3-bhk-pune          /arcadia 301
+/explore/hiranandani-4-bhk-pune          /icon 301
+/explore/hiranandani-della-pune          /della 301
+/explore/the-colosseum                   /colosseum 301
+/explore/sector-icon                     /icon 301
+/explore/sector-arcadia                  /arcadia 301
+/explore/della-plots                     /della 301
+/explore/vs-*                            /compare 301
+/explore/*                               /hiranandani-pune 301
+
+# Global NRI & International Shortcuts
+/nri-dubai                               /nri 301
+/nri-uae                                 /nri 301
+/nri-usa                                 /nri 301
+/nri-uk                                  /nri 301
+/nri-singapore                           /nri 301
+/nri-australia                           /nri 301
+/hiranandani-usd                         /hiranandani-price-list-2026 301
+/hiranandani-aed                         /hiranandani-price-list-2026 301
+/hiranandani-gbp                         /hiranandani-price-list-2026 301
