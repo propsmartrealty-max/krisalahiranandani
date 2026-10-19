@@ -499,15 +499,14 @@ ul {
 }
 
 .hero-img {
-    width: 100%;
-    height: 112%;
-    /* Extra height for cinematic parallax */
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
     object-position: center bottom;
     transform-origin: center center;
-    animation: zoomOut 24s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
     filter: brightness(1.02) contrast(1.06);
-    will-change: transform;
 }
 
 @keyframes zoomOut {
