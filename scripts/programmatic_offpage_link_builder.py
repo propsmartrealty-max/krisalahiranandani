@@ -26,7 +26,7 @@ PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
 LOG_FILE = os.path.join(SCRIPT_DIR, "offpage_syndication_log.json")
 
 DOMAIN = "https://krisalahiranandanitownships.com"
-INDEXNOW_KEY = "b24d78ec33fa43dfbf3df32d4b998cf5"
+INDEXNOW_KEY = "e2b9c79fa4d84b90a6e4d77c15243890"
 
 AUTHORITY_HUBS = [
     f"{DOMAIN}/",
