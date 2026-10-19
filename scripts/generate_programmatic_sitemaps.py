@@ -270,62 +270,6 @@ SILOS = [
             "first-equestrian-township",
             "cxo-leadership-villas"
         ]
-    },
-    {
-        "name": "pune-real-estate",
-        "file": "sitemap-pune-real-estate.xml",
-        "hubs": ["/pune-real-estate", "/hinjewadi-real-estate"],
-        "bases": [
-            "flats-for-sale-in-pune",
-            "luxury-apartments-in-pune",
-            "integrated-townships-in-pune",
-            "property-investment-in-pune",
-            "top-builders-in-pune",
-            "pune-real-estate-market-2026",
-            "new-launch-projects-pune",
-            "upcoming-properties-pune",
-            "best-residential-projects-pune",
-            "gated-communities-in-pune",
-            "west-pune-real-estate",
-            "ready-possession-flats-pune",
-            "pre-launch-projects-pune",
-            "property-rates-in-pune-2026",
-            "luxury-homes-pune"
-        ],
-        "modifiers": [
-            "2-bhk-flats",
-            "3-bhk-luxury-apartments",
-            "4-bhk-duplexes",
-            "villa-plots",
-            "price-per-sqft",
-            "rental-yield-matrix",
-            "rera-approved-projects",
-            "metro-line-3-connectivity",
-            "direct-developer-rates",
-            "zero-brokerage-booking"
-        ],
-        "localities": [
-            "hinjewadi",
-            "mahalunge",
-            "baner",
-            "balewadi",
-            "wakad",
-            "punawale",
-            "tathawade",
-            "ravet",
-            "north-hinjewadi",
-            "darumbre-marunji",
-            "pune-west",
-            "mumbai-pune-expressway",
-            "pmrda-ring-road",
-            "kharadi-comparison",
-            "hadapsar-comparison",
-            "kothrud-comparison",
-            "bavdhan-corridor",
-            "blueridge-corridor",
-            "megapolis-zone",
-            "infotech-park-phase-1-2-3"
-        ]
     }
 ]
 
@@ -339,6 +283,36 @@ CORE_STATIC_PAGES = [
             "loc": f"{BASE_URL}/public/everlyn/hero/hero_main_hq.webp",
             "title": "Krisala Hiranandani Township Hinjewadi Aerial View",
             "caption": "105-Acre Krisala Hiranandani Township in Pune featuring Premium 2, 3, and 4 BHK Apartments and Della Villa Plots"
+        }
+    },
+    {
+        "url": f"{BASE_URL}/hiranandani-pune",
+        "changefreq": "daily",
+        "priority": "1.0",
+        "image": {
+            "loc": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+            "title": "Hiranandani Pune Integrated Township Hinjewadi",
+            "caption": "Official Portal for Hiranandani Pune Township in North Hinjewadi featuring Neoclassical 2, 3, 4 BHK residences and 8-acre racecourse"
+        }
+    },
+    {
+        "url": f"{BASE_URL}/hiranandani-price-list-2026",
+        "changefreq": "daily",
+        "priority": "0.99",
+        "image": {
+            "loc": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+            "title": "Hiranandani Price List 2026 Official Cost Sheet",
+            "caption": "Complete 2026 price list and payment plans for 2, 3, 4 BHK residences and Della villa plots at Krisala Hiranandani Township Hinjewadi, Pune"
+        }
+    },
+    {
+        "url": f"{BASE_URL}/hiranandani-emi-calculator",
+        "changefreq": "daily",
+        "priority": "0.98",
+        "image": {
+            "loc": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+            "title": "Hiranandani Pune EMI Calculator & Stamp Duty Breakdown 2026",
+            "caption": "Calculate monthly home loan EMIs, interest rates, and Pune 2026 stamp duty breakdown for Krisala Hiranandani Township Hinjewadi"
         }
     },
     {

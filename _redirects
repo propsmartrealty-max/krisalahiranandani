@@ -197,5 +197,21 @@
 /krisala-hiranandani-possession         /blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026 301
 /krisala-hiranandani-reviews            /blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026 301
 
+# Direct Hiranandani Transactional Keywords
+/hiranandani-price                      /hiranandani-price-list-2026 301
+/hiranandani-price-list                 /hiranandani-price-list-2026 301
+/hiranandani-cost-sheet                 /hiranandani-price-list-2026 301
+/hiranandani-payment-plan               /hiranandani-price-list-2026 301
+/hiranandani-floor-plans                /#floorplans 301
+/hiranandani-brochure                   /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
+/hiranandani-sample-flat                /gallery 301
+/hiranandani-reviews                    /hiranandani-pune 301
+/hiranandani-rera                       /hiranandani-pune 301
+/hiranandani-possession                 /hiranandani-pune 301
+/hiranandani-contact                    /#footer 301
+/hiranandani-phone                      /#footer 301
+/hiranandani-site-address               /hiranandani-pune 301
+/hiranandani-sales-office               /hiranandani-pune 301
+
 # Security Directives (RFC 9116)
 /security.txt         /.well-known/security.txt 301
