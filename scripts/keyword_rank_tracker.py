@@ -52,6 +52,22 @@ PRIORITY_KEYWORDS = [
     "Hiranandani price list 2026",
     "Hiranandani brochure download",
     
+    # High-Intent Google Keyword Planner Commercial & Transactional Matrix
+    "Hiranandani Pune price list 2026",
+    "Hiranandani Pune cost sheet pdf",
+    "Hiranandani Hinjewadi price",
+    "Hiranandani booking office Pune",
+    "Hiranandani Pune MahaRERA number",
+    "Hiranandani Hinjewadi possession date",
+    "Hiranandani Pune EMI calculator",
+    "Hiranandani vs Godrej Hinjewadi",
+    "Hiranandani vs Lodha Pune",
+    "Hiranandani vs Kolte Patil Life Republic",
+    "Hiranandani vs VTP Hinjewadi",
+    "Hiranandani 2 BHK Pune price",
+    "Hiranandani 3 BHK Pune",
+    "Hiranandani 4 BHK luxury duplex Pune",
+    
     # Pune Real Estate Macro Market Queries
     "Pune real estate",
     "Pune real estate market 2026",
