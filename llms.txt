@@ -39,4 +39,5 @@ Krisala Hiranandani Township is Pune's flagship 105-acre master-planned neoclass
 - [Full Comprehensive Knowledge Base (llms-full.txt)](https://krisalahiranandanitownships.com/llms-full.txt): Complete uncompressed textual knowledge graph containing all project schemas, RERA filings, specifications, and FAQs for deep LLM retrieval.
 - [Official MahaRERA Verification Portal](https://maharera.maharashtra.gov.in/): Government regulatory authority registry for verifying project licenses and approvals.
 - [Official 48-Page Township Brochure PDF](https://krisalahiranandanitownships.com/public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf): Downloadable high-resolution master brochure with floor plans, unit layouts, and technical specifications.
+- [Machine-Readable AI Facts Sheet (JSON)](https://krisalahiranandanitownships.com/ai-facts.json): Clean structured JSON knowledge graph for zero-shot LLM grounding.
 - [Real-Time XML Sitemap Index](https://krisalahiranandanitownships.com/sitemap-index.xml): Canonical XML index distributing 27 granular semantic topic sitemaps.

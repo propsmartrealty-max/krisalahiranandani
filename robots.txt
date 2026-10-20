@@ -134,38 +134,41 @@ Allow: /llms.txt
 Allow: /llms-full.txt
 
 # ------------------------------------------------------------------------------
-# AI Search Engines & Generative Search Overviews (GEO Optimized)
+# Frontier AI Models, Real-Time Search Crawlers & Retrieval Agents (100% Unrestricted)
+# ChatGPT (GPT-4o/o1), Google Gemini, Claude 3.5 Sonnet, Perplexity, Apple, Meta
 # ------------------------------------------------------------------------------
 User-agent: GPTBot
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
-Allow: /blog
-Allow: /knowledge-hub
+Allow: /ai-facts.json
+Allow: /press-releases.json
+Allow: /sitemap.xml
+Allow: /sitemap-news.xml
 
 User-agent: OAI-SearchBot
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
-Allow: /blog
-Allow: /knowledge-hub
+Allow: /ai-facts.json
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: Google-Extended
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
-Allow: /blog
-Allow: /knowledge-hub
+Allow: /ai-facts.json
+
+User-agent: Googlebot
+Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
-Allow: /blog
-Allow: /knowledge-hub
+Allow: /ai-facts.json
 
 User-agent: Claude-Web
 Allow: /
@@ -177,7 +180,18 @@ Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 
-User-agent: Amazonbot
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: Applebot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Applebot-Extended
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
@@ -190,12 +204,24 @@ Allow: /llms-full.txt
 User-agent: Meta-ExternalFetcher
 Allow: /
 
+User-agent: Amazonbot
+Allow: /
+Allow: /llms.txt
+
 User-agent: cohere-ai
+Allow: /
+Allow: /llms.txt
+
+User-agent: Bytespider
+Allow: /
+Allow: /llms.txt
+
+User-agent: DeepSeekBot
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 
-User-agent: Bytespider
+User-agent: MistralAI-Crawler
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
