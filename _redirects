@@ -259,3 +259,12 @@
 /hiranandani-usd                         /hiranandani-price-list-2026 301
 /hiranandani-aed                         /hiranandani-price-list-2026 301
 /hiranandani-gbp                         /hiranandani-price-list-2026 301
+
+# Local Business & Site Address Shortcuts
+/site-address                            /site-address 200
+/sales-office                            /site-address 301
+/location-map                            /site-address 301
+/how-to-reach                            /site-address 301
+/experience-center                       /site-address 301
+/darumbre-site                           /site-address 301
+/hiranandani-location                    /site-address 301

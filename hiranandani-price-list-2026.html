@@ -607,5 +607,159 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+
+    <!-- Floating AI Real Estate Concierge Widget (Zero CLS) -->
+    <div id="aiConciergeLauncher" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; align-items: center; gap: 8px;">
+        <button id="aiLauncherBtn" type="button" aria-label="Open AI Concierge" style="background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; border: none; border-radius: 50px; padding: 12px 20px; font-weight: 700; font-size: 0.88rem; box-shadow: 0 8px 24px rgba(197,160,89,0.4); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s ease;">
+            <span style="display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
+            <span>Ask Hiranandani AI</span>
+        </button>
+    </div>
+
+    <!-- AI Concierge Modal Dialog -->
+    <div id="aiConciergeModal" style="display: none; position: fixed; bottom: 84px; right: 24px; width: 360px; max-width: calc(100vw - 32px); height: 500px; background: rgba(16, 18, 26, 0.98); border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.8); z-index: 10000; flex-direction: column; overflow: hidden; backdrop-filter: blur(16px);">
+        <!-- Header -->
+        <div style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(197,160,89,0.25); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 1.1rem;">🏛️</span>
+                <div>
+                    <h4 style="margin: 0; color: #fff; font-size: 0.9rem; font-family: var(--font-heading);">Hiranandani AI Concierge</h4>
+                    <span style="color: var(--gold-bright); font-size: 0.7rem;">Verified Township Knowledge Graph</span>
+                </div>
+            </div>
+            <button id="aiCloseBtn" type="button" aria-label="Close" style="background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; padding: 4px;">&times;</button>
+        </div>
+
+        <!-- Chat History -->
+        <div id="aiChatBody" style="flex: 1; padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
+            <div style="background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 10px; color: #fff; line-height: 1.5;">
+                Welcome! I am your 24/7 Krisala &times; Hiranandani Township Concierge. Ask me anything about MahaRERA numbers, price lists, floor plans, racecourse access, or bank approvals.
+            </div>
+
+            <!-- Quick Prompt Chips -->
+            <div id="aiChipContainer" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
+                <button type="button" class="ai-chip" data-q="What is the starting price of 2 BHK and 3 BHK?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;">💰 2 BHK / 3 BHK Price</button>
+                <button type="button" class="ai-chip" data-q="What are the official MahaRERA registration numbers?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;">📜 MahaRERA Numbers</button>
+                <button type="button" class="ai-chip" data-q="What is the possession date for the township?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;">📅 Possession Date</button>
+                <button type="button" class="ai-chip" data-q="Tell me about the 8-acre turf racecourse and Della resort." style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;">🏇 Racecourse &amp; Della</button>
+                <button type="button" class="ai-chip" data-q="Where is the site sales office located?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;">📍 Site Address &amp; Map</button>
+            </div>
+        </div>
+
+        <!-- Input Bar -->
+        <div style="padding: 10px 14px; background: rgba(9,10,15,0.9); border-top: 1px solid rgba(197,160,89,0.25); display: flex; gap: 8px;">
+            <input type="text" id="aiInput" placeholder="Type a question..." style="flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 8px 12px; color: #fff; font-size: 0.85rem; outline: none;">
+            <button id="aiSendBtn" type="button" style="background: var(--gold-primary); color: #000; border: none; border-radius: 6px; padding: 8px 14px; font-weight: 700; cursor: pointer;">Send</button>
+        </div>
+    </div>
+
+    <!-- AI Concierge Logic -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var launcher = document.getElementById('aiLauncherBtn');
+        var modal = document.getElementById('aiConciergeModal');
+        var closeBtn = document.getElementById('aiCloseBtn');
+        var input = document.getElementById('aiInput');
+        var sendBtn = document.getElementById('aiSendBtn');
+        var chatBody = document.getElementById('aiChatBody');
+        var chips = document.querySelectorAll('.ai-chip');
+
+        if (launcher && modal) {
+            launcher.addEventListener('click', function() {
+                modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+        }
+
+        var knowledgeBase = [
+            {
+                keywords: ['price', 'cost', 'rate', 'starting', '2 bhk', '3 bhk', '4 bhk'],
+                answer: "Official 2026 Pricing: 2 BHK Smart Luxury (740 sq.ft.) starts at ₹79 Lakhs* ($89.5K USD / 328K AED). 3 BHK Imperial (1,020 sq.ft.) starts at ₹1.25 Crore*. 3 BHK Racecourse View (1,180 sq.ft.) starts at ₹1.45 Crore*. 4 BHK Sky Duplexes start at ₹2.10 Cr*. Custom Della Villa plots start at ₹1.80 Cr*."
+            },
+            {
+                keywords: ['rera', 'maharera', 'number', 'registration', 'legal'],
+                answer: "Official Verified MahaRERA Certifications: Sector Arcadia (MahaRERA: PR1260002500600), The Colosseum Phase 4 (MahaRERA: PR1260002600818), and Sector Everlyn (MahaRERA: PR1260002502438). Registered on maharera.maharashtra.gov.in."
+            },
+            {
+                keywords: ['possession', 'date', 'timeline', 'completion'],
+                answer: "The official MahaRERA possession timeline commences in December 2028 for Sector Arcadia, extending through December 2029 for The Colosseum Phase 4, powered by accelerated Mivan monolithic shear-wall construction velocity."
+            },
+            {
+                keywords: ['racecourse', 'della', 'equestrian', 'resort', 'club'],
+                answer: "Krisala × Hiranandani features India's first 8-acre private turf racecourse, polo riding tracks, and an integrated 40-acre Della adventure resort precinct with 52+ world-class equestrian and wellness amenities."
+            },
+            {
+                keywords: ['address', 'location', 'site', 'reach', 'office', 'where'],
+                answer: "Official Site Address: PMRDA 128m Ring Road Corridor, North Hinjawadi, Darumbre, Pune 410506. Driving time: 5 mins to Ring Road, 7 mins to Hinjewadi Metro Line 3 Megapolis Station, 10 mins to Mumbai-Pune Expressway (Urse Toll), and 12 mins to Infosys Phase 1."
+            },
+            {
+                keywords: ['bank', 'loan', 'emi', 'pre approved', 'finance', 'sbi', 'hdfc'],
+                answer: "Pre-approved home loans with PMAY interest subsidies are active through SBI, HDFC Bank, ICICI Bank, Axis Bank, and Bank of Baroda. Instant loan pre-assessment is available at our on-site desk."
+            }
+        ];
+
+        function handleQuestion(q) {
+            if (!q || !q.trim()) return;
+            var userDiv = document.createElement('div');
+            userDiv.style.alignSelf = 'flex-end';
+            userDiv.style.background = 'rgba(255,255,255,0.08)';
+            userDiv.style.padding = '8px 12px';
+            userDiv.style.borderRadius = '8px';
+            userDiv.style.color = '#fff';
+            userDiv.style.maxWidth = '85%';
+            userDiv.textContent = q;
+            chatBody.appendChild(userDiv);
+
+            var qLower = q.toLowerCase();
+            var responseText = "Thank you for inquiring! For complete personalized information, official brochure PDF, or to schedule a priority site visit with our senior sales manager, click below to connect instantly on WhatsApp.";
+            for (var i = 0; i < knowledgeBase.length; i++) {
+                var item = knowledgeBase[i];
+                for (var k = 0; k < item.keywords.length; k++) {
+                    if (qLower.indexOf(item.keywords[k]) !== -1) {
+                        responseText = item.answer;
+                        break;
+                    }
+                }
+                if (responseText !== "Thank you for inquiring! For complete personalized information, official brochure PDF, or to schedule a priority site visit with our senior sales manager, click below to connect instantly on WhatsApp.") break;
+            }
+
+            var botDiv = document.createElement('div');
+            botDiv.style.alignSelf = 'flex-start';
+            botDiv.style.background = 'rgba(197,160,89,0.12)';
+            botDiv.style.border = '1px solid rgba(197,160,89,0.25)';
+            botDiv.style.padding = '10px';
+            botDiv.style.borderRadius = '8px';
+            botDiv.style.color = '#fff';
+            botDiv.style.maxWidth = '90%';
+            botDiv.innerHTML = responseText + '<div style="margin-top: 8px;"><a href="https://wa.me/917744009295?text=' + encodeURIComponent('Hello, I was using the AI Concierge and would like more details on: ' + q) + '" target="_blank" rel="noopener" style="color: #25D366; font-weight: 700; text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">💬 Connect on WhatsApp &rarr;</a></div>';
+            chatBody.appendChild(botDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        if (sendBtn && input) {
+            sendBtn.addEventListener('click', function() {
+                handleQuestion(input.value);
+                input.value = '';
+            });
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleQuestion(input.value);
+                    input.value = '';
+                }
+            });
+        }
+
+        chips.forEach(function(chip) {
+            chip.addEventListener('click', function() {
+                handleQuestion(this.getAttribute('data-q'));
+            });
+        });
+    });
+    </script>
+
 </body>
 </html>
