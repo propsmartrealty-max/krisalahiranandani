@@ -205,6 +205,41 @@
     <meta name="geo.placename" content="Hinjewadi, Pune">
     <meta name="geo.position" content="18.5913;73.7389">
     <meta name="ICBM" content="18.5913, 73.7389">
+
+    <!-- WebMCP / Declarative Agentic Browsing Manifest for AI Agents (Chrome 2026 Spec) -->
+    <meta name="agent-capability" content="real-estate-inquiry, site-visit-booking, cost-sheet-generation, emi-calculation">
+    <script type="application/json" id="webmcp-actions">
+    {
+      "@context": "https://webmcp.org/v1",
+      "agentName": "KrisalaHiranandaniAgent",
+      "actions": [
+        {
+          "name": "calculate_emi",
+          "description": "Calculate monthly loan EMI based on unit price and down payment",
+          "targetUrl": "https://krisalahiranandanitownships.com/hiranandani-emi-calculator",
+          "method": "GET",
+          "parameters": {
+            "loanAmount": {"type": "number", "required": true},
+            "tenureYears": {"type": "number", "default": 20},
+            "interestRate": {"type": "number", "default": 8.5}
+          }
+        },
+        {
+          "name": "book_site_visit",
+          "description": "Schedule a VIP site visit to the North Hinjewadi experience center",
+          "targetUrl": "https://wa.me/917744009295?text=I+would+like+to+schedule+a+VIP+site+visit",
+          "method": "DIRECT_LINK"
+        },
+        {
+          "name": "download_cost_sheet",
+          "description": "Get official all-inclusive builder-direct cost sheet PDF",
+          "targetUrl": "https://krisalahiranandanitownships.com/public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf",
+          "method": "DOWNLOAD"
+        }
+      ]
+    }
+    </script>
+
 </head>
 
 <body>

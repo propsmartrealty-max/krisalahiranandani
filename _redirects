@@ -268,3 +268,8 @@
 /experience-center                       /site-address 301
 /darumbre-site                           /site-address 301
 /hiranandani-location                    /site-address 301
+
+# Dedicated Competitor Intercept Clean URLs
+/compare/vs-godrej-river-royale          /compare/vs-godrej-river-royale.html 200
+/compare/vs-lodha-sylvan                 /compare/vs-lodha-sylvan.html 200
+/compare/vs-kolte-patil-life-republic    /compare/vs-kolte-patil-life-republic.html 200
