@@ -3,78 +3,106 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://krisalahiranandanitownships.com/sitemap.xml</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://krisalahiranandanitownships.com/image-sitemap.xml</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://krisalahiranandanitownships.com/video-sitemap.xml</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-news.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-stories.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-blog.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-geo.xml</loc>
+    <lastmod>2026-10-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://krisalahiranandanitownships.com/sitemap-configurations.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-pricing.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-it-workplaces.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-connectivity.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-comparisons.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-amenities.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-investment-roi.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-sustainability.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-construction.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-rera-legal.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-nri-desk.xml</loc>
-    <lastmod>2026-10-19</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://krisalahiranandanitownships.com/sitemap-amenities-lifestyle.xml</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://krisalahiranandanitownships.com/sitemap-colosseum.xml</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-pricing.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-it-workplaces.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-connectivity.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-comparisons.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-amenities.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-amenities-lifestyle.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-investment-roi.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-sustainability.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-construction.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-rera-legal.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-nri-desk.xml</loc>
+    <lastmod>2026-10-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://krisalahiranandanitownships.com/sitemap-micromarkets.xml</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://krisalahiranandanitownships.com/sitemap-villa-plots.xml</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://krisalahiranandanitownships.com/sitemap-hiranandani-brand.xml</loc>
-    <lastmod>2026-10-19</lastmod>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/sitemap-pune-real-estate.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/google-products.xml</loc>
+    <lastmod>2026-10-20</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://krisalahiranandanitownships.com/google-merchant-feed.xml</loc>
+    <lastmod>2026-10-20</lastmod>
   </sitemap>
 </sitemapindex>

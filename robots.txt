@@ -1,10 +1,12 @@
 # ==============================================================================
-# Krisala Hiranandani Master Township Hinjewadi — Hardened Robots Architecture
-# Enterprise Search Engine Directives: Googlebot, AI Overviews, Bing, & Social
+# Krisala Hiranandani Master Township Hinjewadi — Production Robots Architecture
+# Calibrated for Google Search Central, Google AI Overviews, Bing, and Universal AI Bots
 # Domain: https://krisalahiranandanitownships.com/
 # ==============================================================================
 
-# Global Directives for Standard Search Crawlers
+# ------------------------------------------------------------------------------
+# 1. Global Baseline Crawl Directives
+# ------------------------------------------------------------------------------
 User-agent: *
 Allow: /
 Allow: /public/
@@ -15,6 +17,8 @@ Allow: /app.min.js
 Allow: /manifest.json
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /ai-facts.json
+Allow: /press-releases.json
 Allow: /favicon.ico
 Allow: /favicon.png
 Allow: /apple-touch-icon.png
@@ -25,8 +29,6 @@ Allow: /google-merchant-feed.xml
 Allow: /citations.jsonld
 Allow: /geo-township.geojson
 Allow: /township-press-feed.json
-Allow: /public/widgets/
-Allow: /public/pr/
 Disallow: /analytics.html
 Disallow: /*.md$
 Disallow: /*.toml$
@@ -34,31 +36,13 @@ Disallow: /*.zone$
 Disallow: /scripts/
 
 # ------------------------------------------------------------------------------
-# Google Ecosystem Bots (Full Unrestricted Access & Discover Optimization)
+# 2. Google Search, News, Media & AI Crawler Ecosystem (Full Unrestricted Access)
 # ------------------------------------------------------------------------------
 User-agent: Googlebot
 Allow: /
-Allow: /explore/
-Allow: /blog
-Allow: /colosseum
-Allow: /everlyn
-Allow: /arcadia
-Allow: /icon
-Allow: /della
-Allow: /racecourse
-Allow: /pricing
-Allow: /gallery
-Allow: /masterplan
-Allow: /amenities
-Allow: /nri
-Allow: /connectivity
-Allow: /neighborhood
-Allow: /pune-real-estate
-Allow: /hinjewadi-real-estate
-Allow: /compare
-Allow: /knowledge-hub
-Allow: /stories/
-Allow: /public/
+
+User-agent: Googlebot-Mobile
+Allow: /
 
 User-agent: Googlebot-Image
 Allow: /public/
@@ -66,35 +50,39 @@ Allow: /*.webp$
 Allow: /*.png$
 Allow: /*.jpg$
 Allow: /*.jpeg$
+Allow: /image-sitemap.xml
 Allow: /
 
 User-agent: Googlebot-Video
 Allow: /public/
 Allow: /*.mp4$
+Allow: /*.webm$
 Allow: /video-sitemap.xml
 Allow: /
 
 User-agent: Googlebot-News
 Allow: /blog
+Allow: /sitemap-news.xml
 Allow: /rss.xml
+Allow: /atom.xml
 Allow: /
 
 User-agent: Google-Extended
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
+Allow: /ai-facts.json
 Allow: /blog
 Allow: /knowledge-hub
+
+User-agent: Google-InspectionTool
+Allow: /
 
 User-agent: Storebot-Google
 Allow: /
 Allow: /google-merchant-feed.xml
+Allow: /google-products.xml
 Allow: /products.json
-Allow: /colosseum
-Allow: /icon
-Allow: /arcadia
-Allow: /everlyn
-Allow: /della
 
 User-agent: AdsBot-Google
 Allow: /
@@ -105,37 +93,17 @@ Allow: /
 User-agent: Mediapartners-Google
 Allow: /
 
-# ------------------------------------------------------------------------------
-# Microsoft Bing & IndexNow Partner Crawlers
-# ------------------------------------------------------------------------------
-User-agent: Bingbot
+User-agent: FeedFetcher-Google
 Allow: /
-Allow: /explore/
-Allow: /blog
-Allow: /public/
+Allow: /rss.xml
+Allow: /atom.xml
+Allow: /feed.json
 
-User-agent: msnbot
-Allow: /
-
-User-agent: BingPreview
+User-agent: APIs-Google
 Allow: /
 
 # ------------------------------------------------------------------------------
-# Apple & Siri Knowledge Retrieval Bots
-# ------------------------------------------------------------------------------
-User-agent: Applebot
-Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
-
-User-agent: Applebot-Extended
-Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
-
-# ------------------------------------------------------------------------------
-# Frontier AI Models, Real-Time Search Crawlers & Retrieval Agents (100% Unrestricted)
-# ChatGPT (GPT-4o/o1), Google Gemini, Claude 3.5 Sonnet, Perplexity, Apple, Meta
+# 3. Universal Frontier AI Models, Retrieval Agents & Real-Time Search Crawlers
 # ------------------------------------------------------------------------------
 User-agent: GPTBot
 Allow: /
@@ -143,8 +111,6 @@ Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /ai-facts.json
 Allow: /press-releases.json
-Allow: /sitemap.xml
-Allow: /sitemap-news.xml
 
 User-agent: OAI-SearchBot
 Allow: /
@@ -153,15 +119,6 @@ Allow: /llms-full.txt
 Allow: /ai-facts.json
 
 User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
-Allow: /ai-facts.json
-
-User-agent: Googlebot
 Allow: /
 
 User-agent: ClaudeBot
@@ -204,6 +161,12 @@ Allow: /llms-full.txt
 User-agent: Meta-ExternalFetcher
 Allow: /
 
+User-agent: DeepSeekBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
 User-agent: Amazonbot
 Allow: /
 Allow: /llms.txt
@@ -212,22 +175,47 @@ User-agent: cohere-ai
 Allow: /
 Allow: /llms.txt
 
-User-agent: Bytespider
-Allow: /
-Allow: /llms.txt
-
-User-agent: DeepSeekBot
-Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
-
 User-agent: MistralAI-Crawler
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 
+User-agent: Bytespider
+Allow: /
+Allow: /llms.txt
+
 # ------------------------------------------------------------------------------
-# Social Media & Rich Card Snippet Bots
+# 4. Major Search Engine Web Crawlers
+# ------------------------------------------------------------------------------
+User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: DuckDuckGo-Favicons-Bot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Qwantify
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+# ------------------------------------------------------------------------------
+# 5. Social Media Cards & Rich Snippet Embed Crawlers
 # ------------------------------------------------------------------------------
 User-agent: facebookexternalhit
 Allow: /
@@ -250,8 +238,11 @@ Allow: /
 User-agent: Slackbot
 Allow: /
 
+User-agent: Discordbot
+Allow: /
+
 # ------------------------------------------------------------------------------
-# Disallow Aggressive Third-Party Scrapers & SEO Spy Crawlers
+# 6. Disallow Aggressive Third-Party Reverse-Engineering Scrapers
 # ------------------------------------------------------------------------------
 User-agent: AhrefsBot
 Disallow: /
@@ -281,12 +272,16 @@ User-agent: PetalBot
 Disallow: /
 
 # ------------------------------------------------------------------------------
-# Master Sitemaps & Feeds Auto-Discovery
+# 7. Master Sitemaps & Feeds Declarations
 # ------------------------------------------------------------------------------
 Sitemap: https://krisalahiranandanitownships.com/sitemap-index.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap.xml
 Sitemap: https://krisalahiranandanitownships.com/image-sitemap.xml
 Sitemap: https://krisalahiranandanitownships.com/video-sitemap.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-news.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-stories.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-blog.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-geo.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-configurations.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-colosseum.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-pricing.xml
@@ -304,10 +299,5 @@ Sitemap: https://krisalahiranandanitownships.com/sitemap-rera-legal.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-desk.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-hiranandani-brand.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-pune-real-estate.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-stories.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-news.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-blog.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-geo.xml
 Sitemap: https://krisalahiranandanitownships.com/google-products.xml
 Sitemap: https://krisalahiranandanitownships.com/google-merchant-feed.xml
-

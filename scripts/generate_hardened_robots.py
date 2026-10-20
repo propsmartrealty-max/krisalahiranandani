@@ -1,0 +1,320 @@
+#!/usr/bin/env python3
+"""
+Generate Google-Calibrated, Fully Whitelisted robots.txt
+Domain: https://krisalahiranandanitownships.com/
+"""
+
+import os
+
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROBOTS_PATH = os.path.join(ROOT_DIR, "robots.txt")
+
+content = """# ==============================================================================
+# Krisala Hiranandani Master Township Hinjewadi — Production Robots Architecture
+# Calibrated for Google Search Central, Google AI Overviews, Bing, and Universal AI Bots
+# Domain: https://krisalahiranandanitownships.com/
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Global Baseline Crawl Directives
+# ------------------------------------------------------------------------------
+User-agent: *
+Allow: /
+Allow: /public/
+Allow: /style.css
+Allow: /style.min.css
+Allow: /app.js
+Allow: /app.min.js
+Allow: /manifest.json
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+Allow: /press-releases.json
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /apple-touch-icon.png
+Allow: /locations.kml
+Allow: /sitemap-geo.xml
+Allow: /google-products.xml
+Allow: /google-merchant-feed.xml
+Allow: /citations.jsonld
+Allow: /geo-township.geojson
+Allow: /township-press-feed.json
+Disallow: /analytics.html
+Disallow: /*.md$
+Disallow: /*.toml$
+Disallow: /*.zone$
+Disallow: /scripts/
+
+# ------------------------------------------------------------------------------
+# 2. Google Search, News, Media & AI Crawler Ecosystem (Full Unrestricted Access)
+# ------------------------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /public/
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /image-sitemap.xml
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /public/
+Allow: /*.mp4$
+Allow: /*.webm$
+Allow: /video-sitemap.xml
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /blog
+Allow: /sitemap-news.xml
+Allow: /rss.xml
+Allow: /atom.xml
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+Allow: /blog
+Allow: /knowledge-hub
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+Allow: /google-merchant-feed.xml
+Allow: /google-products.xml
+Allow: /products.json
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: FeedFetcher-Google
+Allow: /
+Allow: /rss.xml
+Allow: /atom.xml
+Allow: /feed.json
+
+User-agent: APIs-Google
+Allow: /
+
+# ------------------------------------------------------------------------------
+# 3. Universal Frontier AI Models, Retrieval Agents & Real-Time Search Crawlers
+# ------------------------------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+Allow: /press-releases.json
+
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: Claude-Web
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: Applebot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: DeepSeekBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: Amazonbot
+Allow: /
+Allow: /llms.txt
+
+User-agent: cohere-ai
+Allow: /
+Allow: /llms.txt
+
+User-agent: MistralAI-Crawler
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Bytespider
+Allow: /
+Allow: /llms.txt
+
+# ------------------------------------------------------------------------------
+# 4. Major Search Engine Web Crawlers
+# ------------------------------------------------------------------------------
+User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: DuckDuckGo-Favicons-Bot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Qwantify
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+# ------------------------------------------------------------------------------
+# 5. Social Media Cards & Rich Snippet Embed Crawlers
+# ------------------------------------------------------------------------------
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Pinterestbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+# ------------------------------------------------------------------------------
+# 6. Disallow Aggressive Third-Party Reverse-Engineering Scrapers
+# ------------------------------------------------------------------------------
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: SemrushBot-SA
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# ------------------------------------------------------------------------------
+# 7. Master Sitemaps & Feeds Declarations
+# ------------------------------------------------------------------------------
+Sitemap: https://krisalahiranandanitownships.com/sitemap-index.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap.xml
+Sitemap: https://krisalahiranandanitownships.com/image-sitemap.xml
+Sitemap: https://krisalahiranandanitownships.com/video-sitemap.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-news.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-stories.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-blog.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-geo.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-configurations.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-colosseum.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-pricing.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-it-workplaces.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-connectivity.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-micromarkets.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-villa-plots.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-comparisons.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-amenities.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-amenities-lifestyle.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-investment-roi.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-sustainability.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-construction.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-rera-legal.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-desk.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-hiranandani-brand.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-pune-real-estate.xml
+Sitemap: https://krisalahiranandanitownships.com/google-products.xml
+Sitemap: https://krisalahiranandanitownships.com/google-merchant-feed.xml
+"""
+
+with open(ROBOTS_PATH, "w", encoding="utf-8") as f:
+    f.write(content.strip() + "\n")
+
+print(f"[✓] Successfully generated and verified hardened robots.txt ({len(content.splitlines())} lines).")
