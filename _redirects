@@ -248,16 +248,20 @@
 /explore                                 /hiranandani-pune 301
 /explore/                                /hiranandani-pune 301
 
-# Global NRI & International Shortcuts
-/nri-dubai                               /nri 301
-/nri-uae                                 /nri 301
-/nri-usa                                 /nri 301
-/nri-uk                                  /nri 301
-/nri-singapore                           /nri 301
-/nri-australia                           /nri 301
-/hiranandani-usd                         /hiranandani-price-list-2026 301
-/hiranandani-aed                         /hiranandani-price-list-2026 301
-/hiranandani-gbp                         /hiranandani-price-list-2026 301
+# Global NRI & International Regional Shortcuts
+/nri-dubai                               /nri/dubai-uae 301
+/nri-uae                                 /nri/dubai-uae 301
+/nri-usa                                 /nri/usa-silicon-valley 301
+/nri-uk                                  /nri/uk-london 301
+/nri-singapore                           /nri/singapore 301
+/nri-australia                           /nri/australia-sydney 301
+/nri-canada                              /nri/canada-toronto 301
+/hiranandani-usd                         /nri/usa-silicon-valley 301
+/hiranandani-aed                         /nri/dubai-uae 301
+/hiranandani-gbp                         /nri/uk-london 301
+/hiranandani-sgd                         /nri/singapore 301
+/hiranandani-aud                         /nri/australia-sydney 301
+/hiranandani-cad                         /nri/canada-toronto 301
 
 # Local Business & Site Address Shortcuts
 /site-address                            /site-address 200

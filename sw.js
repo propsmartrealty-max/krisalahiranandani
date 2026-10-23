@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krisala-hiranandani-v10';
+const CACHE_NAME = 'krisala-hiranandani-v11';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
@@ -16,6 +16,7 @@ const CORE_ASSETS = [
 ];
 
 const SILO_ASSETS = [
+    '/krisala-hiranandani-pune/',
     '/pune-real-estate',
     '/hinjewadi-real-estate',
     '/colosseum',
@@ -30,6 +31,8 @@ const SILO_ASSETS = [
     '/masterplan',
     '/connectivity',
     '/nri',
+    '/nri/dubai-uae',
+    '/nri/usa-silicon-valley',
     '/knowledge-hub',
     '/compare',
     '/neighborhood',

@@ -72,6 +72,17 @@
           }
         }
       }
+    },
+    "/nri": {
+      "get": {
+        "summary": "Get Global NRI Cross-Border Investment Guidelines & Multi-Currency Rates",
+        "description": "Returns FEMA compliance, NRE/NRO repatriation, DTAA tax treaties, and regional landing hubs for UAE (AED), USA (USD), UK (GBP), Singapore (SGD), Australia (AUD), and Canada (CAD).",
+        "responses": {
+          "200": {
+            "description": "Global NRI portal HTML and multi-currency specifications"
+          }
+        }
+      }
     }
   }
 }

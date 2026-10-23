@@ -78,6 +78,14 @@ URL_LIST = [
     f"https://{HOST}/llms.txt",
     f"https://{HOST}/rss.xml",
     f"https://{HOST}/sitemap-explore.xml",
+    f"https://{HOST}/sitemap-nri-global.xml",
+    # 6 Dedicated Global NRI Regional Hubs
+    f"https://{HOST}/nri/dubai-uae",
+    f"https://{HOST}/nri/usa-silicon-valley",
+    f"https://{HOST}/nri/uk-london",
+    f"https://{HOST}/nri/singapore",
+    f"https://{HOST}/nri/australia-sydney",
+    f"https://{HOST}/nri/canada-toronto",
     # 15 Canonical Programmatic Explore Authority Pages
     f"https://{HOST}/explore/krisala-hiranandani-2-bhk-luxury-apartments-hinjewadi",
     f"https://{HOST}/explore/krisala-hiranandani-3-bhk-luxury-apartments-hinjewadi",

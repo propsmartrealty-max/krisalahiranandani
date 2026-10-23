@@ -439,6 +439,14 @@
   CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
   X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 
+/nri/*
+  Cache-Tag: kxh-township, kxh-html, kxh-nri, kxh-global, kxh-seo
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+
+
 
 
 
