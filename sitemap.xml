@@ -1120,4 +1120,37 @@
             <image:caption>Verified homebuyer reviews, structural audits, and resident ratings for Krisala Hiranandani Township Hinjewadi, Pune</image:caption>
         </image:image>
     </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/floor-plans</loc>
+        <lastmod>2026-10-23T13:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.96</priority>
+        <image:image>
+            <image:loc>https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp</image:loc>
+            <image:title>Hiranandani Hinjewadi Master Floor Plans 2026</image:title>
+            <image:caption>Official 2, 3, 4 BHK architectural layouts and MahaRERA carpet dimensions for Krisala Hiranandani Township Hinjewadi</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/construction-status</loc>
+        <lastmod>2026-10-23T13:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+        <image:image>
+            <image:loc>https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp</image:loc>
+            <image:title>Hiranandani Hinjewadi Construction Status and Possession Timeline 2026</image:title>
+            <image:caption>Civil milestone updates, monolithic slab progress, and MahaRERA compliance for Krisala Hiranandani Township Hinjewadi</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/north-hinjewadi</loc>
+        <lastmod>2026-10-23T13:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+        <image:image>
+            <image:loc>https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp</image:loc>
+            <image:title>North Hinjewadi Real Estate and PMRDA 128m Ring Road Growth Corridor</image:title>
+            <image:caption>Strategic analysis of North Hinjewadi Darumbre infrastructure, Metro Line 3 connectivity, and Krisala Hiranandani Township</image:caption>
+        </image:image>
+    </url>
 </urlset>

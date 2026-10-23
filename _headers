@@ -386,6 +386,28 @@
   CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
   X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 
+/floor-plans
+  Cache-Tag: kxh-township, kxh-html, kxh-floorplans, kxh-seo
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+
+/construction-status
+  Cache-Tag: kxh-township, kxh-html, kxh-construction, kxh-seo
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+
+/north-hinjewadi
+  Cache-Tag: kxh-township, kxh-html, kxh-geo, kxh-seo
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+
+
 
 
 
