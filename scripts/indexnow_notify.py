@@ -20,6 +20,7 @@ URL_LIST = [
     f"https://{HOST}/hiranandani-price-list-2026",
     f"https://{HOST}/hiranandani-emi-calculator",
     f"https://{HOST}/site-address",
+    f"https://{HOST}/reviews",
     f"https://{HOST}/compare/vs-godrej-river-royale",
     f"https://{HOST}/compare/vs-lodha-sylvan",
     f"https://{HOST}/compare/vs-kolte-patil-life-republic",

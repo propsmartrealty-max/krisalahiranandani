@@ -31,6 +31,7 @@ PRIORITY_URLS = [
     "https://krisalahiranandanitownships.com/hiranandani-price-list-2026",
     "https://krisalahiranandanitownships.com/hiranandani-emi-calculator",
     "https://krisalahiranandanitownships.com/site-address",
+    "https://krisalahiranandanitownships.com/reviews",
     "https://krisalahiranandanitownships.com/compare",
     "https://krisalahiranandanitownships.com/compare/vs-godrej-river-royale",
     "https://krisalahiranandanitownships.com/compare/vs-lodha-sylvan",

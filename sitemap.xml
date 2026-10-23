@@ -1105,8 +1105,19 @@
     </url>
     <url>
         <loc>https://krisalahiranandanitownships.com/compare/vs-kolte-patil-life-republic</loc>
-        <lastmod>2026-10-20T10:48:04+00:00</lastmod>
+        <lastmod>2026-10-23T12:30:00+00:00</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/reviews</loc>
+        <lastmod>2026-10-23T12:30:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.95</priority>
+        <image:image>
+            <image:loc>https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp</image:loc>
+            <image:title>Hiranandani Hinjewadi Reviews and Ratings 2026</image:title>
+            <image:caption>Verified homebuyer reviews, structural audits, and resident ratings for Krisala Hiranandani Township Hinjewadi, Pune</image:caption>
+        </image:image>
     </url>
 </urlset>
