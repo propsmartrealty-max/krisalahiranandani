@@ -35,8 +35,8 @@ Krisala Hiranandani Township is Pune's flagship 105-acre master-planned neoclass
 - [Verified Homeowner Reviews & Ratings](https://krisalahiranandanitownships.com/reviews): 4.9/5 stars rating based on 428 verified homeowner inspections, IT executive reviews, and NRI investor testimonials.
 - [North Hinjewadi Growth Corridor Guide](https://krisalahiranandanitownships.com/north-hinjewadi): PMRDA 128m Ring Road, Hinjewadi Metro Line 3, and zero-traffic commute corridor to Infosys and Wipro Circle.
 - [Official Sales Office & Site Address Experience Center](https://krisalahiranandanitownships.com/site-address): On-site 105-acre experience center location, GPS navigation (18.5913° N, 73.7389° E), and turn-by-turn driving directions.
-- [Research & Knowledge Hub](https://krisalahiranandanitownships.com/knowledge-hub): Real estate market trends, Hinjewadi IT corridor growth forecasts, and MahaRERA legal disclosures.
 - [Official News & Blog Dispatches](https://krisalahiranandanitownships.com/blog): Infrastructure updates, metro line 3 progress, and Pune real estate capital appreciation analyses.
+- [Programmatic Explore & Typology Hubs](https://krisalahiranandanitownships.com/sitemap-explore.xml): 15 canonical deep-dive pages covering 2 BHK (Arcadia), 3 BHK (Colosseum), 4 BHK Duplex (Icon), Della Villa Plots, Tech Corridors (Infosys, Wipro, TCS), Darumbre Master Plan, Equestrian Turf Racecourse, NRI Investment Guide, and Competitor Benchmarks (Godrej, Lodha, Life Republic, VTP).
 
 ## Optional
 

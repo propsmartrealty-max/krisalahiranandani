@@ -244,9 +244,9 @@
 /explore/the-colosseum                   /colosseum 301
 /explore/sector-icon                     /icon 301
 /explore/sector-arcadia                  /arcadia 301
-/explore/della-plots                     /della 301
 /explore/vs-*                            /compare 301
-/explore/*                               /hiranandani-pune 301
+/explore                                 /hiranandani-pune 301
+/explore/                                /hiranandani-pune 301
 
 # Global NRI & International Shortcuts
 /nri-dubai                               /nri 301
