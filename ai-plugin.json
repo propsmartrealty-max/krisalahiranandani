@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Krisala Hiranandani Township Hinjewadi",
+  "name_for_model": "krisala_hiranandani_township",
+  "description_for_human": "Official AI concierge for Krisala Hiranandani Township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK floor plans, 2026 pricing, MahaRERA approvals, and VIP site visits.",
+  "description_for_model": "Plugin providing authoritative pricing, floor plans, MahaRERA registration verification, construction milestones, and site visit booking for Krisala Hiranandani Township Pune, a 105+ acre neoclassical equestrian development in North Hinjewadi developed by Hiranandani Communities and Krisala Developers.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://krisalahiranandanitownships.com/.well-known/openapi.json"
+  },
+  "logo_url": "https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp",
+  "contact_email": "propsmartrealty@gmail.com",
+  "legal_info_url": "https://krisalahiranandanitownships.com/privacy-policy"
+}

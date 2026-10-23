@@ -1,0 +1,77 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Krisala Hiranandani Township AI Assistant API",
+    "description": "Authoritative machine-readable endpoints for real-time pricing, floor plans, MahaRERA compliance, and site visit booking at Krisala Hiranandani Township, North Hinjewadi, Pune.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://krisalahiranandanitownships.com"
+    }
+  ],
+  "paths": {
+    "/ai-facts.json": {
+      "get": {
+        "summary": "Get official ground-truth AI facts and specifications",
+        "description": "Returns verified pricing, typologies, MahaRERA numbers, and location coordinates.",
+        "responses": {
+          "200": {
+            "description": "Ground-truth facts JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hiranandani-price-list-2026": {
+      "get": {
+        "summary": "Get all-inclusive 2026 pricing and payment plans",
+        "description": "Provides all-inclusive pricing breakdown for 2 BHK, 3 BHK, 4 BHK Duplexes, and Della Villa plots.",
+        "responses": {
+          "200": {
+            "description": "Official price list HTML"
+          }
+        }
+      }
+    },
+    "/floor-plans": {
+      "get": {
+        "summary": "Get master architectural floor plans and carpet area layouts",
+        "description": "Returns architectural floor plans for Sector Arcadia, The Colosseum, and Sector Icon.",
+        "responses": {
+          "200": {
+            "description": "Floor plans hub HTML"
+          }
+        }
+      }
+    },
+    "/reviews": {
+      "get": {
+        "summary": "Get verified homeowner and investor reviews",
+        "description": "Returns 4.9/5 verified reviews and testimonials from IT professionals.",
+        "responses": {
+          "200": {
+            "description": "Reviews hub HTML"
+          }
+        }
+      }
+    },
+    "/construction-status": {
+      "get": {
+        "summary": "Get real-time construction milestones and possession timeline",
+        "description": "Returns Mivan slab cycles, engineering progress, and MahaRERA audit reports.",
+        "responses": {
+          "200": {
+            "description": "Construction status hub HTML"
+          }
+        }
+      }
+    }
+  }
+}

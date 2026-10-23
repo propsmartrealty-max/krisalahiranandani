@@ -18,6 +18,9 @@ Allow: /manifest.json
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /ai-facts.json
+Allow: /ai-plugin.json
+Allow: /.well-known/ai-plugin.json
+Allow: /.well-known/openapi.json
 Allow: /press-releases.json
 Allow: /favicon.ico
 Allow: /favicon.png

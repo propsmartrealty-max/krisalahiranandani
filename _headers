@@ -379,6 +379,24 @@
   Cache-Tag: kxh-pr, kxh-news
   X-Robots-Tag: index, follow
 
+/.well-known/ai-plugin.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: index, follow
+
+/.well-known/openapi.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: index, follow
+
+/ai-plugin.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: index, follow
+
 /reviews
   Cache-Tag: kxh-township, kxh-html, kxh-reviews, kxh-seo
   Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
