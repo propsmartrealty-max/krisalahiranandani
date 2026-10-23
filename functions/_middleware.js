@@ -405,17 +405,23 @@ export async function onRequest(context) {
         const isTargetQuery = isBlogRoute || realEstateKeywords.some(kw => cleanSlug.includes(kw));
         if (isTargetQuery && cleanSlug) {
             let targetSlug = cleanSlug;
-            if (targetSlug.startsWith('krisala-hiranandani-')) {
+            if (targetSlug.startsWith('krisala-hiranandani-township-pune-')) {
                 // already has full canonical prefix
+            } else if (targetSlug.startsWith('krisala-hiranandani-pune-')) {
+                targetSlug = `krisala-hiranandani-township-pune-${targetSlug.slice(25)}`;
+            } else if (targetSlug.startsWith('krisala-hiranandani-')) {
+                targetSlug = `krisala-hiranandani-township-pune-${targetSlug.slice(20)}`;
             } else if (targetSlug.startsWith('hiranandani-')) {
-                targetSlug = `krisala-${targetSlug}`;
+                targetSlug = `krisala-hiranandani-township-pune-${targetSlug.slice(12)}`;
             } else if (targetSlug.startsWith('krisala-')) {
-                targetSlug = `krisala-hiranandani-${targetSlug.slice(8)}`;
+                targetSlug = `krisala-hiranandani-township-pune-${targetSlug.slice(8)}`;
             } else {
-                targetSlug = `krisala-hiranandani-${targetSlug}`;
+                targetSlug = `krisala-hiranandani-township-pune-${targetSlug}`;
             }
             targetSlug = targetSlug.replace(/hiranandani-hiranandani/g, 'hiranandani');
             targetSlug = targetSlug.replace(/krisala-krisala/g, 'krisala');
+            targetSlug = targetSlug.replace(/township-township/g, 'township');
+            targetSlug = targetSlug.replace(/pune-pune/g, 'pune');
             targetSlug = targetSlug.replace(/-+/g, '-').replace(/^-|-$/g, '');
             const targetUrl = new URL(`/explore/${targetSlug}`, request.url);
             return Response.redirect(targetUrl.toString(), 301);

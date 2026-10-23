@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        :root {
+            --bg-dark: #090a0f;
+            --bg-dark-deep: #050608;
+            --bg-surface: rgba(16, 18, 26, 0.75);
+            --gold-primary: #c5a059;
+            --gold-light: #e6d5b8;
+            --gold-bright: #dfc07b;
+            --gold-deep: #9e7d3b;
+            --text-main: #fcfbf7;
+            --text-muted: #b8b8cc;
+            --text-subtle: #a8a8ba;
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+            --font-accent: 'Cinzel', serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .container { padding: 0 20px; } }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; z-index: 0; }
+        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+        .hero-title span { color: var(--gold-bright); }
+        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+        .stat-item { text-align: center; }
+        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+        .ticker-content { position: relative; height: 50px; }
+        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+        .ticker-slide.active { opacity: 1; }
+        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+        .nav-dropdown:hover > .nav-dropdown-menu,
+        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+        @media (max-width: 1024px) {
+            .nav-links, .nav-actions .btn-outline { display: none !important; }
+            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+        }
+        @media (max-width: 1180px) {
+            .nav-dropdown-menu { position: static !important; transform: none !important; }
+            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+        }
+        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+        .nri-geo-banner.active { display: flex !important; }
+        @font-face {
+            font-family: 'Phosphor';
+            font-display: swap;
+            src: url('/public/fonts/Phosphor.woff2') format('woff2');
+        }
+    </style>
+<link href="https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune/della" rel="canonical"/>
+<link href="/favicon.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-48x48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/favicon.ico" rel="shortcut icon"/>
+<title>【Official】The Della Collection Hinjewadi — Krisala Hiranandani Township Pune™ Villa Plots (from ₹1.80 Cr*)</title>
+<meta &amp;="" 1st="" 5-star="" 8-acre="" club="" content="The Della Collection at Krisala Hiranandani Township Pune: Luxury villa plots and equestrian estates starting from ₹1.80 Crore*. Direct frontage to India's first residential 8-acre turf racecourse &amp; polo club." della="" hospitality."="" name="description" polo="" private="" racecourse,="" s=""/>
+<meta content="The Della Collection Hinjewadi, Della villa plots Pune, Krisala Hiranandani Township Pune Della, Hiranandani villa plots Hinjewadi, equestrian estate plots Pune" name="keywords"/>
+<!-- Global Crawler Directives & Geo-Targeting -->
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+<meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="googlebot"/>
+<meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="bingbot"/>
+<meta content="IN-MH" name="geo.region"/>
+<meta content="North Hinjawadi, Pune" name="geo.placename"/>
+<meta content="18.5913;73.7389" name="geo.position"/>
+<meta content="18.5913, 73.7389" name="ICBM"/>
+<link href="https://krisalahiranandanitownships.com/della" hreflang="en-IN" rel="alternate"/>
+<link href="https://krisalahiranandanitownships.com/della" hreflang="x-default" rel="alternate"/>
+<link href="/rss.xml" rel="alternate" title="Krisala Hiranandani Dispatches" type="application/rss+xml"/>
+<link href="/opensearch.xml" rel="search" title="Krisala Hiranandani" type="application/opensearchdescription+xml"/>
+<!-- Preloads & Performance -->
+<link as="image" fetchpriority="high" href="/public/everlyn/hero/hero_exterior.webp" rel="preload"/>
+<!-- Fonts (Non-Blocking High Performance) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Outfit:wght@400;500;600&amp;display=swap" rel="preload"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Outfit:wght@400;500;600&amp;display=swap" media="print" onload="this.media='all'" rel="stylesheet"/>
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Outfit:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+</noscript>
+<!-- Icons & Stylesheets (Non-blocking) -->
+<link href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'" rel="stylesheet"/>
+<noscript>
+<link href="/public/fonts/phosphor.min.css" rel="stylesheet"/>
+</noscript>
+<!-- Asynchronous Global Stylesheet (Non-Blocking Core Web Vitals) -->
+<link as="style" href="/style.min.css?v=20261017_v3" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="/style.min.css?v=20261017_v3" rel="stylesheet"/></noscript>
+<link href="manifest.json" rel="manifest"/>
+<meta content="#08080a" name="theme-color"/>
+<!-- OpenGraph & Twitter Social Cards -->
+<meta content="website" property="og:type"/>
+<meta content="https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune/della" property="og:url"/>
+<meta content="【Official】The Della Collection Hinjewadi — Krisala Hiranandani Township Pune™ Villa Plots (from ₹1.80 Cr*)" property="og:title"/>
+<meta content="The Della Collection at Krisala Hiranandani Township Pune: Luxury villa plots and equestrian estates starting from ₹1.80 Crore*. Direct frontage to India's first residential 8-acre turf racecourse &amp; polo club." property="og:description"/>
+<meta content="https://krisalahiranandanitownships.com/public/hero_placeholders/hero_villa_interior_1772864885336.webp" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="The Della Collection — 8-Acre Private Racecourse &amp; Ultra-Luxury Villa Plots at Krisala Hiranandani Hinjewadi" property="og:image:alt"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="en_IN" property="og:locale"/>
+<meta content="Krisala Hiranandani Township Pune" property="og:site_name"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="@KrisalaHiranandani" name="twitter:site"/>
+<meta content="@KrisalaHiranandani" name="twitter:creator"/>
+<meta content="【Official】The Della Collection Hinjewadi — Krisala Hiranandani Township Pune™ Villa Plots (from ₹1.80 Cr*)" name="twitter:title"/>
+<meta content="The Della Collection at Krisala Hiranandani Township Pune: Luxury villa plots and equestrian estates starting from ₹1.80 Crore*. Direct frontage to India's first residential 8-acre turf racecourse &amp; polo club." name="twitter:description"/>
+<meta content="https://krisalahiranandanitownships.com/public/hero_placeholders/hero_villa_interior_1772864885336.webp" name="twitter:image"/>
+<!-- Schema.org JSON-LD Graph for The Della Collection -->
+
+<style>
+        .hero-della {
+            min-height: 75vh;
+            padding-top: 100px;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('/public/imported/della-racecource.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-della {
+                background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('/public/imported/mobile-view-della.webp');
+                background-size: cover;
+                background-position: center;
+            }
+        }
+
+        .racecourse-highlight {
+            padding: 80px 0;
+            background: #0f0f12;
+            border-top: 1px solid var(--gold-primary);
+            border-bottom: 1px solid var(--gold-primary);
+        }
+
+        .plot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .plot-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            border-radius: var(--border-radius);
+            padding: 35px;
+            transition: all 0.3s ease;
+        }
+
+        .plot-card:hover {
+            border-color: var(--gold-primary);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .plot-card h3 {
+            font-family: var(--font-heading);
+            color: var(--gold-light);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+    </style>
+<!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
+<style>
+        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+        .nav-dropdown:hover > .nav-dropdown-menu,
+        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+        @media (max-width: 1180px) {
+            .nav-dropdown-menu { position: static !important; transform: none !important; }
+            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+        }
+    </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune/della#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://krisalahiranandanitownships.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Krisala Hiranandani Township Pune",
+      "item": "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Della Collection",
+      "item": "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune/della"
+    }
+  ]
+}
+</script></head>
+<body>
+<!-- Skip to Content -->
+<a class="skip-link" href="#della-overview">Skip to main content</a>
+<!-- Navigation -->
+<header class="navbar" id="navbar">
+<div class="container nav-container">
+<a aria-label="Krisala Hiranandani Home" class="logo" href="/" style="text-decoration: none;">
+<img alt="Krisala Hiranandani Township Hinjewadi Logo" class="header-logo" height="42" src="/public/krisala-hiranandani-logo.webp" style="aspect-ratio: 310/42;" width="310"/>
+</a>
+<nav aria-label="Main Navigation" class="nav-links" id="navLinks">
+<a class="nav-link" data-en="Township" data-mr="टाउनशिप" href="/">Township</a>
+<!-- Enclaves Dropdown -->
+<div class="nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-trigger active">
+<span data-en="Enclaves" data-mr="प्रकल्प">Enclaves</span> <i class="ph ph-caret-down"></i>
+</button>
+<div class="nav-dropdown-menu">
+<a class="nav-dropdown-item" href="/colosseum">
+<div class="item-title"><span class="badge-mini badge-gold">NEW</span> The Colosseum</div>
+<div class="item-desc">Phase 4 Roman Landmark | B+G+27 Towers</div>
+</a>
+<a class="nav-dropdown-item" href="/icon">
+<div class="item-title">Sector Icon</div>
+<div class="item-desc">Towers A, B &amp; C Triad | Sky Duplexes</div>
+</a>
+<a class="nav-dropdown-item" href="/arcadia">
+<div class="item-title">Sector Arcadia</div>
+<div class="item-desc">2 &amp; 3 BHK Neoclassical Residences</div>
+</a>
+<a class="nav-dropdown-item active" href="/della">
+<div class="item-title">The Della Collection</div>
+<div class="item-desc">100 Villa Plots &amp; 8-Acre Racecourse</div>
+</a>
+<a class="nav-dropdown-item" href="/everlyn">
+<div class="item-title">Sector Everlyn</div>
+<div class="item-desc">Nature Lake &amp; Butterfly Park Living</div>
+</a>
+</div>
+</div>
+<a class="nav-link" data-en="Masterplan" data-mr="मास्टर प्लॅन" href="/masterplan">Masterplan</a>
+<a class="nav-link" data-en="Amenities" data-mr="सुविधा" href="/amenities">Amenities</a>
+<a class="nav-link" data-en="Connectivity" data-mr="कनेक्टिव्हिटी" href="/connectivity">Connectivity</a>
+<a class="nav-link" data-en="Pricing" data-mr="किंमत" href="/pricing">Pricing</a>
+<!-- Explore Dropdown -->
+<div class="nav-dropdown">
+<button aria-expanded="false" aria-haspopup="true" class="nav-dropdown-trigger">
+<span data-en="Explore" data-mr="अधिक माहिती">Explore</span> <i class="ph ph-caret-down"></i>
+</button>
+<div class="nav-dropdown-menu">
+<a class="nav-dropdown-item" href="/pune-real-estate">
+<div class="item-title"><span class="badge-mini badge-gold">AUTHORITY</span> Pune Real Estate</div>
+<div class="item-desc">2026 Market Analysis &amp; Investment Guide</div>
+</a>
+<a class="nav-dropdown-item" href="/hinjewadi-real-estate">
+<div class="item-title">Hinjewadi Real Estate</div>
+<div class="item-desc">IT Park Corridors &amp; Metro 3 Handbook</div>
+</a>
+<a class="nav-dropdown-item" href="/gallery">
+<div class="item-title">Visual Gallery</div>
+<div class="item-desc">3D Renders, Drone Views &amp; Videos</div>
+</a>
+<a class="nav-dropdown-item" href="/nri">
+<div class="item-title">NRI Investment Desk</div>
+<div class="item-desc">FEMA, Tax Concierge &amp; Virtual Tours</div>
+</a>
+<a class="nav-dropdown-item" href="/neighborhood">
+<div class="item-title">Location &amp; IT Hub</div>
+<div class="item-desc">Phase 1 &amp; 3 IT Corridor Infrastructure</div>
+</a>
+<a class="nav-dropdown-item" href="/compare">
+<div class="item-title">Compare Projects</div>
+<div class="item-desc">Hinjewadi Competitor Benchmark</div>
+</a>
+<a class="nav-dropdown-item" href="/knowledge-hub">
+<div class="item-title">Investment Whitepaper</div>
+<div class="item-desc">Rental ROI &amp; Infrastructure Outlook</div>
+</a>
+<a class="nav-dropdown-item" href="/blog">
+<div class="item-title">Research Blog</div>
+<div class="item-desc">Market Updates &amp; Construction News</div>
+</a>
+</div>
+</div>
+</nav>
+<div class="header-actions">
+<button aria-haspopup="dialog" class="btn-primary open-modal">Request VIP Visit</button>
+<div aria-label="Toggle navigation" class="hamburger-menu" id="hamburgerMenu" role="button" tabindex="0">
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+</div>
+</header>
+<!-- Della Hero -->
+<section class="hero-della">
+<div class="container">
+<div style="margin-bottom: 20px;">
+<img alt="The Della Collection and 8-Acre Racecourse Official Brand Logo Krisala Hiranandani Township" height="406" loading="lazy" src="/public/imported/Dell-Township-Pune-Logo.webp" style="height: 52px; width: auto; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8));" width="749"/>
+</div>
+<h1 class="scroll-reveal" style="font-size: 3.5rem; color: var(--gold-light); font-family: var(--font-heading); margin-bottom: 15px;">THE DELLA COLLECTION</h1>
+<p class="scroll-reveal delay-1" style="font-size: 1.2rem; letter-spacing: 4px; text-transform: uppercase; color: var(--text-light); max-width: 800px; margin: 0 auto;">
+                40-Acre Resort-Style Precinct • Ultra-Premium Villa Plots • Equestrian Luxury</p>
+</div>
+</section>
+<!-- Overview -->
+<section class="section" id="della-overview">
+<div class="container">
+<div class="grid-2 align-center">
+<div class="scroll-reveal">
+<span class="subtitle">A Partnership of Legends</span>
+<h2 style="font-size: 2.8rem; margin: 20px 0;">Where Hiranandani Neoclassicism Meets Della Hospitality Innovation</h2>
+<p class="premium-text">The Della phase at Krisala Hiranandani Township represents a groundbreaking paradigm in Indian luxury real estate. Conceived in partnership with Della Resorts &amp; Adventure (led by designer Jimmy Mistry), this 40-acre dedicated precinct fuses 5-star hospitality, bespoke estate living, and high-adrenaline equestrian sporting.</p>
+<p style="margin-top: 15px;">Centred around India's first residential 8-acre private racecourse and polo club, villa plot owners gain privileged access to a lifestyle once reserved solely for royal estates—all situated just minutes from Pune's bustling IT corridor.</p>
+</div>
+<div class="scroll-reveal delay-1">
+<div class="glass-panel" style="padding: 40px; border-left: 4px solid var(--gold-primary);">
+<p style="font-style: italic; font-size: 1.2rem; color: var(--gold-light); line-height: 1.8;">"This is not merely an acquisition of land; it is a permanent induction into an elite equestrian fraternity and a timeless multigenerational asset."</p>
+<p style="margin-top: 20px; font-weight: 600; color: #fff;">— The Della Collection Architectural Manifesto</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Official Resort Narrative & Pursuits of the Privileged -->
+<section class="section section-dark" id="resort-narrative" style="padding-top: 40px; padding-bottom: 40px;">
+<div class="container">
+<div class="glass-panel" style="padding: 48px; border-radius: 16px; border: 1px solid rgba(197, 160, 89, 0.35); background: radial-gradient(circle at 30% 20%, rgba(197, 160, 89, 0.1) 0%, rgba(10, 12, 16, 0.98) 80%);">
+<div class="grid-2" style="gap: 40px; align-items: center;">
+<div>
+<span class="badge" style="margin-bottom: 16px;">
+<i class="ph ph-crown"></i>  Official Brand Narrative
+                        </span>
+<h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 3.2vw, 2.7rem); color: var(--gold-light); margin: 0 0 16px; line-height: 1.2;">
+                            The Resort Narrative • <span style="color: #fff;">Pursuits of the Privileged</span>
+</h2>
+<div style="width: 50px; height: 3px; background: var(--gold-primary); margin-bottom: 22px;"></div>
+<h3 style="color: var(--gold-primary); font-size: 1.2rem; margin: 0 0 10px; font-weight: 600;">The Resort Narrative</h3>
+<p style="color: var(--text-light); line-height: 1.85; margin-bottom: 22px; font-size: 1.02rem;">
+                            Everyday living, engineered to feel like an escape. Bordered by coveted Della Villas exists within a refined hospitality and leisure ecosystem. The energy of a premier resort, anchored by the stillness of private residences.
+                        </p>
+<h4 style="color: var(--gold-primary); font-size: 1.2rem; margin: 0 0 10px; font-weight: 600;">Pursuits of the Privileged</h4>
+<p style="color: var(--text-light); line-height: 1.85; margin-bottom: 22px; font-size: 1.02rem;">
+                            A commanding lifestyle requires an extraordinary arena. The integrated racecourse for Polo &amp; Equestrian brings a world-class sporting culture directly into the township ecosystem. It is not merely an amenity; it is a statement of stature.
+                        </p>
+<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+<li style="color: #fff; font-size: 0.92rem; display: flex; align-items: center; gap: 10px;">
+<i class="ph ph-seal-check" style="color: var(--gold-primary); font-size: 1.2rem;"></i>
+                                Professional-grade equestrian infrastructure
+                            </li>
+<li style="color: #fff; font-size: 0.92rem; display: flex; align-items: center; gap: 10px;">
+<i class="ph ph-seal-check" style="color: var(--gold-primary); font-size: 1.2rem;"></i>
+                                Uninterrupted arena views from select vantage points
+                            </li>
+<li style="color: #fff; font-size: 0.92rem; display: flex; align-items: center; gap: 10px;">
+<i class="ph ph-seal-check" style="color: var(--gold-primary); font-size: 1.2rem;"></i>
+                                Della 5-star glamping resort access with 12 MICE venues
+                            </li>
+</ul>
+</div>
+<div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(197, 160, 89, 0.35); box-shadow: 0 20px 45px rgba(0,0,0,0.6);">
+<img alt="Della Resort Narrative and Pursuits of the Privileged at Krisala Hiranandani Township" height="640" loading="lazy" src="/public/township_grand/della_resort_villas_equestrian_official.webp" style="width: 100%; height: auto; display: block;" width="1024"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Racecourse Highlight -->
+<section class="racecourse-highlight" id="racecourse">
+<div class="container text-center">
+<span class="subtitle" style="color: var(--gold-primary);">India's 1st Residential Equestrian Haven</span>
+<h2 class="scroll-reveal" style="font-family: var(--font-heading); font-size: 2.6rem; color: var(--gold-primary); margin-top: 10px;">8-Acre Private Racecourse &amp; Polo Club</h2>
+<div class="grid-3" style="margin-top: 50px;">
+<div class="scroll-reveal delay-1">
+<i class="ph ph-horse" style="font-size: 3rem; color: var(--gold-light); margin-bottom: 20px;"></i>
+<h3>Polo Training Academy</h3>
+<p>Professional equestrian coaching for the sport of kings, featuring certified international instructors and riding arenas.</p>
+</div>
+<div class="scroll-reveal delay-2">
+<i class="ph ph-trophy" style="font-size: 3rem; color: var(--gold-light); margin-bottom: 20px;"></i>
+<h4>Elite Tournaments</h4>
+<p>Experience seasonal polo tournaments, dressage showcases, and private viewing gazebos overlooking the turf.</p>
+</div>
+<div class="scroll-reveal delay-3">
+<i class="ph ph-house-line" style="font-size: 3rem; color: var(--gold-light); margin-bottom: 20px;"></i>
+<h4>World-Class Stables</h4>
+<p>Veterinary-assisted equine boarding, private paddock areas, and international-standard groom services.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Villa Plot Options -->
+<section class="section" id="villa-plots">
+<div class="container">
+<div class="section-title scroll-reveal">
+<span class="subtitle">Bespoke Estate Parcels</span>
+<h2>Curated Villa Plot Configurations</h2>
+<div class="title-line"></div>
+<p style="max-width: 700px; margin: 0 auto; color: var(--text-muted);">Limited edition villa plots offering complete architectural freedom with sanctioned infrastructure and underground utility trunk lines.</p>
+</div>
+<div class="plot-grid">
+<div class="plot-card scroll-reveal">
+<span style="color: var(--gold-primary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Estate Plot • Type A</span>
+<h3>Polo Meadow Plots</h3>
+<p style="color: var(--text-muted); margin-bottom: 20px;">Direct frontage to the polo practice arenas. Ideal for luxury 4 &amp; 5 BHK duplex villas with private plunge pools.</p>
+<ul style="list-style: none; margin-bottom: 20px; line-height: 1.8;">
+<li><i class="ph ph-check gold-icon"></i> <strong>Plot Size</strong>: 1,800 – 2,400 sq.ft.</li>
+<li><i class="ph ph-check gold-icon"></i> <strong>Permissible FSI</strong>: Sanctioned for G+2 Villa</li>
+<li><i class="ph ph-check gold-icon"></i> <strong>Price Guidance</strong>: ₹1.80 Cr* onwards</li>
+</ul>
+<button class="btn-primary open-modal" data-magnet="polo_meadow">Request Plot Layout</button>
+</div>
+<div class="plot-card scroll-reveal delay-1">
+<span style="color: var(--gold-primary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Estate Plot • Type B</span>
+<h3>Racecourse Grand Plots</h3>
+<p style="color: var(--text-muted); margin-bottom: 20px;">Prime elevated parcels overlooking the 8-acre main track. Designed for signature family estates with expansive sundecks.</p>
+<ul style="list-style: none; margin-bottom: 20px; line-height: 1.8;">
+<li><i class="ph ph-check gold-icon"></i> <strong>Plot Size</strong>: 3,000 – 4,200 sq.ft.</li>
+<li><i class="ph ph-check gold-icon"></i> <strong>Permissible FSI</strong>: Sanctioned for G+2 Villa</li>
+<li><i class="ph ph-check gold-icon"></i> <strong>Price Guidance</strong>: ₹3.10 Cr* onwards</li>
+</ul>
+<button class="btn-gold open-modal" data-magnet="racecourse_grand">Request Plot Layout</button>
+</div>
+<div class="plot-card scroll-reveal delay-2">
+<span style="color: var(--gold-primary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase;">Estate Plot • Signature</span>
+<h3>The Presidential Estates</h3>
+<p style="color: var(--text-muted); margin-bottom: 20px;">Ultra-exclusive corner parcels with 360-degree views of the Sahyadri hills, racecourse, and Della clubhouse.</p>
+<ul style="list-style: none; margin-bottom: 20px; line-height: 1.8;">
+<li><i class="ph ph-check gold-icon"></i> <strong>Plot Size</strong>: 5,000+ sq.ft.</li>
+<li><i class="ph ph-check gold-icon"></i> <strong>Permissible FSI</strong>: Bespoke Custom Architecture</li>
+<li><i class="ph ph-check gold-icon"></i> <strong>Price Guidance</strong>: On Request</li>
+</ul>
+<button class="btn-gold open-modal" data-magnet="presidential">Request VIP Presentation</button>
+</div>
+<!-- Google Position 0 Featured Snippet: Della Villa Plots Specification Table -->
+<div style="margin: 35px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3);">
+<table aria-label="The Della Collection Villa Plot Specifications and Pricing" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: #0c0e15;">
+<caption style="text-align: left; padding: 12px 16px; font-weight: 700; color: #dfc07b; font-size: 0.95rem; background: rgba(197, 160, 89, 0.12); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
+                    The Della Collection Villa Plots — Pricing, Sizes &amp; Sanctioned FSI Matrix Hinjewadi, Pune
+                </caption>
+<thead>
+<tr style="background: rgba(197, 160, 89, 0.18); color: #dfc07b; border-bottom: 1px solid rgba(197, 160, 89, 0.3);">
+<th style="padding: 14px 16px; font-weight: 600;">Plot Classification</th>
+<th style="padding: 14px 16px; font-weight: 600;">Plot Area (Sq.Ft.)</th>
+<th style="padding: 14px 16px; font-weight: 600;">Permissible Construction</th>
+<th style="padding: 14px 16px; font-weight: 600;">Frontage &amp; Orientation</th>
+<th style="padding: 14px 16px; font-weight: 600;">Starting Price*</th>
+<th style="padding: 14px 16px; font-weight: 600;">Title Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid rgba(197, 160, 89, 0.15);">
+<td style="padding: 14px 16px; color: #fff; font-weight: 600;">Polo Meadow Plots (Type A)</td>
+<td style="padding: 14px 16px; color: #fcfbf7;">1,800 – 2,400 Sq.Ft.</td>
+<td style="padding: 14px 16px; color: #c5a059;">G+2 Luxury Villa (FSI 1.5)</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">Polo Arena Frontage</td>
+<td style="padding: 14px 16px; color: #dfc07b; font-weight: 700;">₹1.80 Crore*</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">100% Freehold Clear Title</td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(197, 160, 89, 0.15); background: rgba(255,255,255,0.02);">
+<td style="padding: 14px 16px; color: #fff; font-weight: 600;">Racecourse Grand (Type B)</td>
+<td style="padding: 14px 16px; color: #fcfbf7;">3,000 – 4,200 Sq.Ft.</td>
+<td style="padding: 14px 16px; color: #c5a059;">G+2 Bespoke Mansion</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">Direct 8-Acre Turf View</td>
+<td style="padding: 14px 16px; color: #dfc07b; font-weight: 700;">₹3.10 Crore*</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">PMRDA Sanctioned Layout</td>
+</tr>
+<tr style="background: rgba(255,255,255,0.02);">
+<td style="padding: 14px 16px; color: #fff; font-weight: 600;">The Presidential Estates</td>
+<td style="padding: 14px 16px; color: #fcfbf7;">5,000+ Sq.Ft.</td>
+<td style="padding: 14px 16px; color: #c5a059;">Custom Signature Estate</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">360° Valley &amp; Turf Corner</td>
+<td style="padding: 14px 16px; color: #dfc07b; font-weight: 700;">Price on Request</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">Immediate Registration</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></section>
+<!-- Resort Amenities -->
+<section class="section section-dark" id="resort">
+<div class="container">
+<div class="section-title text-center scroll-reveal">
+<span class="subtitle">5-Star Della Hospitality</span>
+<h2>Resort Lifestyle at Your Doorstep</h2>
+<div class="title-line"></div>
+<p>Managed under Della Resorts hospitality protocols, bringing world-renowned luxury service to everyday life.</p>
+</div>
+<div class="spec-grid">
+<div class="spec-item scroll-reveal delay-1">
+<i class="ph ph-tent"></i>
+<h3>Della Glamping Resort</h3>
+<p>Luxury safari-style glamping retreats for hosting weekend VIP guests and family getaways.</p>
+</div>
+<div class="spec-item scroll-reveal delay-2">
+<i class="ph ph-fork-knife"></i>
+<h3>Signature Della Dining</h3>
+<p>Multi-cuisine gourmet restaurants, alfresco polo cafe, and private dining rooms for intimate gatherings.</p>
+</div>
+<div class="spec-item scroll-reveal delay-3">
+<i class="ph ph-vibrate"></i>
+<h3>Ayurvedic Spa &amp; Wellness</h3>
+<p>Holistic rejuvenation therapies inspired by award-winning Della Resorts wellness sanctuaries.</p>
+</div>
+<div class="spec-item scroll-reveal delay-4">
+<i class="ph ph-lightning"></i>
+<h3>Della Adventure Zones</h3>
+<p>Curated adventure sports, zip-lining, archery, and all-terrain obstacle experiences for all age groups.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="section" id="faq">
+<div class="container">
+<div class="section-title scroll-reveal">
+<span class="subtitle">Frequently Answered Queries</span>
+<h2>The Della Collection FAQ</h2>
+<div class="title-line"></div>
+</div>
+<div class="faq-container" style="max-width: 900px; margin: 0 auto;">
+<div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
+<h3 style="font-size: 1.15rem; color: var(--gold-light); margin-bottom: 8px;">What makes The Della Collection unique in Pune?</h3>
+<p style="color: var(--text-muted); line-height: 1.6;">The Della Collection is Pune's only integrated development featuring an 8-acre private racecourse, polo club, and 5-star resort hospitality managed in partnership with Jimmy Mistry's Della Resorts.</p>
+</div>
+<div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
+<h3 style="font-size: 1.15rem; color: var(--gold-light); margin-bottom: 8px;">Can buyers construct customized villas on the plots?</h3>
+<p style="color: var(--text-muted); line-height: 1.6;">Yes. Plot buyers have the freedom to construct custom villas aligned with the township's neoclassical architectural guidelines, with options for Della Resorts turnkey design assistance.</p>
+</div>
+<div class="faq-item" style="margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 15px;">
+<h3 style="font-size: 1.15rem; color: var(--gold-light); margin-bottom: 8px;">What are the infrastructure provisions for the villa plots?</h3>
+<p style="color: var(--text-muted); line-height: 1.6;">All plots come fully serviced with underground electrical cabling, piped water supply, fiber-optic broadband, rainwater harvesting, sewage treatment connection, and 24/7 biometric security surveillance.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA -->
+<section class="cta-banner scroll-reveal">
+<div class="container">
+<h2>Own Your Piece of the Equestrian Legend</h2>
+<p>Limited ultra-premium villa plots remaining within the 40-acre Della hospitality precinct.</p>
+<div class="hero-actions">
+<button class="btn-primary open-modal" data-magnet="pricesheet">Get Della Plot Price Sheet</button>
+<button class="btn-gold open-modal" data-magnet="visit">Book Exclusive Private Tour</button>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+<div class="container footer-content">
+<div class="footer-top">
+<div class="footer-brand">
+<img alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" height="38" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="height: 40px; width: auto; margin-bottom: 20px; display: block;" width="280"/>
+<p>
+                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+                    </p>
+<div style="margin-top: 15px;">
+<span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
+<span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
+</div>
+</div>
+<div class="footer-links">
+<h3>The Township</h3>
+<a href="/">Krisala Hiranandani Township (Official Home)</a>
+<a href="/pune-real-estate" style="color: var(--gold-light); font-weight: 600;">Pune Real Estate 2026 Guide</a>
+<a href="/hinjewadi-real-estate" style="color: var(--gold-light); font-weight: 600;">Hinjewadi Real Estate Hub</a>
+<a href="/everlyn">Everlyn Residences</a>
+<a href="/della">The Della Collection</a>
+<a href="/masterplan">Interactive Masterplan</a>
+<a href="/neighborhood">Neighborhood Guide</a>
+<a href="/compare">Compare Projects</a>
+<a href="/knowledge-hub">Knowledge Hub</a>
+<a href="/blog">Research Blog</a>
+</div>
+<div class="footer-links">
+<h4>Corridors &amp; Typologies</h4>
+<a href="/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1">2 BHK Residences</a>
+<a href="/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1">3 BHK Grande</a>
+<a href="/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi">4 BHK Palatial</a>
+<a href="/explore/krisala-hiranandani-5-bhk-signature-penthouses-hinjewadi">5 BHK Sky Mansions</a>
+<a href="/explore/krisala-hiranandani-duplex-penthouses-hinjewadi">Sky Duplex Suites</a>
+<a href="/explore/krisala-hiranandani-della-villa-plots-hinjewadi">Della Villa Plots</a>
+<a href="/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi">Near Infosys Phase 1</a>
+<a href="/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway">Expressway Corridor</a>
+</div>
+<div class="footer-contact">
+<h4>Sales Concierge</h4>
+<p><a href="tel:+917744009295" style="color: var(--gold-primary); text-decoration: none;"><svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"></path></svg> +91 7744009295</a></p>
+<p><a href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20The%20Della%20Collection" style="color: #25D366; text-decoration: none;" target="_blank"><svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg> WhatsApp Concierge</a></p>
+<button aria-haspopup="dialog" class="btn-outline open-modal" style="margin-top: 10px;">Open Enquiry Form</button>
+<p style="font-size: 0.8rem; margin-top: 15px; color: var(--text-muted);">All enquiries are routed securely to our sales desk (propsmartrealty@gmail.com).</p>
+</div>
+</div>
+<!-- Pune Real Estate Keyword Mega-Index -->
+<div style="border-top: 1px solid rgba(212,175,55,0.2); margin-top: 40px; padding-top: 40px;">
+<div style="margin-bottom: 25px;">
+<span class="badge" style="margin-bottom: 8px;"><i class="ph ph-magnifying-glass"></i> Pune Real Estate Search Directory</span>
+<h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.3rem;">Explore Pune Real Estate Micro-Markets &amp; Typologies</h3>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; text-align: left;">
+<div>
+<h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Residential Typologies</h4>
+<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+<li><a href="/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1" style="color: var(--text-muted); text-decoration: none;">2 BHK Flats in Hinjewadi Phase 1</a></li>
+<li><a href="/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1" style="color: var(--text-muted); text-decoration: none;">3 BHK Flats in Mahalunge Corridor</a></li>
+<li><a href="/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi" style="color: var(--text-muted); text-decoration: none;">4 BHK Luxury Apartments in Baner</a></li>
+<li><a href="/explore/krisala-hiranandani-5-bhk-signature-penthouses-hinjewadi" style="color: var(--text-muted); text-decoration: none;">5 BHK Sky Mansions in Pune West</a></li>
+<li><a href="/explore/krisala-hiranandani-duplex-penthouses-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Sky Duplex Penthouses in Hinjewadi</a></li>
+<li><a href="/explore/krisala-hiranandani-della-villa-plots-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Equestrian Villa Plots with Racecourse</a></li>
+</ul>
+</div>
+<div>
+<h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Tech Park Corridors</h4>
+<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+<li><a href="/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Flats near Infosys Phase 1 &amp; 2</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-wipro-circle-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Apartments near Wipro Circle</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-tcs-sahyadri-park-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Homes near TCS Sahyadri Park</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-cognizant-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Residences near Cognizant Phase 3</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-barclays-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Flats near Barclays Global Service Centre</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-embassy-tech-zone" style="color: var(--text-muted); text-decoration: none;">Homes near Embassy TechZone</a></li>
+</ul>
+</div>
+<div>
+<h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Transit &amp; Highways</h4>
+<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+<li><a href="/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway" style="color: var(--text-muted); text-decoration: none;">Apartments near Mumbai-Pune Expressway</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-metro-line-3-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Flats near Hinjewadi Metro Line 3</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-pmrda-ring-road" style="color: var(--text-muted); text-decoration: none;">Properties near PMRDA 128m Ring Road</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-wakad-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Homes near Bhumkar Chowk Wakad</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-baner-pune" style="color: var(--text-muted); text-decoration: none;">Apartments near Balewadi High Street Baner</a></li>
+<li><a href="/explore/krisala-hiranandani-apartments-near-darumbre-marunji" style="color: var(--text-muted); text-decoration: none;">Residences in Darumbre Marunji Belt</a></li>
+</ul>
+</div>
+<div>
+<h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 1rem; margin-bottom: 12px;">Market Comparisons</h4>
+<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem;">
+<li><a href="/explore/krisala-hiranandani-vs-godrej-river-royale-mahalunge" style="color: var(--text-muted); text-decoration: none;">Krisala Hiranandani vs Godrej River Royale</a></li>
+<li><a href="/explore/krisala-hiranandani-vs-vtp-earth-one-mahalunge" style="color: var(--text-muted); text-decoration: none;">Krisala Hiranandani vs VTP Earth One</a></li>
+<li><a href="/explore/krisala-hiranandani-vs-lodha-sylvan-hinjewadi" style="color: var(--text-muted); text-decoration: none;">Krisala Hiranandani vs Lodha Sylvan</a></li>
+<li><a href="/explore/krisala-hiranandani-vs-kolte-patil-life-republic" style="color: var(--text-muted); text-decoration: none;">Township vs Kolte Patil Life Republic</a></li>
+<li><a href="/explore/krisala-hiranandani-hadapsar-comparison" style="color: var(--text-muted); text-decoration: none;">Hinjewadi vs Hadapsar Property ROI</a></li>
+<li><a href="/explore/krisala-hiranandani-price-list-2026" style="color: var(--text-muted); text-decoration: none;">All-Inclusive 2026 Cost Sheet Breakdown</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<p class="disclaimer">Disclaimer: This is a pre-launch project. All images, content, and visuals are conceptual. MahaRERA registration is under process. The 'Della' phase and specific amenities like the racecourse are subject to final municipal approvals. Features, layouts, specifications, and prices are subject to change without prior notice.</p>
+<p>© 2026 Krisala Hiranandani Township. All rights reserved. | <a href="/privacy-policy" style="color: var(--gold-primary); text-decoration: none;">Privacy Policy</a></p>
+</div>
+</div>
+</footer>
+<!-- Modal Reused -->
+<div class="modal-overlay" id="enquiryModal">
+<div class="modal-container glass-panel" role="document">
+<button aria-label="Close Modal" class="close-modal"><i class="ph ph-x"></i></button>
+<div class="modal-header">
+<h2>Inquire about The Della Collection</h2>
+<p>Register for exclusive access to villa plot inventory.</p>
+</div>
+<form action="https://formsubmit.co/propsmartrealty@gmail.com" class="enquiry-form" id="leadForm" method="POST" tooldescription="Submit user enquiry to receive Krisala Hiranandani Township brochures, price lists, and priority pre-launch allocations" toolname="register_lead_enquiry">
+<input name="_subject" type="hidden" value="New Enquiry for The Della Collection"/>
+<input name="_captcha" type="hidden" value="false"/>
+<input name="_honey" style="display:none" type="hidden"/>
+<input name="_next" type="hidden" value="https://krisalahiranandanitownships.com/thank-you"/>
+<div class="form-group">
+<input aria-label="Full Name" name="name" placeholder="Full Name *" required="" toolparamdescription="Full legal name of the prospective buyer" type="text"/>
+</div>
+<div class="form-group">
+<input aria-label="Phone Number" name="phone" placeholder="Phone Number *" required="" toolparamdescription="Valid mobile phone number with country code" type="tel"/>
+</div>
+<div class="form-group">
+<input aria-label="Email Address" name="email" placeholder="Email Address" toolparamdescription="Email address for digital brochure dispatch" type="email"/>
+</div>
+<input name="source" type="hidden" value="della_silo"/>
+<button class="btn-primary w-100" type="submit">Claim Your Membership</button>
+</form>
+</div>
+</div>
+<!-- Floating Actions -->
+<!-- Mobile Sticky Conversion Bar -->
+<div aria-label="Quick Mobile Actions" class="mobile-sticky-bar" id="mobileStickyBar" role="navigation">
+<a aria-label="Direct Phone Call" class="sticky-bar-btn sticky-call" href="tel:+917744009295">
+<i class="ph ph-phone-call"></i>
+<span>Call</span>
+</a>
+<a aria-label="Chat on WhatsApp" class="sticky-bar-btn sticky-whatsapp" href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township.%20Please%20share%20verified%20floor%20plans%20and%20pricing." target="_blank">
+<svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg>
+<span>WhatsApp</span>
+</a>
+<button aria-label="Request Brochure &amp; Price List" class="sticky-bar-btn sticky-enquire open-modal" data-magnet="brochure">
+<i class="ph ph-download-simple"></i>
+<span>Enquire</span>
+</button>
+</div>
+<div class="floating-actions">
+<a aria-label="Chat on WhatsApp" class="float-btn float-whatsapp" href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20The%20Della%20Collection%20at%20Krisala%20Hiranandani" target="_blank">
+<svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg>
+</a>
+<a aria-label="Call Assistance" class="float-btn float-call" href="tel:+917744009295">
+<svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"></path></svg>
+</a>
+</div>
+<script defer="" src="/app.min.js?v=20261017_v3"></script>
+</body>
+</html>
