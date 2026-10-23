@@ -15,6 +15,10 @@ KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 
 URL_LIST = [
+    f"https://{HOST}/blog/top-5-reasons-krisala-hiranandani-township-pune-beats-standalone-apartments",
+    f"https://{HOST}/blog/krisala-hiranandani-township-pune-rera-approvals-legal-due-diligence",
+    f"https://{HOST}/blog/why-it-professionals-are-moving-to-krisala-hiranandani-township-hinjewadi",
+    f"https://{HOST}/blog/krisala-hiranandani-township-pune-complete-buyers-handbook-2026",
     f"https://{HOST}/",
     f"https://{HOST}/hiranandani-pune",
     f"https://{HOST}/hiranandani-price-list-2026",

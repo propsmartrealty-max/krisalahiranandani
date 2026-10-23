@@ -26,6 +26,10 @@ DEFAULT_DAILY_LIMIT = 190  # Safe buffer below Google's 200/day project quota
 
 # Core Authority Pillars & Strategic Corridors
 PRIORITY_URLS = [
+    "https://krisalahiranandanitownships.com/blog/top-5-reasons-krisala-hiranandani-township-pune-beats-standalone-apartments",
+    "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-pune-rera-approvals-legal-due-diligence",
+    "https://krisalahiranandanitownships.com/blog/why-it-professionals-are-moving-to-krisala-hiranandani-township-hinjewadi",
+    "https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-pune-complete-buyers-handbook-2026",
     "https://krisalahiranandanitownships.com/",
     "https://krisalahiranandanitownships.com/hiranandani-pune",
     "https://krisalahiranandanitownships.com/hiranandani-price-list-2026",
