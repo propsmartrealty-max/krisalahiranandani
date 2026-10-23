@@ -1177,4 +1177,45 @@
         <changefreq>monthly</changefreq>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/krisala-hiranandani-pune/</loc>
+        <lastmod>2026-10-23T17:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.99</priority>
+        <image:image>
+            <image:loc>https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp</image:loc>
+            <image:title>Krisala Hiranandani Pune Official Master Township Portal</image:title>
+            <image:caption>Official website for Krisala Hiranandani Pune in North Hinjewadi featuring 2, 3, 4 BHK luxury residences and 8-acre racecourse</image:caption>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/krisala-hiranandani-pune/price-list-2026</loc>
+        <lastmod>2026-10-23T17:00:00+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.98</priority>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/krisala-hiranandani-pune/reviews</loc>
+        <lastmod>2026-10-23T17:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.97</priority>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/krisala-hiranandani-pune/floor-plans</loc>
+        <lastmod>2026-10-23T17:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.97</priority>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/krisala-hiranandani-pune/construction-status</loc>
+        <lastmod>2026-10-23T17:00:00+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.96</priority>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/krisala-hiranandani-pune/site-address</loc>
+        <lastmod>2026-10-23T17:00:00+00:00</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.95</priority>
+    </url>
 </urlset>
