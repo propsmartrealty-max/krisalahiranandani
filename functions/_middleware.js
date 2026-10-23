@@ -475,10 +475,7 @@ export async function onRequest(context) {
             '</atom.xml>; rel="alternate"; type="application/atom+xml"',
             '</opensearch.xml>; rel="search"; type="application/opensearchdescription+xml"',
             '<https://fonts.googleapis.com>; rel=preconnect',
-            '<https://fonts.gstatic.com>; rel=preconnect; crossorigin',
-            '</style.min.css?v=20261017_v3>; rel=preload; as=style',
-            '</app.min.js?v=20261017_v3>; rel=preload; as=script',
-            '</public/krisala-hiranandani-logo.webp>; rel=preload; as=image'
+            '<https://fonts.gstatic.com>; rel=preconnect; crossorigin'
         ].join(', '));
     }
 
