@@ -6,9 +6,20 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_DEV = os.path.join(PROJECT_DIR, "app.dev.js")
 APP_JS = os.path.join(PROJECT_DIR, "app.js")
 APP_MIN = os.path.join(PROJECT_DIR, "app.min.js")
+STYLE_DEV = os.path.join(PROJECT_DIR, "style.dev.css")
+STYLE_CSS = os.path.join(PROJECT_DIR, "style.css")
+STYLE_MIN = os.path.join(PROJECT_DIR, "style.min.css")
 
-with open(APP_DEV, "r", encoding="utf-8") as f:
-    src = f.read()
+def minify_css(css):
+    # Remove CSS comments
+    css = re.sub(r'/\*.*?\*/', '', css, flags=re.DOTALL)
+    # Collapse multiple whitespace
+    css = re.sub(r'\s+', ' ', css)
+    # Remove whitespace around symbols
+    css = re.sub(r'\s*([\{\}\:\;\,\>\+\~])\s*', r'\1', css)
+    # Remove trailing semicolons before closing braces
+    css = re.sub(r';\}', '}', css)
+    return css.strip()
 
 def minify_js(source):
     result = []
@@ -48,13 +59,30 @@ def minify_js(source):
     lines = [l.strip() for l in code.split('\n') if l.strip()]
     return '\n'.join(lines)
 
-minified = minify_js(src)
-print(f"app.dev.js: {len(src)} bytes -> Minified: {len(minified)} bytes")
+# Process JS
+with open(APP_DEV, "r", encoding="utf-8") as f:
+    js_src = f.read()
+
+js_min = minify_js(js_src)
+print(f"app.dev.js: {len(js_src)} bytes -> Minified: {len(js_min)} bytes")
 
 with open(APP_JS, "w", encoding="utf-8") as f:
-    f.write(minified)
+    f.write(js_min)
 
 with open(APP_MIN, "w", encoding="utf-8") as f:
-    f.write(minified)
+    f.write(js_min)
 
-print("Saved app.js and app.min.js successfully!")
+# Process CSS
+with open(STYLE_DEV, "r", encoding="utf-8") as f:
+    css_src = f.read()
+
+css_min = minify_css(css_src)
+print(f"style.dev.css: {len(css_src)} bytes -> Minified: {len(css_min)} bytes")
+
+with open(STYLE_CSS, "w", encoding="utf-8") as f:
+    f.write(css_min)
+
+with open(STYLE_MIN, "w", encoding="utf-8") as f:
+    f.write(css_min)
+
+print("Saved all minified JS and CSS assets successfully!")

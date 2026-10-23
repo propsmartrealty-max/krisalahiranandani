@@ -1256,11 +1256,16 @@ document.addEventListener('DOMContentLoaded', () => {
         preloader.remove();
     }
 
-    // 25. Scroll Progress Indicator
-    // 25. Scroll Progress Indicator & Document Geometry (rAF Batched, Zero Reflow)
-    let cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+    // 25. Scroll Progress Indicator & Document Geometry (rAF Batched, Zero Reflow, Lazy Calculation)
+    let cachedDocHeight = 0;
+    const getDocHeight = () => {
+        if (!cachedDocHeight) {
+            cachedDocHeight = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+        }
+        return cachedDocHeight;
+    };
     window.addEventListener('resize', () => {
-        cachedDocHeight = document.documentElement.scrollHeight - window.innerHeight;
+        cachedDocHeight = 0;
     }, { passive: true });
 
     const scrollProgress = document.getElementById('scrollProgress');
@@ -1269,8 +1274,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', () => {
             if (!progTicking) {
                 window.requestAnimationFrame(() => {
-                    if (cachedDocHeight > 0) {
-                        const progress = (window.scrollY / cachedDocHeight) * 100;
+                    const docH = getDocHeight();
+                    if (docH > 0) {
+                        const progress = (window.scrollY / docH) * 100;
                         scrollProgress.style.width = `${progress}%`;
                     }
                     progTicking = false;
@@ -1354,8 +1360,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         if (!depthTicking) {
             window.requestAnimationFrame(() => {
-                if (cachedDocHeight > 0) {
-                    const percent = Math.round((window.scrollY / cachedDocHeight) * 100);
+                const docH = getDocHeight();
+                if (docH > 0) {
+                    const percent = Math.round((window.scrollY / docH) * 100);
                     [25, 50, 75, 100].forEach(milestone => {
                         if (percent >= milestone && !scrollMilestones[milestone]) {
                             scrollMilestones[milestone] = true;
@@ -1775,6 +1782,8 @@ window.switchTownshipView = function(viewId, btn) {
 // ══════════════════════════════════════════════════════════════════════════════
 (function initAriaConcierge() {
     const setupAria = () => {
+        if (document.getElementById('aiConciergeLauncher') || document.getElementById('aiLauncherBtn') || document.getElementById('ariaLauncher')) return;
+
         // Build floating launcher pill
         const launcher = document.createElement('div');
         launcher.id = 'ariaLauncher';
@@ -1809,7 +1818,7 @@ window.switchTownshipView = function(viewId, btn) {
                         <span><i class="ph ph-circle" style="font-size:8px;"></i> Online • Verified Intelligence</span>
                     </div>
                 </div>
-                <button type="button" id="closeAriaBtn" style="background:transparent; border:none; color:var(--text-muted); font-size:1.4rem; cursor:pointer; line-height:1;" aria-label="Close Concierge">&times;</button>
+                <button type="button" id="closeAriaBtn" style="background:transparent; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer; width:48px; height:48px; min-width:48px; min-height:48px; display:inline-flex; align-items:center; justify-content:center; padding:0; touch-action:manipulation;" aria-label="Close Concierge">&times;</button>
             </div>
             <div class="aria-window-body" id="ariaMsgBody">
                 <div class="aria-msg aria-msg-bot">
@@ -1827,7 +1836,7 @@ window.switchTownshipView = function(viewId, btn) {
             <div class="aria-window-footer">
                 <form id="ariaQueryForm" class="aria-input-row">
                     <input type="text" id="ariaInput" placeholder="Ask about price, floorplans, location..." autocomplete="off">
-                    <button type="submit" aria-label="Send Message"><i class="ph ph-paper-plane-right"></i></button>
+                    <button type="submit" aria-label="Send Message" style="width:48px; height:48px; min-width:48px; min-height:48px; display:inline-flex; align-items:center; justify-content:center; touch-action:manipulation;"><i class="ph ph-paper-plane-right"></i></button>
                 </form>
             </div>
         `;
