@@ -18,6 +18,13 @@
       "telephone": "+917744009295",
       "email": "propsmartrealty@gmail.com",
       "priceRange": "₹79 Lakhs - ₹2.10 Cr+",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "428",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "currenciesAccepted": "INR",
       "paymentAccepted": "Cheque, Demand Draft, RTGS, NEFT, Net Banking",
       "address": {
