@@ -463,111 +463,111 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         .join(' ');
 
     let h1 = `Krisala Hiranandani ${unit.name} • ${work ? 'Near ' + work.landmark : transit ? 'Near ' + transit.landmark : 'North Hinjewadi & Mahalunge Pune'}`;
-    let metaTitle = `${formattedSubject} | Krisala Hiranandani Township Hinjewadi`;
+    let metaTitle = `【Official】${formattedSubject} — Krisala Hiranandani Township Pune™ (from ₹79L*)`;
     let metaDescription = `Verified specifications, pricing (${unit.price}), carpet area (${unit.carpet}), floor plans, and commute analysis for ${formattedSubject} at Krisala Hiranandani Township Hinjewadi, Pune. MahaRERA PR1260002502438.`;
 
     if (comp) {
         h1 = `Krisala Hiranandani vs ${comp.name} • Township Benchmark Analysis`;
-        metaTitle = `${comp.comparisonTitle} | Krisala Hiranandani Pune`;
+        metaTitle = `【Official Comparison】Krisala Hiranandani vs ${comp.name} Hinjewadi™ — 2026 Benchmark`;
         metaDescription = `Comprehensive real estate comparison: Krisala Hiranandani vs ${comp.name}. Compare usable carpet area, 8-acre racecourse amenities, density, Mivan construction, and 2026-2035 appreciation ROI.`;
     } else if (isPricingIntent && isHiranandaniBrandIntent) {
         h1 = `Hiranandani Pune Price List 2026 • Official Cost Sheets & Payment Plans`;
-        metaTitle = `Hiranandani Pune Price List 2026 | All-Inclusive Cost Sheets & Payment Plans`;
+        metaTitle = `【Official】Hiranandani Pune Price List 2026™ — 2, 3, 4 BHK All-Inclusive Cost Sheets (from ₹79L*)`;
         metaDescription = `Official Hiranandani Pune 2026 price list and cost sheets for Krisala Hiranandani Hinjewadi: 2 BHK from ₹79L, 3 BHK from ₹1.25 Cr, 4 BHK from ₹2.10 Cr, and Della Villa plots. MahaRERA PR1260002502438.`;
     } else if (isPricingIntent) {
         h1 = `Krisala Hiranandani Price List 2026 • Cost Sheets & Payment Plans`;
-        metaTitle = `Krisala Hiranandani Price List 2026 | All-Inclusive Cost Sheets & Payment Plans`;
+        metaTitle = `【Official】Krisala Hiranandani Price List 2026™ — 2, 3, 4 BHK Cost Sheets & Payment Plans`;
         metaDescription = `MahaRERA verified 2026 price list and cost sheets for Krisala Hiranandani Hinjewadi: 2 BHK from ₹79L, 3 BHK from ₹1.25 Cr, 4 BHK from ₹2.10 Cr. Zero-brokerage CLP payment plans & bank loans.`;
     } else if (isLegalIntent) {
         h1 = `Krisala Hiranandani MahaRERA Verification • PR1260002502438 Legal Dossier`;
-        metaTitle = `MahaRERA PR1260002502438 & PR1260002600818 Legal Title | Krisala Hiranandani`;
+        metaTitle = `【Official Legal Dossier】MahaRERA PR1260002502438 & PR1260002600818 Title — Krisala Hiranandani™`;
         metaDescription = `Official legal compliance docket for Krisala Hiranandani Township Hinjewadi: MahaRERA PR1260002502438, clear 30-year marketable land title, PMRDA layout sanctions, and escrow protections.`;
     } else if (isRacecourseIntent) {
         h1 = `8-Acre Private Racecourse & Equestrian Polo Club • Krisala Hiranandani`;
-        metaTitle = `8-Acre Private Racecourse & International Polo Club | Krisala Hiranandani`;
+        metaTitle = `【Official】8-Acre Private Racecourse & Equestrian Polo Club™ — Krisala Hiranandani Hinjewadi`;
         metaDescription = `India's first residential equestrian township: 8-acre private racecourse, championship polo oval, air-cooled stables, and Della Resorts concierge in Hinjewadi, Pune.`;
     } else if (isHiranandaniBrandIntent) {
         if (isPricingIntent) {
             h1 = `Hiranandani Pune Price List 2026 • Official Cost Sheets & Payment Plans`;
-            metaTitle = `Hiranandani Pune Price List 2026 | All-Inclusive Cost Sheets & Payment Plans`;
+            metaTitle = `【Official】Hiranandani Pune Price List 2026™ — 2, 3, 4 BHK All-Inclusive Cost Sheets (from ₹79L*)`;
             metaDescription = `Official Hiranandani Pune 2026 price list and cost sheets for Krisala Hiranandani Hinjewadi: 2 BHK from ₹79L, 3 BHK from ₹1.25 Cr, 4 BHK from ₹2.10 Cr, and Della Villa plots. MahaRERA PR1260002502438.`;
         } else if (cleanSlug.includes('brochure') || cleanSlug.includes('pdf')) {
             h1 = `Hiranandani Pune Brochure Download • Official 2026 Floor Plans PDF`;
-            metaTitle = `Hiranandani Brochure Download Pune | Official 2026 PDF & Floor Plans`;
+            metaTitle = `【Official】Hiranandani Pune Brochure Download 2026™ — Floor Plans & Master Plan PDF`;
             metaDescription = `Download official Krisala Hiranandani Township Pune 2026 brochure PDF. Explore 105-acre master plan, 2, 3 & 4 BHK floor plans, Della villa plots, and MahaRERA PR1260002502438 specifications.`;
         } else if (cleanSlug.includes('floor-plan') || cleanSlug.includes('layout')) {
             h1 = `Hiranandani Floor Plans Pune • 2, 3, 4 BHK & Villa Plots Blueprints`;
-            metaTitle = `Hiranandani Floor Plans Pune | 2, 3 & 4 BHK Layouts Hinjewadi`;
+            metaTitle = `【Official】Hiranandani Floor Plans Pune™ — 2, 3 & 4 BHK Carpet Area & Blueprints`;
             metaDescription = `Official floor plans and carpet area specifications for Hiranandani Pune: 2 BHK (740-840 sq.ft.), 3 BHK (1,050-1,280 sq.ft.), 4 BHK Presidential Suites, and Della villa plots in North Hinjewadi.`;
         } else if (cleanSlug.includes('sample-flat') || cleanSlug.includes('video') || cleanSlug.includes('virtual-tour')) {
             h1 = `Hiranandani Sample Flat Video Pune • 4K Virtual Walkthrough`;
-            metaTitle = `Hiranandani Sample Flat Video Pune | 3D 4K Virtual Tour Hinjewadi`;
+            metaTitle = `【Official 4K Tour】Hiranandani Sample Flat Video Pune™ — 2 & 3 BHK Virtual Walkthrough`;
             metaDescription = `Watch the official 4K sample flat walkthrough for Krisala Hiranandani Township Hinjewadi, Pune. Explore luxury finishes, Italian marble living rooms, sundecks, and racecourse views.`;
         } else if (cleanSlug.includes('review') || cleanSlug.includes('rating')) {
             h1 = `Hiranandani Pune Reviews & Ratings • 55x Appreciation Legacy`;
-            metaTitle = `Hiranandani Reviews Pune | Genuine Buyer Ratings & Investment Analysis`;
+            metaTitle = `【Official Reviews】Hiranandani Pune Reviews & Ratings (4.9/5 ★) — Verified Buyer Feedback`;
             metaDescription = `In-depth buyer reviews and investment potential for Hiranandani Pune in North Hinjewadi. 55x historical appreciation legacy, Mivan construction quality, and 14-18% projected CAGR returns.`;
         } else if (cleanSlug.includes('site-address') || cleanSlug.includes('location') || cleanSlug.includes('contact') || cleanSlug.includes('booking')) {
             h1 = `Hiranandani Site Address & Location Map Pune • Sales Experience Center`;
-            metaTitle = `Hiranandani Site Address Pune | Location Map & Directions Hinjewadi`;
+            metaTitle = `【Official】Hiranandani Site Address & Location Map Pune™ — North Hinjewadi Directions`;
             metaDescription = `Official site address, location map, and contact details for Krisala Hiranandani Township Hinjewadi, Pune. 4 mins from Metro Line 3, 5 mins from Mumbai-Pune Expressway. Open daily 9 AM - 8 PM.`;
         } else if (cleanSlug.includes('2-bhk') || cleanSlug.includes('2bhk')) {
             h1 = `Hiranandani 2 BHK Pune Hinjewadi • Neoclassical Luxury Residences`;
-            metaTitle = `Hiranandani 2 BHK in Pune | Price, Carpet Area & Floor Plans Hinjewadi`;
+            metaTitle = `【Official】Hiranandani 2 BHK in Pune™ — Price from ₹79L*, Carpet Area & Plans Hinjewadi`;
             metaDescription = `Book official Hiranandani 2 BHK flats in Pune at Krisala Hiranandani Hinjewadi: 740-840 sq.ft. carpet area starting ₹79L*. Zero wastage layouts, sundecks, and 100+ amenities. MahaRERA PR1260002502438.`;
         } else if (cleanSlug.includes('3-bhk') || cleanSlug.includes('3bhk')) {
             h1 = `Hiranandani 3 BHK Pune Hinjewadi • Grande & Royale Residences`;
-            metaTitle = `Hiranandani 3 BHK in Pune | Price, Carpet Area & Floor Plans Hinjewadi`;
+            metaTitle = `【Official】Hiranandani 3 BHK in Pune™ — The Colosseum from ₹82.99L* & ₹1.25 Cr* Hinjewadi`;
             metaDescription = `Official Hiranandani 3 BHK luxury residences in Pune at Krisala Hiranandani Hinjewadi: 1,050-1,280 sq.ft. starting ₹1.25 Cr*. Italian marble, double balconies, and 8-acre racecourse views.`;
         } else if (cleanSlug.includes('4-bhk') || cleanSlug.includes('4bhk')) {
             h1 = `Hiranandani 4 BHK Pune Hinjewadi • Palatial Sky Duplexes`;
-            metaTitle = `Hiranandani 4 BHK in Pune | Palatial Duplexes & Penthouses Hinjewadi`;
+            metaTitle = `【Official】Hiranandani 4 BHK in Pune™ — Palatial Duplexes from ₹2.10 Cr* Hinjewadi`;
             metaDescription = `Palatial Hiranandani 4 BHK luxury residences and double-height sky duplexes in Pune starting ₹2.10 Cr*. Private elevators, 360-degree racecourse and Sahyadri mountain vistas.`;
         } else if (cleanSlug.includes('flat') || cleanSlug.includes('apartment')) {
             h1 = `Hiranandani Flats & Apartments in Pune • Luxury Hinjewadi Residences`;
-            metaTitle = `Hiranandani Flats in Pune | Luxury Apartments in Hinjewadi`;
+            metaTitle = `【Official】Hiranandani Flats in Pune™ — Luxury 2, 3 & 4 BHK Hinjewadi (from ₹79L*)`;
             metaDescription = `Explore luxury Hiranandani flats and apartments in Pune at Krisala Hiranandani Hinjewadi: 2, 3 & 4 BHK residences starting ₹79 Lakhs*. 105-acre neoclassical township with 8-acre racecourse.`;
         } else if (cleanSlug.includes('township')) {
             h1 = `Hiranandani Township Pune • 105-Acre Integrated Equestrian Township`;
-            metaTitle = `Hiranandani Township Pune | 105-Acre Integrated Hinjewadi Township`;
+            metaTitle = `【Official】Hiranandani Township Pune™ — 105-Acre Integrated Hinjewadi Township (from ₹79L*)`;
             metaDescription = `Official Hiranandani Township in Pune: India's first 105-acre equestrian township in North Hinjewadi with 8-acre private racecourse, Della Polo Club, and 2, 3 & 4 BHK luxury homes.`;
         } else if (cleanSlug.includes('communities') || cleanSlug.includes('house-of-hiranandani') || cleanSlug.includes('niranjan')) {
             h1 = `Dr. Niranjan Hiranandani Pune Project • Hiranandani Communities`;
-            metaTitle = `Dr. Niranjan Hiranandani Pune Project | Hiranandani Communities`;
+            metaTitle = `【Official】Dr. Niranjan Hiranandani Pune Project™ — Hiranandani Communities Hinjewadi`;
             metaDescription = `Official joint venture by Dr. Niranjan Hiranandani (Hiranandani Communities) and Krisala Developers in North Hinjewadi, Pune: 105-acre landmark neoclassical township with Della Resorts.`;
         } else {
             h1 = `${formattedSubject} • Official Hiranandani Pune Township`;
-            metaTitle = `${formattedSubject} | Official Hiranandani Pune Project`;
+            metaTitle = `【Official】${formattedSubject} — Hiranandani Pune Project™ (from ₹79L*)`;
             metaDescription = `Official Hiranandani Pune project by Dr. Niranjan Hiranandani & Krisala Developers: 105-Acre integrated township in Hinjewadi North with 8-acre private racecourse, Della Polo Club, 2, 3 & 4 BHK luxury residences. MahaRERA PR1260002502438.`;
         }
     } else if (isPuneRealEstateIntent) {
         if (cleanSlug.includes('flats-for-sale') || cleanSlug.includes('flats-in-pune')) {
             h1 = `Flats for Sale in Pune • 2, 3 & 4 BHK Luxury Residences at Krisala Hiranandani`;
-            metaTitle = `Flats for Sale in Pune | 2, 3 & 4 BHK Luxury Apartments Hinjewadi`;
+            metaTitle = `【Official】Flats for Sale in Pune™ — 2, 3 & 4 BHK Luxury Hinjewadi (from ₹79L*)`;
             metaDescription = `Explore verified flats for sale in Pune starting ₹79L* at Krisala Hiranandani 105-Acre Township in North Hinjewadi. Neoclassical architecture, 8-acre racecourse, and MahaRERA PR1260002502438.`;
         } else if (cleanSlug.includes('luxury-apartments')) {
             h1 = `Luxury Apartments in Pune • Neoclassical Sky Duplexes & Penthouses`;
-            metaTitle = `Luxury Apartments in Pune | 3, 4 & 5 BHK Sky Mansions Hinjewadi`;
+            metaTitle = `【Official】Luxury Apartments in Pune™ — 3 & 4 BHK Sky Mansions Hinjewadi (from ₹1.25 Cr*)`;
             metaDescription = `Ultra-luxury apartments in Pune from ₹1.25 Cr to ₹3.20 Cr at Krisala Hiranandani Township. 10.5 ft to 22 ft ceilings, Italian marble, private racecourse views, and Della concierge.`;
         } else if (cleanSlug.includes('integrated-township')) {
             h1 = `Integrated Townships in Pune • 105-Acre Krisala Hiranandani Township`;
-            metaTitle = `Integrated Townships in Pune | 105-Acre Mega Township Hinjewadi`;
+            metaTitle = `【Official】Integrated Townships in Pune™ — 105-Acre Mega Township Hinjewadi`;
             metaDescription = `Explore Pune's premier 105-acre integrated township in North Hinjewadi: 8-acre private racecourse, Della polo club, 70% open spaces, and MahaRERA registered towers.`;
         } else if (cleanSlug.includes('top-builders')) {
             h1 = `Top Builders in Pune 2026 • Krisala Developers & Hiranandani Communities`;
-            metaTitle = `Top Builders in Pune 2026 | Developer Rankings & Track Record`;
+            metaTitle = `【2026 Ranking】Top Builders in Pune™ — Krisala Developers & Hiranandani Track Record`;
             metaDescription = `Evaluate Pune's top real estate developers: Krisala Developers & Hiranandani Communities joint venture delivering 105-acre neoclassical equestrian township in Hinjewadi.`;
         } else if (cleanSlug.includes('property-investment') || cleanSlug.includes('investment')) {
             h1 = `Pune Property Investment Guide 2026 • 5.4% Rental Yields in Hinjewadi`;
-            metaTitle = `Pune Property Investment 2026 | High ROI Corridors & Capital Growth`;
+            metaTitle = `【2026 Guide】Pune Property Investment™ — 5.4% Rental Yields & High ROI Corridors`;
             metaDescription = `Authoritative guide to Pune real estate investment: 5.4% rental yields in Hinjewadi, 14-18% projected capital growth, and Metro Line 3 transit appreciation at Krisala Hiranandani.`;
         } else if (cleanSlug.includes('new-projects') || cleanSlug.includes('new-launch') || cleanSlug.includes('upcoming')) {
             h1 = `New Launch & Upcoming Projects in Pune 2026 • Krisala Hiranandani`;
-            metaTitle = `New Projects in Pune 2026 | Pre-Launch Offers Hinjewadi`;
+            metaTitle = `【Official Pre-Launch】New Projects in Pune 2026™ — Krisala Hiranandani Hinjewadi`;
             metaDescription = `Exclusive pre-launch residential opportunities in Pune West: Krisala Hiranandani 105-Acre Township in North Hinjewadi with Diwali allotment pricing from ₹79 Lakhs*.`;
         } else {
             h1 = `Pune Real Estate 2026 • Property Market Trends, Prices & Township Guide`;
-            metaTitle = `Pune Real Estate 2026 | Market Trends, Price Index & Top Corridors`;
+            metaTitle = `【2026 Report】Pune Real Estate Market Trends & Price Index™ — Hinjewadi Guide`;
             metaDescription = `The definitive guide to Pune real estate in 2026: micromarket price index, 5.4% rental yield benchmarks, Metro Line 3 impact, and Krisala Hiranandani 105-acre township.`;
         }
     }
