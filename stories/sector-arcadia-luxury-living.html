@@ -40,7 +40,24 @@
     </script>
 <script async="" src="https://cdn.ampproject.org/v0.js"></script>
 <script async="" custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
-<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+<style amp-boilerplate="">body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+
+/* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
+.lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
+.lang-toggle button { min-height: 48px !important; min-width: 48px !important; padding: 12px 16px !important; font-size: 0.85rem !important; font-weight: 600 !important; cursor: pointer !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.quiz-trigger { min-height: 48px !important; min-width: 48px !important; padding: 12px 18px !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; touch-action: manipulation !important; }
+.nav-link { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 12px !important; touch-action: manipulation !important; }
+.footer-links a, .footer-contact p, .footer a { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 0 !important; margin: 2px 0 !important; touch-action: manipulation !important; }
+.float-btn, .float-whatsapp, .float-call { width: 54px !important; height: 54px !important; min-width: 54px !important; min-height: 54px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.position-one-factsheet-container { contain: layout paint; min-height: 260px; }
+.hero-content { contain: layout; }
+@media (max-width: 768px) {
+  * { -webkit-tap-highlight-color: transparent; }
+  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-stats { min-height: 80px; }
+  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+}
+</style><noscript><style amp-boilerplate="">body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 <style amp-custom="">
         amp-story {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;

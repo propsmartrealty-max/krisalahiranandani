@@ -85,7 +85,24 @@
             font-display: swap;
             src: url('/public/fonts/Phosphor.woff2') format('woff2');
         }
-    </style>
+    
+
+/* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
+.lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
+.lang-toggle button { min-height: 48px !important; min-width: 48px !important; padding: 12px 16px !important; font-size: 0.85rem !important; font-weight: 600 !important; cursor: pointer !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.quiz-trigger { min-height: 48px !important; min-width: 48px !important; padding: 12px 18px !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; touch-action: manipulation !important; }
+.nav-link { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 12px !important; touch-action: manipulation !important; }
+.footer-links a, .footer-contact p, .footer a { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 0 !important; margin: 2px 0 !important; touch-action: manipulation !important; }
+.float-btn, .float-whatsapp, .float-call { width: 54px !important; height: 54px !important; min-width: 54px !important; min-height: 54px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.position-one-factsheet-container { contain: layout paint; min-height: 260px; }
+.hero-content { contain: layout; }
+@media (max-width: 768px) {
+  * { -webkit-tap-highlight-color: transparent; }
+  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-stats { min-height: 80px; }
+  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+}
+</style>
 <title>【NRI Desk】Buy Pune Property from USA™ — Krisala Hiranandani (from $95K*)</title>
 <meta content="US NRI Investment Desk for Krisala Hiranandani Township Hinjewadi. USD rates starting $95,000*, favorable USD/INR exchange rate, 8.4% rental yields, FEMA &amp; IRS Form 8938 compliance." id="seoDesc" name="description"/>
 <meta content="buy flat in pune from usa, us tech nri property investment pune, krisala hiranandani usd price, bay area nri property pune, fema compliant property pune" id="seoKeywords" name="keywords"/>
@@ -312,7 +329,7 @@
 <div id="seoEditorialBody" style="font-size: 1.05rem; line-height: 1.8; color: #e6e6f0;">
 <p>For Indian technology professionals and executives residing across <strong>Silicon Valley (San Francisco/San Jose), Seattle, Texas (Dallas/Austin), and New Jersey</strong>, Pune's Hinjewadi is recognized as India's premier counterpart to US tech corridors. <strong>Krisala Hiranandani Township</strong> offers an ideal institutional-grade residential asset combining iconic neoclassical architecture with world-class amenities.</p>
 <p>With the USD trading at favorable levels against the INR ($1 = ~₹83-84), US buyers benefit from an immediate <strong>18-22% valuation arbitrage</strong>. Senior technology managers at Google, Apple, Microsoft, Amazon, and Meta are allocating equity into West Pune to secure both inflation-beating capital growth and strong passive rental streams.</p>
-<h3>US Investor Advantages &amp; Tax Governance</h3>
+<h2>US Investor Advantages &amp; Tax Governance</h2>
 <ul>
 <li><strong>Exchange Rate Arbitrage:</strong> Maximize dollar purchasing power with pre-launch pricing on 2, 3, and 4 BHK residences starting at $95,000*</li>
 <li><strong>FBAR &amp; FATCA Transparency:</strong> Seamless documentation compliant with US IRS Form 8938 and foreign bank account reporting (FBAR)</li>

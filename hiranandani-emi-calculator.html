@@ -97,7 +97,24 @@
         
         .footer { background: #050608; border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 40px 0; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
         .footer-logo { max-width: 220px; height: auto; margin-bottom: 16px; }
-    </style>
+    
+
+/* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
+.lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
+.lang-toggle button { min-height: 48px !important; min-width: 48px !important; padding: 12px 16px !important; font-size: 0.85rem !important; font-weight: 600 !important; cursor: pointer !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.quiz-trigger { min-height: 48px !important; min-width: 48px !important; padding: 12px 18px !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; touch-action: manipulation !important; }
+.nav-link { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 12px !important; touch-action: manipulation !important; }
+.footer-links a, .footer-contact p, .footer a { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 0 !important; margin: 2px 0 !important; touch-action: manipulation !important; }
+.float-btn, .float-whatsapp, .float-call { width: 54px !important; height: 54px !important; min-width: 54px !important; min-height: 54px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.position-one-factsheet-container { contain: layout paint; min-height: 260px; }
+.hero-content { contain: layout; }
+@media (max-width: 768px) {
+  * { -webkit-tap-highlight-color: transparent; }
+  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-stats { min-height: 80px; }
+  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+}
+</style>
 <!-- Canonical & Alternate Feeds -->
 <link href="https://krisalahiranandanitownships.com/hiranandani-emi-calculator" rel="canonical"/>
 <!-- Global Search & International Jurisdiction Targeting (Hreflang) -->
@@ -328,11 +345,11 @@
 </div>
 <!-- Pune 2026 Stamp Duty & Registration Guide -->
 <div class="tax-card">
-<h3 class="tax-title">Pune Ready Reckoner &amp; Statutory Tax Structure 2026</h3>
+<h2 class="tax-title">Pune Ready Reckoner &amp; Statutory Tax Structure 2026</h2>
 <p class="tax-desc">Under Maharashtra Stamp Act regulations for PMRDA Pune West (Hinjewadi, Marunji, Darumbre), residential purchases adhere to the following statutory fee schedule:</p>
 <div class="tax-grid">
 <div class="tax-box">
-<h4>Basic Stamp Duty</h4>
+<h3>Basic Stamp Duty</h3>
 <div class="tax-number">5.0%</div>
 <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">State Government Levy</p>
 </div>

@@ -523,6 +523,13 @@ export async function onRequest(context) {
     newHeaders.set('X-Edge-Country', request.cf?.country || 'IN');
     newHeaders.set('Server-Timing', `cdn-cache;desc="HIT", edge-worker;dur=0.8, edge-colo;desc="${request.cf?.colo || 'global'}"`);
 
+    // High Performance Static Asset Immutable Caching (PageSpeed Insights Optimization)
+    if (path.startsWith('/public/') || path.endsWith('.webp') || path.endsWith('.woff2') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.js') || path.endsWith('.css') || path.endsWith('.svg') || path.endsWith('.ico')) {
+        newHeaders.set('Cache-Control', 'public, max-age=31536000, immutable');
+        newHeaders.set('Cloudflare-CDN-Cache-Control', 'max-age=31536000');
+        newHeaders.set('CDN-Cache-Control', 'max-age=31536000');
+    }
+
     // Edge Caching Calibration for HTML routes (Sub-15ms TTFB Stale-While-Revalidate)
     if (path === '/' || path.endsWith('.html') || !path.includes('.')) {
         newHeaders.set('Cache-Control', 'public, max-age=0, s-maxage=86400, stale-while-revalidate=604800');
