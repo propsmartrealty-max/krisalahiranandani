@@ -259,8 +259,8 @@ def sync_cache_settings_rule(headers, zone_id):
                 "enabled": True
             },
             {
-                "expression": '(starts_with(http.request.uri.path, "/explore/") or ends_with(http.request.uri.path, ".html") or http.request.uri.path eq "/")',
-                "description": "Cache Programmatic & HTML Pages at Edge for 24h with SWR",
+                "expression": '((starts_with(http.request.uri.path, "/explore/") or ends_with(http.request.uri.path, ".html") or not (http.request.uri.path contains ".") or http.request.uri.path eq "/") and not starts_with(http.request.uri.path, "/api/"))',
+                "description": "Cache Clean URLs, Programmatic & HTML Pages at Edge for 24h with SWR",
                 "action": "set_cache_settings",
                 "action_parameters": {
                     "cache": True,
@@ -307,6 +307,18 @@ def sync_custom_waf_rules(headers, zone_id):
         method = "PUT"
 
     rules = [
+        {
+            "action": "skip",
+            "action_parameters": {
+                "ruleset": "current"
+            },
+            "description": "Allow & Skip WAF for Googlebot, Search Engines, Auditing & Frontier AI Bots",
+            "enabled": True,
+            "expression": '(cf.client.bot or http.user_agent contains "Google" or http.user_agent contains "Googlebot" or http.user_agent contains "Google-Extended" or http.user_agent contains "AdsBot-Google" or http.user_agent contains "Mediapartners-Google" or http.user_agent contains "Storebot-Google" or http.user_agent contains "Chrome-Lighthouse" or http.user_agent contains "PageSpeed" or http.user_agent contains "Bingbot" or http.user_agent contains "DuckDuckBot" or http.user_agent contains "GPTBot" or http.user_agent contains "OAI-SearchBot" or http.user_agent contains "ClaudeBot" or http.user_agent contains "Claude-Web" or http.user_agent contains "anthropic-ai" or http.user_agent contains "PerplexityBot" or http.user_agent contains "Applebot" or http.user_agent contains "Meta-ExternalAgent" or http.user_agent contains "DeepSeekBot" or http.user_agent contains "cohere-ai")',
+            "logging": {
+                "enabled": True
+            }
+        },
         {
             "action": "block",
             "description": "Block Exploit Kits, Vulnerability Scanners & Path Traversal",
@@ -434,10 +446,11 @@ def main():
         ("ssl", "strict"),
         ("min_tls_version", "1.2"),
         ("tls_1_3", "on"),
-        ("0rtt", "off"),
+        ("0rtt", "on"),
         ("always_use_https", "on"),
         ("security_level", "medium"),
         ("browser_check", "on"),
+        ("browser_cache_ttl", 86400),
         ("brotli", "on"),
         ("early_hints", "on"),
         ("http3", "on"),
