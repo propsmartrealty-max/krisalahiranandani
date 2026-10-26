@@ -507,9 +507,7 @@ export async function onRequest(context) {
             `<${canonicalUrl}>; rel="canonical"`,
             '</rss.xml>; rel="alternate"; type="application/rss+xml"',
             '</atom.xml>; rel="alternate"; type="application/atom+xml"',
-            '</opensearch.xml>; rel="search"; type="application/opensearchdescription+xml"',
-            '<https://fonts.googleapis.com>; rel=preconnect',
-            '<https://fonts.gstatic.com>; rel=preconnect; crossorigin'
+            '</opensearch.xml>; rel="search"; type="application/opensearchdescription+xml"'
         ].join(', '));
     }
 
