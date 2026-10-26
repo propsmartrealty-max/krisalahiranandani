@@ -456,14 +456,30 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     const work = workKey ? ENTITY_DICTIONARY[workKey] : null;
     const transit = transitKey ? ENTITY_DICTIONARY[transitKey] : null;
 
-    // Formatting Human-Readable Title
-    const formattedSubject = cleanSlug
+    // Formatting Human-Readable Title (Cleaned & Calibrated for Google SERP <= 55 Chars)
+    let displaySlug = cleanSlug
+        .replace(/official-website/gi, '')
+        .replace(/official/gi, '')
+        .replace(/website/gi, '')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+
+    const formattedSubject = displaySlug
         .split('-')
         .map(w => w.charAt(0).toUpperCase() + w.slice(1))
         .join(' ');
 
+    const buildCleanTitle = (subject, priceTag = '₹79L*') => {
+        let clean = subject.replace(/official/gi, '').replace(/website/gi, '').replace(/\s+/g, ' ').trim();
+        if (clean.length > 36) {
+            clean = clean.substring(0, 36).trim().replace(/\s+\S*$/, '');
+        }
+        const full = `${clean} | ${priceTag}`;
+        return full.length <= 55 ? full : clean.substring(0, 52);
+    };
+
     let h1 = `Krisala Hiranandani ${unit.name} • ${work ? 'Near ' + work.landmark : transit ? 'Near ' + transit.landmark : 'North Hinjewadi & Mahalunge Pune'}`;
-    let metaTitle = `${formattedSubject} — Krisala Hiranandani Township Pune™ (from ₹79L*)`;
+    let metaTitle = buildCleanTitle(formattedSubject, unit ? unit.price.split(' ')[0] : '₹79L*');
     let metaDescription = `Verified specifications, pricing (${unit.price}), carpet area (${unit.carpet}), floor plans, and commute analysis for ${formattedSubject} at Krisala Hiranandani Township Hinjewadi, Pune. MahaRERA PR1260002502438.`;
 
     if (comp) {
@@ -537,7 +553,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
             metaDescription = `joint venture by Dr. Niranjan Hiranandani (Hiranandani Communities) and Krisala Developers in North Hinjewadi, Pune: 105-acre landmark neoclassical township with Della Resorts.`;
         } else {
             h1 = `${formattedSubject} • Hiranandani Pune Township`;
-            metaTitle = `${formattedSubject} — Hiranandani Pune Project™ (from ₹79L*)`;
+            metaTitle = buildCleanTitle(formattedSubject, '₹79L*');
             metaDescription = `Hiranandani Pune project by Dr. Niranjan Hiranandani & Krisala Developers: 105-Acre integrated township in Hinjewadi North with 8-acre private racecourse, Della Polo Club, 2, 3 & 4 BHK luxury residences. MahaRERA PR1260002502438.`;
         }
     } else if (isPuneRealEstateIntent) {
