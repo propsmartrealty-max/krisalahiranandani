@@ -231,6 +231,14 @@ function applyEdgeHtmlRewriter(response, url, isWhitelistedBot, request) {
                 el.setAttribute('crossorigin', 'anonymous');
             }
         })
+        .on('script', {
+            element(el) {
+                const src = el.getAttribute('src') || '';
+                if (src.includes('cloudflareinsights') || src.includes('beacon.min.js')) {
+                    el.remove();
+                }
+            }
+        })
         .on('body', {
             element(el) {
                 const country = request?.cf?.country || 'IN';
@@ -524,11 +532,11 @@ export async function onRequest(context) {
     // Strict Content Security Policy
     newHeaders.set('Content-Security-Policy', [
         "default-src 'self'",
-        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com https://cdn.ampproject.org",
+        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.ampproject.org",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.ampproject.org",
         "font-src 'self' https://fonts.gstatic.com",
         "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://www.google-analytics.com https://*.google.com https://*.googleapis.com https://*.gstatic.com",
-        "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com https://cloudflareinsights.com",
+        "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com",
         "frame-src 'self' https://www.google.com https://maps.google.com",
         "form-action 'self' https://formsubmit.co https://wa.me",
         "frame-ancestors 'none'",

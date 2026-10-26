@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Parallax Effect for Hero Image (Desktop Only, rAF Batched, No Mobile Forced Reflow)
     const heroImg = document.querySelector('.parallax-img');
-    if (heroImg && window.innerWidth > 992 && !('ontouchstart' in window)) {
+    if (heroImg && window.matchMedia('(min-width: 993px)').matches && !('ontouchstart' in window)) {
         let pTicking = false;
         window.addEventListener('scroll', () => {
             if (!pTicking) {
@@ -307,11 +307,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const modalTitle = modalOverlay.querySelector('h2');
             if (modalTitle) {
                 if (magnet === 'brochure') {
-                    modalTitle.innerText = 'Download Elite Brochure';
+                    modalTitle.textContent = 'Download Elite Brochure';
                 } else if (magnet === 'pricesheet') {
-                    modalTitle.innerText = 'Request Luxury Price Sheet';
+                    modalTitle.textContent = 'Request Luxury Price Sheet';
                 } else {
-                    modalTitle.innerText = modalTitle.getAttribute('data-en-original') || modalTitle.innerText || 'Register Your Interest';
+                    modalTitle.textContent = modalTitle.getAttribute('data-en-original') || modalTitle.textContent || 'Register Your Interest';
                 }
             }
 
@@ -394,9 +394,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const r = parseFloat(roiGrowth.value) / 100;
         const n = parseFloat(roiYears.value);
         const result = p * Math.pow((1 + r), n);
-        roiResult.innerText = `₹ ${result.toFixed(2)} Cr`;
-        roiGrowth.nextElementSibling.innerText = `${roiGrowth.value}%`;
-        roiYears.nextElementSibling.innerText = `${roiYears.value} Years`;
+        roiResult.textContent = `₹ ${result.toFixed(2)} Cr`;
+        roiGrowth.nextElementSibling.textContent = `${roiGrowth.value}%`;
+        roiYears.nextElementSibling.textContent = `${roiYears.value} Years`;
     }
 
     [roiAmount, roiGrowth, roiYears].forEach(el => {
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const r = parseFloat(emiRate.value) / 12 / 100;
         const n = parseFloat(emiTenure.value) * 12;
         const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-        emiResult.innerText = `₹ ${Math.round(emi).toLocaleString('en-IN')}`;
+        emiResult.textContent = `₹ ${Math.round(emi).toLocaleString('en-IN')}`;
     }
 
     [emiAmount, emiRate, emiTenure].forEach(el => {
@@ -461,10 +461,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function translatePage(lang) {
         document.querySelectorAll('[data-en]').forEach(el => {
             if (lang === 'mr') {
-                if (!el.getAttribute('data-en-original')) el.setAttribute('data-en-original', el.innerText);
-                el.innerText = el.getAttribute('data-mr');
+                if (!el.getAttribute('data-en-original')) el.setAttribute('data-en-original', el.textContent);
+                el.textContent = el.getAttribute('data-mr');
             } else {
-                el.innerText = el.getAttribute('data-en-original') || el.innerText;
+                el.textContent = el.getAttribute('data-en-original') || el.textContent;
             }
         });
 
@@ -747,13 +747,13 @@ document.addEventListener('DOMContentLoaded', () => {
             score = "99% Ideal Match";
         }
 
-        if (resultTitle) resultTitle.innerText = sector;
-        if (resultDesc) resultDesc.innerText = desc;
-        if (specConfig) specConfig.innerText = config;
-        if (specCarpet) specCarpet.innerText = carpet;
-        if (specPrice) specPrice.innerText = price;
-        if (specRera) specRera.innerText = rera;
-        if (matchBadge) matchBadge.innerText = `${score} Found`;
+        if (resultTitle) resultTitle.textContent = sector;
+        if (resultDesc) resultDesc.textContent = desc;
+        if (specConfig) specConfig.textContent = config;
+        if (specCarpet) specCarpet.textContent = carpet;
+        if (specPrice) specPrice.textContent = price;
+        if (specRera) specRera.textContent = rera;
+        if (matchBadge) matchBadge.textContent = `${score} Found`;
 
         const lockBtn = document.getElementById('quizLockVipBtn');
         if (lockBtn) {
@@ -895,7 +895,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Simulate "Live Traffic" fluctuation +/- 2 mins
                 const fluctuation = Math.floor(Math.random() * 5) - 2;
                 const finalTime = Math.max(baseTime + fluctuation, 5);
-                timeEl.innerText = `${finalTime} Mins`;
+                timeEl.textContent = `${finalTime} Mins`;
 
                 // Color coding based on traffic density simulation
                 if (fluctuation > 1) timeEl.style.color = '#ff4444';
@@ -1006,7 +1006,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Mobile back-button & scroll-intent detection
-        if (window.innerWidth <= 768) {
+        if (window.matchMedia('(max-width: 768px)').matches) {
             // Push history state so back button can be intercepted once
             try {
                 history.pushState({ page: 'kxh_landing' }, '', window.location.href);
@@ -1126,17 +1126,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 12000);
     })();
 
-    // 21. Lead Magnet A/B Test Logic (Simple)
-    const primaryCTAs = document.querySelectorAll('.open-modal');
-    const isTestGroup = Math.random() > 0.5; // Simple 50/50 split
-
-    if (isTestGroup) {
-        primaryCTAs.forEach(btn => {
-            if (btn.innerText.toLowerCase().includes('register')) {
-                btn.innerText = "Request Price Sheet";
-                btn.setAttribute('data-ab-test', 'price-sheet');
-            }
-        });
+    // 21. Lead Magnet A/B Test Logic (Deferred to requestIdleCallback for Zero Forced Reflow)
+    const initABTest = () => {
+        const primaryCTAs = document.querySelectorAll('.open-modal');
+        const isTestGroup = Math.random() > 0.5;
+        if (isTestGroup) {
+            primaryCTAs.forEach(btn => {
+                if (btn.textContent.toLowerCase().includes('register')) {
+                    btn.textContent = "Request Price Sheet";
+                    btn.setAttribute('data-ab-test', 'price-sheet');
+                }
+            });
+        }
+    };
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(initABTest, { timeout: 3000 });
+    } else {
+        setTimeout(initABTest, 1500);
     }
 
     // 22. Knowledge Hub Search / Filter Logic
@@ -1150,9 +1156,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const term = e.target.value.toLowerCase();
 
             articles.forEach(article => {
-                const title = article.querySelector('h3').innerText.toLowerCase();
-                const tag = article.querySelector('.article-tag').innerText.toLowerCase();
-                const desc = article.querySelector('p').innerText.toLowerCase();
+                const title = article.querySelector('h3').textContent.toLowerCase();
+                const tag = article.querySelector('.article-tag').textContent.toLowerCase();
+                const desc = article.querySelector('p').textContent.toLowerCase();
 
                 if (title.includes(term) || tag.includes(term) || desc.includes(term)) {
                     article.style.display = 'block';
@@ -1486,7 +1492,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mobile Accordion Toggle for Dropdowns
         navLinks.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
             trigger.addEventListener('click', (e) => {
-                if (window.innerWidth <= 1180) {
+                if (window.matchMedia('(max-width: 1180px)').matches) {
                     e.preventDefault();
                     e.stopPropagation();
                     const dropdown = trigger.closest('.nav-dropdown');
@@ -1555,8 +1561,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     videoPlayer.load();
                     videoPlayer.play().catch(() => {});
                 }
-                if (videoTitle && title) videoTitle.innerText = title;
-                if (videoDesc && desc) videoDesc.innerText = desc;
+                if (videoTitle && title) videoTitle.textContent = title;
+                if (videoDesc && desc) videoDesc.textContent = desc;
             });
         });
     }
