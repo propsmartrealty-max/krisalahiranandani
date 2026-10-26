@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="mr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            font-style: normal;
+            font-weight: 700;
+            font-display: optional;
+            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        :root {
+            --bg-dark: #090a0f;
+            --bg-dark-deep: #050608;
+            --bg-surface: rgba(16, 18, 26, 0.75);
+            --gold-primary: #c5a059;
+            --gold-light: #e6d5b8;
+            --gold-bright: #dfc07b;
+            --gold-deep: #9e7d3b;
+            --text-main: #fcfbf7;
+            --text-muted: #b8b8cc;
+            --text-subtle: #a8a8ba;
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .container { padding: 0 20px; } }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.3s ease; }
+        .nav-link:hover, .nav-link.active { color: var(--gold-bright); }
+        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 12px 24px; border-radius: 4px; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 12px 24px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
+        .hero { position: relative; padding: 140px 0 60px; background: linear-gradient(180deg, rgba(9,10,15,0.85) 0%, var(--bg-dark) 100%); text-align: center; }
+        .hero-title { font-family: var(--font-heading); font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 16px; color: #fff; font-weight: 700; }
+        .hero-title span { color: var(--gold-bright); }
+        .hero-subtitle { font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: var(--text-muted); max-width: 850px; margin: 0 auto 30px; line-height: 1.6; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.82rem; margin-bottom: 20px; }
+        .section-py { padding: 60px 0; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+        .feature-card { background: rgba(16, 18, 26, 0.85); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 12px; padding: 32px; transition: all 0.3s ease; }
+        .feature-card:hover { border-color: var(--gold-primary); transform: translateY(-3px); }
+        .footer { background: var(--bg-dark-deep); border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 50px 0 30px; font-size: 0.88rem; color: var(--text-muted); text-align: center; }
+        @media (max-width: 1024px) { .nav-links { display: none; } }
+    
+
+/* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
+.lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
+.lang-toggle button { min-height: 48px !important; min-width: 48px !important; padding: 12px 16px !important; font-size: 0.85rem !important; font-weight: 600 !important; cursor: pointer !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.quiz-trigger { min-height: 48px !important; min-width: 48px !important; padding: 12px 18px !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; touch-action: manipulation !important; }
+.nav-link { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 12px !important; touch-action: manipulation !important; }
+.footer-links a, .footer-contact p, .footer a { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 0 !important; margin: 2px 0 !important; touch-action: manipulation !important; }
+.float-btn, .float-whatsapp, .float-call { width: 54px !important; height: 54px !important; min-width: 54px !important; min-height: 54px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.position-one-factsheet-container { contain: layout paint; min-height: 260px; }
+.hero-content { contain: layout; }
+@media (max-width: 768px) {
+  * { -webkit-tap-highlight-color: transparent; }
+  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-stats { min-height: 80px; }
+  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+}
+</style>
+<link href="https://krisalahiranandanitownships.com/mr/floor-plans" rel="canonical"/>
+
+
+<title>फ्लोर प्लॅन्स २०२६™ — क्रिसाला हिरानंदानी पुणे</title>
+<meta content="क्रिसाला हिरानंदानी २, ३ आणि ४ BHK फ्लोर प्लॅन्स आणि महारेरा कार्पेट एरिया PDF डाउनलोड करा. आधुनिक २ BHK (७४०-८२० चौ.फूट), ३ BHK (१०२०-११८० चौ.फूट)." name="description"/>
+<meta content="Hiranandani Hinjewadi floor plans, Krisala Hiranandani floor plans, Colosseum Hinjewadi floor plan, Sector Arcadia floor plans, Sector Icon sky duplex floor plans, Della villa plots layout, Hiranandani 2 BHK floor plan, Hiranandani 3 BHK floor plan Hinjewadi, Hiranandani 4 BHK floor plan Pune, Krisala Hiranandani Township Pune, Krisala Hiranandani Township Hinjewadi, Hiranandani Hinjewadi, Hiranandani Pune, Hiranandani Township Pune, Krisala Hiranandani, Hiranandani Krisala Township, Krisaala Hiraanandani, House of Hiranandani Pune, Dr Niranjan Hiranandani Pune, Hiranandani Communities Pune, Krisala Developers Pune, Hiranandani new project Pune, Hiranandani launch Hinjewadi, Hiranandani flagship township Pune, Hiranandani Pune website, Hiranandani 2 BHK Pune price, Hiranandani 2 BHK Hinjewadi, Krisala Hiranandani 2 BHK floor plan, Hiranandani 2 BHK cost sheet, Hiranandani 2 BHK Sector Arcadia, Hiranandani 3 BHK Pune, Hiranandani 3 BHK Hinjewadi price, Krisala Hiranandani 3 BHK floor plan, The Colosseum 3 BHK price, Hiranandani 4 BHK luxury duplex Pune, Hiranandani 4 BHK Hinjewadi, Sector Icon 4 BHK sky duplex, Hiranandani duplex penthouses Hinjewadi, Della villa plots Hinjewadi, Hiranandani villa plots Pune price, Hiranandani Hinjewadi floor plans pdf, Krisala Hiranandani sample flat floor plans, The Colosseum Hinjewadi, The Colosseum Phase 4 Hinjewadi, The Colosseum Krisala Hiranandani, The Colosseum Hinjewadi floor plan, The Colosseum Hinjewadi price list, Sector Arcadia Hinjewadi, Sector Arcadia Krisala Hiranandani, Sector Arcadia 2 BHK price, Sector Icon Hinjewadi, Sector Icon Krisala Hiranandani, Sector Icon sky duplex price, The Della Collection Hinjewadi, Sector Everlyn Hinjewadi, Hiranandani Pune price list 2026, Hiranandani Pune cost sheet pdf, Hiranandani Hinjewadi price, Hiranandani Pune payment plans, Hiranandani booking office Pune, Hiranandani sales office contact number, Hiranandani EMI calculator Pune, Hiranandani stamp duty breakdown Pune, Hiranandani Hinjewadi reviews, Hiranandani Pune reviews, Krisala Hiranandani reviews and ratings, Hiranandani Hinjewadi buyer feedback, is Hiranandani Hinjewadi worth buying, Hiranandani Hinjewadi construction status, Krisala Hiranandani possession date, MahaRERA PR1260002500600, MahaRERA PR1260002600818, MahaRERA PR1260002502438, Hiranandani North Hinjewadi, Hiranandani Darumbre Pune, Krisala Hiranandani site address, Hiranandani near Infosys Hinjewadi, Hiranandani near Wipro Circle, Hiranandani near TCS Sahyadri Park, Hiranandani Hinjewadi Metro Line 3, Hiranandani PMRDA 128m Ring Road, Hiranandani Mumbai Pune Expressway distance, Hiranandani vs Godrej River Royale, Hiranandani vs Lodha Sylvan Hinjewadi, Hiranandani vs Kolte Patil Life Republic" name="keywords"/>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ApartmentComplex",
+      "name": "Krisala Hiranandani Township Master Floor Plans",
+      "description": "Architectural floor plans for 2, 3, 4 BHK luxury residences and villa plots in North Hinjewadi, Pune.",
+      "url": "https://krisalahiranandanitownships.com/mr/floor-plans",
+      "hasFloorPlan": [
+        {
+          "@type": "FloorPlan",
+          "name": "Sector Arcadia 2 BHK Smart Luxury",
+          "numberOfBedrooms": 2,
+          "numberOfBathroomsTotal": 2,
+          "floorSize": {
+            "@type": "QuantitativeValue",
+            "value": 740,
+            "unitCode": "FTK"
+          }
+        },
+        {
+          "@type": "FloorPlan",
+          "name": "The Colosseum 3 BHK Royal Residence",
+          "numberOfBedrooms": 3,
+          "numberOfBathroomsTotal": 3,
+          "floorSize": {
+            "@type": "QuantitativeValue",
+            "value": 1080,
+            "unitCode": "FTK"
+          }
+        },
+        {
+          "@type": "FloorPlan",
+          "name": "Sector Icon 4 BHK Sky Duplex",
+          "numberOfBedrooms": 4,
+          "numberOfBathroomsTotal": 4,
+          "floorSize": {
+            "@type": "QuantitativeValue",
+            "value": 2100,
+            "unitCode": "FTK"
+          }
+        }
+      ]
+    }
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://krisalahiranandanitownships.com/mr/floor-plans#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://krisalahiranandanitownships.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Krisala Hiranandani Floor Plans 2026",
+      "item": "https://krisalahiranandanitownships.com/mr/floor-plans"
+    }
+  ]
+}
+</script><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://krisalahiranandanitownships.com/mr/floor-plans#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the carpet area of 2 BHK in Krisala Hiranandani Hinjewadi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 2 BHK neoclassical apartments in Sector Arcadia feature 740 to 820 sq.ft. of MahaRERA usable carpet area, designed with monolithic Mivan acoustic separation and a private 6ft sundeck."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the carpet area and pricing of 3 BHK in The Colosseum?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The 3 BHK residences in The Colosseum (Phase 4) feature 1,020 to 1,180 sq.ft. of usable carpet area starting from ₹82.99 Lakhs* onwards, commanding direct views of the 8-acre turf racecourse."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the 4 BHK sky duplex dimensions at Sector Icon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sector Icon offers palatial 4 BHK double-height sky duplexes spanning 1,850 to 2,400 sq.ft. of usable carpet area with 22ft ceiling clearance, private elevator foyers, and staff quarters starting from ₹2.10 Cr*."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I download the Krisala Hiranandani floor plans PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can download the high-resolution architectural layout dossier directly from this page or request the verified PDF via direct WhatsApp concierge at +91 77440 09295."
+      }
+    }
+  ]
+}</script><meta content="Krisala Hiranandani Township Pune" property="og:site_name"/><link href="https://krisalahiranandanitownships.com/mr/floor-plans" hreflang="mr-IN" rel="alternate"/><link href="https://krisalahiranandanitownships.com/floor-plans" hreflang="en-IN" rel="alternate"/><link href="https://krisalahiranandanitownships.com/floor-plans" hreflang="x-default" rel="alternate"/></head>
+<body>
+<header class="navbar">
+<div class="container nav-container">
+<a class="logo" href="/">
+<img alt="Krisala Hiranandani Township Hinjewadi Logo" class="header-logo" height="42" src="/public/krisala-hiranandani-logo.webp" width="310"/>
+</a>
+<nav class="nav-links">
+<a class="nav-link" href="/">Township</a>
+<a class="nav-link" href="/hiranandani-pune">Hiranandani Pune</a>
+<a class="nav-link" href="/floor-plans">Floor Plans</a>
+<a class="nav-link" href="/construction-status">Construction</a>
+<a class="nav-link" href="/north-hinjewadi">North Hinjewadi</a>
+<a class="nav-link" href="/hiranandani-price-list-2026">Price List</a>
+<a class="nav-link" href="/reviews">Reviews</a>
+</nav>
+<div class="header-actions">
+<a class="btn-primary" href="https://wa.me/917744009295?text=Hello%20Sales%20Team%2C%20I%20am%20inquiring%20about%20Krisala%20Hiranandani%20Township%20Hinjewadi." rel="noopener" target="_blank">WhatsApp Direct</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<div class="badge">फ्लोर प्लॅन्स | महारेरा प्रमाणित</div>
+<h1>क्रिसाला हिरानंदानी फ्लोर प्लॅन्स २०२६ <span>कार्पेट एरिया लेआउट्स</span></h1>
+<p class="hero-subtitle">महारेरा प्रमाणित २, ३, ४ BHK आणि स्काय ड्युप्लेक्स वास्तुशास्त्रावर आधारित लेआउट्स.</p>
+<div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+<a class="btn-primary" href="https://wa.me/917744009295?text=Please%20send%20me%20the%20complete%20high-res%20floor%20plan%20dossier%20for%20Krisala%20Hiranandani%20Township." rel="noopener" target="_blank">Request High-Res PDF Plans</a>
+<a class="btn-secondary" href="/hiranandani-price-list-2026">View 2026 Price List</a>
+</div>
+</div>
+</section>
+<!-- Google Position 0 Featured Snippet: Master Specifications & Floor Plan Matrix -->
+<section class="section-py" style="background: rgba(16, 18, 26, 0.95); border-top: 1px solid rgba(197, 160, 89, 0.25); border-bottom: 1px solid rgba(197, 160, 89, 0.25);">
+<div class="container">
+<div style="text-align: center; max-width: 850px; margin: 0 auto 35px;">
+<span class="badge">MAHARERA VERIFIED SPECIFICATIONS TABLE</span>
+<h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #fff; margin-bottom: 12px;">Krisala Hiranandani Floor Plans &amp; Carpet Area 2026</h2>
+<p style="color: var(--text-muted); font-size: 0.95rem;">Official architectural layout dimensions, balcony square footage, and starting prices for North Hinjawadi's 105-acre neoclassical equestrian township.</p>
+</div>
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3);">
+<table aria-label="Krisala Hiranandani Floor Plans and Carpet Area" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: #0c0e15;">
+<caption style="text-align: left; padding: 12px 16px; font-weight: 700; color: #dfc07b; font-size: 0.95rem; background: rgba(197, 160, 89, 0.12); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
+                            Official 2026 Architectural Floor Plans, Carpet Area &amp; Pricing Summary — Krisala Hiranandani Township Hinjewadi
+                        </caption>
+<thead>
+<tr style="background: rgba(197, 160, 89, 0.18); color: #dfc07b; border-bottom: 1px solid rgba(197, 160, 89, 0.3);">
+<th style="padding: 14px 16px; font-weight: 600;">Configuration</th>
+<th style="padding: 14px 16px; font-weight: 600;">Township Sector</th>
+<th style="padding: 14px 16px; font-weight: 600;">RERA Carpet Area</th>
+<th style="padding: 14px 16px; font-weight: 600;">Balcony &amp; Deck</th>
+<th style="padding: 14px 16px; font-weight: 600;">Starting Price*</th>
+<th style="padding: 14px 16px; font-weight: 600;">MahaRERA Sanction</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid rgba(197, 160, 89, 0.15);">
+<td style="padding: 14px 16px; color: #fff; font-weight: 600;">2 BHK Smart Luxury</td>
+<td style="padding: 14px 16px; color: #c5a059;">Sector Arcadia</td>
+<td style="padding: 14px 16px; color: #fcfbf7;">740 – 820 Sq.Ft.</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">Private 6ft Sundeck</td>
+<td style="padding: 14px 16px; color: #dfc07b; font-weight: 700;">₹79 Lakhs*</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">PR1260002500600</td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(197, 160, 89, 0.15); background: rgba(255,255,255,0.02);">
+<td style="padding: 14px 16px; color: #fff; font-weight: 600;">3 BHK Royal Residence</td>
+<td style="padding: 14px 16px; color: #c5a059;">The Colosseum (Phase 4)</td>
+<td style="padding: 14px 16px; color: #fcfbf7;">1,020 – 1,180 Sq.Ft.</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">Double Racecourse Balcony</td>
+<td style="padding: 14px 16px; color: #dfc07b; font-weight: 700;">₹82.99L* – ₹1.25 Cr*</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">PR1260002600818</td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(197, 160, 89, 0.15);">
+<td style="padding: 14px 16px; color: #fff; font-weight: 600;">4 BHK Sky Duplex</td>
+<td style="padding: 14px 16px; color: #c5a059;">Sector Icon</td>
+<td style="padding: 14px 16px; color: #fcfbf7;">1,850 – 2,400 Sq.Ft.</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">22ft Double-Height Pavilion</td>
+<td style="padding: 14px 16px; color: #dfc07b; font-weight: 700;">₹2.10 Crore*</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">PR1260002502438</td>
+</tr>
+<tr style="background: rgba(255,255,255,0.02);">
+<td style="padding: 14px 16px; color: #fff; font-weight: 600;">Equestrian Villa Plots</td>
+<td style="padding: 14px 16px; color: #c5a059;">The Della Collection</td>
+<td style="padding: 14px 16px; color: #fcfbf7;">1,800 – 5,000+ Sq.Ft.</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">Private Lawn / Pool FSI</td>
+<td style="padding: 14px 16px; color: #dfc07b; font-weight: 700;">₹1.80 Crore*</td>
+<td style="padding: 14px 16px; color: #b8b8cc;">PMRDA Sanctioned</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="section-py">
+<div class="container">
+<div class="card-grid">
+<!-- 2 BHK -->
+<div class="feature-card">
+<span class="badge">SECTOR ARCADIA</span>
+<h2 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin: 12px 0 8px;">2 BHK Smart Luxury</h2>
+<p style="color: var(--gold-bright); font-size: 1.25rem; font-weight: 700; margin-bottom: 14px;">Carpet Area: 740 – 820 Sq.Ft.</p>
+<ul style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 24px; padding-left: 20px;">
+<li>Generous 18ft wide living &amp; dining zone with deck</li>
+<li>Monolithic Mivan acoustic separation between bedrooms</li>
+<li>Modular kitchen niche with utility dry balcony</li>
+<li>Master suite with timber laminate flooring</li>
+</ul>
+<a class="btn-primary" href="https://wa.me/917744009295?text=I%20would%20like%20to%20download%20the%20Sector%20Arcadia%202%20BHK%20floor%20plan" style="width: 100%; text-align: center;">Download 2 BHK Plan PDF</a>
+</div>
+<!-- 3 BHK -->
+<div class="feature-card" style="border-color: var(--gold-primary);">
+<span class="badge" style="background: rgba(197, 160, 89, 0.25);">THE COLOSSEUM PHASE 4</span>
+<h2 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin: 12px 0 8px;">3 BHK Royal Residence</h2>
+<p style="color: var(--gold-bright); font-size: 1.25rem; font-weight: 700; margin-bottom: 14px;">Carpet Area: 1,020 – 1,180 Sq.Ft.</p>
+<ul style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 24px; padding-left: 20px;">
+<li>Direct views over the 8-acre turf racecourse &amp; polo club</li>
+<li>Expansive 26ft grand living corridor with Roman balcony</li>
+<li>3 en-suite luxury bathrooms with Kohler / Grohe fittings</li>
+<li>Walk-in wardrobe recess in master bedroom</li>
+</ul>
+<a class="btn-primary" href="https://wa.me/917744009295?text=I%20would%20like%20to%20download%20The%20Colosseum%203%20BHK%20floor%20plan" style="width: 100%; text-align: center;">Download 3 BHK Plan PDF</a>
+</div>
+<!-- 4 BHK -->
+<div class="feature-card">
+<span class="badge">SECTOR ICON</span>
+<h2 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin: 12px 0 8px;">4 BHK Sky Duplex</h2>
+<p style="color: var(--gold-bright); font-size: 1.25rem; font-weight: 700; margin-bottom: 14px;">Carpet Area: 1,850 – 2,400 Sq.Ft.</p>
+<ul style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 24px; padding-left: 20px;">
+<li>Double-height living pavilion with 22ft ceiling clearance</li>
+<li>Private internal architectural staircase &amp; terrace lounge</li>
+<li>Dual master suites with panoramic Sahyadri views</li>
+<li>Dedicated staff accommodation &amp; service entrance</li>
+</ul>
+<a class="btn-primary" href="https://wa.me/917744009295?text=I%20would%20like%20to%20download%20the%20Sector%20Icon%204%20BHK%20duplex%20plan" style="width: 100%; text-align: center;">Download 4 BHK Plan PDF</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<section class="section-py" id="faq" style="background: rgba(16, 18, 26, 0.95); border-top: 1px solid rgba(197, 160, 89, 0.25);">
+<div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+<div style="text-align: center; margin-bottom: 30px;">
+<span class="badge">FREQUENTLY ASKED QUESTIONS</span>
+<h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: #fff; margin-top: 10px;">Krisala Hiranandani Floor Plans FAQ</h2>
+</div>
+<div class="faq-list" style="display: flex; flex-direction: column; gap: 16px;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 20px;">
+<h3 style="color: #dfc07b; font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;">What is the carpet area of 2 BHK in Krisala Hiranandani Hinjewadi?</h3>
+<p style="color: #b8b8cc; font-size: 0.92rem; line-height: 1.6; margin: 0;">The 2 BHK neoclassical apartments in Sector Arcadia feature 740 to 820 sq.ft. of MahaRERA usable carpet area, designed with monolithic Mivan acoustic separation and a private 6ft sundeck.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 20px;">
+<h3 style="color: #dfc07b; font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;">What is the carpet area and pricing of 3 BHK in The Colosseum?</h3>
+<p style="color: #b8b8cc; font-size: 0.92rem; line-height: 1.6; margin: 0;">The 3 BHK residences in The Colosseum (Phase 4) feature 1,020 to 1,180 sq.ft. of usable carpet area starting from ₹82.99 Lakhs* onwards, commanding direct views of the 8-acre turf racecourse.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 20px;">
+<h3 style="color: #dfc07b; font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;">What are the 4 BHK sky duplex dimensions at Sector Icon?</h3>
+<p style="color: #b8b8cc; font-size: 0.92rem; line-height: 1.6; margin: 0;">Sector Icon offers palatial 4 BHK double-height sky duplexes spanning 1,850 to 2,400 sq.ft. of usable carpet area with 22ft ceiling clearance, private elevator foyers, and staff quarters starting from ₹2.10 Cr*.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 20px;">
+<h3 style="color: #dfc07b; font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;">Where can I download the official Krisala Hiranandani floor plans PDF?</h3>
+<p style="color: #b8b8cc; font-size: 0.92rem; line-height: 1.6; margin: 0;">You can download the high-resolution architectural layout dossier directly from this page or request the verified PDF via direct WhatsApp concierge at +91 77440 09295.</p>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="container">
+<p>© 2026 Krisala Hiranandani Township North Hinjewadi Pune. MahaRERA Sanction Nos: PR1260002500600 | PR1260002600818</p>
+</div>
+</footer>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Floor Plans 2026™ — Krisala Hiranandani Pune",
+      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Krisala × Hiranandani"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "428",
+        "reviewCount": "382"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "lowPrice": "7900000",
+        "highPrice": "26500000",
+        "offerCount": "12",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2027-12-31"
+      }
+    }
+  ]
+}</script></body>
+</html>

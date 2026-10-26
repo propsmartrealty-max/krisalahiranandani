@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://krisalahiranandanitownships.com/mr/</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="mr-IN" href="https://krisalahiranandanitownships.com/mr/" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/" />
+  </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/mr/kimat-2026</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="mr-IN" href="https://krisalahiranandanitownships.com/mr/kimat-2026" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/pricing" />
+  </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/mr/floor-plans</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="mr-IN" href="https://krisalahiranandanitownships.com/mr/floor-plans" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/floor-plans" />
+  </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/mr/colosseum</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="mr-IN" href="https://krisalahiranandanitownships.com/mr/colosseum" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/colosseum" />
+  </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/mr/arcadia</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="mr-IN" href="https://krisalahiranandanitownships.com/mr/arcadia" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/arcadia" />
+  </url>
+  <url>
+    <loc>https://krisalahiranandanitownships.com/mr/della</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="mr-IN" href="https://krisalahiranandanitownships.com/mr/della" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://krisalahiranandanitownships.com/della" />
+  </url>
+</urlset>

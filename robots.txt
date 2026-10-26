@@ -304,5 +304,6 @@ Sitemap: https://krisalahiranandanitownships.com/sitemap-hiranandani-brand.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-pune-real-estate.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-explore.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-global.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-marathi.xml
 Sitemap: https://krisalahiranandanitownships.com/google-products.xml
 Sitemap: https://krisalahiranandanitownships.com/google-merchant-feed.xml

@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+<html lang="mr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+        @font-face {
+            font-family: 'Cormorant Garamond';
+            font-style: normal;
+            font-weight: 700;
+            font-display: optional;
+            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        :root {
+            --bg-dark: #090a0f;
+            --bg-dark-deep: #050608;
+            --bg-surface: rgba(16, 18, 26, 0.75);
+            --gold-primary: #c5a059;
+            --gold-light: #e6d5b8;
+            --gold-bright: #dfc07b;
+            --gold-deep: #9e7d3b;
+            --text-main: #fcfbf7;
+            --text-muted: #b8b8cc;
+            --text-subtle: #a8a8ba;
+            --font-heading: 'Cormorant Garamond', Georgia, serif;
+            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+            --font-accent: 'Cinzel', serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; pointer-events: none; }
+        .skip-link { position: absolute; top: -100px; left: 0; z-index: 10000; }
+        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; pointer-events: none; }
+        @media (hover: none) or (max-width: 1024px) {
+            .cursor-dot, .cursor-outline { display: none !important; }
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .container { padding: 0 20px; } }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+        .header-actions { display: flex; align-items: center; gap: 12px; }
+        .hero, .hero-grand { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
+        .hero-bg picture, .hero-bg img, .hero-img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+        .hero-title span { color: var(--gold-bright); }
+        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+        .stat-item { text-align: center; }
+        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+        .ticker-content { position: relative; height: 50px; }
+        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+        .ticker-slide.active { opacity: 1; }
+        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+        .nav-dropdown:hover > .nav-dropdown-menu,
+        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+        @media (max-width: 1024px) {
+            .nav-links, .nav-actions .btn-outline { display: none !important; }
+            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+        }
+        @media (max-width: 1180px) {
+            .nav-dropdown-menu { position: static !important; transform: none !important; }
+            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+        }
+        @media (max-width: 768px) {
+            .hero, .hero-grand { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: stretch !important; min-height: 100vh !important; height: auto !important; }
+            .hero-content { padding-top: 90px !important; padding-bottom: 40px !important; margin: 0 auto !important; width: 100% !important; }
+            .hero-title { font-size: 2.2rem !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
+            .hero-subtitle { font-size: 0.95rem !important; margin-bottom: 24px !important; }
+            .hero-stats { gap: 16px !important; margin-bottom: 24px !important; }
+            .hero-actions { flex-direction: column !important; width: 100% !important; gap: 12px !important; margin-bottom: 24px !important; }
+            .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100% !important; }
+            .hero-img { height: 100% !important; animation: none !important; }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: clamp(1.75rem, 6.8vw, 2.3rem) !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
+            .hero-subtitle { font-size: 0.9rem !important; line-height: 1.55 !important; margin-bottom: 20px !important; }
+            .hero-stats { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+            .hero-stats .stat-item h3, .hero-stats .stat-item .stat-number { font-size: 1.8rem !important; }
+            .hero-stats .stat-item p { font-size: 0.72rem !important; }
+            .hero-stats .stat-divider { display: none !important; }
+        }
+        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+        .nri-geo-banner.active { display: flex !important; }
+        @font-face {
+            font-family: 'Phosphor';
+            font-display: swap;
+            src: url('/public/fonts/Phosphor.woff2') format('woff2');
+        }
+    
+
+/* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
+.lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
+.lang-toggle button { min-height: 48px !important; min-width: 48px !important; padding: 12px 16px !important; font-size: 0.85rem !important; font-weight: 600 !important; cursor: pointer !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.quiz-trigger { min-height: 48px !important; min-width: 48px !important; padding: 12px 18px !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; touch-action: manipulation !important; }
+.nav-link { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 12px !important; touch-action: manipulation !important; }
+.footer-links a, .footer-contact p, .footer a { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 0 !important; margin: 2px 0 !important; touch-action: manipulation !important; }
+.float-btn, .float-whatsapp, .float-call { width: 54px !important; height: 54px !important; min-width: 54px !important; min-height: 54px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.position-one-factsheet-container { contain: layout paint; min-height: 260px; }
+.hero-content { contain: layout; }
+@media (max-width: 768px) {
+  * { -webkit-tap-highlight-color: transparent; }
+  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-stats { min-height: 80px; }
+  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+}
+</style>
+<!-- Canonical & Metadata -->
+<link href="https://krisalahiranandanitownships.com/mr/kimat-2026" rel="canonical"/>
+<!-- Global Search & International Jurisdiction Targeting (Hreflang) -->
+
+
+
+
+
+
+
+
+
+
+<!-- Global Geographic Precision Metadata -->
+<meta content="IN-MH" name="geo.region"/>
+<meta content="Hinjewadi, Pune, Maharashtra, India" name="geo.placename"/>
+<meta content="18.5913;73.7389" name="geo.position"/>
+<meta content="18.5913, 73.7389" name="ICBM"/>
+<link href="/rss.xml" rel="alternate" title="Krisala Hiranandani Dispatches" type="application/rss+xml"/>
+<link href="/atom.xml" rel="alternate" title="Krisala Hiranandani Atom Feed" type="application/atom+xml"/>
+<link href="/township-press-feed.json" rel="alternate" title="Township Digital PR &amp; Press Feed" type="application/feed+json"/>
+<link href="/citations.jsonld" rel="alternate" title="Krisala Hiranandani Citation Graph" type="application/ld+json"/>
+<link href="/geo-township.geojson" rel="alternate" title="Krisala Hiranandani GIS Master Layer" type="application/geo+json"/>
+<link href="/llms.txt" rel="alternate" title="LLM Canonical Knowledge Graph" type="text/plain"/>
+<link href="/llms-full.txt" rel="alternate" title="LLM Extended Knowledge Base" type="text/plain"/>
+<link href="/ai-facts.json" rel="alternate" title="Machine-Readable AI Facts" type="application/json"/>
+<link href="/.well-known/ai-plugin.json" rel="alternate" title="OpenAI Plugin Manifest" type="application/json"/>
+<link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
+<link href="https://superfeedr.com/hub/publish" rel="hub"/>
+<link href="/opensearch.xml" rel="search" title="Krisala Hiranandani" type="application/opensearchdescription+xml"/>
+<!-- Favicons -->
+<link href="/favicon.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicon-48x48.png" rel="icon" sizes="48x48" type="image/png"/>
+<link href="/favicon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/favicon.ico" rel="shortcut icon"/>
+<!-- Google Site Verification & SEO Title -->
+<meta content="DXqQqarOyiJM8YjM1deNCBtB4JbBj-T6Fn9Yac99CUI" name="google-site-verification"/>
+<title>किंमत सूची २०२६™ — क्रिसाला हिरानंदानी (₹७९L*)</title>
+<meta content="क्रिसाला हिरानंदानी टाउनशिप पुणे अधिकृत किंमत सूची २०२६. २ BHK ₹७९ लाख*, ३ BHK ₹१.२५ कोटी*, ४ BHK ड्युप्लेक्स ₹२.१० कोटी* आणि डेला व्हिला प्लॉट्स ₹१.८० कोटी* पासून." name="description"/>
+<meta content="Hiranandani Pune price list 2026, Hiranandani Pune cost sheet pdf, Hiranandani Hinjewadi price, Hiranandani price list 2026, Hiranandani Pune price, Hiranandani 2 BHK price Pune, Hiranandani 3 BHK price Pune, Hiranandani 4 BHK duplex price, Hiranandani cost sheet pdf, Hiranandani payment plans, Krisala Hiranandani price, Sector Arcadia price list, The Colosseum Hinjewadi price, Della villa plots price Pune, Hinjewadi property rates 2026, Krisala Hiranandani Township Pune, Krisala Hiranandani Township Hinjewadi, Hiranandani Hinjewadi, Hiranandani Pune, Hiranandani Township Pune, Krisala Hiranandani, Hiranandani Krisala Township, Krisaala Hiraanandani, House of Hiranandani Pune, Dr Niranjan Hiranandani Pune, Hiranandani Communities Pune, Krisala Developers Pune, Hiranandani new project Pune, Hiranandani launch Hinjewadi, Hiranandani flagship township Pune, Hiranandani Pune website, Hiranandani 2 BHK Pune price, Hiranandani 2 BHK Hinjewadi, Krisala Hiranandani 2 BHK floor plan, Hiranandani 2 BHK cost sheet, Hiranandani 2 BHK Sector Arcadia, Hiranandani 3 BHK Pune, Hiranandani 3 BHK Hinjewadi price, Krisala Hiranandani 3 BHK floor plan, The Colosseum 3 BHK price, Hiranandani 4 BHK luxury duplex Pune, Hiranandani 4 BHK Hinjewadi, Sector Icon 4 BHK sky duplex, Hiranandani duplex penthouses Hinjewadi, Della villa plots Hinjewadi, Hiranandani villa plots Pune price, Hiranandani Hinjewadi floor plans pdf, Krisala Hiranandani sample flat floor plans, The Colosseum Hinjewadi, The Colosseum Phase 4 Hinjewadi, The Colosseum Krisala Hiranandani, The Colosseum Hinjewadi floor plan, The Colosseum Hinjewadi price list, Sector Arcadia Hinjewadi, Sector Arcadia Krisala Hiranandani, Sector Arcadia 2 BHK price, Sector Arcadia floor plans, Sector Icon Hinjewadi, Sector Icon Krisala Hiranandani, Sector Icon sky duplex price, The Della Collection Hinjewadi, Sector Everlyn Hinjewadi, Hiranandani Pune payment plans, Hiranandani booking office Pune, Hiranandani sales office contact number, Hiranandani EMI calculator Pune, Hiranandani stamp duty breakdown Pune, Hiranandani Hinjewadi reviews, Hiranandani Pune reviews, Krisala Hiranandani reviews and ratings, Hiranandani Hinjewadi buyer feedback, is Hiranandani Hinjewadi worth buying, Hiranandani Hinjewadi construction status, Krisala Hiranandani possession date, MahaRERA PR1260002500600, MahaRERA PR1260002600818, MahaRERA PR1260002502438, Hiranandani North Hinjewadi, Hiranandani Darumbre Pune, Krisala Hiranandani site address, Hiranandani near Infosys Hinjewadi, Hiranandani near Wipro Circle, Hiranandani near TCS Sahyadri Park, Hiranandani Hinjewadi Metro Line 3, Hiranandani PMRDA 128m Ring Road, Hiranandani Mumbai Pune Expressway distance, Hiranandani vs Godrej River Royale, Hiranandani vs Lodha Sylvan Hinjewadi, Hiranandani vs Kolte Patil Life Republic" name="keywords"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+<!-- Preloads -->
+<link href="https://fonts.googleapis.com" rel="dns-prefetch"/>
+<link href="https://fonts.gstatic.com" rel="dns-prefetch"/>
+<link as="image" fetchpriority="high" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero_mobile.webp" media="(max-width: 768px)" rel="preload" type="image/webp"/>
+<link as="image" fetchpriority="high" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" media="(min-width: 769px)" rel="preload" type="image/webp"/>
+<link as="font" crossorigin="" href="https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2" rel="preload" type="font/woff2"/>
+<!-- Global Stylesheet -->
+<link as="style" href="/style.min.css?v=20261017_v3" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="/style.min.css?v=20261017_v3" rel="stylesheet"/></noscript>
+<link href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'" rel="stylesheet"/>
+<!-- WebMCP / Declarative Agentic Browsing Manifest for AI Agents (Chrome 2026 Spec) -->
+<meta content="real-estate-inquiry, site-visit-booking, cost-sheet-generation, emi-calculation" name="agent-capability"/>
+<script id="webmcp-actions" type="application/json">
+    {
+      "@context": "https://webmcp.org/v1",
+      "agentName": "KrisalaHiranandaniAgent",
+      "actions": [
+        {
+          "name": "calculate_emi",
+          "description": "Calculate monthly loan EMI based on unit price and down payment",
+          "targetUrl": "https://krisalahiranandanitownships.com/hiranandani-emi-calculator",
+          "method": "GET",
+          "parameters": {
+            "loanAmount": {"type": "number", "required": true},
+            "tenureYears": {"type": "number", "default": 20},
+            "interestRate": {"type": "number", "default": 8.5}
+          }
+        },
+        {
+          "name": "book_site_visit",
+          "description": "Schedule a VIP site visit to the North Hinjewadi experience center",
+          "targetUrl": "https://wa.me/917744009295?text=I+would+like+to+schedule+a+VIP+site+visit",
+          "method": "DIRECT_LINK"
+        },
+        {
+          "name": "download_cost_sheet",
+          "description": "Get official all-inclusive builder-direct cost sheet PDF",
+          "targetUrl": "https://krisalahiranandanitownships.com/public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf",
+          "method": "DOWNLOAD"
+        }
+      ]
+    }
+    </script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://krisalahiranandanitownships.com/hiranandani-price-list-2026#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the starting price for flats in Krisala Hiranandani Township Pune?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Residences start from ₹79 Lakhs* for 2 BHK in Sector Arcadia, ₹82.99 Lakhs* for 3 BHK in The Colosseum Phase 4, ₹2.10 Crore* for 4 BHK duplexes in Sector Icon, and ₹1.80 Crore* for Della villa plots."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the MahaRERA sanction number for Krisala Hiranandani?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The township is registered under MahaRERA sanction numbers PR1260002500600 and PR1260002600818 with 100% clear 30-year marketable land title."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are construction-linked payment plans (CLP) and bank loans available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, flexible 10:90 and 20:80 CLP payment plans, along with pre-approved home loans from SBI, HDFC, ICICI, and Axis Bank with zero processing fees, are available through the direct developer portal."
+      }
+    }
+  ]
+}</script><meta content="Krisala Hiranandani Township Pune" property="og:site_name"/><link href="https://krisalahiranandanitownships.com/mr/kimat-2026" hreflang="mr-IN" rel="alternate"/><link href="https://krisalahiranandanitownships.com/kimat-2026" hreflang="en-IN" rel="alternate"/><link href="https://krisalahiranandanitownships.com/kimat-2026" hreflang="x-default" rel="alternate"/></head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<a class="skip-link" href="#home">Skip to main content</a>
+<div class="cursor-dot" data-cursor-dot=""></div>
+<div class="cursor-outline" data-cursor-outline=""></div>
+<header class="navbar" id="navbar">
+<div class="container nav-container">
+<a aria-label="Krisala Hiranandani Home" class="logo" href="/" style="text-decoration: none;">
+<img alt="Krisala Hiranandani Township Hinjewadi Logo" class="header-logo" fetchpriority="high" height="42" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" width="310"/>
+</a>
+<nav aria-label="Main Navigation" class="nav-links" id="navLinks">
+<a class="nav-link" href="/">Township</a>
+<a class="nav-link" href="/hiranandani-pune">Hiranandani Pune</a>
+<a class="nav-link" href="/pricing">Pricing Overview</a>
+<a class="nav-link active" href="/hiranandani-price-list-2026" style="color: var(--gold-bright); font-weight: 700;">2026 Price List</a>
+<a class="nav-link" href="/masterplan">Masterplan</a>
+<a class="nav-link" href="/compare">Compare</a>
+</nav>
+<div class="header-actions">
+<a aria-label="Call Sales Office" class="btn-phone" href="tel:+917744009295"><i class="ph ph-phone-call"></i></a>
+<button class="btn-primary nav-cta open-modal" data-modal="brochure">Download Cost Sheet</button>
+<div aria-label="Open Navigation Menu" class="hamburger-menu" id="hamburgerBtn">
+<span></span><span></span><span></span>
+</div>
+</div>
+</div>
+</header>
+<main id="main-content">
+<!-- Hero Section -->
+<section class="hero hero-grand" id="home">
+<div class="hero-bg">
+<div class="hero-overlay"></div>
+<picture>
+<source height="504" media="(max-width: 768px)" srcset="/public/township_grand/krisala_hiranandani_grand_entrance_hero_mobile.webp" width="720"/>
+<source height="1181" media="(min-width: 769px)" srcset="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" width="1920"/>
+<img alt="Hiranandani Pune Official 2026 Price List and Cost Sheet Banner" class="hero-img" decoding="async" fetchpriority="high" height="504" onerror="this.src='/public/imported/krisala-hiranandani-banner.webp'" src="/public/township_grand/krisala_hiranandani_grand_entrance_hero_mobile.webp" width="720"/>
+</picture>
+</div>
+<div class="container hero-content">
+<span class="badge">किंमत सूची २०२६ | सर्वसमावेशक कॉस्ट शीट</span>
+<h1>क्रिसाला हिरानंदानी किंमत सूची २०२६ <span>अधिकृत कॉस्ट शीट</span></h1>
+<p class="hero-subtitle">डेव्हलपर-डायरेक्ट किंमती, सोपे हप्ते (CLP प्लॅन), आणि सर्वसमावेशक स्टॅम्प ड्युटी व नोंदणी शुल्क तपशील.</p>
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-number">₹79 L*</div>
+<p>2 BHK Starting</p>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<div class="stat-number">₹1.25 Cr*</div>
+<p>3 BHK Starting</p>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<div class="stat-number">₹2.10 Cr*</div>
+<p>4 BHK Duplex Starting</p>
+</div>
+<div class="stat-divider"></div>
+<div class="stat-item">
+<div class="stat-number">₹1.80 Cr*</div>
+<p>Villa Plots Starting</p>
+</div>
+</div>
+<div class="hero-actions">
+<button class="btn-primary open-modal" data-modal="brochure"><i class="ph ph-file-arrow-down" style="margin-right: 8px;"></i> Download Hiranandani Pune Cost Sheet PDF (2026)</button>
+<a class="btn-secondary" href="https://wa.me/917744009295?text=Hello%2C%20please%20share%20the%20official%20Hiranandani%20Pune%202026%20Price%20List%20and%20Cost%20Sheet." rel="noopener" target="_blank"><i class="ph ph-whatsapp-logo" style="margin-right: 8px; color: #25D366;"></i> WhatsApp Instant Quote</a>
+</div>
+</div>
+</section>
+<!-- Comprehensive Inventory Pricing Table -->
+<section class="section-py" style="background: var(--bg-dark-deep); border-top: 1px solid rgba(197, 160, 89, 0.2);">
+<div class="container">
+<div class="section-header center scroll-reveal">
+<span class="badge-gold">ALL-INCLUSIVE INVENTORY MATRIX</span>
+<h2 class="section-title">Hiranandani Pune Price List 2026: Unit Pricing &amp; Carpet Specifications</h2>
+<p class="section-subtitle">Complete breakdown across all sectors with MahaRERA registered carpet areas and starting price benchmarks.</p>
+</div>
+<!-- Global Multi-Currency Conversion Controls -->
+<div style="margin-top: 28px; background: rgba(16,18,26,0.85); border: 1px solid rgba(197,160,89,0.3); border-radius: 10px; padding: 18px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+<div>
+<span style="color: var(--gold-bright); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: block;">International NRI Currency Switcher</span>
+<p style="color: var(--text-muted); font-size: 0.82rem; margin: 4px 0 0 0;">View real-time indicative prices in Indian Rupee, US Dollar, UAE Dirham, British Pound, Euro, or Singapore Dollar.</p>
+</div>
+<div id="currencySelector" style="display: flex; flex-wrap: wrap; gap: 8px;">
+<button class="curr-btn active" data-curr="INR" style="background: var(--gold-primary); color: #000; border: none; padding: 7px 14px; border-radius: 4px; font-weight: 700; font-size: 0.82rem; cursor: pointer;" type="button">INR (₹)</button>
+<button class="curr-btn" data-curr="USD" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(197,160,89,0.3); padding: 7px 14px; border-radius: 4px; font-weight: 600; font-size: 0.82rem; cursor: pointer;" type="button">USD ($)</button>
+<button class="curr-btn" data-curr="AED" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(197,160,89,0.3); padding: 7px 14px; border-radius: 4px; font-weight: 600; font-size: 0.82rem; cursor: pointer;" type="button">AED (د.إ)</button>
+<button class="curr-btn" data-curr="GBP" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(197,160,89,0.3); padding: 7px 14px; border-radius: 4px; font-weight: 600; font-size: 0.82rem; cursor: pointer;" type="button">GBP (£)</button>
+<button class="curr-btn" data-curr="EUR" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(197,160,89,0.3); padding: 7px 14px; border-radius: 4px; font-weight: 600; font-size: 0.82rem; cursor: pointer;" type="button">EUR (€)</button>
+<button class="curr-btn" data-curr="SGD" style="background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(197,160,89,0.3); padding: 7px 14px; border-radius: 4px; font-weight: 600; font-size: 0.82rem; cursor: pointer;" type="button">SGD (S$)</button>
+</div>
+</div>
+<div style="overflow-x: auto; margin-top: 36px; border-radius: 10px; border: 1px solid rgba(197, 160, 89, 0.3);">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
+<thead>
+<tr style="background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(197,160,89,0.12) 100%); border-bottom: 2px solid var(--gold-primary);">
+<th style="padding: 16px 20px; color: var(--gold-bright); font-family: var(--font-heading);">Unit Type</th>
+<th style="padding: 16px 20px; color: var(--gold-bright); font-family: var(--font-heading);">Sector</th>
+<th style="padding: 16px 20px; color: var(--gold-bright); font-family: var(--font-heading);">Carpet Area</th>
+<th style="padding: 16px 20px; color: var(--gold-bright); font-family: var(--font-heading);">Agreement Value*</th>
+<th style="padding: 16px 20px; color: var(--gold-bright); font-family: var(--font-heading);">All-Inclusive Approx.*</th>
+<th style="padding: 16px 20px; color: var(--gold-bright); font-family: var(--font-heading);">Booking Status</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid rgba(197,160,89,0.15);">
+<td style="padding: 16px 20px; font-weight: 700; color: #fff;">2 BHK Smart Luxury (Hiranandani 2 BHK Pune price benchmark)</td>
+<td style="padding: 16px 20px; color: var(--text-muted);">Sector Arcadia</td>
+<td style="padding: 16px 20px; color: var(--gold-light);">740 sq.ft.</td>
+<td style="padding: 16px 20px; color: var(--gold-bright); font-weight: 700;">₹74.50 Lakhs</td>
+<td style="padding: 16px 20px; color: #fff; font-weight: 700;">₹79 Lakhs*</td>
+<td style="padding: 16px 20px;"><span style="background: rgba(16,185,129,0.15); color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">AVAILABLE</span></td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(197,160,89,0.15); background: rgba(255,255,255,0.02);">
+<td style="padding: 16px 20px; font-weight: 700; color: #fff;">2 BHK Grande</td>
+<td style="padding: 16px 20px; color: var(--text-muted);">The Colosseum</td>
+<td style="padding: 16px 20px; color: var(--gold-light);">820 sq.ft.</td>
+<td style="padding: 16px 20px; color: var(--gold-bright); font-weight: 700;">₹78.00 Lakhs</td>
+<td style="padding: 16px 20px; color: #fff; font-weight: 700;">₹83 Lakhs*</td>
+<td style="padding: 16px 20px;"><span style="background: rgba(16,185,129,0.15); color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">AVAILABLE</span></td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(197,160,89,0.15);">
+<td style="padding: 16px 20px; font-weight: 700; color: #fff;">3 BHK Premium Royale</td>
+<td style="padding: 16px 20px; color: var(--text-muted);">Sector Arcadia</td>
+<td style="padding: 16px 20px; color: var(--gold-light);">1,080 sq.ft.</td>
+<td style="padding: 16px 20px; color: var(--gold-bright); font-weight: 700;">₹1.18 Crore</td>
+<td style="padding: 16px 20px; color: #fff; font-weight: 700;">₹1.25 Crore*</td>
+<td style="padding: 16px 20px;"><span style="background: rgba(16,185,129,0.15); color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">AVAILABLE</span></td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(197,160,89,0.15); background: rgba(255,255,255,0.02);">
+<td style="padding: 16px 20px; font-weight: 700; color: #fff;">3 BHK Signature Panorama</td>
+<td style="padding: 16px 20px; color: var(--text-muted);">The Colosseum</td>
+<td style="padding: 16px 20px; color: var(--gold-light);">1,280 sq.ft.</td>
+<td style="padding: 16px 20px; color: var(--gold-bright); font-weight: 700;">₹1.35 Crore</td>
+<td style="padding: 16px 20px; color: #fff; font-weight: 700;">₹1.44 Crore*</td>
+<td style="padding: 16px 20px;"><span style="background: rgba(16,185,129,0.15); color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">FEW UNITS</span></td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(197,160,89,0.15);">
+<td style="padding: 16px 20px; font-weight: 700; color: #fff;">4 BHK Sky Residence</td>
+<td style="padding: 16px 20px; color: var(--text-muted);">Sector Icon</td>
+<td style="padding: 16px 20px; color: var(--gold-light);">1,850 sq.ft.</td>
+<td style="padding: 16px 20px; color: var(--gold-bright); font-weight: 700;">₹1.98 Crore</td>
+<td style="padding: 16px 20px; color: #fff; font-weight: 700;">₹2.10 Crore*</td>
+<td style="padding: 16px 20px;"><span style="background: rgba(16,185,129,0.15); color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">AVAILABLE</span></td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(197,160,89,0.15); background: rgba(255,255,255,0.02);">
+<td style="padding: 16px 20px; font-weight: 700; color: #fff;">3 &amp; 4 BHK Duplex Penthouse</td>
+<td style="padding: 16px 20px; color: var(--text-muted);">Sector Icon Sky Triad</td>
+<td style="padding: 16px 20px; color: var(--gold-light);">2,450 sq.ft.</td>
+<td style="padding: 16px 20px; color: var(--gold-bright); font-weight: 700;">₹2.50 Crore</td>
+<td style="padding: 16px 20px; color: #fff; font-weight: 700;">₹2.65 Crore*</td>
+<td style="padding: 16px 20px;"><span style="background: rgba(234,179,8,0.15); color: #eab308; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">LIMITED</span></td>
+</tr>
+<tr>
+<td style="padding: 16px 20px; font-weight: 700; color: #fff;">Della Custom Villa Plots</td>
+<td style="padding: 16px 20px; color: var(--text-muted);">The Della Collection</td>
+<td style="padding: 16px 20px; color: var(--gold-light);">2,000 - 5,500 sq.ft.</td>
+<td style="padding: 16px 20px; color: var(--gold-bright); font-weight: 700;">₹1.68 Crore</td>
+<td style="padding: 16px 20px; color: #fff; font-weight: 700;">₹1.80 Crore*</td>
+<td style="padding: 16px 20px;"><span style="background: rgba(16,185,129,0.15); color: #10b981; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">AVAILABLE</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Static Global Broad Match Price Table (Indexed by Search Engines Worldwide) -->
+<div style="margin-top: 36px; background: rgba(255,255,255,0.02); border: 1px solid rgba(197,160,89,0.25); border-radius: 10px; padding: 24px;">
+<h3 style="color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 12px;">Global NRI Price Benchmark (USD, AED, GBP, EUR, SGD)</h3>
+<p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">For international Indian homebuyers and overseas property investors, here is the official all-inclusive starting price conversion table across key foreign currencies:</p>
+<div style="overflow-x: auto;">
+<table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+<thead>
+<tr style="background: rgba(197,160,89,0.1); border-bottom: 1px solid var(--gold-primary);">
+<th style="padding: 12px 16px; color: var(--gold-bright);">Configuration</th>
+<th style="padding: 12px 16px; color: #fff;">INR Price</th>
+<th style="padding: 12px 16px; color: #fff;">USD ($) Approx.</th>
+<th style="padding: 12px 16px; color: #fff;">UAE Dirham (AED)</th>
+<th style="padding: 12px 16px; color: #fff;">UK Pound (£)</th>
+<th style="padding: 12px 16px; color: #fff;">Singapore (SGD)</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+<td style="padding: 12px 16px; font-weight: 700; color: #fff;">2 BHK Smart Luxury (740 sq.ft.)</td>
+<td style="padding: 12px 16px; color: var(--gold-light);">₹79.00 Lakhs</td>
+<td style="padding: 12px 16px; color: #fff;">$89,500 USD</td>
+<td style="padding: 12px 16px; color: #fff;">328,000 AED</td>
+<td style="padding: 12px 16px; color: #fff;">£68,500 GBP</td>
+<td style="padding: 12px 16px; color: #fff;">S$116,000 SGD</td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+<td style="padding: 12px 16px; font-weight: 700; color: #fff;">2 BHK Grande (820 sq.ft.)</td>
+<td style="padding: 12px 16px; color: var(--gold-light);">₹88.00 Lakhs</td>
+<td style="padding: 12px 16px; color: #fff;">$99,500 USD</td>
+<td style="padding: 12px 16px; color: #fff;">365,000 AED</td>
+<td style="padding: 12px 16px; color: #fff;">£76,500 GBP</td>
+<td style="padding: 12px 16px; color: #fff;">S$129,500 SGD</td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+<td style="padding: 12px 16px; font-weight: 700; color: #fff;">3 BHK Imperial (1,020 sq.ft.)</td>
+<td style="padding: 12px 16px; color: var(--gold-light);">₹1.25 Crore</td>
+<td style="padding: 12px 16px; color: #fff;">$141,500 USD</td>
+<td style="padding: 12px 16px; color: #fff;">518,000 AED</td>
+<td style="padding: 12px 16px; color: #fff;">£108,500 GBP</td>
+<td style="padding: 12px 16px; color: #fff;">S$183,500 SGD</td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+<td style="padding: 12px 16px; font-weight: 700; color: #fff;">3 BHK Racecourse View (1,180 sq.ft.)</td>
+<td style="padding: 12px 16px; color: var(--gold-light);">₹1.45 Crore</td>
+<td style="padding: 12px 16px; color: #fff;">$164,000 USD</td>
+<td style="padding: 12px 16px; color: #fff;">601,000 AED</td>
+<td style="padding: 12px 16px; color: #fff;">£126,000 GBP</td>
+<td style="padding: 12px 16px; color: #fff;">S$213,000 SGD</td>
+</tr>
+<tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+<td style="padding: 12px 16px; font-weight: 700; color: #fff;">4 BHK Sky Duplex (1,850 sq.ft.)</td>
+<td style="padding: 12px 16px; color: var(--gold-light);">₹2.10 Crore</td>
+<td style="padding: 12px 16px; color: #fff;">$237,500 USD</td>
+<td style="padding: 12px 16px; color: #fff;">871,000 AED</td>
+<td style="padding: 12px 16px; color: #fff;">£182,500 GBP</td>
+<td style="padding: 12px 16px; color: #fff;">S$308,000 SGD</td>
+</tr>
+<tr>
+<td style="padding: 12px 16px; font-weight: 700; color: #fff;">Della Villa Plots (1,500 - 3,500 sq.ft.)</td>
+<td style="padding: 12px 16px; color: var(--gold-light);">₹1.80 Crore</td>
+<td style="padding: 12px 16px; color: #fff;">$203,500 USD</td>
+<td style="padding: 12px 16px; color: #fff;">746,000 AED</td>
+<td style="padding: 12px 16px; color: #fff;">£156,500 GBP</td>
+<td style="padding: 12px 16px; color: #fff;">S$264,500 SGD</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style="margin-top: 30px; text-align: center;">
+<button class="btn-primary open-modal" data-modal="brochure"><i class="ph ph-file-pdf" style="margin-right: 8px;"></i> Request Detailed Unit Cost Breakdown (PDF)</button>
+</div>
+</div>
+</section>
+<!-- Flexible Payment Plans -->
+<section class="section-py" style="border-top: 1px solid rgba(197, 160, 89, 0.2);">
+<div class="container">
+<div class="section-header center scroll-reveal">
+<span class="badge-gold">PAYMENT FLEXIBILITY</span>
+<h2 class="section-title">Transparent Payment Schedules</h2>
+<p class="section-subtitle">Tailored milestone payment plans approved across top financial institutions.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
+<div class="scroll-reveal" style="background: rgba(16,18,26,0.7); border: 1px solid rgba(197,160,89,0.3); border-radius: 10px; padding: 24px;">
+<h3 style="color: var(--gold-bright); font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 10px;">Construction Linked Plan (CLP)</h3>
+<p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 14px;">Pay strictly as construction milestones complete on-site. Verified by MahaRERA structural auditor certificates.</p>
+<div style="font-size: 0.82rem; color: var(--gold-light);">10% Booking • 10% on Registration • Balanced across slab stages • 5% on Handover</div>
+</div>
+<div class="scroll-reveal" style="background: rgba(16,18,26,0.7); border: 1px solid rgba(197,160,89,0.3); border-radius: 10px; padding: 24px;">
+<h3 style="color: var(--gold-bright); font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 10px;">Executive 20:80 Special Scheme</h3>
+<p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 14px;">Designed for senior IT professionals and business executives. Pay 20% down and 80% on possession with bank loan tie-up.</p>
+<div style="font-size: 0.82rem; color: var(--gold-light);">SBI • HDFC • ICICI • Axis Bank • Bank of Baroda Pre-Approved</div>
+</div>
+<div class="scroll-reveal" style="background: rgba(16,18,26,0.7); border: 1px solid rgba(197,160,89,0.3); border-radius: 10px; padding: 24px;">
+<h3 style="color: var(--gold-bright); font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 10px;">NRI Dollar Pegged &amp; Digital KYC</h3>
+<p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 14px;">Zero-hassle inward remittance processing via NRE/NRO accounts with FEMA compliance and dedicated digital assistance.</p>
+<div style="font-size: 0.82rem; color: var(--gold-light);">Special incentives for UAE, Singapore, US, and UK buyers</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<section class="section-py" id="faq" style="background: rgba(16, 18, 26, 0.95); border-top: 1px solid rgba(197, 160, 89, 0.25);">
+<div class="container" style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+<div style="text-align: center; margin-bottom: 30px;">
+<span class="badge">FREQUENTLY ASKED QUESTIONS</span>
+<h2 style="font-family: var(--font-heading); font-size: 2.2rem; color: #fff; margin-top: 10px;">Krisala Hiranandani 2026 Price List &amp; Payment FAQ</h2>
+</div>
+<div class="faq-list" style="display: flex; flex-direction: column; gap: 16px;">
+<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 20px;">
+<h3 style="color: #dfc07b; font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;">What is the starting price for flats in Krisala Hiranandani Township Pune?</h3>
+<p style="color: #b8b8cc; font-size: 0.92rem; line-height: 1.6; margin: 0;">Residences start from ₹79 Lakhs* for 2 BHK in Sector Arcadia, ₹82.99 Lakhs* for 3 BHK in The Colosseum Phase 4, ₹2.10 Crore* for 4 BHK duplexes in Sector Icon, and ₹1.80 Crore* for Della villa plots.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 20px;">
+<h3 style="color: #dfc07b; font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;">What is the official MahaRERA sanction number for Krisala Hiranandani?</h3>
+<p style="color: #b8b8cc; font-size: 0.92rem; line-height: 1.6; margin: 0;">The township is registered under official MahaRERA sanction numbers PR1260002500600 and PR1260002600818 with 100% clear 30-year marketable land title.</p>
+</div>
+<div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 20px;">
+<h3 style="color: #dfc07b; font-size: 1.05rem; margin-bottom: 10px; font-weight: 600;">Are construction-linked payment plans (CLP) and bank loans available?</h3>
+<p style="color: #b8b8cc; font-size: 0.92rem; line-height: 1.6; margin: 0;">Yes, flexible 10:90 and 20:80 CLP payment plans, along with pre-approved home loans from SBI, HDFC, ICICI, and Axis Bank with zero processing fees, are available through the direct developer portal.</p>
+</div>
+</div>
+</div>
+</section>
+<footer style="background: #050608; border-top: 1px solid rgba(197,160,89,0.2); padding: 40px 0 30px; font-size: 0.84rem; color: var(--text-subtle);">
+<div class="container">
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 24px;">
+<a class="logo" href="/">
+<img alt="Krisala Hiranandani Pune Official Logo" class="header-logo" height="42" loading="lazy" src="/public/krisala-hiranandani-logo.webp" width="310"/>
+</a>
+<div style="display: flex; gap: 20px; flex-wrap: wrap;">
+<a href="/" style="color: var(--text-muted); text-decoration: none;">Home</a>
+<a href="/hiranandani-pune" style="color: var(--text-muted); text-decoration: none;">Hiranandani Pune</a>
+<a href="/hiranandani-price-list-2026" style="color: var(--gold-bright); text-decoration: none;">2026 Price List</a>
+<a href="/masterplan" style="color: var(--text-muted); text-decoration: none;">Masterplan</a>
+<a href="/compare" style="color: var(--text-muted); text-decoration: none;">Comparison</a>
+</div>
+</div>
+<p style="line-height: 1.6; margin-bottom: 12px;">Disclaimer: Government taxes (Stamp Duty 7%, GST 5%, Registration ₹30,000) are additional as applicable by Maharashtra state government. MahaRERA: Sector Arcadia (PR1260002500600), The Colosseum (PR1260002600818).</p>
+<p>© 2026 Krisala × Hiranandani Communities. All Rights Reserved.</p>
+</div>
+</footer>
+<!-- Universal Lead Modal -->
+<div class="modal-overlay" id="brochureModal">
+<div class="modal" style="background: #0d0f17; border: 1px solid var(--gold-primary); border-radius: 12px; padding: 32px; max-width: 480px; width: 90%; color: #fff;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+<h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--gold-bright);">Download Official 2026 Cost Sheet</h3>
+<button class="close-modal" style="background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">×</button>
+</div>
+<p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Enter your details to receive instant access to official unit-by-unit cost sheet, floor plans, and payment schedules.</p>
+<form action="https://formsubmit.co/manisha.yewle87@gmail.com" id="leadForm" method="POST" style="display: flex; flex-direction: column; gap: 14px;">
+<input name="_subject" type="hidden" value="New Lead: Hiranandani Price List 2026"/>
+<input name="_captcha" type="hidden" value="false"/>
+<input name="name" placeholder="Your Full Name" required="" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 12px; color: #fff; font-size: 0.9rem;" type="text"/>
+<input name="phone" placeholder="Mobile Number (WhatsApp Preferred)" required="" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 12px; color: #fff; font-size: 0.9rem;" type="tel"/>
+<input name="email" placeholder="Email Address" required="" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 12px; color: #fff; font-size: 0.9rem;" type="email"/>
+<button class="btn-primary" style="margin-top: 6px;" type="submit">Get Instant PDF Cost Sheet</button>
+</form>
+</div>
+</div>
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://krisalahiranandanitownships.com/hiranandani-price-list-2026#webpage",
+      "url": "https://krisalahiranandanitownships.com/hiranandani-price-list-2026",
+      "name": "Hiranandani Pune Price List 2026 | Krisala Hiranandani Cost Sheet PDF & Payment Plans",
+      "description": "Hiranandani Pune Price List 2026 and Hiranandani Pune cost sheet PDF for Krisala Hiranandani Township Hinjewadi.",
+      "inLanguage": "mr-IN",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [
+          ".hero-title",
+          ".hero-subtitle",
+          ".section-title",
+          ".hero-stats"
+        ]
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://krisalahiranandanitownships.com/hiranandani-price-list-2026#product-catalog",
+      "name": "Hiranandani Pune 2026 Residential Inventory & Price List",
+      "description": "Complete 2026 price list for Krisala Hiranandani Township Hinjewadi, Pune. 2, 3, 4 BHK luxury residences, duplex penthouses, and Della villa plots.",
+      "url": "https://krisalahiranandanitownships.com/hiranandani-price-list-2026",
+      "image": "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+      "brand": {
+        "@type": "Brand",
+        "name": "Krisala x Hiranandani"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "lowPrice": "7900000",
+        "highPrice": "45000000",
+        "offerCount": "5"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://krisalahiranandanitownships.com/hiranandani-price-list-2026#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krisalahiranandanitownships.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hiranandani Pune",
+          "item": "https://krisalahiranandanitownships.com/hiranandani-pune"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hiranandani Price List 2026",
+          "item": "https://krisalahiranandanitownships.com/hiranandani-price-list-2026"
+        }
+      ]
+    }
+  ]
+}</script>
+<script defer="" src="/app.min.js?v=20261017_v3"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var rates = {
+        'INR': { symbol: '₹', rate: 1, suffix: ' Lakhs', crSuffix: ' Cr' },
+        'USD': { symbol: '$', rate: 0.00113, suffix: 'K', crSuffix: 'K' },
+        'AED': { symbol: 'AED ', rate: 0.00415, suffix: 'K', crSuffix: 'K' },
+        'GBP': { symbol: '£', rate: 0.00087, suffix: 'K', crSuffix: 'K' },
+        'EUR': { symbol: '€', rate: 0.00104, suffix: 'K', crSuffix: 'K' },
+        'SGD': { symbol: 'S$', rate: 0.00147, suffix: 'K', crSuffix: 'K' }
+    };
+    var currBtns = document.querySelectorAll('#currencySelector .curr-btn');
+    currBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            currBtns.forEach(function(b) {
+                b.classList.remove('active');
+                b.style.background = 'rgba(255,255,255,0.08)';
+                b.style.color = '#fff';
+            });
+            this.classList.add('active');
+            this.style.background = 'var(--gold-primary)';
+            this.style.color = '#000';
+            var selected = this.getAttribute('data-curr');
+            // update stats
+            var stats = document.querySelectorAll('.hero-stats .stat-number');
+            if (stats.length >= 4) {
+                if (selected === 'INR') {
+                    stats[0].textContent = '₹79 L*';
+                    stats[1].textContent = '₹1.25 Cr*';
+                    stats[2].textContent = '₹2.10 Cr*';
+                    stats[3].textContent = '₹1.80 Cr*';
+                } else if (selected === 'USD') {
+                    stats[0].textContent = '$89.5K*';
+                    stats[1].textContent = '$141.5K*';
+                    stats[2].textContent = '$237.5K*';
+                    stats[3].textContent = '$203.5K*';
+                } else if (selected === 'AED') {
+                    stats[0].textContent = '328K AED*';
+                    stats[1].textContent = '518K AED*';
+                    stats[2].textContent = '871K AED*';
+                    stats[3].textContent = '746K AED*';
+                } else if (selected === 'GBP') {
+                    stats[0].textContent = '£68.5K*';
+                    stats[1].textContent = '£108.5K*';
+                    stats[2].textContent = '£182.5K*';
+                    stats[3].textContent = '£156.5K*';
+                } else if (selected === 'EUR') {
+                    stats[0].textContent = '€82.0K*';
+                    stats[1].textContent = '€130.0K*';
+                    stats[2].textContent = '€218.0K*';
+                    stats[3].textContent = '€187.0K*';
+                } else if (selected === 'SGD') {
+                    stats[0].textContent = 'S$116K*';
+                    stats[1].textContent = 'S$183.5K*';
+                    stats[2].textContent = 'S$308K*';
+                    stats[3].textContent = 'S$264.5K*';
+                }
+            }
+        });
+    });
+});
+</script>
+<!-- Floating AI Real Estate Concierge Widget (Zero CLS) -->
+<div id="aiConciergeLauncher" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; align-items: center; gap: 8px;">
+<button aria-label="Open AI Concierge" id="aiLauncherBtn" style="background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; border: none; border-radius: 50px; padding: 12px 20px; font-weight: 700; font-size: 0.88rem; box-shadow: 0 8px 24px rgba(197,160,89,0.4); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s ease;" type="button">
+<span style="display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
+<span>Ask Hiranandani AI</span>
+</button>
+</div>
+<!-- AI Concierge Modal Dialog -->
+<div id="aiConciergeModal" style="display: none; position: fixed; bottom: 84px; right: 24px; width: 360px; max-width: calc(100vw - 32px); height: 500px; background: rgba(16, 18, 26, 0.98); border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 12px; box-shadow: 0 16px 40px rgba(0,0,0,0.8); z-index: 10000; flex-direction: column; overflow: hidden; backdrop-filter: blur(16px);">
+<!-- Header -->
+<div style="background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(197,160,89,0.25); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;">
+<div style="display: flex; align-items: center; gap: 8px;">
+<span style="font-size: 1.1rem;">🏛️</span>
+<div>
+<h3 style="margin: 0; color: #fff; font-size: 0.9rem; font-family: var(--font-heading);">Hiranandani AI Concierge</h3>
+<span style="color: var(--gold-bright); font-size: 0.7rem;">Verified Township Knowledge Graph</span>
+</div>
+</div>
+<button aria-label="Close" id="aiCloseBtn" style="background: none; border: none; color: var(--text-muted); font-size: 1.2rem; cursor: pointer; padding: 4px;" type="button">×</button>
+</div>
+<!-- Chat History -->
+<div id="aiChatBody" style="flex: 1; padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
+<div style="background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 10px; color: #fff; line-height: 1.5;">
+                Welcome! I am your 24/7 Krisala × Hiranandani Township Concierge. Ask me anything about MahaRERA numbers, price lists, floor plans, racecourse access, or bank approvals.
+            </div>
+<!-- Quick Prompt Chips -->
+<div id="aiChipContainer" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
+<button class="ai-chip" data-q="What is the starting price of 2 BHK and 3 BHK?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">💰 2 BHK / 3 BHK Price</button>
+<button class="ai-chip" data-q="What are the official MahaRERA registration numbers?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">📜 MahaRERA Numbers</button>
+<button class="ai-chip" data-q="What is the possession date for the township?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">📅 Possession Date</button>
+<button class="ai-chip" data-q="Tell me about the 8-acre turf racecourse and Della resort." style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">🏇 Racecourse &amp; Della</button>
+<button class="ai-chip" data-q="Where is the site sales office located?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">📍 Site Address &amp; Map</button>
+</div>
+</div>
+<!-- Input Bar -->
+<div style="padding: 10px 14px; background: rgba(9,10,15,0.9); border-top: 1px solid rgba(197,160,89,0.25); display: flex; gap: 8px;">
+<input id="aiInput" placeholder="Type a question..." style="flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 8px 12px; color: #fff; font-size: 0.85rem; outline: none;" type="text"/>
+<button id="aiSendBtn" style="background: var(--gold-primary); color: #000; border: none; border-radius: 6px; padding: 8px 14px; font-weight: 700; cursor: pointer;" type="button">Send</button>
+</div>
+</div>
+<!-- AI Concierge Logic -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var launcher = document.getElementById('aiLauncherBtn');
+        var modal = document.getElementById('aiConciergeModal');
+        var closeBtn = document.getElementById('aiCloseBtn');
+        var input = document.getElementById('aiInput');
+        var sendBtn = document.getElementById('aiSendBtn');
+        var chatBody = document.getElementById('aiChatBody');
+        var chips = document.querySelectorAll('.ai-chip');
+
+        if (launcher && modal) {
+            launcher.addEventListener('click', function() {
+                modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+            });
+        }
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+        }
+
+        var knowledgeBase = [
+            {
+                keywords: ['price', 'cost', 'rate', 'starting', '2 bhk', '3 bhk', '4 bhk'],
+                answer: "Official 2026 Pricing: 2 BHK Smart Luxury (740 sq.ft.) starts at ₹79 Lakhs* ($89.5K USD / 328K AED). 3 BHK Imperial (1,020 sq.ft.) starts at ₹1.25 Crore*. 3 BHK Racecourse View (1,180 sq.ft.) starts at ₹1.45 Crore*. 4 BHK Sky Duplexes start at ₹2.10 Cr*. Custom Della Villa plots start at ₹1.80 Cr*."
+            },
+            {
+                keywords: ['rera', 'maharera', 'number', 'registration', 'legal'],
+                answer: "Official Verified MahaRERA Certifications: Sector Arcadia (MahaRERA: PR1260002500600), The Colosseum Phase 4 (MahaRERA: PR1260002600818), and Sector Everlyn (MahaRERA: PR1260002502438). Registered on maharera.maharashtra.gov.in."
+            },
+            {
+                keywords: ['possession', 'date', 'timeline', 'completion'],
+                answer: "The official MahaRERA possession timeline commences in December 2028 for Sector Arcadia, extending through December 2029 for The Colosseum Phase 4, powered by accelerated Mivan monolithic shear-wall construction velocity."
+            },
+            {
+                keywords: ['racecourse', 'della', 'equestrian', 'resort', 'club'],
+                answer: "Krisala × Hiranandani features India's first 8-acre private turf racecourse, polo riding tracks, and an integrated 40-acre Della adventure resort precinct with 52+ world-class equestrian and wellness amenities."
+            },
+            {
+                keywords: ['address', 'location', 'site', 'reach', 'office', 'where'],
+                answer: "Official Site Address: PMRDA 128m Ring Road Corridor, North Hinjawadi, Darumbre, Pune 410506. Driving time: 5 mins to Ring Road, 7 mins to Hinjewadi Metro Line 3 Megapolis Station, 10 mins to Mumbai-Pune Expressway (Urse Toll), and 12 mins to Infosys Phase 1."
+            },
+            {
+                keywords: ['bank', 'loan', 'emi', 'pre approved', 'finance', 'sbi', 'hdfc'],
+                answer: "Pre-approved home loans with PMAY interest subsidies are active through SBI, HDFC Bank, ICICI Bank, Axis Bank, and Bank of Baroda. Instant loan pre-assessment is available at our on-site desk."
+            }
+        ];
+
+        function handleQuestion(q) {
+            if (!q || !q.trim()) return;
+            var userDiv = document.createElement('div');
+            userDiv.style.alignSelf = 'flex-end';
+            userDiv.style.background = 'rgba(255,255,255,0.08)';
+            userDiv.style.padding = '8px 12px';
+            userDiv.style.borderRadius = '8px';
+            userDiv.style.color = '#fff';
+            userDiv.style.maxWidth = '85%';
+            userDiv.textContent = q;
+            chatBody.appendChild(userDiv);
+
+            var qLower = q.toLowerCase();
+            var responseText = "Thank you for inquiring! For complete personalized information, official brochure PDF, or to schedule a priority site visit with our senior sales manager, click below to connect instantly on WhatsApp.";
+            for (var i = 0; i < knowledgeBase.length; i++) {
+                var item = knowledgeBase[i];
+                for (var k = 0; k < item.keywords.length; k++) {
+                    if (qLower.indexOf(item.keywords[k]) !== -1) {
+                        responseText = item.answer;
+                        break;
+                    }
+                }
+                if (responseText !== "Thank you for inquiring! For complete personalized information, official brochure PDF, or to schedule a priority site visit with our senior sales manager, click below to connect instantly on WhatsApp.") break;
+            }
+
+            var botDiv = document.createElement('div');
+            botDiv.style.alignSelf = 'flex-start';
+            botDiv.style.background = 'rgba(197,160,89,0.12)';
+            botDiv.style.border = '1px solid rgba(197,160,89,0.25)';
+            botDiv.style.padding = '10px';
+            botDiv.style.borderRadius = '8px';
+            botDiv.style.color = '#fff';
+            botDiv.style.maxWidth = '90%';
+            botDiv.innerHTML = responseText + '<div style="margin-top: 8px;"><a href="https://wa.me/917744009295?text=' + encodeURIComponent('Hello, I was using the AI Concierge and would like more details on: ' + q) + '" target="_blank" rel="noopener" style="color: #25D366; font-weight: 700; text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">💬 Connect on WhatsApp &rarr;</a></div>';
+            chatBody.appendChild(botDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        if (sendBtn && input) {
+            sendBtn.addEventListener('click', function() {
+                handleQuestion(input.value);
+                input.value = '';
+            });
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    handleQuestion(input.value);
+                    input.value = '';
+                }
+            });
+        }
+
+        chips.forEach(function(chip) {
+            chip.addEventListener('click', function() {
+                handleQuestion(this.getAttribute('data-q'));
+            });
+        });
+    });
+    </script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Price List 2026™ — Krisala Hiranandani (from ₹79L*)",
+      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Krisala × Hiranandani"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "428",
+        "reviewCount": "382"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "lowPrice": "7900000",
+        "highPrice": "26500000",
+        "offerCount": "12",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2027-12-31"
+      }
+    }
+  ]
+}</script></body>
+</html>
