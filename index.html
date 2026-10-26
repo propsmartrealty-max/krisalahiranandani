@@ -83,20 +83,20 @@
             .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
         }
         @media (max-width: 768px) {
-            .hero, .hero-grand { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: stretch !important; min-height: 100vh !important; height: auto !important; }
-            .hero-content { padding-top: 90px !important; padding-bottom: 40px !important; margin: 0 auto !important; width: 100% !important; }
-            .hero-title { font-size: 2.2rem !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
-            .hero-subtitle { font-size: 0.95rem !important; margin-bottom: 24px !important; }
-            .hero-stats { gap: 16px !important; margin-bottom: 24px !important; }
-            .hero-actions { flex-direction: column !important; width: 100% !important; gap: 12px !important; margin-bottom: 24px !important; }
+            .hero, .hero-grand { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: stretch !important; min-height: auto !important; height: auto !important; padding-top: 80px !important; }
+            .hero-content { padding-top: 10px !important; padding-bottom: 30px !important; margin: 0 auto !important; width: 100% !important; contain: layout; }
+            .hero-title { font-size: 2.2rem !important; line-height: 1.15 !important; margin-bottom: 16px !important; min-height: 80px; }
+            .hero-subtitle { font-size: 0.95rem !important; margin-bottom: 20px !important; min-height: 48px; }
+            .hero-stats { gap: 16px !important; margin-bottom: 20px !important; min-height: 80px; }
+            .hero-actions { flex-direction: column !important; width: 100% !important; gap: 12px !important; margin-bottom: 24px !important; min-height: 160px; }
             .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100% !important; min-height: 48px !important; }
             .hero-img { height: 100% !important; animation: none !important; }
             a.btn-primary, a.btn-secondary, button, input[type="button"], input[type="submit"], [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
         }
         @media (max-width: 480px) {
-            .hero-title { font-size: clamp(1.75rem, 6.8vw, 2.3rem) !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
-            .hero-subtitle { font-size: 0.9rem !important; line-height: 1.55 !important; margin-bottom: 20px !important; }
-            .hero-stats { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+            .hero-title { font-size: clamp(1.75rem, 6.8vw, 2.3rem) !important; line-height: 1.15 !important; margin-bottom: 16px !important; min-height: 80px; }
+            .hero-subtitle { font-size: 0.9rem !important; line-height: 1.55 !important; margin-bottom: 20px !important; min-height: 48px; }
+            .hero-stats { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; min-height: 80px; }
             .hero-stats .stat-item h3, .hero-stats .stat-item .stat-number { font-size: 1.8rem !important; }
             .hero-stats .stat-item p { font-size: 0.72rem !important; }
             .hero-stats .stat-divider { display: none !important; }
@@ -183,9 +183,8 @@
 <noscript>
 <link href="/public/fonts/phosphor.min.css" rel="stylesheet"/>
 </noscript>
-<!-- Asynchronous Global Stylesheet (Non-Blocking Core Web Vitals) -->
-<link as="style" href="/style.min.css?v=20261017_v3" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="/style.min.css?v=20261017_v3" rel="stylesheet"/></noscript>
+<!-- Core Global Stylesheet (Synchronous Core Web Vitals Baseline) -->
+<link href="/style.min.css?v=20261026_v5" rel="stylesheet"/>
 <link href="/manifest.json" rel="manifest"/>
 <meta content="#08080a" name="theme-color"/>
 <!-- OpenGraph / Social Dominance -->
@@ -756,6 +755,34 @@
 <span class="hub-feature-pill"><i class="ph ph-mountains"></i> Panoramic Sahyadri Mountain Horizon</span>
 </div>
 </div>
+</div>
+<!-- Interactive Sector Spotlight Navigator (Static DOM to Eliminate CLS) -->
+<div class="sector-navigator-cluster" id="sectorNavigatorCluster">
+  <div class="sector-nav-pills">
+    <button type="button" class="sector-nav-pill active" data-sec-id="colosseum"><i class="ph ph-buildings"></i> The Colosseum (Phase 4)</button>
+    <button type="button" class="sector-nav-pill" data-sec-id="icon"><i class="ph ph-buildings"></i> Sector Icon (Flagship)</button>
+    <button type="button" class="sector-nav-pill" data-sec-id="arcadia"><i class="ph ph-buildings"></i> Sector Arcadia (Neoclassical)</button>
+    <button type="button" class="sector-nav-pill" data-sec-id="della"><i class="ph ph-buildings"></i> Della Resort &amp; Racecourse</button>
+  </div>
+  <div class="sector-spotlight-card" id="sectorSpotlightCard">
+    <div class="sector-spotlight-media">
+      <img src="/public/imported/the_colosseum_grand_facade_hq.webp" alt="The Colosseum (Phase 4) Krisala Hiranandani Township" loading="lazy" width="600" height="400">
+      <span style="position:absolute; top:16px; left:16px; background:rgba(9,10,15,0.85); border:1px solid rgba(197,160,89,0.4); color:var(--gold-bright); font-size:0.75rem; font-weight:700; padding:4px 12px; border-radius:20px;">Roman Landmark</span>
+    </div>
+    <div class="sector-spotlight-info">
+      <div style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-primary); font-weight:700; margin-bottom:6px;">MahaRERA: PR1260002500600</div>
+      <h3 style="font-family:var(--font-heading); font-size:1.6rem; color:#fff; margin:0 0 10px;">The Colosseum (Phase 4)</h3>
+      <p style="font-size:0.86rem; color:var(--text-muted); line-height:1.5; margin-bottom:14px;">Monumental B+G+27 classical Roman-inspired residences featuring grand Corinthian columns, private viewing sundecks, and exclusive pre-launch allotment benefits.</p>
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:10px 14px; margin-bottom:18px;">
+        <div style="font-size:0.78rem; color:var(--text-muted);">Configuration &amp; Pricing:</div>
+        <div style="font-size:0.95rem; font-weight:700; color:#fff; margin-top:2px;">2, 3, 4 BHK &amp; Sky Duplexes (765 – 1,600 sq.ft) • <span style="color:var(--gold-bright);">₹82.99 Lakh*</span></div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a href="/colosseum" class="btn-primary" style="padding:10px 20px; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">Explore Sector &rarr;</a>
+        <a href="/pricing" class="btn-outline" style="padding:10px 18px; font-size:0.84rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px;"><i class="ph ph-receipt"></i> Calculate Cost</a>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- 6 Comprehensive Sector Enclaves -->
 <div class="master-layout-legend-grid">
@@ -2551,7 +2578,7 @@
       ]
     }
     </script>
-<script defer="" src="/app.min.js?v=20261026_v4"></script>
+<script defer="" src="/app.min.js?v=20261026_v5"></script>
 <!-- Comprehensive JSON-LD Schema Graph (Google Compliant & Anti-Spam E-E-A-T) -->
 <script type="application/ld+json">{
   "@context": "https://schema.org",
