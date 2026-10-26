@@ -4802,6 +4802,19 @@ body.menu-open {
         display: none !important;
     }
 
+    .ai-launcher-container,
+    #aiConciergeLauncher,
+    .aria-concierge-launcher {
+        bottom: 85px !important;
+        right: 16px !important;
+    }
+    #aiLauncherBtn,
+    .sticky-bar-btn {
+        min-height: 48px !important;
+        min-width: 48px !important;
+        touch-action: manipulation !important;
+    }
+
     /* 3. Township Command Hub Tabs Horizontal Touch Snap */
     .township-hub-nav {
         display: flex !important;

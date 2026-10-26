@@ -122,12 +122,15 @@
 .nav-link { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 12px !important; touch-action: manipulation !important; }
 .footer-links a, .footer-contact p, .footer a { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 8px 0 !important; margin: 2px 0 !important; touch-action: manipulation !important; }
 .float-btn, .float-whatsapp, .float-call { width: 54px !important; height: 54px !important; min-width: 54px !important; min-height: 54px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.ai-launcher-container { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; align-items: center; gap: 8px; }
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
   * { -webkit-tap-highlight-color: transparent; }
   .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   .hero-stats { min-height: 80px; }
+  .ai-launcher-container, #aiConciergeLauncher, .aria-concierge-launcher { bottom: 85px !important; right: 16px !important; }
+  #aiLauncherBtn, .sticky-bar-btn { min-height: 48px !important; min-width: 48px !important; touch-action: manipulation !important; }
   a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
@@ -170,6 +173,7 @@
 <link as="image" fetchpriority="high" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero_mobile.webp" media="(max-width: 768px)" rel="preload" type="image/webp"/>
 <link as="image" fetchpriority="high" href="/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" media="(min-width: 769px)" rel="preload" type="image/webp"/>
 <link as="font" crossorigin="" href="https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="/public/fonts/Phosphor.woff2" rel="preload" type="font/woff2"/>
 <!-- Fonts (Non-Blocking High Performance) -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -184,7 +188,7 @@
 <link href="/public/fonts/phosphor.min.css" rel="stylesheet"/>
 </noscript>
 <!-- Core Global Stylesheet (Synchronous Core Web Vitals Baseline) -->
-<link href="/style.min.css?v=20261026_v5" rel="stylesheet"/>
+<link href="/style.min.css?v=20261026_v6" rel="stylesheet"/>
 <link href="/manifest.json" rel="manifest"/>
 <meta content="#08080a" name="theme-color"/>
 <!-- OpenGraph / Social Dominance -->
@@ -2578,7 +2582,7 @@
       ]
     }
     </script>
-<script defer="" src="/app.min.js?v=20261026_v5"></script>
+<script defer="" src="/app.min.js?v=20261026_v6"></script>
 <!-- Comprehensive JSON-LD Schema Graph (Google Compliant & Anti-Spam E-E-A-T) -->
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -3669,8 +3673,8 @@
     }
   ]
 }</script>
-<!-- Floating AI Real Estate Concierge Widget (Zero CLS) -->
-<div id="aiConciergeLauncher" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; align-items: center; gap: 8px;">
+<!-- Floating AI Real Estate Concierge Widget (Zero CLS & Touch Target Hardened) -->
+<div class="ai-launcher-container" id="aiConciergeLauncher">
 <button aria-label="Open AI Concierge" id="aiLauncherBtn" style="background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; border: none; border-radius: 50px; padding: 12px 20px; font-weight: 700; font-size: 0.88rem; box-shadow: 0 8px 24px rgba(197,160,89,0.4); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s ease;" type="button">
 <span style="display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
 <span>Ask Hiranandani AI</span>
