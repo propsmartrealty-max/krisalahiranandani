@@ -14,7 +14,7 @@
     <atom:link href="https://superfeedr.com/hub/publish" rel="hub"/>
     <link>https://krisalahiranandanitownships.com/</link>
     <description>Authoritative research, real estate market data, infrastructure analysis, and official releases for the 105-Acre Krisala Hiranandani Integrated Equestrian Township in North Hinjewadi, Pune.</description>
-    <lastBuildDate>Wed, 14 Oct 2026 11:00:00 +0530</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 13:00:00 +0530</lastBuildDate>
     <language>en-in</language>
     <sy:updatePeriod>hourly</sy:updatePeriod>
     <sy:updateFrequency>1</sy:updateFrequency>
@@ -26,6 +26,32 @@
       <width>220</width>
       <height>32</height>
     </image>
+
+        <!-- Pune Metro Line 3 Trials Article -->
+    <item>
+      <title>Pune Metro Line 3 Trials Commence: Real Estate Impact on North Hinjewadi Townships</title>
+      <link>https://krisalahiranandanitownships.com/blog/pune-metro-line-3-hinjewadi-trials-property-impact</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Mon, 26 Oct 2026 12:30:00 +0530</pubDate>
+      <category><![CDATA[Infrastructure]]></category>
+      <category><![CDATA[Pune Metro Line 3]]></category>
+      <category><![CDATA[Capital Appreciation]]></category>
+      <guid isPermaLink=true>https://krisalahiranandanitownships.com/blog/pune-metro-line-3-hinjewadi-trials-property-impact</guid>
+      <description><![CDATA[PMRDA commences integrated trial runs on Pune Metro Line 3 (Hinjewadi to Shivajinagar), boosting transit-oriented valuation for Krisala Hiranandani Township.]]></description>
+    </item>
+
+    <!-- Hinjewadi Phase 4 Boom Article -->
+    <item>
+      <title>Hinjewadi Phase 4 Boom: Why Integrated Townships Are Outperforming Standalone Towers in 2026</title>
+      <link>https://krisalahiranandanitownships.com/blog/hinjewadi-phase-4-integrated-township-boom</link>
+      <dc:creator>Dr. Vikas Yewle</dc:creator>
+      <pubDate>Mon, 26 Oct 2026 12:30:00 +0530</pubDate>
+      <category><![CDATA[Market Analysis]]></category>
+      <category><![CDATA[Hinjewadi Phase 4]]></category>
+      <category><![CDATA[Township Living]]></category>
+      <guid isPermaLink=true>https://krisalahiranandanitownships.com/blog/hinjewadi-phase-4-integrated-township-boom</guid>
+      <description><![CDATA[Comprehensive real estate analysis reveals a 45% surge in homebuyer demand for 100+ acre master-planned townships with integrated civic infrastructure over standalone plots.]]></description>
+    </item>
 
     <!-- Master Authority Hub: Hiranandani Pune -->
     <item>

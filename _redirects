@@ -106,12 +106,11 @@
 /north-hinjawadi-flats /hinjewadi-real-estate 301
 
 # Primary Brand & Township Permutations
-/krisala-hiranandani                    / 301
-/krisala-hiranandani-township           / 301
-/krisala-hiranandani-township-pune      / 301
-/krisala-hiranandani-township-hinjewadi / 301
-/krisala-hiranandani-township-hinjawadi / 301
-/krisala-hiranandani-hinjewadi          /hiranandani-pune 301
+/krisala-hiranandani                    /krisala-hiranandani-pune 301
+/krisala-hiranandani-township           /krisala-hiranandani-township-pune 301
+/krisala-hiranandani-township-hinjewadi /krisala-hiranandani-township-pune 301
+/krisala-hiranandani-township-hinjawadi /krisala-hiranandani-township-pune 301
+/krisala-hiranandani-hinjewadi          /krisala-hiranandani-township-pune 301
 /krisala-hiranandani-hinjawadi          / 301
 /krisala-hiranandani-darumbre           / 301
 /krisala-hiranandani-marunji            / 301

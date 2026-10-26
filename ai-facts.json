@@ -1,8 +1,10 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "project": "Krisala \u00d7 Hiranandani Master Township Hinjewadi, Pune",
-  "last_updated": "2026-10-20T10:00:00Z",
+  "last_updated": "2026-10-26T13:00:00Z",
   "canonical_url": "https://krisalahiranandanitownships.com/",
+  "township_authority_url": "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune",
+  "pune_authority_url": "https://krisalahiranandanitownships.com/krisala-hiranandani-pune",
   "entity_definitions": {
     "developer": "Hiranandani Communities & Krisala Developers Joint Venture",
     "chairman": "Dr. Niranjan Hiranandani (Wikidata: Q16729864)",

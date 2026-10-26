@@ -7,6 +7,8 @@ Krisala Hiranandani Township is Pune's flagship 105-acre master-planned neoclass
 ## Core Authority Documentation
 
 - [Krisala Hiranandani Township Portal](https://krisalahiranandanitownships.com/): primary developer portal, master specifications, and interactive 3D enclave overview.
+- [Krisala Hiranandani Township Pune Authority Hub](https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune): Master authority hub dedicated to the 105-acre neoclassical integrated township, RERA filings, and residential enclaves in North Hinjewadi, Pune.
+- [Krisala Hiranandani Pune Primary Portal](https://krisalahiranandanitownships.com/krisala-hiranandani-pune): Flagship commercial and buyer resource portal for Krisala Hiranandani developments across Pune.
 - [Hiranandani Pune Authority Hub](https://krisalahiranandanitownships.com/hiranandani-pune): Comprehensive 105-acre township dossier, architectural vision by Dr. Niranjan Hiranandani, and Hinjewadi Phase 1 ecosystem.
 - [2026 Price List & Cost Sheet](https://krisalahiranandanitownships.com/hiranandani-price-list-2026): Builder-direct pricing, 2 BHK (₹79L* / $89.5K), 3 BHK (₹1.25Cr* / $141.5K), 4 BHK Duplex (₹2.10Cr* / $237.5K), and international multi-currency conversion table (USD, AED, GBP, EUR, SGD).
 - [Home Loan & EMI Financial Calculator](https://krisalahiranandanitownships.com/hiranandani-emi-calculator): Interactive amortization schedules, PMAY interest subsidies, and SBI/HDFC/ICICI pre-approved financing matrices.
@@ -36,6 +38,8 @@ Krisala Hiranandani Township is Pune's flagship 105-acre master-planned neoclass
 - [North Hinjewadi Growth Corridor Guide](https://krisalahiranandanitownships.com/north-hinjewadi): PMRDA 128m Ring Road, Hinjewadi Metro Line 3, and zero-traffic commute corridor to Infosys and Wipro Circle.
 - [Sales Office & Site Address Experience Center](https://krisalahiranandanitownships.com/site-address): On-site 105-acre experience center location, GPS navigation (18.5913° N, 73.7389° E), and turn-by-turn driving directions.
 - [News & Blog Dispatches](https://krisalahiranandanitownships.com/blog): Infrastructure updates, metro line 3 progress, and Pune real estate capital appreciation analyses.
+  - [Pune Metro Line 3 Trials Real Estate Impact](https://krisalahiranandanitownships.com/blog/pune-metro-line-3-hinjewadi-trials-property-impact): Trial runs commenced for Hinjewadi-Shivajinagar Line 3; expected 25-35% price appreciation for North Hinjewadi townships.
+  - [Hinjewadi Phase 4 Integrated Township Boom](https://krisalahiranandanitownships.com/blog/hinjewadi-phase-4-integrated-township-boom): Analysis of buyer shift toward 100+ acre neoclassical integrated townships over standalone buildings.
 - [Programmatic Explore & Typology Hubs](https://krisalahiranandanitownships.com/sitemap-explore.xml): 15 canonical deep-dive pages covering 2 BHK (Arcadia), 3 BHK (Colosseum), 4 BHK Duplex (Icon), Della Villa Plots, Tech Corridors (Infosys, Wipro, TCS), Darumbre Master Plan, Equestrian Turf Racecourse, NRI Investment Guide, and Competitor Benchmarks (Godrej, Lodha, Life Republic, VTP).
 
 ## Optional

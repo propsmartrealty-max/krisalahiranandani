@@ -2,13 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     <url>
+        <loc>https://krisalahiranandanitownships.com/blog/pune-metro-line-3-hinjewadi-trials-property-impact</loc>
+        <news:news>
+            <news:publication>
+                <news:name>Krisala Hiranandani Township Media Bureau</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-10-26T07:00:00+00:00</news:publication_date>
+            <news:title>Pune Metro Line 3 Trials Commence: Real Estate Impact on North Hinjewadi Townships</news:title>
+        </news:news>
+    </url>
+    <url>
+        <loc>https://krisalahiranandanitownships.com/blog/hinjewadi-phase-4-integrated-township-boom</loc>
+        <news:news>
+            <news:publication>
+                <news:name>Krisala Hiranandani Township Media Bureau</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-10-26T07:00:00+00:00</news:publication_date>
+            <news:title>Hinjewadi Phase 4 Boom: Why Integrated Townships Are Outperforming Standalone Towers in 2026</news:title>
+        </news:news>
+    </url>
+    <url>
         <loc>https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide</loc>
         <news:news>
             <news:publication>
                 <news:name>Krisala Hiranandani Township Media Bureau</news:name>
                 <news:language>en</news:language>
             </news:publication>
-            <news:publication_date>2026-10-20T10:48:04+00:00</news:publication_date>
+            <news:publication_date>2026-10-25T10:00:00+00:00</news:publication_date>
             <news:title>The Colosseum Phase 4 Launch: B+G+27 Roman Landmark Towers Unveiled in North Hinjewadi</news:title>
         </news:news>
     </url>
@@ -19,30 +41,8 @@
                 <news:name>Krisala Hiranandani Township Media Bureau</news:name>
                 <news:language>en</news:language>
             </news:publication>
-            <news:publication_date>2026-10-20T10:48:04+00:00</news:publication_date>
+            <news:publication_date>2026-10-25T10:00:00+00:00</news:publication_date>
             <news:title>The Della Collection Unveils 100 Exclusive Luxury Equestrian Villa Plots in West Pune</news:title>
-        </news:news>
-    </url>
-    <url>
-        <loc>https://krisalahiranandanitownships.com/blog/pmrda-128m-ring-road-metro-line-3-hinjewadi-infrastructure</loc>
-        <news:news>
-            <news:publication>
-                <news:name>Krisala Hiranandani Township Media Bureau</news:name>
-                <news:language>en</news:language>
-            </news:publication>
-            <news:publication_date>2026-10-20T10:48:04+00:00</news:publication_date>
-            <news:title>PMRDA 128m Ring Road and Metro Line 3 Accelerate Capital Appreciation in North Hinjewadi</news:title>
-        </news:news>
-    </url>
-    <url>
-        <loc>https://krisalahiranandanitownships.com/hiranandani-pune</loc>
-        <news:news>
-            <news:publication>
-                <news:name>Krisala Hiranandani Township Media Bureau</news:name>
-                <news:language>en</news:language>
-            </news:publication>
-            <news:publication_date>2026-10-20T10:48:04+00:00</news:publication_date>
-            <news:title>Dr. Niranjan Hiranandani and Krisala Developers Announce 105-Acre Neoclassical Master Township in Pune</news:title>
         </news:news>
     </url>
 </urlset>
