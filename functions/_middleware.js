@@ -142,7 +142,14 @@ function isPostRateLimited(clientIp) {
  */
 function applyEdgeHtmlRewriter(response, url, isWhitelistedBot, request) {
     const path = url.pathname.toLowerCase();
-    const cleanPath = path === '/index.html' ? '/' : (path.endsWith('.html') ? path.slice(0, -5) : path);
+    let cleanPath = path;
+    if (cleanPath === '/index.html') {
+        cleanPath = '/';
+    } else if (cleanPath.endsWith('/index.html')) {
+        cleanPath = cleanPath.slice(0, -11) || '/';
+    } else if (cleanPath.endsWith('.html')) {
+        cleanPath = cleanPath.slice(0, -5);
+    }
     const canonicalUrl = `https://krisalahiranandanitownships.com${cleanPath}`;
     const isPrivateOrErrorRoute = path.includes('thank-you') ||
                                   path.includes('analytics') ||
@@ -267,9 +274,22 @@ export async function onRequest(context) {
     }
 
     // 1c. Canonical URL Path Normalization (SEO Clean URLs at the Edge)
+    if (path === '/mr' || path.startsWith('/mr/')) {
+        const canonicalUrl = new URL(request.url);
+        canonicalUrl.pathname = '/';
+        return Response.redirect(canonicalUrl.toString(), 301);
+    }
+
     if (path === '/index.html') {
         const canonicalUrl = new URL(request.url);
         canonicalUrl.pathname = '/';
+        return Response.redirect(canonicalUrl.toString(), 301);
+    }
+
+    if (path.endsWith('/index.html')) {
+        const canonicalUrl = new URL(request.url);
+        const parentDir = path.slice(0, -11);
+        canonicalUrl.pathname = parentDir || '/';
         return Response.redirect(canonicalUrl.toString(), 301);
     }
 

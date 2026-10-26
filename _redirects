@@ -2,6 +2,8 @@
 # Documentation: https://developers.cloudflare.com/pages/configuration/redirects/
 
 # 301 Permanent Redirects to Canonical Clean URLs
+/mr                   /                      301
+/mr/*                 /                      301
 /home                 /                      301
 /township             /                      301
 /della-plots          /della                 301
