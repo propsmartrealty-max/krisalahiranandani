@@ -470,9 +470,16 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         .join(' ');
 
     const buildCleanTitle = (subject, priceTag = '₹79L*') => {
-        let clean = subject.replace(/official/gi, '').replace(/website/gi, '').replace(/\s+/g, ' ').trim();
-        if (clean.length > 36) {
-            clean = clean.substring(0, 36).trim().replace(/\s+\S*$/, '');
+        let clean = subject
+            .replace(/official/gi, '')
+            .replace(/website/gi, '')
+            .replace(/krisala\s+hiranandani\s+township\s+pune/gi, 'Krisala Hiranandani')
+            .replace(/krisala\s+hiranandani\s+pune/gi, 'Hiranandani')
+            .replace(/krisala\s+hiranandani/gi, 'Hiranandani')
+            .replace(/\s+/g, ' ')
+            .trim();
+        if (clean.length > 38) {
+            clean = clean.substring(0, 38).trim().replace(/\s+\S*$/, '');
         }
         const full = `${clean} | ${priceTag}`;
         return full.length <= 55 ? full : clean.substring(0, 52);
