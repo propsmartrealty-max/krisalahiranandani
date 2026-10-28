@@ -17,7 +17,7 @@ ARTICLES = [
         "title": "Pune Metro Line 3 Trials™ — Hinjewadi Real Estate Impact",
         "desc": "Pune Metro Line 3 Megapolis trials commence: How the 23.2 km corridor connecting Hinjewadi to Shivajinagar is transforming North Hinjewadi property values and rental yields.",
         "h1": "Pune Metro Line 3 Trials Commenced: <span>North Hinjewadi Real Estate Impact</span>",
-        "date": "2026-10-25",
+        "date": "2026-10-29",
         "image": "https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp",
         "content": """
         <p class="lead">The trial runs for Pune Metro Line 3 (Hinjewadi to Shivajinagar 23.2 km elevated corridor) have officially commenced, marking a pivotal milestone for western Pune's transit infrastructure. Real estate micro-markets along North Hinjewadi and the PMRDA 128-meter Ring Road are registering unprecedented buyer demand, with capital appreciation projections exceeding 18% to 22% over the next 24 months.</p>
@@ -57,13 +57,59 @@ ARTICLES = [
         "title": "Hinjewadi Phase 4 Boom™ — Krisala Hiranandani Guide",
         "desc": "Why Pune's real estate growth has shifted to Hinjewadi Phase 4 and North Hinjewadi. 105+ acre master-planned equestrian living vs congested standalone towers.",
         "h1": "The Hinjewadi Phase 4 Real Estate Boom: <span>Master Township Living</span>",
-        "date": "2026-10-25",
+        "date": "2026-10-29",
         "image": "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
         "content": """
         <p class="lead">As Hinjewadi Phases 1 and 2 face land exhaustion and traffic density, Western Pune's high-net-worth homebuyers and IT leadership are migrating northwards to North Hinjewadi (Phase 4 corridor). Master-planned developments like <strong>Krisala Hiranandani Township Pune</strong> combine 105+ acres of neoclassical architecture, 70% open green space, Della resort amenities, and an 8-acre turf racecourse.</p>
 
         <h2>Integrated Townships vs Standalone High-Rises</h2>
         <p>Standalone towers in congested urban pockets frequently lack dedicated water security, internal road networks, and civic infrastructure. In contrast, 105-acre integrated townships feature dedicated water recycling plants, underground utility conduits, EV charging grids, and integrated retail high-streets.</p>
+        """
+    },
+    {
+        "filename": "blog/hinjewadi-it-park-housing-shortage-pmrda-ring-road-surge-2026.html",
+        "title": "Hinjewadi Housing Deficit 2026: PMRDA Ring Road Surge",
+        "desc": "Over 450,000 IT professionals in Hinjewadi face severe quality housing deficit: Why the PMRDA 128m Ring Road and North Hinjewadi master townships are absorbing high-ticket buyer demand.",
+        "h1": "Hinjewadi IT Housing Shortage: <span>PMRDA Ring Road Corridor Absorbs Luxury Demand</span>",
+        "date": "2026-10-29",
+        "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp",
+        "content": """
+        <p class="lead">Western Pune's Silicon Valley — Rajiv Gandhi Infotech Park in Hinjewadi — is witnessing a structural supply-demand mismatch in late 2026. With over 450,000 professionals employed across Infosys, Wipro, TCS, Cognizant, and Barclays, the shortage of integrated, well-planned luxury residences has triggered a massive expansion northward along the PMRDA 128-meter Ring Road.</p>
+        
+        <h2>The Shift From Standalone High-Rises to 100+ Acre Townships</h2>
+        <p>Urban density in Hinjewadi Phase 1 has reached saturation point, with severe peak-hour traffic at Shivaji Chowk and Wakad junction. Senior IT executives, GCC heads, and NRI tech investors are prioritizing signal-free commute corridors with master-planned social infrastructure. <strong>Krisala Hiranandani Township Pune</strong> in Darumbre (North Hinjewadi) addresses this exact deficit with 105+ acres of neoclassical architecture, 70% open green space, an 8-acre turf racecourse, and Della luxury amenities.</p>
+
+        <h2>Comparative Rental Yield & Price Growth Analysis (Q4 2026)</h2>
+        <table class="spec-table" style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
+                <tr style="background: rgba(197,160,89,0.15); color: #dfc07b;">
+                    <th style="padding: 10px; text-align: left;">Residential Corridor</th>
+                    <th style="padding: 10px; text-align: left;">Average Rental Yield</th>
+                    <th style="padding: 10px; text-align: left;">YoY Price Appreciation</th>
+                    <th style="padding: 10px; text-align: left;">Commute to IT Hub</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">North Hinjewadi (PMRDA Ring Road)</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; color: #4ade80;">8.4% – 9.2%</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); font-weight: 700; color: #4ade80;">+16.8% (2026)</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">12 Mins (Signal-Free)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">Wakad / Hinjewadi Flyover Belt</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">5.8% – 6.4%</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">+8.2% (2026)</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">35-45 Mins (Congested)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">Baner-Balewadi High Street</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">4.8% – 5.5%</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">+7.4% (2026)</td>
+                    <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">30 Mins (Highway Bottleneck)</td>
+                </tr>
+            </tbody>
+        </table>
         """
     }
 ]
