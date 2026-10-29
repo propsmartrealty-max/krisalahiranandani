@@ -482,7 +482,6 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  // Formatting Human-Readable Title (Cleaned & Calibrated for Google SERP <= 55 Chars)
  let displaySlug = cleanSlug
  .replace(/-website/gi, '')
- .replace(//gi, '')
  .replace(/website/gi, '')
  .replace(/-+/g, '-')
  .replace(/^-|-$/g, '');
@@ -509,7 +508,6 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  let clean = subject
  .replace(/[®©]/g, '')
  .replace(/[^: ]*/g, '')
- .replace(//gi, '')
  .replace(/website/gi, '')
  .replace(/krisala\s+hiranandani\s+township\s+pune/gi, 'Krisala Hiranandani')
  .replace(/krisala\s+hiranandani\s+pune/gi, 'Hiranandani')
