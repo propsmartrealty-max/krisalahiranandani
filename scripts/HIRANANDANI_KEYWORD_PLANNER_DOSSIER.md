@@ -1,5 +1,5 @@
 # Google Keyword Planner Intelligence & Intent Analysis: Hiranandani Pune
-**Audit & Modeling Date:** 2026-10-19 07:35:05Z  
+**Audit & Modeling Date:** 2026-10-29 18:14:13Z  
 **Target Ecosystem:** `https://krisalahiranandanitownships.com/`  
 **Total Modeled Monthly Search Volume:** 92,950 Queries / Month  
 **Estimated Monthly Commercial Ad Value (Top-of-Page):** ₹20,345,875.00 INR  
