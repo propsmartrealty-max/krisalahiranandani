@@ -388,6 +388,21 @@ export async function onRequest(context) {
  });
  }
 
+ // 4b. Pure Township Entity Canonical Consolidation (Resolve Keyword Cannibalization for Position #1)
+ const CANNIBALIZED_EXPLORE_PATHS = new Set([
+ '/explore/krisala-hiranandani-pune-official-website-hinjewadi-phase-2',
+ '/explore/krisala-hiranandani-pune-hinjewadi-phase-2',
+ '/explore/hiranandani-township-hinjewadi',
+ '/explore/krisala-hiranandani-township-hinjewadi',
+ '/explore/krisala-hiranandani-township',
+ '/explore/krisala-hiranandani',
+ '/explore/krisala-hiranandani-pune',
+ '/explore/hiranandani-township-pune'
+ ]);
+ if (CANNIBALIZED_EXPLORE_PATHS.has(path.replace(/\/$/, ''))) {
+ return Response.redirect('https://krisalahiranandanitownships.com/', 301);
+ }
+
  // 5. Proceed with request through Cloudflare Pages asset pipeline
  const response = await next();
 
