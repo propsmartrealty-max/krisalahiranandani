@@ -56,7 +56,11 @@ CALIBRATED_TITLES = {
     "krisala-hiranandani-nri-investment-guide-pune": "NRI Investment Guide Pune 2026 | Hiranandani",
     "krisala-hiranandani-pmrda-ring-road-connectivity-advantage": "PMRDA Ring Road & Metro Connectivity | Hiranandani",
     "krisala-hiranandani-vs-kolte-patil-life-republic-hinjewadi": "Krisala Hiranandani vs Kolte Patil Life Republic",
-    "krisala-hiranandani-vs-vtp-earth-one-mahalunge": "Krisala Hiranandani vs VTP Earth One | Comparison"
+    "krisala-hiranandani-vs-vtp-earth-one-mahalunge": "Krisala Hiranandani vs VTP Earth One | Comparison",
+    "della-township-bungalow-plots-hinjewadi": "Della Township Bungalow Plots Hinjewadi | ₹1.8Cr*",
+    "bungalow-plots-in-hinjewadi-pune": "Bungalow Plots in Hinjewadi Pune | from ₹1.8Cr*",
+    "della-township-lots-hinjewadi": "Della Township Lots Hinjewadi | Estate Plots ₹1.8Cr*",
+    "plots-in-hinjewadi-pune": "Plots in Hinjewadi Pune | Residential Land ₹1.80Cr*"
 }
 
 def render_page(config):

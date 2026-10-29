@@ -62,13 +62,13 @@ const ENTITY_DICTIONARY = {
         desc: "Efficient single-level executive homes tailored for modern tech leaders seeking streamlined maintenance with elite Hiranandani craftsmanship."
     },
     "della-plots": {
-        name: "The Della Collection Equestrian Villa Plots",
+        name: "Della Township Bungalow Premium Plots & Lots",
         carpet: "2,000 – 5,000 sq.ft. Plot Area",
         price: "₹1.80 Cr – ₹3.50 Cr*",
         sector: "The Della Precinct",
-        floors: "G + 2 Independent Villa Construction Allowed",
-        spec: "Private Polo Track Access, Della Concierge Club Membership, 100 Exclusive Plots",
-        desc: "Exclusive resort-themed equestrian villa plots curated in partnership with Della Resorts, boasting an 8-acre international polo club and private racecourse."
+        floors: "G + 2 Independent Villa / Bungalow Construction Allowed",
+        spec: "Private Polo Track Access, Della Concierge Club Membership, 100 Exclusive Lots",
+        desc: "Exclusive resort-themed bungalow premium plots and Della township lots at Hiranandani Township Hinjewadi, boasting an 8-acre private racecourse, polo club, and Della concierge."
     },
     "colosseum": {
         name: "The Colosseum Signature Towers",
@@ -414,7 +414,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     else if (cleanSlug.includes('3-bhk') || cleanSlug.includes('3bhk')) unitKey = "3-bhk";
     else if (cleanSlug.includes('simplex')) unitKey = "simplex";
     else if (cleanSlug.includes('duplex') || cleanSlug.includes('skyduplex')) unitKey = "duplex";
-    else if (cleanSlug.includes('villa') || cleanSlug.includes('plot') || cleanSlug.includes('della')) unitKey = "della-plots";
+    else if (cleanSlug.includes('villa') || cleanSlug.includes('plot') || cleanSlug.includes('plots') || cleanSlug.includes('della') || cleanSlug.includes('bungalow') || cleanSlug.includes('lots') || cleanSlug.includes('land')) unitKey = "della-plots";
 
     let workKey = null;
     for (const k of ['infosys', 'wipro', 'tcs', 'cognizant', 'barclays', 'tech-mahindra', 'capgemini']) {
@@ -451,6 +451,13 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                                    cleanSlug.includes('best-residential-projects') ||
                                    cleanSlug.includes('gated-communities-in-pune') ||
                                    cleanSlug.includes('west-pune-real-estate');
+
+    const isPlotsOrDellaIntent = cleanSlug.includes('plot') ||
+                                 cleanSlug.includes('plots') ||
+                                 cleanSlug.includes('della') ||
+                                 cleanSlug.includes('bungalow') ||
+                                 cleanSlug.includes('lots') ||
+                                 cleanSlug.includes('villa-plot');
 
     const unit = ENTITY_DICTIONARY[unitKey];
     const work = workKey ? ENTITY_DICTIONARY[workKey] : null;
@@ -508,6 +515,10 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         h1 = `${formattedSubject} • Krisala Hiranandani vs ${comp.name}`;
         metaTitle = buildCleanTitle(`Krisala Hiranandani vs ${comp.name}`, 'Comparison');
         metaDescription = `Comprehensive real estate comparison: ${formattedSubject} at Krisala Hiranandani vs ${comp.name}. Compare usable carpet area, 8-acre racecourse amenities, and 2026 ROI.`;
+    } else if (isPlotsOrDellaIntent) {
+        h1 = `${formattedSubject} • Della Township Bungalow Plots & Lots`;
+        metaTitle = buildCleanTitle(formattedSubject, '₹1.80Cr*');
+        metaDescription = `Bungalow premium plots and Della township lots at Hiranandani Township Hinjewadi, Pune. 2,000–5,000 sq.ft. plots with 8-acre racecourse & polo club from ₹1.80 Cr*.`;
     } else if (isPricingIntent && isHiranandaniBrandIntent) {
         h1 = `${formattedSubject} • Hiranandani Pune Price List 2026`;
         metaTitle = buildCleanTitle(`${formattedSubject} Price List`, 'from ₹79L*');
@@ -634,6 +645,26 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Signature Amenities</td><td style="padding: 10px 0;">${comp.amenities}</td></tr>
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Density &amp; Design</td><td style="padding: 10px 0;">${comp.density}</td></tr>
                 <tr><td style="padding: 10px 0; font-weight: 600; color: #fff;">Buyer Verdict</td><td style="padding: 10px 0; color: #fff;"><strong>${comp.verdict}</strong></td></tr>
+            </table>
+        </div>`;
+    }
+
+    // Dynamic Della Township & Bungalow Plots Card
+    if (isPlotsOrDellaIntent) {
+        editorialHtml += `
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--gold-primary); padding: 24px; border-radius: 8px; margin: 25px 0;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <span class="badge" style="background: var(--gold-primary); color: #000; font-weight: 700;"><i class="ph ph-crown"></i> Della Township Luxury Lots</span>
+                <span style="color: var(--gold-light); font-weight: 600;">Bungalow Premium Plots • Hinjewadi Pune</span>
+            </div>
+            <h3 style="color: #fff; font-size: 1.35rem; margin: 8px 0;">Bungalow Premium Plots at Hiranandani Township Hinjewadi</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">Curated in collaboration with Della Resorts &amp; Adventure, this 40-acre equestrian precinct features sanctioned freehold bungalow plots and Della township lots surrounding an 8-acre private racecourse:</p>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 14px; color: var(--text-muted); font-size: 0.95rem;">
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff; width: 35%;">Plot Typologies</td><td style="padding: 10px 0; color: var(--gold-light);">Polo Meadow (1,800–2,400 sq.ft.) | Racecourse Grand (3,000–4,200 sq.ft.) | Presidential (5,000+ sq.ft.)</td></tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Sanctioned FSI / Height</td><td style="padding: 10px 0;">G + 2 Storey Independent Luxury Villa / Bungalow Construction</td></tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Title &amp; Approvals</td><td style="padding: 10px 0;">100% Freehold NA Sanctioned, Clear Marketable Title, MahaRERA Escrow</td></tr>
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Signature Amenities</td><td style="padding: 10px 0;">8-Acre Racecourse, Championship Polo Club, Air-Cooled Stables, Della Concierge</td></tr>
+                <tr><td style="padding: 10px 0; font-weight: 600; color: #fff;">Pricing Guidance</td><td style="padding: 10px 0; color: #fff;"><strong style="color: var(--gold-light);">Starting ₹1.80 Cr* to ₹3.50 Cr* (All-Inclusive)</strong></td></tr>
             </table>
         </div>`;
     }

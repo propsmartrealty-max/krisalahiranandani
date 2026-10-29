@@ -719,6 +719,106 @@ KEYWORD_DATA = [
         "priority": "P1",
         "target_url": "/compare",
         "primary_h1_h2": "Hiranandani vs Lodha Sylvan Hinjewadi Benchmark"
+    },
+
+    # ── CLUSTER 9: DELLA TOWNSHIP & BUNGALOW PREMIUM PLOTS & LOTS ──
+    {
+        "keyword": "Della Township",
+        "monthly_searches": 3200,
+        "three_month_change": "+140%",
+        "yoy_change": "+310%",
+        "competition": "High",
+        "competition_index": 76,
+        "cpc_low_inr": 140.00,
+        "cpc_high_inr": 480.00,
+        "intent": "Brand & Master Township",
+        "priority": "P0",
+        "target_url": "/della",
+        "primary_h1_h2": "Della Township Bungalow Premium Plots Hinjewadi"
+    },
+    {
+        "keyword": "bungalow premium plots at Hiranandani Township Hinjewadi",
+        "monthly_searches": 1400,
+        "three_month_change": "+185%",
+        "yoy_change": "+420%",
+        "competition": "High",
+        "competition_index": 79,
+        "cpc_low_inr": 220.00,
+        "cpc_high_inr": 620.00,
+        "intent": "Ultra-High Intent Plots",
+        "priority": "P0",
+        "target_url": "/explore/della-township-bungalow-plots-hinjewadi",
+        "primary_h1_h2": "Bungalow Premium Plots at Hiranandani Township Hinjewadi"
+    },
+    {
+        "keyword": "Della township lots",
+        "monthly_searches": 1100,
+        "three_month_change": "+160%",
+        "yoy_change": "+380%",
+        "competition": "High",
+        "competition_index": 75,
+        "cpc_low_inr": 210.00,
+        "cpc_high_inr": 590.00,
+        "intent": "Bespoke Land Parcels",
+        "priority": "P0",
+        "target_url": "/explore/della-township-lots-hinjewadi",
+        "primary_h1_h2": "Della Township Lots Hinjewadi: Bespoke Land Parcels"
+    },
+    {
+        "keyword": "bungalow plots in Hinjewadi Pune",
+        "monthly_searches": 2900,
+        "three_month_change": "+115%",
+        "yoy_change": "+260%",
+        "competition": "High",
+        "competition_index": 78,
+        "cpc_low_inr": 160.00,
+        "cpc_high_inr": 520.00,
+        "intent": "Bungalow Plot Buyers",
+        "priority": "P0",
+        "target_url": "/explore/bungalow-plots-in-hinjewadi-pune",
+        "primary_h1_h2": "Bungalow Plots in Hinjewadi Pune: Della Resort Living"
+    },
+    {
+        "keyword": "plots in Hinjewadi",
+        "monthly_searches": 5400,
+        "three_month_change": "+95%",
+        "yoy_change": "+210%",
+        "competition": "High",
+        "competition_index": 82,
+        "cpc_low_inr": 150.00,
+        "cpc_high_inr": 510.00,
+        "intent": "Broad Plot Search",
+        "priority": "P0",
+        "target_url": "/explore/plots-in-hinjewadi-pune",
+        "primary_h1_h2": "Plots in Hinjewadi Pune: Clear-Title Residential Land"
+    },
+    {
+        "keyword": "residential plots near Hinjewadi",
+        "monthly_searches": 3100,
+        "three_month_change": "+80%",
+        "yoy_change": "+190%",
+        "competition": "High",
+        "competition_index": 77,
+        "cpc_low_inr": 130.00,
+        "cpc_high_inr": 450.00,
+        "intent": "Regional Plot Investment",
+        "priority": "P0",
+        "target_url": "/explore/plots-in-hinjewadi-pune",
+        "primary_h1_h2": "Residential Plots Near Hinjewadi PMRDA Approved"
+    },
+    {
+        "keyword": "Hiranandani plots Hinjewadi",
+        "monthly_searches": 2400,
+        "three_month_change": "+170%",
+        "yoy_change": "+390%",
+        "competition": "High",
+        "competition_index": 76,
+        "cpc_low_inr": 190.00,
+        "cpc_high_inr": 580.00,
+        "intent": "Brand Plot Search",
+        "priority": "P0",
+        "target_url": "/della",
+        "primary_h1_h2": "Della Township & Bungalow Premium Plots Hinjewadi"
     }
 ]
 
