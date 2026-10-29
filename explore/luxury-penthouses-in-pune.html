@@ -5,82 +5,82 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: swap;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; z-index: 0; }
+ .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -92,17 +92,17 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
-<title id="seoTitle">Luxury Penthouses in Pune | Sector Icon ₹2.10Cr*</title>
-<meta content="Ultra-luxury penthouses in Pune at Sector Icon, Krisala Hiranandani Township. 1,850-2,450 sq.ft. duplex sky mansions with 18ft double-height living & private terraces from ₹2.10Cr*." id="seoDesc" name="description"/>
-<meta content="luxury penthouses in pune, penthouses in hinjewadi, duplex penthouses pune, sky mansions pune, krisala hiranandani penthouses" id="seoKeywords" name="keywords"/>
+<title id="seoTitle">Krisala Hiranandani Township Hinjewadi | Guide</title>
+<meta content="guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residences and Della villa plots." id="seoDesc" name="description"/>
+<meta content="Krisala Hiranandani, Krisala Hiranandani Township, Hinjewadi Pune, 2 BHK, 3 BHK, 4 BHK, Sector Arcadia, Sector Icon, The Colosseum, Della Plots" id="seoKeywords" name="keywords"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
-<link href="https://krisalahiranandanitownships.com/explore/luxury-penthouses-in-pune" id="seoCanonical" rel="canonical"/>
+<link href="https://krisalahiranandanitownships.com/explore/" id="seoCanonical" rel="canonical"/>
 <link href="/rss.xml" rel="alternate" title="Krisala Hiranandani Dispatches" type="application/rss+xml"/>
 <link href="/google-products.xml" rel="alternate" title="Google Merchant Product Feed" type="application/rss+xml"/>
 <link href="/opensearch.xml" rel="search" title="Krisala Hiranandani" type="application/opensearchdescription+xml"/>
@@ -142,97 +142,24 @@
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" name="twitter:image"/>
 <!-- Dynamic Programmatic Schema Injection Hook -->
 <script id="seoSchemaJson" type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://krisalahiranandanitownships.com/explore/luxury-penthouses-in-pune#webpage",
-      "url": "https://krisalahiranandanitownships.com/explore/luxury-penthouses-in-pune",
-      "name": "Luxury Penthouses in Pune | Sector Icon \u20b92.10Cr*",
-      "description": "Ultra-luxury penthouses in Pune at Sector Icon, Krisala Hiranandani Township. 1,850-2,450 sq.ft. duplex sky mansions with 18ft double-height living & private terraces from \u20b92.10Cr*.",
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://krisalahiranandanitownships.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Explore",
-            "item": "https://krisalahiranandanitownships.com/explore/flats-in-hinjewadi"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Luxury Penthouses Pune",
-            "item": "https://krisalahiranandanitownships.com/explore/luxury-penthouses-in-pune"
-          }
-        ]
-      }
-    },
-    {
-      "@type": "Product",
-      "name": "Luxury Penthouses in Pune | Sector Icon \u20b92.10Cr*",
-      "description": "Ultra-luxury penthouses in Pune at Sector Icon, Krisala Hiranandani Township. 1,850-2,450 sq.ft. duplex sky mansions with 18ft double-height living & private terraces from \u20b92.10Cr*.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala x Hiranandani"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "184",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "24500000",
-        "offerCount": "120"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the starting price for penthouses in Sector Icon?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Prices start at \u20b92.10 Crore* all-inclusive for an 1,850 sq.ft. carpet duplex, with sky mansions extending to \u20b92.65 Crore*."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are private plunge pools included?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The 2,450 sq.ft. sky mansion penthouses feature private terrace plunge pool provisions."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
+ {
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "name": "Krisala Hiranandani Township Programmatic Portal",
+ "url": "https://krisalahiranandanitownships.com/explore/"
+ }
+ </script>
 <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
 <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-    </style>
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ </style>
 </head>
 <body>
 <!-- Navigation -->
@@ -277,15 +204,21 @@
 <img alt="Krisala Hiranandani Township Panorama" class="hero-img" fetchpriority="high" height="1080" onerror="this.src='/public/everlyn/hero/hero_main_hq.webp'" src="/public/imported/krisala-hiranandani-banner.webp" width="1920"/>
 </div>
 <div class="container hero-content" style="max-width: 950px; text-align: center;">
-<div id="seoBreadcrumbs" style="font-size: 0.85rem; color: var(--gold-light); margin-bottom: 12px; letter-spacing: 0.5px;"><a href="/" style="color:var(--text-muted); text-decoration:none;">Home</a> &bull; <a href="/explore/flats-in-hinjewadi" style="color:var(--text-muted); text-decoration:none;">Hinjewadi Directory</a> &bull; <span>Luxury Penthouses Pune</span></div>
-<span class="badge" id="seoBadge" style="margin-bottom: 16px;"><i class="ph ph-crown"></i> SECTOR ICON • PRESIDENTIAL SKY MANSIONS</span>
-<h1 id="seoH1" style="font-size: clamp(2rem, 4vw, 3.2rem); font-family: var(--font-heading); color: #fff; line-height: 1.2; margin-bottom: 15px;">Luxury Penthouses in Pune: Sector Icon Presidential Duplex Mansions</h1>
-<p id="seoSubtitle" style="font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 25px; line-height: 1.6;">Experience soaring 18-foot double-height ceilings, private open sky terraces, and 360-degree racecourse views from ₹2.10 Crore*.</p>
+<div id="seoBreadcrumbs" style="font-size: 0.85rem; color: var(--gold-light); margin-bottom: 12px; letter-spacing: 0.5px;">
+<a href="/" style="color: var(--text-muted); text-decoration: none;">Home</a> &gt; <a href="/knowledge-hub" style="color: var(--text-muted); text-decoration: none;">Explore</a> &gt; <span style="color: var(--gold-primary);">Guide</span>
+</div>
+<span class="badge" id="seoBadge" style="margin-bottom: 16px;"><i class="ph ph-crown"></i> Verified Developer Intelligence &amp; Verified Inventory</span>
+<h1 id="seoH1" style="font-size: clamp(2rem, 4vw, 3.2rem); font-family: var(--font-heading); color: #fff; line-height: 1.2; margin-bottom: 15px;">
+ Krisala Hiranandani Township Hinjewadi
+ </h1>
+<p id="seoSubtitle" style="font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 25px; line-height: 1.6;">
+ Comprehensive architectural specifications, real-time pricing analysis, commute distances, and investment projections.
+ </p>
 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary open-modal" data-magnet="programmatic_brochure"><i class="ph ph-file-pdf"></i> Download Official Brochure</button>
+<button class="btn-primary open-modal" data-magnet="programmatic_brochure"><i class="ph ph-file-pdf"></i> Download Brochure</button>
 <a class="btn-secondary" href="https://wa.me/917744009295" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px;" target="_blank">
 <svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg> WhatsApp Concierge
-                </a>
+ </a>
 </div>
 </div>
 </section>
@@ -297,21 +230,21 @@
 <div id="seoEditorialBody">
 <h2 style="font-family: var(--font-heading); color: var(--gold-light); margin-bottom: 15px;">Township Overview &amp; Architectural Excellence</h2>
 <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 15px;">
-                        The 105-acre Krisala × Hiranandani integrated neoclassical township in North Hinjewadi (Darumbre), Pune West, represents a master-planned collaboration between Krisala Developers and Hiranandani Communities. Engineered with precision Mivan aluminium formwork, TERI 50-year certified hydrology, and an 8-acre private equestrian racecourse, the township sets a new standard for luxury living.
-                    </p>
+ The 105-acre Krisala × Hiranandani integrated neoclassical township in North Hinjewadi (Darumbre), Pune West, represents a master-planned collaboration between Krisala Developers and Hiranandani Communities. Engineered with precision Mivan aluminium formwork, TERI 50-year certified hydrology, and an 8-acre private equestrian racecourse, the township sets a new standard for luxury living.
+ </p>
 </div>
 </article>
 <!-- Parametric Specifications & Pricing Table -->
 <section class="glass-panel" style="padding: 40px; margin-bottom: 40px; border: 1px solid rgba(212, 175, 55, 0.25);">
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 20px;">
 <i class="ph ph-table gold-icon"></i> Verified Specifications &amp; Pricing Parameters
-                </h3>
+ </h3>
 <div id="seoSpecTable" style="overflow-x: auto;">
 <table class="pricing-table" style="width: 100%; border-collapse: collapse; text-align: left;">
 <thead>
 <tr style="border-bottom: 1px solid var(--gold-primary); color: var(--gold-light);">
 <th style="padding: 12px 16px;">Parameter</th>
-<th style="padding: 12px 16px;">Official Specification</th>
+<th style="padding: 12px 16px;">Verified Specification</th>
 <th style="padding: 12px 16px;">Regulatory Verification</th>
 </tr>
 </thead>
@@ -334,18 +267,18 @@
 <section class="glass-panel" style="padding: 40px; margin-bottom: 40px; border: 1px solid rgba(212, 175, 55, 0.25);">
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 20px;">
 <i class="ph ph-navigation-arrow gold-icon"></i> Commute Corridor &amp; Proximity Analysis
-                </h3>
+ </h3>
 <div id="seoCommuteMatrix">
 <p style="color: var(--text-muted); line-height: 1.8;">
-                        Direct signal-free connectivity to Rajiv Gandhi Infotech Park Phases 1, 2, and 3 via expanded arterial connectors, with 5-minute access to the Mumbai-Pune Expressway toll corridor.
-                    </p>
+ Direct signal-free connectivity to Rajiv Gandhi Infotech Park Phases 1, 2, and 3 via expanded arterial connectors, with 5-minute access to the Mumbai-Pune Expressway toll corridor.
+ </p>
 </div>
 </section>
 <!-- Parametric Hyperlocal FAQ Accordion -->
 <section class="glass-panel" style="padding: 40px; margin-bottom: 40px; border: 1px solid rgba(212, 175, 55, 0.25);">
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 25px;">
 <i class="ph ph-question gold-icon"></i> Frequently Asked Questions
-                </h3>
+ </h3>
 <div class="faq-container" id="seoFaqAccordion">
 <!-- Dynamic FAQs Injected at Edge -->
 </div>
@@ -354,11 +287,11 @@
 <section class="glass-panel text-center" style="padding: 45px 30px; border: 2px solid var(--gold-primary); background: rgba(9, 10, 15, 0.95);">
 <span class="badge" style="margin-bottom: 10px;"><i class="ph ph-shield-check"></i> Direct Sales Desk &amp; Priority Allotment</span>
 <h2 style="font-family: var(--font-heading); color: #fff; font-size: 2rem; margin-bottom: 10px;">
-                    Enquire Directly for Krisala Hiranandani Township
-                </h2>
+ Enquire Directly for Krisala Hiranandani Township
+ </h2>
 <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 25px;">
-                    Receive complete all-inclusive cost sheets, floor plan blueprints, and VIP site visit arrangements via WhatsApp.
-                </p>
+ Receive complete all-inclusive cost sheets, floor plan blueprints, and VIP site visit arrangements via WhatsApp.
+ </p>
 <form action="https://formsubmit.co/propsmartrealty@gmail.com" class="enquiry-form" id="leadForm" method="POST" style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;" tooldescription="Submit user enquiry to receive Krisala Hiranandani Township brochures, price lists, and priority pre-launch allocations" toolname="register_lead_enquiry">
 <input name="_subject" type="hidden" value="New Programmatic Portal Lead"/>
 <input name="_captcha" type="hidden" value="false"/>
@@ -372,10 +305,10 @@
 <input aria-label="Email Address" name="email" placeholder="Email Address *" required="" style="padding: 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 4px;" toolparamdescription="Email address for digital brochure dispatch" type="email"/>
 <button class="btn-primary" style="padding: 16px; font-weight: 700; font-size: 1rem; width: 100%;" type="submit">
 <i class="ph ph-paper-plane-tilt"></i> Get Complete Cost Sheet &amp; Floor Plans
-                    </button>
+ </button>
 <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">
 <i class="ph ph-lock"></i> Zero Spam Guarantee. All inquiries routed securely to propsmartrealty@gmail.com.
-                    </p>
+ </p>
 </form>
 </section>
 </div>
@@ -387,8 +320,8 @@
 <div class="footer-brand">
 <img alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" height="38" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="height: 40px; width: auto; margin-bottom: 20px; display: block;" width="280"/>
 <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
-                    </p>
+ A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+ </p>
 <div style="margin-top: 15px;">
 <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
 <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
@@ -493,10 +426,10 @@
 </div>
 </div>
 </div>
-<!-- Official MahaRERA Verified Regulatory Cluster -->
+<!-- MahaRERA Verified Regulatory Cluster -->
 <div class="maharera-verified-footer-cluster" style="margin: 32px 0 20px; padding: 18px 24px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(197, 160, 89, 0.3); border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
 <div style="display: flex; align-items: center; gap: 16px;">
-<img alt="Official MahaRERA Registered Project" decoding="async" height="40" loading="lazy" src="/public/maharera_logo.svg" style="height: 38px; width: auto;" width="160"/>
+<img alt="MahaRERA Registered Project" decoding="async" height="40" loading="lazy" src="/public/maharera_logo.svg" style="height: 38px; width: auto;" width="160"/>
 <div>
 <div style="font-size: 0.9rem; font-weight: 700; color: #fff;">MahaRERA Project Registrations: PR1260002500600 &amp; PR1260002600818</div>
 <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">Sanctioned &amp; Verified by Govt of Maharashtra • Clear &amp; Marketable Land Titles</div>
@@ -504,7 +437,7 @@
 </div>
 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
 <button class="btn-outline open-maharera-modal" style="padding: 8px 18px; font-size: 0.82rem; border-color: rgba(197,160,89,0.5); color: var(--gold-bright); cursor: pointer; display: inline-flex; align-items: center; gap: 6px;" type="button">
-<i class="ph ph-qr-code"></i> View Official QR Codes &amp; Certificates
+<i class="ph ph-qr-code"></i> View MahaRERA QR Codes &amp; Certificates
 </button>
 <a class="btn-outline" href="https://maharera.maharashtra.gov.in" rel="noopener noreferrer" style="padding: 8px 16px; font-size: 0.82rem; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;" target="_blank">
 <i class="ph ph-arrow-square-out"></i> MahaRERA Portal
@@ -513,10 +446,10 @@
 </div>
 <div class="footer-bottom" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
 <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.5; margin-bottom: 10px;">
-                    Disclaimer: This is an authoritative real estate advisory portal for Krisala Hiranandani Township. MahaRERA Registration: PR1260002502438 | PR1260002600818. Channel Partner RERA: A52100024102.
-                </p>
+ Disclaimer: This is an authoritative real estate advisory portal for Krisala Hiranandani Township. MahaRERA Registration: PR1260002502438 | PR1260002600818. Channel Partner RERA: A52100024102.
+ </p>
 <p style="color: var(--text-muted); font-size: 0.85rem;">
-                    © 2026 Krisala Hiranandani Township. All rights reserved. | <a href="/privacy-policy" style="color: var(--gold-primary); text-decoration: none;">Privacy Policy</a> | <a href="/masterplan" style="color: var(--gold-primary); text-decoration: none;">Master Plan</a> | <a href="/knowledge-hub" style="color: var(--gold-primary); text-decoration: none;">Knowledge Hub</a>
+ © 2026 Krisala Hiranandani Township. All rights reserved. | <a href="/privacy-policy" style="color: var(--gold-primary); text-decoration: none;">Privacy Policy</a> | <a href="/masterplan" style="color: var(--gold-primary); text-decoration: none;">Master Plan</a> | <a href="/knowledge-hub" style="color: var(--gold-primary); text-decoration: none;">Knowledge Hub</a>
 </p>
 </div>
 </div>
@@ -533,91 +466,91 @@
 <!-- Core Scripts -->
 <script defer="" src="/app.min.js?v=20261026_v6"></script>
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const field = document.getElementById('programmaticSourceField');
-            if (field) field.value = window.location.href;
-            const waFloat = document.getElementById('programmaticWhatsappFloat');
-            if (waFloat) {
-                const title = document.title || 'Krisala Hiranandani';
-                waFloat.href = `https://wa.me/917744009295?text=${encodeURIComponent('Hi, I am viewing ' + title + ' (' + window.location.href + '). Please send more details.')}`;
-            }
-        });
-    </script>
+ document.addEventListener('DOMContentLoaded', () => {
+ const field = document.getElementById('programmaticSourceField');
+ if (field) field.value = window.location.href;
+ const waFloat = document.getElementById('programmaticWhatsappFloat');
+ if (waFloat) {
+ const title = document.title || 'Krisala Hiranandani';
+ waFloat.href = `https://wa.me/917744009295?text=${encodeURIComponent('Hi, I am viewing ' + title + ' (' + window.location.href + '). Please send more details.')}`;
+ }
+ });
+ </script>
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Krisala Hiranandani",
-          "item": "https://krisalahiranandanitownships.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Krisala Hiranandani Township Hinjewadi | Guide",
-          "item": "https://krisalahiranandanitownships.com/programmatic-template"
-        }
-      ]
-    },
-    {
-      "@type": "Product",
-      "name": "Krisala Hiranandani Township Hinjewadi | Guide",
-      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala × Hiranandani"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "428",
-        "reviewCount": "382"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "26500000",
-        "offerCount": "12",
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2027-12-31"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the price of flats at Krisala Hiranandani Township Pune?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Residences at Krisala Hiranandani Township Pune start at ₹79 Lakh* for 2 BHK luxury apartments in Sector Arcadia, ₹1.25 Crore* for 3 BHK residences, ₹2.10 Crore* for Sector Icon sky duplexes, and ₹1.80 Crore* for Della villa plots."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is Krisala Hiranandani Township Pune located?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The township is located on the PMRDA 128m Ring Road in North Hinjewadi (Darumbre / Marunji Boulevard), Pune, Maharashtra 410506, just 4 minutes from Pune Metro Line 3 and 5 minutes from the Mumbai-Pune Expressway."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the MahaRERA numbers for Krisala Hiranandani Township?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Krisala Hiranandani Township is registered with MahaRERA under numbers: PR1260002500600 (Sector Arcadia), PR1260002600818 (The Colosseum Phase 4), and PR1260002502438 (The Della Collection)."
-          }
-        }
-      ]
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+ {
+ "@type": "ListItem",
+ "position": 1,
+ "name": "Krisala Hiranandani",
+ "item": "https://krisalahiranandanitownships.com/"
+ },
+ {
+ "@type": "ListItem",
+ "position": 2,
+ "name": "Krisala Hiranandani Township Hinjewadi | Guide",
+ "item": "https://krisalahiranandanitownships.com/programmatic-template"
+ }
+ ]
+ },
+ {
+ "@type": "Product",
+ "name": "Krisala Hiranandani Township Hinjewadi | Guide",
+ "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+ "brand": {
+ "@type": "Brand",
+ "name": "Krisala × Hiranandani"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "bestRating": "5",
+ "worstRating": "1",
+ "ratingCount": "428",
+ "reviewCount": "382"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "26500000",
+ "offerCount": "12",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2027-12-31"
+ }
+ },
+ {
+ "@type": "FAQPage",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "What is the price of flats at Krisala Hiranandani Township Pune?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Residences at Krisala Hiranandani Township Pune start at ₹79 Lakh* for 2 BHK luxury apartments in Sector Arcadia, ₹1.25 Crore* for 3 BHK residences, ₹2.10 Crore* for Sector Icon sky duplexes, and ₹1.80 Crore* for Della villa plots."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Where is Krisala Hiranandani Township Pune located?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The township is located on the PMRDA 128m Ring Road in North Hinjewadi (Darumbre / Marunji Boulevard), Pune, Maharashtra 410506, just 4 minutes from Pune Metro Line 3 and 5 minutes from the Mumbai-Pune Expressway."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What are the MahaRERA numbers for Krisala Hiranandani Township?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Krisala Hiranandani Township is registered with MahaRERA under numbers: PR1260002500600 (Sector Arcadia), PR1260002600818 (The Colosseum Phase 4), and PR1260002502438 (The Della Collection)."
+ }
+ }
+ ]
+ }
+ ]
 }</script></body>
 </html>

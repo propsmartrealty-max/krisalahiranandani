@@ -5,82 +5,82 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: swap;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; z-index: 0; }
+ .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -92,10 +92,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <link href="https://krisalahiranandanitownships.com/pricing" rel="canonical"/>
@@ -152,523 +152,523 @@
 <meta content="Krisala Hiranandani Township Pune" property="og:site_name"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="@KrisalaHiranandani" name="twitter:site"/>
-<meta content="Krisala Hiranandani Pricing 2026™ (from ₹79L*)" name="twitter:title"/>
+<meta content="Krisala Hiranandani Pricing 2026 (from ₹79L*)" name="twitter:title"/>
 <meta content="2 BHK from ₹79L*, 3 BHK from ₹1.18Cr*, 4 BHK Duplex from ₹2.10Cr*. MahaRERA CLP schedule, bank approvals, EMI calculator &amp; developer pricing — Hinjewadi Pune." name="twitter:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" name="twitter:image"/>
 <!-- JSON-LD Schema Graph -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Product",
-          "@id": "https://krisalahiranandanitownships.com/pricing#product",
-          "name": "Krisala Hiranandani Township Residences",
-          "description": "Premium residential apartments at Krisala × Hiranandani Township, North Hinjewadi, Pune. Available in 2 BHK, 3 BHK, 4 BHK, and Presidential Duplex configurations across Sector Arcadia and Sector Icon. MahaRERA registered project with transparent construction-linked payment plans.",
-          "url": "https://krisalahiranandanitownships.com/pricing",
-          "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp",
-          "sku": "KXH-ALL-PRICING-2026",
-          "mpn": "PR1260002502438-COST-SHEET",
-          "brand": {
-            "@type": "Brand",
-            "name": "Krisala × Hiranandani Township"
-          },
-          "offers": {
-            "@type": "AggregateOffer",
-            "lowPrice": 7900000,
-            "highPrice": 45000000,
-            "priceCurrency": "INR",
-            "offerCount": "9",
-            "priceValidUntil": "2027-12-31",
-            "itemCondition": "https://schema.org/NewCondition",
-            "availability": "https://schema.org/InStock",
-            "validFrom": "2026-01-01",
-            "seller": {
-              "@type": "RealEstateAgent",
-              "name": "PropSmart Realty",
-              "telephone": "+91-7744009295",
-              "email": "propsmartrealty@gmail.com"
-            },
-            "hasMerchantReturnPolicy": {
-              "@type": "MerchantReturnPolicy",
-              "applicableCountry": "IN",
-              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-              "merchantReturnDays": 15,
-              "returnMethod": "https://schema.org/ReturnByMail",
-              "returnFees": "https://schema.org/FreeReturn"
-            },
-            "shippingDetails": {
-              "@type": "OfferShippingDetails",
-              "shippingRate": {
-                "@type": "MonetaryAmount",
-                "value": "0",
-                "currency": "INR"
-              },
-              "shippingDestination": {
-                "@type": "DefinedRegion",
-                "addressCountry": "IN"
-              },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": {
-                  "@type": "QuantitativeValue",
-                  "minValue": 0,
-                  "maxValue": 1,
-                  "unitCode": "DAY"
-                },
-                "transitTime": {
-                  "@type": "QuantitativeValue",
-                  "minValue": 0,
-                  "maxValue": 1,
-                  "unitCode": "DAY"
-                }
-              }
-            }
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "194",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-          "review": [
-            {
-              "@type": "Review",
-              "author": { "@type": "Person", "name": "Rajesh Nair" },
-              "datePublished": "2026-02-28",
-              "reviewBody": "The transparent all-inclusive 2026 cost sheet with no hidden charges and direct developer CLP schedule made booking our 3 BHK in Sector Arcadia seamless. Best valuation in Hinjewadi.",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "5",
-                "bestRating": "5"
-              }
-            },
-            {
-              "@type": "Review",
-              "author": { "@type": "Person", "name": "Meera Joshi" },
-              "datePublished": "2026-03-12",
-              "reviewBody": "55x historical appreciation legacy of Hiranandani combined with Krisala's execution. Pre-approved loans from SBI and HDFC made down-payment effortless.",
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "5",
-                "bestRating": "5"
-              }
-            }
-          ]
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://krisalahiranandanitownships.com/pricing#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is the starting price of Krisala Hiranandani Township in 2026?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The starting price for Krisala × Hiranandani Township residences in 2026 is ₹79 Lakhs for a 2 BHK Luxury apartment (740–820 sq.ft. carpet area) in Sector Arcadia. Prices are indicative and subject to MahaRERA registered inventory. Contact our sales concierge on +91 7744009295 for the current confirmed price sheet."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What payment plan options are available for Krisala Hiranandani Township?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Krisala × Hiranandani Township offers a Construction-Linked Payment (CLP) plan: 10% at Booking, 10% at Excavation, 7.5% at Plinth, 5% each at 8 Slab stages (totalling 40%), 7.5% at Brickwork & Plaster completion, and 15% at Handover/Possession. The CLP plan is MahaRERA compliant and ensures payment is directly linked to project construction milestones."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Which banks have approved Krisala Hiranandani Township for home loans?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Krisala × Hiranandani Township has received home loan approvals from leading Indian banks including SBI, HDFC Bank, ICICI Bank, Axis Bank, and Kotak Mahindra Bank. Approved Loan-to-Value (LTV) ratios range from 80% to 85% of the property value, subject to the buyer's credit profile and eligibility. NRI buyers can also avail NRE/NRO account-linked financing under FEMA guidelines."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Are early-booking privileges or launch incentives available for Krisala Hiranandani?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, Krisala × Hiranandani Township offers developer-backed introductory pricing advantages, priority floor/view inventory selection, and flexible milestone-based payment schedules for early bookings. Speak directly with our sales desk on +91 7744009295 for bespoke payment structuring."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can NRI buyers avail home loan financing for Krisala Hiranandani Township?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, NRI buyers can seamlessly secure up to 80–85% home loan financing through our partner banks including SBI, HDFC, ICICI, and Axis Bank using NRE/NRO accounts under FEMA and RBI guidelines. Our dedicated NRI concierge assists with paperless documentation and Power of Attorney facilitation."
-              }
-            }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://krisalahiranandanitownships.com/pricing#breadcrumb",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://krisalahiranandanitownships.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Pricing & Payment Plans",
-              "item": "https://krisalahiranandanitownships.com/pricing"
-            }
-          ]
-        }
-      ]
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Product",
+ "@id": "https://krisalahiranandanitownships.com/pricing#product",
+ "name": "Krisala Hiranandani Township Residences",
+ "description": "Premium residential apartments at Krisala × Hiranandani Township, North Hinjewadi, Pune. Available in 2 BHK, 3 BHK, 4 BHK, and Presidential Duplex configurations across Sector Arcadia and Sector Icon. MahaRERA registered project with transparent construction-linked payment plans.",
+ "url": "https://krisalahiranandanitownships.com/pricing",
+ "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp",
+ "sku": "KXH-ALL-PRICING-2026",
+ "mpn": "PR1260002502438-COST-SHEET",
+ "brand": {
+ "@type": "Brand",
+ "name": "Krisala × Hiranandani Township"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "lowPrice": 7900000,
+ "highPrice": 45000000,
+ "priceCurrency": "INR",
+ "offerCount": "9",
+ "priceValidUntil": "2027-12-31",
+ "itemCondition": "https://schema.org/NewCondition",
+ "availability": "https://schema.org/InStock",
+ "validFrom": "2026-01-01",
+ "seller": {
+ "@type": "RealEstateAgent",
+ "name": "PropSmart Realty",
+ "telephone": "+91-7744009295",
+ "email": "propsmartrealty@gmail.com"
+ },
+ "hasMerchantReturnPolicy": {
+ "@type": "MerchantReturnPolicy",
+ "applicableCountry": "IN",
+ "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+ "merchantReturnDays": 15,
+ "returnMethod": "https://schema.org/ReturnByMail",
+ "returnFees": "https://schema.org/FreeReturn"
+ },
+ "shippingDetails": {
+ "@type": "OfferShippingDetails",
+ "shippingRate": {
+ "@type": "MonetaryAmount",
+ "value": "0",
+ "currency": "INR"
+ },
+ "shippingDestination": {
+ "@type": "DefinedRegion",
+ "addressCountry": "IN"
+ },
+ "deliveryTime": {
+ "@type": "ShippingDeliveryTime",
+ "handlingTime": {
+ "@type": "QuantitativeValue",
+ "minValue": 0,
+ "maxValue": 1,
+ "unitCode": "DAY"
+ },
+ "transitTime": {
+ "@type": "QuantitativeValue",
+ "minValue": 0,
+ "maxValue": 1,
+ "unitCode": "DAY"
+ }
+ }
+ }
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "5.0",
+ "reviewCount": "194",
+ "bestRating": "5",
+ "worstRating": "1"
+ },
+ "review": [
+ {
+ "@type": "Review",
+ "author": { "@type": "Person", "name": "Rajesh Nair" },
+ "datePublished": "2026-02-28",
+ "reviewBody": "The transparent all-inclusive 2026 cost sheet with no hidden charges and direct developer CLP schedule made booking our 3 BHK in Sector Arcadia seamless. Best valuation in Hinjewadi.",
+ "reviewRating": {
+ "@type": "Rating",
+ "ratingValue": "5",
+ "bestRating": "5"
+ }
+ },
+ {
+ "@type": "Review",
+ "author": { "@type": "Person", "name": "Meera Joshi" },
+ "datePublished": "2026-03-12",
+ "reviewBody": "55x historical appreciation legacy of Hiranandani combined with Krisala's execution. Pre-approved loans from SBI and HDFC made down-payment effortless.",
+ "reviewRating": {
+ "@type": "Rating",
+ "ratingValue": "5",
+ "bestRating": "5"
+ }
+ }
+ ]
+ },
+ {
+ "@type": "FAQPage",
+ "@id": "https://krisalahiranandanitownships.com/pricing#faq",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "What is the starting price of Krisala Hiranandani Township in 2026?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The starting price for Krisala × Hiranandani Township residences in 2026 is ₹79 Lakhs for a 2 BHK Luxury apartment (740–820 sq.ft. carpet area) in Sector Arcadia. Prices are indicative and subject to MahaRERA registered inventory. Contact our sales concierge on +91 7744009295 for the current confirmed price sheet."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What payment plan options are available for Krisala Hiranandani Township?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Krisala × Hiranandani Township offers a Construction-Linked Payment (CLP) plan: 10% at Booking, 10% at Excavation, 7.5% at Plinth, 5% each at 8 Slab stages (totalling 40%), 7.5% at Brickwork & Plaster completion, and 15% at Handover/Possession. The CLP plan is MahaRERA compliant and ensures payment is directly linked to project construction milestones."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Which banks have approved Krisala Hiranandani Township for home loans?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Krisala × Hiranandani Township has received home loan approvals from leading Indian banks including SBI, HDFC Bank, ICICI Bank, Axis Bank, and Kotak Mahindra Bank. Approved Loan-to-Value (LTV) ratios range from 80% to 85% of the property value, subject to the buyer's credit profile and eligibility. NRI buyers can also avail NRE/NRO account-linked financing under FEMA guidelines."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Are early-booking privileges or launch incentives available for Krisala Hiranandani?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes, Krisala × Hiranandani Township offers developer-backed introductory pricing advantages, priority floor/view inventory selection, and flexible milestone-based payment schedules for early bookings. Speak directly with our sales desk on +91 7744009295 for bespoke payment structuring."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Can NRI buyers avail home loan financing for Krisala Hiranandani Township?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes, NRI buyers can seamlessly secure up to 80–85% home loan financing through our partner banks including SBI, HDFC, ICICI, and Axis Bank using NRE/NRO accounts under FEMA and RBI guidelines. Our dedicated NRI concierge assists with paperless documentation and Power of Attorney facilitation."
+ }
+ }
+ ]
+ },
+ {
+ "@type": "BreadcrumbList",
+ "@id": "https://krisalahiranandanitownships.com/pricing#breadcrumb",
+ "itemListElement": [
+ {
+ "@type": "ListItem",
+ "position": 1,
+ "name": "Home",
+ "item": "https://krisalahiranandanitownships.com/"
+ },
+ {
+ "@type": "ListItem",
+ "position": 2,
+ "name": "Pricing & Payment Plans",
+ "item": "https://krisalahiranandanitownships.com/pricing"
+ }
+ ]
+ }
+ ]
+ }
+ </script>
 <!-- Pricing Page Specific Styles -->
 <style>
-        /* ── Price Cards ─────────────────────────────── */
-        .price-card {
-            background: linear-gradient(135deg, rgba(197, 160, 89, 0.07) 0%, rgba(8, 8, 10, 0.6) 100%);
-            border: 1px solid rgba(197, 160, 89, 0.25);
-            border-radius: var(--border-radius, 12px);
-            padding: 28px 24px;
-            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold-primary, #C5A059), var(--gold-light, #EDD97D), var(--gold-primary, #C5A059));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .price-card:hover { border-color: rgba(197, 160, 89, 0.6); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(197,160,89,0.12); }
-        .price-card:hover::before { opacity: 1; }
-        .price-card .pc-icon { font-size: 2rem; color: var(--gold-primary, #C5A059); margin-bottom: 12px; display: block; }
-        .price-card .pc-label { font-size: 0.78rem; color: var(--text-muted, #888); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
-        .price-card .pc-title { font-family: var(--font-heading, 'Cinzel'), serif; font-size: 1.05rem; color: #fff; margin-bottom: 10px; }
-        .price-card .pc-value { font-size: 1.55rem; font-weight: 700; color: var(--gold-light, #EDD97D); margin-bottom: 8px; }
-        .price-card .pc-desc { font-size: 0.85rem; color: var(--text-muted, #888); line-height: 1.6; }
+ /* ── Price Cards ─────────────────────────────── */
+ .price-card {
+ background: linear-gradient(135deg, rgba(197, 160, 89, 0.07) 0%, rgba(8, 8, 10, 0.6) 100%);
+ border: 1px solid rgba(197, 160, 89, 0.25);
+ border-radius: var(--border-radius, 12px);
+ padding: 28px 24px;
+ transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+ position: relative;
+ overflow: hidden;
+ }
+ .price-card:before {
+ content: '';
+ position: absolute;
+ top: 0; left: 0; right: 0;
+ height: 3px;
+ background: linear-gradient(90deg, var(--gold-primary, #C5A059), var(--gold-light, #EDD97D), var(--gold-primary, #C5A059));
+ opacity: 0;
+ transition: opacity 0.3s ease;
+ }
+ .price-card:hover { border-color: rgba(197, 160, 89, 0.6); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(197,160,89,0.12); }
+ .price-card:hover:before { opacity: 1; }
+ .price-card .pc-icon { font-size: 2rem; color: var(--gold-primary, #C5A059); margin-bottom: 12px; display: block; }
+ .price-card .pc-label { font-size: 0.78rem; color: var(--text-muted, #888); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+ .price-card .pc-title { font-family: var(--font-heading, 'Cinzel'), serif; font-size: 1.05rem; color: #fff; margin-bottom: 10px; }
+ .price-card .pc-value { font-size: 1.55rem; font-weight: 700; color: var(--gold-light, #EDD97D); margin-bottom: 8px; }
+ .price-card .pc-desc { font-size: 0.85rem; color: var(--text-muted, #888); line-height: 1.6; }
 
-        /* ── Price Table ─────────────────────────────── */
-        .price-table-wrap {
-            overflow-x: auto;
-            border-radius: var(--border-radius, 12px);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-        }
-        .price-table-wrap::-webkit-scrollbar { height: 6px; }
-        .price-table-wrap::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
-        .price-table-wrap::-webkit-scrollbar-thumb { background: rgba(197,160,89,0.4); border-radius: 3px; }
-        .clp-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            min-width: 780px;
-        }
-        .clp-table thead tr {
-            background: linear-gradient(135deg, rgba(197,160,89,0.25), rgba(197,160,89,0.1));
-        }
-        .clp-table thead th {
-            padding: 16px 18px;
-            text-align: left;
-            font-family: var(--font-heading, 'Cinzel'), serif;
-            font-size: 0.78rem;
-            color: var(--gold-light, #EDD97D);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            white-space: nowrap;
-            border-bottom: 1px solid rgba(197,160,89,0.3);
-        }
-        .clp-table tbody tr {
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            transition: background 0.2s ease;
-        }
-        .clp-table tbody tr:last-child { border-bottom: none; }
-        .clp-table tbody tr:hover { background: rgba(197,160,89,0.06); }
-        .clp-table tbody td {
-            padding: 15px 18px;
-            color: var(--text-light, #ccc);
-            vertical-align: middle;
-        }
-        .clp-table tbody td:first-child { color: #fff; font-weight: 600; }
-        .price-badge-tag {
-            display: inline-block;
-            background: rgba(197,160,89,0.15);
-            color: var(--gold-light, #EDD97D);
-            font-size: 0.78rem;
-            padding: 3px 10px;
-            border-radius: 20px;
-            border: 1px solid rgba(197,160,89,0.3);
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .on-request-tag {
-            background: rgba(255,255,255,0.08);
-            color: #aaa;
-            font-size: 0.78rem;
-            padding: 3px 10px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-        .sector-tag {
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-weight: 500;
-        }
-        .sector-arcadia { background: rgba(100,180,255,0.12); color: #88c8ff; border: 1px solid rgba(100,180,255,0.2); }
-        .sector-icon { background: rgba(197,160,89,0.12); color: var(--gold-light, #EDD97D); border: 1px solid rgba(197,160,89,0.2); }
-        .sector-della { background: rgba(150,220,150,0.12); color: #a8e6a8; border: 1px solid rgba(150,220,150,0.2); }
+ /* ── Price Table ─────────────────────────────── */
+ .price-table-wrap {
+ overflow-x: auto;
+ border-radius: var(--border-radius, 12px);
+ border: 1px solid rgba(197, 160, 89, 0.2);
+ }
+ .price-table-wrap:-webkit-scrollbar { height: 6px; }
+ .price-table-wrap:-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+ .price-table-wrap:-webkit-scrollbar-thumb { background: rgba(197,160,89,0.4); border-radius: 3px; }
+ .clp-table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: 0.9rem;
+ min-width: 780px;
+ }
+ .clp-table thead tr {
+ background: linear-gradient(135deg, rgba(197,160,89,0.25), rgba(197,160,89,0.1));
+ }
+ .clp-table thead th {
+ padding: 16px 18px;
+ text-align: left;
+ font-family: var(--font-heading, 'Cinzel'), serif;
+ font-size: 0.78rem;
+ color: var(--gold-light, #EDD97D);
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ white-space: nowrap;
+ border-bottom: 1px solid rgba(197,160,89,0.3);
+ }
+ .clp-table tbody tr {
+ border-bottom: 1px solid rgba(255,255,255,0.06);
+ transition: background 0.2s ease;
+ }
+ .clp-table tbody tr:last-child { border-bottom: none; }
+ .clp-table tbody tr:hover { background: rgba(197,160,89,0.06); }
+ .clp-table tbody td {
+ padding: 15px 18px;
+ color: var(--text-light, #ccc);
+ vertical-align: middle;
+ }
+ .clp-table tbody td:first-child { color: #fff; font-weight: 600; }
+ .price-badge-tag {
+ display: inline-block;
+ background: rgba(197,160,89,0.15);
+ color: var(--gold-light, #EDD97D);
+ font-size: 0.78rem;
+ padding: 3px 10px;
+ border-radius: 20px;
+ border: 1px solid rgba(197,160,89,0.3);
+ font-weight: 600;
+ white-space: nowrap;
+ }
+ .on-request-tag {
+ background: rgba(255,255,255,0.08);
+ color: #aaa;
+ font-size: 0.78rem;
+ padding: 3px 10px;
+ border-radius: 20px;
+ border: 1px solid rgba(255,255,255,0.15);
+ }
+ .sector-tag {
+ font-size: 0.75rem;
+ padding: 2px 8px;
+ border-radius: 12px;
+ font-weight: 500;
+ }
+ .sector-arcadia { background: rgba(100,180,255,0.12); color: #88c8ff; border: 1px solid rgba(100,180,255,0.2); }
+ .sector-icon { background: rgba(197,160,89,0.12); color: var(--gold-light, #EDD97D); border: 1px solid rgba(197,160,89,0.2); }
+ .sector-della { background: rgba(150,220,150,0.12); color: #a8e6a8; border: 1px solid rgba(150,220,150,0.2); }
 
-        /* ── CLP Timeline ────────────────────────────── */
-        .clp-timeline {
-            position: relative;
-            padding: 0;
-        }
-        .clp-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
-            padding: 24px 0;
-            border-bottom: 1px solid rgba(197,160,89,0.1);
-            position: relative;
-        }
-        .clp-step:last-child { border-bottom: none; }
-        .clp-step-num {
-            flex-shrink: 0;
-            width: 52px; height: 52px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(197,160,89,0.25), rgba(197,160,89,0.05));
-            border: 2px solid rgba(197,160,89,0.4);
-            display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-heading, 'Cinzel'), serif;
-            font-size: 1rem;
-            color: var(--gold-light, #EDD97D);
-            font-weight: 700;
-        }
-        .clp-step-body { flex: 1; }
-        .clp-step-title { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
-        .clp-step-pct {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--gold-primary, #C5A059);
-            margin-bottom: 4px;
-        }
-        .clp-step-desc { font-size: 0.85rem; color: var(--text-muted, #888); line-height: 1.55; }
-        .clp-progress-bar {
-            height: 6px;
-            background: rgba(255,255,255,0.07);
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        .clp-progress-fill {
-            height: 100%;
-            border-radius: 3px;
-            background: linear-gradient(90deg, var(--gold-primary, #C5A059), var(--gold-light, #EDD97D));
-        }
+ /* ── CLP Timeline ────────────────────────────── */
+ .clp-timeline {
+ position: relative;
+ padding: 0;
+ }
+ .clp-step {
+ display: flex;
+ align-items: flex-start;
+ gap: 24px;
+ padding: 24px 0;
+ border-bottom: 1px solid rgba(197,160,89,0.1);
+ position: relative;
+ }
+ .clp-step:last-child { border-bottom: none; }
+ .clp-step-num {
+ flex-shrink: 0;
+ width: 52px; height: 52px;
+ border-radius: 50%;
+ background: linear-gradient(135deg, rgba(197,160,89,0.25), rgba(197,160,89,0.05));
+ border: 2px solid rgba(197,160,89,0.4);
+ display: flex; align-items: center; justify-content: center;
+ font-family: var(--font-heading, 'Cinzel'), serif;
+ font-size: 1rem;
+ color: var(--gold-light, #EDD97D);
+ font-weight: 700;
+ }
+ .clp-step-body { flex: 1; }
+ .clp-step-title { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+ .clp-step-pct {
+ font-size: 1.4rem;
+ font-weight: 700;
+ color: var(--gold-primary, #C5A059);
+ margin-bottom: 4px;
+ }
+ .clp-step-desc { font-size: 0.85rem; color: var(--text-muted, #888); line-height: 1.55; }
+ .clp-progress-bar {
+ height: 6px;
+ background: rgba(255,255,255,0.07);
+ border-radius: 3px;
+ margin-top: 10px;
+ overflow: hidden;
+ }
+ .clp-progress-fill {
+ height: 100%;
+ border-radius: 3px;
+ background: linear-gradient(90deg, var(--gold-primary, #C5A059), var(--gold-light, #EDD97D));
+ }
 
-        /* ── Bank Logos Row ──────────────────────────── */
-        .bank-logos-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: stretch;
-        }
-        .bank-card {
-            flex: 1;
-            min-width: 160px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 22px 18px;
-            text-align: center;
-            transition: border-color 0.3s ease, background 0.3s ease;
-        }
-        .bank-card:hover { border-color: rgba(197,160,89,0.4); background: rgba(197,160,89,0.05); }
-        .bank-card .bank-icon { font-size: 2rem; margin-bottom: 10px; }
-        .bank-card .bank-name { font-family: var(--font-heading, 'Cinzel'), serif; font-size: 0.85rem; color: #fff; margin-bottom: 6px; }
-        .bank-card .bank-ltv { font-size: 0.78rem; color: var(--gold-primary, #C5A059); font-weight: 600; }
-        .bank-card .bank-note { font-size: 0.75rem; color: var(--text-muted, #888); margin-top: 4px; }
+ /* ── Bank Logos Row ──────────────────────────── */
+ .bank-logos-row {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 16px;
+ align-items: stretch;
+ }
+ .bank-card {
+ flex: 1;
+ min-width: 160px;
+ background: rgba(255,255,255,0.04);
+ border: 1px solid rgba(255,255,255,0.1);
+ border-radius: 12px;
+ padding: 22px 18px;
+ text-align: center;
+ transition: border-color 0.3s ease, background 0.3s ease;
+ }
+ .bank-card:hover { border-color: rgba(197,160,89,0.4); background: rgba(197,160,89,0.05); }
+ .bank-card .bank-icon { font-size: 2rem; margin-bottom: 10px; }
+ .bank-card .bank-name { font-family: var(--font-heading, 'Cinzel'), serif; font-size: 0.85rem; color: #fff; margin-bottom: 6px; }
+ .bank-card .bank-ltv { font-size: 0.78rem; color: var(--gold-primary, #C5A059); font-weight: 600; }
+ .bank-card .bank-note { font-size: 0.75rem; color: var(--text-muted, #888); margin-top: 4px; }
 
-        /* ── EMI Calculator ──────────────────────────── */
-        .emi-calc-wrap {
-            background: linear-gradient(135deg, rgba(197,160,89,0.08), rgba(8,8,10,0.5));
-            border: 1px solid rgba(197,160,89,0.25);
-            border-radius: var(--border-radius, 12px);
-            padding: 40px;
-            max-width: 680px;
-            margin: 0 auto;
-        }
-        .emi-field { margin-bottom: 22px; }
-        .emi-field label {
-            display: block;
-            font-size: 0.82rem;
-            color: var(--text-muted, #888);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 8px;
-        }
-        .emi-field input[type="range"] {
-            width: 100%;
-            -webkit-appearance: none;
-            height: 6px;
-            background: rgba(197,160,89,0.2);
-            border-radius: 3px;
-            outline: none;
-            cursor: pointer;
-        }
-        .emi-field input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px; height: 20px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold-primary, #C5A059), var(--gold-light, #EDD97D));
-            cursor: pointer;
-            box-shadow: 0 0 8px rgba(197,160,89,0.5);
-        }
-        .emi-field .range-val {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 6px;
-            font-size: 0.8rem;
-            color: var(--text-muted, #888);
-        }
-        .emi-field .range-val strong { color: var(--gold-light, #EDD97D); font-size: 0.95rem; }
-        .emi-result {
-            background: rgba(8,8,10,0.6);
-            border: 1px solid rgba(197,160,89,0.3);
-            border-radius: 10px;
-            padding: 24px;
-            text-align: center;
-            margin-top: 24px;
-        }
-        .emi-result .emi-label { font-size: 0.8rem; color: var(--text-muted, #888); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
-        .emi-result .emi-amount { font-family: var(--font-heading, 'Cinzel'), serif; font-size: 2.2rem; color: var(--gold-light, #EDD97D); font-weight: 700; margin-bottom: 4px; }
-        .emi-result .emi-sub { font-size: 0.82rem; color: var(--text-muted, #888); }
-        .emi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-        .emi-stat { background: rgba(197,160,89,0.06); border-radius: 8px; padding: 14px; text-align: center; }
-        .emi-stat .es-label { font-size: 0.72rem; color: var(--text-muted, #888); margin-bottom: 4px; text-transform: uppercase; }
-        .emi-stat .es-value { font-size: 0.95rem; color: #fff; font-weight: 600; }
+ /* ── EMI Calculator ──────────────────────────── */
+ .emi-calc-wrap {
+ background: linear-gradient(135deg, rgba(197,160,89,0.08), rgba(8,8,10,0.5));
+ border: 1px solid rgba(197,160,89,0.25);
+ border-radius: var(--border-radius, 12px);
+ padding: 40px;
+ max-width: 680px;
+ margin: 0 auto;
+ }
+ .emi-field { margin-bottom: 22px; }
+ .emi-field label {
+ display: block;
+ font-size: 0.82rem;
+ color: var(--text-muted, #888);
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ margin-bottom: 8px;
+ }
+ .emi-field input[type="range"] {
+ width: 100%;
+ -webkit-appearance: none;
+ height: 6px;
+ background: rgba(197,160,89,0.2);
+ border-radius: 3px;
+ outline: none;
+ cursor: pointer;
+ }
+ .emi-field input[type="range"]:-webkit-slider-thumb {
+ -webkit-appearance: none;
+ width: 20px; height: 20px;
+ border-radius: 50%;
+ background: linear-gradient(135deg, var(--gold-primary, #C5A059), var(--gold-light, #EDD97D));
+ cursor: pointer;
+ box-shadow: 0 0 8px rgba(197,160,89,0.5);
+ }
+ .emi-field .range-val {
+ display: flex;
+ justify-content: space-between;
+ margin-top: 6px;
+ font-size: 0.8rem;
+ color: var(--text-muted, #888);
+ }
+ .emi-field .range-val strong { color: var(--gold-light, #EDD97D); font-size: 0.95rem; }
+ .emi-result {
+ background: rgba(8,8,10,0.6);
+ border: 1px solid rgba(197,160,89,0.3);
+ border-radius: 10px;
+ padding: 24px;
+ text-align: center;
+ margin-top: 24px;
+ }
+ .emi-result .emi-label { font-size: 0.8rem; color: var(--text-muted, #888); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+ .emi-result .emi-amount { font-family: var(--font-heading, 'Cinzel'), serif; font-size: 2.2rem; color: var(--gold-light, #EDD97D); font-weight: 700; margin-bottom: 4px; }
+ .emi-result .emi-sub { font-size: 0.82rem; color: var(--text-muted, #888); }
+ .emi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+ .emi-stat { background: rgba(197,160,89,0.06); border-radius: 8px; padding: 14px; text-align: center; }
+ .emi-stat .es-label { font-size: 0.72rem; color: var(--text-muted, #888); margin-bottom: 4px; text-transform: uppercase; }
+ .emi-stat .es-value { font-size: 0.95rem; color: #fff; font-weight: 600; }
 
-        /* ── NRI Section ─────────────────────────────── */
-        .nri-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 24px; }
-        .nri-feat {
-            background: rgba(197,160,89,0.06);
-            border: 1px solid rgba(197,160,89,0.15);
-            border-radius: 10px;
-            padding: 18px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-        }
-        .nri-feat i { font-size: 1.4rem; color: var(--gold-primary, #C5A059); flex-shrink: 0; margin-top: 2px; }
-        .nri-feat .nf-title { font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
-        .nri-feat .nf-desc { font-size: 0.8rem; color: var(--text-muted, #888); line-height: 1.5; }
+ /* ── NRI Section ─────────────────────────────── */
+ .nri-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 24px; }
+ .nri-feat {
+ background: rgba(197,160,89,0.06);
+ border: 1px solid rgba(197,160,89,0.15);
+ border-radius: 10px;
+ padding: 18px;
+ display: flex;
+ align-items: flex-start;
+ gap: 14px;
+ }
+ .nri-feat i { font-size: 1.4rem; color: var(--gold-primary, #C5A059); flex-shrink: 0; margin-top: 2px; }
+ .nri-feat .nf-title { font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 4px; }
+ .nri-feat .nf-desc { font-size: 0.8rem; color: var(--text-muted, #888); line-height: 1.5; }
 
-        /* ── Alert Banner ────────────────────────────── */
-        .price-alert {
-            background: rgba(197,160,89,0.07);
-            border: 1px solid rgba(197,160,89,0.35);
-            border-left: 4px solid var(--gold-primary, #C5A059);
-            border-radius: 10px;
-            padding: 18px 24px;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-        .price-alert i { font-size: 1.4rem; color: var(--gold-primary, #C5A059); flex-shrink: 0; margin-top: 1px; }
-        .price-alert p { font-size: 0.9rem; color: var(--text-light, #ccc); line-height: 1.6; margin: 0; }
-        .price-alert strong { color: var(--gold-light, #EDD97D); }
+ /* ── Alert Banner ────────────────────────────── */
+ .price-alert {
+ background: rgba(197,160,89,0.07);
+ border: 1px solid rgba(197,160,89,0.35);
+ border-left: 4px solid var(--gold-primary, #C5A059);
+ border-radius: 10px;
+ padding: 18px 24px;
+ display: flex;
+ align-items: flex-start;
+ gap: 16px;
+ margin-bottom: 40px;
+ }
+ .price-alert i { font-size: 1.4rem; color: var(--gold-primary, #C5A059); flex-shrink: 0; margin-top: 1px; }
+ .price-alert p { font-size: 0.9rem; color: var(--text-light, #ccc); line-height: 1.6; margin: 0; }
+ .price-alert strong { color: var(--gold-light, #EDD97D); }
 
-        /* ── FAQ Accordion ───────────────────────────── */
-        .faq-item {
-            border: 1px solid rgba(197,160,89,0.15);
-            border-radius: 10px;
-            margin-bottom: 12px;
-            overflow: hidden;
-            transition: border-color 0.3s ease;
-        }
-        .faq-item:hover { border-color: rgba(197,160,89,0.35); }
-        .faq-question {
-            width: 100%;
-            background: rgba(197,160,89,0.05);
-            border: none;
-            padding: 20px 24px;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-        }
-        .faq-question span {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #fff;
-            line-height: 1.4;
-        }
-        .faq-question i { color: var(--gold-primary, #C5A059); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s ease; }
-        .faq-item.open .faq-question i { transform: rotate(45deg); }
-        .faq-answer {
-            padding: 0 24px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.3s ease;
-        }
-        .faq-item.open .faq-answer { max-height: 300px; padding: 0 24px 20px; }
-        .faq-answer p { font-size: 0.88rem; color: var(--text-muted, #888); line-height: 1.7; margin: 0; }
+ /* ── FAQ Accordion ───────────────────────────── */
+ .faq-item {
+ border: 1px solid rgba(197,160,89,0.15);
+ border-radius: 10px;
+ margin-bottom: 12px;
+ overflow: hidden;
+ transition: border-color 0.3s ease;
+ }
+ .faq-item:hover { border-color: rgba(197,160,89,0.35); }
+ .faq-question {
+ width: 100%;
+ background: rgba(197,160,89,0.05);
+ border: none;
+ padding: 20px 24px;
+ text-align: left;
+ cursor: pointer;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ gap: 16px;
+ }
+ .faq-question span {
+ font-size: 0.95rem;
+ font-weight: 600;
+ color: #fff;
+ line-height: 1.4;
+ }
+ .faq-question i { color: var(--gold-primary, #C5A059); font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s ease; }
+ .faq-item.open .faq-question i { transform: rotate(45deg); }
+ .faq-answer {
+ padding: 0 24px;
+ max-height: 0;
+ overflow: hidden;
+ transition: max-height 0.4s ease, padding 0.3s ease;
+ }
+ .faq-item.open .faq-answer { max-height: 300px; padding: 0 24px 20px; }
+ .faq-answer p { font-size: 0.88rem; color: var(--text-muted, #888); line-height: 1.7; margin: 0; }
 
-        /* ── Hero Section ────────────────────────────── */
-        .pricing-hero {
-            min-height: 52vh;
-            background: linear-gradient(160deg, rgba(8,8,10,0.92) 40%, rgba(30,20,5,0.85) 100%),
-                        url('/public/everlyn/hero/hero_main_hq.webp') center center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            padding: 120px 0 70px;
-        }
+ /* ── Hero Section ────────────────────────────── */
+ .pricing-hero {
+ min-height: 52vh;
+ background: linear-gradient(160deg, rgba(8,8,10,0.92) 40%, rgba(30,20,5,0.85) 100%),
+ url('/public/everlyn/hero/hero_main_hq.webp') center center/cover no-repeat;
+ display: flex;
+ align-items: center;
+ padding: 120px 0 70px;
+ }
 
-        /* ── Section Divider ─────────────────────────── */
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(197,160,89,0.3), transparent);
-            margin: 0;
-        }
+ /* ── Section Divider ─────────────────────────── */
+ .section-divider {
+ height: 1px;
+ background: linear-gradient(90deg, transparent, rgba(197,160,89,0.3), transparent);
+ margin: 0;
+ }
 
-        @media (max-width: 768px) {
-            .emi-calc-wrap { padding: 24px 20px; }
-            .emi-grid { grid-template-columns: 1fr; }
-            .bank-logos-row { flex-direction: column; }
-            .bank-card { min-width: 100%; }
-        }
-    </style>
+ @media (max-width: 768px) {
+ .emi-calc-wrap { padding: 24px 20px; }
+ .emi-grid { grid-template-columns: 1fr; }
+ .bank-logos-row { flex-direction: column; }
+ .bank-card { min-width: 100%; }
+ }
+ </style>
 <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
 <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-    </style>
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ </style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <!-- ══════════════════════════════════════
-         NAVBAR
-    ══════════════════════════════════════ -->
+ NAVBAR
+ ══════════════════════════════════════ -->
 <nav aria-label="Main Navigation" class="navbar" role="navigation">
 <div class="container">
 <a aria-label="Krisala Hiranandani Township Home" class="footer-brand" href="/" style="text-decoration:none;">
 <picture>
 <source srcset="/public/krisala-hiranandani-logo.webp" type="image/webp"/>
-<img alt="Krisala Hiranandani Township Hinjewadi Official Logo" height="30" loading="eager" src="/public/krisala-hiranandani-logo.png" style="height:36px;width:auto;display:block;" width="220"/>
+<img alt="Krisala Hiranandani Township Hinjewadi Township Logo" height="30" loading="eager" src="/public/krisala-hiranandani-logo.png" style="height:36px;width:auto;display:block;" width="220"/>
 </picture>
 </a>
 <div class="nav-links" id="navLinks">
@@ -755,8 +755,8 @@
 </div>
 </nav>
 <!-- ══════════════════════════════════════
-         HERO
-    ══════════════════════════════════════ -->
+ HERO
+ ══════════════════════════════════════ -->
 <header class="pricing-hero" id="main-content" role="banner">
 <div class="container">
 <div style="max-width: 720px;">
@@ -769,24 +769,24 @@
 </nav>
 <span class="badge scroll-reveal">
 <i class="ph ph-currency-inr"></i>  2026 Price List &amp; Payment Plans
-                </span>
+ </span>
 <h1 class="scroll-reveal delay-1" style="font-family:var(--font-heading);font-size:clamp(1.9rem,4.5vw,3.1rem);color:#fff;margin:20px 0 16px;line-height:1.2;">
-                    Krisala Hiranandani Township Hinjewadi Price List 2026<br/>
+ Krisala Hiranandani Township Hinjewadi Price List 2026<br/>
 <span style="color:var(--gold-light);font-size:clamp(1.2rem,2.5vw,1.8rem);display:block;margin-top:6px;">2, 3, 4 BHK Flat Prices &amp; Signature Residences • Flexible CLP Plans</span>
 </h1>
 <p class="premium-text scroll-reveal delay-2" style="font-size:clamp(1rem,2vw,1.2rem);color:var(--text-muted);max-width:580px;line-height:1.7;margin-bottom:32px;">
-                    Complete 2026 Hiranandani Hinjewadi price breakdown and cost sheet guide for Krisala Hiranandani Township. Explore the flexible Krisala Hiranandani payment plan 20:80, MahaRERA verified pricing from ₹79 Lakhs*, and pre-approved bank loans.
-                </p>
+ Complete 2026 Hiranandani Hinjewadi price breakdown and cost sheet guide for Krisala Hiranandani Township. Explore the flexible Krisala Hiranandani payment plan 20:80, MahaRERA verified pricing from ₹79 Lakhs*, and pre-approved bank loans.
+ </p>
 <div class="scroll-reveal delay-3" style="display:flex;flex-wrap:wrap;gap:12px;">
 <button aria-haspopup="dialog" class="btn-primary open-modal">
 <i class="ph ph-file-pdf"></i>  Request Price Sheet
-                    </button>
+ </button>
 <a class="btn-secondary" href="#cost-calculator">
 <i class="ph ph-calculator"></i>  Cost Sheet Calculator
-                    </a>
+ </a>
 <a class="btn-outline" href="tel:+917744009295">
 <svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"></path></svg>  Call Concierge
-                    </a>
+ </a>
 </div>
 <!-- Quick Stats -->
 <div class="scroll-reveal delay-4" style="display:flex;flex-wrap:wrap;gap:24px;margin-top:40px;">
@@ -815,8 +815,8 @@
 </header>
 <div class="section-divider"></div>
 <!-- ══════════════════════════════════════
-         MASTER PRICE TABLE
-    ══════════════════════════════════════ -->
+ MASTER PRICE TABLE
+ ══════════════════════════════════════ -->
 <section aria-labelledby="price-table-heading" class="section section-dark">
 <div class="container">
 <!-- Alert Banner -->
@@ -824,7 +824,7 @@
 <i aria-hidden="true" class="ph ph-warning-circle"></i>
 <p>
 <strong>Disclaimer:</strong> All prices listed below are indicative and subject to MahaRERA registered inventory availability. Actual pricing may vary based on floor, view, and market conditions. Contact our sales concierge for <strong>current, confirmed pricing</strong> and unit-specific cost sheets.
-                </p>
+ </p>
 </div>
 <div class="section-title text-center">
 <span class="badge"><i class="ph ph-table"></i>  Complete Price Matrix</span>
@@ -921,25 +921,25 @@
 </table>
 </div>
 <p style="font-size:0.78rem;color:var(--text-muted);margin-top:14px;text-align:right;">
-                * Starting prices shown are indicative developer prices for introductory inventory. Flexible payment plans and bank approvals available. Subject to inventory availability.
-            </p>
+ * Starting prices shown are indicative developer prices for introductory inventory. Flexible payment plans and bank approvals available. Subject to inventory availability.
+ </p>
 </div>
 </section>
 <div class="section-divider"></div>
 <!-- ══════════════════════════════════════
-         CLP PAYMENT SCHEDULE
-    ══════════════════════════════════════ -->
+ CLP PAYMENT SCHEDULE
+ ══════════════════════════════════════ -->
 <section aria-labelledby="clp-heading" class="section section-dark">
 <div class="container">
 <div class="grid-clp" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
 <div>
 <span class="badge scroll-reveal"><i class="ph ph-calendar-check"></i>  MahaRERA Compliant</span>
 <h2 class="scroll-reveal delay-1" id="clp-heading" style="font-family:var(--font-heading);color:#fff;font-size:clamp(1.5rem,3vw,2.2rem);margin:16px 0 12px;line-height:1.2;">
-                        Construction-Linked<br/><span style="color:var(--gold-light);">Payment Schedule</span>
+ Construction-Linked<br/><span style="color:var(--gold-light);">Payment Schedule</span>
 </h2>
 <p class="scroll-reveal delay-2" style="color:var(--text-muted);font-size:0.92rem;line-height:1.7;margin-bottom:24px;">
-                        The CLP plan ensures your payments are directly linked to construction milestones — protecting your investment and aligning builder accountability with financial commitment. MahaRERA mandated and fully transparent.
-                    </p>
+ The CLP plan ensures your payments are directly linked to construction milestones — protecting your investment and aligning builder accountability with financial commitment. MahaRERA mandated and fully transparent.
+ </p>
 <div class="glass-panel scroll-reveal delay-3" style="padding:20px 24px;">
 <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
 <i class="ph ph-shield-check" style="font-size:1.4rem;color:var(--gold-primary);"></i>
@@ -948,20 +948,20 @@
 <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
 <li style="display:flex;gap:10px;align-items:flex-start;font-size:0.84rem;color:var(--text-muted);">
 <i class="ph ph-check-circle" style="color:var(--gold-primary);flex-shrink:0;margin-top:2px;"></i>
-                                No bulk upfront payments — cash flow friendly
-                            </li>
+ No bulk upfront payments — cash flow friendly
+ </li>
 <li style="display:flex;gap:10px;align-items:flex-start;font-size:0.84rem;color:var(--text-muted);">
 <i class="ph ph-check-circle" style="color:var(--gold-primary);flex-shrink:0;margin-top:2px;"></i>
-                                Builder incentivised to complete milestones on time
-                            </li>
+ Builder incentivised to complete milestones on time
+ </li>
 <li style="display:flex;gap:10px;align-items:flex-start;font-size:0.84rem;color:var(--text-muted);">
 <i class="ph ph-check-circle" style="color:var(--gold-primary);flex-shrink:0;margin-top:2px;"></i>
-                                Home loan disbursals align with each stage
-                            </li>
+ Home loan disbursals align with each stage
+ </li>
 <li style="display:flex;gap:10px;align-items:flex-start;font-size:0.84rem;color:var(--text-muted);">
 <i class="ph ph-check-circle" style="color:var(--gold-primary);flex-shrink:0;margin-top:2px;"></i>
-                                MahaRERA verified &amp; audited at each milestone
-                            </li>
+ MahaRERA verified &amp; audited at each milestone
+ </li>
 </ul>
 </div>
 </div>
@@ -1032,12 +1032,12 @@
 </section>
 <div class="section-divider"></div>
 <!-- ══════════════════════════════════════
-         EMI CALCULATOR
-    ══════════════════════════════════════ -->
+ EMI CALCULATOR
+ ══════════════════════════════════════ -->
 <section aria-labelledby="emi-calc-heading" class="section" id="cost-calculator">
 <div class="container">
 <div class="section-title text-center">
-<span class="badge"><i class="ph ph-calculator"></i>  Official Statutory Cost &amp; Mortgage Suite</span>
+<span class="badge"><i class="ph ph-calculator"></i>  Statutory Cost &amp; Mortgage Suite</span>
 <h2 id="emi-calc-heading" style="margin-top:16px;">Maharashtra All-Inclusive Cost Sheet &amp; EMI Optimizer</h2>
 <div class="title-line"></div>
 <p class="subtitle">Accurate MahaRERA Ready-Reckoner statutory breakup (Stamp Duty, Metro Cess, Registration &amp; GST) with real-time pre-approved bank mortgage rates.</p>
@@ -1047,10 +1047,10 @@
 <div class="calc-tabs-header">
 <button class="calc-tab-pill active" id="tabCostSheetBtn" onclick="switchCalcTab('costSheet')" type="button">
 <i class="ph ph-receipt"></i>  All-Inclusive Cost Sheet Breakup
-                    </button>
+ </button>
 <button class="calc-tab-pill" id="tabMortgageBtn" onclick="switchCalcTab('mortgage')" type="button">
 <i class="ph ph-bank"></i>  Bank EMI &amp; Loan Comparison
-                    </button>
+ </button>
 </div>
 <!-- Multi-Currency Switcher -->
 <div class="currency-switcher-cluster" id="currencySwitcherCluster">
@@ -1069,8 +1069,8 @@
 <!-- Unit Presets -->
 <div class="unit-preset-selector">
 <label style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); display:block; margin-bottom:10px;">
-                        Select Township Residence Configuration:
-                    </label>
+ Select Township Residence Configuration:
+ </label>
 <div class="unit-chip-cluster" id="unitChipCluster">
 <button class="unit-chip-btn active" data-name="2 BHK Luxury — Sector Arcadia" data-price="7900000" type="button">
 <strong>2 BHK Luxury</strong>
@@ -1109,7 +1109,7 @@
 <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:12px 16px;">
 <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">
 <i class="ph ph-stamp" style="color:var(--gold-primary);"></i> Stamp Duty &amp; Metro Cess Regime
-                            </label>
+ </label>
 <select id="stampDutyRate" onchange="recalculateAll()" style="width:100%; background:rgba(8,8,10,0.8); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:8px 12px; border-radius:6px; font-size:0.88rem; outline:none;">
 <option selected="" value="0.07">7% Standard (6% Stamp Duty + 1% Pune Metro Cess)</option>
 <option value="0.06">6% Female Homebuyer Concession (1% Govt Rebate)</option>
@@ -1119,7 +1119,7 @@
 <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:12px 16px;">
 <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">
 <i class="ph ph-buildings" style="color:var(--gold-primary);"></i> Floor Rise Premium
-                            </label>
+ </label>
 <select id="floorRiseOption" onchange="recalculateAll()" style="width:100%; background:rgba(8,8,10,0.8); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:8px 12px; border-radius:6px; font-size:0.88rem; outline:none;">
 <option selected="" value="0">Ground to 5th Floor (₹0 Floor Rise)</option>
 <option value="75000">6th to 15th Mid-Rise Deck (+₹75,000)</option>
@@ -1129,7 +1129,7 @@
 <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,160,89,0.2); border-radius:8px; padding:12px 16px;">
 <label style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:6px;">
 <i class="ph ph-compass" style="color:var(--gold-primary);"></i> View &amp; Preferred Location (PLC)
-                            </label>
+ </label>
 <select id="plcOption" onchange="recalculateAll()" style="width:100%; background:rgba(8,8,10,0.8); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:8px 12px; border-radius:6px; font-size:0.88rem; outline:none;">
 <option selected="" value="0">Standard Premium Facing (0% PLC)</option>
 <option value="0.03">Racecourse &amp; Sahyadri View (+3% PLC)</option>
@@ -1235,8 +1235,8 @@
 <!-- Bank Presets -->
 <div style="margin:20px 0 10px;">
 <label style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); display:block; margin-bottom:8px;">
-                            Pre-Approved Township Lenders (Click to compare rates):
-                        </label>
+ Pre-Approved Township Lenders (Click to compare rates):
+ </label>
 <div class="bank-presets-container">
 <button class="bank-card-pill active" onclick="selectBankRate(8.40, this)" type="button">
 <strong>SBI Home Loan</strong>
@@ -1307,25 +1307,25 @@
 <!-- High-Conversion Action CTAs -->
 <div class="calc-action-buttons">
 <button class="btn-primary" onclick="generateOfficialCostSheetPDF()" style="padding:12px 22px; font-weight:600; background:linear-gradient(135deg, var(--gold-primary), #9e7d3b); color:#050608;" type="button">
-<i class="ph ph-file-pdf"></i>  Download Official MahaRERA Cost Sheet (PDF)
-                    </button>
+<i class="ph ph-file-pdf"></i>  Download MahaRERA Cost Sheet (PDF)
+ </button>
 <a class="btn-secondary" href="https://wa.me/917744009295" id="calcWhatsAppBtn" style="padding:12px 20px;" target="_blank">
 <i class="ph ph-whatsapp-logo"></i>  Share Breakdown on WhatsApp
-                    </a>
+ </a>
 <button class="btn-primary open-modal" id="calcLockOfferBtn" style="padding:12px 24px;" type="button">
 <i class="ph ph-ticket"></i>  Lock Pre-Launch Allotment
-                    </button>
+ </button>
 </div>
 <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;margin-top:20px; line-height:1.4;">
-                    * All calculations comply with Maharashtra Real Estate Regulatory Authority (MahaRERA) guidelines and Ready Reckoner rules for Pune / PCMC. Bank loan eligibility is subject to credit assessment and processing criteria.
-                </p>
+ * All calculations comply with Maharashtra Real Estate Regulatory Authority (MahaRERA) guidelines and Ready Reckoner rules for Pune / PCMC. Bank loan eligibility is subject to credit assessment and processing criteria.
+ </p>
 </div>
 </div>
 </section>
 <div class="section-divider"></div>
 <!-- ══════════════════════════════════════
-         BANK APPROVALS
-    ══════════════════════════════════════ -->
+ BANK APPROVALS
+ ══════════════════════════════════════ -->
 <section aria-labelledby="bank-approvals-heading" class="section section-dark">
 <div class="container">
 <div class="section-title text-center">
@@ -1371,34 +1371,34 @@
 <i class="ph ph-info" style="font-size:1.3rem;color:var(--gold-primary);"></i>
 </div>
 <p style="font-size:0.88rem;color:var(--text-muted);margin:0;flex:1;min-width:260px;">
-                    Loan-to-Value (LTV) ratios are subject to your credit score, income, and bank policy. Most banks offer 80–85% LTV for RERA-registered projects. Our finance concierge can assist with pre-approval within 48 hours.
-                    <a href="tel:+917744009295" style="color:var(--gold-primary);text-decoration:none;font-weight:600;"> Call +91 7744009295</a>
+ Loan-to-Value (LTV) ratios are subject to your credit score, income, and bank policy. Most banks offer 80–85% LTV for RERA-registered projects. Our finance concierge can assist with pre-approval within 48 hours.
+ <a href="tel:+917744009295" style="color:var(--gold-primary);text-decoration:none;font-weight:600;"> Call +91 7744009295</a>
 </p>
 </div>
 </div>
 </section>
 <div class="section-divider"></div>
 <!-- ══════════════════════════════════════
-         NRI SECTION
-    ══════════════════════════════════════ -->
+ NRI SECTION
+ ══════════════════════════════════════ -->
 <section aria-labelledby="nri-heading" class="section section-dark">
 <div class="container">
 <div class="grid-nri" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
 <div class="scroll-reveal">
 <span class="badge"><i class="ph ph-globe-hemisphere-west"></i>  FEMA Compliant</span>
 <h2 id="nri-heading" style="font-family:var(--font-heading);color:#fff;font-size:clamp(1.5rem,3vw,2.1rem);margin:16px 0 16px;line-height:1.25;">
-                        NRI Buyers — <br/><span style="color:var(--gold-light);">Seamless Home Purchase</span>
+ NRI Buyers — <br/><span style="color:var(--gold-light);">Seamless Home Purchase</span>
 </h2>
 <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.75;margin-bottom:28px;">
-                        Krisala × Hiranandani Township is fully compliant with FEMA (Foreign Exchange Management Act) regulations, enabling non-resident Indians (NRIs), Persons of Indian Origin (PIOs), and Overseas Citizens of India (OCIs) to purchase residential property in India. Our dedicated NRI desk handles end-to-end documentation.
-                    </p>
+ Krisala × Hiranandani Township is fully compliant with FEMA (Foreign Exchange Management Act) regulations, enabling non-resident Indians (NRIs), Persons of Indian Origin (PIOs), and Overseas Citizens of India (OCIs) to purchase residential property in India. Our dedicated NRI desk handles end-to-end documentation.
+ </p>
 <div style="display:flex;flex-wrap:wrap;gap:12px;">
 <a class="btn-primary" href="tel:+917744009295">
 <svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"></path></svg>  NRI Sales Desk
-                        </a>
+ </a>
 <a class="btn-outline" href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20an%20NRI%20interested%20in%20Krisala%20Hiranandani%20pricing%20details" rel="noopener noreferrer" target="_blank">
 <svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg>  WhatsApp Us
-                        </a>
+ </a>
 </div>
 </div>
 <div class="scroll-reveal delay-1">
@@ -1452,8 +1452,8 @@
 </section>
 <div class="section-divider"></div>
 <!-- ══════════════════════════════════════
-         FAQ SECTION
-    ══════════════════════════════════════ -->
+ FAQ SECTION
+ ══════════════════════════════════════ -->
 <section aria-labelledby="faq-heading" class="section">
 <div class="container">
 <div class="section-title text-center">
@@ -1513,25 +1513,25 @@
 </section>
 <div class="section-divider"></div>
 <!-- ══════════════════════════════════════
-         CTA BANNER
-    ══════════════════════════════════════ -->
+ CTA BANNER
+ ══════════════════════════════════════ -->
 <section aria-label="Call to Action — Request Price Sheet" class="section section-dark">
 <div class="container">
 <div class="cta-banner scroll-reveal" style="text-align:center;padding:64px 40px;">
-<span class="badge" style="margin-bottom:20px;"><i class="ph ph-file-pdf"></i>  Official 2026 Price Sheet</span>
+<span class="badge" style="margin-bottom:20px;"><i class="ph ph-file-pdf"></i>  2026 Price Sheet</span>
 <h2 style="font-family:var(--font-heading);color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px;line-height:1.2;">
-                    Get Current Price Sheet<br/><span style="color:var(--gold-light);">&amp; Floor Plans</span>
+ Get Current Price Sheet<br/><span style="color:var(--gold-light);">&amp; Floor Plans</span>
 </h2>
 <p style="color:var(--text-muted);font-size:1rem;max-width:520px;margin:0 auto 36px;line-height:1.7;">
-                    Receive the latest MahaRERA-verified cost sheet, unit-wise price breakup, floor plans, and exclusive pre-launch offers — sent directly to your inbox.
-                </p>
+ Receive the latest MahaRERA-verified cost sheet, unit-wise price breakup, floor plans, and exclusive pre-launch offers — sent directly to your inbox.
+ </p>
 <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center;">
 <button aria-haspopup="dialog" class="btn-primary open-modal" style="padding:16px 36px;font-size:1rem;">
 <i class="ph ph-file-arrow-down"></i>  Request Price Sheet
-                    </button>
+ </button>
 <a class="btn-outline" href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20the%20pricing%20details%20of%20Krisala%20Hiranandani%20Township" rel="noopener noreferrer" style="padding:16px 36px;font-size:1rem;" target="_blank">
 <svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg>  WhatsApp Concierge
-                    </a>
+ </a>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:36px;font-size:0.82rem;color:var(--text-muted);">
 <span><i class="ph ph-shield-check" style="color:var(--gold-primary);margin-right:6px;"></i>MahaRERA Registered: PR1260002502438</span>
@@ -1542,16 +1542,16 @@
 </div>
 </section>
 <!-- ══════════════════════════════════════
-         FOOTER
-    ══════════════════════════════════════ -->
+ FOOTER
+ ══════════════════════════════════════ -->
 <footer class="footer" role="contentinfo">
 <div class="container footer-content">
 <div class="footer-top">
 <div class="footer-brand">
 <img alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" height="38" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="height: 40px; width: auto; margin-bottom: 20px; display: block;" width="280"/>
 <p>
-                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
-                    </p>
+ A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+ </p>
 <div style="margin-top: 15px;">
 <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
 <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
@@ -1559,7 +1559,7 @@
 </div>
 <div class="footer-links">
 <h3>The Township</h3>
-<a href="/">Krisala Hiranandani Township (Official Home)</a>
+<a href="/">Krisala Hiranandani Township (Home)</a>
 <a href="/pune-real-estate" style="color: var(--gold-light); font-weight: 600;">Pune Real Estate 2026 Guide</a>
 <a href="/hinjewadi-real-estate" style="color: var(--gold-light); font-weight: 600;">Hinjewadi Real Estate Hub</a>
 <a href="/everlyn">Everlyn Residences</a>
@@ -1711,8 +1711,8 @@
 </div>
 </footer>
 <!-- ══════════════════════════════════════
-         ENQUIRY MODAL
-    ══════════════════════════════════════ -->
+ ENQUIRY MODAL
+ ══════════════════════════════════════ -->
 <div aria-labelledby="modal-title" aria-modal="true" class="modal-overlay" id="enquiryModal" role="dialog">
 <div class="modal-container glass-panel" role="document">
 <button aria-label="Close Modal" class="close-modal"><i class="ph ph-x"></i></button>
@@ -1770,16 +1770,16 @@
 </div>
 <button class="btn-primary w-100" style="padding:14px;" type="submit">
 <i class="ph ph-file-arrow-down"></i>  Send Me The Price Sheet
-                </button>
+ </button>
 <p style="font-size:0.74rem;color:var(--text-muted);text-align:center;margin-top:12px;">
 <i class="ph ph-lock" style="color:var(--gold-primary);"></i>  Your details are 100% confidential and shared only with our sales team.
-                </p>
+ </p>
 </form>
 </div>
 </div>
 <!-- ══════════════════════════════════════
-         FLOATING ACTIONS
-    ══════════════════════════════════════ -->
+ FLOATING ACTIONS
+ ══════════════════════════════════════ -->
 <div aria-label="Quick contact options" class="floating-actions">
 <a aria-label="Chat on WhatsApp" class="float-btn float-whatsapp" href="https://wa.me/917744009295?text=Hi%2C%20I%20am%20interested%20in%20the%20Krisala%20Hiranandani%20Township%20pricing%20details" rel="noopener noreferrer" target="_blank">
 <svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg>
@@ -1804,354 +1804,354 @@
 </button>
 </div>
 <!-- ══════════════════════════════════════
-         INLINE SCRIPTS
-    ══════════════════════════════════════ -->
+ INLINE SCRIPTS
+ ══════════════════════════════════════ -->
 <script>
-        /* ── Multi-Currency & All-Inclusive Statutory Cost Sheet Engine ── */
-        let currentUnitName = "2 BHK Luxury — Sector Arcadia";
-        let currentAgreementVal = 7900000;
-        let currentStampDutyRate = 0.07;
-        let currentPLC = 0;
-        let currentDownPaymentPercent = 20;
-        let currentInterestRate = 8.40;
-        let currentTenureYears = 20;
-        let currentCurrency = 'INR';
+ /* ── Multi-Currency & All-Inclusive Statutory Cost Sheet Engine ── */
+ let currentUnitName = "2 BHK Luxury — Sector Arcadia";
+ let currentAgreementVal = 7900000;
+ let currentStampDutyRate = 0.07;
+ let currentPLC = 0;
+ let currentDownPaymentPercent = 20;
+ let currentInterestRate = 8.40;
+ let currentTenureYears = 20;
+ let currentCurrency = 'INR';
 
-        const currencyConfigs = {
-            INR: { symbol: '₹', rate: 1, suffix: '', name: 'Indian Rupee' },
-            USD: { symbol: '$', rate: 87.50, suffix: ' USD', name: 'US Dollar' },
-            AED: { symbol: 'AED ', rate: 23.82, suffix: '', name: 'UAE Dirham' },
-            GBP: { symbol: '£', rate: 114.20, suffix: ' GBP', name: 'British Pound' },
-            EUR: { symbol: '€', rate: 95.60, suffix: ' EUR', name: 'Euro' }
-        };
+ const currencyConfigs = {
+ INR: { symbol: '₹', rate: 1, suffix: '', name: 'Indian Rupee' },
+ USD: { symbol: '$', rate: 87.50, suffix: ' USD', name: 'US Dollar' },
+ AED: { symbol: 'AED ', rate: 23.82, suffix: '', name: 'UAE Dirham' },
+ GBP: { symbol: '£', rate: 114.20, suffix: ' GBP', name: 'British Pound' },
+ EUR: { symbol: '€', rate: 95.60, suffix: ' EUR', name: 'Euro' }
+ };
 
-        function switchCurrency(currCode) {
-            if (!currencyConfigs[currCode]) return;
-            currentCurrency = currCode;
-            document.querySelectorAll('#currencyPillCluster .currency-pill').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.curr === currCode);
-            });
-            recalculateAll();
-        }
+ function switchCurrency(currCode) {
+ if (!currencyConfigs[currCode]) return;
+ currentCurrency = currCode;
+ document.querySelectorAll('#currencyPillCluster .currency-pill').forEach(btn => {
+ btn.classList.toggle('active', btn.dataset.curr === currCode);
+ });
+ recalculateAll();
+ }
 
-        function formatCurrency(inrVal) {
-            const cfg = currencyConfigs[currentCurrency] || currencyConfigs.INR;
-            if (currentCurrency === 'INR') {
-                return '₹' + Math.round(inrVal).toLocaleString('en-IN');
-            }
-            const converted = inrVal / cfg.rate;
-            return cfg.symbol + Math.round(converted).toLocaleString('en-US') + cfg.suffix;
-        }
+ function formatCurrency(inrVal) {
+ const cfg = currencyConfigs[currentCurrency] || currencyConfigs.INR;
+ if (currentCurrency === 'INR') {
+ return '₹' + Math.round(inrVal).toLocaleString('en-IN');
+ }
+ const converted = inrVal / cfg.rate;
+ return cfg.symbol + Math.round(converted).toLocaleString('en-US') + cfg.suffix;
+ }
 
-        function formatDualCurrency(inrVal) {
-            const inrStr = '₹' + Math.round(inrVal).toLocaleString('en-IN');
-            if (currentCurrency === 'INR') return inrStr;
-            const cfg = currencyConfigs[currentCurrency];
-            const converted = inrVal / cfg.rate;
-            const foreignStr = cfg.symbol + Math.round(converted).toLocaleString('en-US') + cfg.suffix;
-            return `${foreignStr} (${inrStr})`;
-        }
+ function formatDualCurrency(inrVal) {
+ const inrStr = '₹' + Math.round(inrVal).toLocaleString('en-IN');
+ if (currentCurrency === 'INR') return inrStr;
+ const cfg = currencyConfigs[currentCurrency];
+ const converted = inrVal / cfg.rate;
+ const foreignStr = cfg.symbol + Math.round(converted).toLocaleString('en-US') + cfg.suffix;
+ return `${foreignStr} (${inrStr})`;
+ }
 
-        function formatLakhCr(val) {
-            if (currentCurrency === 'INR') {
-                if (val >= 10000000) return '₹' + (val / 10000000).toFixed(2) + ' Cr';
-                if (val >= 100000) return '₹' + (val / 100000).toFixed(2) + ' L';
-                return '₹' + Math.round(val).toLocaleString('en-IN');
-            }
-            return formatCurrency(val);
-        }
+ function formatLakhCr(val) {
+ if (currentCurrency === 'INR') {
+ if (val >= 10000000) return '₹' + (val / 10000000).toFixed(2) + ' Cr';
+ if (val >= 100000) return '₹' + (val / 100000).toFixed(2) + ' L';
+ return '₹' + Math.round(val).toLocaleString('en-IN');
+ }
+ return formatCurrency(val);
+ }
 
-        function switchCalcTab(tab) {
-            const costTabBtn = document.getElementById('tabCostSheetBtn');
-            const mortTabBtn = document.getElementById('tabMortgageBtn');
-            const costPane = document.getElementById('costSheetTabPane');
-            const mortPane = document.getElementById('mortgageTabPane');
+ function switchCalcTab(tab) {
+ const costTabBtn = document.getElementById('tabCostSheetBtn');
+ const mortTabBtn = document.getElementById('tabMortgageBtn');
+ const costPane = document.getElementById('costSheetTabPane');
+ const mortPane = document.getElementById('mortgageTabPane');
 
-            if (tab === 'costSheet') {
-                costTabBtn.classList.add('active');
-                mortTabBtn.classList.remove('active');
-                costPane.style.display = 'block';
-                mortPane.style.display = 'none';
-            } else {
-                costTabBtn.classList.remove('active');
-                mortTabBtn.classList.add('active');
-                costPane.style.display = 'none';
-                mortPane.style.display = 'block';
-                recalculateEMIOnly();
-            }
-        }
+ if (tab === 'costSheet') {
+ costTabBtn.classList.add('active');
+ mortTabBtn.classList.remove('active');
+ costPane.style.display = 'block';
+ mortPane.style.display = 'none';
+ } else {
+ costTabBtn.classList.remove('active');
+ mortTabBtn.classList.add('active');
+ costPane.style.display = 'none';
+ mortPane.style.display = 'block';
+ recalculateEMIOnly();
+ }
+ }
 
-        function onPriceSliderChange() {
-            currentAgreementVal = parseFloat(document.getElementById('customAgreementVal').value);
-            document.getElementById('displayAgreementVal').textContent = formatLakhCr(currentAgreementVal);
-            // Deselect chip if custom value doesn't match
-            document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(btn => {
-                if (parseFloat(btn.dataset.price) === currentAgreementVal) {
-                    btn.classList.add('active');
-                    currentUnitName = btn.dataset.name;
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-            recalculateAll();
-        }
+ function onPriceSliderChange() {
+ currentAgreementVal = parseFloat(document.getElementById('customAgreementVal').value);
+ document.getElementById('displayAgreementVal').textContent = formatLakhCr(currentAgreementVal);
+ // Deselect chip if custom value doesn't match
+ document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(btn => {
+ if (parseFloat(btn.dataset.price) === currentAgreementVal) {
+ btn.classList.add('active');
+ currentUnitName = btn.dataset.name;
+ } else {
+ btn.classList.remove('active');
+ }
+ });
+ recalculateAll();
+ }
 
-        function selectBankRate(rate, btn) {
-            currentInterestRate = rate;
-            document.querySelectorAll('.bank-card-pill').forEach(b => b.classList.remove('active'));
-            if (btn) btn.classList.add('active');
-            document.getElementById('emi-rate').value = rate;
-            document.getElementById('emi-rate-val').textContent = rate.toFixed(2) + '%';
-            recalculateEMIOnly();
-        }
+ function selectBankRate(rate, btn) {
+ currentInterestRate = rate;
+ document.querySelectorAll('.bank-card-pill').forEach(b => b.classList.remove('active'));
+ if (btn) btn.classList.add('active');
+ document.getElementById('emi-rate').value = rate;
+ document.getElementById('emi-rate-val').textContent = rate.toFixed(2) + '%';
+ recalculateEMIOnly();
+ }
 
-        function onDownPaymentChange() {
-            currentDownPaymentPercent = parseInt(document.getElementById('emi-downpayment').value);
-            document.getElementById('downpayment-percent-txt').textContent = currentDownPaymentPercent + '%';
-            recalculateEMIOnly();
-        }
+ function onDownPaymentChange() {
+ currentDownPaymentPercent = parseInt(document.getElementById('emi-downpayment').value);
+ document.getElementById('downpayment-percent-txt').textContent = currentDownPaymentPercent + '%';
+ recalculateEMIOnly();
+ }
 
-        let lastCalculatedBreakdown = null;
+ let lastCalculatedBreakdown = null;
 
-        function recalculateAll() {
-            const rawStampDuty = document.getElementById('stampDutyRate').value;
-            currentStampDutyRate = parseFloat(rawStampDuty);
-            currentPLC = parseFloat(document.getElementById('plcOption').value);
-            const floorRiseVal = parseFloat(document.getElementById('floorRiseOption') ? document.getElementById('floorRiseOption').value : 0);
+ function recalculateAll() {
+ const rawStampDuty = document.getElementById('stampDutyRate').value;
+ currentStampDutyRate = parseFloat(rawStampDuty);
+ currentPLC = parseFloat(document.getElementById('plcOption').value);
+ const floorRiseVal = parseFloat(document.getElementById('floorRiseOption') ? document.getElementById('floorRiseOption').value : 0);
 
-            const agreement = currentAgreementVal;
-            const plcVal = Math.round(agreement * currentPLC);
-            const effectiveAgreement = agreement + plcVal + floorRiseVal;
-            const stampDuty = Math.round(effectiveAgreement * currentStampDutyRate);
-            const standardStampDuty = Math.round(effectiveAgreement * 0.07);
-            const femaleSavings = (rawStampDuty === '0.06') ? (standardStampDuty - stampDuty) : 0;
-            const registration = 30000; // Flat Maharashtra residential cap
-            const gst = Math.round(effectiveAgreement * 0.05); // 5% RERA residential
-            const infra = 250000;
-            const grandTotal = effectiveAgreement + stampDuty + registration + gst + infra;
+ const agreement = currentAgreementVal;
+ const plcVal = Math.round(agreement * currentPLC);
+ const effectiveAgreement = agreement + plcVal + floorRiseVal;
+ const stampDuty = Math.round(effectiveAgreement * currentStampDutyRate);
+ const standardStampDuty = Math.round(effectiveAgreement * 0.07);
+ const femaleSavings = (rawStampDuty === '0.06') ? (standardStampDuty - stampDuty) : 0;
+ const registration = 30000; // Flat Maharashtra residential cap
+ const gst = Math.round(effectiveAgreement * 0.05); // 5% RERA residential
+ const infra = 250000;
+ const grandTotal = effectiveAgreement + stampDuty + registration + gst + infra;
 
-            lastCalculatedBreakdown = {
-                unitName: currentUnitName,
-                agreement,
-                plcVal,
-                floorRiseVal,
-                effectiveAgreement,
-                stampDuty,
-                femaleSavings,
-                registration,
-                gst,
-                infra,
-                grandTotal,
-                currency: currentCurrency
-            };
+ lastCalculatedBreakdown = {
+ unitName: currentUnitName,
+ agreement,
+ plcVal,
+ floorRiseVal,
+ effectiveAgreement,
+ stampDuty,
+ femaleSavings,
+ registration,
+ gst,
+ infra,
+ grandTotal,
+ currency: currentCurrency
+ };
 
-            // Update Cost Sheet Table
-            document.getElementById('tableAgreement').textContent = formatCurrency(agreement);
-            document.getElementById('tablePLC').textContent = plcVal > 0 ? formatCurrency(plcVal) : (currentCurrency === 'INR' ? '₹0' : '0');
-            document.getElementById('plcNote').textContent = plcVal > 0 ? (currentPLC === 0.03 ? '+3% Racecourse & Sahyadri View applied' : '+5% Podium Corner View applied') : 'Standard premium view included';
-            
-            const tableFloorRiseEl = document.getElementById('tableFloorRise');
-            if (tableFloorRiseEl) tableFloorRiseEl.textContent = floorRiseVal > 0 ? formatCurrency(floorRiseVal) : (currentCurrency === 'INR' ? '₹0' : '0');
-            const floorRiseNoteEl = document.getElementById('floorRiseNote');
-            if (floorRiseNoteEl) floorRiseNoteEl.textContent = floorRiseVal === 150000 ? '16th to 27th Sky Deck floor rise applied' : (floorRiseVal === 75000 ? '6th to 15th Mid-Rise floor rise applied' : 'Ground to 5th floor baseline');
+ // Update Cost Sheet Table
+ document.getElementById('tableAgreement').textContent = formatCurrency(agreement);
+ document.getElementById('tablePLC').textContent = plcVal > 0 ? formatCurrency(plcVal) : (currentCurrency === 'INR' ? '₹0' : '0');
+ document.getElementById('plcNote').textContent = plcVal > 0 ? (currentPLC === 0.03 ? '+3% Racecourse & Sahyadri View applied' : '+5% Podium Corner View applied') : 'Standard premium view included';
+ 
+ const tableFloorRiseEl = document.getElementById('tableFloorRise');
+ if (tableFloorRiseEl) tableFloorRiseEl.textContent = floorRiseVal > 0 ? formatCurrency(floorRiseVal) : (currentCurrency === 'INR' ? '₹0' : '0');
+ const floorRiseNoteEl = document.getElementById('floorRiseNote');
+ if (floorRiseNoteEl) floorRiseNoteEl.textContent = floorRiseVal === 150000 ? '16th to 27th Sky Deck floor rise applied' : (floorRiseVal === 75000 ? '6th to 15th Mid-Rise floor rise applied' : 'Ground to 5th floor baseline');
 
-            document.getElementById('tableStampDuty').textContent = formatCurrency(stampDuty);
-            if (rawStampDuty === '0.06') {
-                document.getElementById('stampDutyNote').innerHTML = `<span style="color:#4ade80; font-weight:600;"><i class="ph ph-sparkle"></i> 1% Female Homebuyer Rebate Applied (Saved ${formatCurrency(femaleSavings)})</span>`;
-            } else if (rawStampDuty === '0.06-std') {
-                document.getElementById('stampDutyNote').textContent = '6% Standard Maharashtra Non-Metro Jurisdiction';
-            } else {
-                document.getElementById('stampDutyNote').textContent = '6% Standard + 1% Pune Metro Cess (7% Total PMC/PCMC)';
-            }
+ document.getElementById('tableStampDuty').textContent = formatCurrency(stampDuty);
+ if (rawStampDuty === '0.06') {
+ document.getElementById('stampDutyNote').innerHTML = `<span style="color:#4ade80; font-weight:600;"><i class="ph ph-sparkle"></i> 1% Female Homebuyer Rebate Applied (Saved ${formatCurrency(femaleSavings)})</span>`;
+ } else if (rawStampDuty === '0.06-std') {
+ document.getElementById('stampDutyNote').textContent = '6% Standard Maharashtra Non-Metro Jurisdiction';
+ } else {
+ document.getElementById('stampDutyNote').textContent = '6% Standard + 1% Pune Metro Cess (7% Total PMC/PCMC)';
+ }
 
-            document.getElementById('tableReg').textContent = formatCurrency(registration);
-            document.getElementById('tableGST').textContent = formatCurrency(gst);
-            document.getElementById('tableInfra').textContent = formatCurrency(infra);
-            document.getElementById('tableGrandTotal').textContent = formatDualCurrency(grandTotal);
+ document.getElementById('tableReg').textContent = formatCurrency(registration);
+ document.getElementById('tableGST').textContent = formatCurrency(gst);
+ document.getElementById('tableInfra').textContent = formatCurrency(infra);
+ document.getElementById('tableGrandTotal').textContent = formatDualCurrency(grandTotal);
 
-            // Update Mortgage inputs
-            recalculateEMIOnly(grandTotal, effectiveAgreement);
+ // Update Mortgage inputs
+ recalculateEMIOnly(grandTotal, effectiveAgreement);
 
-            // Sync WhatsApp Share Link
-            let waRebateMsg = '';
-            if (femaleSavings > 0) {
-                waRebateMsg = `• Female Buyer Rebate: Saved ${formatDualCurrency(femaleSavings)} (1% MH Govt Concession)\n`;
-            }
-            const waText = encodeURIComponent(
-                `Hi, I calculated the All-Inclusive Cost Sheet for "${currentUnitName}" on your official portal:\n` +
-                `• Base Agreement Value: ${formatDualCurrency(agreement)}\n` +
-                (plcVal > 0 ? `• Preferred Location Charge: ${formatDualCurrency(plcVal)}\n` : '') +
-                (floorRiseVal > 0 ? `• Floor Rise Premium: ${formatDualCurrency(floorRiseVal)}\n` : '') +
-                `• Stamp Duty & Metro Cess: ${formatDualCurrency(stampDuty)}\n` +
-                waRebateMsg +
-                `• Govt Registration Fee: ${formatDualCurrency(registration)} (Capped)\n` +
-                `• GST (5% Under-Construction): ${formatDualCurrency(gst)}\n` +
-                `• Infrastructure & Corpus: ${formatDualCurrency(infra)}\n` +
-                `• Estimated On-Road Total: ${formatDualCurrency(grandTotal)}\n\n` +
-                `Please share the confirmed developer payment schedule, allotment availability, and official MahaRERA docket.`
-            );
-            const waBtn = document.getElementById('calcWhatsAppBtn');
-            if (waBtn) waBtn.href = `https://wa.me/917744009295?text=${waText}`;
+ // Sync WhatsApp Share Link
+ let waRebateMsg = '';
+ if (femaleSavings > 0) {
+ waRebateMsg = `• Female Buyer Rebate: Saved ${formatDualCurrency(femaleSavings)} (1% MH Govt Concession)\n`;
+ }
+ const waText = encodeURIComponent(
+ `Hi, I calculated the All-Inclusive Cost Sheet for "${currentUnitName}" on your Experience Portal:\n` +
+ `• Base Agreement Value: ${formatDualCurrency(agreement)}\n` +
+ (plcVal > 0 ? `• Preferred Location Charge: ${formatDualCurrency(plcVal)}\n` : '') +
+ (floorRiseVal > 0 ? `• Floor Rise Premium: ${formatDualCurrency(floorRiseVal)}\n` : '') +
+ `• Stamp Duty & Metro Cess: ${formatDualCurrency(stampDuty)}\n` +
+ waRebateMsg +
+ `• Govt Registration Fee: ${formatDualCurrency(registration)} (Capped)\n` +
+ `• GST (5% Under-Construction): ${formatDualCurrency(gst)}\n` +
+ `• Infrastructure & Corpus: ${formatDualCurrency(infra)}\n` +
+ `• Estimated On-Road Total: ${formatDualCurrency(grandTotal)}\n\n` +
+ `Please share the confirmed developer payment schedule, allotment availability, and MahaRERA docket.`
+ );
+ const waBtn = document.getElementById('calcWhatsAppBtn');
+ if (waBtn) waBtn.href = `https://wa.me/917744009295?text=${waText}`;
 
-            // Sync Lock Offer modal button
-            const lockBtn = document.getElementById('calcLockOfferBtn');
-            if (lockBtn) {
-                lockBtn.setAttribute('data-unit', currentUnitName);
-                lockBtn.setAttribute('data-price', formatDualCurrency(grandTotal));
-            }
-        }
+ // Sync Lock Offer modal button
+ const lockBtn = document.getElementById('calcLockOfferBtn');
+ if (lockBtn) {
+ lockBtn.setAttribute('data-unit', currentUnitName);
+ lockBtn.setAttribute('data-price', formatDualCurrency(grandTotal));
+ }
+ }
 
-        function recalculateEMIOnly() {
-            const agreement = currentAgreementVal * (1 + currentPLC);
-            currentDownPaymentPercent = parseInt(document.getElementById('emi-downpayment').value);
-            const downpaymentVal = Math.round(agreement * (currentDownPaymentPercent / 100));
-            const loanPrincipal = Math.max(agreement - downpaymentVal, 500000);
+ function recalculateEMIOnly() {
+ const agreement = currentAgreementVal * (1 + currentPLC);
+ currentDownPaymentPercent = parseInt(document.getElementById('emi-downpayment').value);
+ const downpaymentVal = Math.round(agreement * (currentDownPaymentPercent / 100));
+ const loanPrincipal = Math.max(agreement - downpaymentVal, 500000);
 
-            document.getElementById('downpayment-percent-txt').textContent = currentDownPaymentPercent + '%';
-            document.getElementById('downpayment-rupee-txt').textContent = formatDualCurrency(downpaymentVal);
-            document.getElementById('loan-amount-txt').textContent = 'Net Loan: ' + formatDualCurrency(loanPrincipal);
+ document.getElementById('downpayment-percent-txt').textContent = currentDownPaymentPercent + '%';
+ document.getElementById('downpayment-rupee-txt').textContent = formatDualCurrency(downpaymentVal);
+ document.getElementById('loan-amount-txt').textContent = 'Net Loan: ' + formatDualCurrency(loanPrincipal);
 
-            currentInterestRate = parseFloat(document.getElementById('emi-rate').value);
-            document.getElementById('emi-rate-val').textContent = currentInterestRate.toFixed(2) + '%';
+ currentInterestRate = parseFloat(document.getElementById('emi-rate').value);
+ document.getElementById('emi-rate-val').textContent = currentInterestRate.toFixed(2) + '%';
 
-            currentTenureYears = parseInt(document.getElementById('emi-tenure').value);
-            document.getElementById('emi-tenure-val').textContent = currentTenureYears + ' years';
+ currentTenureYears = parseInt(document.getElementById('emi-tenure').value);
+ document.getElementById('emi-tenure-val').textContent = currentTenureYears + ' years';
 
-            const P = loanPrincipal;
-            const r = (currentInterestRate / 100) / 12;
-            const n = currentTenureYears * 12;
-            const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-            const totalRepayment = emi * n;
-            const totalInterest = totalRepayment - P;
+ const P = loanPrincipal;
+ const r = (currentInterestRate / 100) / 12;
+ const n = currentTenureYears * 12;
+ const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+ const totalRepayment = emi * n;
+ const totalInterest = totalRepayment - P;
 
-            document.getElementById('emi-amount').textContent = formatCurrency(emi) + ' / mo';
-            document.getElementById('emi-sub-summary').textContent =
-                `Based on ${formatDualCurrency(P)} loan @ ${currentInterestRate.toFixed(2)}% for ${currentTenureYears} years`;
-            document.getElementById('legendPrincipal').textContent = formatDualCurrency(P);
-            document.getElementById('legendInterest').textContent = formatDualCurrency(totalInterest);
-            document.getElementById('emi-interest').textContent = formatDualCurrency(totalInterest);
-            document.getElementById('emi-total').textContent = formatDualCurrency(totalRepayment);
+ document.getElementById('emi-amount').textContent = formatCurrency(emi) + ' / mo';
+ document.getElementById('emi-sub-summary').textContent =
+ `Based on ${formatDualCurrency(P)} loan @ ${currentInterestRate.toFixed(2)}% for ${currentTenureYears} years`;
+ document.getElementById('legendPrincipal').textContent = formatDualCurrency(P);
+ document.getElementById('legendInterest').textContent = formatDualCurrency(totalInterest);
+ document.getElementById('emi-interest').textContent = formatDualCurrency(totalInterest);
+ document.getElementById('emi-total').textContent = formatDualCurrency(totalRepayment);
 
-            // Progress bar
-            const principalPct = Math.min(Math.max(Math.round((P / totalRepayment) * 100), 10), 90);
-            const interestPct = 100 - principalPct;
-            const barP = document.getElementById('barPrincipal');
-            const barI = document.getElementById('barInterest');
-            if (barP) barP.style.width = principalPct + '%';
-            if (barI) barI.style.width = interestPct + '%';
-        }
+ // Progress bar
+ const principalPct = Math.min(Math.max(Math.round((P / totalRepayment) * 100), 10), 90);
+ const interestPct = 100 - principalPct;
+ const barP = document.getElementById('barPrincipal');
+ const barI = document.getElementById('barInterest');
+ if (barP) barP.style.width = principalPct + '%';
+ if (barI) barI.style.width = interestPct + '%';
+ }
 
-        // Chip button listeners
-        document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentUnitName = btn.dataset.name;
-                currentAgreementVal = parseFloat(btn.dataset.price);
-                const slider = document.getElementById('customAgreementVal');
-                if (slider) slider.value = currentAgreementVal;
-                document.getElementById('displayAgreementVal').textContent = formatLakhCr(currentAgreementVal);
-                recalculateAll();
-            });
-        });
+ // Chip button listeners
+ document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(btn => {
+ btn.addEventListener('click', () => {
+ document.querySelectorAll('#unitChipCluster .unit-chip-btn').forEach(b => b.classList.remove('active'));
+ btn.classList.add('active');
+ currentUnitName = btn.dataset.name;
+ currentAgreementVal = parseFloat(btn.dataset.price);
+ const slider = document.getElementById('customAgreementVal');
+ if (slider) slider.value = currentAgreementVal;
+ document.getElementById('displayAgreementVal').textContent = formatLakhCr(currentAgreementVal);
+ recalculateAll();
+ });
+ });
 
-        /* ── Official MahaRERA PDF Cost Sheet Generator ── */
-        window.generateOfficialCostSheetPDF = function() {
-            if (!lastCalculatedBreakdown) recalculateAll();
-            const d = lastCalculatedBreakdown;
-            const docketId = 'KXH-CS-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
-            const todayStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+ /* ── MahaRERA PDF Cost Sheet Generator ── */
+ window.generateOfficialCostSheetPDF = function() {
+ if (!lastCalculatedBreakdown) recalculateAll();
+ const d = lastCalculatedBreakdown;
+ const docketId = 'KXH-CS-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+ const todayStr = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
-            const modal = document.getElementById('costSheetPdfModal');
-            if (!modal) return;
+ const modal = document.getElementById('costSheetPdfModal');
+ if (!modal) return;
 
-            document.getElementById('pdfDocketRef').textContent = docketId;
-            document.getElementById('pdfDocketDate').textContent = todayStr;
-            document.getElementById('pdfUnitName').textContent = d.unitName;
-            document.getElementById('pdfAgreementVal').textContent = formatDualCurrency(d.agreement);
-            document.getElementById('pdfPlcVal').textContent = d.plcVal > 0 ? formatDualCurrency(d.plcVal) : 'N/A (Included)';
-            document.getElementById('pdfEffectiveVal').textContent = formatDualCurrency(d.effectiveAgreement);
-            document.getElementById('pdfStampDutyVal').textContent = formatDualCurrency(d.stampDuty);
-            document.getElementById('pdfRegVal').textContent = formatDualCurrency(d.registration);
-            document.getElementById('pdfGstVal').textContent = formatDualCurrency(d.gst);
-            document.getElementById('pdfInfraVal').textContent = formatDualCurrency(d.infra);
-            document.getElementById('pdfGrandTotalVal').textContent = formatDualCurrency(d.grandTotal);
+ document.getElementById('pdfDocketRef').textContent = docketId;
+ document.getElementById('pdfDocketDate').textContent = todayStr;
+ document.getElementById('pdfUnitName').textContent = d.unitName;
+ document.getElementById('pdfAgreementVal').textContent = formatDualCurrency(d.agreement);
+ document.getElementById('pdfPlcVal').textContent = d.plcVal > 0 ? formatDualCurrency(d.plcVal) : 'N/A (Included)';
+ document.getElementById('pdfEffectiveVal').textContent = formatDualCurrency(d.effectiveAgreement);
+ document.getElementById('pdfStampDutyVal').textContent = formatDualCurrency(d.stampDuty);
+ document.getElementById('pdfRegVal').textContent = formatDualCurrency(d.registration);
+ document.getElementById('pdfGstVal').textContent = formatDualCurrency(d.gst);
+ document.getElementById('pdfInfraVal').textContent = formatDualCurrency(d.infra);
+ document.getElementById('pdfGrandTotalVal').textContent = formatDualCurrency(d.grandTotal);
 
-            // Compute Milestone values
-            document.getElementById('mBookingVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.10);
-            document.getElementById('mExcavationVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.20);
-            document.getElementById('mPlinthVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.15);
-            document.getElementById('mSlabsVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.25);
-            document.getElementById('mFinishingVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.20);
-            document.getElementById('mPossessionVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.10);
+ // Compute Milestone values
+ document.getElementById('mBookingVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.10);
+ document.getElementById('mExcavationVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.20);
+ document.getElementById('mPlinthVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.15);
+ document.getElementById('mSlabsVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.25);
+ document.getElementById('mFinishingVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.20);
+ document.getElementById('mPossessionVal').textContent = formatDualCurrency(d.effectiveAgreement * 0.10);
 
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+ modal.classList.add('active');
+ document.body.style.overflow = 'hidden';
 
-            // Push event to dataLayer
-            if (window.dataLayer) {
-                window.dataLayer.push({
-                    event: 'generate_cost_sheet_pdf',
-                    unit: d.unitName,
-                    amount_inr: d.grandTotal,
-                    currency: d.currency
-                });
-            }
-        };
+ // Push event to dataLayer
+ if (window.dataLayer) {
+ window.dataLayer.push({
+ event: 'generate_cost_sheet_pdf',
+ unit: d.unitName,
+ amount_inr: d.grandTotal,
+ currency: d.currency
+ });
+ }
+ };
 
-        window.closeCostSheetPDFModal = function() {
-            const modal = document.getElementById('costSheetPdfModal');
-            if (modal) modal.classList.remove('active');
-            document.body.style.overflow = '';
-        };
+ window.closeCostSheetPDFModal = function() {
+ const modal = document.getElementById('costSheetPdfModal');
+ if (modal) modal.classList.remove('active');
+ document.body.style.overflow = '';
+ };
 
-        window.printCostSheetDocket = function() {
-            window.print();
-        };
+ window.printCostSheetDocket = function() {
+ window.print();
+ };
 
-        // Initialize on load
-        recalculateAll();
+ // Initialize on load
+ recalculateAll();
 
-        /* ── FAQ Accordion ─────────────────────────── */
-        function toggleFaq(btn) {
-            const item = btn.closest('.faq-item');
-            const isOpen = item.classList.contains('open');
-            // Close all open
-            document.querySelectorAll('.faq-item.open').forEach(el => {
-                el.classList.remove('open');
-                el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-            });
-            // Toggle clicked
-            if (!isOpen) {
-                item.classList.add('open');
-                btn.setAttribute('aria-expanded', 'true');
-            }
-        }
+ /* ── FAQ Accordion ─────────────────────────── */
+ function toggleFaq(btn) {
+ const item = btn.closest('.faq-item');
+ const isOpen = item.classList.contains('open');
+ // Close all open
+ document.querySelectorAll('.faq-item.open').forEach(el => {
+ el.classList.remove('open');
+ el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+ });
+ // Toggle clicked
+ if (!isOpen) {
+ item.classList.add('open');
+ btn.setAttribute('aria-expanded', 'true');
+ }
+ }
 
-        /* ── CLP responsive grid fix ───────────────── */
-        (function() {
-            const grids = document.querySelectorAll('.grid-clp, .grid-nri');
-            function checkWidth() {
-                grids.forEach(g => {
-                    if (window.innerWidth < 900) {
-                        g.style.gridTemplateColumns = '1fr';
-                    } else {
-                        g.style.gridTemplateColumns = '1fr 1fr';
-                    }
-                });
-            }
-            window.addEventListener('resize', checkWidth);
-            checkWidth();
-        })();
-    </script>
+ /* ── CLP responsive grid fix ───────────────── */
+ (function() {
+ const grids = document.querySelectorAll('.grid-clp, .grid-nri');
+ function checkWidth() {
+ grids.forEach(g => {
+ if (window.innerWidth < 900) {
+ g.style.gridTemplateColumns = '1fr';
+ } else {
+ g.style.gridTemplateColumns = '1fr 1fr';
+ }
+ });
+ }
+ window.addEventListener('resize', checkWidth);
+ checkWidth();
+ })();
+ </script>
 <!-- ══════════════════════════════════════
-         OFFICIAL MAHARERA PDF COST SHEET MODAL
-    ══════════════════════════════════════ -->
+ MahaRERA PDF COST SHEET MODAL
+ ══════════════════════════════════════ -->
 <div aria-labelledby="pdfDocketTitle" aria-modal="true" class="costsheet-modal-overlay" id="costSheetPdfModal" role="dialog">
 <div class="costsheet-docket-wrapper">
 <div class="costsheet-docket-header">
 <div>
-<div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--gold-bright); font-weight:700;">Official MahaRERA Quotation Docket</div>
+<div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--gold-bright); font-weight:700;">MahaRERA Quotation Docket</div>
 <h3 id="pdfDocketTitle" style="margin:4px 0 0; font-family:var(--font-heading); font-size:1.4rem; color:#fff;">KRISALA × HIRANANDANI TOWNSHIP</h3>
 <div style="font-size:0.75rem; color:#9ca3af; margin-top:2px;">North Hinjawadi, Pune • MahaRERA Reg: PR1260002500600 / P52100053982</div>
 </div>
@@ -2168,7 +2168,7 @@
 <div style="font-size:0.76rem; color:#6b7280;">Date: <span id="pdfDocketDate">Today</span></div>
 </div>
 </div>
-<table aria-label="Official Cost Sheet Breakup" class="costsheet-table">
+<table aria-label="Cost Sheet Breakup" class="costsheet-table">
 <thead>
 <tr>
 <th>Statutory Cost Component</th>
@@ -2250,19 +2250,19 @@
 </div>
 <div style="margin-top:18px; padding:10px 14px; background:#f3f4f6; border-radius:6px; font-size:0.75rem; color:#4b5563; line-height:1.4;">
 <strong>Bank Approvals:</strong> Pre-approved by State Bank of India, HDFC Bank, ICICI Bank &amp; Bank of Baroda. Special festive interest rates starting from 8.40% p.a. with zero processing fee offers.
-                </div>
+ </div>
 </div>
 <div class="costsheet-docket-footer">
 <div style="font-size:0.75rem; color:#6b7280;">
-                    Official Developer Desk: <strong>+91 77440 09295</strong> • propsmartrealty@gmail.com
-                </div>
+ Experience Desk: <strong>+91 77440 09295</strong> • propsmartrealty@gmail.com
+ </div>
 <div style="display:flex; gap:10px;">
 <button onclick="printCostSheetDocket()" style="background:#111827; color:#fff; border:none; padding:10px 18px; border-radius:6px; font-weight:600; font-size:0.85rem; cursor:pointer; display:inline-flex; align-items:center; gap:6px;" type="button">
 <i class="ph ph-printer"></i> Print / Save as PDF
-                    </button>
+ </button>
 <a href="https://wa.me/917744009295" style="background:#25D366; color:#fff; text-decoration:none; padding:10px 18px; border-radius:6px; font-weight:600; font-size:0.85rem; display:inline-flex; align-items:center; gap:6px;" target="_blank">
 <i class="ph ph-whatsapp-logo"></i> Send via WhatsApp
-                    </a>
+ </a>
 </div>
 </div>
 </div>

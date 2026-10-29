@@ -5,82 +5,82 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: swap;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; z-index: 0; }
+ .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -92,10 +92,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <link href="https://krisalahiranandanitownships.com/della" rel="canonical"/>
@@ -158,223 +158,223 @@
 <meta content="https://krisalahiranandanitownships.com/public/hero_placeholders/hero_villa_interior_1772864885336.webp" name="twitter:image"/>
 <!-- Schema.org JSON-LD Graph for The Della Collection -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Resort",
-          "@id": "https://krisalahiranandanitownships.com/della#resort",
-          "name": "The Della Collection at Krisala × Hiranandani Township",
-          "description": "A 40-acre hospitality and equestrian precinct curated by Della Resorts & Adventure within the 105-acre Krisala × Hiranandani master township in North Hinjewadi, Pune. Features ultra-premium villa plots, an 8-acre private racecourse, polo club, luxury stables, and 5-star resort amenities.",
-          "url": "https://krisalahiranandanitownships.com/della",
-          "image": "https://krisalahiranandanitownships.com/public/hero_placeholders/hero_villa_interior_1772864885336.webp",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "The Della Collection, North Hinjawadi, Darumbre",
-            "addressLocality": "Pune",
-            "addressRegion": "Maharashtra",
-            "postalCode": "410506",
-            "addressCountry": "IN"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "18.5913",
-            "longitude": "73.7389"
-          },
-          "amenityFeature": [
-            { "@type": "LocationFeatureSpecification", "name": "8-Acre Private Racecourse", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "International Polo Club & Training Academy", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "World-Class Equine Boarding Stables", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Della Glamping & Adventure Park", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "5-Star Resort Clubhouse & Spa", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Fine Dining Specialty Restaurants", "value": true }
-          ],
-          "offers": {
-            "@type": "AggregateOffer",
-            "priceCurrency": "INR",
-            "lowPrice": "18000000",
-            "highPrice": "65000000",
-            "offerCount": "2"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "118",
-            "bestRating": "5",
-            "worstRating": "1"
-          }
-        },
-        {
-          "@type": "FloorPlan",
-          "@id": "https://krisalahiranandanitownships.com/della#floorplan-signature-villa",
-          "name": "Della Signature Villa Plot Blueprint & Layout",
-          "description": "Bespoke 4,200 sq.ft. equestrian estate villa plot with sanctioned G+2 architectural blueprint, private landscaped garden, and direct racecourse pathway access.",
-          "numberOfBedrooms": 5,
-          "numberOfBathroomsTotal": 6,
-          "numberOfRooms": 10,
-          "floorSize": {
-            "@type": "QuantitativeValue",
-            "value": 4200,
-            "unitCode": "FTK"
-          },
-          "amenityFeature": [
-            { "@type": "LocationFeatureSpecification", "name": "Direct View of 8-Acre Private Racecourse", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Equestrian Club & Polo Academy Membership", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Customizable G+2 Neoclassical Villa Blueprint", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Dedicated Private Stabling Privilege", "value": true }
-          ],
-          "offers": {
-            "@type": "Offer",
-            "name": "Della Signature Villa Plot (4,200 sq.ft.)",
-            "price": "18000000",
-            "priceCurrency": "INR",
-            "availability": "https://schema.org/InStock",
-            "priceValidUntil": "2026-12-31"
-          }
-        },
-        {
-          "@type": "FloorPlan",
-          "@id": "https://krisalahiranandanitownships.com/della#floorplan-grand-sovereign",
-          "name": "Della Sovereign Estate Mega Villa Blueprint",
-          "description": "Exclusive 8,500 sq.ft. sovereign equestrian villa estate layout featuring private horse paddock, lap pool, servant annex, and panoramic Sahyadri views.",
-          "numberOfBedrooms": 6,
-          "numberOfBathroomsTotal": 8,
-          "numberOfRooms": 14,
-          "floorSize": {
-            "@type": "QuantitativeValue",
-            "value": 8500,
-            "unitCode": "FTK"
-          },
-          "amenityFeature": [
-            { "@type": "LocationFeatureSpecification", "name": "Private Horse Paddock & Gazebo", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Private Temperature-Controlled Lap Pool", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Della 5-Star Resort Concierge & Housekeeping", "value": true }
-          ],
-          "offers": {
-            "@type": "Offer",
-            "name": "Della Sovereign Estate (8,500 sq.ft.)",
-            "price": "36000000",
-            "priceCurrency": "INR",
-            "availability": "https://schema.org/InStock",
-            "priceValidUntil": "2026-12-31"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://krisalahiranandanitownships.com/della#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is The Della Collection at Krisala Hiranandani?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The Della Collection is a 40-acre ultra-luxury precinct developed in collaboration with Della Resorts & Adventure, featuring bespoke villa plots and India's first residential 8-acre private racecourse and international polo club."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What plot dimensions are available in The Della Collection?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Villa plots range from approximately 1,800 sq.ft. to 5,000+ sq.ft., offering bespoke architectural design freedom compliant with township master plan aesthetics."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Who manages the equestrian facilities and racecourse?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The 8-acre racecourse, polo club, and stables are professionally curated and managed by seasoned equestrian professionals in partnership with Della Resorts hospitality management."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What are the starting prices for villa plots?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Villa plots start from ₹1.80 Cr* onwards, subject to plot dimensions, location frontage, and racecourse proximity."
-              }
-            }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://krisalahiranandanitownships.com/della#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
-            { "@type": "ListItem", "position": 2, "name": "The Della Collection", "item": "https://krisalahiranandanitownships.com/della" }
-          ]
-        }
-      ]
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Resort",
+ "@id": "https://krisalahiranandanitownships.com/della#resort",
+ "name": "The Della Collection at Krisala × Hiranandani Township",
+ "description": "A 40-acre hospitality and equestrian precinct curated by Della Resorts & Adventure within the 105-acre Krisala × Hiranandani master township in North Hinjewadi, Pune. Features ultra-premium villa plots, an 8-acre private racecourse, polo club, luxury stables, and 5-star resort amenities.",
+ "url": "https://krisalahiranandanitownships.com/della",
+ "image": "https://krisalahiranandanitownships.com/public/hero_placeholders/hero_villa_interior_1772864885336.webp",
+ "address": {
+ "@type": "PostalAddress",
+ "streetAddress": "The Della Collection, North Hinjawadi, Darumbre",
+ "addressLocality": "Pune",
+ "addressRegion": "Maharashtra",
+ "postalCode": "410506",
+ "addressCountry": "IN"
+ },
+ "geo": {
+ "@type": "GeoCoordinates",
+ "latitude": "18.5913",
+ "longitude": "73.7389"
+ },
+ "amenityFeature": [
+ { "@type": "LocationFeatureSpecification", "name": "8-Acre Private Racecourse", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "International Polo Club & Training Academy", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "World-Class Equine Boarding Stables", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Della Glamping & Adventure Park", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "5-Star Resort Clubhouse & Spa", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Fine Dining Specialty Restaurants", "value": true }
+ ],
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "18000000",
+ "highPrice": "65000000",
+ "offerCount": "2"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "reviewCount": "118",
+ "bestRating": "5",
+ "worstRating": "1"
+ }
+ },
+ {
+ "@type": "FloorPlan",
+ "@id": "https://krisalahiranandanitownships.com/della#floorplan-signature-villa",
+ "name": "Della Signature Villa Plot Blueprint & Layout",
+ "description": "Bespoke 4,200 sq.ft. equestrian estate villa plot with sanctioned G+2 architectural blueprint, private landscaped garden, and direct racecourse pathway access.",
+ "numberOfBedrooms": 5,
+ "numberOfBathroomsTotal": 6,
+ "numberOfRooms": 10,
+ "floorSize": {
+ "@type": "QuantitativeValue",
+ "value": 4200,
+ "unitCode": "FTK"
+ },
+ "amenityFeature": [
+ { "@type": "LocationFeatureSpecification", "name": "Direct View of 8-Acre Private Racecourse", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Equestrian Club & Polo Academy Membership", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Customizable G+2 Neoclassical Villa Blueprint", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Dedicated Private Stabling Privilege", "value": true }
+ ],
+ "offers": {
+ "@type": "Offer",
+ "name": "Della Signature Villa Plot (4,200 sq.ft.)",
+ "price": "18000000",
+ "priceCurrency": "INR",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2026-12-31"
+ }
+ },
+ {
+ "@type": "FloorPlan",
+ "@id": "https://krisalahiranandanitownships.com/della#floorplan-grand-sovereign",
+ "name": "Della Sovereign Estate Mega Villa Blueprint",
+ "description": "Exclusive 8,500 sq.ft. sovereign equestrian villa estate layout featuring private horse paddock, lap pool, servant annex, and panoramic Sahyadri views.",
+ "numberOfBedrooms": 6,
+ "numberOfBathroomsTotal": 8,
+ "numberOfRooms": 14,
+ "floorSize": {
+ "@type": "QuantitativeValue",
+ "value": 8500,
+ "unitCode": "FTK"
+ },
+ "amenityFeature": [
+ { "@type": "LocationFeatureSpecification", "name": "Private Horse Paddock & Gazebo", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Private Temperature-Controlled Lap Pool", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Della 5-Star Resort Concierge & Housekeeping", "value": true }
+ ],
+ "offers": {
+ "@type": "Offer",
+ "name": "Della Sovereign Estate (8,500 sq.ft.)",
+ "price": "36000000",
+ "priceCurrency": "INR",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2026-12-31"
+ }
+ },
+ {
+ "@type": "FAQPage",
+ "@id": "https://krisalahiranandanitownships.com/della#faq",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "What is The Della Collection at Krisala Hiranandani?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The Della Collection is a 40-acre ultra-luxury precinct developed in collaboration with Della Resorts & Adventure, featuring bespoke villa plots and India's first residential 8-acre private racecourse and international polo club."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What plot dimensions are available in The Della Collection?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Villa plots range from approximately 1,800 sq.ft. to 5,000+ sq.ft., offering bespoke architectural design freedom compliant with township master plan aesthetics."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Who manages the equestrian facilities and racecourse?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The 8-acre racecourse, polo club, and stables are professionally curated and managed by seasoned equestrian professionals in partnership with Della Resorts hospitality management."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What are the starting prices for villa plots?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Villa plots start from ₹1.80 Cr* onwards, subject to plot dimensions, location frontage, and racecourse proximity."
+ }
+ }
+ ]
+ },
+ {
+ "@type": "BreadcrumbList",
+ "@id": "https://krisalahiranandanitownships.com/della#breadcrumb",
+ "itemListElement": [
+ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
+ { "@type": "ListItem", "position": 2, "name": "The Della Collection", "item": "https://krisalahiranandanitownships.com/della" }
+ ]
+ }
+ ]
+ }
+ </script>
 <style>
-        .hero-della {
-            min-height: 75vh;
-            padding-top: 100px;
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('/public/imported/della-racecource.webp');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+ .hero-della {
+ min-height: 75vh;
+ padding-top: 100px;
+ background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('/public/imported/della-racecource.webp');
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ }
 
-        @media (max-width: 768px) {
-            .hero-della {
-                background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('/public/imported/mobile-view-della.webp');
-                background-size: cover;
-                background-position: center;
-            }
-        }
+ @media (max-width: 768px) {
+ .hero-della {
+ background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('/public/imported/mobile-view-della.webp');
+ background-size: cover;
+ background-position: center;
+ }
+ }
 
-        .racecourse-highlight {
-            padding: 80px 0;
-            background: #0f0f12;
-            border-top: 1px solid var(--gold-primary);
-            border-bottom: 1px solid var(--gold-primary);
-        }
+ .racecourse-highlight {
+ padding: 80px 0;
+ background: #0f0f12;
+ border-top: 1px solid var(--gold-primary);
+ border-bottom: 1px solid var(--gold-primary);
+ }
 
-        .plot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
+ .plot-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 25px;
+ margin-top: 40px;
+ }
 
-        .plot-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            border-radius: var(--border-radius);
-            padding: 35px;
-            transition: all 0.3s ease;
-        }
+ .plot-card {
+ background: rgba(255, 255, 255, 0.02);
+ border: 1px solid rgba(197, 160, 89, 0.2);
+ border-radius: var(--border-radius);
+ padding: 35px;
+ transition: all 0.3s ease;
+ }
 
-        .plot-card:hover {
-            border-color: var(--gold-primary);
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-        }
+ .plot-card:hover {
+ border-color: var(--gold-primary);
+ background: rgba(255, 255, 255, 0.05);
+ transform: translateY(-5px);
+ }
 
-        .plot-card h3 {
-            font-family: var(--font-heading);
-            color: var(--gold-light);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-        }
-    </style>
+ .plot-card h3 {
+ font-family: var(--font-heading);
+ color: var(--gold-light);
+ font-size: 1.6rem;
+ margin-bottom: 15px;
+ }
+ </style>
 <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
 <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-    </style>
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ </style>
 </head>
 <body>
 <!-- Skip to Content -->
@@ -474,11 +474,11 @@
 <section class="hero-della">
 <div class="container">
 <div style="margin-bottom: 20px;">
-<img alt="The Della Collection and 8-Acre Racecourse Official Brand Logo Krisala Hiranandani Township" height="406" loading="lazy" src="/public/imported/Dell-Township-Pune-Logo.webp" style="height: 52px; width: auto; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8));" width="749"/>
+<img alt="The Della Collection and 8-Acre Racecourse Brand Logo Krisala Hiranandani Township" height="406" loading="lazy" src="/public/imported/Dell-Township-Pune-Logo.webp" style="height: 52px; width: auto; filter: drop-shadow(0 4px 15px rgba(0,0,0,0.8));" width="749"/>
 </div>
 <h1 class="scroll-reveal" style="font-size: 3.2rem; color: var(--gold-light); font-family: var(--font-heading); margin-bottom: 15px;">Della Township &bull; Bungalow Premium Plots</h1>
 <p class="scroll-reveal delay-1" style="font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); max-width: 850px; margin: 0 auto;">
-                Bungalow Premium Plots at Hiranandani Township Hinjewadi • Della Township Lots • 8-Acre Private Racecourse &amp; Polo Club</p>
+ Bungalow Premium Plots at Hiranandani Township Hinjewadi • Della Township Lots • 8-Acre Private Racecourse &amp; Polo Club</p>
 </div>
 </section>
 <!-- Overview -->
@@ -500,40 +500,40 @@
 </div>
 </div>
 </section>
-<!-- The Official Resort Narrative & Pursuits of the Privileged -->
+<!-- The Resort Narrative & Pursuits of the Privileged -->
 <section class="section section-dark" id="resort-narrative" style="padding-top: 40px; padding-bottom: 40px;">
 <div class="container">
 <div class="glass-panel" style="padding: 48px; border-radius: 16px; border: 1px solid rgba(197, 160, 89, 0.35); background: radial-gradient(circle at 30% 20%, rgba(197, 160, 89, 0.1) 0%, rgba(10, 12, 16, 0.98) 80%);">
 <div class="grid-2" style="gap: 40px; align-items: center;">
 <div>
 <span class="badge" style="margin-bottom: 16px;">
-<i class="ph ph-crown"></i>  Official Brand Narrative
-                        </span>
+<i class="ph ph-crown"></i>  Brand Narrative
+ </span>
 <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 3.2vw, 2.7rem); color: var(--gold-light); margin: 0 0 16px; line-height: 1.2;">
-                            The Resort Narrative • <span style="color: #fff;">Pursuits of the Privileged</span>
+ The Resort Narrative • <span style="color: #fff;">Pursuits of the Privileged</span>
 </h2>
 <div style="width: 50px; height: 3px; background: var(--gold-primary); margin-bottom: 22px;"></div>
 <h3 style="color: var(--gold-primary); font-size: 1.2rem; margin: 0 0 10px; font-weight: 600;">The Resort Narrative</h3>
 <p style="color: var(--text-light); line-height: 1.85; margin-bottom: 22px; font-size: 1.02rem;">
-                            Everyday living, engineered to feel like an escape. Bordered by coveted Della Villas exists within a refined hospitality and leisure ecosystem. The energy of a premier resort, anchored by the stillness of private residences.
-                        </p>
+ Everyday living, engineered to feel like an escape. Bordered by coveted Della Villas exists within a refined hospitality and leisure ecosystem. The energy of a premier resort, anchored by the stillness of private residences.
+ </p>
 <h4 style="color: var(--gold-primary); font-size: 1.2rem; margin: 0 0 10px; font-weight: 600;">Pursuits of the Privileged</h4>
 <p style="color: var(--text-light); line-height: 1.85; margin-bottom: 22px; font-size: 1.02rem;">
-                            A commanding lifestyle requires an extraordinary arena. The integrated racecourse for Polo &amp; Equestrian brings a world-class sporting culture directly into the township ecosystem. It is not merely an amenity; it is a statement of stature.
-                        </p>
+ A commanding lifestyle requires an extraordinary arena. The integrated racecourse for Polo &amp; Equestrian brings a world-class sporting culture directly into the township ecosystem. It is not merely an amenity; it is a statement of stature.
+ </p>
 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
 <li style="color: #fff; font-size: 0.92rem; display: flex; align-items: center; gap: 10px;">
 <i class="ph ph-seal-check" style="color: var(--gold-primary); font-size: 1.2rem;"></i>
-                                Professional-grade equestrian infrastructure
-                            </li>
+ Professional-grade equestrian infrastructure
+ </li>
 <li style="color: #fff; font-size: 0.92rem; display: flex; align-items: center; gap: 10px;">
 <i class="ph ph-seal-check" style="color: var(--gold-primary); font-size: 1.2rem;"></i>
-                                Uninterrupted arena views from select vantage points
-                            </li>
+ Uninterrupted arena views from select vantage points
+ </li>
 <li style="color: #fff; font-size: 0.92rem; display: flex; align-items: center; gap: 10px;">
 <i class="ph ph-seal-check" style="color: var(--gold-primary); font-size: 1.2rem;"></i>
-                                Della 5-star glamping resort access with 12 MICE venues
-                            </li>
+ Della 5-star glamping resort access with 12 MICE venues
+ </li>
 </ul>
 </div>
 <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(197, 160, 89, 0.35); box-shadow: 0 20px 45px rgba(0,0,0,0.6);">
@@ -614,8 +614,8 @@
 <div style="margin: 35px 0; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3);">
 <table aria-label="Della Township Bungalow Premium Plots and Della Township Lots Specifications and Pricing" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; background: #0c0e15;">
 <caption style="text-align: left; padding: 12px 16px; font-weight: 700; color: #dfc07b; font-size: 0.95rem; background: rgba(197, 160, 89, 0.12); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
-                    Della Township Bungalow Premium Plots &amp; Lots — Pricing, Sizes &amp; Sanctioned FSI Matrix at Hiranandani Township Hinjewadi
-                </caption>
+ Della Township Bungalow Premium Plots &amp; Lots — Pricing, Sizes &amp; Sanctioned FSI Matrix at Hiranandani Township Hinjewadi
+ </caption>
 <thead>
 <tr style="background: rgba(197, 160, 89, 0.18); color: #dfc07b; border-bottom: 1px solid rgba(197, 160, 89, 0.3);">
 <th style="padding: 14px 16px; font-weight: 600;">Plot Classification</th>
@@ -731,8 +731,8 @@
 <div class="footer-brand">
 <img alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" height="38" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="height: 40px; width: auto; margin-bottom: 20px; display: block;" width="280"/>
 <p>
-                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
-                    </p>
+ A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+ </p>
 <div style="margin-top: 15px;">
 <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
 <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
@@ -740,7 +740,7 @@
 </div>
 <div class="footer-links">
 <h3>The Township</h3>
-<a href="/">Krisala Hiranandani Township (Official Home)</a>
+<a href="/">Krisala Hiranandani Township (Home)</a>
 <a href="/pune-real-estate" style="color: var(--gold-light); font-weight: 600;">Pune Real Estate 2026 Guide</a>
 <a href="/hinjewadi-real-estate" style="color: var(--gold-light); font-weight: 600;">Hinjewadi Real Estate Hub</a>
 <a href="/everlyn">Everlyn Residences</a>

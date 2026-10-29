@@ -4,7 +4,7 @@
   <!-- Official Geospatial KML Document for Google Earth & Maps Engine -->
   <url>
     <loc>https://krisalahiranandanitownships.com/locations.kml</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <geo:geo>
@@ -14,7 +14,7 @@
   <!-- Township Main Portal Geo Anchor -->
   <url>
     <loc>https://krisalahiranandanitownships.com/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <geo:geo>
@@ -24,7 +24,7 @@
   <!-- Sector Arcadia Geo Anchor -->
   <url>
     <loc>https://krisalahiranandanitownships.com/arcadia</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <geo:geo>
@@ -34,7 +34,7 @@
   <!-- Sector Icon Geo Anchor -->
   <url>
     <loc>https://krisalahiranandanitownships.com/icon</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <geo:geo>
@@ -44,7 +44,7 @@
   <!-- The Colosseum Geo Anchor -->
   <url>
     <loc>https://krisalahiranandanitownships.com/colosseum</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <geo:geo>
@@ -54,7 +54,7 @@
   <!-- Della Equestrian Estate Geo Anchor -->
   <url>
     <loc>https://krisalahiranandanitownships.com/della</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <geo:geo>
@@ -64,7 +64,7 @@
   <!-- Connectivity & Infrastructure Matrix Geo Anchor -->
   <url>
     <loc>https://krisalahiranandanitownships.com/connectivity</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <geo:geo>
@@ -74,7 +74,7 @@
   <!-- Pune Real Estate Macro Market Geo Anchor -->
   <url>
     <loc>https://krisalahiranandanitownships.com/pune-real-estate</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
     <geo:geo>
@@ -84,7 +84,7 @@
   <!-- Hinjewadi Real Estate IT Corridor Geo Anchor -->
   <url>
     <loc>https://krisalahiranandanitownships.com/hinjewadi-real-estate</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
     <geo:geo>

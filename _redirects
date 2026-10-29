@@ -217,6 +217,13 @@
 /security.txt         /.well-known/security.txt 301
 
 # Comprehensive Explore Silo Redirects (100% Crawl Coverage)
+/explore/krisala-hiranandani-pune-official-website-hinjewadi-phase-2 / 301
+/explore/krisala-hiranandani-pune-hinjewadi-phase-2 / 301
+/explore/krisala-hiranandani-township-hinjewadi / 301
+/explore/krisala-hiranandani-township / 301
+/explore/krisala-hiranandani / 301
+/explore/krisala-hiranandani-pune / 301
+/explore/hiranandani-township-hinjewadi / 301
 /explore/hiranandani-pune                /hiranandani-pune 301
 /explore/hiranandani-township-pune       /hiranandani-pune 301
 /explore/hiranandani-hinjewadi           /hiranandani-pune 301
@@ -228,7 +235,7 @@
 /explore/hiranandani-price-list-2026     /hiranandani-price-list-2026 301
 /explore/krisala-hiranandani-price-list-2026 /hiranandani-price-list-2026 301
 /explore/hiranandani-cost-sheet          /hiranandani-price-list-2026 301
-/explore/hiranandani-brochure-pdf        /public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf 302
+/explore/hiranandani-brochure-pdf        /public/brochure/Krisala-Hiranandani-Township-Brochure.pdf 302
 /explore/hiranandani-floor-plans         /#floorplans 301
 /explore/hiranandani-sample-flat-video   /gallery 301
 /explore/hiranandani-reviews-pune        /hiranandani-pune 301

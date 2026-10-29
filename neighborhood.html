@@ -5,82 +5,82 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: swap;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; z-index: 0; }
+ .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -92,10 +92,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <link href="https://krisalahiranandanitownships.com/neighborhood" rel="canonical"/>
@@ -140,200 +140,200 @@
 <meta content="#08080a" name="theme-color"/>
 <!-- BreadcrumbList & Place & FAQ Schema -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Place",
-          "@id": "https://krisalahiranandanitownships.com/neighborhood#place",
-          "name": "North Hinjewadi (Darumbre & Marunji)",
-          "description": "High-growth real estate micro-market in Pune West, adjacent to the Rajiv Gandhi Infotech Park and Mumbai-Pune Expressway, home to the 105-acre Krisala × Hiranandani master township.",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "North Hinjawadi, Darumbre",
-            "addressLocality": "Pune",
-            "addressRegion": "Maharashtra",
-            "postalCode": "410506",
-            "addressCountry": "IN"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "18.5913",
-            "longitude": "73.7389"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://krisalahiranandanitownships.com/neighborhood#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How far is Krisala Hiranandani Township from Hinjewadi IT Park?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The township is approximately 8 minutes from Hinjewadi Phase 1 (Wipro Circle), 10 minutes from Hinjewadi Phase 2 (Infosys, TCS), and 12 minutes from Hinjewadi Phase 3 (Tech Mahindra, Barclays)."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What are the key upcoming infrastructure projects near North Hinjewadi?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Key infrastructure projects include the Hinjewadi-Shivajinagar Metro Line 3, the PMRDA 128-meter Ring Road, and expanded arterial connectors to Wakad, Punawale, and the Mumbai-Pune Expressway."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What top schools and hospitals are located in the vicinity?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Top schools within 10 to 15 minutes include Mercedes-Benz International School, Blue Ridge Public School, and Indira National School. Reputed healthcare facilities include Ruby Hall Clinic Hinjewadi, Lifepoint Multispecialty, and Jupiter Hospital."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How does North Hinjewadi compare to Wakad, Tathawade, and Baner for homebuyers?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "While Wakad and Baner are mature urban micro-markets with higher traffic congestion and dense standalone buildings, North Hinjewadi (Darumbre & Marunji) offers 70% open spaces, master-planned 105-acre integrated township living, clean air, lower entry price points, and higher capital appreciation potential driven by the upcoming PMRDA Ring Road and Metro Line 3."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the travel distance from Krisala Hiranandani to neighbouring micro-markets like Maan, Marunji, and Punawale?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The township offers rapid signal-free transit: Marunji is just 3-5 minutes (~2 km), Maan is 6-8 minutes (~4 km), Punawale is 10 minutes (~6 km), Tathawade is 12 minutes (~7 km), Wakad is 12-14 minutes (~8 km), and Baner/Balewadi are reachable within 18-22 minutes via the arterial expressway spur."
-              }
-            }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://krisalahiranandanitownships.com/neighborhood#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Neighborhood Guide", "item": "https://krisalahiranandanitownships.com/neighborhood" }
-          ]
-        }
-      ]
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Place",
+ "@id": "https://krisalahiranandanitownships.com/neighborhood#place",
+ "name": "North Hinjewadi (Darumbre & Marunji)",
+ "description": "High-growth real estate micro-market in Pune West, adjacent to the Rajiv Gandhi Infotech Park and Mumbai-Pune Expressway, home to the 105-acre Krisala × Hiranandani master township.",
+ "address": {
+ "@type": "PostalAddress",
+ "streetAddress": "North Hinjawadi, Darumbre",
+ "addressLocality": "Pune",
+ "addressRegion": "Maharashtra",
+ "postalCode": "410506",
+ "addressCountry": "IN"
+ },
+ "geo": {
+ "@type": "GeoCoordinates",
+ "latitude": "18.5913",
+ "longitude": "73.7389"
+ }
+ },
+ {
+ "@type": "FAQPage",
+ "@id": "https://krisalahiranandanitownships.com/neighborhood#faq",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "How far is Krisala Hiranandani Township from Hinjewadi IT Park?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The township is approximately 8 minutes from Hinjewadi Phase 1 (Wipro Circle), 10 minutes from Hinjewadi Phase 2 (Infosys, TCS), and 12 minutes from Hinjewadi Phase 3 (Tech Mahindra, Barclays)."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What are the key upcoming infrastructure projects near North Hinjewadi?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Key infrastructure projects include the Hinjewadi-Shivajinagar Metro Line 3, the PMRDA 128-meter Ring Road, and expanded arterial connectors to Wakad, Punawale, and the Mumbai-Pune Expressway."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What top schools and hospitals are located in the vicinity?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Top schools within 10 to 15 minutes include Mercedes-Benz International School, Blue Ridge Public School, and Indira National School. Reputed healthcare facilities include Ruby Hall Clinic Hinjewadi, Lifepoint Multispecialty, and Jupiter Hospital."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How does North Hinjewadi compare to Wakad, Tathawade, and Baner for homebuyers?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "While Wakad and Baner are mature urban micro-markets with higher traffic congestion and dense standalone buildings, North Hinjewadi (Darumbre & Marunji) offers 70% open spaces, master-planned 105-acre integrated township living, clean air, lower entry price points, and higher capital appreciation potential driven by the upcoming PMRDA Ring Road and Metro Line 3."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What is the travel distance from Krisala Hiranandani to neighbouring micro-markets like Maan, Marunji, and Punawale?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The township offers rapid signal-free transit: Marunji is just 3-5 minutes (~2 km), Maan is 6-8 minutes (~4 km), Punawale is 10 minutes (~6 km), Tathawade is 12 minutes (~7 km), Wakad is 12-14 minutes (~8 km), and Baner/Balewadi are reachable within 18-22 minutes via the arterial expressway spur."
+ }
+ }
+ ]
+ },
+ {
+ "@type": "BreadcrumbList",
+ "@id": "https://krisalahiranandanitownships.com/neighborhood#breadcrumb",
+ "itemListElement": [
+ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
+ { "@type": "ListItem", "position": 2, "name": "Neighborhood Guide", "item": "https://krisalahiranandanitownships.com/neighborhood" }
+ ]
+ }
+ ]
+ }
+ </script>
 <style>
-        .neighborhood-header {
-            padding: 140px 0 60px;
-            background: linear-gradient(to bottom, #0f0f12, #08080a);
-            text-align: center;
-        }
+ .neighborhood-header {
+ padding: 140px 0 60px;
+ background: linear-gradient(to bottom, #0f0f12, #08080a);
+ text-align: center;
+ }
 
-        .neighborhood-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            margin-top: 60px;
-        }
+ .neighborhood-grid {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 40px;
+ margin-top: 60px;
+ }
 
-        .hood-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            transition: all 0.4s ease;
-        }
+ .hood-card {
+ background: rgba(255, 255, 255, 0.02);
+ border: 1px solid rgba(255, 255, 255, 0.05);
+ border-radius: var(--border-radius);
+ padding: 40px;
+ transition: all 0.4s ease;
+ }
 
-        .hood-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold-primary);
-        }
+ .hood-card:hover {
+ transform: translateY(-5px);
+ border-color: var(--gold-primary);
+ }
 
-        .hood-card .gold-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: block;
-        }
+ .hood-card .gold-icon {
+ font-size: 2.5rem;
+ margin-bottom: 20px;
+ display: block;
+ }
 
-        .hood-card h3 {
-            font-family: var(--font-heading);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
+ .hood-card h3 {
+ font-family: var(--font-heading);
+ font-size: 1.4rem;
+ margin-bottom: 15px;
+ }
 
-        .hood-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
+ .hood-card p {
+ color: var(--text-muted);
+ font-size: 0.95rem;
+ line-height: 1.7;
+ }
 
-        .hood-card ul {
-            margin-top: 15px;
-            list-style: none;
-            padding: 0;
-        }
+ .hood-card ul {
+ margin-top: 15px;
+ list-style: none;
+ padding: 0;
+ }
 
-        .hood-card ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
-        }
+ .hood-card ul li {
+ padding: 8px 0;
+ border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+ font-size: 0.9rem;
+ display: flex;
+ justify-content: space-between;
+ }
 
-        .hood-card ul li span {
-            color: var(--gold-primary);
-            font-weight: 600;
-            font-style: normal;
-        }
+ .hood-card ul li span {
+ color: var(--gold-primary);
+ font-weight: 600;
+ font-style: normal;
+ }
 
-        .history-section {
-            margin-top: 80px;
-            text-align: center;
-        }
+ .history-section {
+ margin-top: 80px;
+ text-align: center;
+ }
 
-        .history-section h2 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+ .history-section h2 {
+ font-family: var(--font-heading);
+ font-size: 2.5rem;
+ margin-bottom: 20px;
+ }
 
-        .history-timeline {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
+ .history-timeline {
+ display: flex;
+ justify-content: center;
+ gap: 60px;
+ margin-top: 40px;
+ flex-wrap: wrap;
+ }
 
-        .timeline-item {
-            text-align: center;
-            max-width: 200px;
-        }
+ .timeline-item {
+ text-align: center;
+ max-width: 200px;
+ }
 
-        .timeline-item .year {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--gold-primary);
-        }
+ .timeline-item .year {
+ font-family: var(--font-heading);
+ font-size: 2rem;
+ color: var(--gold-primary);
+ }
 
-        .timeline-item p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 10px;
-        }
+ .timeline-item p {
+ color: var(--text-muted);
+ font-size: 0.85rem;
+ margin-top: 10px;
+ }
 
-        @media (max-width: 768px) {
-            .neighborhood-grid {
-                grid-template-columns: 1fr;
-            }
+ @media (max-width: 768px) {
+ .neighborhood-grid {
+ grid-template-columns: 1fr;
+ }
 
-            .history-timeline {
-                gap: 30px;
-            }
-        }
-    </style>
+ .history-timeline {
+ gap: 30px;
+ }
+ }
+ </style>
 <!-- Social & OpenGraph Meta Tags -->
 <meta content="website" property="og:type"/>
 <meta content="https://krisalahiranandanitownships.com/neighborhood" property="og:url"/>
-<meta content="Neighborhood &amp; IT Corridor™ — Krisala Hiranandani" property="og:title"/>
+<meta content="Neighborhood &amp; IT Corridor — Krisala Hiranandani" property="og:title"/>
 <meta content="Explore Hinjewadi IT Park Phases 1-3, Wakad, Baner, and the Mumbai-Pune Expressway connectivity surrounding Krisala Hiranandani Township." property="og:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -345,20 +345,20 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="@KrisalaHiranandani" name="twitter:site"/>
 <meta content="@KrisalaHiranandani" name="twitter:creator"/>
-<meta content="Neighborhood &amp; IT Corridor™ — Krisala Hiranandani" name="twitter:title"/>
+<meta content="Neighborhood &amp; IT Corridor — Krisala Hiranandani" name="twitter:title"/>
 <meta content="Explore Hinjewadi IT Park Phases 1-3, Wakad, Baner, and the Mumbai-Pune Expressway connectivity surrounding Krisala Hiranandani Township." name="twitter:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" name="twitter:image"/>
 <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
 <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-    </style>
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ </style>
 </head>
 <body>
 <!-- Skip to Content -->
@@ -541,7 +541,7 @@
 <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 20px;">Site Address: North Hinjewadi, Darumbre, Pune, Maharashtra 410506 (GPS Coordinates: 18.5913° N, 73.7389° E). Signal-free access via Expressway &amp; Ring Road.</p>
 <a class="btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=18.5913,73.7389" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px;" target="_blank">
 <i class="ph ph-navigation-arrow"></i> Open in Google Maps for Turn-by-Turn Directions
-                </a>
+ </a>
 </div>
 <!-- History & Growth Timeline -->
 <div class="history-section scroll-reveal" id="investment">
@@ -568,14 +568,14 @@
 </div>
 </div>
 <!-- ══════════════════════════════════════
-                 NEIGHBOURING MICRO-MARKETS MATRIX
-            ══════════════════════════════════════ -->
+ NEIGHBOURING MICRO-MARKETS MATRIX
+ ══════════════════════════════════════ -->
 <div class="history-section scroll-reveal" id="micro-markets" style="margin-top: 60px;">
 <h2>Neighbouring Micro-Markets &amp; <span>Transit Corridors</span></h2>
 <div class="title-line"></div>
 <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto 35px;">
-                    Strategic geographic positioning connecting North Hinjewadi (Darumbre &amp; Marunji) to West Pune's leading residential hubs, educational clusters, and industrial growth centers.
-                </p>
+ Strategic geographic positioning connecting North Hinjewadi (Darumbre &amp; Marunji) to West Pune's leading residential hubs, educational clusters, and industrial growth centers.
+ </p>
 <div class="glass-panel" style="padding: 24px; border-radius: 12px; overflow-x: auto;">
 <table style="width: 100%; border-collapse: collapse; min-width: 680px; text-align: left; font-size: 0.9rem;">
 <thead>
@@ -679,8 +679,8 @@
 <h2>Interactive Location &amp; Turn-by-Turn Navigation</h2>
 <div class="title-line"></div>
 <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 30px;">
-                    Experience direct signal-free access from Hinjewadi Phase 1, Phase 2, Mahalunge, and the Mumbai-Pune Expressway.
-                </p>
+ Experience direct signal-free access from Hinjewadi Phase 1, Phase 2, Mahalunge, and the Mumbai-Pune Expressway.
+ </p>
 <div class="glass-panel" style="padding: 20px; border-radius: 12px; max-width: 950px; margin: 0 auto; border: 1px solid rgba(212,175,55,0.3);">
 <div style="position: relative; overflow: hidden; border-radius: 8px; height: 420px; background: #000;">
 <iframe allowfullscreen="" height="100%" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.4447472019483!2d73.73632507599026!3d18.591305082515714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bb01c13d9641%3A0x6b4f71e54917f8a8!2sHinjawadi%2C%20Pimpri-Chinchwad%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1711000000000!5m2!1sen!2sin" style="border:0;" title="Krisala Hiranandani Township Hinjewadi Google Maps Location" width="100%">
@@ -689,10 +689,10 @@
 <div style="display: flex; gap: 15px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 20px;">
 <a class="btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=18.5913,73.7389" rel="noopener noreferrer" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;" target="_blank">
 <i class="ph ph-navigation-arrow"></i> Open Google Maps Driving Directions
-                        </a>
+ </a>
 <a class="btn-secondary" href="https://wa.me/917744009295?text=Please%20send%20the%20exact%20Google%20Maps%20location%20pin%20for%20Krisala%20Hiranandani%20Township" rel="noopener noreferrer" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;" target="_blank">
 <svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg> Request Live WhatsApp Location Pin
-                        </a>
+ </a>
 </div>
 </div>
 </div>
@@ -708,8 +708,8 @@
 <div class="footer-brand">
 <img alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" height="38" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="height: 40px; width: auto; margin-bottom: 20px; display: block;" width="280"/>
 <p>
-                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
-                    </p>
+ A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+ </p>
 <div style="margin-top: 15px;">
 <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
 <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
@@ -855,34 +855,34 @@
 </div>
 <script defer="" src="/app.min.js?v=20261026_v6"></script>
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      "name": "North Hinjewadi & Darumbre Neighborhood Guide™ — Krisala Hiranandani",
-      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala × Hiranandani"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "428",
-        "reviewCount": "382"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "26500000",
-        "offerCount": "12",
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2027-12-31"
-      }
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Product",
+ "name": "North Hinjewadi & Darumbre Neighborhood Guide — Krisala Hiranandani",
+ "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+ "brand": {
+ "@type": "Brand",
+ "name": "Krisala × Hiranandani"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "bestRating": "5",
+ "worstRating": "1",
+ "ratingCount": "428",
+ "reviewCount": "382"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "26500000",
+ "offerCount": "12",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2027-12-31"
+ }
+ }
+ ]
 }</script></body>
 </html>

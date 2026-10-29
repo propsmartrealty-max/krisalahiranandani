@@ -5,82 +5,82 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: swap;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; z-index: 0; }
+ .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -92,10 +92,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <!-- Canonical & Hreflang -->
@@ -126,7 +126,7 @@
 <!-- Open Graph Protocol -->
 <meta content="article" property="og:type"/>
 <meta content="https://krisalahiranandanitownships.com/hinjewadi-real-estate" property="og:url"/>
-<meta content="Hinjewadi Real Estate 2026™ — Krisala Hiranandani" property="og:title"/>
+<meta content="Hinjewadi Real Estate 2026 — Krisala Hiranandani" property="og:title"/>
 <meta content="Comprehensive guide to Hinjewadi real estate: Phase 1-4 zoning, IT park transit matrix, Metro Line 3 impact, rental yield benchmarks, and Krisala Hiranandani Township." property="og:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -138,7 +138,7 @@
 <!-- Twitter Card -->
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="@KrisalaHiranandani" name="twitter:site"/>
-<meta content="Hinjewadi Real Estate 2026™ — Krisala Hiranandani" name="twitter:title"/>
+<meta content="Hinjewadi Real Estate 2026 — Krisala Hiranandani" name="twitter:title"/>
 <meta content="In-depth Hinjewadi property market trends, tech corridor commute times, and Krisala Hiranandani Township." name="twitter:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp" name="twitter:image"/>
 <!-- Fonts & Icons Preloading -->
@@ -161,234 +161,234 @@
 <meta content="#08080a" name="theme-color"/>
 <!-- JSON-LD Comprehensive Schema Graph -->
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#webpage",
-      "url": "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
-      "name": "Hinjewadi Real Estate 2026: Property Rates, IT Park Corridors, Metro Line 3 & Top Projects",
-      "description": "Comprehensive authority guide on Hinjewadi real estate covering Phase 1, Phase 2, Phase 3 and North Hinjawadi property rates, commute times to Infosys/Wipro/TCS, and the Krisala Hiranandani Township.",
-      "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://krisalahiranandanitownships.com/#website",
-        "name": "Krisala Hiranandani Township Hinjewadi Pune",
-        "url": "https://krisalahiranandanitownships.com/"
-      },
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          "h1",
-          "p",
-          ".faq-question"
-        ]
-      },
-      "about": [
-        {
-          "@type": "Place",
-          "name": "Hinjawadi",
-          "sameAs": [
-            "https://en.wikipedia.org/wiki/Hinjawadi",
-            "https://www.wikidata.org/wiki/Q5766904"
-          ]
-        },
-        {
-          "@type": "Place",
-          "name": "Rajiv Gandhi Infotech Park",
-          "sameAs": [
-            "https://en.wikipedia.org/wiki/Rajiv_Gandhi_Infotech_Park",
-            "https://www.wikidata.org/wiki/Q7286208"
-          ]
-        },
-        {
-          "@type": "Place",
-          "name": "Pune",
-          "sameAs": [
-            "https://en.wikipedia.org/wiki/Pune",
-            "https://www.wikidata.org/wiki/Q1538"
-          ]
-        }
-      ],
-      "inLanguage": "en-IN"
-    },
-    {
-      "@type": "Article",
-      "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#article",
-      "headline": "Hinjewadi Real Estate 2026: Property Rates, IT Park Corridors, Metro Line 3 & Top Projects",
-      "description": "In-depth guide to investing in Hinjewadi property. Detailed Phase 1, 2, 3 and North Hinjawadi zoning, commute matrices for Fortune 500 tech campuses, rental yields, and integrated township living.",
-      "mainEntityOfPage": "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
-      "datePublished": "2026-01-12T09:00:00+05:30",
-      "dateModified": "2026-10-14T11:00:00+05:30",
-      "author": {
-        "@type": "Person",
-        "name": "Dr. Vikas Yewle",
-        "jobTitle": "Principal Real Estate Strategist & RERA Advisory Lead",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Propsmart Realty"
-        }
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Krisala Hiranandani Township",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp"
-        }
-      },
-      "image": "https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp",
-      "keywords": [
-        "Hinjewadi real estate",
-        "flats in Hinjewadi",
-        "apartments near Infosys Hinjewadi",
-        "Hinjewadi Metro Line 3",
-        "flats near Wipro Circle",
-        "Krisala Hiranandani Hinjewadi"
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Township Home",
-          "item": "https://krisalahiranandanitownships.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Hinjewadi Real Estate Guide",
-          "item": "https://krisalahiranandanitownships.com/hinjewadi-real-estate"
-        }
-      ]
-    },
-    {
-      "@type": "RealEstateListing",
-      "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#listing",
-      "name": "Krisala Hiranandani Township Hinjewadi - The Flagship Master Township in North Hinjawadi",
-      "description": "105+ Acre Integrated Equestrian Master Township in North Hinjewadi (Darumbre), Pune West. 2, 3, 4 BHK and Duplex residences with 8-acre private racecourse and Della resort hospitality.",
-      "url": "https://krisalahiranandanitownships.com/",
-      "priceRange": "₹79 Lakhs - ₹3.50 Crores",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "North Hinjawadi, Darumbre",
-        "addressLocality": "Hinjawadi, Pune",
-        "addressRegion": "Maharashtra",
-        "postalCode": "410506",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "18.5913",
-        "longitude": "73.7389"
-      },
-      "sameAs": [
-        "https://en.wikipedia.org/wiki/Hiranandani_Group",
-        "https://www.wikidata.org/wiki/Q5769299",
-        "https://www.wikidata.org/wiki/Q16196237",
-        "https://www.wikidata.org/wiki/Q5767597",
-        "https://www.wikidata.org/wiki/Q1538"
-      ],
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".hero-title",
-          ".hero-subtitle",
-          ".position-one-factsheet-container",
-          ".geo-ai-snapshot"
-        ]
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What are the property rates per square foot in Hinjewadi in 2026?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "In 2026, carpet area rates in Hinjewadi vary by micro-zone: Mature Phase 1 and Phase 2 trade between ₹8,500 and ₹10,200 per sq.ft.; Phase 3 ranges from ₹7,800 to ₹9,200 per sq.ft.; while high-growth North Hinjawadi (Darumbre/Marunji corridor) offers attractive pre-launch entry rates between ₹7,200 and ₹8,400 per sq.ft. at master-planned developments like Krisala Hiranandani Township."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What rental yields can property investors expect in Hinjewadi?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Hinjewadi delivers the highest gross rental yields in Pune, averaging between 4.8% and 5.4%. A luxury 2 BHK commands ₹28,000 to ₹38,000 per month, while a 3 BHK generates ₹42,000 to ₹58,000 per month, underpinned by high-earning software architects and managers working at Infosys, Wipro, TCS, and Barclays."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does Hinjewadi-Shivajinagar Metro Line 3 impact real estate values?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Metro Line 3 runs 23.3 km with 23 elevated stations connecting Megapolis Circle in Hinjewadi to the Civil Court interchange in Pune. Properties located within 5 to 10 minutes of metro stations have experienced an accelerated 12%-16% annual capital value appreciation due to slashed commute times to Pune city centre."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why is North Hinjawadi (Darumbre) emerging as the preferred residential sector over Phase 1?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "While Phase 1 is densely commercialized and suffers from peak-hour traffic bottlenecks, North Hinjawadi (Darumbre) provides direct signal-free access to the PMRDA 128m Ring Road and Mumbai-Pune Expressway bypass. It offers larger master land parcels allowing 100+ acre integrated townships like Krisala Hiranandani with 70% open green space, superior air quality, and resort amenities."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does Krisala Hiranandani compare against other projects in Hinjewadi like Godrej River Royale or VTP Earth One?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Krisala Hiranandani Township offers a massive 105+ acre integrated scale with an 8-acre championship racecourse and 40-acre Della hospitality district compared to standalone high-density plots of 4 to 12 acres. Its authentic neoclassical Roman architecture, Mivan monolithic shear walls, and 10ft 2in ceiling heights deliver 15-20% greater usable carpet efficiency and generational asset preservation."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Dataset",
-      "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#dataset",
-      "name": "Hinjewadi Real Estate IT Corridor Property Rates & Rental Yield Dataset 2026",
-      "description": "Commercial and residential real estate dataset indexing Rajiv Gandhi Infotech Park Phase 1, Phase 2, Phase 3 and North Hinjawadi property rates, tech campus commute corridors, and Metro Line 3 impact data.",
-      "url": "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
-      "keywords": [
-        "Hinjewadi real estate rates 2026",
-        "Rajiv Gandhi Infotech Park property dataset",
-        "Hinjewadi rental yields",
-        "flats near Infosys Hinjewadi",
-        "Krisala Hiranandani Township prices"
-      ],
-      "creator": {
-        "@type": "Organization",
-        "name": "Krisala Hiranandani Research Desk"
-      },
-      "temporalCoverage": "2026/2027",
-      "spatialCoverage": {
-        "@type": "Place",
-        "name": "Hinjawadi, Pune, Maharashtra, India",
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "18.5913",
-          "longitude": "73.7389"
-        }
-      },
-      "license": "https://creativecommons.org/licenses/by/4.0/"
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "WebPage",
+ "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#webpage",
+ "url": "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
+ "name": "Hinjewadi Real Estate 2026: Property Rates, IT Park Corridors, Metro Line 3 & Top Projects",
+ "description": "Comprehensive authority guide on Hinjewadi real estate covering Phase 1, Phase 2, Phase 3 and North Hinjawadi property rates, commute times to Infosys/Wipro/TCS, and the Krisala Hiranandani Township.",
+ "isPartOf": {
+ "@type": "WebSite",
+ "@id": "https://krisalahiranandanitownships.com/#website",
+ "name": "Krisala Hiranandani Township Hinjewadi Pune",
+ "url": "https://krisalahiranandanitownships.com/"
+ },
+ "speakable": {
+ "@type": "SpeakableSpecification",
+ "cssSelector": [
+ "h1",
+ "p",
+ ".faq-question"
+ ]
+ },
+ "about": [
+ {
+ "@type": "Place",
+ "name": "Hinjawadi",
+ "sameAs": [
+ "https://en.wikipedia.org/wiki/Hinjawadi",
+ "https://www.wikidata.org/wiki/Q5766904"
+ ]
+ },
+ {
+ "@type": "Place",
+ "name": "Rajiv Gandhi Infotech Park",
+ "sameAs": [
+ "https://en.wikipedia.org/wiki/Rajiv_Gandhi_Infotech_Park",
+ "https://www.wikidata.org/wiki/Q7286208"
+ ]
+ },
+ {
+ "@type": "Place",
+ "name": "Pune",
+ "sameAs": [
+ "https://en.wikipedia.org/wiki/Pune",
+ "https://www.wikidata.org/wiki/Q1538"
+ ]
+ }
+ ],
+ "inLanguage": "en-IN"
+ },
+ {
+ "@type": "Article",
+ "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#article",
+ "headline": "Hinjewadi Real Estate 2026: Property Rates, IT Park Corridors, Metro Line 3 & Top Projects",
+ "description": "In-depth guide to investing in Hinjewadi property. Detailed Phase 1, 2, 3 and North Hinjawadi zoning, commute matrices for Fortune 500 tech campuses, rental yields, and integrated township living.",
+ "mainEntityOfPage": "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
+ "datePublished": "2026-01-12T09:00:00+05:30",
+ "dateModified": "2026-10-14T11:00:00+05:30",
+ "author": {
+ "@type": "Person",
+ "name": "Dr. Vikas Yewle",
+ "jobTitle": "Principal Real Estate Strategist & RERA Advisory Lead",
+ "worksFor": {
+ "@type": "Organization",
+ "name": "Propsmart Realty"
+ }
+ },
+ "publisher": {
+ "@type": "Organization",
+ "name": "Krisala Hiranandani Township",
+ "logo": {
+ "@type": "ImageObject",
+ "url": "https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp"
+ }
+ },
+ "image": "https://krisalahiranandanitownships.com/public/township_grand/township_connectivity_location_map_official.webp",
+ "keywords": [
+ "Hinjewadi real estate",
+ "flats in Hinjewadi",
+ "apartments near Infosys Hinjewadi",
+ "Hinjewadi Metro Line 3",
+ "flats near Wipro Circle",
+ "Krisala Hiranandani Hinjewadi"
+ ]
+ },
+ {
+ "@type": "BreadcrumbList",
+ "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#breadcrumb",
+ "itemListElement": [
+ {
+ "@type": "ListItem",
+ "position": 1,
+ "name": "Township Home",
+ "item": "https://krisalahiranandanitownships.com/"
+ },
+ {
+ "@type": "ListItem",
+ "position": 2,
+ "name": "Hinjewadi Real Estate Guide",
+ "item": "https://krisalahiranandanitownships.com/hinjewadi-real-estate"
+ }
+ ]
+ },
+ {
+ "@type": "RealEstateListing",
+ "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#listing",
+ "name": "Krisala Hiranandani Township Hinjewadi - The Flagship Master Township in North Hinjawadi",
+ "description": "105+ Acre Integrated Equestrian Master Township in North Hinjewadi (Darumbre), Pune West. 2, 3, 4 BHK and Duplex residences with 8-acre private racecourse and Della resort hospitality.",
+ "url": "https://krisalahiranandanitownships.com/",
+ "priceRange": "₹79 Lakhs - ₹3.50 Crores",
+ "address": {
+ "@type": "PostalAddress",
+ "streetAddress": "North Hinjawadi, Darumbre",
+ "addressLocality": "Hinjawadi, Pune",
+ "addressRegion": "Maharashtra",
+ "postalCode": "410506",
+ "addressCountry": "IN"
+ },
+ "geo": {
+ "@type": "GeoCoordinates",
+ "latitude": "18.5913",
+ "longitude": "73.7389"
+ },
+ "sameAs": [
+ "https://en.wikipedia.org/wiki/Hiranandani_Group",
+ "https://www.wikidata.org/wiki/Q5769299",
+ "https://www.wikidata.org/wiki/Q16196237",
+ "https://www.wikidata.org/wiki/Q5767597",
+ "https://www.wikidata.org/wiki/Q1538"
+ ],
+ "speakable": {
+ "@type": "SpeakableSpecification",
+ "cssSelector": [
+ ".hero-title",
+ ".hero-subtitle",
+ ".position-one-factsheet-container",
+ ".geo-ai-snapshot"
+ ]
+ }
+ },
+ {
+ "@type": "FAQPage",
+ "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#faq",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "What are the property rates per square foot in Hinjewadi in 2026?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "In 2026, carpet area rates in Hinjewadi vary by micro-zone: Mature Phase 1 and Phase 2 trade between ₹8,500 and ₹10,200 per sq.ft.; Phase 3 ranges from ₹7,800 to ₹9,200 per sq.ft.; while high-growth North Hinjawadi (Darumbre/Marunji corridor) offers attractive pre-launch entry rates between ₹7,200 and ₹8,400 per sq.ft. at master-planned developments like Krisala Hiranandani Township."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What rental yields can property investors expect in Hinjewadi?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Hinjewadi delivers the highest gross rental yields in Pune, averaging between 4.8% and 5.4%. A luxury 2 BHK commands ₹28,000 to ₹38,000 per month, while a 3 BHK generates ₹42,000 to ₹58,000 per month, underpinned by high-earning software architects and managers working at Infosys, Wipro, TCS, and Barclays."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How does Hinjewadi-Shivajinagar Metro Line 3 impact real estate values?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Metro Line 3 runs 23.3 km with 23 elevated stations connecting Megapolis Circle in Hinjewadi to the Civil Court interchange in Pune. Properties located within 5 to 10 minutes of metro stations have experienced an accelerated 12%-16% annual capital value appreciation due to slashed commute times to Pune city centre."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Why is North Hinjawadi (Darumbre) emerging as the preferred residential sector over Phase 1?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "While Phase 1 is densely commercialized and suffers from peak-hour traffic bottlenecks, North Hinjawadi (Darumbre) provides direct signal-free access to the PMRDA 128m Ring Road and Mumbai-Pune Expressway bypass. It offers larger master land parcels allowing 100+ acre integrated townships like Krisala Hiranandani with 70% open green space, superior air quality, and resort amenities."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How does Krisala Hiranandani compare against other projects in Hinjewadi like Godrej River Royale or VTP Earth One?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Krisala Hiranandani Township offers a massive 105+ acre integrated scale with an 8-acre championship racecourse and 40-acre Della hospitality district compared to standalone high-density plots of 4 to 12 acres. Its authentic neoclassical Roman architecture, Mivan monolithic shear walls, and 10ft 2in ceiling heights deliver 15-20% greater usable carpet efficiency and generational asset preservation."
+ }
+ }
+ ]
+ },
+ {
+ "@type": "Dataset",
+ "@id": "https://krisalahiranandanitownships.com/hinjewadi-real-estate#dataset",
+ "name": "Hinjewadi Real Estate IT Corridor Property Rates & Rental Yield Dataset 2026",
+ "description": "Commercial and residential real estate dataset indexing Rajiv Gandhi Infotech Park Phase 1, Phase 2, Phase 3 and North Hinjawadi property rates, tech campus commute corridors, and Metro Line 3 impact data.",
+ "url": "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
+ "keywords": [
+ "Hinjewadi real estate rates 2026",
+ "Rajiv Gandhi Infotech Park property dataset",
+ "Hinjewadi rental yields",
+ "flats near Infosys Hinjewadi",
+ "Krisala Hiranandani Township prices"
+ ],
+ "creator": {
+ "@type": "Organization",
+ "name": "Krisala Hiranandani Research Desk"
+ },
+ "temporalCoverage": "2026/2027",
+ "spatialCoverage": {
+ "@type": "Place",
+ "name": "Hinjawadi, Pune, Maharashtra, India",
+ "geo": {
+ "@type": "GeoCoordinates",
+ "latitude": "18.5913",
+ "longitude": "73.7389"
+ }
+ },
+ "license": "https://creativecommons.org/licenses/by/4.0/"
+ }
+ ]
 }</script>
 <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
 <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-    </style>
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ </style>
 </head>
 <body>
 <!-- Skip Link -->
@@ -492,18 +492,18 @@
 <span style="font-size: 0.85rem; font-weight: 700; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1.5px;">Rajiv Gandhi Infotech Park &amp; Residential Corridor 2026</span>
 </div>
 <h1 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.15; color: #fff; margin-bottom: 20px;">
-                        The Master Handbook to <span style="background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Hinjewadi Real Estate</span>
+ The Master Handbook to <span style="background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Hinjewadi Real Estate</span>
 </h1>
 <p style="font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--text-muted); line-height: 1.8; margin-bottom: 35px;">
-                        The definitive technical and commercial review of Hinjewadi's property market. Phase 1 to 4 micro-zoning, tech campus commute corridors (Infosys, Wipro, TCS), Metro Line 3 impact, 5.4% rental yields, and the landmark 105-Acre Krisala Hiranandani Township.
-                    </p>
+ The definitive technical and commercial review of Hinjewadi's property market. Phase 1 to 4 micro-zoning, tech campus commute corridors (Infosys, Wipro, TCS), Metro Line 3 impact, 5.4% rental yields, and the landmark 105-Acre Krisala Hiranandani Township.
+ </p>
 <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
 <a class="btn-primary" href="#it-corridor" style="text-decoration: none;">
 <i class="ph ph-navigation-arrow"></i> Explore IT Corridors
-                        </a>
+ </a>
 <button class="btn-outline open-modal" data-magnet="hinjewadi-report" style="display: inline-flex; align-items: center; gap: 8px;">
 <i class="ph ph-file-pdf"></i> Download Hinjewadi Property Report
-                        </button>
+ </button>
 </div>
 </div>
 </div>
@@ -541,11 +541,11 @@
 <div style="max-width: 900px; margin: 0 auto;">
 <div class="badge" style="margin-bottom: 16px;"><i class="ph ph-map-trifold"></i> Micro-Zonal Analysis</div>
 <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.8rem); color: #fff; margin-bottom: 24px; line-height: 1.25;">
-                        Understanding Hinjewadi's 4 Micro-Zones: Where to Invest in 2026
-                    </h2>
+ Understanding Hinjewadi's 4 Micro-Zones: Where to Invest in 2026
+ </h2>
 <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.85; margin-bottom: 30px;">
-                        Hinjewadi is not a homogenous market. It spans over 2,800 acres of Maharashtra Industrial Development Corporation (MIDC) land split across 4 distinct developmental phases, each exhibiting radically different price structures, traffic dynamics, and livability indices:
-                    </p>
+ Hinjewadi is not a homogenous market. It spans over 2,800 acres of Maharashtra Industrial Development Corporation (MIDC) land split across 4 distinct developmental phases, each exhibiting radically different price structures, traffic dynamics, and livability indices:
+ </p>
 <div style="display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px;">
 <!-- Phase 1 -->
 <div class="glass-panel" style="padding: 28px; border-radius: 12px; border-left: 4px solid var(--gold-primary);">
@@ -556,7 +556,7 @@
 <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; margin-bottom: 12px;">
 <strong>Anchor Campuses:</strong> Wipro Technologies, Infosys Phase 1, Embassy TechZone, Cognizant, Persistent Systems.<br/>
 <strong>Reality Check:</strong> Highly developed commercial hub with dense traffic around Shivaji Chowk. Land is saturated, limiting new residential developments to high-density redevelopments with minimal open space.
-                            </p>
+ </p>
 </div>
 <!-- Phase 2 -->
 <div class="glass-panel" style="padding: 28px; border-radius: 12px; border-left: 4px solid var(--gold-primary);">
@@ -567,7 +567,7 @@
 <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; margin-bottom: 12px;">
 <strong>Anchor Campuses:</strong> Synechron, Mindtree, KPIT, Geometric, Capgemini.<br/>
 <strong>Reality Check:</strong> Balanced commercial density with moderate residential pockets. Primarily mid-segment residential societies with rising tenancy rates.
-                            </p>
+ </p>
 </div>
 <!-- Phase 3 -->
 <div class="glass-panel" style="padding: 28px; border-radius: 12px; border-left: 4px solid var(--gold-primary);">
@@ -578,20 +578,20 @@
 <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; margin-bottom: 12px;">
 <strong>Anchor Campuses:</strong> Tata Consultancy Services (TCS Sahyadri Park 22,000+ employees), Barclays Global Service Centre, Tech Mahindra, Megapolis World.<br/>
 <strong>Reality Check:</strong> Modern high-tech enclave, home to the starting terminal of Metro Line 3. Excellent tenant profiles with high demand for premium rental homes.
-                            </p>
+ </p>
 </div>
 <!-- Phase 4 & North Hinjawadi -->
 <div class="glass-panel" style="padding: 28px; border-radius: 12px; border-left: 4px solid #4ade80; background: rgba(197, 160, 89, 0.08);">
 <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 8px;">
 <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--gold-bright); margin: 0;">
-                                    Phase 4 &amp; North Hinjawadi (Darumbre): The Luxury Frontier
-                                </h3>
+ Phase 4 &amp; North Hinjawadi (Darumbre): The Luxury Frontier
+ </h3>
 <span style="color: #4ade80; font-weight: 700; font-size: 0.95rem;">₹7,200 – ₹8,400/sq.ft. (High Growth Vector)</span>
 </div>
 <p style="color: var(--text-main); font-size: 0.92rem; line-height: 1.65; margin-bottom: 12px;">
 <strong>Anchor Development:</strong> Krisala Hiranandani 105-Acre Integrated Township, The Colosseum, The Della Collection, 8-Acre Private Racecourse.<br/>
 <strong>Strategic Edge:</strong> Direct signal-free connectivity to the PMRDA 128m Ring Road and Mumbai-Pune Expressway bypass. Unlike congested Phase 1, North Hinjawadi offers 70% open green space, pristine Sahyadri hill breezes, low air pollution, and pre-launch capital entry advantages.
-                            </p>
+ </p>
 </div>
 </div>
 </div>
@@ -603,11 +603,11 @@
 <div style="text-align: center; max-width: 850px; margin: 0 auto 50px;">
 <div class="badge" style="margin-bottom: 14px;"><i class="ph ph-clock"></i> Commute Efficiency</div>
 <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.7rem); color: #fff;">
-                        Tech Campus Proximity Matrix: Under 10-Minute Work Commute
-                    </h2>
+ Tech Campus Proximity Matrix: Under 10-Minute Work Commute
+ </h2>
 <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">
-                        Drive times from North Hinjawadi (Krisala Hiranandani Township) to Pune's largest IT employers via widened signal-free arterial boulevards.
-                    </p>
+ Drive times from North Hinjawadi (Krisala Hiranandani Township) to Pune's largest IT employers via widened signal-free arterial boulevards.
+ </p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
 <div class="glass-panel" style="padding: 24px; border-radius: 12px;">
@@ -649,11 +649,11 @@
 <div style="text-align: center; max-width: 850px; margin: 0 auto 50px;">
 <div class="badge" style="margin-bottom: 14px;"><i class="ph ph-scales"></i> Project Evaluation</div>
 <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.7rem); color: #fff;">
-                        Hinjewadi Residential Project Benchmark (2026)
-                    </h2>
+ Hinjewadi Residential Project Benchmark (2026)
+ </h2>
 <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">
-                        Comparing Krisala Hiranandani Township against Godrej River Royale, VTP Earth One, Lodha Sylvan, and Kolte Patil Life Republic.
-                    </p>
+ Comparing Krisala Hiranandani Township against Godrej River Royale, VTP Earth One, Lodha Sylvan, and Kolte Patil Life Republic.
+ </p>
 </div>
 <div class="glass-panel" style="padding: 30px; border-radius: 12px; overflow-x: auto;">
 <table style="width: 100%; border-collapse: collapse; min-width: 750px; text-align: left;">
@@ -720,11 +720,11 @@
 <div style="max-width: 900px; margin: 0 auto 50px; text-align: center;">
 <div class="badge" style="margin-bottom: 14px;"><i class="ph ph-buildings"></i> Master Sectors</div>
 <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.7rem); color: #fff;">
-                        Residential Sectors in Krisala Hiranandani Township Hinjewadi
-                    </h2>
+ Residential Sectors in Krisala Hiranandani Township Hinjewadi
+ </h2>
 <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7;">
-                        Explore five distinctive master sectors engineered for diverse buyer profiles — from young tech families to CXOs and equestrian enthusiasts.
-                    </p>
+ Explore five distinctive master sectors engineered for diverse buyer profiles — from young tech families to CXOs and equestrian enthusiasts.
+ </p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
 <!-- Arcadia -->
@@ -733,12 +733,12 @@
 <span class="badge-mini badge-gold" style="margin-bottom: 10px; display: inline-block;">Sector Arcadia</span>
 <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin-bottom: 8px;">2 &amp; 3 BHK Neoclassical Homes</h3>
 <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
-                                740 – 1,180 sq.ft. carpet area. Engineered for tech professionals with zero-wastage layouts, 10.2 ft ceiling heights, and vehicular-free podium living.
-                            </p>
+ 740 – 1,180 sq.ft. carpet area. Engineered for tech professionals with zero-wastage layouts, 10.2 ft ceiling heights, and vehicular-free podium living.
+ </p>
 </div>
 <a class="btn-primary" href="/arcadia" style="text-decoration: none; font-size: 0.85rem; padding: 10px 18px; justify-content: center;">
-                            Explore Sector Arcadia →
-                        </a>
+ Explore Sector Arcadia →
+ </a>
 </div>
 <!-- Colosseum -->
 <div class="glass-panel" style="padding: 28px; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--gold-primary);">
@@ -746,12 +746,12 @@
 <span class="badge-mini badge-gold" style="margin-bottom: 10px; display: inline-block;">NEW RELEASE</span>
 <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--gold-bright); margin-bottom: 8px;">The Colosseum (Phase 4)</h3>
 <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
-                                B+G+27 monumental towers inspired by Roman amphitheatre grandeur. 2 &amp; 3 BHK Grande residences with 270-degree racecourse and Sahyadri views.
-                            </p>
+ B+G+27 monumental towers inspired by Roman amphitheatre grandeur. 2 &amp; 3 BHK Grande residences with 270-degree racecourse and Sahyadri views.
+ </p>
 </div>
 <a class="btn-primary" href="/colosseum" style="text-decoration: none; font-size: 0.85rem; padding: 10px 18px; justify-content: center;">
-                            Explore The Colosseum →
-                        </a>
+ Explore The Colosseum →
+ </a>
 </div>
 <!-- Icon -->
 <div class="glass-panel" style="padding: 28px; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between;">
@@ -759,12 +759,12 @@
 <span class="badge-mini badge-gold" style="margin-bottom: 10px; display: inline-block;">Sector Icon</span>
 <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin-bottom: 8px;">Sky Duplexes &amp; Palatial Suites</h3>
 <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
-                                1,850 – 3,800 sq.ft. usable carpet. 22-foot double-height living rooms, Italian marble flooring, private elevators, and bespoke CXO penthouses.
-                            </p>
+ 1,850 – 3,800 sq.ft. usable carpet. 22-foot double-height living rooms, Italian marble flooring, private elevators, and bespoke CXO penthouses.
+ </p>
 </div>
 <a class="btn-primary" href="/icon" style="text-decoration: none; font-size: 0.85rem; padding: 10px 18px; justify-content: center;">
-                            Explore Sector Icon →
-                        </a>
+ Explore Sector Icon →
+ </a>
 </div>
 <!-- Della Collection -->
 <div class="glass-panel" style="padding: 28px; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between;">
@@ -772,12 +772,12 @@
 <span class="badge-mini badge-gold" style="margin-bottom: 10px; display: inline-block;">The Della Collection</span>
 <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin-bottom: 8px;">Equestrian Villa Plots</h3>
 <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px;">
-                                100 limited villa plots (2,000–5,000 sq.ft.) overlooking India's first integrated 8-acre championship polo track and 40-acre Della adventure resort.
-                            </p>
+ 100 limited villa plots (2,000–5,000 sq.ft.) overlooking India's first integrated 8-acre championship polo track and 40-acre Della adventure resort.
+ </p>
 </div>
 <a class="btn-primary" href="/della" style="text-decoration: none; font-size: 0.85rem; padding: 10px 18px; justify-content: center;">
-                            Explore Villa Plots →
-                        </a>
+ Explore Villa Plots →
+ </a>
 </div>
 </div>
 <!-- Hinjewadi Tech Parks & Micro-Zoning Keyword Directory -->
@@ -786,33 +786,33 @@
 <span class="badge-mini badge-gold" style="font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase;">Corridor Taxonomy</span>
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.25rem; margin-top: 8px;">Hinjewadi Real Estate Micro-Zoning &amp; Corporate Campus Corridors</h3>
 <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-top: 4px;">
-                            Official mapping of IT campuses, transit hubs, and residential enclaves across Rajiv Gandhi Infotech Park Phase 1, Phase 2, Phase 3 &amp; North Hinjawadi.
-                        </p>
+ Verified mapping of IT campuses, transit hubs, and residential enclaves across Rajiv Gandhi Infotech Park Phase 1, Phase 2, Phase 3 &amp; North Hinjawadi.
+ </p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px; font-size: 0.85rem;">
 <div>
 <h4 style="color: var(--gold-bright); font-size: 0.92rem; margin-bottom: 8px;">Hinjewadi Phase 1</h4>
 <p style="color: var(--text-muted); line-height: 1.6;">
-                                Infosys Campus 1, Wipro Circle, Tata Technologies, Cognizant, Persistent Systems, Symbiosis Infotech Campus, Hinjewadi Flyover.
-                            </p>
+ Infosys Campus 1, Wipro Circle, Tata Technologies, Cognizant, Persistent Systems, Symbiosis Infotech Campus, Hinjewadi Flyover.
+ </p>
 </div>
 <div>
 <h4 style="color: var(--gold-bright); font-size: 0.92rem; margin-bottom: 8px;">Hinjewadi Phase 2</h4>
 <p style="color: var(--text-muted); line-height: 1.6;">
-                                Wipro Technologies SEZ, Infosys Phase 2, Cisco, Synechron, Dassault Systèmes, Credit Suisse, Ascendas International Tech Park.
-                            </p>
+ Wipro Technologies SEZ, Infosys Phase 2, Cisco, Synechron, Dassault Systèmes, Credit Suisse, Ascendas International Tech Park.
+ </p>
 </div>
 <div>
 <h4 style="color: var(--gold-bright); font-size: 0.92rem; margin-bottom: 8px;">Hinjewadi Phase 3</h4>
 <p style="color: var(--text-muted); line-height: 1.6;">
-                                TCS Sahyadri Park, Tech Mahindra, Barclays Global Service Centre, Cognizant Phase 3, Megapolis Circle, Metro Line 3 Terminal.
-                            </p>
+ TCS Sahyadri Park, Tech Mahindra, Barclays Global Service Centre, Cognizant Phase 3, Megapolis Circle, Metro Line 3 Terminal.
+ </p>
 </div>
 <div>
 <h4 style="color: var(--gold-bright); font-size: 0.92rem; margin-bottom: 8px;">North Hinjawadi / Phase 4</h4>
 <p style="color: var(--text-muted); line-height: 1.6;">
-                                Darumbre, Marunji, Kasarsai, Nere, Krisala Hiranandani 105-Acre Township, The Colosseum, Della Resorts &amp; PMRDA 128m Ring Road interchange.
-                            </p>
+ Darumbre, Marunji, Kasarsai, Nere, Krisala Hiranandani 105-Acre Township, The Colosseum, Della Resorts &amp; PMRDA 128m Ring Road interchange.
+ </p>
 </div>
 </div>
 </div>
@@ -825,45 +825,45 @@
 <div style="text-align: center; margin-bottom: 45px;">
 <div class="badge" style="margin-bottom: 14px;"><i class="ph ph-question"></i> FAQ Directory</div>
 <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 3.5vw, 2.7rem); color: #fff;">
-                            Hinjewadi Real Estate: Buyer &amp; Investor FAQs
-                        </h2>
+ Hinjewadi Real Estate: Buyer &amp; Investor FAQs
+ </h2>
 </div>
 <div style="display: flex; flex-direction: column; gap: 16px;">
 <details class="glass-panel" style="padding: 20px 24px; border-radius: 10px; cursor: pointer;">
 <summary style="font-family: var(--font-heading); font-size: 1.25rem; color: #fff; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                                What are the property rates per square foot in Hinjewadi in 2026?
-                                <i class="ph ph-caret-down" style="color: var(--gold-bright);"></i>
+ What are the property rates per square foot in Hinjewadi in 2026?
+ <i class="ph ph-caret-down" style="color: var(--gold-bright);"></i>
 </summary>
 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
-                                In 2026, carpet area rates in Hinjewadi vary by micro-zone: Mature Phase 1 and Phase 2 trade between ₹8,500 and ₹10,200 per sq.ft.; Phase 3 ranges from ₹7,800 to ₹9,200 per sq.ft.; while high-growth North Hinjawadi (Darumbre/Marunji corridor) offers attractive pre-launch entry rates between ₹7,200 and ₹8,400 per sq.ft. at master-planned developments like Krisala Hiranandani Township.
-                            </p>
+ In 2026, carpet area rates in Hinjewadi vary by micro-zone: Mature Phase 1 and Phase 2 trade between ₹8,500 and ₹10,200 per sq.ft.; Phase 3 ranges from ₹7,800 to ₹9,200 per sq.ft.; while high-growth North Hinjawadi (Darumbre/Marunji corridor) offers attractive pre-launch entry rates between ₹7,200 and ₹8,400 per sq.ft. at master-planned developments like Krisala Hiranandani Township.
+ </p>
 </details>
 <details class="glass-panel" style="padding: 20px 24px; border-radius: 10px; cursor: pointer;">
 <summary style="font-family: var(--font-heading); font-size: 1.25rem; color: #fff; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                                What rental yields can property investors expect in Hinjewadi?
-                                <i class="ph ph-caret-down" style="color: var(--gold-bright);"></i>
+ What rental yields can property investors expect in Hinjewadi?
+ <i class="ph ph-caret-down" style="color: var(--gold-bright);"></i>
 </summary>
 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
-                                Hinjewadi delivers the highest gross rental yields in Pune, averaging between 4.8% and 5.4%. A luxury 2 BHK commands ₹28,000 to ₹38,000 per month, while a 3 BHK generates ₹42,000 to ₹58,000 per month, underpinned by high-earning software architects and managers working at Infosys, Wipro, TCS, and Barclays.
-                            </p>
+ Hinjewadi delivers the highest gross rental yields in Pune, averaging between 4.8% and 5.4%. A luxury 2 BHK commands ₹28,000 to ₹38,000 per month, while a 3 BHK generates ₹42,000 to ₹58,000 per month, underpinned by high-earning software architects and managers working at Infosys, Wipro, TCS, and Barclays.
+ </p>
 </details>
 <details class="glass-panel" style="padding: 20px 24px; border-radius: 10px; cursor: pointer;">
 <summary style="font-family: var(--font-heading); font-size: 1.25rem; color: #fff; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                                How does Hinjewadi-Shivajinagar Metro Line 3 impact real estate values?
-                                <i class="ph ph-caret-down" style="color: var(--gold-bright);"></i>
+ How does Hinjewadi-Shivajinagar Metro Line 3 impact real estate values?
+ <i class="ph ph-caret-down" style="color: var(--gold-bright);"></i>
 </summary>
 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
-                                Metro Line 3 runs 23.3 km with 23 elevated stations connecting Megapolis Circle in Hinjewadi to the Civil Court interchange in Pune. Properties located within 5 to 10 minutes of metro stations have experienced an accelerated 12%-16% annual capital value appreciation due to slashed commute times to Pune city centre.
-                            </p>
+ Metro Line 3 runs 23.3 km with 23 elevated stations connecting Megapolis Circle in Hinjewadi to the Civil Court interchange in Pune. Properties located within 5 to 10 minutes of metro stations have experienced an accelerated 12%-16% annual capital value appreciation due to slashed commute times to Pune city centre.
+ </p>
 </details>
 <details class="glass-panel" style="padding: 20px 24px; border-radius: 10px; cursor: pointer;">
 <summary style="font-family: var(--font-heading); font-size: 1.25rem; color: #fff; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
-                                Why is North Hinjawadi (Darumbre) emerging as the preferred residential sector over Phase 1?
-                                <i class="ph ph-caret-down" style="color: var(--gold-bright);"></i>
+ Why is North Hinjawadi (Darumbre) emerging as the preferred residential sector over Phase 1?
+ <i class="ph ph-caret-down" style="color: var(--gold-bright);"></i>
 </summary>
 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
-                                While Phase 1 is densely commercialized and suffers from peak-hour traffic bottlenecks, North Hinjawadi (Darumbre) provides direct signal-free access to the PMRDA 128m Ring Road and Mumbai-Pune Expressway bypass. It offers larger master land parcels allowing 100+ acre integrated townships like Krisala Hiranandani with 70% open green space, superior air quality, and resort amenities.
-                            </p>
+ While Phase 1 is densely commercialized and suffers from peak-hour traffic bottlenecks, North Hinjawadi (Darumbre) provides direct signal-free access to the PMRDA 128m Ring Road and Mumbai-Pune Expressway bypass. It offers larger master land parcels allowing 100+ acre integrated townships like Krisala Hiranandani with 70% open green space, superior air quality, and resort amenities.
+ </p>
 </details>
 </div>
 </div>
@@ -873,18 +873,18 @@
 <section class="section" style="padding: 70px 0; background: radial-gradient(circle at 50% 50%, rgba(197, 160, 89, 0.16) 0%, rgba(9, 10, 15, 0.95) 80%); border-top: 1px solid rgba(197, 160, 89, 0.25);">
 <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto;">
 <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3rem); color: #fff; margin-bottom: 16px;">
-                    Secure Your Residence at Hinjewadi's #1 Master Township
-                </h2>
+ Secure Your Residence at Hinjewadi's #1 Master Township
+ </h2>
 <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 30px;">
-                    Download the comprehensive Hinjewadi Real Estate Handbook, verified MahaRERA cost sheet, and schedule an exclusive private preview of Sector Arcadia, The Colosseum, and Sector Icon.
-                </p>
+ Download the comprehensive Hinjewadi Real Estate Handbook, verified MahaRERA cost sheet, and schedule an exclusive private preview of Sector Arcadia, The Colosseum, and Sector Icon.
+ </p>
 <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
 <button class="btn-primary open-modal" data-magnet="vip-site-visit" style="padding: 14px 28px; font-size: 0.95rem;">
 <i class="ph ph-calendar-check"></i> Schedule VIP Site Visit
-                    </button>
+ </button>
 <a class="btn-outline" href="https://wa.me/917744009295?text=Hi%2C%20I%20would%20like%20to%20receive%20the%20Hinjewadi%20Real%20Estate%20Report%20and%20Krisala%20Hiranandani%20Township%20floor%20plans." rel="noopener noreferrer" style="padding: 14px 26px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; font-size: 0.95rem;" target="_blank">
 <i class="ph ph-whatsapp-logo" style="color: #25D366; font-size: 1.2rem;"></i> WhatsApp Concierge
-                    </a>
+ </a>
 </div>
 </div>
 </section>
@@ -896,11 +896,11 @@
 <div>
 <img alt="Krisala Hiranandani Township Hinjewadi Logo" height="32" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="margin-bottom: 20px;" width="240"/>
 <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.7;">
-                        105+ Acre Integrated Equestrian Master Township in North Hinjewadi, Pune West. A joint development by Krisala Developers and Hiranandani Communities with Della Resorts hospitality.
-                    </p>
+ 105+ Acre Integrated Equestrian Master Township in North Hinjewadi, Pune West. A joint development by Krisala Developers and Hiranandani Communities with Della Resorts hospitality.
+ </p>
 <div style="margin-top: 15px; font-size: 0.85rem; color: var(--gold-light);">
 <i class="ph ph-map-pin"></i> Darumbre, North Hinjawadi, Pune 410506
-                    </div>
+ </div>
 </div>
 <div>
 <h3 style="font-family: var(--font-heading); color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 16px;">Core Portals</h3>
@@ -929,26 +929,26 @@
 <div>
 <h3 style="font-family: var(--font-heading); color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 16px;">Contact &amp; Advisory</h3>
 <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 12px;">
-                        Authorized Advisory Partner: <strong>Propsmart Realty</strong><br/>
-                        Email: <a href="mailto:propsmartrealty@gmail.com" style="color: var(--gold-light); text-decoration: none;">propsmartrealty@gmail.com</a><br/>
-                        Direct Call: <a href="tel:+917744009295" style="color: var(--gold-light); text-decoration: none;">+91 7744009295</a>
+ Authorized Advisory Partner: <strong>Propsmart Realty</strong><br/>
+ Email: <a href="mailto:propsmartrealty@gmail.com" style="color: var(--gold-light); text-decoration: none;">propsmartrealty@gmail.com</a><br/>
+ Direct Call: <a href="tel:+917744009295" style="color: var(--gold-light); text-decoration: none;">+91 7744009295</a>
 </p>
 <div style="font-size: 0.8rem; color: var(--text-muted);">
-                        MahaRERA: PR1260002500600 | PR1260002600818 | PR1260002502438
-                    </div>
+ MahaRERA: PR1260002500600 | PR1260002600818 | PR1260002502438
+ </div>
 </div>
 </div>
 <!-- Hiranandani Brand Authority Directory -->
 <div style="border-top: 1px solid rgba(212,175,55,0.2); margin-top: 30px; padding-top: 30px; margin-bottom: 30px;">
 <div style="margin-bottom: 20px;">
-<span class="badge" style="margin-bottom: 8px;"><i class="ph ph-crown"></i> Hiranandani Pune Official Brand Hub</span>
+<span class="badge" style="margin-bottom: 8px;"><i class="ph ph-crown"></i> Hiranandani Pune Brand Hub</span>
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.25rem;">Hiranandani Communities Pune • High-Intent Search Directory</h3>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left;">
 <div>
 <h4 style="font-family: var(--font-heading); color: var(--gold-light); font-size: 0.95rem; margin-bottom: 10px;">Brand &amp; Township Authority</h4>
 <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; font-size: 0.84rem;">
-<li><a href="/hiranandani-pune" style="color: var(--gold-bright); font-weight: 600; text-decoration: none;">Hiranandani Pune Official</a></li>
+<li><a href="/hiranandani-pune" style="color: var(--gold-bright); font-weight: 600; text-decoration: none;">Hiranandani Pune Hub</a></li>
 <li><a href="/hiranandani-pune" style="color: var(--text-muted); text-decoration: none;">Hiranandani Township Pune</a></li>
 <li><a href="/hiranandani-pune" style="color: var(--text-muted); text-decoration: none;">Hiranandani Hinjewadi Hub</a></li>
 <li><a href="/hiranandani-pune" style="color: var(--text-muted); text-decoration: none;">Hiranandani Communities Pune</a></li>
@@ -974,7 +974,7 @@
 <li><a href="/explore/hiranandani-brochure-pdf" style="color: var(--text-muted); text-decoration: none;">Hiranandani Brochure PDF Download</a></li>
 <li><a href="/explore/hiranandani-floor-plans" style="color: var(--text-muted); text-decoration: none;">Hiranandani Master Floor Plans</a></li>
 <li><a href="/explore/hiranandani-sample-flat-video" style="color: var(--text-muted); text-decoration: none;">Hiranandani Sample Flat Walkthrough</a></li>
-<li><a href="/explore/hiranandani-cost-sheet" style="color: var(--text-muted); text-decoration: none;">Hiranandani Official Cost Sheet</a></li>
+<li><a href="/explore/hiranandani-cost-sheet" style="color: var(--text-muted); text-decoration: none;">Hiranandani Cost Sheet</a></li>
 <li><a href="/explore/hiranandani-reviews-pune" style="color: var(--text-muted); text-decoration: none;">Hiranandani Pune Reviews &amp; Ratings</a></li>
 </ul>
 </div>
@@ -1093,75 +1093,75 @@
 </select>
 </div>
 <button class="btn-primary" style="width: 100%; justify-content: center; margin-top: 10px;" type="submit">
-<i class="ph ph-paper-plane-tilt"></i> Submit Official Request
-                </button>
+<i class="ph ph-paper-plane-tilt"></i> Submit Request
+ </button>
 </form>
 </div>
 </div>
 <!-- W3C Speculation Rules API — Instant 0ms Page Navigation -->
 <script type="speculationrules">
-    {
-      "prerender": [
-        {
-          "source": "list",
-          "urls": [
-            "/",
-            "/pune-real-estate",
-            "/pricing",
-            "/colosseum",
-            "/arcadia",
-            "/icon"
-          ],
-          "eagerness": "moderate"
-        }
-      ],
-      "prefetch": [
-        {
-          "source": "list",
-          "urls": [
-            "/della",
-            "/racecourse",
-            "/amenities",
-            "/connectivity",
-            "/compare",
-            "/blog"
-          ],
-          "eagerness": "moderate"
-        }
-      ]
-    }
-    </script>
+ {
+ "prerender": [
+ {
+ "source": "list",
+ "urls": [
+ "/",
+ "/pune-real-estate",
+ "/pricing",
+ "/colosseum",
+ "/arcadia",
+ "/icon"
+ ],
+ "eagerness": "moderate"
+ }
+ ],
+ "prefetch": [
+ {
+ "source": "list",
+ "urls": [
+ "/della",
+ "/racecourse",
+ "/amenities",
+ "/connectivity",
+ "/compare",
+ "/blog"
+ ],
+ "eagerness": "moderate"
+ }
+ ]
+ }
+ </script>
 <!-- Scripts -->
 <script defer="" src="/app.min.js?v=20261026_v6"></script>
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      "name": "Hinjewadi Real Estate 2026™ — Krisala Hiranandani",
-      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala × Hiranandani"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "428",
-        "reviewCount": "382"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "26500000",
-        "offerCount": "12",
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2027-12-31"
-      }
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Product",
+ "name": "Hinjewadi Real Estate 2026 — Krisala Hiranandani",
+ "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+ "brand": {
+ "@type": "Brand",
+ "name": "Krisala × Hiranandani"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "bestRating": "5",
+ "worstRating": "1",
+ "ratingCount": "428",
+ "reviewCount": "382"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "26500000",
+ "offerCount": "12",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2027-12-31"
+ }
+ }
+ ]
 }</script></body>
 </html>

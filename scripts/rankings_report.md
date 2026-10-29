@@ -1,5 +1,5 @@
 # Krisala × Hiranandani Township — Official Google Search Console Rank Audit
-**Audit Timestamp:** 2026-10-29 06:51:52 UTC  
+**Audit Timestamp:** 2026-10-29 19:32:03 UTC  
 **Data Source:** Google Search Console Official API (`sc-domain:krisalahiranandanitownships.com`)  
 **Verified Search Queries Analyzed:** 100  
 
@@ -8,8 +8,8 @@
 | Search Query | Google Rank / Position | Clicks | Impressions | CTR | Ranking Destination URL |
 | :--- | :---: | :---: | :---: | :---: | :--- |
 | **krisala hiranandani township pune** | **#8.9 (PAGE 1)** 🟢 | 7 | 16 | 43.8% | [/](https://krisalahiranandanitownships.com/) |
-| **krisala hiranandani township** | #12.0 (Page 2) 🟡 | 4 | 46 | 8.7% | [/](https://krisalahiranandanitownships.com/) |
-| **krisala hiranandani arcadia** | **#3.9 (PAGE 1)** 🟢 | 3 | 7 | 42.9% | [/arcadia](https://krisalahiranandanitownships.com/arcadia) |
+| **krisala hiranandani township** | #11.4 (Page 2) 🟡 | 4 | 51 | 7.8% | [/](https://krisalahiranandanitownships.com/) |
+| **krisala hiranandani arcadia** | **#3.5 (PAGE 1)** 🟢 | 3 | 8 | 37.5% | [/arcadia](https://krisalahiranandanitownships.com/arcadia) |
 | **krisala hiranandani township** | **#9.2 (PAGE 1)** 🟢 | 2 | 109 | 1.8% | [/explore/krisala-hiranandani-pune-official-website-hinjewadi-phase-2](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-pune-official-website-hinjewadi-phase-2) |
 | **hiranandani hinjewadi phase 3** | **#5.6 (PAGE 1)** 🟢 | 1 | 25 | 4.0% | [/explore/krisala-hiranandani-hinjewadi-schedule-vip-site-visit-hinjewadi-phase-3](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hinjewadi-schedule-vip-site-visit-hinjewadi-phase-3) |
 | **krisala hiranandani township pune** | **#4.9 (PAGE 1)** 🟢 | 1 | 22 | 4.5% | [/explore/krisala-hiranandani-pune-official-website-hinjewadi-phase-2](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-pune-official-website-hinjewadi-phase-2) |
@@ -20,12 +20,16 @@
 | **hiranandani hinjewadi phase 4** | **#7.1 (PAGE 1)** 🟢 | 1 | 8 | 12.5% | [/blog/the-colosseum-hinjewadi-phase-4-investment-guide](https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide) |
 | **hiranandani township pune** | #17.5 (Page 2) 🟡 | 1 | 8 | 12.5% | [/](https://krisalahiranandanitownships.com/) |
 | **hiranandani north hinjewadi** | **#6.5 (PAGE 1)** 🟢 | 1 | 6 | 16.7% | [/explore/krisala-hiranandani-hiranandani-north-hinjewadi-near-metro-line-3-station-nri-investors-pune](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-north-hinjewadi-near-metro-line-3-station-nri-investors-pune) |
+| **krisala hiranandani township** | **#6.5 (PAGE 1)** 🟢 | 1 | 4 | 25.0% | [/explore/krisala-hiranandani-hiranandani-hinjewadi-near-metro-line-3-station-north-hinjewadi](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-hinjewadi-near-metro-line-3-station-north-hinjewadi) |
 | **hiranandani colosseum** | **#2.7 (TOP 3)** 🏆 | 1 | 3 | 33.3% | [/explore/krisala-hiranandani-colosseum-hinjewadi-schedule-vip-site-visit-mahalunge-smart-city](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-colosseum-hinjewadi-schedule-vip-site-visit-mahalunge-smart-city) |
+| **hiranandani pune location** | **#3.3 (PAGE 1)** 🟢 | 1 | 3 | 33.3% | [/explore/krisala-hiranandani-location-map-pune-schedule-vip-site-visit-hinjewadi](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-location-map-pune-schedule-vip-site-visit-hinjewadi) |
 | **krisala hiranandani township location** | **#4.0 (PAGE 1)** 🟢 | 1 | 3 | 33.3% | [/explore/krisala-hiranandani-location-map-pune-near-infosys-wipro-circle-hinjewadi-phase-2](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-location-map-pune-near-infosys-wipro-circle-hinjewadi-phase-2) |
+| **hiranandani flats in pune** | #12.5 (Page 2) 🟡 | 1 | 2 | 50.0% | [/explore/krisala-hiranandani-hiranandani-flats-in-pune-near-metro-line-3-station-hinjewadi-phase-3](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-flats-in-pune-near-metro-line-3-station-hinjewadi-phase-3) |
 | **hiranandani pune** | **#1.0 (TOP 3)** 🏆 | 1 | 2 | 50.0% | [/explore/krisala-hiranandani-apartments-near-tcs-sahyadri-park-hinjewadi](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-tcs-sahyadri-park-hinjewadi) |
 | **krisala hiranandani arcadia** | **#10.0 (PAGE 1)** 🟢 | 1 | 2 | 50.0% | [/explore/krisala-hiranandani-high-speed-destination-controlled-elevators-laser-measured-floor-levels-sector-arcadia-engineering](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-high-speed-destination-controlled-elevators-laser-measured-floor-levels-sector-arcadia-engineering) |
 | **krisala hiranandani pune** | #20.0 (Page 2) 🟡 | 1 | 2 | 50.0% | [/explore/krisala-hiranandani-projects-in-pune-della-resorts-partnership-hinjewadi-phase-1](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-projects-in-pune-della-resorts-partnership-hinjewadi-phase-1) |
 | **krisala hiranandani the colosseum** | **#2.0 (TOP 3)** 🏆 | 1 | 2 | 50.0% | [/explore/krisala-hiranandani-the-colosseum-phase-4-pre-launch-igbc-platinum-pre-certified-tech-leaders-enclave](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-the-colosseum-phase-4-pre-launch-igbc-platinum-pre-certified-tech-leaders-enclave) |
+| **krisala x hiranandani township pune reviews** | **#5.5 (PAGE 1)** 🟢 | 1 | 2 | 50.0% | [/krisala-hiranandani-pune/reviews](https://krisalahiranandanitownships.com/krisala-hiranandani-pune/reviews) |
 | **y** | **#5.0 (PAGE 1)** 🟢 | 1 | 2 | 50.0% | [/](https://krisalahiranandanitownships.com/) |
 | **current payment plans** | **#1.0 (TOP 3)** 🏆 | 1 | 1 | 100.0% | [/explore/krisala-hiranandani-cost-sheet-pune-105-acre-integrated-township-cxo-leadership-villas](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-cost-sheet-pune-105-acre-integrated-township-cxo-leadership-villas) |
 | **hiranandani della pune** | **#8.0 (PAGE 1)** 🟢 | 1 | 1 | 100.0% | [/explore/krisala-hiranandani-della-pune-near-infosys-wipro-circle-north-hinjewadi](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-della-pune-near-infosys-wipro-circle-north-hinjewadi) |
@@ -33,14 +37,13 @@
 | **hiranandani pune hinjewadi** | **#1.0 (TOP 3)** 🏆 | 1 | 1 | 100.0% | [/knowledge-hub](https://krisalahiranandanitownships.com/knowledge-hub) |
 | **krisala hiranandani arcadia** | **#2.0 (TOP 3)** 🏆 | 1 | 1 | 100.0% | [/explore/krisala-hiranandani-arcadia-hinjewadi-schedule-vip-site-visit-mumbai-pune-expressway](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-arcadia-hinjewadi-schedule-vip-site-visit-mumbai-pune-expressway) |
 | **krisala hiranandani the colosseum** | **#2.0 (TOP 3)** 🏆 | 1 | 1 | 100.0% | [/colosseum](https://krisalahiranandanitownships.com/colosseum) |
-| **krisala x hiranandani township pune reviews** | **#6.0 (PAGE 1)** 🟢 | 1 | 1 | 100.0% | [/krisala-hiranandani-pune/reviews](https://krisalahiranandanitownships.com/krisala-hiranandani-pune/reviews) |
 | **krisila** | **#2.0 (TOP 3)** 🏆 | 1 | 1 | 100.0% | [/connectivity](https://krisalahiranandanitownships.com/connectivity) |
 | **land price** | **#3.0 (TOP 3)** 🏆 | 1 | 1 | 100.0% | [/explore/krisala-hiranandani-cost-sheet-pune-105-acre-integrated-township-cxo-leadership-villas](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-cost-sheet-pune-105-acre-integrated-township-cxo-leadership-villas) |
 | **pr1260002502438** | **#2.0 (TOP 3)** 🏆 | 1 | 1 | 100.0% | [/explore/krisala-polo-club-facing-villa-parcels-maharera-approved-plots-dr-niranjan-hiranandani-plots](https://krisalahiranandanitownships.com/explore/krisala-polo-club-facing-villa-parcels-maharera-approved-plots-dr-niranjan-hiranandani-plots) |
 | **pune** | **#4.0 (PAGE 1)** 🟢 | 1 | 1 | 100.0% | [/explore/krisala-hiranandani-icon-hinjewadi-mumbai-pune-expressway-access-it-leaders-pune](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-icon-hinjewadi-mumbai-pune-expressway-access-it-leaders-pune) |
 | **pune hinjewadi metro** | **#7.0 (PAGE 1)** 🟢 | 1 | 1 | 100.0% | [/connectivity](https://krisalahiranandanitownships.com/connectivity) |
 | **sample flat video** | **#2.0 (TOP 3)** 🏆 | 1 | 1 | 100.0% | [/explore/krisala-3-bhk-royale-residences-sample-flat-video-darumbre-marunji](https://krisalahiranandanitownships.com/explore/krisala-3-bhk-royale-residences-sample-flat-video-darumbre-marunji) |
-| **codename colosseum** | **#2.4 (TOP 3)** 🏆 | 0 | 38 | 0.0% | [/colosseum](https://krisalahiranandanitownships.com/colosseum) |
+| **codename colosseum** | **#2.3 (TOP 3)** 🏆 | 0 | 44 | 0.0% | [/colosseum](https://krisalahiranandanitownships.com/colosseum) |
 | **codename colosseum** | **#7.8 (PAGE 1)** 🟢 | 0 | 19 | 0.0% | [/blog/the-colosseum-hinjewadi-phase-4-investment-guide](https://krisalahiranandanitownships.com/blog/the-colosseum-hinjewadi-phase-4-investment-guide) |
 | **darumbre** | **#6.0 (PAGE 1)** 🟢 | 0 | 11 | 0.0% | [/neighborhood](https://krisalahiranandanitownships.com/neighborhood) |
 | **darumbre to hinjewadi distance** | **#5.4 (PAGE 1)** 🟢 | 0 | 5 | 0.0% | [/neighborhood](https://krisalahiranandanitownships.com/neighborhood) |
@@ -73,6 +76,7 @@
 | **and 4 bhk** | **#2.0 (TOP 3)** 🏆 | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-4-bhk-pune-price-list-and-floor-plans-pune-west-corridor](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-4-bhk-pune-price-list-and-floor-plans-pune-west-corridor) |
 | **approximately pricing** | **#2.0 (TOP 3)** 🏆 | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-apartments-near-baner-pune](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-apartments-near-baner-pune) |
 | **arcadia** | **#1.0 (TOP 3)** 🏆 | 0 | 1 | 0.0% | [/arcadia](https://krisalahiranandanitownships.com/arcadia) |
+| **aywayway** | **#4.0 (PAGE 1)** 🟢 | 0 | 1 | 0.0% | [/explore/krisala-gross-rental-yield-analysis-metro-line-3-impact-duplex-roi](https://krisalahiranandanitownships.com/explore/krisala-gross-rental-yield-analysis-metro-line-3-impact-duplex-roi) |
 | **balmoral towers balewadi review** | #77.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/krisala-vs-kasturi-balmoral-towers-price-comparison-rental-yield-benchmark](https://krisalahiranandanitownships.com/explore/krisala-vs-kasturi-balmoral-towers-price-comparison-rental-yield-benchmark) |
 | **bank loan** | **#3.0 (TOP 3)** 🏆 | 0 | 1 | 0.0% | [/pricing](https://krisalahiranandanitownships.com/pricing) |
 | **barclays hinjewadi phase 3** | **#9.0 (PAGE 1)** 🟢 | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-gated-community-hinjewadi-phase-3-near-mumbai-pune-expressway-barclays-hq](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-gated-community-hinjewadi-phase-3-near-mumbai-pune-expressway-barclays-hq) |
@@ -88,6 +92,7 @@
 | **connectivity** | #13.0 (Page 2) 🟡 | 0 | 1 | 0.0% | [/blog/krisala-hiranandani-township-hinjewadi-location-connectivity-it-parks](https://krisalahiranandanitownships.com/blog/krisala-hiranandani-township-hinjewadi-location-connectivity-it-parks) |
 | **cost** | **#9.0 (PAGE 1)** 🟢 | 0 | 1 | 0.0% | [/explore/krisala-nri-real-estate-investment-guide-14-to-18-percent-cagr-della-plot-roi](https://krisalahiranandanitownships.com/explore/krisala-nri-real-estate-investment-guide-14-to-18-percent-cagr-della-plot-roi) |
 | **daily commute** | **#7.0 (PAGE 1)** 🟢 | 0 | 1 | 0.0% | [/explore/krisala-travel-time-to-tcs-sahyadri-park-walking-commute-options-e-zest-solutions](https://krisalahiranandanitownships.com/explore/krisala-travel-time-to-tcs-sahyadri-park-walking-commute-options-e-zest-solutions) |
+| **darumbre pune** | #11.0 (Page 2) 🟡 | 0 | 1 | 0.0% | [/explore/hiranandani-darumbre](https://krisalahiranandanitownships.com/explore/hiranandani-darumbre) |
 | **della hiranandani krisala pune township** | #68.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/](https://krisalahiranandanitownships.com/) |
 | **della hiranandani krisala pune township** | #91.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/della-plots](https://krisalahiranandanitownships.com/explore/della-plots) |
 | **della hiranandani krisala pune township** | #99.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-2-bhk-hinjewadi-della-resorts-partnership-baner-balewadi](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-2-bhk-hinjewadi-della-resorts-partnership-baner-balewadi) |
@@ -102,11 +107,6 @@
 | **della hiranandani krisala pune township** | #45.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-hiranandani-2-bhk-pune-della-resorts-partnership-nri-investors-pune](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-2-bhk-pune-della-resorts-partnership-nri-investors-pune) |
 | **della hiranandani krisala pune township** | #87.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-hiranandani-apartments-pune-della-resorts-partnership-hinjewadi-phase-1](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-apartments-pune-della-resorts-partnership-hinjewadi-phase-1) |
 | **della hiranandani krisala pune township** | #92.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-hiranandani-apartments-pune-della-resorts-partnership-luxury-buyers-pune](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-apartments-pune-della-resorts-partnership-luxury-buyers-pune) |
-| **della hiranandani krisala pune township** | #96.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-hiranandani-brochure-download-della-resorts-partnership-it-leaders-pune](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-brochure-download-della-resorts-partnership-it-leaders-pune) |
-| **della hiranandani krisala pune township** | #19.0 (Page 2) 🟡 | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-hiranandani-communities-pune-della-resorts-partnership-baner-balewadi](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-communities-pune-della-resorts-partnership-baner-balewadi) |
-| **della hiranandani krisala pune township** | #20.0 (Page 2) 🟡 | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-hiranandani-communities-pune-della-resorts-partnership-hinjewadi-phase-2](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-communities-pune-della-resorts-partnership-hinjewadi-phase-2) |
-| **della hiranandani krisala pune township** | #24.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-hiranandani-communities-pune-della-resorts-partnership-pmrda-ring-road](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-communities-pune-della-resorts-partnership-pmrda-ring-road) |
-| **della hiranandani krisala pune township** | #89.0 (Climbing) ⚪ | 0 | 1 | 0.0% | [/explore/krisala-hiranandani-hiranandani-della-pune-105-acre-integrated-township-luxury-buyers-pune](https://krisalahiranandanitownships.com/explore/krisala-hiranandani-hiranandani-della-pune-105-acre-integrated-township-luxury-buyers-pune) |
 
 ---
 ### Key SEO Takeaways from Official Google Data:

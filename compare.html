@@ -27,82 +27,82 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: optional;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: optional;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; z-index: 0; }
+ .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -114,10 +114,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <!-- Google Site Verification & Comparison Title -->
@@ -155,231 +155,231 @@
 <meta content="#08080a" name="theme-color"/>
 <!-- Schema.org JSON-LD Graph (BreadcrumbList, ItemList, FAQPage) -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "ItemList",
-          "@id": "https://krisalahiranandanitownships.com/compare#comparison",
-          "name": "Hinjewadi Integrated Townships Comparison 2026",
-          "description": "Comparative evaluation of master-planned integrated townships in Hinjewadi, Pune West based on open space, lifestyle infrastructure, density, and developer brand value.",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Krisala × Hiranandani Township (105 Acres, 8-Acre Racecourse, Della Resort)" },
-            { "@type": "ListItem", "position": 2, "name": "Kolte Patil Life Republic (High Density Megacity)" },
-            { "@type": "ListItem", "position": 3, "name": "Godrej Infinity / Woodsville (Mid-Scale High Rise)" },
-            { "@type": "ListItem", "position": 4, "name": "VTP Blue Waters (High Density Towers)" }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://krisalahiranandanitownships.com/compare#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Compare Projects", "item": "https://krisalahiranandanitownships.com/compare" }
-          ]
-        }
-      ]
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "ItemList",
+ "@id": "https://krisalahiranandanitownships.com/compare#comparison",
+ "name": "Hinjewadi Integrated Townships Comparison 2026",
+ "description": "Comparative evaluation of master-planned integrated townships in Hinjewadi, Pune West based on open space, lifestyle infrastructure, density, and developer brand value.",
+ "itemListElement": [
+ { "@type": "ListItem", "position": 1, "name": "Krisala × Hiranandani Township (105 Acres, 8-Acre Racecourse, Della Resort)" },
+ { "@type": "ListItem", "position": 2, "name": "Kolte Patil Life Republic (High Density Megacity)" },
+ { "@type": "ListItem", "position": 3, "name": "Godrej Infinity / Woodsville (Mid-Scale High Rise)" },
+ { "@type": "ListItem", "position": 4, "name": "VTP Blue Waters (High Density Towers)" }
+ ]
+ },
+ {
+ "@type": "BreadcrumbList",
+ "@id": "https://krisalahiranandanitownships.com/compare#breadcrumb",
+ "itemListElement": [
+ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
+ { "@type": "ListItem", "position": 2, "name": "Compare Projects", "item": "https://krisalahiranandanitownships.com/compare" }
+ ]
+ }
+ ]
+ }
+ </script>
 <style>
-        .compare-header {
-            padding: 140px 0 60px;
-            background: linear-gradient(to bottom, #0f0f12, #08080a);
-            text-align: center;
-        }
+ .compare-header {
+ padding: 140px 0 60px;
+ background: linear-gradient(to bottom, #0f0f12, #08080a);
+ text-align: center;
+ }
 
-        .compare-table-wrap {
-            overflow-x: auto;
-            margin-top: 60px;
-        }
+ .compare-table-wrap {
+ overflow-x: auto;
+ margin-top: 60px;
+ }
 
-        .compare-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            min-width: 900px;
-        }
+ .compare-table {
+ width: 100%;
+ border-collapse: separate;
+ border-spacing: 0;
+ min-width: 900px;
+ }
 
-        .compare-table thead th {
-            background: rgba(197, 160, 89, 0.1);
-            padding: 20px;
-            text-align: left;
-            font-family: var(--font-heading);
-            font-size: 1.1rem;
-            border-bottom: 2px solid rgba(197, 160, 89, 0.3);
-            position: sticky;
-            top: 0;
-        }
+ .compare-table thead th {
+ background: rgba(197, 160, 89, 0.1);
+ padding: 20px;
+ text-align: left;
+ font-family: var(--font-heading);
+ font-size: 1.1rem;
+ border-bottom: 2px solid rgba(197, 160, 89, 0.3);
+ position: sticky;
+ top: 0;
+ }
 
-        .compare-table thead th:first-child {
-            border-radius: 12px 0 0 0;
-        }
+ .compare-table thead th:first-child {
+ border-radius: 12px 0 0 0;
+ }
 
-        .compare-table thead th:last-child {
-            border-radius: 0 12px 0 0;
-        }
+ .compare-table thead th:last-child {
+ border-radius: 0 12px 0 0;
+ }
 
-        .compare-table thead th.highlight {
-            background: rgba(197, 160, 89, 0.25);
-            color: var(--gold-primary);
-        }
+ .compare-table thead th.highlight {
+ background: rgba(197, 160, 89, 0.25);
+ color: var(--gold-primary);
+ }
 
-        .compare-table tbody td {
-            padding: 18px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.9rem;
-            vertical-align: middle;
-        }
+ .compare-table tbody td {
+ padding: 18px 20px;
+ border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+ font-size: 0.9rem;
+ vertical-align: middle;
+ }
 
-        .compare-table tbody td:first-child {
-            font-weight: 600;
-            color: var(--gold-light);
-        }
+ .compare-table tbody td:first-child {
+ font-weight: 600;
+ color: var(--gold-light);
+ }
 
-        .compare-table tbody td.highlight {
-            background: rgba(197, 160, 89, 0.05);
-        }
+ .compare-table tbody td.highlight {
+ background: rgba(197, 160, 89, 0.05);
+ }
 
-        .compare-table tbody tr:hover td {
-            background: rgba(255, 255, 255, 0.02);
-        }
+ .compare-table tbody tr:hover td {
+ background: rgba(255, 255, 255, 0.02);
+ }
 
-        .check {
-            color: #4CAF50;
-            font-weight: bold;
-        }
+ .check {
+ color: #4CAF50;
+ font-weight: bold;
+ }
 
-        .cross {
-            color: #FF5252;
-        }
+ .cross {
+ color: #FF5252;
+ }
 
-        .partial {
-            color: #FFB300;
-        }
+ .partial {
+ color: #FFB300;
+ }
 
-        .verdict-section {
-            margin-top: 80px;
-            text-align: center;
-        }
+ .verdict-section {
+ margin-top: 80px;
+ text-align: center;
+ }
 
-        .verdict-section h2 {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+ .verdict-section h2 {
+ font-family: var(--font-heading);
+ font-size: 2.5rem;
+ margin-bottom: 20px;
+ }
 
-        .verdict-cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
+ .verdict-cards {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 30px;
+ margin-top: 40px;
+ }
 
-        .verdict-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
+ .verdict-card {
+ background: rgba(255, 255, 255, 0.02);
+ border: 1px solid rgba(255, 255, 255, 0.05);
+ border-radius: var(--border-radius);
+ padding: 40px 30px;
+ text-align: center;
+ transition: all 0.4s ease;
+ }
 
-        .verdict-card:hover {
-            border-color: var(--gold-primary);
-            transform: translateY(-5px);
-        }
+ .verdict-card:hover {
+ border-color: var(--gold-primary);
+ transform: translateY(-5px);
+ }
 
-        .verdict-card .gold-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-        }
+ .verdict-card .gold-icon {
+ font-size: 2.5rem;
+ margin-bottom: 15px;
+ display: block;
+ }
 
-        .verdict-card h3 {
-            font-family: var(--font-heading);
-            margin-bottom: 10px;
-        }
+ .verdict-card h3 {
+ font-family: var(--font-heading);
+ margin-bottom: 10px;
+ }
 
-        .verdict-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
+ .verdict-card p {
+ color: var(--text-muted);
+ font-size: 0.9rem;
+ }
 
-        @media (max-width: 768px) {
-            .verdict-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+ @media (max-width: 768px) {
+ .verdict-cards {
+ grid-template-columns: 1fr;
+ }
+ }
+ </style>
 <!-- FAQ Schema -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How does Hiranandani vs Godrej Hinjewadi compare for property buyers?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Krisala Hiranandani spans a master-planned 105+ acre equestrian township with an 8-acre private turf racecourse, Della luxury resort, and 70% open spaces starting at ₹79 Lakhs. In contrast, Godrej River Royale in Mahalunge is a high-density standalone high-rise development on 12–15 acres with entry prices exceeding ₹9,500/sq.ft."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the main differences in Hiranandani vs Lodha Pune?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "While Lodha Sylvan Hinjewadi features modern vertical towers, Hiranandani Pune offers classical neoclassical architecture, generous RERA carpet spaces, 100 private Della villa plots, and low-density community living backed by Dr. Niranjan Hiranandani's 55x capital appreciation benchmark."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does Hiranandani vs VTP Hinjewadi compare in construction and lifestyle?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Krisala Hiranandani utilizes 100% precision Mivan monolithic concrete engineering with expansive layouts and comprehensive Della resort access. VTP projects (Earth One, Blue Skies) feature higher unit density per acre with compact micro-layouts aimed at entry-level IT rentals."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does Krisala Hiranandani compare to Kolte Patil Life Republic?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Krisala Hiranandani offers a unique equestrian lifestyle with an 8-acre private racecourse, 40-acre Della resort district, 70% open spaces, and low density living. While Life Republic is a larger overall land parcel, Krisala × Hiranandani provides superior neoclassical architecture and Hiranandani's 55x capital appreciation benchmark."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What makes Krisala Hiranandani Township unique in Hinjewadi?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "It is India's first equestrian-themed township, featuring an 8-acre private racecourse, Della Adventure & Polo Club, 70% open landscaped spaces, and neoclassical architecture on a 105+ acre master plan in North Hinjewadi."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does North Hinjewadi compare with Wakad, Tathawade, and Baner?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "North Hinjewadi provides master-planned 100+ acre township living with signal-free Ring Road access and 70% green cover at an attractive entry price, whereas Wakad and Baner suffer from dense standalone development, urban traffic bottlenecks, and higher price per sq ft with smaller project footprints."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why choose an integrated 105-acre township over a standalone apartment building in Hinjewadi?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Integrated townships deliver higher long-term capital appreciation, dedicated 3-tier security, 52+ multi-generational amenities, professional township management, higher rental demand from Fortune 500 IT executives, and self-sustaining internal social infrastructure that standalone buildings cannot support."
-          }
-        }
-      ]
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "How does Hiranandani vs Godrej Hinjewadi compare for property buyers?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Krisala Hiranandani spans a master-planned 105+ acre equestrian township with an 8-acre private turf racecourse, Della luxury resort, and 70% open spaces starting at ₹79 Lakhs. In contrast, Godrej River Royale in Mahalunge is a high-density standalone high-rise development on 12–15 acres with entry prices exceeding ₹9,500/sq.ft."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What are the main differences in Hiranandani vs Lodha Pune?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "While Lodha Sylvan Hinjewadi features modern vertical towers, Hiranandani Pune offers classical neoclassical architecture, generous RERA carpet spaces, 100 private Della villa plots, and low-density community living backed by Dr. Niranjan Hiranandani's 55x capital appreciation benchmark."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How does Hiranandani vs VTP Hinjewadi compare in construction and lifestyle?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Krisala Hiranandani utilizes 100% precision Mivan monolithic concrete engineering with expansive layouts and comprehensive Della resort access. VTP projects (Earth One, Blue Skies) feature higher unit density per acre with compact micro-layouts aimed at entry-level IT rentals."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How does Krisala Hiranandani compare to Kolte Patil Life Republic?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Krisala Hiranandani offers a unique equestrian lifestyle with an 8-acre private racecourse, 40-acre Della resort district, 70% open spaces, and low density living. While Life Republic is a larger overall land parcel, Krisala × Hiranandani provides superior neoclassical architecture and Hiranandani's 55x capital appreciation benchmark."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What makes Krisala Hiranandani Township unique in Hinjewadi?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "It is India's first equestrian-themed township, featuring an 8-acre private racecourse, Della Adventure & Polo Club, 70% open landscaped spaces, and neoclassical architecture on a 105+ acre master plan in North Hinjewadi."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How does North Hinjewadi compare with Wakad, Tathawade, and Baner?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "North Hinjewadi provides master-planned 100+ acre township living with signal-free Ring Road access and 70% green cover at an attractive entry price, whereas Wakad and Baner suffer from dense standalone development, urban traffic bottlenecks, and higher price per sq ft with smaller project footprints."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Why choose an integrated 105-acre township over a standalone apartment building in Hinjewadi?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Integrated townships deliver higher long-term capital appreciation, dedicated 3-tier security, 52+ multi-generational amenities, professional township management, higher rental demand from Fortune 500 IT executives, and self-sustaining internal social infrastructure that standalone buildings cannot support."
+ }
+ }
+ ]
+ }
+ </script>
 <!-- Social & OpenGraph Meta Tags -->
 <meta content="website" property="og:type"/>
 <meta content="https://krisalahiranandanitownships.com/compare" property="og:url"/>
-<meta content="【Comparison】Krisala Hiranandani vs Godrej &amp; Lodha™" property="og:title"/>
+<meta content="Comparison: Krisala Hiranandani vs Godrej &amp; Lodha" property="og:title"/>
 <meta content="Compare Krisala Hiranandani Township against other leading developments in Hinjewadi, Baner, and Wakad. See price, amenity, and ROI differences." property="og:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -389,33 +389,33 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="@KrisalaHiranandani" name="twitter:site"/>
 <meta content="@KrisalaHiranandani" name="twitter:creator"/>
-<meta content="【Comparison】Krisala Hiranandani vs Godrej &amp; Lodha™" name="twitter:title"/>
+<meta content="Comparison: Krisala Hiranandani vs Godrej &amp; Lodha" name="twitter:title"/>
 <meta content="Compare Krisala Hiranandani Township against other leading developments in Hinjewadi, Baner, and Wakad. See price, amenity, and ROI differences." name="twitter:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" name="twitter:image"/>
 <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
 <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-    </style>
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ </style>
 <!-- Voice Search Optimization: SpeakableSpecification for Google Assistant & Siri -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Krisala Hiranandani Competitor Benchmark",
-      "url": "https://krisalahiranandanitownships.com/compare",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": ["#voice-compare-summary"]
-      }
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "name": "Krisala Hiranandani Competitor Benchmark",
+ "url": "https://krisalahiranandanitownships.com/compare",
+ "speakable": {
+ "@type": "SpeakableSpecification",
+ "cssSelector": ["#voice-compare-summary"]
+ }
+ }
+ </script>
 <meta content="Krisala Hiranandani Township Pune" property="og:site_name"/></head>
 <body>
 <!-- Navigation -->
@@ -513,10 +513,10 @@
 <div class="container">
 <span class="subtitle">Programmatic Authority</span>
 <h1 style="font-family: var(--font-heading); font-size: 3rem;">Krisala Hiranandani <span>vs</span> The Rest
-            </h1>
+ </h1>
 <p style="max-width: 700px; margin: 20px auto; color: var(--text-muted);">An objective, data-driven
-                comparison of Hinjewadi's most prominent townships. See why the Hiranandani-Della partnership stands
-                apart.</p>
+ comparison of Hinjewadi's most prominent townships. See why the Hiranandani-Della partnership stands
+ apart.</p>
 </div>
 </section>
 <section class="section" style="padding-top: 0;">
@@ -610,19 +610,19 @@
 <div class="verdict-section scroll-reveal">
 <h2>The <span>Verdict</span></h2>
 <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">While every project has its
-                    merits, Krisala Hiranandani stands alone in three critical dimensions.</p>
+ merits, Krisala Hiranandani stands alone in three critical dimensions.</p>
 <div class="verdict-cards">
 <div class="verdict-card glass-panel">
 <i class="ph ph-horse gold-icon"></i>
 <h3>Lifestyle</h3>
 <p>The only township with a private racecourse, polo club, and 5-star Della resort on campus.
-                        </p>
+ </p>
 </div>
 <div class="verdict-card glass-panel">
 <i class="ph ph-chart-line-up gold-icon"></i>
 <h3>Investment</h3>
 <p>Backed by the Hiranandani 55x appreciation legacy — a track record no Hinjewadi competitor
-                            can match.</p>
+ can match.</p>
 </div>
 <div class="verdict-card glass-panel">
 <i class="ph ph-buildings gold-icon"></i>
@@ -632,8 +632,8 @@
 </div>
 </div>
 <!-- ══════════════════════════════════════
-                 HEAD-TO-HEAD COMPETITOR DOSSIERS
-            ══════════════════════════════════════ -->
+ HEAD-TO-HEAD COMPETITOR DOSSIERS
+ ══════════════════════════════════════ -->
 <div class="verdict-section scroll-reveal" style="margin-top: 80px;">
 <h2>Head-to-Head <span>Competitor Benchmarks</span></h2>
 <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto 40px;">Detailed deep-dive comparison across Hinjewadi and Pune West's most searched developer launches.</p>
@@ -689,13 +689,13 @@
 </div>
 </div>
 <!-- ══════════════════════════════════════
-                 MICRO-MARKET COMPARISON MATRIX
-            ══════════════════════════════════════ -->
+ MICRO-MARKET COMPARISON MATRIX
+ ══════════════════════════════════════ -->
 <div class="verdict-section scroll-reveal" style="margin-top: 80px;">
 <h2>Micro-Market Benchmark: <span>North Hinjewadi vs West Pune</span></h2>
 <p style="color: var(--text-muted); max-width: 780px; margin: 15px auto 25px; line-height: 1.6;">
-                    Evaluating livability, infrastructure development runway, and capital appreciation drivers across Pune West's premier residential destinations. For complete city-wide macroeconomic data, consult the <a href="/pune-real-estate" style="color: var(--gold-light); text-decoration: underline; font-weight: 600;">Pune Real Estate 2026 Master Guide</a>, or deep dive into IT park corridors via the <a href="/hinjewadi-real-estate" style="color: var(--gold-light); text-decoration: underline; font-weight: 600;">Hinjewadi Real Estate Handbook</a>.
-                </p>
+ Evaluating livability, infrastructure development runway, and capital appreciation drivers across Pune West's premier residential destinations. For complete city-wide macroeconomic data, consult the <a href="/pune-real-estate" style="color: var(--gold-light); text-decoration: underline; font-weight: 600;">Pune Real Estate 2026 Master Guide</a>, or deep dive into IT park corridors via the <a href="/hinjewadi-real-estate" style="color: var(--gold-light); text-decoration: underline; font-weight: 600;">Hinjewadi Real Estate Handbook</a>.
+ </p>
 <div class="compare-table-wrap glass-panel">
 <table class="compare-table">
 <thead>
@@ -762,13 +762,13 @@
 </div>
 </div>
 <!-- ══════════════════════════════════════
-                 TOWNSHIP VS STANDALONE COMPARISON
-            ══════════════════════════════════════ -->
+ TOWNSHIP VS STANDALONE COMPARISON
+ ══════════════════════════════════════ -->
 <div class="verdict-section scroll-reveal" style="margin-top: 80px;">
 <h2>Format Benchmark: <span>105-Acre Township vs Standalone Apartment</span></h2>
 <p style="color: var(--text-muted); max-width: 700px; margin: 15px auto 35px;">
-                    Why Fortune 500 tech professionals and smart real estate investors consistently choose master-planned township living over standalone residential towers.
-                </p>
+ Why Fortune 500 tech professionals and smart real estate investors consistently choose master-planned township living over standalone residential towers.
+ </p>
 <div class="compare-table-wrap glass-panel">
 <table class="compare-table">
 <thead>
@@ -814,8 +814,8 @@
 </div>
 </div>
 <!-- ══════════════════════════════════════
-                 COMPARISON FAQS
-            ══════════════════════════════════════ -->
+ COMPARISON FAQS
+ ══════════════════════════════════════ -->
 <div class="verdict-section scroll-reveal" style="margin-top: 80px;">
 <h2>Frequently Asked <span>Comparison Questions</span></h2>
 <div class="faq-container" style="max-width: 800px; margin: 30px auto 0; text-align: left;">
@@ -858,8 +858,8 @@
 <div class="footer-brand">
 <img alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" height="38" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="height: 40px; width: auto; margin-bottom: 20px; display: block;" width="280"/>
 <p>
-                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
-                    </p>
+ A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+ </p>
 <div style="margin-top: 15px;">
 <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
 <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
@@ -1005,34 +1005,34 @@
 </div>
 <script defer="" src="/app.min.js?v=20261026_v6"></script>
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      "name": "【Comparison】Krisala Hiranandani vs Godrej & Lodha™",
-      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala × Hiranandani"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "428",
-        "reviewCount": "382"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "26500000",
-        "offerCount": "12",
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2027-12-31"
-      }
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Product",
+ "name": "Comparison: Krisala Hiranandani vs Godrej & Lodha",
+ "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+ "brand": {
+ "@type": "Brand",
+ "name": "Krisala × Hiranandani"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "bestRating": "5",
+ "worstRating": "1",
+ "ratingCount": "428",
+ "reviewCount": "382"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "26500000",
+ "offerCount": "12",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2027-12-31"
+ }
+ }
+ ]
 }</script></body>
 </html>

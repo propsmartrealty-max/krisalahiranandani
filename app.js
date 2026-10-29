@@ -192,7 +192,7 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
 entry.target.classList.add('active');
-observer.unobserve(entry.target);             }
+observer.unobserve(entry.target); }
 });
 }, revealOptions);
 revealElements.forEach(el => revealObserver.observe(el));
@@ -244,7 +244,7 @@ sliderContainer.addEventListener('mousemove', (e) => {
 if (!isDown) return;
 e.preventDefault();
 const x = e.pageX - sliderContainer.offsetLeft;
-const walk = (x - startX) * 2;             sliderContainer.scrollLeft = scrollLeft - walk;
+const walk = (x - startX) * 2; sliderContainer.scrollLeft = scrollLeft - walk;
 });
 }
 const modalOverlay = document.getElementById('enquiryModal');
@@ -303,7 +303,7 @@ entries.forEach(entry => {
 if (entry.isIntersecting) {
 const bar = entry.target;
 const targetHeight = bar.style.height;
-bar.style.height = '0';                 setTimeout(() => {
+bar.style.height = '0'; setTimeout(() => {
 bar.style.height = targetHeight;
 }, 100);
 chartObserver.unobserve(bar);
@@ -676,7 +676,7 @@ break;
 const waBtn = document.getElementById('quizWhatsAppBtn');
 if (waBtn) {
 const waText = encodeURIComponent(
-`Hi, I completed the Dream Home Matcher on your official portal. My top match is:\n` +
+`Hi, I completed the Dream Home Matcher on your Experience Portal. My top match is:\n` +
 `• Unit: ${sector} (${config})\n` +
 `• Carpet Area: ${carpet}\n` +
 `• Price: ${price}\n` +
@@ -828,7 +828,7 @@ overlay.innerHTML = `
 <div class="exit-content">
 <span class="badge">Exclusive 2026 Developer Portfolio</span>
 <h2>Wait! Before you <span>depart...</span></h2>
-<p>Unlock <strong>Official Pre-Launch Pricing &amp; All-Inclusive Cost Sheets</strong> for Krisala Hiranandani Townships before allocations close.</p>
+<p>Unlock <strong>Pre-Launch Pricing &amp; All-Inclusive Cost Sheets</strong> for Krisala Hiranandani Townships before allocations close.</p>
 <form class="enquiry-form exit-form" id="exitForm" action="/api/lead" method="POST">
 <input type="hidden" name="_subject" value="Exit Intent Pre-Launch Inquiry">
 <input type="hidden" name="_source" value="${window.location.href}">
@@ -837,7 +837,7 @@ overlay.innerHTML = `
 <input type="tel" name="phone" placeholder="Enter Mobile Number for Instant WhatsApp PDF *" required style="width:100%; padding:14px 18px; border-radius:8px; border:1px solid rgba(197,160,89,0.3); background:rgba(255,255,255,0.05); color:#fff; font-size:1rem; outline:none;">
 </div>
 <button type="submit" class="btn-primary w-100" style="width:100%; padding:14px; font-weight:600;">
-<i class="ph ph-whatsapp-logo"></i>&nbsp; Send Official Cost Sheet via WhatsApp
+<i class="ph ph-whatsapp-logo"></i>&nbsp; Send Cost Sheet via WhatsApp
 </button>
 </form>
 <p class="exit-note" style="margin-top:14px; font-size:0.75rem; color:var(--text-muted); text-align:center;">
@@ -1037,7 +1037,7 @@ headers: {
 });
 if (response.ok) {
 submitBtn.textContent = "Sent to " + phone;
-submitBtn.style.background = "#25D366";                     submitBtn.style.color = "white";
+submitBtn.style.background = "#25D366"; submitBtn.style.color = "white";
 window.dataLayer.push({
 event: 'generate_lead',
 form_id: 'exit_intent_form',
@@ -1189,7 +1189,7 @@ let idleTimeout;
 function resetIdleTimer() {
 isIdle = false;
 clearTimeout(idleTimeout);
-idleTimeout = setTimeout(() => { isIdle = true; }, 30000);     }
+idleTimeout = setTimeout(() => { isIdle = true; }, 30000); }
 ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
 document.addEventListener(evt, resetIdleTimer, { passive: true });
 });
@@ -1619,7 +1619,7 @@ promptDiv.style.border = '1px solid rgba(197, 160, 89, 0.4)';
 promptDiv.style.background = 'rgba(197, 160, 89, 0.08)';
 promptDiv.innerHTML = `
 <div style="font-size:0.8rem; font-weight:600; color:var(--gold-light); margin-bottom:8px;">
-📲 Receive Official PDF Docket &amp; Floorplans on WhatsApp:
+📲 Receive Verified PDF Docket &amp; Floorplans on WhatsApp:
 </div>
 <form class="aria-lead-mini-form" style="display:flex; gap:6px;">
 <input type="tel" placeholder="Enter Mobile Number" required style="flex:1; background:rgba(0,0,0,0.5); border:1px solid rgba(197,160,89,0.3); color:#fff; padding:6px 10px; border-radius:6px; font-size:0.8rem; outline:none;">
@@ -1852,9 +1852,9 @@ modal.innerHTML = `
 <div class="maharera-docket-wrapper">
 <div class="maharera-header-strip">
 <div style="display:flex; align-items:center; gap:12px;">
-<img src="/public/maharera_logo.svg" alt="Official MahaRERA Stamp" width="140" height="36" style="height:34px; width:auto;">
+<img src="/public/maharera_logo.svg" alt="MahaRERA Stamp" width="140" height="36" style="height:34px; width:auto;">
 <div>
-<h3 id="mahareraModalTitle" style="margin:0; font-family:var(--font-heading); font-size:1.3rem; color:#fff;">Official MahaRERA Project Sanctions</h3>
+<h3 id="mahareraModalTitle" style="margin:0; font-family:var(--font-heading); font-size:1.3rem; color:#fff;">MahaRERA Project Sanctions</h3>
 <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px;">Government of Maharashtra • Real Estate Regulatory Authority Compliance</div>
 </div>
 </div>
@@ -1862,7 +1862,7 @@ modal.innerHTML = `
 </div>
 <div class="maharera-body">
 <p style="margin-top:0; color:var(--text-muted); font-size:0.86rem; line-height:1.5;">
-Krisala Developers and House of Hiranandani operate under complete regulatory transparency. All projects within the 105+ Acre Integrated Township are registered with MahaRERA. Scan any QR code below using your mobile camera or click to verify directly on the official state portal:
+Krisala Developers and House of Hiranandani operate under complete regulatory transparency. All projects within the 105+ Acre Integrated Township are registered with MahaRERA. Scan any QR code below using your mobile camera or click to verify directly on the state portal:
 </p>
 <div class="maharera-project-grid">
 <!-- Enclave 1: The Colosseum & Everland -->
@@ -1996,7 +1996,7 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator && typeof na
 try {
 navigator.modelContext.registerTool(
 'get_township_pricing_intel',
-'Query official 2026 pricing, carpet area layouts, and MahaRERA numbers for Krisala Hiranandani Township sectors in Hinjewadi, Pune.',
+'Query 2026 pricing, carpet area layouts, and MahaRERA numbers for Krisala Hiranandani Township sectors in Hinjewadi, Pune.',
 {
 sector: { type: 'string', description: 'Target sector: colosseum, arcadia, icon, della, everlyn' }
 },

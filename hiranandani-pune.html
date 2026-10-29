@@ -5,106 +5,106 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: optional;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; pointer-events: none; }
-        .skip-link { position: absolute; top: -100px; left: 0; z-index: 10000; }
-        .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; pointer-events: none; }
-        @media (hover: none) or (max-width: 1024px) {
-            .cursor-dot, .cursor-outline { display: none !important; }
-        }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero, .hero-grand { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
-        .hero-bg picture, .hero-bg img, .hero-img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        @media (max-width: 768px) {
-            .hero, .hero-grand { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: stretch !important; min-height: 100vh !important; height: auto !important; }
-            .hero-content { padding-top: 90px !important; padding-bottom: 40px !important; margin: 0 auto !important; width: 100% !important; }
-            .hero-title { font-size: 2.2rem !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
-            .hero-subtitle { font-size: 0.95rem !important; margin-bottom: 24px !important; }
-            .hero-stats { gap: 16px !important; margin-bottom: 24px !important; }
-            .hero-actions { flex-direction: column !important; width: 100% !important; gap: 12px !important; margin-bottom: 24px !important; }
-            .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100% !important; }
-            .hero-img { height: 100% !important; animation: none !important; }
-        }
-        @media (max-width: 480px) {
-            .hero-title { font-size: clamp(1.75rem, 6.8vw, 2.3rem) !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
-            .hero-subtitle { font-size: 0.9rem !important; line-height: 1.55 !important; margin-bottom: 20px !important; }
-            .hero-stats { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
-            .hero-stats .stat-item h3, .hero-stats .stat-item .stat-number { font-size: 1.8rem !important; }
-            .hero-stats .stat-item p { font-size: 0.72rem !important; }
-            .hero-stats .stat-divider { display: none !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: optional;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 9999; pointer-events: none; }
+ .skip-link { position: absolute; top: -100px; left: 0; z-index: 10000; }
+ .cursor-dot, .cursor-outline { position: fixed; top: 0; left: 0; pointer-events: none; }
+ @media (hover: none) or (max-width: 1024px) {
+ .cursor-dot, .cursor-outline { display: none !important; }
+ }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero, .hero-grand { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; }
+ .hero-bg picture, .hero-bg img, .hero-img { position: absolute; inset: 0; width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ @media (max-width: 768px) {
+ .hero, .hero-grand { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: stretch !important; min-height: 100vh !important; height: auto !important; }
+ .hero-content { padding-top: 90px !important; padding-bottom: 40px !important; margin: 0 auto !important; width: 100% !important; }
+ .hero-title { font-size: 2.2rem !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
+ .hero-subtitle { font-size: 0.95rem !important; margin-bottom: 24px !important; }
+ .hero-stats { gap: 16px !important; margin-bottom: 24px !important; }
+ .hero-actions { flex-direction: column !important; width: 100% !important; gap: 12px !important; margin-bottom: 24px !important; }
+ .hero-actions .btn-primary, .hero-actions .btn-secondary { width: 100% !important; }
+ .hero-img { height: 100% !important; animation: none !important; }
+ }
+ @media (max-width: 480px) {
+ .hero-title { font-size: clamp(1.75rem, 6.8vw, 2.3rem) !important; line-height: 1.15 !important; margin-bottom: 16px !important; }
+ .hero-subtitle { font-size: 0.9rem !important; line-height: 1.55 !important; margin-bottom: 20px !important; }
+ .hero-stats { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+ .hero-stats .stat-item h3, .hero-stats .stat-item .stat-number { font-size: 1.8rem !important; }
+ .hero-stats .stat-item p { font-size: 0.72rem !important; }
+ .hero-stats .stat-divider { display: none !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -116,10 +116,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <!-- Canonical & Hreflang -->
@@ -169,7 +169,7 @@
 <meta content="18.5913;73.7389" name="geo.position"/>
 <meta content="18.5913, 73.7389" name="ICBM"/>
 <!-- Open Graph & Social Cards -->
-<meta content="Hiranandani Pune™ — 105-Acre Township (from ₹79L*)" property="og:title"/>
+<meta content="Hiranandani Pune — 105-Acre Township (from ₹79L*)" property="og:title"/>
 <meta &="" 2,="" 3,="" 4="" bhk="" by="" communities="" content="Hiranandani Pune Township in North Hinjewadi. 105+ Acres featuring Sector Arcadia, Sector Icon, The Colosseum Phase 4, Della Villa Plots &amp; 8-Acre Private Racecourse. Luxury 2, 3 &amp; 4 BHK homes from ₹79L*. Download MahaRERA brochure &amp; cost sheet." developers."="" equestrian="" first="" hinjewadi,="" hiranandani="" in="" integrated="" krisala="" neoclassical="" north="" plots="" property="og:description" pune.="" residences="" s="" township="" villa=""/>
 <meta content="website" property="og:type"/>
 <meta content="https://krisalahiranandanitownships.com/hiranandani-pune" property="og:url"/>
@@ -178,7 +178,7 @@
 <meta content="1181" property="og:image:height"/>
 <meta content="Krisala Hiranandani Township Pune" property="og:site_name"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Hiranandani Pune™ — 105-Acre Township (from ₹79L*)" name="twitter:title"/>
+<meta content="Hiranandani Pune — 105-Acre Township (from ₹79L*)" name="twitter:title"/>
 <meta content="Explore Hiranandani's iconic neoclassical township in North Hinjewadi, Pune. 2, 3, 4 BHK luxury residences &amp; Della resort villa plots." name="twitter:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp" name="twitter:image"/>
 <!-- Preload LCP Assets -->
@@ -192,197 +192,197 @@
 <link href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'" rel="stylesheet"/>
 <!-- Google Knowledge Vault: Verified Entity Graph for Dr. Niranjan Hiranandani -->
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://krisalahiranandanitownships.com/#niranjan-hiranandani",
-      "name": "Dr. Niranjan Hiranandani",
-      "honorificPrefix": "Dr.",
-      "jobTitle": "Co-founder & Managing Director",
-      "worksFor": {
-        "@type": "RealEstateAgent",
-        "name": "Hiranandani Communities",
-        "url": "https://krisalahiranandanitownships.com/"
-      },
-      "alumniOf": "University of Mumbai",
-      "sameAs": [
-        "https://www.wikidata.org/wiki/Q16729864",
-        "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
-        "https://www.forbes.com/profile/niranjan-hiranandani/",
-        "https://twitter.com/N_Hiranandani",
-        "https://www.linkedin.com/in/niranjan-hiranandani/"
-      ],
-      "description": "Indian billionaire real estate entrepreneur, co-founder and managing director of the Hiranandani Group, and Provost of HSNC University. Renowned for creating landmark neoclassical integrated townships.",
-      "knowsAbout": [
-        "Neoclassical Architecture",
-        "Integrated Townships",
-        "Urban Planning",
-        "Mivan Construction Velocity",
-        "Indian Real Estate Economics"
-      ]
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://krisalahiranandanitownships.com/#joint-venture",
-      "name": "Krisala × Hiranandani Communities Joint Venture",
-      "url": "https://krisalahiranandanitownships.com/",
-      "logo": "https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp",
-      "founder": {
-        "@id": "https://krisalahiranandanitownships.com/#niranjan-hiranandani"
-      },
-      "parentOrganization": [
-        {
-          "@type": "Organization",
-          "name": "Hiranandani Communities",
-          "url": "https://www.hiranandanicommunities.com/"
-        },
-        {
-          "@type": "Organization",
-          "name": "Krisala Developers",
-          "url": "https://www.krisala.com/"
-        }
-      ],
-      "sameAs": [
-        "https://en.wikipedia.org/wiki/Hiranandani_Group",
-        "https://www.wikidata.org/wiki/Q5769299",
-        "https://www.wikidata.org/wiki/Q16196237",
-        "https://www.wikidata.org/wiki/Q5767597",
-        "https://www.wikidata.org/wiki/Q1538"
-      ]
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Person",
+ "@id": "https://krisalahiranandanitownships.com/#niranjan-hiranandani",
+ "name": "Dr. Niranjan Hiranandani",
+ "honorificPrefix": "Dr.",
+ "jobTitle": "Co-founder & Managing Director",
+ "worksFor": {
+ "@type": "RealEstateAgent",
+ "name": "Hiranandani Communities",
+ "url": "https://krisalahiranandanitownships.com/"
+ },
+ "alumniOf": "University of Mumbai",
+ "sameAs": [
+ "https://www.wikidata.org/wiki/Q16729864",
+ "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
+ "https://www.forbes.com/profile/niranjan-hiranandani/",
+ "https://twitter.com/N_Hiranandani",
+ "https://www.linkedin.com/in/niranjan-hiranandani/"
+ ],
+ "description": "Indian billionaire real estate entrepreneur, co-founder and managing director of the Hiranandani Group, and Provost of HSNC University. Renowned for creating landmark neoclassical integrated townships.",
+ "knowsAbout": [
+ "Neoclassical Architecture",
+ "Integrated Townships",
+ "Urban Planning",
+ "Mivan Construction Velocity",
+ "Indian Real Estate Economics"
+ ]
+ },
+ {
+ "@type": "Organization",
+ "@id": "https://krisalahiranandanitownships.com/#joint-venture",
+ "name": "Krisala × Hiranandani Communities Joint Venture",
+ "url": "https://krisalahiranandanitownships.com/",
+ "logo": "https://krisalahiranandanitownships.com/public/krisala-hiranandani-logo.webp",
+ "founder": {
+ "@id": "https://krisalahiranandanitownships.com/#niranjan-hiranandani"
+ },
+ "parentOrganization": [
+ {
+ "@type": "Organization",
+ "name": "Hiranandani Communities",
+ "url": "https://www.hiranandanicommunities.com/"
+ },
+ {
+ "@type": "Organization",
+ "name": "Krisala Developers",
+ "url": "https://www.krisala.com/"
+ }
+ ],
+ "sameAs": [
+ "https://en.wikipedia.org/wiki/Hiranandani_Group",
+ "https://www.wikidata.org/wiki/Q5769299",
+ "https://www.wikidata.org/wiki/Q16196237",
+ "https://www.wikidata.org/wiki/Q5767597",
+ "https://www.wikidata.org/wiki/Q1538"
+ ]
+ }
+ ]
 }</script>
 <!-- Google Dataset Search: Empirical Market Index (Primary Source Grounding) -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Dataset",
-      "name": "Hinjewadi Real Estate Price Trends, Rental Yields & Infrastructure Impact Dataset (2020-2026)",
-      "description": "Empirical longitudinal real estate research dataset covering capital appreciation rates, Ready Reckoner valuations, rental yields (5.2% gross), absorption rates, and PMRDA 128m Ring Road / Metro Line 3 impact in North Hinjewadi, Pune.",
-      "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
-      "keywords": ["Hinjewadi real estate price trends", "Hiranandani Pune capital appreciation", "Pune Ready Reckoner rates 2026", "Hinjewadi Phase 1 rental yields", "PMRDA Ring Road impact analysis"],
-      "creator": {
-        "@type": "Organization",
-        "name": "Krisala Hiranandani Economic Research Bureau"
-      },
-      "variableMeasured": [
-        "Average Price per Square Foot",
-        "Gross Rental Yield Percentage",
-        "Ready Reckoner Government Valuation",
-        "Transit Infrastructure Commute Reductions",
-        "MahaRERA Project Registration Compliance"
-      ],
-      "spatialCoverage": {
-        "@type": "Place",
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 18.5913,
-          "longitude": 73.7389
-        }
-      },
-      "temporalCoverage": "2020-01-01/2026-12-31"
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@type": "Dataset",
+ "name": "Hinjewadi Real Estate Price Trends, Rental Yields & Infrastructure Impact Dataset (2020-2026)",
+ "description": "Empirical longitudinal real estate research dataset covering capital appreciation rates, Ready Reckoner valuations, rental yields (5.2% gross), absorption rates, and PMRDA 128m Ring Road / Metro Line 3 impact in North Hinjewadi, Pune.",
+ "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
+ "keywords": ["Hinjewadi real estate price trends", "Hiranandani Pune capital appreciation", "Pune Ready Reckoner rates 2026", "Hinjewadi Phase 1 rental yields", "PMRDA Ring Road impact analysis"],
+ "creator": {
+ "@type": "Organization",
+ "name": "Krisala Hiranandani Economic Research Bureau"
+ },
+ "variableMeasured": [
+ "Average Price per Square Foot",
+ "Gross Rental Yield Percentage",
+ "Ready Reckoner Government Valuation",
+ "Transit Infrastructure Commute Reductions",
+ "MahaRERA Project Registration Compliance"
+ ],
+ "spatialCoverage": {
+ "@type": "Place",
+ "geo": {
+ "@type": "GeoCoordinates",
+ "latitude": 18.5913,
+ "longitude": 73.7389
+ }
+ },
+ "temporalCoverage": "2020-01-01/2026-12-31"
+ }
+ </script>
 <!-- Google Video Carousel & Rich Snippets: 4K Architectural Walkthrough -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "VideoObject",
-      "name": "Krisala Hiranandani Township Hinjewadi 4K Master Walkthrough & Drone Tour",
-      "description": "Experience India's 1st integrated neoclassical equestrian township in North Hinjewadi, Pune. Featuring the 8-acre private turf racecourse, Della adventure resort, Sector Arcadia, and The Colosseum towers.",
-      "thumbnailUrl": [
-        "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
-        "https://krisalahiranandanitownships.com/public/imported/krisala-hiranandani-banner.webp"
-      ],
-      "uploadDate": "2026-10-15T09:00:00+05:30",
-      "duration": "PT4M15S",
-      "contentUrl": "https://krisalahiranandanitownships.com/public/videos/township-walkthrough.mp4",
-      "embedUrl": "https://krisalahiranandanitownships.com/gallery",
-      "hasPart": [
-        {
-          "@type": "Clip",
-          "name": "Grand Entrance Gateway & Neoclassical Arch",
-          "startOffset": 0,
-          "endOffset": 45,
-          "url": "https://krisalahiranandanitownships.com/hiranandani-pune#entrance"
-        },
-        {
-          "@type": "Clip",
-          "name": "8-Acre Private Turf Racecourse & Polo Club",
-          "startOffset": 46,
-          "endOffset": 120,
-          "url": "https://krisalahiranandanitownships.com/racecourse"
-        },
-        {
-          "@type": "Clip",
-          "name": "The Colosseum B+G+27 Roman Architecture",
-          "startOffset": 121,
-          "endOffset": 195,
-          "url": "https://krisalahiranandanitownships.com/colosseum"
-        },
-        {
-          "@type": "Clip",
-          "name": "Della Resort Villa Plots Precinct",
-          "startOffset": 196,
-          "endOffset": 255,
-          "url": "https://krisalahiranandanitownships.com/della"
-        }
-      ]
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@type": "VideoObject",
+ "name": "Krisala Hiranandani Township Hinjewadi 4K Master Walkthrough & Drone Tour",
+ "description": "Experience India's 1st integrated neoclassical equestrian township in North Hinjewadi, Pune. Featuring the 8-acre private turf racecourse, Della adventure resort, Sector Arcadia, and The Colosseum towers.",
+ "thumbnailUrl": [
+ "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+ "https://krisalahiranandanitownships.com/public/imported/krisala-hiranandani-banner.webp"
+ ],
+ "uploadDate": "2026-10-15T09:00:00+05:30",
+ "duration": "PT4M15S",
+ "contentUrl": "https://krisalahiranandanitownships.com/public/videos/township-walkthrough.mp4",
+ "embedUrl": "https://krisalahiranandanitownships.com/gallery",
+ "hasPart": [
+ {
+ "@type": "Clip",
+ "name": "Grand Entrance Gateway & Neoclassical Arch",
+ "startOffset": 0,
+ "endOffset": 45,
+ "url": "https://krisalahiranandanitownships.com/hiranandani-pune#entrance"
+ },
+ {
+ "@type": "Clip",
+ "name": "8-Acre Private Turf Racecourse & Polo Club",
+ "startOffset": 46,
+ "endOffset": 120,
+ "url": "https://krisalahiranandanitownships.com/racecourse"
+ },
+ {
+ "@type": "Clip",
+ "name": "The Colosseum B+G+27 Roman Architecture",
+ "startOffset": 121,
+ "endOffset": 195,
+ "url": "https://krisalahiranandanitownships.com/colosseum"
+ },
+ {
+ "@type": "Clip",
+ "name": "Della Resort Villa Plots Precinct",
+ "startOffset": 196,
+ "endOffset": 255,
+ "url": "https://krisalahiranandanitownships.com/della"
+ }
+ ]
+ }
+ </script>
 <!-- WebMCP / Declarative Agentic Browsing Manifest for AI Agents (Chrome 2026 Spec) -->
 <meta content="real-estate-inquiry, site-visit-booking, cost-sheet-generation, emi-calculation" name="agent-capability"/>
 <script id="webmcp-actions" type="application/json">
-    {
-      "@context": "https://webmcp.org/v1",
-      "agentName": "KrisalaHiranandaniAgent",
-      "actions": [
-        {
-          "name": "calculate_emi",
-          "description": "Calculate monthly loan EMI based on unit price and down payment",
-          "targetUrl": "https://krisalahiranandanitownships.com/hiranandani-emi-calculator",
-          "method": "GET",
-          "parameters": {
-            "loanAmount": {"type": "number", "required": true},
-            "tenureYears": {"type": "number", "default": 20},
-            "interestRate": {"type": "number", "default": 8.5}
-          }
-        },
-        {
-          "name": "book_site_visit",
-          "description": "Schedule a VIP site visit to the North Hinjewadi experience center",
-          "targetUrl": "https://wa.me/917744009295?text=I+would+like+to+schedule+a+VIP+site+visit",
-          "method": "DIRECT_LINK"
-        },
-        {
-          "name": "download_cost_sheet",
-          "description": "Get official all-inclusive builder-direct cost sheet PDF",
-          "targetUrl": "https://krisalahiranandanitownships.com/public/brochure/Krisala-Hiranandani-Township-Official-Brochure.pdf",
-          "method": "DOWNLOAD"
-        }
-      ]
-    }
-    </script>
+ {
+ "@context": "https://webmcp.org/v1",
+ "agentName": "KrisalaHiranandaniAgent",
+ "actions": [
+ {
+ "name": "calculate_emi",
+ "description": "Calculate monthly loan EMI based on unit price and down payment",
+ "targetUrl": "https://krisalahiranandanitownships.com/hiranandani-emi-calculator",
+ "method": "GET",
+ "parameters": {
+ "loanAmount": {"type": "number", "required": true},
+ "tenureYears": {"type": "number", "default": 20},
+ "interestRate": {"type": "number", "default": 8.5}
+ }
+ },
+ {
+ "name": "book_site_visit",
+ "description": "Schedule a VIP site visit to the North Hinjewadi experience center",
+ "targetUrl": "https://wa.me/917744009295?text=I+would+like+to+schedule+a+VIP+site+visit",
+ "method": "DIRECT_LINK"
+ },
+ {
+ "name": "download_cost_sheet",
+ "description": "Get verified all-inclusive builder-direct cost sheet PDF",
+ "targetUrl": "https://krisalahiranandanitownships.com/public/brochure/Krisala-Hiranandani-Township-Brochure.pdf",
+ "method": "DOWNLOAD"
+ }
+ ]
+ }
+ </script>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#breadcrumb",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://krisalahiranandanitownships.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Hiranandani Pune",
-      "item": "https://krisalahiranandanitownships.com/hiranandani-pune"
-    }
-  ]
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#breadcrumb",
+ "itemListElement": [
+ {
+ "@type": "ListItem",
+ "position": 1,
+ "name": "Home",
+ "item": "https://krisalahiranandanitownships.com/"
+ },
+ {
+ "@type": "ListItem",
+ "position": 2,
+ "name": "Hiranandani Pune",
+ "item": "https://krisalahiranandanitownships.com/hiranandani-pune"
+ }
+ ]
 }
 </script></head>
 <body>
@@ -608,7 +608,7 @@
 <section class="section-py" id="pricing" style="background: var(--bg-dark-deep); border-top: 1px solid rgba(197, 160, 89, 0.2);">
 <div class="container">
 <div class="section-header center scroll-reveal">
-<span class="badge-gold">2026 OFFICIAL PRICE LIST</span>
+<span class="badge-gold">2026 Price List</span>
 <h2 class="section-title">Hiranandani Pune All-Inclusive Pricing</h2>
 <p class="section-subtitle">Transparent, builder-direct pricing structure with flexible payment schedules, MahaRERA escrow security, and zero hidden charges.</p>
 </div>
@@ -740,7 +740,7 @@
 <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Direct dirham equivalent valuation (AED 328K to 1.1M AED). Dedicated Relationship Manager in Gulf Standard Time (GST), FEMA compliance assistance &amp; zero capital gains repatriation via NRE accounts.</p>
 <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; color: var(--gold-light);">
 <strong>Starting From:</strong> ~328,000 AED*
-                        </div>
+ </div>
 </div>
 <!-- USA & Canada Silicon Valley Corridor -->
 <div class="scroll-reveal" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197,160,89,0.3); border-radius: 10px; padding: 24px;">
@@ -752,7 +752,7 @@
 <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Silicon Valley, Seattle, Texas, New York &amp; Toronto NRI corridor. Seamless USD wire transfers, digital KYC, remote Power of Attorney (PoA) execution &amp; virtual 4K architectural walkthroughs.</p>
 <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; color: var(--gold-light);">
 <strong>Starting From:</strong> ~$89,500 USD*
-                        </div>
+ </div>
 </div>
 <!-- UK & Europe Corridor -->
 <div class="scroll-reveal" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197,160,89,0.3); border-radius: 10px; padding: 24px;">
@@ -764,7 +764,7 @@
 <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">DTAA tax credit protection between India &amp; UK/Europe. High 5.2% gross rental yields driven by 400+ Fortune 500 tech multinationals in Hinjewadi Rajiv Gandhi Infotech Park.</p>
 <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; color: var(--gold-light);">
 <strong>Starting From:</strong> ~£68,500 GBP*
-                        </div>
+ </div>
 </div>
 <!-- Singapore & Australia Corridor -->
 <div class="scroll-reveal" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(197,160,89,0.3); border-radius: 10px; padding: 24px;">
@@ -776,7 +776,7 @@
 <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">Dedicated real estate wealth desk for Singapore (SGD) and Sydney/Melbourne (AUD). End-to-end leasing management, rental yield collection &amp; full exit capital repatriation.</p>
 <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 0.85rem; color: var(--gold-light);">
 <strong>Starting From:</strong> ~S$116,000 SGD* / ~A$138,000 AUD*
-                        </div>
+ </div>
 </div>
 </div>
 <!-- Global Investor Benefits Banner -->
@@ -797,7 +797,7 @@
 <div class="container">
 <div class="section-header center scroll-reveal">
 <span class="badge-gold">GOOGLE BROAD MATCH SEARCH TOPIC CLUSTERS</span>
-<h2 class="section-title">Hiranandani Pune: Official Buyer Query &amp; Search Index</h2>
+<h2 class="section-title">Hiranandani Pune: Buyer Query &amp; Search Index</h2>
 <p class="section-subtitle">Direct authoritative answers for every primary search query, pricing benchmark, floor plan, and transit connector.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 36px;">
@@ -890,94 +890,94 @@
 </div>
 <!-- Instant WhatsApp CTA -->
 <a class="btn-primary" href="https://wa.me/917744009295?text=Hello%20Krisala%20Hiranandani%20Sales%20Team%2C%20I%20am%20interested%20in%20the%202%20BHK%20Smart%20Luxury%20(740%20sq.ft.)%20with%20Racecourse%20View%20on%20the%2014th%20Floor.%20Please%20send%20the%20complete%20MahaRERA%20cost%20sheet%20and%20floor%20plan%20PDF." id="cfgWhatsappBtn" rel="noopener" style="width: 100%; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.92rem; padding: 14px;" target="_blank">
-<i class="ph ph-whatsapp-logo" style="color: #25D366; font-size: 1.3rem;"></i> Receive Official Cost Sheet on WhatsApp
-                        </a>
-<p style="text-align: center; font-size: 0.75rem; color: var(--text-subtle); margin-top: 8px;">Instant automated quote • Zero broker commission • Official RERA docket</p>
+<i class="ph ph-whatsapp-logo" style="color: #25D366; font-size: 1.3rem;"></i> Receive Cost Sheet on WhatsApp
+ </a>
+<p style="text-align: center; font-size: 0.75rem; color: var(--text-subtle); margin-top: 8px;">Instant automated quote • Zero broker commission • MahaRERA docket</p>
 </div>
 </div>
 </div>
 </section>
 <!-- Configurator JS Logic -->
 <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var unitButtons = document.querySelectorAll('#cfgUnitSelector .cfg-btn');
-            var viewButtons = document.querySelectorAll('#cfgViewSelector .view-btn');
-            var slider = document.getElementById('cfgFloorSlider');
-            var floorDisplay = document.getElementById('cfgFloorDisplay');
-            var titleEl = document.getElementById('cfgTitle');
-            var carpetEl = document.getElementById('cfgCarpet');
-            var sectorBadgeEl = document.getElementById('cfgSectorBadge');
-            var viewLabelEl = document.getElementById('cfgViewLabel');
-            var priceEl = document.getElementById('cfgPrice');
-            var emiEl = document.getElementById('cfgEmi');
-            var whatsappBtn = document.getElementById('cfgWhatsappBtn');
+ document.addEventListener('DOMContentLoaded', function() {
+ var unitButtons = document.querySelectorAll('#cfgUnitSelector .cfg-btn');
+ var viewButtons = document.querySelectorAll('#cfgViewSelector .view-btn');
+ var slider = document.getElementById('cfgFloorSlider');
+ var floorDisplay = document.getElementById('cfgFloorDisplay');
+ var titleEl = document.getElementById('cfgTitle');
+ var carpetEl = document.getElementById('cfgCarpet');
+ var sectorBadgeEl = document.getElementById('cfgSectorBadge');
+ var viewLabelEl = document.getElementById('cfgViewLabel');
+ var priceEl = document.getElementById('cfgPrice');
+ var emiEl = document.getElementById('cfgEmi');
+ var whatsappBtn = document.getElementById('cfgWhatsappBtn');
 
-            var currentUnit = {
-                name: '2 BHK Smart Luxury',
-                carpet: '740 sq.ft.',
-                base: 79,
-                sector: 'Sector Arcadia'
-            };
-            var currentView = '8-Acre Turf Racecourse View';
-            var currentFloor = 14;
+ var currentUnit = {
+ name: '2 BHK Smart Luxury',
+ carpet: '740 sq.ft.',
+ base: 79,
+ sector: 'Sector Arcadia'
+ };
+ var currentView = '8-Acre Turf Racecourse View';
+ var currentFloor = 14;
 
-            function updateDisplay() {
-                var floorFactor = 1 + ((currentFloor - 1) * 0.003); // 0.3% floor rise per floor
-                var calculatedPrice = currentUnit.base * floorFactor;
-                var formattedPrice = calculatedPrice >= 100 ? ('₹' + (calculatedPrice/100).toFixed(2) + ' Crore*') : ('₹' + calculatedPrice.toFixed(2) + ' Lakhs*');
-                var calculatedEmi = Math.round(calculatedPrice * 780); // approx EMI multiplier per lakh
+ function updateDisplay() {
+ var floorFactor = 1 + ((currentFloor - 1) * 0.003); // 0.3% floor rise per floor
+ var calculatedPrice = currentUnit.base * floorFactor;
+ var formattedPrice = calculatedPrice >= 100 ? ('₹' + (calculatedPrice/100).toFixed(2) + ' Crore*') : ('₹' + calculatedPrice.toFixed(2) + ' Lakhs*');
+ var calculatedEmi = Math.round(calculatedPrice * 780); // approx EMI multiplier per lakh
 
-                titleEl.textContent = currentUnit.name;
-                carpetEl.textContent = currentUnit.carpet;
-                sectorBadgeEl.textContent = currentUnit.sector;
-                viewLabelEl.textContent = currentView;
-                priceEl.textContent = formattedPrice;
-                emiEl.textContent = '~₹' + calculatedEmi.toLocaleString('en-IN') + ' / mo';
-                floorDisplay.textContent = currentFloor + (currentFloor === 1 ? 'st' : currentFloor === 2 ? 'nd' : currentFloor === 3 ? 'rd' : 'th') + ' Floor';
+ titleEl.textContent = currentUnit.name;
+ carpetEl.textContent = currentUnit.carpet;
+ sectorBadgeEl.textContent = currentUnit.sector;
+ viewLabelEl.textContent = currentView;
+ priceEl.textContent = formattedPrice;
+ emiEl.textContent = '~₹' + calculatedEmi.toLocaleString('en-IN') + ' / mo';
+ floorDisplay.textContent = currentFloor + (currentFloor === 1 ? 'st' : currentFloor === 2 ? 'nd' : currentFloor === 3 ? 'rd' : 'th') + ' Floor';
 
-                var message = "Hello Krisala Hiranandani Sales Team, I configured the " + currentUnit.name + " (" + currentUnit.carpet + ") in " + currentUnit.sector + " on the " + currentFloor + "th Floor with " + currentView + " at approx " + formattedPrice + ". Please send the official 2026 cost sheet PDF, floor plan, and booking payment schedule to my WhatsApp.";
-                whatsappBtn.href = "https://wa.me/917744009295?text=" + encodeURIComponent(message);
-            }
+ var message = "Hello Krisala Hiranandani Sales Team, I configured the " + currentUnit.name + " (" + currentUnit.carpet + ") in " + currentUnit.sector + " on the " + currentFloor + "th Floor with " + currentView + " at approx " + formattedPrice + ". Please send the 2026 Cost Sheet PDF, floor plan, and booking payment schedule to my WhatsApp.";
+ whatsappBtn.href = "https://wa.me/917744009295?text=" + encodeURIComponent(message);
+ }
 
-            unitButtons.forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    unitButtons.forEach(function(b) {
-                        b.style.background = 'rgba(255,255,255,0.06)';
-                        b.style.color = '#fff';
-                    });
-                    this.style.background = 'var(--gold-primary)';
-                    this.style.color = '#000';
-                    currentUnit = {
-                        name: this.getAttribute('data-name'),
-                        carpet: this.getAttribute('data-carpet'),
-                        base: parseFloat(this.getAttribute('data-base')),
-                        sector: this.getAttribute('data-sector')
-                    };
-                    updateDisplay();
-                });
-            });
+ unitButtons.forEach(function(btn) {
+ btn.addEventListener('click', function() {
+ unitButtons.forEach(function(b) {
+ b.style.background = 'rgba(255,255,255,0.06)';
+ b.style.color = '#fff';
+ });
+ this.style.background = 'var(--gold-primary)';
+ this.style.color = '#000';
+ currentUnit = {
+ name: this.getAttribute('data-name'),
+ carpet: this.getAttribute('data-carpet'),
+ base: parseFloat(this.getAttribute('data-base')),
+ sector: this.getAttribute('data-sector')
+ };
+ updateDisplay();
+ });
+ });
 
-            viewButtons.forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    viewButtons.forEach(function(b) {
-                        b.style.background = 'rgba(255,255,255,0.06)';
-                        b.style.color = '#fff';
-                    });
-                    this.style.background = 'var(--gold-primary)';
-                    this.style.color = '#000';
-                    currentView = this.getAttribute('data-viewname');
-                    updateDisplay();
-                });
-            });
+ viewButtons.forEach(function(btn) {
+ btn.addEventListener('click', function() {
+ viewButtons.forEach(function(b) {
+ b.style.background = 'rgba(255,255,255,0.06)';
+ b.style.color = '#fff';
+ });
+ this.style.background = 'var(--gold-primary)';
+ this.style.color = '#000';
+ currentView = this.getAttribute('data-viewname');
+ updateDisplay();
+ });
+ });
 
-            if (slider) {
-                slider.addEventListener('input', function() {
-                    currentFloor = parseInt(this.value);
-                    updateDisplay();
-                });
-            }
-        });
-        </script>
+ if (slider) {
+ slider.addEventListener('input', function() {
+ currentFloor = parseInt(this.value);
+ updateDisplay();
+ });
+ }
+ });
+ </script>
 <!-- Chapter 6: Frequently Asked Questions (PAA Schema Hardened) -->
 <section class="section-py" id="faq" style="border-top: 1px solid rgba(197, 160, 89, 0.2);">
 <div class="container">
@@ -989,7 +989,7 @@
 <div style="max-width: 900px; margin: 36px auto 0; display: flex; flex-direction: column; gap: 16px;">
 <div class="scroll-reveal" style="background: rgba(16,18,26,0.8); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 20px;">
 <h3 style="color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 8px;">What is the Hiranandani 2 BHK Pune price in Sector Arcadia?</h3>
-<p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The official Hiranandani 2 BHK Pune price in Sector Arcadia starts at ₹79 Lakhs* all-inclusive for a 740 sq.ft. carpet area, and ₹88 Lakhs* for an 820 sq.ft. Grande layout, featuring Mivan monolithic construction and Italian marble flooring.</p>
+<p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The verified Hiranandani 2 BHK Pune price in Sector Arcadia starts at ₹79 Lakhs* all-inclusive for a 740 sq.ft. carpet area, and ₹88 Lakhs* for an 820 sq.ft. Grande layout, featuring Mivan monolithic construction and Italian marble flooring.</p>
 </div>
 <div class="scroll-reveal" style="background: rgba(16,18,26,0.8); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 20px;">
 <h3 style="color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 8px;">Where can I access the Colosseum Hinjewadi floor plan and Della villa plots Hinjewadi?</h3>
@@ -1013,14 +1013,14 @@
 </div>
 <div class="scroll-reveal" style="background: rgba(16,18,26,0.8); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 20px;">
 <h3 style="color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 8px;">What is the scheduled Hiranandani Hinjewadi possession date?</h3>
-<p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The official Hiranandani Hinjewadi possession date timeline commences in December 2028 for early enclaves, extending through December 2029 as per MahaRERA registered schedules, powered by accelerated Mivan monolithic construction velocity.</p>
+<p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The verified Hiranandani Hinjewadi possession date timeline commences in December 2028 for early enclaves, extending through December 2029 as per MahaRERA registered schedules, powered by accelerated Mivan monolithic construction velocity.</p>
 </div>
 <div class="scroll-reveal" style="background: rgba(16,18,26,0.8); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 20px;">
-<h3 style="color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 8px;">Where is the official Hiranandani booking office Pune?</h3>
-<p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The official Hiranandani booking office Pune and Sales Experience Center is located on-site at: Krisala × Hiranandani Township, North Hinjawadi, Darumbre, Pune 410506, along the PMRDA 128m Ring Road corridor adjacent to the Mumbai-Pune Expressway.</p>
+<h3 style="color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 8px;">Where is The verified Hiranandani booking office Pune?</h3>
+<p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The verified Hiranandani booking office Pune and Sales Experience Center is located on-site at: Krisala × Hiranandani Township, North Hinjawadi, Darumbre, Pune 410506, along the PMRDA 128m Ring Road corridor adjacent to the Mumbai-Pune Expressway.</p>
 </div>
 <div class="scroll-reveal" style="background: rgba(16,18,26,0.8); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 20px;">
-<h3 style="color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 8px;">How can I access an official Hiranandani brochure download?</h3>
+<h3 style="color: var(--gold-bright); font-size: 1.15rem; margin-bottom: 8px;">How can I access an Hiranandani brochure download?</h3>
 <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">You can initiate an instant Hiranandani brochure download by clicking the download buttons across this portal to receive the complete 48-page architectural floor plan, 2026 cost sheet, and master layout dossier delivered directly to your device or WhatsApp.</p>
 </div>
 <div class="scroll-reveal" style="background: rgba(16,18,26,0.8); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 20px;">
@@ -1048,7 +1048,7 @@
 <div class="container">
 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 24px;">
 <a class="logo" href="/">
-<img alt="Krisala Hiranandani Pune Official Logo" class="header-logo" height="42" loading="lazy" src="/public/krisala-hiranandani-logo.webp" width="310"/>
+<img alt="Krisala Hiranandani Pune Township Logo" class="header-logo" height="42" loading="lazy" src="/public/krisala-hiranandani-logo.webp" width="310"/>
 </a>
 <div style="display: flex; gap: 20px; flex-wrap: wrap;">
 <a href="/" style="color: var(--text-muted); text-decoration: none;">Home</a>
@@ -1059,7 +1059,7 @@
 <a href="/privacy-policy" style="color: var(--text-muted); text-decoration: none;">Privacy Policy</a>
 </div>
 </div>
-<p style="line-height: 1.6; margin-bottom: 12px;">Disclaimer: This official digital portal is for informational purposes for the joint development by Krisala Developers and Hiranandani Communities at North Hinjewadi, Pune. The projects are registered under MahaRERA: Sector Arcadia (PR1260002500600), The Colosseum (PR1260002600818), Sector Everlyn (PR1260002502438). Details available on https://maharera.maharashtra.gov.in/.</p>
+<p style="line-height: 1.6; margin-bottom: 12px;">Disclaimer: This digital portal is for informational purposes for the joint development by Krisala Developers and Hiranandani Communities at North Hinjewadi, Pune. The projects are registered under MahaRERA: Sector Arcadia (PR1260002500600), The Colosseum (PR1260002600818), Sector Everlyn (PR1260002502438). Details available on https://maharera.maharashtra.gov.in/.</p>
 <p>© 2026 Krisala × Hiranandani Communities. All Rights Reserved.</p>
 </div>
 </footer>
@@ -1070,9 +1070,9 @@
 <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--gold-bright);">Download Hiranandani Pune Brochure &amp; Price List</h3>
 <button class="close-modal" style="background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">×</button>
 </div>
-<p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Enter your details to receive instant access to official floor plans, 2026 cost sheet, and MahaRERA compliance dockets via WhatsApp.</p>
+<p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 20px;">Enter your details to receive instant access to floor plans, 2026 cost sheet, and MahaRERA compliance dockets via WhatsApp.</p>
 <form action="https://formsubmit.co/manisha.yewle87@gmail.com" id="leadForm" method="POST" style="display: flex; flex-direction: column; gap: 14px;">
-<input name="_subject" type="hidden" value="New Lead: Hiranandani Pune Official Portal"/>
+<input name="_subject" type="hidden" value="New Lead: Hiranandani Pune Experience Portal"/>
 <input name="_captcha" type="hidden" value="false"/>
 <input name="name" placeholder="Your Full Name" required="" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 12px; color: #fff; font-size: 0.9rem;" type="text"/>
 <input name="phone" placeholder="Mobile Number (WhatsApp Preferred)" required="" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 12px; color: #fff; font-size: 0.9rem;" type="tel"/>
@@ -1083,235 +1083,235 @@
 </div>
 <!-- JSON-LD Entity & RealEstateListing Graph -->
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#webpage",
-      "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
-      "name": "Hiranandani Pune | 105-Acre Flagship Integrated Township Hinjewadi",
-      "description": "Hiranandani Pune Township in North Hinjewadi by Hiranandani Communities & Krisala Developers.",
-      "inLanguage": "en-IN",
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".hero-title",
-          ".hero-subtitle",
-          "#faq h3",
-          "#faq p"
-        ]
-      },
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#primaryimage",
-        "url": "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
-        "caption": "Hiranandani Pune Township Grand Entrance Gateway in North Hinjewadi with Neoclassical Arch",
-        "width": 1920,
-        "height": 1181
-      }
-    },
-    {
-      "@type": "RealEstateListing",
-      "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#listing",
-      "name": "Hiranandani Pune Flagship Integrated Township Hinjewadi",
-      "description": "105+ Acre Integrated Equestrian Township in North Hinjewadi, Pune. Developed by Hiranandani Communities & Krisala Developers featuring 2, 3, 4 BHK luxury residences, Sector Arcadia, Sector Icon, Della Villa Plots, and India's 1st 8-acre private racecourse.",
-      "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
-      "image": "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
-      "datePosted": "2026-03-01",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "North Hinjawadi, Darumbre",
-        "addressLocality": "Pune",
-        "addressRegion": "Maharashtra",
-        "postalCode": "410506",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "18.5913",
-        "longitude": "73.7389"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "45000000",
-        "offerCount": "5"
-      },
-      "sameAs": [
-        "https://en.wikipedia.org/wiki/Hiranandani_Group",
-        "https://www.wikidata.org/wiki/Q5769299",
-        "https://www.wikidata.org/wiki/Q16196237",
-        "https://www.wikidata.org/wiki/Q5767597",
-        "https://www.wikidata.org/wiki/Q1538"
-      ],
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".hero-title",
-          ".hero-subtitle",
-          ".position-one-factsheet-container",
-          ".geo-ai-snapshot"
-        ]
-      }
-    },
-    {
-      "@type": "ApartmentComplex",
-      "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#complex",
-      "name": "Hiranandani Pune Township Hinjewadi",
-      "alternateName": [
-        "Hiranandani Pune",
-        "Hiranandani Hinjewadi",
-        "Krisala Hiranandani Township Pune",
-        "Krisaala Hiraanandani Township",
-        "Hiranandani Booking Office Pune",
-        "Hiranandani Flats in Pune",
-        "Hiranandani Township Pune",
-        "Hiranandani Township Hinjewadi",
-        "House of Hiranandani Pune",
-        "Hiranandani Communities Pune",
-        "Dr Niranjan Hiranandani Pune Project",
-        "Hiranandani Flats in Pune",
-        "Hiranandani Apartments Pune",
-        "Hiranandani Projects in Pune",
-        "Krisala Hiranandani Pune",
-        "The Colosseum Hinjewadi",
-        "Sector Arcadia Hinjewadi",
-        "Sector Icon Hinjewadi",
-        "The Della Collection Hinjewadi"
-      ],
-      "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "North Hinjawadi, Darumbre",
-        "addressLocality": "Pune",
-        "addressRegion": "Maharashtra",
-        "postalCode": "410506",
-        "addressCountry": "IN"
-      },
-      "amenityFeature": [
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "8-Acre Private Turf Racecourse & Equestrian Arena",
-          "value": true
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "40-Acre Della Adventure & Luxury Resort Precinct",
-          "value": true
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "Olympic Sized Swimming Pool & Sun Deck",
-          "value": true
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "40,000 Sq.Ft Neoclassical Clubhouse",
-          "value": true
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "Mivan Monolithic Concrete Wall Construction",
-          "value": true
-        },
-        {
-          "@type": "LocationFeatureSpecification",
-          "name": "70% Open Space & Landscaped Reserves",
-          "value": true
-        }
-      ]
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://krisalahiranandanitownships.com/#organization",
-      "name": "Hiranandani Communities & Krisala Developers Joint Venture",
-      "alternateName": [
-        "Hiranandani Pune",
-        "Hiranandani Communities",
-        "Krisala Developers"
-      ],
-      "url": "https://krisalahiranandanitownships.com/",
-      "sameAs": [
-        "https://maharera.maharashtra.gov.in/",
-        "https://krisala.com/",
-        "https://www.hiranandani.com/",
-        "https://en.wikipedia.org/wiki/Hiranandani_Group",
-        "https://www.wikidata.org/wiki/Q5769389",
-        "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
-        "https://www.wikidata.org/wiki/Q7039912",
-        "https://en.wikipedia.org/wiki/House_of_Hiranandani",
-        "https://www.dellaadventure.com/",
-        "https://en.wikipedia.org/wiki/Jimmy_Mistry",
-        "https://www.wikidata.org/wiki/Q5769299",
-        "https://www.wikidata.org/wiki/Q16196237",
-        "https://www.wikidata.org/wiki/Q5767597",
-        "https://www.wikidata.org/wiki/Q1538"
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is Hiranandani officially launching in Pune?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Hiranandani Communities, led by Dr. Niranjan Hiranandani, has officially partnered with Krisala Developers to develop a 105+ Acre integrated equestrian township in North Hinjewadi (Darumbre), Pune West. The development features neoclassical residential towers, Della luxury villa plots, and India's first private racecourse."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the starting price of apartments in Hiranandani Pune?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "2 BHK luxury residences in Sector Arcadia start at ₹79 Lakhs all-inclusive, while 3 BHK premium apartments start at ₹1.25 Crore. Signature 3 & 4 BHK duplex penthouses in Sector Icon start at ₹2.10 Crore to ₹2.65 Crore, and custom Della Villa Plots start at ₹1.80 Crore."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the verified Hiranandani Pune MahaRERA number?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The verified Hiranandani Pune MahaRERA number certificates are: Sector Arcadia MahaRERA No. PR1260002500600, The Colosseum Phase 4 MahaRERA No. PR1260002600818, and Sector Everlyn MahaRERA No. PR1260002502438, registered under the Maharashtra Real Estate Regulatory Authority."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the scheduled Hiranandani Hinjewadi possession date?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Hiranandani Hinjewadi possession date timeline commences in December 2028 for early enclaves, extending through December 2029 as per MahaRERA registered schedules, powered by accelerated Mivan monolithic construction velocity."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is the Hiranandani booking office Pune?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The Hiranandani booking office Pune and Sales Experience Center is located on-site at: Krisala × Hiranandani Township, North Hinjawadi, Darumbre, Pune 410506, along the PMRDA 128m Ring Road corridor adjacent to the Mumbai-Pune Expressway."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I access an Hiranandani brochure download?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can initiate an instant Hiranandani brochure download by clicking the download buttons across this portal to receive the complete 48-page architectural floor plan, 2026 cost sheet, and master layout dossier delivered directly to your device or WhatsApp."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can NRIs invest in Hiranandani Pune with digital KYC?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Hiranandani Pune provides a dedicated NRI Desk offering end-to-end digital KYC verification, virtual video walkthroughs, remote unit selection, NRE/NRO banking facilitation, and comprehensive tenant management upon possession."
-          }
-        }
-      ]
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "WebPage",
+ "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#webpage",
+ "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
+ "name": "Hiranandani Pune | 105-Acre Flagship Integrated Township Hinjewadi",
+ "description": "Hiranandani Pune Township in North Hinjewadi by Hiranandani Communities & Krisala Developers.",
+ "inLanguage": "en-IN",
+ "speakable": {
+ "@type": "SpeakableSpecification",
+ "cssSelector": [
+ ".hero-title",
+ ".hero-subtitle",
+ "#faq h3",
+ "#faq p"
+ ]
+ },
+ "primaryImageOfPage": {
+ "@type": "ImageObject",
+ "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#primaryimage",
+ "url": "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+ "caption": "Hiranandani Pune Township Grand Entrance Gateway in North Hinjewadi with Neoclassical Arch",
+ "width": 1920,
+ "height": 1181
+ }
+ },
+ {
+ "@type": "RealEstateListing",
+ "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#listing",
+ "name": "Hiranandani Pune Flagship Integrated Township Hinjewadi",
+ "description": "105+ Acre Integrated Equestrian Township in North Hinjewadi, Pune. Developed by Hiranandani Communities & Krisala Developers featuring 2, 3, 4 BHK luxury residences, Sector Arcadia, Sector Icon, Della Villa Plots, and India's 1st 8-acre private racecourse.",
+ "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
+ "image": "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
+ "datePosted": "2026-03-01",
+ "address": {
+ "@type": "PostalAddress",
+ "streetAddress": "North Hinjawadi, Darumbre",
+ "addressLocality": "Pune",
+ "addressRegion": "Maharashtra",
+ "postalCode": "410506",
+ "addressCountry": "IN"
+ },
+ "geo": {
+ "@type": "GeoCoordinates",
+ "latitude": "18.5913",
+ "longitude": "73.7389"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "45000000",
+ "offerCount": "5"
+ },
+ "sameAs": [
+ "https://en.wikipedia.org/wiki/Hiranandani_Group",
+ "https://www.wikidata.org/wiki/Q5769299",
+ "https://www.wikidata.org/wiki/Q16196237",
+ "https://www.wikidata.org/wiki/Q5767597",
+ "https://www.wikidata.org/wiki/Q1538"
+ ],
+ "speakable": {
+ "@type": "SpeakableSpecification",
+ "cssSelector": [
+ ".hero-title",
+ ".hero-subtitle",
+ ".position-one-factsheet-container",
+ ".geo-ai-snapshot"
+ ]
+ }
+ },
+ {
+ "@type": "ApartmentComplex",
+ "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#complex",
+ "name": "Hiranandani Pune Township Hinjewadi",
+ "alternateName": [
+ "Hiranandani Pune",
+ "Hiranandani Hinjewadi",
+ "Krisala Hiranandani Township Pune",
+ "Krisaala Hiraanandani Township",
+ "Hiranandani Booking Office Pune",
+ "Hiranandani Flats in Pune",
+ "Hiranandani Township Pune",
+ "Hiranandani Township Hinjewadi",
+ "House of Hiranandani Pune",
+ "Hiranandani Communities Pune",
+ "Dr Niranjan Hiranandani Pune Project",
+ "Hiranandani Flats in Pune",
+ "Hiranandani Apartments Pune",
+ "Hiranandani Projects in Pune",
+ "Krisala Hiranandani Pune",
+ "The Colosseum Hinjewadi",
+ "Sector Arcadia Hinjewadi",
+ "Sector Icon Hinjewadi",
+ "The Della Collection Hinjewadi"
+ ],
+ "url": "https://krisalahiranandanitownships.com/hiranandani-pune",
+ "address": {
+ "@type": "PostalAddress",
+ "streetAddress": "North Hinjawadi, Darumbre",
+ "addressLocality": "Pune",
+ "addressRegion": "Maharashtra",
+ "postalCode": "410506",
+ "addressCountry": "IN"
+ },
+ "amenityFeature": [
+ {
+ "@type": "LocationFeatureSpecification",
+ "name": "8-Acre Private Turf Racecourse & Equestrian Arena",
+ "value": true
+ },
+ {
+ "@type": "LocationFeatureSpecification",
+ "name": "40-Acre Della Adventure & Luxury Resort Precinct",
+ "value": true
+ },
+ {
+ "@type": "LocationFeatureSpecification",
+ "name": "Olympic Sized Swimming Pool & Sun Deck",
+ "value": true
+ },
+ {
+ "@type": "LocationFeatureSpecification",
+ "name": "40,000 Sq.Ft Neoclassical Clubhouse",
+ "value": true
+ },
+ {
+ "@type": "LocationFeatureSpecification",
+ "name": "Mivan Monolithic Concrete Wall Construction",
+ "value": true
+ },
+ {
+ "@type": "LocationFeatureSpecification",
+ "name": "70% Open Space & Landscaped Reserves",
+ "value": true
+ }
+ ]
+ },
+ {
+ "@type": "Organization",
+ "@id": "https://krisalahiranandanitownships.com/#organization",
+ "name": "Hiranandani Communities & Krisala Developers Joint Venture",
+ "alternateName": [
+ "Hiranandani Pune",
+ "Hiranandani Communities",
+ "Krisala Developers"
+ ],
+ "url": "https://krisalahiranandanitownships.com/",
+ "sameAs": [
+ "https://maharera.maharashtra.gov.in/",
+ "https://krisala.com/",
+ "https://www.hiranandani.com/",
+ "https://en.wikipedia.org/wiki/Hiranandani_Group",
+ "https://www.wikidata.org/wiki/Q5769389",
+ "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
+ "https://www.wikidata.org/wiki/Q7039912",
+ "https://en.wikipedia.org/wiki/House_of_Hiranandani",
+ "https://www.dellaadventure.com/",
+ "https://en.wikipedia.org/wiki/Jimmy_Mistry",
+ "https://www.wikidata.org/wiki/Q5769299",
+ "https://www.wikidata.org/wiki/Q16196237",
+ "https://www.wikidata.org/wiki/Q5767597",
+ "https://www.wikidata.org/wiki/Q1538"
+ ]
+ },
+ {
+ "@type": "FAQPage",
+ "@id": "https://krisalahiranandanitownships.com/hiranandani-pune#faq",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "Is Hiranandani officially launching in Pune?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes. Hiranandani Communities, led by Dr. Niranjan Hiranandani, has officially partnered with Krisala Developers to develop a 105+ Acre integrated equestrian township in North Hinjewadi (Darumbre), Pune West. The development features neoclassical residential towers, Della luxury villa plots, and India's first private racecourse."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What is the starting price of apartments in Hiranandani Pune?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "2 BHK luxury residences in Sector Arcadia start at ₹79 Lakhs all-inclusive, while 3 BHK premium apartments start at ₹1.25 Crore. Signature 3 & 4 BHK duplex penthouses in Sector Icon start at ₹2.10 Crore to ₹2.65 Crore, and custom Della Villa Plots start at ₹1.80 Crore."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What is the verified Hiranandani Pune MahaRERA number?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The verified Hiranandani Pune MahaRERA number certificates are: Sector Arcadia MahaRERA No. PR1260002500600, The Colosseum Phase 4 MahaRERA No. PR1260002600818, and Sector Everlyn MahaRERA No. PR1260002502438, registered under the Maharashtra Real Estate Regulatory Authority."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What is the scheduled Hiranandani Hinjewadi possession date?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The Hiranandani Hinjewadi possession date timeline commences in December 2028 for early enclaves, extending through December 2029 as per MahaRERA registered schedules, powered by accelerated Mivan monolithic construction velocity."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Where is the Hiranandani booking office Pune?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The Hiranandani booking office Pune and Sales Experience Center is located on-site at: Krisala × Hiranandani Township, North Hinjawadi, Darumbre, Pune 410506, along the PMRDA 128m Ring Road corridor adjacent to the Mumbai-Pune Expressway."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How can I access an Hiranandani brochure download?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "You can initiate an instant Hiranandani brochure download by clicking the download buttons across this portal to receive the complete 48-page architectural floor plan, 2026 cost sheet, and master layout dossier delivered directly to your device or WhatsApp."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Can NRIs invest in Hiranandani Pune with digital KYC?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes. Hiranandani Pune provides a dedicated NRI Desk offering end-to-end digital KYC verification, virtual video walkthroughs, remote unit selection, NRE/NRO banking facilitation, and comprehensive tenant management upon possession."
+ }
+ }
+ ]
+ }
+ ]
 }</script>
 <!-- Global App Engine -->
 <script defer="" src="/app.min.js?v=20261026_v6"></script>
@@ -1338,12 +1338,12 @@
 <!-- Chat History -->
 <div id="aiChatBody" style="flex: 1; padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
 <div style="background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; padding: 10px; color: #fff; line-height: 1.5;">
-                Welcome! I am your 24/7 Krisala × Hiranandani Township Concierge. Ask me anything about MahaRERA numbers, price lists, floor plans, racecourse access, or bank approvals.
-            </div>
+ Welcome! I am your 24/7 Krisala × Hiranandani Township Concierge. Ask me anything about MahaRERA numbers, price lists, floor plans, racecourse access, or bank approvals.
+ </div>
 <!-- Quick Prompt Chips -->
 <div id="aiChipContainer" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
 <button class="ai-chip" data-q="What is the starting price of 2 BHK and 3 BHK?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">💰 2 BHK / 3 BHK Price</button>
-<button class="ai-chip" data-q="What are the official MahaRERA registration numbers?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">📜 MahaRERA Numbers</button>
+<button class="ai-chip" data-q="What are the MahaRERA registration numbers?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">📜 MahaRERA Numbers</button>
 <button class="ai-chip" data-q="What is the possession date for the township?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">📅 Possession Date</button>
 <button class="ai-chip" data-q="Tell me about the 8-acre turf racecourse and Della resort." style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">🏇 Racecourse &amp; Della</button>
 <button class="ai-chip" data-q="Where is the site sales office located?" style="background: rgba(255,255,255,0.06); color: var(--gold-light); border: 1px solid rgba(197,160,89,0.3); border-radius: 20px; padding: 5px 10px; font-size: 0.75rem; cursor: pointer;" type="button">📍 Site Address &amp; Map</button>
@@ -1357,140 +1357,140 @@
 </div>
 <!-- AI Concierge Logic -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var launcher = document.getElementById('aiLauncherBtn');
-        var modal = document.getElementById('aiConciergeModal');
-        var closeBtn = document.getElementById('aiCloseBtn');
-        var input = document.getElementById('aiInput');
-        var sendBtn = document.getElementById('aiSendBtn');
-        var chatBody = document.getElementById('aiChatBody');
-        var chips = document.querySelectorAll('.ai-chip');
+ document.addEventListener('DOMContentLoaded', function() {
+ var launcher = document.getElementById('aiLauncherBtn');
+ var modal = document.getElementById('aiConciergeModal');
+ var closeBtn = document.getElementById('aiCloseBtn');
+ var input = document.getElementById('aiInput');
+ var sendBtn = document.getElementById('aiSendBtn');
+ var chatBody = document.getElementById('aiChatBody');
+ var chips = document.querySelectorAll('.ai-chip');
 
-        if (launcher && modal) {
-            launcher.addEventListener('click', function() {
-                modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-            });
-        }
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-        }
+ if (launcher && modal) {
+ launcher.addEventListener('click', function() {
+ modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+ });
+ }
+ if (closeBtn) {
+ closeBtn.addEventListener('click', function() {
+ modal.style.display = 'none';
+ });
+ }
 
-        var knowledgeBase = [
-            {
-                keywords: ['price', 'cost', 'rate', 'starting', '2 bhk', '3 bhk', '4 bhk'],
-                answer: "Official 2026 Pricing: 2 BHK Smart Luxury (740 sq.ft.) starts at ₹79 Lakhs* ($89.5K USD / 328K AED). 3 BHK Imperial (1,020 sq.ft.) starts at ₹1.25 Crore*. 3 BHK Racecourse View (1,180 sq.ft.) starts at ₹1.45 Crore*. 4 BHK Sky Duplexes start at ₹2.10 Cr*. Custom Della Villa plots start at ₹1.80 Cr*."
-            },
-            {
-                keywords: ['rera', 'maharera', 'number', 'registration', 'legal'],
-                answer: "Official Verified MahaRERA Certifications: Sector Arcadia (MahaRERA: PR1260002500600), The Colosseum Phase 4 (MahaRERA: PR1260002600818), and Sector Everlyn (MahaRERA: PR1260002502438). Registered on maharera.maharashtra.gov.in."
-            },
-            {
-                keywords: ['possession', 'date', 'timeline', 'completion'],
-                answer: "The official MahaRERA possession timeline commences in December 2028 for Sector Arcadia, extending through December 2029 for The Colosseum Phase 4, powered by accelerated Mivan monolithic shear-wall construction velocity."
-            },
-            {
-                keywords: ['racecourse', 'della', 'equestrian', 'resort', 'club'],
-                answer: "Krisala × Hiranandani features India's first 8-acre private turf racecourse, polo riding tracks, and an integrated 40-acre Della adventure resort precinct with 52+ world-class equestrian and wellness amenities."
-            },
-            {
-                keywords: ['address', 'location', 'site', 'reach', 'office', 'where'],
-                answer: "Official Site Address: PMRDA 128m Ring Road Corridor, North Hinjawadi, Darumbre, Pune 410506. Driving time: 5 mins to Ring Road, 7 mins to Hinjewadi Metro Line 3 Megapolis Station, 10 mins to Mumbai-Pune Expressway (Urse Toll), and 12 mins to Infosys Phase 1."
-            },
-            {
-                keywords: ['bank', 'loan', 'emi', 'pre approved', 'finance', 'sbi', 'hdfc'],
-                answer: "Pre-approved home loans with PMAY interest subsidies are active through SBI, HDFC Bank, ICICI Bank, Axis Bank, and Bank of Baroda. Instant loan pre-assessment is available at our on-site desk."
-            }
-        ];
+ var knowledgeBase = [
+ {
+ keywords: ['price', 'cost', 'rate', 'starting', '2 bhk', '3 bhk', '4 bhk'],
+ answer: "2026 Pricing: 2 BHK Smart Luxury (740 sq.ft.) starts at ₹79 Lakhs* ($89.5K USD / 328K AED). 3 BHK Imperial (1,020 sq.ft.) starts at ₹1.25 Crore*. 3 BHK Racecourse View (1,180 sq.ft.) starts at ₹1.45 Crore*. 4 BHK Sky Duplexes start at ₹2.10 Cr*. Custom Della Villa plots start at ₹1.80 Cr*."
+ },
+ {
+ keywords: ['rera', 'maharera', 'number', 'registration', 'legal'],
+ answer: "Verified MahaRERA Certifications: Sector Arcadia (MahaRERA: PR1260002500600), The Colosseum Phase 4 (MahaRERA: PR1260002600818), and Sector Everlyn (MahaRERA: PR1260002502438). Registered on maharera.maharashtra.gov.in."
+ },
+ {
+ keywords: ['possession', 'date', 'timeline', 'completion'],
+ answer: "The MahaRERA possession timeline commences in December 2028 for Sector Arcadia, extending through December 2029 for The Colosseum Phase 4, powered by accelerated Mivan monolithic shear-wall construction velocity."
+ },
+ {
+ keywords: ['racecourse', 'della', 'equestrian', 'resort', 'club'],
+ answer: "Krisala × Hiranandani features India's first 8-acre private turf racecourse, polo riding tracks, and an integrated 40-acre Della adventure resort precinct with 52+ world-class equestrian and wellness amenities."
+ },
+ {
+ keywords: ['address', 'location', 'site', 'reach', 'office', 'where'],
+ answer: "Site Address: PMRDA 128m Ring Road Corridor, North Hinjawadi, Darumbre, Pune 410506. Driving time: 5 mins to Ring Road, 7 mins to Hinjewadi Metro Line 3 Megapolis Station, 10 mins to Mumbai-Pune Expressway (Urse Toll), and 12 mins to Infosys Phase 1."
+ },
+ {
+ keywords: ['bank', 'loan', 'emi', 'pre approved', 'finance', 'sbi', 'hdfc'],
+ answer: "Pre-approved home loans with PMAY interest subsidies are active through SBI, HDFC Bank, ICICI Bank, Axis Bank, and Bank of Baroda. Instant loan pre-assessment is available at our on-site desk."
+ }
+ ];
 
-        function handleQuestion(q) {
-            if (!q || !q.trim()) return;
-            var userDiv = document.createElement('div');
-            userDiv.style.alignSelf = 'flex-end';
-            userDiv.style.background = 'rgba(255,255,255,0.08)';
-            userDiv.style.padding = '8px 12px';
-            userDiv.style.borderRadius = '8px';
-            userDiv.style.color = '#fff';
-            userDiv.style.maxWidth = '85%';
-            userDiv.textContent = q;
-            chatBody.appendChild(userDiv);
+ function handleQuestion(q) {
+ if (!q || !q.trim()) return;
+ var userDiv = document.createElement('div');
+ userDiv.style.alignSelf = 'flex-end';
+ userDiv.style.background = 'rgba(255,255,255,0.08)';
+ userDiv.style.padding = '8px 12px';
+ userDiv.style.borderRadius = '8px';
+ userDiv.style.color = '#fff';
+ userDiv.style.maxWidth = '85%';
+ userDiv.textContent = q;
+ chatBody.appendChild(userDiv);
 
-            var qLower = q.toLowerCase();
-            var responseText = "Thank you for inquiring! For complete personalized information, official brochure PDF, or to schedule a priority site visit with our senior sales manager, click below to connect instantly on WhatsApp.";
-            for (var i = 0; i < knowledgeBase.length; i++) {
-                var item = knowledgeBase[i];
-                for (var k = 0; k < item.keywords.length; k++) {
-                    if (qLower.indexOf(item.keywords[k]) !== -1) {
-                        responseText = item.answer;
-                        break;
-                    }
-                }
-                if (responseText !== "Thank you for inquiring! For complete personalized information, official brochure PDF, or to schedule a priority site visit with our senior sales manager, click below to connect instantly on WhatsApp.") break;
-            }
+ var qLower = q.toLowerCase();
+ var responseText = "Thank you for inquiring! For complete personalized information, Brochure PDF, or to schedule a priority site visit with our senior sales manager, click below to connect instantly on WhatsApp.";
+ for (var i = 0; i < knowledgeBase.length; i++) {
+ var item = knowledgeBase[i];
+ for (var k = 0; k < item.keywords.length; k++) {
+ if (qLower.indexOf(item.keywords[k]) !== -1) {
+ responseText = item.answer;
+ break;
+ }
+ }
+ if (responseText !== "Thank you for inquiring! For complete personalized information, Brochure PDF, or to schedule a priority site visit with our senior sales manager, click below to connect instantly on WhatsApp.") break;
+ }
 
-            var botDiv = document.createElement('div');
-            botDiv.style.alignSelf = 'flex-start';
-            botDiv.style.background = 'rgba(197,160,89,0.12)';
-            botDiv.style.border = '1px solid rgba(197,160,89,0.25)';
-            botDiv.style.padding = '10px';
-            botDiv.style.borderRadius = '8px';
-            botDiv.style.color = '#fff';
-            botDiv.style.maxWidth = '90%';
-            botDiv.innerHTML = responseText + '<div style="margin-top: 8px;"><a href="https://wa.me/917744009295?text=' + encodeURIComponent('Hello, I was using the AI Concierge and would like more details on: ' + q) + '" target="_blank" rel="noopener" style="color: #25D366; font-weight: 700; text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">💬 Connect on WhatsApp &rarr;</a></div>';
-            chatBody.appendChild(botDiv);
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
+ var botDiv = document.createElement('div');
+ botDiv.style.alignSelf = 'flex-start';
+ botDiv.style.background = 'rgba(197,160,89,0.12)';
+ botDiv.style.border = '1px solid rgba(197,160,89,0.25)';
+ botDiv.style.padding = '10px';
+ botDiv.style.borderRadius = '8px';
+ botDiv.style.color = '#fff';
+ botDiv.style.maxWidth = '90%';
+ botDiv.innerHTML = responseText + '<div style="margin-top: 8px;"><a href="https://wa.me/917744009295?text=' + encodeURIComponent('Hello, I was using the AI Concierge and would like more details on: ' + q) + '" target="_blank" rel="noopener" style="color: #25D366; font-weight: 700; text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">💬 Connect on WhatsApp &rarr;</a></div>';
+ chatBody.appendChild(botDiv);
+ chatBody.scrollTop = chatBody.scrollHeight;
+ }
 
-        if (sendBtn && input) {
-            sendBtn.addEventListener('click', function() {
-                handleQuestion(input.value);
-                input.value = '';
-            });
-            input.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    handleQuestion(input.value);
-                    input.value = '';
-                }
-            });
-        }
+ if (sendBtn && input) {
+ sendBtn.addEventListener('click', function() {
+ handleQuestion(input.value);
+ input.value = '';
+ });
+ input.addEventListener('keypress', function(e) {
+ if (e.key === 'Enter') {
+ handleQuestion(input.value);
+ input.value = '';
+ }
+ });
+ }
 
-        chips.forEach(function(chip) {
-            chip.addEventListener('click', function() {
-                handleQuestion(this.getAttribute('data-q'));
-            });
-        });
-    });
-    </script>
+ chips.forEach(function(chip) {
+ chip.addEventListener('click', function() {
+ handleQuestion(this.getAttribute('data-q'));
+ });
+ });
+ });
+ </script>
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      "name": "Hiranandani Pune™ — 105-Acre Township (from ₹79L*)",
-      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala × Hiranandani"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "428",
-        "reviewCount": "382"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "26500000",
-        "offerCount": "12",
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2027-12-31"
-      }
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Product",
+ "name": "Hiranandani Pune — 105-Acre Township (from ₹79L*)",
+ "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+ "brand": {
+ "@type": "Brand",
+ "name": "Krisala × Hiranandani"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "bestRating": "5",
+ "worstRating": "1",
+ "ratingCount": "428",
+ "reviewCount": "382"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "26500000",
+ "offerCount": "12",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2027-12-31"
+ }
+ }
+ ]
 }</script></body>
 </html>

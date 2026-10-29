@@ -5,82 +5,82 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: swap;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; z-index: 0; }
+ .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -92,10 +92,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <title>Canada NRI Property Desk (from CAD 130K*)</title>
@@ -141,128 +141,128 @@
 <!-- OpenGraph / Social Dominance -->
 <meta content="website" property="og:type"/>
 <meta content="https://krisalahiranandanitownships.com/nri/canada-toronto" id="ogUrl" property="og:url"/>
-<meta content="Canada NRI Property Desk™ (from CAD 130K*)" id="ogTitle" property="og:title"/>
+<meta content="Canada NRI Property Desk (from CAD 130K*)" id="ogTitle" property="og:title"/>
 <meta content="Canada &amp; Toronto NRI Investment Desk for Krisala Hiranandani Hinjewadi, Pune. Starting from C$130,000*, high rental yields (8.4%), CRA reporting compliance &amp; remote POA." id="ogDesc" property="og:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" property="og:image"/>
 <meta content="en_IN" property="og:locale"/>
 <meta content="Krisala Hiranandani Township Pune" property="og:site_name"/>
 <!-- Twitter Card -->
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Canada NRI Property Desk™ (from CAD 130K*)" id="twTitle" name="twitter:title"/>
+<meta content="Canada NRI Property Desk (from CAD 130K*)" id="twTitle" name="twitter:title"/>
 <meta content="Canada &amp; Toronto NRI Investment Desk for Krisala Hiranandani Hinjewadi, Pune. Starting from C$130,000*, high rental yields (8.4%), CRA reporting compliance &amp; remote POA." id="twDesc" name="twitter:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp" name="twitter:image"/>
 <!-- Dynamic Programmatic Schema Injection Hook -->
 <script id="seoSchemaJson" type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://krisalahiranandanitownships.com/nri/canada-toronto#webpage",
-      "url": "https://krisalahiranandanitownships.com/nri/canada-toronto",
-      "name": "Buy Property in Pune from Canada | Krisala Hiranandani NRI Desk (CAD)",
-      "description": "Canada & Toronto NRI Investment Desk for Krisala Hiranandani Hinjewadi, Pune. Starting from C$130,000*, high rental yields (8.4%), CRA reporting compliance & remote POA.",
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://krisalahiranandanitownships.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "NRI Desk",
-            "item": "https://krisalahiranandanitownships.com/nri"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Canada Toronto Desk",
-            "item": "https://krisalahiranandanitownships.com/nri/canada-toronto"
-          }
-        ]
-      }
-    },
-    {
-      "@type": "FinancialProduct",
-      "name": "Krisala Hiranandani NRI Investment Desk (CAD)",
-      "description": "Canada & Toronto NRI Investment Desk for Krisala Hiranandani Hinjewadi, Pune. Starting from C$130,000*, high rental yields (8.4%), CRA reporting compliance & remote POA.",
-      "url": "https://krisalahiranandanitownships.com/nri/canada-toronto",
-      "feesAndCommissionsSpecification": "Zero Developer Brokerage, Direct Channel Partner Mandate",
-      "annualPercentageRate": "8.4"
-    },
-    {
-      "@type": "RealEstateListing",
-      "name": "Institutional Real Estate Wealth in Pune for Canadian NRIs",
-      "description": "Canada & Toronto NRI Investment Desk for Krisala Hiranandani Hinjewadi, Pune. Starting from C$130,000*, high rental yields (8.4%), CRA reporting compliance & remote POA.",
-      "url": "https://krisalahiranandanitownships.com/nri/canada-toronto",
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "CAD",
-        "lowPrice": "130000",
-        "highPrice": "620000"
-      },
-      "sameAs": [
-        "https://en.wikipedia.org/wiki/Hiranandani_Group",
-        "https://www.wikidata.org/wiki/Q5769299",
-        "https://www.wikidata.org/wiki/Q16196237",
-        "https://www.wikidata.org/wiki/Q5767597",
-        "https://www.wikidata.org/wiki/Q1538"
-      ],
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".hero-title",
-          ".hero-subtitle",
-          ".position-one-factsheet-container",
-          ".geo-ai-snapshot"
-        ]
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can Canadian citizens and permanent residents buy property in Krisala Hiranandani?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, Canadian passport holders with OCI registration as well as Indian passport holders (NRIs) can legally acquire residential apartments and plots in India."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does the CRA tax rental income earned in India?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Under the Canada-India Income Tax Convention, Canadian tax residents must report global rental income on their T1 return, but can claim a Foreign Tax Credit (FTC) on Form T2209 for taxes paid to Indian tax authorities."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can Canadian NRIs secure home loans from Indian banks?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, SBI, HDFC, and ICICI Bank offer pre-approved home loan facilities for Canadian NRIs with up to 80% financing and tenure up to 20 years."
-          }
-        }
-      ]
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "WebPage",
+ "@id": "https://krisalahiranandanitownships.com/nri/canada-toronto#webpage",
+ "url": "https://krisalahiranandanitownships.com/nri/canada-toronto",
+ "name": "Buy Property in Pune from Canada | Krisala Hiranandani NRI Desk (CAD)",
+ "description": "Canada & Toronto NRI Investment Desk for Krisala Hiranandani Hinjewadi, Pune. Starting from C$130,000*, high rental yields (8.4%), CRA reporting compliance & remote POA.",
+ "breadcrumb": {
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+ {
+ "@type": "ListItem",
+ "position": 1,
+ "name": "Home",
+ "item": "https://krisalahiranandanitownships.com/"
+ },
+ {
+ "@type": "ListItem",
+ "position": 2,
+ "name": "NRI Desk",
+ "item": "https://krisalahiranandanitownships.com/nri"
+ },
+ {
+ "@type": "ListItem",
+ "position": 3,
+ "name": "Canada Toronto Desk",
+ "item": "https://krisalahiranandanitownships.com/nri/canada-toronto"
+ }
+ ]
+ }
+ },
+ {
+ "@type": "FinancialProduct",
+ "name": "Krisala Hiranandani NRI Investment Desk (CAD)",
+ "description": "Canada & Toronto NRI Investment Desk for Krisala Hiranandani Hinjewadi, Pune. Starting from C$130,000*, high rental yields (8.4%), CRA reporting compliance & remote POA.",
+ "url": "https://krisalahiranandanitownships.com/nri/canada-toronto",
+ "feesAndCommissionsSpecification": "Zero Developer Brokerage, Direct Channel Partner Mandate",
+ "annualPercentageRate": "8.4"
+ },
+ {
+ "@type": "RealEstateListing",
+ "name": "Institutional Real Estate Wealth in Pune for Canadian NRIs",
+ "description": "Canada & Toronto NRI Investment Desk for Krisala Hiranandani Hinjewadi, Pune. Starting from C$130,000*, high rental yields (8.4%), CRA reporting compliance & remote POA.",
+ "url": "https://krisalahiranandanitownships.com/nri/canada-toronto",
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "CAD",
+ "lowPrice": "130000",
+ "highPrice": "620000"
+ },
+ "sameAs": [
+ "https://en.wikipedia.org/wiki/Hiranandani_Group",
+ "https://www.wikidata.org/wiki/Q5769299",
+ "https://www.wikidata.org/wiki/Q16196237",
+ "https://www.wikidata.org/wiki/Q5767597",
+ "https://www.wikidata.org/wiki/Q1538"
+ ],
+ "speakable": {
+ "@type": "SpeakableSpecification",
+ "cssSelector": [
+ ".hero-title",
+ ".hero-subtitle",
+ ".position-one-factsheet-container",
+ ".geo-ai-snapshot"
+ ]
+ }
+ },
+ {
+ "@type": "FAQPage",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "Can Canadian citizens and permanent residents buy property in Krisala Hiranandani?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes, Canadian passport holders with OCI registration as well as Indian passport holders (NRIs) can legally acquire residential apartments and plots in India."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How does the CRA tax rental income earned in India?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Under the Canada-India Income Tax Convention, Canadian tax residents must report global rental income on their T1 return, but can claim a Foreign Tax Credit (FTC) on Form T2209 for taxes paid to Indian tax authorities."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "Can Canadian NRIs secure home loans from Indian banks?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Yes, SBI, HDFC, and ICICI Bank offer pre-approved home loan facilities for Canadian NRIs with up to 80% financing and tenure up to 20 years."
+ }
+ }
+ ]
+ }
+ ]
 }</script>
 <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
 <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-    </style>
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ </style>
 </head>
 <body>
 <!-- Navigation -->
@@ -305,14 +305,14 @@
 </div>
 <div class="container hero-content" style="max-width: 950px; text-align: center;">
 <div id="seoBreadcrumbs" style="font-size: 0.85rem; color: var(--gold-light); margin-bottom: 12px; letter-spacing: 0.5px;"><a href="/" style="color:var(--text-muted); text-decoration:none;">Home</a> • <a href="/nri" style="color:var(--text-muted); text-decoration:none;">NRI Desk</a> • <span>Canada Toronto Desk</span></div>
-<span class="badge" id="seoBadge" style="margin-bottom: 16px;"><i class="ph ph-globe-hemisphere-east"></i> OFFICIAL CANADA &amp; TORONTO NRI DESK • CURRENCY: CAD (C$)</span>
+<span class="badge" id="seoBadge" style="margin-bottom: 16px;"><i class="ph ph-globe-hemisphere-east"></i> CANADA &amp; TORONTO NRI DESK • CURRENCY: CAD (C$)</span>
 <h1 id="seoH1" style="font-size: clamp(2rem, 4vw, 3.2rem); font-family: var(--font-heading); color: #fff; line-height: 1.2; margin-bottom: 15px;">Institutional Real Estate Wealth in Pune for Canadian NRIs</h1>
 <p id="seoSubtitle" style="font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 25px; line-height: 1.6;">Invest in Pune's 105-acre equestrian neoclassical township from Toronto &amp; Vancouver starting C$130,000*. CRA-compliant, high rental yields.</p>
 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-<button class="btn-primary open-modal" data-magnet="programmatic_brochure"><i class="ph ph-file-pdf"></i> Download Official Brochure</button>
+<button class="btn-primary open-modal" data-magnet="programmatic_brochure"><i class="ph ph-file-pdf"></i> Download Brochure</button>
 <a class="btn-secondary" href="https://wa.me/917744009295" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px;" target="_blank">
 <svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg> WhatsApp Concierge
-                </a>
+ </a>
 </div>
 </div>
 </section>
@@ -337,7 +337,7 @@
 <section class="glass-panel" style="padding: 40px; margin-bottom: 40px; border: 1px solid rgba(212, 175, 55, 0.25);">
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 20px;">
 <i class="ph ph-table gold-icon"></i> Verified Specifications &amp; Pricing Parameters
-                </h3>
+ </h3>
 <div id="seoSpecTable" style="overflow-x: auto; margin: 30px 0;">
 <table style="width: 100%; border-collapse: collapse; font-size: 0.92rem; color: #fff;">
 <tr style="border-bottom: 1px solid rgba(197,160,89,0.3); background: rgba(197,160,89,0.1);"><th style="padding: 12px; text-align: left;">Typology</th><th style="padding: 12px; text-align: left;">Carpet Area</th><th style="padding: 12px; text-align: left;">Price in CAD (C$)*</th><th style="padding: 12px; text-align: left;">Price in INR (₹)*</th><th style="padding: 12px; text-align: left;">Projected Annual Yield</th></tr>
@@ -352,7 +352,7 @@
 <section class="glass-panel" style="padding: 40px; margin-bottom: 40px; border: 1px solid rgba(212, 175, 55, 0.25);">
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 20px;">
 <i class="ph ph-navigation-arrow gold-icon"></i> Commute Corridor &amp; Proximity Analysis
-                </h3>
+ </h3>
 <div id="seoCommuteMatrix" style="margin: 30px 0;">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
 <div style="background: rgba(255,255,255,0.03); padding: 18px; border-radius: 8px; border: 1px solid rgba(197,160,89,0.2);"><div style="color: var(--gold-bright); font-size: 1.4rem; font-weight: 700;">C$ 130K</div><div style="font-size: 0.85rem; color: #fff;">Entry Level Price</div><div style="font-size: 0.75rem; color: var(--text-muted);">Sector Arcadia 2 BHK</div></div>
@@ -365,7 +365,7 @@
 <section class="glass-panel" style="padding: 40px; margin-bottom: 40px; border: 1px solid rgba(212, 175, 55, 0.25);">
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.6rem; margin-bottom: 25px;">
 <i class="ph ph-question gold-icon"></i> Frequently Asked Questions
-                </h3>
+ </h3>
 <div id="seoFaqAccordion"><div class="faq-container">
 <div class="faq-item" style="background: rgba(16,18,26,0.8); border: 1px solid rgba(197,160,89,0.25); border-radius: 8px; margin-bottom: 14px; padding: 20px;">
 <h3 style="font-family: var(--font-heading); color: #fff; font-size: 1.15rem; margin-bottom: 8px;">Can Canadian citizens and permanent residents buy property in Krisala Hiranandani?</h3>
@@ -385,11 +385,11 @@
 <section class="glass-panel text-center" style="padding: 45px 30px; border: 2px solid var(--gold-primary); background: rgba(9, 10, 15, 0.95);">
 <span class="badge" style="margin-bottom: 10px;"><i class="ph ph-shield-check"></i> Direct Sales Desk &amp; Priority Allotment</span>
 <h2 style="font-family: var(--font-heading); color: #fff; font-size: 2rem; margin-bottom: 10px;">
-                    Enquire Directly for Krisala Hiranandani Township
-                </h2>
+ Enquire Directly for Krisala Hiranandani Township
+ </h2>
 <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 25px;">
-                    Receive complete all-inclusive cost sheets, floor plan blueprints, and VIP site visit arrangements via WhatsApp.
-                </p>
+ Receive complete all-inclusive cost sheets, floor plan blueprints, and VIP site visit arrangements via WhatsApp.
+ </p>
 <form action="https://formsubmit.co/propsmartrealty@gmail.com" class="enquiry-form" id="leadForm" method="POST" style="max-width: 550px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px;" tooldescription="Submit user enquiry to receive Krisala Hiranandani Township brochures, price lists, and priority pre-launch allocations" toolname="register_lead_enquiry">
 <input name="_subject" type="hidden" value="New Programmatic Portal Lead"/>
 <input name="_captcha" type="hidden" value="false"/>
@@ -403,10 +403,10 @@
 <input aria-label="Email Address" name="email" placeholder="Email Address *" required="" style="padding: 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; border-radius: 4px;" toolparamdescription="Email address for digital brochure dispatch" type="email"/>
 <button class="btn-primary" style="padding: 16px; font-weight: 700; font-size: 1rem; width: 100%;" type="submit">
 <i class="ph ph-paper-plane-tilt"></i> Get Complete Cost Sheet &amp; Floor Plans
-                    </button>
+ </button>
 <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">
 <i class="ph ph-lock"></i> Zero Spam Guarantee. All inquiries routed securely to propsmartrealty@gmail.com.
-                    </p>
+ </p>
 </form>
 </section>
 </div>
@@ -418,8 +418,8 @@
 <div class="footer-brand">
 <img alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" height="38" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="height: 40px; width: auto; margin-bottom: 20px; display: block;" width="280"/>
 <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
-                    </p>
+ A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+ </p>
 <div style="margin-top: 15px;">
 <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
 <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
@@ -516,10 +516,10 @@
 </div>
 <div class="footer-bottom" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center;">
 <p style="color: var(--text-muted); font-size: 0.8rem; line-height: 1.5; margin-bottom: 10px;">
-                    Disclaimer: This is an authoritative real estate advisory portal for Krisala Hiranandani Township. MahaRERA Registration: PR1260002502438 | PR1260002600818. Channel Partner RERA: A52100024102.
-                </p>
+ Disclaimer: This is an authoritative real estate advisory portal for Krisala Hiranandani Township. MahaRERA Registration: PR1260002502438 | PR1260002600818. Channel Partner RERA: A52100024102.
+ </p>
 <p style="color: var(--text-muted); font-size: 0.85rem;">
-                    © 2026 Krisala Hiranandani Township. All rights reserved. | <a href="/privacy-policy" style="color: var(--gold-primary); text-decoration: none;">Privacy Policy</a> | <a href="/masterplan" style="color: var(--gold-primary); text-decoration: none;">Master Plan</a> | <a href="/knowledge-hub" style="color: var(--gold-primary); text-decoration: none;">Knowledge Hub</a>
+ © 2026 Krisala Hiranandani Township. All rights reserved. | <a href="/privacy-policy" style="color: var(--gold-primary); text-decoration: none;">Privacy Policy</a> | <a href="/masterplan" style="color: var(--gold-primary); text-decoration: none;">Master Plan</a> | <a href="/knowledge-hub" style="color: var(--gold-primary); text-decoration: none;">Knowledge Hub</a>
 </p>
 </div>
 </div>
@@ -536,45 +536,45 @@
 <!-- Core Scripts -->
 <script defer="" src="/app.min.js?v=20261026_v4"></script>
 <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const field = document.getElementById('programmaticSourceField');
-            if (field) field.value = window.location.href;
-            const waFloat = document.getElementById('programmaticWhatsappFloat');
-            if (waFloat) {
-                const title = document.title || 'Krisala Hiranandani';
-                waFloat.href = `https://wa.me/917744009295?text=${encodeURIComponent('Hi, I am viewing ' + title + ' (' + window.location.href + '). Please send more details.')}`;
-            }
-        });
-    </script>
+ document.addEventListener('DOMContentLoaded', () => {
+ const field = document.getElementById('programmaticSourceField');
+ if (field) field.value = window.location.href;
+ const waFloat = document.getElementById('programmaticWhatsappFloat');
+ if (waFloat) {
+ const title = document.title || 'Krisala Hiranandani';
+ waFloat.href = `https://wa.me/917744009295?text=${encodeURIComponent('Hi, I am viewing ' + title + ' (' + window.location.href + '). Please send more details.')}`;
+ }
+ });
+ </script>
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      "name": "【NRI Desk】Buy Pune Property from Canada™ — Krisala Hiranandani (from CAD 130K*)",
-      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala × Hiranandani"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "428",
-        "reviewCount": "382"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "26500000",
-        "offerCount": "12",
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2027-12-31"
-      }
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Product",
+ "name": "NRI Desk: Buy Pune Property from Canada — Krisala Hiranandani (from CAD 130K*)",
+ "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+ "brand": {
+ "@type": "Brand",
+ "name": "Krisala × Hiranandani"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "bestRating": "5",
+ "worstRating": "1",
+ "ratingCount": "428",
+ "reviewCount": "382"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "26500000",
+ "offerCount": "12",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2027-12-31"
+ }
+ }
+ ]
 }</script></body>
 </html>

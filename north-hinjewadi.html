@@ -5,54 +5,54 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: optional;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .nav-links { display: flex; align-items: center; gap: 24px; }
-        .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.3s ease; }
-        .nav-link:hover, .nav-link.active { color: var(--gold-bright); }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 12px 24px; border-radius: 4px; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 12px 24px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
-        .hero { position: relative; padding: 140px 0 60px; background: linear-gradient(180deg, rgba(9,10,15,0.85) 0%, var(--bg-dark) 100%); text-align: center; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 16px; color: #fff; font-weight: 700; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: var(--text-muted); max-width: 850px; margin: 0 auto 30px; line-height: 1.6; }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.82rem; margin-bottom: 20px; }
-        .section-py { padding: 60px 0; }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
-        .feature-card { background: rgba(16, 18, 26, 0.85); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 12px; padding: 32px; transition: all 0.3s ease; }
-        .feature-card:hover { border-color: var(--gold-primary); transform: translateY(-3px); }
-        .footer { background: var(--bg-dark-deep); border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 50px 0 30px; font-size: 0.88rem; color: var(--text-muted); text-align: center; }
-        @media (max-width: 1024px) { .nav-links { display: none; } }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: optional;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .nav-links { display: flex; align-items: center; gap: 24px; }
+ .nav-link { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.3s ease; }
+ .nav-link:hover, .nav-link.active { color: var(--gold-bright); }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 12px 24px; border-radius: 4px; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 12px 24px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; }
+ .hero { position: relative; padding: 140px 0 60px; background: linear-gradient(180deg, rgba(9,10,15,0.85) 0%, var(--bg-dark) 100%); text-align: center; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.3rem, 5vw, 4rem); line-height: 1.15; margin-bottom: 16px; color: #fff; font-weight: 700; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: var(--text-muted); max-width: 850px; margin: 0 auto 30px; line-height: 1.6; }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.82rem; margin-bottom: 20px; }
+ .section-py { padding: 60px 0; }
+ .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+ .feature-card { background: rgba(16, 18, 26, 0.85); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 12px; padding: 32px; transition: all 0.3s ease; }
+ .feature-card:hover { border-color: var(--gold-primary); transform: translateY(-3px); }
+ .footer { background: var(--bg-dark-deep); border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 50px 0 30px; font-size: 0.88rem; color: var(--text-muted); text-align: center; }
+ @media (max-width: 1024px) { .nav-links { display: none; } }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -64,10 +64,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <link href="https://krisalahiranandanitownships.com/north-hinjewadi" rel="canonical"/>
@@ -77,53 +77,53 @@
 <meta content="Explore North Hinjewadi (Darumbre), Pune West's fastest-growing luxury corridor. 105-Acre Krisala Hiranandani Township on PMRDA 128m Ring Road, 7 mins from Hinjewadi Metro Line 3 Megapolis Station." name="description"/>
 <meta content="North Hinjewadi, North Hinjewadi Pune, Hiranandani North Hinjewadi, Darumbre Hinjewadi, Hinjewadi Phase 4, PMRDA 128m Ring Road flats, Hinjewadi real estate future, flats in North Hinjewadi, luxury townships West Pune, Krisala Hiranandani Township Pune, Krisala Hiranandani Township Hinjewadi, Hiranandani Hinjewadi, Hiranandani Pune, Hiranandani Township Pune, Krisala Hiranandani, Hiranandani Krisala Township, Krisaala Hiraanandani, House of Hiranandani Pune, Dr Niranjan Hiranandani Pune, Hiranandani Communities Pune, Krisala Developers Pune, Hiranandani new project Pune, Hiranandani launch Hinjewadi, Hiranandani flagship township Pune, Hiranandani Pune website, Hiranandani 2 BHK Pune price, Hiranandani 2 BHK Hinjewadi, Krisala Hiranandani 2 BHK floor plan, Hiranandani 2 BHK cost sheet, Hiranandani 2 BHK Sector Arcadia, Hiranandani 3 BHK Pune, Hiranandani 3 BHK Hinjewadi price, Krisala Hiranandani 3 BHK floor plan, The Colosseum 3 BHK price, Hiranandani 4 BHK luxury duplex Pune, Hiranandani 4 BHK Hinjewadi, Sector Icon 4 BHK sky duplex, Hiranandani duplex penthouses Hinjewadi, Della villa plots Hinjewadi, Hiranandani villa plots Pune price, Hiranandani Hinjewadi floor plans pdf, Krisala Hiranandani sample flat floor plans, The Colosseum Hinjewadi, The Colosseum Phase 4 Hinjewadi, The Colosseum Krisala Hiranandani, The Colosseum Hinjewadi floor plan, The Colosseum Hinjewadi price list, Sector Arcadia Hinjewadi, Sector Arcadia Krisala Hiranandani, Sector Arcadia 2 BHK price, Sector Arcadia floor plans, Sector Icon Hinjewadi, Sector Icon Krisala Hiranandani, Sector Icon sky duplex price, The Della Collection Hinjewadi, Sector Everlyn Hinjewadi, Hiranandani Pune price list 2026, Hiranandani Pune cost sheet pdf, Hiranandani Hinjewadi price, Hiranandani Pune payment plans, Hiranandani booking office Pune, Hiranandani sales office contact number, Hiranandani EMI calculator Pune, Hiranandani stamp duty breakdown Pune, Hiranandani Hinjewadi reviews, Hiranandani Pune reviews, Krisala Hiranandani reviews and ratings, Hiranandani Hinjewadi buyer feedback, is Hiranandani Hinjewadi worth buying, Hiranandani Hinjewadi construction status, Krisala Hiranandani possession date, MahaRERA PR1260002500600, MahaRERA PR1260002600818, MahaRERA PR1260002502438, Hiranandani Darumbre Pune, Krisala Hiranandani site address, Hiranandani near Infosys Hinjewadi, Hiranandani near Wipro Circle, Hiranandani near TCS Sahyadri Park, Hiranandani Hinjewadi Metro Line 3, Hiranandani PMRDA 128m Ring Road, Hiranandani Mumbai Pune Expressway distance, Hiranandani vs Godrej River Royale, Hiranandani vs Lodha Sylvan Hinjewadi, Hiranandani vs Kolte Patil Life Republic" name="keywords"/>
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Place",
-      "name": "North Hinjewadi Integrated Growth Corridor",
-      "description": "High-growth residential and IT corridor along PMRDA 128m Ring Road in Pune West.",
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 18.5913,
-        "longitude": 73.7389
-      }
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@type": "Place",
+ "name": "North Hinjewadi Integrated Growth Corridor",
+ "description": "High-growth residential and IT corridor along PMRDA 128m Ring Road in Pune West.",
+ "geo": {
+ "@type": "GeoCoordinates",
+ "latitude": 18.5913,
+ "longitude": 73.7389
+ }
+ }
+ </script>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "@id": "https://krisalahiranandanitownships.com/north-hinjewadi#breadcrumb",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://krisalahiranandanitownships.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "North Hinjewadi Location Guide",
-      "item": "https://krisalahiranandanitownships.com/north-hinjewadi"
-    }
-  ]
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "@id": "https://krisalahiranandanitownships.com/north-hinjewadi#breadcrumb",
+ "itemListElement": [
+ {
+ "@type": "ListItem",
+ "position": 1,
+ "name": "Home",
+ "item": "https://krisalahiranandanitownships.com/"
+ },
+ {
+ "@type": "ListItem",
+ "position": 2,
+ "name": "North Hinjewadi Location Guide",
+ "item": "https://krisalahiranandanitownships.com/north-hinjewadi"
+ }
+ ]
 }
 </script><script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": "https://krisalahiranandanitownships.com/north-hinjewadi#faq",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Why is North Hinjewadi considered Pune's top real estate investment corridor?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "North Hinjewadi benefits from signal-free PMRDA Ring Road connectivity, lower density than crowded Phase 1, unpolluted green environs facing the Sahyadri mountains, and 14-18% projected capital appreciation."
-      }
-    }
-  ]
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "@id": "https://krisalahiranandanitownships.com/north-hinjewadi#faq",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "Why is North Hinjewadi considered Pune's top real estate investment corridor?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "North Hinjewadi benefits from signal-free PMRDA Ring Road connectivity, lower density than crowded Phase 1, unpolluted green environs facing the Sahyadri mountains, and 14-18% projected capital appreciation."
+ }
+ }
+ ]
 }
 </script><meta content="Krisala Hiranandani Township Pune" property="og:site_name"/></head>
 <body>
@@ -164,20 +164,20 @@
 <div class="feature-card">
 <h2 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin-bottom: 12px;">Zero-Traffic Commute</h2>
 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
-                            Located outside the congested Phase 1 bottleneck, North Hinjewadi connects directly via the high-speed <strong>PMRDA 128m Ring Road</strong>. Reach Infosys Phase 1 in 12 minutes, Wipro Circle in 10 minutes, and TCS Sahyadri Park in 14 minutes without hitting internal IT park gridlock.
-                        </p>
+ Located outside the congested Phase 1 bottleneck, North Hinjewadi connects directly via the high-speed <strong>PMRDA 128m Ring Road</strong>. Reach Infosys Phase 1 in 12 minutes, Wipro Circle in 10 minutes, and TCS Sahyadri Park in 14 minutes without hitting internal IT park gridlock.
+ </p>
 </div>
 <div class="feature-card">
 <h2 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin-bottom: 12px;">PMRDA 128m Ring Road</h2>
 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
-                            The 128-meter wide Ring Road serves as Western Pune's primary arterial spine, providing seamless multi-lane access between the Mumbai-Pune Expressway (Urse Toll, 10 mins), Hinjewadi Phase 3, Baner, and the upcoming Pune Ring Road economic clusters.
-                        </p>
+ The 128-meter wide Ring Road serves as Western Pune's primary arterial spine, providing seamless multi-lane access between the Mumbai-Pune Expressway (Urse Toll, 10 mins), Hinjewadi Phase 3, Baner, and the upcoming Pune Ring Road economic clusters.
+ </p>
 </div>
 <div class="feature-card">
 <h2 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin-bottom: 12px;">Metro Line 3 Connectivity</h2>
 <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
-                            Just 7 minutes from the Hinjewadi Metro Line 3 Megapolis terminus station, linking North Hinjewadi residents to Shivaji Nagar and central Pune in under 35 minutes via elevated rapid transit.
-                        </p>
+ Just 7 minutes from the Hinjewadi Metro Line 3 Megapolis terminus station, linking North Hinjewadi residents to Shivaji Nagar and central Pune in under 35 minutes via elevated rapid transit.
+ </p>
 </div>
 </div>
 </div>
@@ -203,34 +203,34 @@
 </div>
 </footer>
 <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Product",
-      "name": "North Hinjewadi Corridor™ — Krisala Hiranandani",
-      "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Krisala × Hiranandani"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "428",
-        "reviewCount": "382"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "INR",
-        "lowPrice": "7900000",
-        "highPrice": "26500000",
-        "offerCount": "12",
-        "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2027-12-31"
-      }
-    }
-  ]
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "Product",
+ "name": "North Hinjewadi Corridor — Krisala Hiranandani",
+ "description": "Luxury residences at Krisala Hiranandani Township North Hinjewadi, Pune. Starting from ₹79 Lakh*.",
+ "brand": {
+ "@type": "Brand",
+ "name": "Krisala × Hiranandani"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "bestRating": "5",
+ "worstRating": "1",
+ "ratingCount": "428",
+ "reviewCount": "382"
+ },
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "26500000",
+ "offerCount": "12",
+ "availability": "https://schema.org/InStock",
+ "priceValidUntil": "2027-12-31"
+ }
+ }
+ ]
 }</script></body>
 </html>

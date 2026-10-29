@@ -5,82 +5,82 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @font-face {
-            font-family: 'Cormorant Garamond';
-            font-style: normal;
-            font-weight: 700;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-        }
-        :root {
-            --bg-dark: #090a0f;
-            --bg-dark-deep: #050608;
-            --bg-surface: rgba(16, 18, 26, 0.75);
-            --gold-primary: #c5a059;
-            --gold-light: #e6d5b8;
-            --gold-bright: #dfc07b;
-            --gold-deep: #9e7d3b;
-            --text-main: #fcfbf7;
-            --text-muted: #b8b8cc;
-            --text-subtle: #a8a8ba;
-            --font-heading: 'Cormorant Garamond', Georgia, serif;
-            --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
-            --font-accent: 'Cinzel', serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .container { padding: 0 20px; } }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
-        .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
-        .header-actions { display: flex; align-items: center; gap: 12px; }
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
-        .hero-title span { color: var(--gold-bright); }
-        .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
-        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
-        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
-        .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
-        .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
-        .stat-item { text-align: center; }
-        .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-        .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
-        .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
-        .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
-        .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
-        .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
-        .ticker-content { position: relative; height: 50px; }
-        .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
-        .ticker-slide.active { opacity: 1; }
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1024px) {
-            .nav-links, .nav-actions .btn-outline { display: none !important; }
-            .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
-        }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-        .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
-        .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
-        .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
-        .nri-geo-banner.active { display: flex !important; }
-    
+ @font-face {
+ font-family: 'Cormorant Garamond';
+ font-style: normal;
+ font-weight: 700;
+ font-display: swap;
+ src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+ unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+ }
+ :root {
+ --bg-dark: #090a0f;
+ --bg-dark-deep: #050608;
+ --bg-surface: rgba(16, 18, 26, 0.75);
+ --gold-primary: #c5a059;
+ --gold-light: #e6d5b8;
+ --gold-bright: #dfc07b;
+ --gold-deep: #9e7d3b;
+ --text-main: #fcfbf7;
+ --text-muted: #b8b8cc;
+ --text-subtle: #a8a8ba;
+ --font-heading: 'Cormorant Garamond', Georgia, serif;
+ --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+ --font-accent: 'Cinzel', serif;
+ }
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ html { scroll-behavior: smooth; }
+ body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+ .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .container { padding: 0 20px; } }
+ .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+ .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+ @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+ .header-actions { display: flex; align-items: center; gap: 12px; }
+ .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+ .hero-bg { position: absolute; inset: 0; z-index: 0; }
+ .hero-bg img, .hero-bg picture { width: 100%; height: 100%; object-fit: cover; display: block; }
+ .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(9,10,15,0.7) 0%, rgba(9,10,15,0.4) 50%, #090a0f 100%); z-index: 1; }
+ .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; margin: 0 auto; padding: 120px 20px 60px; }
+ .hero-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: 1.1; margin-bottom: 20px; font-weight: 700; color: #fff; }
+ .hero-title span { color: var(--gold-bright); }
+ .hero-subtitle { font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--text-muted); margin-bottom: 30px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; font-family: var(--font-body); }
+ .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(197, 160, 89, 0.1); border: 1px solid rgba(197, 160, 89, 0.3); color: var(--gold-bright); font-size: 0.85rem; margin-bottom: 20px; }
+ .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+ .hero .reveal, .hero-cta .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 600; padding: 14px 28px; border-radius: 4px; border: none; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .btn-secondary { background: rgba(255,255,255,0.06); color: #fcfbf7; border: 1px solid rgba(197,160,89,0.4); padding: 14px 28px; border-radius: 4px; cursor: pointer; min-height: 48px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+ .hero-stats { display: flex; align-items: center; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px; }
+ .stat-item { text-align: center; }
+ .stat-number { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); line-height: 1; }
+ .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+ .stat-divider { width: 1px; height: 35px; background: rgba(197, 160, 89, 0.25); }
+ .app-ticker-item { position: relative; min-width: 140px; overflow: hidden; }
+ .live-indicator { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 6px; }
+ .live-indicator .dot { width: 6px; height: 6px; background-color: #ff3b30; border-radius: 50%; box-shadow: 0 0 10px #ff3b30; }
+ .live-indicator .text { font-size: 0.65rem; letter-spacing: 1px; color: var(--text-muted); }
+ .ticker-content { position: relative; height: 50px; }
+ .ticker-slide { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; }
+ .ticker-slide.active { opacity: 1; }
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1024px) {
+ .nav-links, .nav-actions .btn-outline { display: none !important; }
+ .hamburger-menu { display: flex !important; flex-direction: column; gap: 5px; cursor: pointer; }
+ .hamburger-menu span { width: 24px; height: 2px; background: #fff; }
+ }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ .modal-overlay, .modal, .video-modal-overlay, #exitOverlay, #quizOverlay { display: none !important; opacity: 0; visibility: hidden; }
+ .modal-overlay.active, .modal.active, .video-modal-overlay.active, #exitOverlay.active, #quizOverlay.active { display: flex !important; opacity: 1; visibility: visible; }
+ .nri-geo-banner { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; z-index: 99999 !important; display: none; }
+ .nri-geo-banner.active { display: flex !important; }
+ 
 
 /* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
 .lang-toggle { display: inline-flex !important; align-items: center !important; gap: 6px !important; margin: 0 10px !important; padding: 4px 8px !important; min-height: 48px !important; }
@@ -92,10 +92,10 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
-  * { -webkit-tap-highlight-color: transparent; }
-  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .hero-stats { min-height: 80px; }
-  a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+ * { -webkit-tap-highlight-color: transparent; }
+ .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+ .hero-stats { min-height: 80px; }
+ a, button, input, select, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
 }
 </style>
 <link href="https://krisalahiranandanitownships.com/everlyn" rel="canonical"/>
@@ -141,7 +141,7 @@
 <!-- OpenGraph & Twitter Social Cards -->
 <meta content="website" property="og:type"/>
 <meta content="https://krisalahiranandanitownships.com/everlyn" property="og:url"/>
-<meta content="Sector Everlyn Hinjewadi™ (from ₹79L*)" property="og:title"/>
+<meta content="Sector Everlyn Hinjewadi (from ₹79L*)" property="og:title"/>
 <meta content="Ultra-luxury 2, 3, 4 BHK &amp; Duplex residences in Sector Arcadia &amp; Sector Icon, North Hinjewadi. Wellness podium, lotus ponds, and private racecourse views." property="og:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
@@ -153,214 +153,214 @@
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="@KrisalaHiranandani" name="twitter:site"/>
 <meta content="@KrisalaHiranandani" name="twitter:creator"/>
-<meta content="Sector Everlyn Hinjewadi™ (from ₹79L*)" name="twitter:title"/>
+<meta content="Sector Everlyn Hinjewadi (from ₹79L*)" name="twitter:title"/>
 <meta content="Ultra-luxury 2, 3, 4 BHK &amp; Duplex residences in Sector Arcadia &amp; Sector Icon, North Hinjewadi. Wellness podium, lotus ponds, and private racecourse views." name="twitter:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp" name="twitter:image"/>
 <!-- Schema.org JSON-LD Graph for Everlyn Residences -->
 <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "ApartmentComplex",
-          "@id": "https://krisalahiranandanitownships.com/everlyn#residences",
-          "name": "Everlyn Residences at Krisala × Hiranandani Township",
-          "description": "High-rise luxury residential towers in Phase 3 comprising Sector Arcadia and Sector Icon. Features 2 BHK, 3 BHK, 4 BHK, and bespoke double-height Duplexes with Mivan construction, private sundecks, and panoramic views of the 8-acre racecourse.",
-          "url": "https://krisalahiranandanitownships.com/everlyn",
-          "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Phase 3, Krisala × Hiranandani Township, North Hinjawadi, Darumbre",
-            "addressLocality": "Pune",
-            "addressRegion": "Maharashtra",
-            "postalCode": "410506",
-            "addressCountry": "IN"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "18.5913",
-            "longitude": "73.7389"
-          },
-          "amenityFeature": [
-            { "@type": "LocationFeatureSpecification", "name": "Zero-Traffic Vehicular-Free Podium", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Zen Meditation Pods & Lotus Ponds", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Butterfly Biodiversity Gardens", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Olympic-Length Swimming Pool", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Mivan Monolithic Concrete Technology", "value": true },
-            { "@type": "LocationFeatureSpecification", "name": "Racecourse & Valley View Balconies", "value": true }
-          ],
-          "offers": {
-            "@type": "AggregateOffer",
-            "priceCurrency": "INR",
-            "lowPrice": "7900000",
-            "highPrice": "45000000",
-            "offerCount": "4"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "156",
-            "bestRating": "5",
-            "worstRating": "1"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://krisalahiranandanitownships.com/everlyn#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What configurations are offered in Everlyn at Krisala Hiranandani?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Everlyn offers 2 BHK and 3 BHK luxury residences in Sector Arcadia, and grand 3 BHK, 4 BHK, and double-height 3 & 4 BHK Duplex residences in Sector Icon."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the starting price for 2 BHK and 3 BHK apartments?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Indicative pricing starts at ₹79 Lakhs* for 2 BHK residences in Sector Arcadia, ₹1.25 Cr* for 3 BHK homes, and ₹2.10 Cr* onwards for 4 BHK & Duplex homes in Sector Icon."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What construction technology is used for Everlyn towers?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The towers utilize advanced Mivan aluminium formwork engineered for maximum seismic resilience, leak-proof seamless finishes, superior acoustic insulation, and rapid construction delivery."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How does the zero-traffic podium improve safety and wellness?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "All vehicular movement and parking are isolated to underground basement levels. The podium level is 100% pedestrianized with landscaped gardens, reflexology tracks, children's play areas, and quiet meditation zones."
-              }
-            }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://krisalahiranandanitownships.com/everlyn#breadcrumb",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Everlyn Residences", "item": "https://krisalahiranandanitownships.com/everlyn" }
-          ]
-        }
-      ]
-    }
-    </script>
+ {
+ "@context": "https://schema.org",
+ "@graph": [
+ {
+ "@type": "ApartmentComplex",
+ "@id": "https://krisalahiranandanitownships.com/everlyn#residences",
+ "name": "Everlyn Residences at Krisala × Hiranandani Township",
+ "description": "High-rise luxury residential towers in Phase 3 comprising Sector Arcadia and Sector Icon. Features 2 BHK, 3 BHK, 4 BHK, and bespoke double-height Duplexes with Mivan construction, private sundecks, and panoramic views of the 8-acre racecourse.",
+ "url": "https://krisalahiranandanitownships.com/everlyn",
+ "image": "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp",
+ "address": {
+ "@type": "PostalAddress",
+ "streetAddress": "Phase 3, Krisala × Hiranandani Township, North Hinjawadi, Darumbre",
+ "addressLocality": "Pune",
+ "addressRegion": "Maharashtra",
+ "postalCode": "410506",
+ "addressCountry": "IN"
+ },
+ "geo": {
+ "@type": "GeoCoordinates",
+ "latitude": "18.5913",
+ "longitude": "73.7389"
+ },
+ "amenityFeature": [
+ { "@type": "LocationFeatureSpecification", "name": "Zero-Traffic Vehicular-Free Podium", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Zen Meditation Pods & Lotus Ponds", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Butterfly Biodiversity Gardens", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Olympic-Length Swimming Pool", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Mivan Monolithic Concrete Technology", "value": true },
+ { "@type": "LocationFeatureSpecification", "name": "Racecourse & Valley View Balconies", "value": true }
+ ],
+ "offers": {
+ "@type": "AggregateOffer",
+ "priceCurrency": "INR",
+ "lowPrice": "7900000",
+ "highPrice": "45000000",
+ "offerCount": "4"
+ },
+ "aggregateRating": {
+ "@type": "AggregateRating",
+ "ratingValue": "4.9",
+ "reviewCount": "156",
+ "bestRating": "5",
+ "worstRating": "1"
+ }
+ },
+ {
+ "@type": "FAQPage",
+ "@id": "https://krisalahiranandanitownships.com/everlyn#faq",
+ "mainEntity": [
+ {
+ "@type": "Question",
+ "name": "What configurations are offered in Everlyn at Krisala Hiranandani?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Everlyn offers 2 BHK and 3 BHK luxury residences in Sector Arcadia, and grand 3 BHK, 4 BHK, and double-height 3 & 4 BHK Duplex residences in Sector Icon."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What is the starting price for 2 BHK and 3 BHK apartments?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "Indicative pricing starts at ₹79 Lakhs* for 2 BHK residences in Sector Arcadia, ₹1.25 Cr* for 3 BHK homes, and ₹2.10 Cr* onwards for 4 BHK & Duplex homes in Sector Icon."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "What construction technology is used for Everlyn towers?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "The towers utilize advanced Mivan aluminium formwork engineered for maximum seismic resilience, leak-proof seamless finishes, superior acoustic insulation, and rapid construction delivery."
+ }
+ },
+ {
+ "@type": "Question",
+ "name": "How does the zero-traffic podium improve safety and wellness?",
+ "acceptedAnswer": {
+ "@type": "Answer",
+ "text": "All vehicular movement and parking are isolated to underground basement levels. The podium level is 100% pedestrianized with landscaped gardens, reflexology tracks, children's play areas, and quiet meditation zones."
+ }
+ }
+ ]
+ },
+ {
+ "@type": "BreadcrumbList",
+ "@id": "https://krisalahiranandanitownships.com/everlyn#breadcrumb",
+ "itemListElement": [
+ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/" },
+ { "@type": "ListItem", "position": 2, "name": "Everlyn Residences", "item": "https://krisalahiranandanitownships.com/everlyn" }
+ ]
+ }
+ ]
+ }
+ </script>
 <style>
-        .hero-everlyn {
-            min-height: 70vh;
-            padding-top: 100px;
-            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('/public/everlyn/hero/hero_exterior.webp');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+ .hero-everlyn {
+ min-height: 70vh;
+ padding-top: 100px;
+ background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('/public/everlyn/hero/hero_exterior.webp');
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ }
 
-        .spec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
+ .spec-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+ gap: 25px;
+ margin-top: 40px;
+ }
 
-        .spec-item {
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(197, 160, 89, 0.15);
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
+ .spec-item {
+ padding: 30px;
+ background: rgba(255, 255, 255, 0.03);
+ border: 1px solid rgba(197, 160, 89, 0.15);
+ border-radius: var(--border-radius);
+ text-align: center;
+ transition: all 0.3s ease;
+ }
 
-        .spec-item:hover {
-            border-color: var(--gold-primary);
-            transform: translateY(-5px);
-        }
+ .spec-item:hover {
+ border-color: var(--gold-primary);
+ transform: translateY(-5px);
+ }
 
-        .spec-item i {
-            font-size: 2.5rem;
-            color: var(--gold-primary);
-            margin-bottom: 15px;
-        }
+ .spec-item i {
+ font-size: 2.5rem;
+ color: var(--gold-primary);
+ margin-bottom: 15px;
+ }
 
-        .sector-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            border-radius: var(--border-radius);
-            padding: 35px;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
+ .sector-card {
+ background: rgba(255, 255, 255, 0.02);
+ border: 1px solid rgba(197, 160, 89, 0.2);
+ border-radius: var(--border-radius);
+ padding: 35px;
+ margin-bottom: 30px;
+ transition: all 0.3s ease;
+ }
 
-        .sector-card:hover {
-            border-color: var(--gold-primary);
-            background: rgba(255, 255, 255, 0.04);
-        }
+ .sector-card:hover {
+ border-color: var(--gold-primary);
+ background: rgba(255, 255, 255, 0.04);
+ }
 
-        .sector-badge {
-            display: inline-block;
-            background: rgba(197, 160, 89, 0.15);
-            color: var(--gold-primary);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
+ .sector-badge {
+ display: inline-block;
+ background: rgba(197, 160, 89, 0.15);
+ color: var(--gold-primary);
+ padding: 6px 14px;
+ border-radius: 20px;
+ font-size: 0.85rem;
+ font-weight: 600;
+ letter-spacing: 1px;
+ text-transform: uppercase;
+ margin-bottom: 15px;
+ }
 
-        .pricing-table-wrap {
-            overflow-x: auto;
-            margin-top: 30px;
-        }
+ .pricing-table-wrap {
+ overflow-x: auto;
+ margin-top: 30px;
+ }
 
-        .pricing-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
+ .pricing-table {
+ width: 100%;
+ border-collapse: collapse;
+ text-align: left;
+ }
 
-        .pricing-table th {
-            background: rgba(197, 160, 89, 0.12);
-            color: var(--gold-primary);
-            padding: 16px 20px;
-            font-family: var(--font-heading);
-            font-size: 1rem;
-            border-bottom: 2px solid rgba(197, 160, 89, 0.3);
-        }
+ .pricing-table th {
+ background: rgba(197, 160, 89, 0.12);
+ color: var(--gold-primary);
+ padding: 16px 20px;
+ font-family: var(--font-heading);
+ font-size: 1rem;
+ border-bottom: 2px solid rgba(197, 160, 89, 0.3);
+ }
 
-        .pricing-table td {
-            padding: 16px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            font-size: 0.95rem;
-        }
+ .pricing-table td {
+ padding: 16px 20px;
+ border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+ font-size: 0.95rem;
+ }
 
-        .pricing-table tr:hover td {
-            background: rgba(255, 255, 255, 0.02);
-        }
-    </style>
+ .pricing-table tr:hover td {
+ background: rgba(255, 255, 255, 0.02);
+ }
+ </style>
 <!-- Critical Zero-Latency Navbar & Dropdown Safeguard -->
 <style>
-        .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
-        .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
-        .nav-dropdown:hover > .nav-dropdown-menu,
-        .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
-        @media (max-width: 1180px) {
-            .nav-dropdown-menu { position: static !important; transform: none !important; }
-            .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
-        }
-    </style>
+ .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
+ .nav-dropdown-menu { display: none !important; position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(8px); z-index: 1050; }
+ .nav-dropdown:hover > .nav-dropdown-menu,
+ .nav-dropdown:focus-within > .nav-dropdown-menu { display: flex !important; transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+ @media (max-width: 1180px) {
+ .nav-dropdown-menu { position: static !important; transform: none !important; }
+ .nav-dropdown.open > .nav-dropdown-menu { display: flex !important; }
+ }
+ </style>
 </head>
 <body>
 <!-- Skip to Content -->
@@ -459,10 +459,10 @@
 <!-- Everlyn Hero -->
 <section class="hero-everlyn">
 <div class="container" style="text-align: center;">
-<img alt="Sector Everlyn Residences Official Brand Insignia Krisala Hiranandani Township Hinjewadi" height="403" loading="eager" src="/public/imported/Everlyn.webp" style="height: 58px; width: auto; margin-bottom: 18px; filter: drop-shadow(0 4px 15px rgba(212,175,55,0.4));" width="900"/>
+<img alt="Sector Everlyn Residences Brand Insignia Krisala Hiranandani Township Hinjewadi" height="403" loading="eager" src="/public/imported/Everlyn.webp" style="height: 58px; width: auto; margin-bottom: 18px; filter: drop-shadow(0 4px 15px rgba(212,175,55,0.4));" width="900"/>
 <h1 class="scroll-reveal" style="font-size: 3.5rem; color: var(--gold-light); font-family: var(--font-heading); margin-bottom: 15px;">EVERLYN RESIDENCES</h1>
 <p class="scroll-reveal delay-1" style="font-size: 1.3rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); max-width: 800px; margin: 0 auto;">
-                Phase 3 Luxury Living in Sector Arcadia &amp; Sector Icon | North Hinjewadi</p>
+ Phase 3 Luxury Living in Sector Arcadia &amp; Sector Icon | North Hinjewadi</p>
 </div>
 </section>
 <!-- Everlyn Overview -->
@@ -503,7 +503,7 @@
 <div class="sector-card scroll-reveal">
 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
 <span class="sector-badge">Sector Arcadia • Premium Enclave</span>
-<img alt="Sector Arcadia Residences Official Brand Insignia Krisala Hiranandani Township" height="403" loading="lazy" src="/public/imported/codename-arcadia.webp" style="height: 42px; width: auto;" width="900"/>
+<img alt="Sector Arcadia Residences Brand Insignia Krisala Hiranandani Township" height="403" loading="lazy" src="/public/imported/codename-arcadia.webp" style="height: 42px; width: auto;" width="900"/>
 </div>
 <h3 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 15px; color: var(--gold-light);">Sector Arcadia</h3>
 <p style="color: var(--text-muted); margin-bottom: 20px;">Curated for young professionals, growing families, and tech leaders seeking smart spatial design, zero wastage layouts, and rapid connectivity to Hinjewadi IT Park.</p>
@@ -743,8 +743,8 @@
 <div class="footer-brand">
 <img alt="Krisala Hiranandani Township Hinjewadi Logo" class="footer-logo" height="38" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" style="height: 40px; width: auto; margin-bottom: 20px; display: block;" width="280"/>
 <p>
-                        A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
-                    </p>
+ A joint visionary township in Hinjewadi, combining Hiranandani's architectural legacy with Krisala's modern design precision. Featuring India's 1st private racecourse &amp; polo club.
+ </p>
 <div style="margin-top: 15px;">
 <span style="display: block; font-size: 0.8rem; color: var(--gold-primary); font-weight: 600;">MahaRERA Reg No: PR1260002502438</span>
 <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Authorised Channel Partner RERA: A52100024102</span>
@@ -752,7 +752,7 @@
 </div>
 <div class="footer-links">
 <h3>The Township</h3>
-<a href="/">Krisala Hiranandani Township (Official Home)</a>
+<a href="/">Krisala Hiranandani Township (Home)</a>
 <a href="/pune-real-estate" style="color: var(--gold-light); font-weight: 600;">Pune Real Estate 2026 Guide</a>
 <a href="/hinjewadi-real-estate" style="color: var(--gold-light); font-weight: 600;">Hinjewadi Real Estate Hub</a>
 <a href="/everlyn">Everlyn Residences</a>
