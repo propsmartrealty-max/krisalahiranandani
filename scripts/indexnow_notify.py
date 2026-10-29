@@ -102,6 +102,10 @@ URL_LIST = [
     f"https://{HOST}/explore/krisala-hiranandani-vs-lodha-sylvan-hinjewadi",
     f"https://{HOST}/explore/krisala-hiranandani-vs-kolte-patil-life-republic-hinjewadi",
     f"https://{HOST}/explore/krisala-hiranandani-vs-vtp-earth-one-mahalunge",
+    f"https://{HOST}/explore/della-township-bungalow-plots-hinjewadi",
+    f"https://{HOST}/explore/bungalow-plots-in-hinjewadi-pune",
+    f"https://{HOST}/explore/della-township-lots-hinjewadi",
+    f"https://{HOST}/explore/plots-in-hinjewadi-pune",
     # Google Web Stories Suite
     f"https://{HOST}/stories/the-colosseum-phase-4.html",
     f"https://{HOST}/stories/township-grand-living.html",
