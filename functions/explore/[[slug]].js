@@ -507,7 +507,6 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  const buildCleanTitle = (subject, priceTag = '₹79L*') => {
  let clean = subject
  .replace(/[®©]/g, '')
- .replace(/[^: ]*/g, '')
  .replace(/website/gi, '')
  .replace(/krisala\s+hiranandani\s+township\s+pune/gi, 'Krisala Hiranandani')
  .replace(/krisala\s+hiranandani\s+pune/gi, 'Hiranandani')
