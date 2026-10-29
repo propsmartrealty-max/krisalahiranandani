@@ -1515,9 +1515,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Close menu when a destination link is clicked
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
+        // Close menu when any destination link or button is clicked
+        navLinks.querySelectorAll('a, button').forEach(item => {
+            if (item.classList.contains('nav-dropdown-trigger')) return;
+            item.addEventListener('click', () => {
                 hamburgerBtn.classList.remove('active');
                 navLinks.classList.remove('active');
                 document.body.classList.remove('menu-open');
