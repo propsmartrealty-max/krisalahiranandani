@@ -469,8 +469,23 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
         .map(w => w.charAt(0).toUpperCase() + w.slice(1))
         .join(' ');
 
+    const formatShortPrice = (priceStr) => {
+        if (!priceStr) return '₹79L*';
+        if (priceStr.includes('Lakhs') || priceStr.includes('Lakh')) {
+            const num = priceStr.match(/₹[\d.]+/);
+            return num ? `${num[0]}L*` : '₹79L*';
+        }
+        if (priceStr.includes('Cr')) {
+            const num = priceStr.match(/₹[\d.]+/);
+            return num ? `${num[0]}Cr*` : '₹1.25Cr*';
+        }
+        return '₹79L*';
+    };
+
     const buildCleanTitle = (subject, priceTag = '₹79L*') => {
         let clean = subject
+            .replace(/[™®©]/g, '')
+            .replace(/【[^】]*】/g, '')
             .replace(/official/gi, '')
             .replace(/website/gi, '')
             .replace(/krisala\s+hiranandani\s+township\s+pune/gi, 'Krisala Hiranandani')
@@ -486,7 +501,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
     };
 
     let h1 = `Krisala Hiranandani ${unit.name} • ${work ? 'Near ' + work.landmark : transit ? 'Near ' + transit.landmark : 'North Hinjewadi & Mahalunge Pune'}`;
-    let metaTitle = buildCleanTitle(formattedSubject, unit ? unit.price.split(' ')[0] : '₹79L*');
+    let metaTitle = buildCleanTitle(formattedSubject, unit ? formatShortPrice(unit.price) : '₹79L*');
     let metaDescription = `Verified specifications, pricing (${unit.price}), carpet area (${unit.carpet}), floor plans, and commute analysis for ${formattedSubject} at Krisala Hiranandani Township Hinjewadi, Pune. MahaRERA PR1260002502438.`;
 
     if (comp) {
