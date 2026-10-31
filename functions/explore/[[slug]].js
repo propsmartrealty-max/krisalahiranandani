@@ -1349,6 +1349,14 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  ]
  };
 
+ // Enforce strict 50% CTR limits: title <= 55 chars, description <= 155 chars
+ if (metaTitle.length > 55) {
+   metaTitle = metaTitle.substring(0, 55).trim();
+ }
+ if (metaDescription.length > 155) {
+   metaDescription = metaDescription.substring(0, 155).trim();
+ }
+
  return {
  metaTitle,
  metaDescription,

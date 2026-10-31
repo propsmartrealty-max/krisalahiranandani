@@ -426,9 +426,29 @@ ADDITIONAL_PAGES = [
 
 ALL_PAGES.extend(ADDITIONAL_PAGES)
 
+try:
+    from scripts.harden_50_percent_ctr_universal import EXPLORE_METADATA
+    for p in ALL_PAGES:
+        slug = p.get("slug")
+        if slug in EXPLORE_METADATA:
+            p["title"] = EXPLORE_METADATA[slug]["title"]
+            p["description"] = EXPLORE_METADATA[slug]["description"]
+except Exception as e:
+    pass
+
 def render_page(config):
     canonical_url = f"https://krisalahiranandanitownships.com/explore/{config['slug']}"
     html = TEMPLATE_CONTENT
+
+    html = re.sub(r'<title id="seoTitle">.*?</title>', f'<title id="seoTitle">{config["title"]}</title>', html)
+    html = re.sub(r'<meta content=".*?" id="seoDesc" name="description"/>', f'<meta content="{config["description"]}" id="seoDesc" name="description"/>', html)
+    html = re.sub(r'<meta content=".*?" id="seoKeywords" name="keywords"/>', f'<meta content="{config["keywords"]}" id="seoKeywords" name="keywords"/>', html)
+    html = re.sub(r'<link href=".*?" id="seoCanonical" rel="canonical"/>', f'<link href="{canonical_url}" id="seoCanonical" rel="canonical"/>', html)
+    html = re.sub(r'<meta content=".*?" id="ogTitle" property="og:title"/>', f'<meta content="{config["title"]}" id="ogTitle" property="og:title"/>', html)
+    html = re.sub(r'<meta content=".*?" id="ogDesc" property="og:description"/>', f'<meta content="{config["description"]}" id="ogDesc" property="og:description"/>', html)
+    html = re.sub(r'<meta content=".*?" id="ogUrl" property="og:url"/>', f'<meta content="{canonical_url}" id="ogUrl" property="og:url"/>', html)
+    html = re.sub(r'<meta content=".*?" id="twTitle" name="twitter:title"/>', f'<meta content="{config["title"]}" id="twTitle" name="twitter:title"/>', html)
+    html = re.sub(r'<meta content=".*?" id="twDesc" name="twitter:description"/>', f'<meta content="{config["description"]}" id="twDesc" name="twitter:description"/>', html)
 
     html = html.replace("{{CANONICAL_URL}}", canonical_url)
     html = html.replace("{{PAGE_TITLE}}", config["title"])

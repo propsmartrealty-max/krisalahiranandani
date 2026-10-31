@@ -192,7 +192,7 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
 entry.target.classList.add('active');
-observer.unobserve(entry.target); }
+observer.unobserve(entry.target);  }
 });
 }, revealOptions);
 revealElements.forEach(el => revealObserver.observe(el));
@@ -244,7 +244,7 @@ sliderContainer.addEventListener('mousemove', (e) => {
 if (!isDown) return;
 e.preventDefault();
 const x = e.pageX - sliderContainer.offsetLeft;
-const walk = (x - startX) * 2; sliderContainer.scrollLeft = scrollLeft - walk;
+const walk = (x - startX) * 2;  sliderContainer.scrollLeft = scrollLeft - walk;
 });
 }
 const modalOverlay = document.getElementById('enquiryModal');
@@ -303,7 +303,7 @@ entries.forEach(entry => {
 if (entry.isIntersecting) {
 const bar = entry.target;
 const targetHeight = bar.style.height;
-bar.style.height = '0'; setTimeout(() => {
+bar.style.height = '0';  setTimeout(() => {
 bar.style.height = targetHeight;
 }, 100);
 chartObserver.unobserve(bar);
@@ -1037,7 +1037,7 @@ headers: {
 });
 if (response.ok) {
 submitBtn.textContent = "Sent to " + phone;
-submitBtn.style.background = "#25D366"; submitBtn.style.color = "white";
+submitBtn.style.background = "#25D366";  submitBtn.style.color = "white";
 window.dataLayer.push({
 event: 'generate_lead',
 form_id: 'exit_intent_form',
@@ -1189,7 +1189,7 @@ let idleTimeout;
 function resetIdleTimer() {
 isIdle = false;
 clearTimeout(idleTimeout);
-idleTimeout = setTimeout(() => { isIdle = true; }, 30000); }
+idleTimeout = setTimeout(() => { isIdle = true; }, 30000);  }
 ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
 document.addEventListener(evt, resetIdleTimer, { passive: true });
 });
