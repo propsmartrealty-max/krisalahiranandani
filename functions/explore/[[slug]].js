@@ -318,7 +318,6 @@ export async function onRequest(context) {
  'krisala-hiranandani-township',
  'krisala-hiranandani',
  'krisala-hiranandani-pune',
- 'hiranandani-township-pune'
  ]);
 
  if (PURE_TOWNSHIP_SLUGS.has(slug)) {
