@@ -396,8 +396,7 @@ export async function onRequest(context) {
  '/explore/krisala-hiranandani-township-hinjewadi',
  '/explore/krisala-hiranandani-township',
  '/explore/krisala-hiranandani',
- '/explore/krisala-hiranandani-pune',
- '/explore/hiranandani-township-pune'
+ '/explore/krisala-hiranandani-pune'
  ]);
  if (CANNIBALIZED_EXPLORE_PATHS.has(path.replace(/\/$/, ''))) {
  return Response.redirect('https://krisalahiranandanitownships.com/', 301);
