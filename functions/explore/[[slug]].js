@@ -505,19 +505,38 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  };
 
  const buildCleanTitle = (subject, priceTag = '₹79L*') => {
- let clean = subject
- .replace(/[®©]/g, '')
- .replace(/website/gi, '')
- .replace(/krisala\s+hiranandani\s+township\s+pune/gi, 'Krisala Hiranandani')
- .replace(/krisala\s+hiranandani\s+pune/gi, 'Hiranandani')
- .replace(/krisala\s+hiranandani/gi, 'Hiranandani')
- .replace(/\s+/g, ' ')
- .trim();
- if (clean.length > 38) {
- clean = clean.substring(0, 38).trim().replace(/\s+\S*$/, '');
- }
- const full = `${clean} | ${priceTag}`;
- return full.length <= 55 ? full : clean.substring(0, 52);
+   let clean = subject
+     .replace(/[®©™]/g, '')
+     .replace(/website/gi, '')
+     .replace(/\s+/g, ' ')
+     .trim();
+
+   const hasBrand = /hiranandani|krisala/i.test(clean);
+
+   if (hasBrand) {
+     clean = clean
+       .replace(/krisala\s+hiranandani\s+township\s+pune/gi, 'Krisala Hiranandani')
+       .replace(/krisala\s+hiranandani\s+pune/gi, 'Krisala Hiranandani')
+       .trim();
+     if (priceTag && (clean + ' | ' + priceTag).length <= 55) {
+       return `${clean} | ${priceTag}`;
+     }
+     return clean.length <= 55 ? clean : clean.substring(0, 52).trim();
+   } else {
+     if (clean.length > 32) {
+       clean = clean.substring(0, 32).trim().replace(/\s+\S*$/, '');
+     }
+     const withBrandAndPrice = `${clean} | Krisala Hiranandani ${priceTag}`.replace(/\s+/g, ' ').trim();
+     if (withBrandAndPrice.length <= 55) {
+       return withBrandAndPrice;
+     }
+     const withBrand = `${clean} | Krisala Hiranandani`;
+     if (withBrand.length <= 55) {
+       return withBrand;
+     }
+     const withShort = `${clean} | Hiranandani`;
+     return withShort.length <= 55 ? withShort : withShort.substring(0, 55).trim();
+   }
  };
 
  let h1 = `Krisala Hiranandani ${unit.name} • ${work ? 'Near ' + work.landmark : transit ? 'Near ' + transit.landmark : 'North Hinjewadi & Mahalunge Pune'}`;

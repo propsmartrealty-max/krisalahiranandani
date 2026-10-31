@@ -26,9 +26,12 @@ import os
 import glob
 import re
 import json
+import sys
 from bs4 import BeautifulSoup
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
 BASE_URL = "https://krisalahiranandanitownships.com"
 
 # Master High-CTR Metadata Dictionary for Core & Silo Pages
@@ -496,6 +499,18 @@ EXPLORE_METADATA = {
 
 for slug, meta in EXPLORE_METADATA.items():
     CORE_METADATA[f"explore/{slug}.html"] = meta
+
+try:
+    from scripts.harden_google_serp_titles import GOOGLE_SERP_TITLES
+    for p_path, serp_title in GOOGLE_SERP_TITLES.items():
+        if p_path in CORE_METADATA:
+            CORE_METADATA[p_path]["title"] = serp_title
+        if p_path.startswith("explore/") and p_path.endswith(".html"):
+            s_slug = p_path.replace("explore/", "").replace(".html", "")
+            if s_slug in EXPLORE_METADATA:
+                EXPLORE_METADATA[s_slug]["title"] = serp_title
+except Exception:
+    pass
 
 def apply_metadata_to_file(file_path, meta):
     with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
