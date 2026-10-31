@@ -325,7 +325,20 @@ export async function onRequest(context) {
  return Response.redirect('https://krisalahiranandanitownships.com/', 301);
  }
 
- // Generate dynamic page attributes based on slug intelligence and edge geo context
+ // 1. Check if pre-rendered static HTML file exists in explore/
+ try {
+ const staticPageResponse = await env.ASSETS.fetch(new URL(`/explore/${slug}.html`, request.url));
+ if (staticPageResponse.ok) {
+ const response = new Response(staticPageResponse.body, staticPageResponse);
+ response.headers.set('Cache-Control', 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400');
+ response.headers.set('X-Edge-Source', 'kxh-prerendered-static');
+ return response;
+ }
+ } catch (e) {
+ // Proceed to dynamic edge generator
+ }
+
+ // 2. Generate dynamic page attributes based on slug intelligence and edge geo context
  const pageData = buildPageIntelligence(slug, url.href, cf);
 
  // Fetch base programmatic HTML template from Cloudflare Pages static asset storage

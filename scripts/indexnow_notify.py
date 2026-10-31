@@ -134,18 +134,33 @@ URL_LIST = [
 ]
 
 def main():
+    # Dynamically read all URLs from sitemap-explore.xml and sitemap.xml
+    import xml.etree.ElementTree as ET
+    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    explore_sitemap_path = os.path.join(root_dir, "sitemap-explore.xml")
+
+    all_urls = list(URL_LIST)
+    if os.path.exists(explore_sitemap_path):
+        try:
+            tree = ET.parse(explore_sitemap_path)
+            for loc in tree.getroot().findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc"):
+                if loc.text and loc.text not in all_urls:
+                    all_urls.append(loc.text)
+        except Exception as e:
+            print(f"[WARN] Error reading sitemap-explore.xml: {e}")
+
     payload = {
         "host": HOST,
         "key": KEY,
         "keyLocation": KEY_LOCATION,
-        "urlList": URL_LIST
+        "urlList": all_urls
     }
     
     headers = {
         "Content-Type": "application/json; charset=utf-8"
     }
     
-    print(f"Submitting {len(URL_LIST)} URLs to IndexNow API ({ENDPOINT})...")
+    print(f"Submitting {len(all_urls)} URLs to IndexNow API ({ENDPOINT})...")
     resp = requests.post(ENDPOINT, headers=headers, json=payload)
     print(f"Status Code: {resp.status_code}")
     print(f"Response: {resp.text or 'SUCCESS (HTTP 200/202 Accepted)'}")
