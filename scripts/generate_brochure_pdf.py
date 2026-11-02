@@ -107,7 +107,7 @@ def build_official_brochure():
     p1.insert_text((65, 715), "OFFICIAL MAHARERA REGISTRATIONS:", fontsize=9, color=GOLD, fontname="helv")
     p1.insert_text((65, 735), "• Phase 3 (Sector Arcadia): MahaRERA PR1260002502438", fontsize=9, color=TEXT_LIGHT, fontname="helv")
     p1.insert_text((65, 752), "• Sector Icon (Sky Villas): MahaRERA PR1260002600818", fontsize=9, color=TEXT_LIGHT, fontname="helv")
-    p1.insert_text((65, 770), "• Authorized Channel Partner: Propsmart Realty (MahaRERA: A52100024102)", fontsize=9, color=TEXT_MUTED, fontname="helv")
+    p1.insert_text((65, 770), "• Authorized Channel Partner: Propsmart Realty (MahaRERA: A031262401295)", fontsize=9, color=TEXT_MUTED, fontname="helv")
 
     # ==========================================
     # PAGE 2: VISION & 105-ACRE MASTERPLAN
@@ -394,7 +394,7 @@ def build_official_brochure():
     # Concierge Contact Card
     p7.draw_rect(fitz.Rect(36, 560, 559, 760), color=BORDER_GOLD, fill=CARD_BG, width=1.0)
     p7.insert_text((50, 590), "AUTHORIZED SALES & PRIORITY BOOKING DESK", fontsize=13, color=GOLD, fontname="helv")
-    p7.insert_text((50, 615), "Propsmart Realty • Official Channel Partner (MahaRERA: A52100024102)", fontsize=9.5, color=TEXT_LIGHT, fontname="helv")
+    p7.insert_text((50, 615), "Propsmart Realty • Official Channel Partner (MahaRERA: A031262401295)", fontsize=9.5, color=TEXT_LIGHT, fontname="helv")
     
     p7.insert_text((50, 645), "Direct Sales Concierge Hotline:", fontsize=10, color=GOLD_LIGHT, fontname="helv")
     p7.insert_text((50, 670), "+91 7744009295", fontsize=16, color=GOLD, fontname="helv")

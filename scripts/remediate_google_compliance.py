@@ -42,7 +42,7 @@ By submitting this form, you authorise Krisala Hiranandani partner to contact yo
 
 LEGAL_FOOTER_SNIPPET = """<div class="footer-legal-bar" style="border-top: 1px solid rgba(197, 160, 89, 0.25); margin-top: 30px; padding-top: 20px; font-size: 0.78rem; color: #a8a8ba; text-align: center; line-height: 1.6;">
   <p style="margin-bottom: 8px;">
-    <strong>Authorised Real Estate Channel Partner:</strong> Propsmart Realty | MahaRERA Agent Reg No: <strong>A52100024102</strong>
+    <strong>Authorised Real Estate Channel Partner:</strong> Propsmart Realty | MahaRERA Agent Reg No: <strong>A031262401295</strong>
   </p>
   <p style="margin-bottom: 8px;">
     <strong>MahaRERA Project Registration Numbers:</strong> Sector Arcadia: <strong>PR1260002500600</strong> | The Colosseum: <strong>PR1260002600818</strong> | The Della Collection: <strong>PR1260002502438</strong>
@@ -87,7 +87,7 @@ def create_terms_page():
 
 <div class="policy-section">
 <h2>2. Authorized Real Estate Channel Partner Disclosure</h2>
-<p>This Website is managed and operated by <strong>Propsmart Realty</strong>, an authorized Real Estate Channel Partner (MahaRERA Agent Registration No: <strong>A52100024102</strong>), promoting residences and villa estates at <strong>Krisala × Hiranandani Township</strong>, North Hinjewadi, Pune. Propsmart Realty acts purely as an authorized marketing and facilitation partner for Krisala Developers and Hiranandani Communities.</p>
+<p>This Website is managed and operated by <strong>Propsmart Realty</strong>, an authorized Real Estate Channel Partner (MahaRERA Agent Registration No: <strong>A031262401295</strong>), promoting residences and villa estates at <strong>Krisala × Hiranandani Township</strong>, North Hinjewadi, Pune. Propsmart Realty acts purely as an authorized marketing and facilitation partner for Krisala Developers and Hiranandani Communities.</p>
 </div>
 
 <div class="policy-section">
@@ -97,7 +97,7 @@ def create_terms_page():
   <li><strong>Sector Arcadia:</strong> MahaRERA Reg No: <strong>PR1260002500600</strong></li>
   <li><strong>The Colosseum (Phase 4):</strong> MahaRERA Reg No: <strong>PR1260002600818</strong></li>
   <li><strong>The Della Collection:</strong> MahaRERA Reg No: <strong>PR1260002502438</strong></li>
-  <li><strong>Authorized Channel Partner:</strong> Propsmart Realty (MahaRERA Reg No: <strong>A52100024102</strong>)</li>
+  <li><strong>Authorized Channel Partner:</strong> Propsmart Realty (MahaRERA Reg No: <strong>A031262401295</strong>)</li>
 </ul>
 <p>Official project details, approved layout plans, and stage-wise progress certificates can be verified at <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener noreferrer">https://maharera.maharashtra.gov.in</a>.</p>
 </div>
@@ -132,7 +132,7 @@ def create_terms_page():
 <h2>9. Contact &amp; Grievance Redressal</h2>
 <p>For any inquiries or grievances regarding these terms, contact our compliance desk:</p>
 <p><strong>Propsmart Realty</strong><br/>
-MahaRERA Reg No: A52100024102<br/>
+MahaRERA Reg No: A031262401295<br/>
 Sales Desk Phone: <a href="tel:+917744009295">+91 7744009295</a><br/>
 Email: <a href="mailto:propsmartrealty@gmail.com">propsmartrealty@gmail.com</a><br/>
 Site Location: Krisala Hiranandani Boulevard, North Hinjewadi, Pune 410506</p>
@@ -178,7 +178,7 @@ def create_disclaimer_page():
 
 <div class="policy-section">
 <h2>2. Real Estate Channel Partner Disclosure</h2>
-<p>This website (<strong>krisalahiranandanitownships.com</strong>) is an authorized digital information and marketing portal operated by <strong>Propsmart Realty</strong> (MahaRERA Real Estate Agent Registration No: <strong>A52100024102</strong>). Propsmart Realty is an authorized Channel Partner engaged in facilitating property inquiries, sales coordination, and site visits for Krisala Developers and Hiranandani Communities.</p>
+<p>This website (<strong>krisalahiranandanitownships.com</strong>) is an authorized digital information and marketing portal operated by <strong>Propsmart Realty</strong> (MahaRERA Real Estate Agent Registration No: <strong>A031262401295</strong>). Propsmart Realty is an authorized Channel Partner engaged in facilitating property inquiries, sales coordination, and site visits for Krisala Developers and Hiranandani Communities.</p>
 <p>Propsmart Realty does not represent itself as the promoter or direct builder of the project.</p>
 </div>
 
@@ -200,7 +200,7 @@ def create_disclaimer_page():
 <div class="policy-section">
 <h2>6. Contact Authority</h2>
 <p>For official inquiries, verifications, or documentation requests:<br/>
-<strong>Propsmart Realty (MahaRERA: A52100024102)</strong><br/>
+<strong>Propsmart Realty (MahaRERA: A031262401295)</strong><br/>
 Sales Coordination Desk: <a href="tel:+917744009295">+91 7744009295</a><br/>
 Official Communications Email: <a href="mailto:propsmartrealty@gmail.com">propsmartrealty@gmail.com</a></p>
 </div>
@@ -237,7 +237,7 @@ def create_refund_policy_page():
 
 <div class="policy-section">
 <h2>2. Direct Developer Escrow Accounts</h2>
-<p>Propsmart Realty (Authorized Channel Partner No: A52100024102) does not collect, hold, or accept booking amounts, cheques, or online payments in its own name. All booking tokens, expression of interest deposits, and installment payments are paid directly to the <strong>Promoter's MahaRERA-Designated Master Escrow Bank Account</strong> opened in compliance with Section 4(2)(l)(D) of the Real Estate (Regulation and Development) Act, 2016.</p>
+<p>Propsmart Realty (Authorized Channel Partner No: A031262401295) does not collect, hold, or accept booking amounts, cheques, or online payments in its own name. All booking tokens, expression of interest deposits, and installment payments are paid directly to the <strong>Promoter's MahaRERA-Designated Master Escrow Bank Account</strong> opened in compliance with Section 4(2)(l)(D) of the Real Estate (Regulation and Development) Act, 2016.</p>
 </div>
 
 <div class="policy-section">
