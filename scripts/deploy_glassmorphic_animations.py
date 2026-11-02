@@ -315,8 +315,16 @@ def main():
 
     synced_count = 0
     for f in html_files:
+        # AMP stories strictly prohibit external stylesheets
+        if "stories" in f or "/stories/" in f:
+            continue
+
         with open(f, "r", encoding="utf-8", errors="ignore") as fp:
             c = fp.read()
+
+        # Extra safety: skip any AMP document
+        if "amp" in c[:500].lower() or "⚡" in c[:500]:
+            continue
 
         changed = False
         # If style.min.css is not linked, link it right before </head>
