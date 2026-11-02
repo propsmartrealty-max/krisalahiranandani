@@ -32,7 +32,7 @@ TARGET_FILES = [
     "sector-icon.html",
     "della.html",
     "reviews.html",
-    "contact.html",
+    "site-address.html",
     "floor-plans.html",
     "construction-status.html",
     "north-hinjewadi.html",
