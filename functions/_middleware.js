@@ -390,7 +390,7 @@ export async function onRequest(context) {
 
  // 4b. Pure Township Entity Canonical Consolidation (Resolve Keyword Cannibalization for Position #1)
  const CANNIBALIZED_EXPLORE_PATHS = new Set([
- '/explore/krisala-hiranandani-pune-official-website-hinjewadi-phase-2',
+ '/explore/krisala-hiranandani-pune--website-hinjewadi-phase-2',
  '/explore/krisala-hiranandani-pune-hinjewadi-phase-2',
  '/explore/hiranandani-township-hinjewadi',
  '/explore/krisala-hiranandani-township-hinjewadi',
