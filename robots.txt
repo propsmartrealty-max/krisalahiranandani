@@ -10,6 +10,7 @@
 User-agent: *
 Allow: /
 Allow: /public/
+Allow: /public/pr/
 Allow: /style.css
 Allow: /style.min.css
 Allow: /app.js
@@ -49,6 +50,7 @@ Allow: /
 
 User-agent: Googlebot-Image
 Allow: /public/
+Allow: /public/pr/
 Allow: /*.webp$
 Allow: /*.png$
 Allow: /*.jpg$
@@ -58,6 +60,7 @@ Allow: /
 
 User-agent: Googlebot-Video
 Allow: /public/
+Allow: /public/pr/
 Allow: /*.mp4$
 Allow: /*.webm$
 Allow: /video-sitemap.xml
