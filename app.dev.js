@@ -1011,19 +1011,8 @@ document.addEventListener('DOMContentLoaded', () => {
  }
  });
 
- // Mobile back-button & scroll-intent detection
- if (window.matchMedia('(max-width: 768px)').matches) {
- // Push history state so back button can be intercepted once
- try {
- history.pushState({ page: 'kxh_landing' }, '', window.location.href);
- window.addEventListener('popstate', (e) => {
- if (!exitShown) {
- triggerExitIntent();
- }
- });
- } catch (err) {}
-
  // Mobile dwell + scroll trigger: If user scrolls >1200px and stays idle for 28s (Zero Reflow)
+ if (window.matchMedia('(max-width: 768px)').matches) {
  let scrollTriggered = false;
  window.addEventListener('scroll', () => {
  if (!scrollTriggered && !exitShown && window.scrollY > 1200) {

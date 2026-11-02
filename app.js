@@ -868,14 +868,6 @@ triggerExitIntent();
 }
 });
 if (window.matchMedia('(max-width: 768px)').matches) {
-try {
-history.pushState({ page: 'kxh_landing' }, '', window.location.href);
-window.addEventListener('popstate', (e) => {
-if (!exitShown) {
-triggerExitIntent();
-}
-});
-} catch (err) {}
 let scrollTriggered = false;
 window.addEventListener('scroll', () => {
 if (!scrollTriggered && !exitShown && window.scrollY > 1200) {
