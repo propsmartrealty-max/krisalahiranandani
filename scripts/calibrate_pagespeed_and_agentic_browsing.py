@@ -77,7 +77,7 @@ def process_html_files():
     modified_count = 0
     
     for fpath in all_html:
-        if "node_modules" in fpath or ".git" in fpath:
+        if "node_modules" in fpath or ".git" in fpath or "stories" in fpath:
             continue
         rel = os.path.relpath(fpath, ROOT_DIR)
         with open(fpath, "r", encoding="utf-8") as f:
