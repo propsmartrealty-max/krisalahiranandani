@@ -42,6 +42,14 @@ Krisala Hiranandani Township is Pune's flagship 105-acre master-planned neoclass
   - [Hinjewadi Phase 4 Integrated Township Boom](https://krisalahiranandanitownships.com/blog/hinjewadi-phase-4-integrated-township-boom): Analysis of buyer shift toward 100+ acre neoclassical integrated townships over standalone buildings.
 - [Programmatic Explore & Typology Hubs](https://krisalahiranandanitownships.com/sitemap-explore.xml): 15 canonical deep-dive pages covering 2 BHK (Arcadia), 3 BHK (Colosseum), 4 BHK Duplex (Icon), Della Villa Plots, Tech Corridors (Infosys, Wipro, TCS), Darumbre Master Plan, Equestrian Turf Racecourse, NRI Investment Guide, and Competitor Benchmarks (Godrej, Lodha, Life Republic, VTP).
 
+
+## Legal, Statutory Compliance & Contact Desks
+
+- [Terms & Conditions of Use](https://krisalahiranandanitownships.com/terms-and-conditions): Governing law (Maharashtra), user obligations, and channel partner facilitation terms.
+- [MahaRERA Statutory Disclaimer](https://krisalahiranandanitownships.com/disclaimer): Official project registration numbers (PR1260002500600, PR1260002600818, PR1260002502438), authorized agent disclosure (Propsmart Realty: A031262401295), and artistic impression disclaimers.
+- [Cancellation & Refund Policy](https://krisalahiranandanitownships.com/refund-cancellation-policy): 100% refundable pre-launch EOI tokens, promoter escrow account terms, and RERA refund protocols.
+- [Sales Experience Center & Contact Us](https://krisalahiranandanitownships.com/contact): Physical site office coordinates, GPS location (18.5913° N, 73.7389° E), direct phone (+91 7744009295), and WhatsApp concierge.
+
 ## Optional
 
 - [Full Comprehensive Knowledge Base (llms-full.txt)](https://krisalahiranandanitownships.com/llms-full.txt): Complete uncompressed textual knowledge graph containing all project schemas, RERA filings, specifications, and FAQs for deep LLM retrieval.
