@@ -543,7 +543,7 @@
  }
  ]
 }
-</script><meta content="Krisala Hiranandani Township Pune | from ₹79L*" name="twitter:title"/><!-- Google Consent Mode v2 (Google Ads & GA4 Compliance) -->
+</script><meta content="Krisala Hiranandani Township Pune | from ₹79L*" name="twitter:title"/><!-- Google Consent Mode v2 & Universal Google Tag Engine -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -553,6 +553,28 @@
     'ad_personalization': 'granted',
     'analytics_storage': 'granted'
   });
+  (function() {
+    var gtmId = window.GTM_ID || localStorage.getItem('GTM_ID');
+    var gaId = window.GA4_ID || localStorage.getItem('GA4_ID');
+    var gadsId = window.GADS_ID || localStorage.getItem('GADS_ID');
+    if (gtmId) {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer',gtmId);
+    }
+    if (gaId || gadsId) {
+      var targetId = gaId || gadsId;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + targetId;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      if (gaId) gtag('config', gaId, { 'send_page_view': true });
+      if (gadsId) gtag('config', gadsId);
+    }
+  })();
 </script>
 
 </head>

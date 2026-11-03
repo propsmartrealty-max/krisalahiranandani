@@ -3,7 +3,7 @@
 PROJECT SPECIFICATIONS:
 - Project ID:                 vivid-reality-419916
 - Project Number:             453706094438
-- Primary Service Account:    krisalahiranandani@vivid-reality-419916.iam.gserviceaccount.com
+- Primary Service Account:    hiranandani@vivid-reality-419916.iam.gserviceaccount.com
 - Target Domain:              https://krisalahiranandanitownships.com/
 - Target Search Console Prop: sc-domain:krisalahiranandanitownships.com
 

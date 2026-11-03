@@ -35,6 +35,62 @@ setTimeout(initSpeculationRules, 3000);
 }
 }
 window.dataLayer = window.dataLayer || [];
+async function sha256Hex(str) {
+if (!str) return '';
+try {
+const clean = str.trim().toLowerCase();
+const msgBuffer = new TextEncoder().encode(clean);
+const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+const hashArray = Array.from(new Uint8Array(hashBuffer));
+return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+} catch (e) {
+return '';
+}
+}
+function normalizePhoneE164(phone) {
+if (!phone) return '';
+let digits = phone.replace(/\D/g, '');
+if (digits.length === 10) return '+91' + digits;
+if (digits.length === 12 && digits.startsWith('91')) return '+' + digits;
+return '+' + digits;
+}
+async function pushEnhancedLeadConversion(formId, phone, email) {
+const e164 = normalizePhoneE164(phone);
+let hashedPhone = '';
+let hashedEmail = '';
+if (window.crypto && crypto.subtle) {
+try {
+[hashedPhone, hashedEmail] = await Promise.all([
+sha256Hex(e164),
+sha256Hex(email)
+]);
+} catch (err) {}
+}
+const payload = {
+event: 'generate_lead',
+form_id: formId,
+value: 8500000,
+currency: 'INR',
+page_location: window.location.pathname,
+enhanced_conversion_data: {
+phone_number: hashedPhone,
+email: hashedEmail
+},
+event_time: new Date().toISOString()
+};
+if (window.dataLayer) {
+window.dataLayer.push(payload);
+}
+if (typeof window.gtag === 'function') {
+window.gtag('event', 'generate_lead', {
+value: 8500000,
+currency: 'INR',
+form_id: formId,
+page_location: window.location.pathname
+});
+}
+}
+window.pushEnhancedLeadConversion = pushEnhancedLeadConversion;
 document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
 link.addEventListener('click', () => {
 window.dataLayer.push({
@@ -192,7 +248,7 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
 entry.target.classList.add('active');
-observer.unobserve(entry.target); }
+observer.unobserve(entry.target);  }
 });
 }, revealOptions);
 revealElements.forEach(el => revealObserver.observe(el));
@@ -244,7 +300,7 @@ sliderContainer.addEventListener('mousemove', (e) => {
 if (!isDown) return;
 e.preventDefault();
 const x = e.pageX - sliderContainer.offsetLeft;
-const walk = (x - startX) * 2; sliderContainer.scrollLeft = scrollLeft - walk;
+const walk = (x - startX) * 2;  sliderContainer.scrollLeft = scrollLeft - walk;
 });
 }
 const modalOverlay = document.getElementById('enquiryModal');
@@ -303,7 +359,7 @@ entries.forEach(entry => {
 if (entry.isIntersecting) {
 const bar = entry.target;
 const targetHeight = bar.style.height;
-bar.style.height = '0'; setTimeout(() => {
+bar.style.height = '0';  setTimeout(() => {
 bar.style.height = targetHeight;
 }, 100);
 chartObserver.unobserve(bar);
@@ -732,13 +788,9 @@ if (response.ok) {
 submitBtn.textContent = 'Enquiry Received!';
 submitBtn.style.background = '#28a745';
 submitBtn.style.color = 'white';
-window.dataLayer.push({
-event: 'generate_lead',
-form_id: 'enquiry_lead_form',
-value: 8500000,
-currency: 'INR',
-event_time: new Date().toISOString()
-});
+const _ph = (leadForm.querySelector('input[type="tel"]') || {}).value || '';
+const _em = (leadForm.querySelector('input[type="email"]') || {}).value || '';
+pushEnhancedLeadConversion('enquiry_lead_form', _ph, _em);
 setTimeout(() => {
 const enquiryModal = document.getElementById('enquiryModal');
 if (enquiryModal) enquiryModal.classList.remove('active');
@@ -1029,14 +1081,8 @@ headers: {
 });
 if (response.ok) {
 submitBtn.textContent = "Sent to " + phone;
-submitBtn.style.background = "#25D366"; submitBtn.style.color = "white";
-window.dataLayer.push({
-event: 'generate_lead',
-form_id: 'exit_intent_form',
-value: 8500000,
-currency: 'INR',
-event_time: new Date().toISOString()
-});
+submitBtn.style.background = "#25D366";  submitBtn.style.color = "white";
+pushEnhancedLeadConversion('exit_intent_form', phone, '');
 setTimeout(() => {
 if (exitOverlay) exitOverlay.classList.remove('active');
 exitForm.reset();
@@ -1181,7 +1227,7 @@ let idleTimeout;
 function resetIdleTimer() {
 isIdle = false;
 clearTimeout(idleTimeout);
-idleTimeout = setTimeout(() => { isIdle = true; }, 30000); }
+idleTimeout = setTimeout(() => { isIdle = true; }, 30000);  }
 ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
 document.addEventListener(evt, resetIdleTimer, { passive: true });
 });
@@ -1375,15 +1421,9 @@ if (btn) {
 btn.disabled = true;
 btn.innerHTML = '<i class="ph ph-spinner ph-spin"></i> Submitting...';
 }
-if (window.dataLayer) {
-window.dataLayer.push({
-event: 'generate_lead',
-form_id: form.id || 'lead_enquiry_form',
-page_location: window.location.pathname,
-value: 8500000,
-currency: 'INR'
-});
-}
+const _gph = (form.querySelector('input[type="tel"]') || form.querySelector('input[name*="phone"]') || form.querySelector('input[name*="mobile"]') || {}).value || '';
+const _gem = (form.querySelector('input[type="email"]') || form.querySelector('input[name*="email"]') || {}).value || '';
+pushEnhancedLeadConversion(form.id || 'lead_enquiry_form', _gph, _gem);
 try {
 const formData = new FormData(form);
 formData.append('_source', window.location.href);
