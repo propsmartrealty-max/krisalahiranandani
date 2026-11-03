@@ -1,11 +1,12 @@
 {
   "type": "FeatureCollection",
   "metadata": {
-    "title": "Krisala Hiranandani Township Hinjewadi GIS Master Dataset",
+    "title": "Krisala Hiranandani Township Pune GIS Master Dataset",
     "developer": "Krisala Developers & Hiranandani Communities",
     "updated": "2026-10-19T06:00:00Z",
     "canonicalUrl": "https://krisalahiranandanitownships.com/hiranandani-pune",
-    "authority": "MahaRERA: PR1260002500600, PR1260002600818, PR1260002502438"
+    "authority": "MahaRERA: PR1260002500600, PR1260002600818, PR1260002502438",
+    "project": "Krisala Hiranandani Township Pune"
   },
   "features": [
     {
@@ -20,7 +21,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [73.7389, 18.5913]
+        "coordinates": [
+          73.7389,
+          18.5913
+        ]
       }
     },
     {
@@ -33,7 +37,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [73.7402, 18.5925]
+        "coordinates": [
+          73.7402,
+          18.5925
+        ]
       }
     },
     {
@@ -46,7 +53,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [73.7415, 18.5938]
+        "coordinates": [
+          73.7415,
+          18.5938
+        ]
       }
     },
     {
@@ -59,7 +69,10 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [73.7381, 18.5908]
+        "coordinates": [
+          73.7381,
+          18.5908
+        ]
       }
     },
     {
@@ -74,12 +87,30 @@
         "type": "Polygon",
         "coordinates": [
           [
-            [73.7350, 18.5880],
-            [73.7440, 18.5895],
-            [73.7455, 18.5960],
-            [73.7370, 18.5975],
-            [73.7335, 18.5920],
-            [73.7350, 18.5880]
+            [
+              73.735,
+              18.588
+            ],
+            [
+              73.744,
+              18.5895
+            ],
+            [
+              73.7455,
+              18.596
+            ],
+            [
+              73.737,
+              18.5975
+            ],
+            [
+              73.7335,
+              18.592
+            ],
+            [
+              73.735,
+              18.588
+            ]
           ]
         ]
       }

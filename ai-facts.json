@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "project": "Krisala × Hiranandani Master Township Hinjewadi, Pune",
+  "project": "Krisala Hiranandani Township Pune",
   "last_updated": "2026-11-02T14:53:25.505609+00:00",
   "canonical_url": "https://krisalahiranandanitownships.com/",
   "township_authority_url": "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune",
@@ -130,5 +130,7 @@
     "sales_office_contact": "+91 7744009295",
     "official_site_address": "PMRDA 128m Ring Road, North Hinjawadi, Darumbre, Pune 410506",
     "distance_to_infosys_phase_1": "12 minutes driving time"
-  }
+  },
+  "primary_entity": "Krisala Hiranandani Township Pune",
+  "brand_name": "Krisala Hiranandani Township Pune"
 }

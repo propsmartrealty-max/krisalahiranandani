@@ -4,8 +4,9 @@
     {
       "@type": "RealEstateAgent",
       "@id": "https://krisalahiranandanitownships.com/#experience-center",
-      "name": "Krisala × Hiranandani Township Experience Center",
+      "name": "Krisala Hiranandani Township Pune Experience Center",
       "alternateName": [
+        "Krisala Hiranandani Township Pune",
         "Krisala Hiranandani Township Hinjewadi",
         "Hiranandani Pune",
         "Hiranandani Communities Hinjewadi",
@@ -87,12 +88,13 @@
           "name": "Krisala Developers",
           "url": "https://krisala.com/"
         }
-      ]
+      ],
+      "legalName": "Krisala Hiranandani Township Pune"
     },
     {
       "@type": "ApartmentComplex",
       "@id": "https://krisalahiranandanitownships.com/#township-complex",
-      "name": "Krisala Hiranandani Township Hinjewadi",
+      "name": "Krisala Hiranandani Township Pune",
       "alternateName": [
         "Hiranandani Pune Township",
         "The Colosseum at Krisala Hiranandani",
@@ -147,7 +149,8 @@
           "name": "Signal-Free 8-Minute Commute to Hinjewadi IT Park Phase 1",
           "value": true
         }
-      ]
+      ],
+      "legalName": "Krisala Hiranandani Township Pune"
     }
   ]
 }
