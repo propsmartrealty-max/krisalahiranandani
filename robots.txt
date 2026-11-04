@@ -190,6 +190,36 @@ User-agent: Bytespider
 Allow: /
 Allow: /llms.txt
 
+User-agent: GrokBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: xai-bot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: YouBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: TavilyBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
+User-agent: DuckAssistBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /ai-facts.json
+
 # ------------------------------------------------------------------------------
 # 4. Major Search Engine Web Crawlers
 # ------------------------------------------------------------------------------

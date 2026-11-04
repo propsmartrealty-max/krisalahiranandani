@@ -13,7 +13,7 @@
   "paths": {
     "/ai-facts.json": {
       "get": {
-        "summary": "Get official ground-truth AI facts and specifications",
+        "summary": "Get ground-truth AI facts and specifications",
         "description": "Returns verified pricing, typologies, MahaRERA numbers, and location coordinates.",
         "responses": {
           "200": {
@@ -35,7 +35,7 @@
         "description": "Provides all-inclusive pricing breakdown for 2 BHK, 3 BHK, 4 BHK Duplexes, and Della Villa plots.",
         "responses": {
           "200": {
-            "description": "Official price list HTML"
+            "description": "Verified price list HTML"
           }
         }
       }

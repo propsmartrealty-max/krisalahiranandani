@@ -18,6 +18,12 @@
       "image": "https://krisalahiranandanitownships.com/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
       "telephone": "+917744009295",
       "email": "propsmartrealty@gmail.com",
+      "identifier": "A031262401295",
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Propsmart Realty",
+        "identifier": "A031262401295"
+      },
       "priceRange": "₹79 Lakhs - ₹2.10 Cr+",
       "aggregateRating": {
         "@type": "AggregateRating",
