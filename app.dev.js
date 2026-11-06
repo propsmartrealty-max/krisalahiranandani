@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
  navObserver.observe(navSentinel);
  } else {
  let isScrolled = false;
- window.addEventListener('scroll', (, { passive: true }) => {
+ window.addEventListener('scroll', () => {
  const shouldBeScrolled = window.scrollY > 50;
  if (shouldBeScrolled !== isScrolled) {
  isScrolled = shouldBeScrolled;
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
  const heroImg = document.querySelector('.parallax-img');
  if (heroImg && window.matchMedia('(min-width: 993px)').matches && !('ontouchstart' in window)) {
  let pTicking = false;
- window.addEventListener('scroll', (, { passive: true }) => {
+ window.addEventListener('scroll', () => {
  if (!pTicking) {
  window.requestAnimationFrame(() => {
  const scrolled = window.scrollY;
@@ -1070,7 +1070,7 @@ document.addEventListener('DOMContentLoaded', () => {
  // Mobile dwell + scroll trigger: If user scrolls >1200px and stays idle for 28s (Zero Reflow)
  if (window.matchMedia('(max-width: 768px)').matches) {
  let scrollTriggered = false;
- window.addEventListener('scroll', (, { passive: true }) => {
+ window.addEventListener('scroll', () => {
  if (!scrollTriggered && !exitShown && window.scrollY > 1200) {
  scrollTriggered = true;
  setTimeout(() => {
@@ -1327,7 +1327,7 @@ document.addEventListener('DOMContentLoaded', () => {
  const scrollProgress = document.getElementById('scrollProgress');
  if (scrollProgress) {
  let progTicking = false;
- window.addEventListener('scroll', (, { passive: true }) => {
+ window.addEventListener('scroll', () => {
  if (!progTicking) {
  window.requestAnimationFrame(() => {
  const docH = cachedDocHeight || getDocHeight();
@@ -1415,7 +1415,7 @@ document.addEventListener('DOMContentLoaded', () => {
  if (!isBotOrLighthouse) {
  const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
  let depthTicking = false;
- window.addEventListener('scroll', (, { passive: true }) => {
+ window.addEventListener('scroll', () => {
  if (!depthTicking) {
  window.requestAnimationFrame(() => {
  const docH = cachedDocHeight || getDocHeight();
@@ -2377,7 +2377,7 @@ window.switchTownshipView = function(viewId, btn) {
  colosseum: { sector: 'The Colosseum Phase 4', typologies: '2, 3, 4 BHK & Duplex', carpet: '765 - 1600 sq.ft.', price: 'From ₹82.99L*', rera: 'PR1260002502438' },
  arcadia: { sector: 'Sector Arcadia', typologies: '2 & 3 BHK Neoclassical', carpet: '740 - 1180 sq.ft.', price: 'From ₹79L*', rera: 'PR1260002502438' },
  icon: { sector: 'Sector Icon', typologies: '3, 4 BHK & Sky Duplex', carpet: '1250 - 3400 sq.ft.', price: 'From ₹2.10Cr*', rera: 'PR1260002600818' },
- della: { sector: 'The Della Collection', typologies: 'Villa Plots & Equestrian', carpet: '2000 - 6000 sq.ft.', price: 'From ₹1.80Cr*', rera: 'PR1260002500600' },
+ della: { sector: 'The Della Collection', typologies: 'Villa Plots & Equestrian', carpet: '5000 sq.ft. Plots', price: 'From ₹3.75Cr*', rera: 'PR1260002500600' },
  everlyn: { sector: 'Sector Everlyn', typologies: '2 & 3 BHK Nature Enclave', carpet: '820 - 1120 sq.ft.', price: 'From ₹82L*', rera: 'PR1260002502438' }
  };
  const target = args?.sector ? (data[args.sector.toLowerCase()] || data) : data;

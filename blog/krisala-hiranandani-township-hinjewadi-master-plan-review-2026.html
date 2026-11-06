@@ -198,6 +198,39 @@
   }
  ]
 }</script>
+<!-- Universal Google Tag Engine & Consent Mode v2 -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'granted',
+    'ad_user_data': 'granted',
+    'ad_personalization': 'granted',
+    'analytics_storage': 'granted'
+  });
+  (function() {
+    var gtmId = window.GTM_ID || localStorage.getItem('GTM_ID');
+    var gaId = window.GA4_ID || localStorage.getItem('GA4_ID');
+    var gadsId = window.GADS_ID || localStorage.getItem('GADS_ID');
+    if (gtmId) {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer',gtmId);
+    }
+    if (gaId || gadsId) {
+      var targetId = gaId || gadsId;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + targetId;
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      if (gaId) gtag('config', gaId, { 'send_page_view': true });
+      if (gadsId) gtag('config', gadsId);
+    }
+  })();
+</script>
 </head>
 <body class="blog-post-page">
 <!-- Navigation -->
@@ -265,7 +298,7 @@
 <ul>
 <li><strong>105-Acre Megapolis:</strong> Krisala Hiranandani Township Hinjewadi represents the largest integrated neoclassical master development in West Pune's IT corridor.</li>
 <li><strong>Dual MahaRERA Approvals:</strong> Fully sanctioned under MahaRERA PR1260002500600 (Arcadia) &amp; PR1260002600818 (Icon) with 70% statutory escrow compliance.</li>
-<li><strong>Four Granular Sectors:</strong> Features Sector Arcadia (from ₹79L*), Sector Icon (from ₹1.85Cr*), Codename The Colosseum Phase 4 (from ₹82.99L*), and Della Equestrian Villa Plots (from ₹1.80Cr*).</li>
+<li><strong>Four Granular Sectors:</strong> Features Sector Arcadia (from ₹79L*), Sector Icon (from ₹1.85Cr*), Codename The Colosseum Phase 4 (from ₹82.99L*), and Della Equestrian Villa Plots (from ₹3.75Cr* (5,000 sq.ft. plot size)).</li>
 <li><strong>Transit Hub Integration:</strong> Positioned directly along the PMRDA 128m Ring Road interchange with feeder connectivity to Hinjewadi Metro Line 3 Megapolis terminal.</li>
 </ul>
 </div>
