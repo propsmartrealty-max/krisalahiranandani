@@ -670,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
  <button class="btn-primary" id="quizLockVipBtn">
  <i class="ph ph-ticket"></i>&nbsp; Lock Priority Allotment for This Unit
  </button>
- <a href="https://wa.me/917744009295" target="_blank" class="btn-secondary" id="quizWhatsAppBtn">
+ <a href="https://wa.me/917744009295?text=Hello%2C%20I%20completed%20the%20Homebuyer%20Quiz%20for%20Krisala%20Hiranandani%20Township%20Hinjewadi%2C%20Pune.%20Please%20share%20my%20personalized%20recommendation%2C%20cost%20sheet%20and%20floor%20plans." target="_blank" class="btn-secondary" id="quizWhatsAppBtn">
  <i class="ph ph-whatsapp-logo"></i>&nbsp; Instant WhatsApp Brochure &amp; Cost Sheet
  </a>
  <button class="btn-outline" id="restartQuiz">
@@ -849,7 +849,7 @@ document.addEventListener('DOMContentLoaded', () => {
  `• Price: ${price}\n` +
  `Please share the detailed floor plans, cost sheet, and schedule a priority VIP site visit.`
  );
- waBtn.href = `https://wa.me/917744009295?text=${waText}`;
+ waBtn.href = `https://wa.me/917744009295?text=Hello%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township%20Hinjewadi%2C%20Pune.%20Please%20share%20verified%20floor%20plans%2C%20pricing%20details%2C%20and%20cost%20sheet.`;
  }
 
  if (quizCta) {
@@ -1667,7 +1667,7 @@ document.addEventListener('DOMContentLoaded', () => {
  const encoded = encodeURIComponent(dynamicMsg);
 
  document.querySelectorAll('a[href*="wa.me"], a.float-whatsapp, a[data-whatsapp-smart]').forEach(waLink => {
- waLink.href = `https://wa.me/917744009295?text=${encoded}`;
+ waLink.href = `https://wa.me/917744009295?text=Hello%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township%20Hinjewadi%2C%20Pune.%20Please%20share%20verified%20floor%20plans%2C%20pricing%20details%2C%20and%20cost%20sheet.`;
  });
  })();
 
