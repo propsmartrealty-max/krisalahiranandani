@@ -94,4 +94,23 @@
     </video:video>
   </url>
 
+  <!-- 6. Della Racecourse 4K Aerial Flythrough & Villa Plots Reel -->
+  <url>
+    <loc>https://krisalahiranandanitownships.com/della-racecourse</loc>
+    <video:video>
+      <video:thumbnail_loc>https://krisalahiranandanitownships.com/public/della_racecourse/della_pune_racecourse_hero_banner.webp</video:thumbnail_loc>
+      <video:title>4K Master Drone Tour: Della Racecourse &amp; 5,000 sq.ft. Villa Plots Pune</video:title>
+      <video:description>Official 4K aerial drone film touring the 40-acre Della Racecourse precinct featuring 8-acre championship turf racecourse, 50 equine stables, international polo club, 5-star luxury resort, and bespoke 5,000 sq.ft. British Colonial villa plots starting from ₹3.75 Cr* in North Hinjewadi, Pune.</video:description>
+      <video:content_loc>https://krisalahiranandanitownships.com/public/imported/u8323264961_httpss.mj_.rundqik694D-FI_aerial_view_of_dense_gre_cdda2115-7b10-495a-84ac-39089bcdc5a2_2.mp4</video:content_loc>
+      <video:publication_date>2026-11-07T00:00:00+05:30</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>Della Racecourse Pune</video:tag>
+      <video:tag>Della Villa Plots</video:tag>
+      <video:tag>Krisala Hiranandani</video:tag>
+      <video:tag>Equestrian Township Pune</video:tag>
+      <video:tag>5000 sqft Villa Plots</video:tag>
+    </video:video>
+  </url>
 </urlset>

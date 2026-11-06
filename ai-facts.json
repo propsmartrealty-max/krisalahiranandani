@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "project": "Krisala Hiranandani Township Pune",
-  "last_updated": "2026-11-04T05:00:00Z",
+  "last_updated": "2026-11-06T21:27:51.099466+00:00",
   "canonical_url": "https://krisalahiranandanitownships.com/",
   "township_authority_url": "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune",
   "pune_authority_url": "https://krisalahiranandanitownships.com/krisala-hiranandani-pune",
@@ -17,11 +17,10 @@
     "sales_experience_center_phone": "+91 7744009295",
     "sales_experience_center_hours": "09:30 - 19:30 IST (Mon-Sun)",
     "amenities_highlights": [
-      "India's 1st 8-Acre Private Turf Racecourse & Polo Club",
-      "40-Acre Della Adventure & Luxury Resort Lifestyle Campus",
-      "Olympic-Sized Temperature Controlled Swimming Pool",
-      "40,000 Sq.Ft Neoclassical Roman Atrium Clubhouse",
-      "Precision Mivan Monolithic RCC Shear-Wall Engineering"
+      "8-Acre Private Turf Racecourse & Polo Club",
+      "40-Acre Della Adventure & Luxury Resort Lifestyle",
+      "Olympic-sized Swimming Pool & Roman Atrium Clubhouse",
+      "Neoclassical Roman Archways & Mivan Monolithic RCC Engineering"
     ]
   },
   "regulatory_compliance": {
