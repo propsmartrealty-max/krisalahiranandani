@@ -230,7 +230,7 @@ navbar.classList.toggle('scrolled', !entry.isIntersecting);
 navObserver.observe(navSentinel);
 } else {
 let isScrolled = false;
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', (, { passive: true }) => {
 const shouldBeScrolled = window.scrollY > 50;
 if (shouldBeScrolled !== isScrolled) {
 isScrolled = shouldBeScrolled;
@@ -255,7 +255,7 @@ revealElements.forEach(el => revealObserver.observe(el));
 const heroImg = document.querySelector('.parallax-img');
 if (heroImg && window.matchMedia('(min-width: 993px)').matches && !('ontouchstart' in window)) {
 let pTicking = false;
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', (, { passive: true }) => {
 if (!pTicking) {
 window.requestAnimationFrame(() => {
 const scrolled = window.scrollY;
@@ -756,7 +756,6 @@ leadForm.addEventListener('submit', async (e) => {
 e.preventDefault();
 const honeyInput = leadForm.querySelector('input[name="_honey"]');
 if (honeyInput && honeyInput.value) {
-console.warn('Bot submission blocked.');
 return;
 }
 const phoneInput = leadForm.querySelector('input[type="tel"]');
@@ -805,7 +804,6 @@ window.location.href = '/thank-you';
 throw new Error('Form submission failed');
 }
 } catch (error) {
-console.error(error);
 submitBtn.textContent = 'Error. Please try again.';
 submitBtn.style.background = '#dc3545';
 submitBtn.style.color = 'white';
@@ -921,7 +919,7 @@ triggerExitIntent();
 });
 if (window.matchMedia('(max-width: 768px)').matches) {
 let scrollTriggered = false;
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', (, { passive: true }) => {
 if (!scrollTriggered && !exitShown && window.scrollY > 1200) {
 scrollTriggered = true;
 setTimeout(() => {
@@ -1051,7 +1049,6 @@ exitForm.addEventListener('submit', async (e) => {
 e.preventDefault();
 const honeyInput = exitForm.querySelector('input[name="_honey"]');
 if (honeyInput && honeyInput.value) {
-console.warn('Bot submission blocked.');
 return;
 }
 const phoneInput = exitForm.querySelector('input[type="tel"]');
@@ -1095,7 +1092,6 @@ submitBtn.disabled = false;
 throw new Error('Exit form submission failed');
 }
 } catch (err) {
-console.error('Exit form error:', err);
 submitBtn.textContent = "Sent to " + phone;
 submitBtn.style.background = "#25D366";
 submitBtn.style.color = "white";
@@ -1131,7 +1127,7 @@ cachedDocHeight = 0;
 const scrollProgress = document.getElementById('scrollProgress');
 if (scrollProgress) {
 let progTicking = false;
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', (, { passive: true }) => {
 if (!progTicking) {
 window.requestAnimationFrame(() => {
 const docH = cachedDocHeight || getDocHeight();
@@ -1202,7 +1198,7 @@ kxhAnalytics.track('Navigation', 'click', link.textContent.trim());
 if (!isBotOrLighthouse) {
 const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
 let depthTicking = false;
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', (, { passive: true }) => {
 if (!depthTicking) {
 window.requestAnimationFrame(() => {
 const docH = cachedDocHeight || getDocHeight();

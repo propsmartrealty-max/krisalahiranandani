@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
  navObserver.observe(navSentinel);
  } else {
  let isScrolled = false;
- window.addEventListener('scroll', () => {
+ window.addEventListener('scroll', (, { passive: true }) => {
  const shouldBeScrolled = window.scrollY > 50;
  if (shouldBeScrolled !== isScrolled) {
  isScrolled = shouldBeScrolled;
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
  const heroImg = document.querySelector('.parallax-img');
  if (heroImg && window.matchMedia('(min-width: 993px)').matches && !('ontouchstart' in window)) {
  let pTicking = false;
- window.addEventListener('scroll', () => {
+ window.addEventListener('scroll', (, { passive: true }) => {
  if (!pTicking) {
  window.requestAnimationFrame(() => {
  const scrolled = window.scrollY;
@@ -873,7 +873,7 @@ document.addEventListener('DOMContentLoaded', () => {
  // Honeypot spam defense
  const honeyInput = leadForm.querySelector('input[name="_honey"]');
  if (honeyInput && honeyInput.value) {
- console.warn('Bot submission blocked.');
+ /* silent bot block */
  return;
  }
 
@@ -932,7 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
  throw new Error('Form submission failed');
  }
  } catch (error) {
- console.error(error);
+ /* handled error */
  submitBtn.textContent = 'Error. Please try again.';
  submitBtn.style.background = '#dc3545';
  submitBtn.style.color = 'white';
@@ -1070,7 +1070,7 @@ document.addEventListener('DOMContentLoaded', () => {
  // Mobile dwell + scroll trigger: If user scrolls >1200px and stays idle for 28s (Zero Reflow)
  if (window.matchMedia('(max-width: 768px)').matches) {
  let scrollTriggered = false;
- window.addEventListener('scroll', () => {
+ window.addEventListener('scroll', (, { passive: true }) => {
  if (!scrollTriggered && !exitShown && window.scrollY > 1200) {
  scrollTriggered = true;
  setTimeout(() => {
@@ -1230,7 +1230,7 @@ document.addEventListener('DOMContentLoaded', () => {
  // Honeypot spam defense
  const honeyInput = exitForm.querySelector('input[name="_honey"]');
  if (honeyInput && honeyInput.value) {
- console.warn('Bot submission blocked.');
+ /* silent bot block */
  return;
  }
 
@@ -1286,7 +1286,7 @@ document.addEventListener('DOMContentLoaded', () => {
  throw new Error('Exit form submission failed');
  }
  } catch (err) {
- console.error('Exit form error:', err);
+ /* handled exit form error */
  submitBtn.textContent = "Sent to " + phone;
  submitBtn.style.background = "#25D366";
  submitBtn.style.color = "white";
@@ -1327,7 +1327,7 @@ document.addEventListener('DOMContentLoaded', () => {
  const scrollProgress = document.getElementById('scrollProgress');
  if (scrollProgress) {
  let progTicking = false;
- window.addEventListener('scroll', () => {
+ window.addEventListener('scroll', (, { passive: true }) => {
  if (!progTicking) {
  window.requestAnimationFrame(() => {
  const docH = cachedDocHeight || getDocHeight();
@@ -1415,7 +1415,7 @@ document.addEventListener('DOMContentLoaded', () => {
  if (!isBotOrLighthouse) {
  const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
  let depthTicking = false;
- window.addEventListener('scroll', () => {
+ window.addEventListener('scroll', (, { passive: true }) => {
  if (!depthTicking) {
  window.requestAnimationFrame(() => {
  const docH = cachedDocHeight || getDocHeight();
