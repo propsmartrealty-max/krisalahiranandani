@@ -64,7 +64,7 @@ const ENTITY_DICTIONARY = {
  "della-plots": {
  name: "Della Township Bungalow Premium Plots & Lots",
  carpet: "2,000 – 5,000 sq.ft. Plot Area",
- price: "₹1.80 Cr – ₹3.50 Cr*",
+ price: "₹3.75 Cr* Onwards (5,000 sq.ft.)",
  sector: "The Della Precinct",
  floors: "G + 2 Independent Villa / Bungalow Construction Allowed",
  spec: "Private Polo Track Access, Della Concierge Club Membership, 100 Exclusive Lots",
@@ -118,7 +118,7 @@ const ENTITY_DICTIONARY = {
  "della-equestrian": {
  name: "The Della Resort & 8-Acre Private Racecourse",
  carpet: "2,000 – 5,000 sq.ft. Villa Plots",
- price: "₹1.80 Cr – ₹3.50 Cr*",
+ price: "₹3.75 Cr* Onwards (5,000 sq.ft.)",
  sector: "Della 40-Acre Hospitality Precinct",
  floors: "G + 2 Independent Villa Permissions",
  spec: "Pursuits of the Privileged, Professional Equestrian Derby Track, 5-Star Glamping & Concierge",
@@ -561,8 +561,8 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  metaDescription = `Comprehensive real estate comparison: ${formattedSubject} at Krisala Hiranandani vs ${comp.name}. Compare usable carpet area, 8-acre racecourse amenities, and 2026 ROI.`;
  } else if (isPlotsOrDellaIntent) {
  h1 = `${formattedSubject} • Della Township Bungalow Plots & Lots`;
- metaTitle = buildCleanTitle(formattedSubject, '₹1.80Cr*');
- metaDescription = `Bungalow premium plots and Della township lots at Hiranandani Township Hinjewadi, Pune. 2,000–5,000 sq.ft. plots with 8-acre racecourse & polo club from ₹1.80 Cr*.`;
+ metaTitle = buildCleanTitle(formattedSubject, '₹3.75Cr*');
+ metaDescription = `Bungalow premium plots and Della township lots at Hiranandani Township Hinjewadi, Pune. 5,000 sq.ft. plots with 8-acre racecourse & polo club from ₹3.75 Cr*.`;
  } else if (isPricingIntent && isHiranandaniBrandIntent) {
  h1 = `${formattedSubject} • Hiranandani Pune Price List 2026`;
  metaTitle = buildCleanTitle(`${formattedSubject} Price List`, 'from ₹79L*');
@@ -658,7 +658,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  "4-bhk": "₹2.10 Cr* (~$251,000 USD / AED 920,000)",
  "5-bhk": "₹3.20 Cr* (~$382,000 USD / AED 1,400,000)",
  "duplex": "₹2.65 Cr* (~$316,000 USD / AED 1,160,000)",
- "della-plots": "₹1.80 Cr – ₹3.50 Cr* (~$215,000 – $418,000 USD)"
+ "della-plots": "₹3.75 Cr* Onwards (~$425,000 USD, 5,000 sq.ft.)"
  };
  const effectivePrice = isNRI ? (nriPricing[unitKey] || unit.price) : unit.price;
 
@@ -717,7 +717,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Sanctioned FSI / Height</td><td style="padding: 10px 0;">G + 2 Storey Independent Luxury Villa / Bungalow Construction</td></tr>
  <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Title &amp; Approvals</td><td style="padding: 10px 0;">100% Freehold NA Sanctioned, Clear Marketable Title, MahaRERA Escrow</td></tr>
  <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Signature Amenities</td><td style="padding: 10px 0;">8-Acre Racecourse, Championship Polo Club, Air-Cooled Stables, Della Concierge</td></tr>
- <tr><td style="padding: 10px 0; font-weight: 600; color: #fff;">Pricing Guidance</td><td style="padding: 10px 0; color: #fff;"><strong style="color: var(--gold-light);">Starting ₹1.80 Cr* to ₹3.50 Cr* (All-Inclusive)</strong></td></tr>
+ <tr><td style="padding: 10px 0; font-weight: 600; color: #fff;">Pricing Guidance</td><td style="padding: 10px 0; color: #fff;"><strong style="color: var(--gold-light);">Starting ₹3.75 Cr* to ₹3.50 Cr* (All-Inclusive)</strong></td></tr>
  </table>
  </div>`;
  }
@@ -1050,7 +1050,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  },
  {
  q: `What is the price of flats for sale in Pune at Krisala Hiranandani Township?`,
- a: `Pre-launch pricing starts from ₹79 Lakhs* for 2 BHK luxury residences, ₹1.25 Cr* for 3 BHK royale apartments, ₹2.10 Cr* for 4 BHK palatial suites, and ₹1.80 Cr* for bespoke Della equestrian villa plots.`
+ a: `Pre-launch pricing starts from ₹79 Lakhs* for 2 BHK luxury residences, ₹1.25 Cr* for 3 BHK royale apartments, ₹2.10 Cr* for 4 BHK palatial suites, and ₹3.75 Cr* for bespoke Della equestrian villa plots.`
  },
  {
  q: `Why is Krisala Hiranandani rated as the #1 integrated township in Pune?`,

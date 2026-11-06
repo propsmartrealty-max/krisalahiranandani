@@ -537,19 +537,19 @@ export async function onRequest(context) {
  newHeaders.set('X-XSS-Protection', '1; mode=block');
  newHeaders.set('Referrer-Policy', 'strict-origin-when-cross-origin');
  newHeaders.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
- newHeaders.set('Cross-Origin-Opener-Policy', 'same-origin');
+ newHeaders.set('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
  newHeaders.set('X-Permitted-Cross-Domain-Policies', 'none');
- newHeaders.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=(), screen-wake-lock=(), accelerometer=(), gyroscope=()');
+ newHeaders.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), screen-wake-lock=(), accelerometer=(), gyroscope=(), magnetometer=()');
 
  // Strict Content Security Policy
  newHeaders.set('Content-Security-Policy', [
  "default-src 'self'",
- "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://cdn.ampproject.org",
+ "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://cdn.ampproject.org",
  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.ampproject.org",
  "font-src 'self' https://fonts.gstatic.com",
- "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://www.google-analytics.com https://*.google.com https://*.googleapis.com https://*.gstatic.com",
- "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://region1.google-analytics.com",
- "frame-src 'self' https://www.google.com https://maps.google.com",
+ "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://maharera.maharashtra.gov.in https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://*.googleapis.com https://*.gstatic.com",
+ "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://*.google-analytics.com https://region1.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in",
+ "frame-src 'self' https://www.google.com https://maps.google.com https://*.doubleclick.net https://td.doubleclick.net",
  "form-action 'self' https://formsubmit.co https://wa.me",
  "frame-ancestors 'none'",
  "base-uri 'self'",
