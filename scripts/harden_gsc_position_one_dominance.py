@@ -131,7 +131,7 @@ POSITION_ONE_FACTSHEET_HTML = """
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
                     <th scope="row" style="text-align: left; padding: 10px 14px; color: #e6d5b8; font-weight: 600;">Configurations &amp; Pricing</th>
-                    <td style="padding: 10px 14px;"><strong style="color: #dfc07b;">2 BHK:</strong> ₹79L* onwards | <strong style="color: #dfc07b;">3 BHK:</strong> ₹1.25 Cr* onwards | <strong style="color: #dfc07b;">4 BHK Duplex:</strong> ₹2.10 Cr* | <strong style="color: #dfc07b;">Della Villa Plots:</strong> ₹1.80 Cr*</td>
+                    <td style="padding: 10px 14px;"><strong style="color: #dfc07b;">2 BHK:</strong> ₹79L* onwards | <strong style="color: #dfc07b;">3 BHK:</strong> ₹1.25 Cr* onwards | <strong style="color: #dfc07b;">4 BHK Duplex:</strong> ₹2.10 Cr* | <strong style="color: #dfc07b;">Della Villa Plots:</strong> ₹3.75 Cr* (5,000 sq.ft.)</td>
                 </tr>
                 <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
                     <th scope="row" style="text-align: left; padding: 10px 14px; color: #e6d5b8; font-weight: 600;">MahaRERA Certifications</th>
