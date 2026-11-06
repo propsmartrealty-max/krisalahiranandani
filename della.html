@@ -32,10 +32,12 @@
  html { scroll-behavior: smooth; }
  body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
  .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
- @media (max-width: 768px) { .container { padding: 0 20px; } }
+ @media (max-width: 768px) {
+ .della-rc-badge, .della-rc-pill, .badge-gold, .badge { animation: none !important; transform: none !important; } .container { padding: 0 20px; } }
  .navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
  .nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
- @media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+ @media (max-width: 768px) {
+ .della-rc-badge, .della-rc-pill, .badge-gold, .badge { animation: none !important; transform: none !important; } .nav-container { padding: 0 20px; } }
  .header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
  .header-actions { display: flex; align-items: center; gap: 12px; }
  .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
@@ -92,6 +94,7 @@
 .position-one-factsheet-container { contain: layout paint; min-height: 260px; }
 .hero-content { contain: layout; }
 @media (max-width: 768px) {
+ .della-rc-badge, .della-rc-pill, .badge-gold, .badge { animation: none !important; transform: none !important; }
  * { -webkit-tap-highlight-color: transparent; }
  .reveal, .scroll-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
  .hero-stats { min-height: 80px; }
@@ -372,6 +375,7 @@
 }
 
 @media (max-width: 768px) {
+ .della-rc-badge, .della-rc-pill, .badge-gold, .badge { animation: none !important; transform: none !important; }
  .della-racecourse-exclusive-showcase { padding: 60px 0; }
  .della-rc-hero-stats { gap: 16px; }
  .della-rc-grid-2, .della-rc-grid-3, .della-rc-grid-4 { grid-template-columns: 1fr; }
@@ -410,8 +414,14 @@
 
 @keyframes glassAuraPulse {
  0%, 100% {
- box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 55, 0.35), 0 0 12px rgba(212, 175, 55, 0.12);
+ transform: scale(1);
+ opacity: 0.95;
  }
+ 50% {
+ transform: scale(1.02);
+ opacity: 1;
+ }
+}
  50% {
  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(212, 175, 55, 0.75), 0 0 24px rgba(212, 175, 55, 0.38);
  }
@@ -434,9 +444,13 @@
 @keyframes glassModalEntrance {
  0% {
  opacity: 0;
- transform: scale(0.92) translateY(24px);
- backdrop-filter: blur(0px);
+ transform: scale(0.95) translateY(16px);
  }
+ 100% {
+ opacity: 1;
+ transform: scale(1) translateY(0);
+ }
+}
  100% {
  opacity: 1;
  transform: scale(1) translateY(0);
@@ -632,6 +646,13 @@
  transition-duration: 0.01ms !important;
  }
 }
+
+
+/* Touch Target & Core Web Vitals Hardening (Lighthouse 100 & Zero CLS) */
+.hamburger-menu { width: 48px !important; height: 48px !important; min-width: 48px !important; min-height: 48px !important; display: flex !important; align-items: center !important; justify-content: center !important; touch-action: manipulation !important; }
+.lang-toggle button { min-height: 48px !important; min-width: 48px !important; touch-action: manipulation !important; }
+.mobile-sticky-bar .sticky-bar-btn { min-height: 48px !important; min-width: 48px !important; touch-action: manipulation !important; }
+.footer a, .footer-links a { min-height: 48px !important; display: inline-flex !important; align-items: center !important; padding: 6px 4px !important; touch-action: manipulation !important; }
 
 </style>
 <link href="https://krisalahiranandanitownships.com/della" rel="canonical"/>
@@ -858,6 +879,7 @@
  }
 
  @media (max-width: 768px) {
+ .della-rc-badge, .della-rc-pill, .badge-gold, .badge { animation: none !important; transform: none !important; }
  .hero-della {
  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('/public/imported/mobile-view-della.webp');
  background-size: cover;

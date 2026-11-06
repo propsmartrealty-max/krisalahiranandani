@@ -3751,13 +3751,7 @@ img.loaded {
         min-height: 36px !important;
     }
 
-    .hamburger-menu {
-        width: 38px !important;
-        height: 38px !important;
-        min-width: 38px !important;
-        min-height: 38px !important;
-        padding: 8px !important;
-    }
+    .hamburger-menu{width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;display:flex!important;align-items:center!important;justify-content:center!important;touch-action:manipulation!important;}
 
     .hamburger-menu span {
         width: 20px !important;
