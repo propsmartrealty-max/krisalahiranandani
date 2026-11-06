@@ -368,10 +368,33 @@ body {
   background: rgba(197, 160, 89, 0.15);
 }
 
-.section-pad {
-  padding: 100px 20px;
+.della-rc-section {
+  width: 100%;
+  padding: 85px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.della-rc-section .container {
   max-width: 1360px;
   margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 992px) {
+  .della-rc-section { padding: 65px 0; }
+  .della-rc-section .container { padding: 0 20px; }
+}
+
+@media (max-width: 768px) {
+  .della-rc-section { padding: 48px 0; }
+  .della-rc-section .container { padding: 0 16px; }
+  .sec-head { margin-bottom: 35px; }
+  .della-rc-hero { padding: 100px 16px 50px; min-height: auto; }
+  .gdv-badge-strip { gap: 10px; margin-bottom: 25px; }
+  .gdv-chip { padding: 10px 16px; width: 100%; }
+  .form-card { padding: 28px 18px; }
+  nav { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
 }
 
 .sec-head {
@@ -696,7 +719,8 @@ body {
 </section>
 
 <!-- Section 1: The Visionary Collaboration -->
-<section class="section-pad" style="background: rgba(16, 18, 26, 0.4);">
+<section class="della-rc-section" style="background: rgba(16, 18, 26, 0.45); border-top: 1px solid rgba(197, 160, 89, 0.2); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
+  <div class="container">
   <div class="sec-head">
     <span class="sec-badge">The Masterminds</span>
     <h2 class="sec-title">The Visionary Collaboration</h2>
@@ -736,10 +760,12 @@ body {
       </p>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- Section 2: 12 Pillars of Della Racecourse Pune -->
-<section class="section-pad">
+<section class="della-rc-section">
+  <div class="container">
   <div class="sec-head">
     <span class="sec-badge">Ecosystem Blueprint</span>
     <h2 class="sec-title">12 Master Pillars of Della Racecourse Pune</h2>
@@ -953,10 +979,12 @@ body {
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- Section 3: Comparative Specifications & Pricing Matrix Table -->
-<section class="section-pad" style="background: rgba(16, 18, 26, 0.45);">
+<section class="della-rc-section" style="background: rgba(16, 18, 26, 0.45); border-top: 1px solid rgba(197, 160, 89, 0.2); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
+  <div class="container">
   <div class="sec-head">
     <span class="sec-badge">Verified Pricing &amp; Typologies</span>
     <h2 class="sec-title">Della Racecourse Pune — Master Plot Specification Matrix</h2>
@@ -1005,10 +1033,12 @@ body {
       </tbody>
     </table>
   </div>
+  </div>
 </section>
 
 <!-- Section 4: VIP Lead Capture Form -->
-<section id="enquire" class="section-pad">
+<section id="enquire" class="della-rc-section">
+  <div class="container">
   <div class="sec-head">
     <span class="sec-badge">Private Invitation</span>
     <h2 class="sec-title">Register for Della Racecourse Pune</h2>
@@ -1058,10 +1088,12 @@ body {
       </p>
     </form>
   </div>
+  </div>
 </section>
 
 <!-- Section 5: Frequently Asked Questions (FAQ) -->
-<section class="section-pad" style="background: rgba(16, 18, 26, 0.4);">
+<section class="della-rc-section" style="background: rgba(16, 18, 26, 0.45); border-top: 1px solid rgba(197, 160, 89, 0.2); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
+  <div class="container">
   <div class="sec-head">
     <span class="sec-badge">Clarity &amp; Intelligence</span>
     <h2 class="sec-title">Della Racecourse Pune FAQ</h2>
@@ -1096,6 +1128,7 @@ body {
         Located in Darumbre, North Hinjewadi, the township is 4 minutes from the PMRDA 128m Ring Road, 5 minutes from the Mumbai-Pune Expressway, and 10 minutes from Hinjewadi Phase 1, 2, and 3 IT giants (Infosys, TCS, Wipro).
       </p>
     </div>
+  </div>
   </div>
 </section>
 

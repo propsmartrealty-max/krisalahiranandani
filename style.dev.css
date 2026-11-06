@@ -1,3 +1,49 @@
+
+/* ==============================================================================
+   STANDARDIZED MASTER SECTION ARCHITECTURE & RESPONSIVE SPACING
+   ============================================================================== */
+.section {
+    width: 100%;
+    padding: var(--section-gap, 85px) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-dark {
+    background-color: var(--bg-dark-deep, #050608);
+    border-top: 1px solid rgba(197, 160, 89, 0.18);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.18);
+}
+
+.section-light {
+    background-color: rgba(16, 18, 26, 0.45);
+}
+
+.section-alt {
+    background: radial-gradient(circle at 50% 10%, rgba(197, 160, 89, 0.05) 0%, rgba(9, 10, 15, 0.98) 75%);
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+@media (max-width: 992px) {
+    .section {
+        padding: 65px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 48px 0;
+    }
+    .section-header {
+        margin-bottom: 45px !important;
+    }
+    .glass-panel {
+        padding: 24px 16px !important;
+        margin-bottom: 24px !important;
+    }
+}
+
 @font-face {
     font-family: "Phosphor";
     font-display: swap;
@@ -24,7 +70,7 @@
     --font-accent: 'Cinzel', serif;
 
     /* Spacing & Architecture */
-    --section-gap: 140px;
+    --section-gap: 85px;
     --container-width: 1400px;
     --border-radius: 12px;
 }
@@ -3811,7 +3857,7 @@ img.loaded {
     }
 
     :root {
-        --section-gap: 80px;
+        --section-gap: 45px;
     }
 
     .hero-content {
@@ -3852,7 +3898,7 @@ img.loaded {
 
 @media (max-width: 480px) {
     :root {
-        --section-gap: 60px;
+        --section-gap: 45px;
     }
 
     .hero-title {
