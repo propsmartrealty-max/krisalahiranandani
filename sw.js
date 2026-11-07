@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krisala-hiranandani-v12';
+const CACHE_NAME = 'krisala-hiranandani-v13';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
