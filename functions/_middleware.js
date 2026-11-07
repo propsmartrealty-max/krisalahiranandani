@@ -647,12 +647,13 @@ export async function onRequest(context) {
  newHeaders.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), screen-wake-lock=(), accelerometer=(), gyroscope=(), magnetometer=()');
 
  // Strict Content Security Policy
- newHeaders.set('Content-Security-Policy', [
- "default-src 'self'", "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://cdn.ampproject.org",
- "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.ampproject.org",
- "font-src 'self' https://fonts.gstatic.com data:",
- "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://maharera.maharashtra.gov.in https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://*.doubleclick.net https://doubleclick.net https://stats.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://*.googleapis.com https://*.gstatic.com",
-    "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://region1.google-analytics.com https://region2.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://*.doubleclick.net https://doubleclick.net https://stats.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in",
+  newHeaders.set('Content-Security-Policy', [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://static.cloudflareinsights.com https://cdn.ampproject.org",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.ampproject.org",
+    "font-src 'self' https://fonts.gstatic.com data:",
+    "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://maharera.maharashtra.gov.in https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://*.doubleclick.net https://doubleclick.net https://stats.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://*.googleapis.com https://*.gstatic.com",
+    "connect-src 'self' https://formsubmit.co https://api.indexnow.org https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://region1.google-analytics.com https://region2.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://*.doubleclick.net https://doubleclick.net https://stats.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://static.cloudflareinsights.com https://cloudflareinsights.com https://*.cloudflareinsights.com",
  "frame-src 'self' https://www.google.com https://maps.google.com https://*.doubleclick.net https://td.doubleclick.net",
  "form-action 'self' https://formsubmit.co https://wa.me",
  "frame-ancestors 'none'",

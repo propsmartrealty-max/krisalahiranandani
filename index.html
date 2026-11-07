@@ -801,9 +801,8 @@
 <noscript>
 <link href="/public/fonts/phosphor.min.css" rel="stylesheet"/>
 </noscript>
-<!-- Core Global Stylesheet (Non-Blocking Fast Paint with Critical Inline Baseline) -->
-<link as="style" href="/style.min.css?v=20261107_v1" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
-<noscript><link href="/style.min.css?v=20261107_v1" rel="stylesheet"/></noscript>
+<!-- Core Global Stylesheet (Synchronous Baseline for Sub-50ms TBT) -->
+<link href="/style.min.css?v=20261107_v2" rel="stylesheet"/>
 <link href="/manifest.json" rel="manifest"/>
 <meta content="#08080a" name="theme-color"/>
 <!-- OpenGraph / Social Dominance -->
@@ -915,7 +914,7 @@
 <header class="navbar" id="navbar">
 <div class="container nav-container">
 <a aria-label="Krisala Hiranandani Home" class="logo" href="/" style="text-decoration: none;">
-<img alt="Krisala Hiranandani Township Pune Logo" class="header-logo" fetchpriority="high" height="42" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" src="/public/krisala-hiranandani-logo.webp" width="310"/>
+<img alt="Krisala Hiranandani Township Pune Logo" class="header-logo" fetchpriority="high" height="42" onerror="this.onerror=null; this.src='/public/krisala-hiranandani-logo.png';" srcset="/public/krisala-hiranandani-logo-310.webp 1x, /public/krisala-hiranandani-logo.webp 2x" src="/public/krisala-hiranandani-logo-310.webp" width="310"/>
 </a>
 <nav aria-label="Main Navigation" class="nav-links" id="navLinks">
 <a class="nav-link active" href="/">Township</a>
@@ -7396,7 +7395,7 @@ By submitting this form, you authorise Krisala Hiranandani partner to contact yo
 }</script>
 <!-- Floating AI Real Estate Concierge Widget (Zero CLS & Touch Target Hardened) -->
 <div class="ai-launcher-container" id="aiConciergeLauncher">
-<button aria-label="Open AI Concierge" id="aiLauncherBtn" style="background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; border: none; border-radius: 50px; padding: 12px 20px; font-weight: 700; font-size: 0.88rem; box-shadow: 0 8px 24px rgba(197,160,89,0.4); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s ease;" type="button">
+<button aria-label="Ask Hiranandani AI - Open Real Estate Concierge" id="aiLauncherBtn" style="background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; border: none; border-radius: 50px; padding: 12px 20px; font-weight: 700; font-size: 0.88rem; box-shadow: 0 8px 24px rgba(197,160,89,0.4); cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s ease;" type="button">
 <span style="display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981;"></span>
 <span>Ask Hiranandani AI</span>
 </button>
