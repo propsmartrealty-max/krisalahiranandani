@@ -5,7 +5,8 @@
  */
 
 const BLOCKED_EXTENSIONS = [
- '.php', '.asp', '.aspx', '.jsp', '.cgi', '.env', '.git', '.sql', '.bak', '.config', '.ds_store', '.key', '.pem', '.jsonl'
+ '.php', '.asp', '.aspx', '.jsp', '.cgi', '.env', '.git', '.sql', '.bak', '.config', '.ds_store', '.key', '.pem', '.jsonl',
+ '.ini', '.yaml', '.yml', '.sh', '.bash', '.action', '.do', '.phtml', '.phps', '.tar', '.gz', '.zip', '.7z', '.rar', '.bz2', '.swp', '.swo', '.conf'
 ];
 
 const BLOCKED_PATHS = [
@@ -42,7 +43,21 @@ const BLOCKED_USER_AGENTS = [
  'wpscan',
  'acunetix',
  'nessus',
- 'nuclei'
+ 'nuclei',
+ 'nmap',
+ 'arachni',
+ 'openvas',
+ 'burpcollaborator',
+ 'beef',
+ 'havij',
+ 'hydra',
+ 'metasploit',
+ 'netsparker',
+ 'commix',
+ 'sublist3r',
+ 'censys',
+ 'shodan',
+ 'fuzz'
 ];
 
 // Comprehensive Universal Whitelist for Google Fleet, Global Search Engines, AI Agents, and SEO Crawlers

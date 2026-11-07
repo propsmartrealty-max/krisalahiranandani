@@ -7516,7 +7516,20 @@ By submitting this form, you authorise Krisala Hiranandani partner to contact yo
  botDiv.style.borderRadius = '8px';
  botDiv.style.color = '#fff';
  botDiv.style.maxWidth = '90%';
- botDiv.innerHTML = responseText + '<div style="margin-top: 8px;"><a href="https://wa.me/917744009295?text=Hello%2C+I+am+inquiring+about+Krisala+Hiranandani+Township+Hinjewadi%2C+Pune%3A+%27+++encodeURIComponent%28%27Hello%2C+I+was+using+the+AI+Concierge+and+would+like+more+details+on%3A+%27+++q%29+++%27" target="_blank" rel="noopener noreferrer" style="color: #25D366; font-weight: 700; text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;">💬 Connect on WhatsApp &rarr;</a></div>';
+ var textP = document.createElement('p');
+ textP.textContent = responseText;
+ botDiv.appendChild(textP);
+ var linkDiv = document.createElement('div');
+ linkDiv.style.marginTop = '8px';
+ var waLink = document.createElement('a');
+ var safeQ = encodeURIComponent(q.trim().slice(0, 100));
+ waLink.href = 'https://wa.me/917744009295?text=' + encodeURIComponent('Hello, I was using the AI Concierge and would like more details on: ') + safeQ;
+ waLink.target = '_blank';
+ waLink.rel = 'noopener noreferrer';
+ waLink.style.cssText = 'color: #25D366; font-weight: 700; text-decoration: none; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 4px;';
+ waLink.textContent = '💬 Connect on WhatsApp →';
+ linkDiv.appendChild(waLink);
+ botDiv.appendChild(linkDiv);
  chatBody.appendChild(botDiv);
  chatBody.scrollTop = chatBody.scrollHeight;
  }
