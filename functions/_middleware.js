@@ -405,6 +405,58 @@ export async function onRequest(context) {
  // 5. Proceed with request through Cloudflare Pages asset pipeline
  const response = await next();
 
+ // 5b. Intelligent 404 Fallback & Alias Redirection Engine (Zero-404 Digital Fortress)
+ if (response.status === 404 && !path.startsWith('/api/') && !path.startsWith('/public/') && !path.endsWith('.png') && !path.endsWith('.webp') && !path.endsWith('.jpg') && !path.endsWith('.svg') && !path.endsWith('.ico') && !path.endsWith('.js') && !path.endsWith('.css') && !path.endsWith('.xml') && !path.endsWith('.txt') && !path.endsWith('.json')) {
+ const cleanPath = path.replace(/\/+$/, '');
+
+ const KNOWN_REDIRECTS = {
+ '/explore/krisala-hiranandani-duplex-penthouses-hinjewadi': '/explore/duplex-apartments-in-hinjewadi',
+ '/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi': '/explore/krisala-hiranandani-4-bhk-luxury-apartments-north-hinjewadi',
+ '/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1': '/explore/krisala-hiranandani-2-bhk-luxury-apartments-hinjewadi',
+ '/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1': '/explore/krisala-hiranandani-3-bhk-luxury-apartments-hinjewadi',
+ '/explore/krisala-hiranandani-5-bhk-signature-penthouses-hinjewadi': '/icon',
+ '/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway': '/explore/flats-near-mumbai-pune-expressway',
+ '/explore/krisala-hiranandani-apartments-near-tcs-sahyadri-park-hinjewadi': '/explore/krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi',
+ '/explore/krisala-hiranandani-apartments-near-metro-line-3-hinjewadi': '/connectivity',
+ '/explore/krisala-hiranandani-apartments-near-cognizant-hinjewadi': '/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi',
+ '/explore/krisala-hiranandani-apartments-near-barclays-hinjewadi': '/explore/krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi',
+ '/explore/krisala-hiranandani-apartments-near-pmrda-ring-road': '/explore/krisala-hiranandani-pmrda-ring-road-connectivity-advantage',
+ '/explore/krisala-hiranandani-apartments-near-wakad-hinjewadi': '/explore/flats-in-wakad-near-hinjewadi',
+ '/explore/krisala-hiranandani-apartments-near-baner-pune': '/explore/flats-in-baner-pune',
+ '/explore/krisala-hiranandani-vs-godrej-river-royale-mahalunge': '/compare/vs-godrej-river-royale',
+ '/explore/krisala-hiranandani-apartments-near-embassy-tech-zone': '/explore/flats-near-embassy-techzone-hinjewadi',
+ '/explore/krisala-hiranandani-apartments-near-darumbre-marunji': '/explore/krisala-hiranandani-luxury-township-darumbre-pune',
+ '/explore/krisala-hiranandani-vs-kolte-patil-life-republic': '/compare/vs-kolte-patil-life-republic',
+ '/explore/krisala-hiranandani-hadapsar-comparison': '/compare',
+ '/explore/krisala-hiranandani-price-list-2026': '/pricing',
+ '/explore/krisala-hiranandani-flats-for-sale-in-pune': '/explore/flats-in-hinjewadi',
+ '/explore/krisala-hiranandani-luxury-apartments-in-pune': '/explore/luxury-apartments-in-hinjewadi',
+ '/explore/krisala-hiranandani-integrated-townships-in-pune': '/krisala-hiranandani-township-pune',
+ '/explore/hiranandani-floor-plans': '/floor-plans',
+ '/explore/hiranandani-possession-date-pune': '/explore/krisala-hiranandani-possession-date-2028',
+ '/explore/hiranandani-reviews-pune': '/reviews',
+ '/explore/hiranandani-site-address-pune': '/site-address'
+ };
+
+ if (KNOWN_REDIRECTS[cleanPath]) {
+ return Response.redirect(`https://krisalahiranandanitownships.com${KNOWN_REDIRECTS[cleanPath]}`, 301);
+ }
+
+ if (cleanPath.startsWith('/explore/')) {
+ const slug = cleanPath.slice(9);
+ if (slug.includes('2-bhk') || slug.includes('2bhk')) return Response.redirect('https://krisalahiranandanitownships.com/explore/krisala-hiranandani-2-bhk-luxury-apartments-hinjewadi', 301);
+ if (slug.includes('3-bhk') || slug.includes('3bhk')) return Response.redirect('https://krisalahiranandanitownships.com/explore/krisala-hiranandani-3-bhk-luxury-apartments-hinjewadi', 301);
+ if (slug.includes('4-bhk') || slug.includes('4bhk')) return Response.redirect('https://krisalahiranandanitownships.com/explore/krisala-hiranandani-4-bhk-luxury-apartments-north-hinjewadi', 301);
+ if (slug.includes('villa') || slug.includes('plot') || slug.includes('della')) return Response.redirect('https://krisalahiranandanitownships.com/della', 301);
+ if (slug.includes('duplex') || slug.includes('penthouse') || slug.includes('icon')) return Response.redirect('https://krisalahiranandanitownships.com/icon', 301);
+ if (slug.includes('arcadia')) return Response.redirect('https://krisalahiranandanitownships.com/arcadia', 301);
+ if (slug.includes('colosseum')) return Response.redirect('https://krisalahiranandanitownships.com/colosseum', 301);
+ if (slug.includes('price') || slug.includes('cost') || slug.includes('payment')) return Response.redirect('https://krisalahiranandanitownships.com/pricing', 301);
+ if (slug.includes('metro') || slug.includes('transit') || slug.includes('connectivity')) return Response.redirect('https://krisalahiranandanitownships.com/connectivity', 301);
+ return Response.redirect('https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune', 301);
+ }
+ }
+
  // 5b. Universal Permutation & Combination Routing for Real Estate & Brand Queries
  if (response.status === 404 && !path.startsWith('/explore/') && !path.startsWith('/api/') && !path.startsWith('/public/') && !path.includes('.')) {
  let cleanSlug = path.replace(/^\/+|\/+$/g, '');
