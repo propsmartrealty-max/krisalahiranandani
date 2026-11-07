@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
  </div>
  <div class="quiz-spec-item">
  <div class="q-label">MahaRERA Registration</div>
- <div class="q-val" id="specRera">P52100055291</div>
+ <div class="q-val" id="specRera">PR1260002600818</div>
  </div>
  </div>
  <div class="result-actions">
@@ -765,7 +765,7 @@ document.addEventListener('DOMContentLoaded', () => {
  let config = "3 BHK Signature Residence";
  let carpet = "815 – 1,180 Sq. Ft.";
  let price = "From ₹85 Lakh*";
- let rera = "P52100055291";
+ let rera = "PR1260002600818";
  let desc = "Neoclassical Roman landmark with soaring Corinthian columns, triple-height marble lobby, and private racecourse panorama.";
  let link = "colosseum.html";
  let score = "99% Ideal Match";
@@ -777,18 +777,18 @@ document.addEventListener('DOMContentLoaded', () => {
  if (val1 === 'della-villa' || val2 === 'racecourse-resort') {
  sector = "The Della Collection";
  config = "Bespoke Equestrian Villa Plots";
- carpet = "2,500 – 6,000 Sq. Ft. Plots";
- price = "From ₹1.50 Crore*";
- rera = "P52100055294";
+ carpet = "5,000 Sq. Ft. Villa Plots";
+ price = "From ₹3.75 Crore*";
+ rera = "PR1260002502438";
  desc = "India's first equestrian-themed villa plots with private racecourse access, 5-star resort hospitality, and 40+ acres of open luxury.";
- link = "della.html";
+ link = "della-racecourse.html";
  score = "98% Ideal Match";
  } else if (val1 === 'icon-4bhk') {
  sector = "Sector Icon";
  config = "4 BHK Duplex & Sky Mansion";
  carpet = "1,650 – 2,400 Sq. Ft.";
  price = "From ₹2.10 Crore*";
- rera = "P52100055292";
+ rera = "PR1260002600818";
  desc = "The pinnacle of status with double-height living spaces, panoramic sky decks, and private lift access overlooking the Sahyadri valley.";
  link = "icon.html";
  score = "97% Ideal Match";
@@ -797,7 +797,7 @@ document.addEventListener('DOMContentLoaded', () => {
  config = "2 & 3 BHK Wellness Residences";
  carpet = "820 – 1,120 Sq. Ft.";
  price = "From ₹82 Lakh*";
- rera = "P52100055293";
+ rera = "PR1260002502438";
  desc = "A sanctuary of low-carbon living, zen meditation decks, zero-discharge water reservoirs, and organic wellness boulevards.";
  link = "everlyn.html";
  score = "96% Ideal Match";
@@ -806,7 +806,7 @@ document.addEventListener('DOMContentLoaded', () => {
  config = "2 & 3 BHK Tech-Corridor Homes";
  carpet = "765 – 1,050 Sq. Ft.";
  price = "From ₹79 Lakh*";
- rera = "P52100055290";
+ rera = "PR1260002500600";
  desc = "Smartly planned neoclassical urban residences 2 minutes from Metro Line 3 and Hinjawadi Phase 1 & 2 IT corridors.";
  link = "arcadia.html";
  score = "99% Ideal Match";
@@ -2287,7 +2287,7 @@ window.switchTownshipView = function(viewId, btn) {
  <div class="maharera-card-content">
  <div>
  <h4>Township Master Sanction</h4>
- <div class="maharera-reg-num">MahaRERA: P52100053982</div>
+ <div class="maharera-reg-num">MahaRERA: PR1260002500600</div>
  <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">105+ Acre Integrated Layout, Della Villas &amp; 8-Acre Racecourse</div>
  </div>
  <div style="margin-top:10px;">
