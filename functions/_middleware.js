@@ -42,66 +42,111 @@ const BLOCKED_USER_AGENTS = [
  'wpscan',
  'acunetix',
  'nessus',
- 'nuclei',
- 'ahrefsbot',
- 'semrushbot',
- 'dotbot',
- 'mj12bot',
- 'megaindex',
- 'blexbot',
- 'zoominfobot',
- 'petalbot'
+ 'nuclei'
 ];
 
-// Comprehensive list of Google Search, AI retrieval, and major search engine crawlers
+// Comprehensive Universal Whitelist for Google Fleet, Global Search Engines, AI Agents, and SEO Crawlers
 const WHITELISTED_CRAWLERS = [
- // Google Crawler Fleet (Search, Inspection, Mobile, Ads, Images, Videos, News, AI)
+ // 1. Google Fleet (Search, Mobile, Desktop, Ads, Images, Videos, News, Assistant, Inspection & Gemini AI)
  'googlebot',
- 'google-inspectiontool', // Google Search Console "Test Live URL" & URL Inspection Tool
- 'googleother', // Google Other generic web crawler
+ 'google-inspectiontool',
+ 'googleother',
  'googleother-image',
  'googleother-video',
- 'google-extended', // Google Gemini & Vertex AI crawler
+ 'google-extended',
  'adsbot-google',
  'adsbot-google-mobile',
  'mediapartners-google',
- 'storebot-google', // Google Merchant Feed & Shopping
- 'feedfetcher-google', // Google Feeds & RSS
+ 'storebot-google',
+ 'feedfetcher-google',
  'google-read-aloud',
  'google-site-verification',
  'apis-google',
  'duplexweb-google',
- 
- // Other Major Search Engines & AI Retrieval
+
+ // 2. Global Major Search Engines
  'bingbot',
  'bingpreview',
  'msnbot',
+ 'adidxbot',
  'applebot',
  'applebot-extended',
+ 'duckduckbot',
+ 'duckassistbot',
+ 'duckduckgo-favicons-bot',
+ 'yandexbot',
+ 'yandeximages',
+ 'yandexvideo',
+ 'yandexmedia',
+ 'yandexblogs',
+ 'baiduspider',
+ 'baiduspider-render',
+ 'sogou',
+ 'sogou web spider',
+ 'yeti',
+ 'naverbot',
+ 'seznambot',
+ 'qwantify',
+ 'petalbot',
+ 'slurp',
+ 'yahoo',
+
+ // 3. Frontier AI Models, Retrieval Agents & Web Search Crawlers
  'gptbot',
  'oai-searchbot',
  'chatgpt-user',
  'perplexitybot',
+ 'perplexity-ai',
  'claudebot',
  'claude-web',
  'anthropic-ai',
+ 'deepseekbot',
+ 'deepseek',
+ 'grokbot',
+ 'xai-bot',
+ 'grok',
  'amazonbot',
  'bytespider',
  'cohere-ai',
+ 'mistralai-crawler',
+ 'mistralbot',
  'meta-externalagent',
  'meta-externalfetcher',
- 'duckduckbot',
- 'yandexbot',
- 'baiduspider',
- 
- // Social OpenGraph & Messaging Card Fetchers
+ 'youbot',
+ 'tavilybot',
+ 'ccbot',
+ 'diffbot',
+
+ // 4. SEO, Link Indexing & Technical Audit Crawlers
+ 'ahrefsbot',
+ 'ahrefssiteaudit',
+ 'semrushbot',
+ 'semrushbot-sa',
+ 'semrushbot-ba',
+ 'semrushbot-si',
+ 'dotbot',
+ 'mj12bot',
+ 'screaming frog seo spider',
+ 'sitebulb',
+ 'megaindex',
+ 'blexbot',
+ 'zoominfobot',
+ 'brightedge',
+ 'conductor',
+
+ // 5. Social OpenGraph & Messaging Card Previewers
  'facebookexternalhit',
+ 'facebot',
  'twitterbot',
+ 'xbot',
  'linkedinbot',
  'whatsapp',
  'telegrambot',
  'slackbot',
- 'pinterestbot'
+ 'slack-imgproxy',
+ 'pinterestbot',
+ 'discordbot',
+ 'skypeuripreview'
 ];
 
 const ALLOWED_METHODS = ['GET', 'HEAD', 'POST', 'OPTIONS'];

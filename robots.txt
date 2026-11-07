@@ -278,34 +278,58 @@ User-agent: Discordbot
 Allow: /
 
 # ------------------------------------------------------------------------------
-# 6. Disallow Aggressive Third-Party Reverse-Engineering Scrapers
+# 6. Global Search Engines, Web Crawlers & AI Model Whitelist (100% Unrestricted)
 # ------------------------------------------------------------------------------
 User-agent: AhrefsBot
-Disallow: /
+Allow: /
 
 User-agent: SemrushBot
-Disallow: /
+Allow: /
 
 User-agent: SemrushBot-SA
-Disallow: /
+Allow: /
 
 User-agent: DotBot
-Disallow: /
+Allow: /
 
 User-agent: MJ12bot
-Disallow: /
+Allow: /
 
 User-agent: MegaIndex
-Disallow: /
+Allow: /
 
 User-agent: BLEXBot
-Disallow: /
+Allow: /
 
 User-agent: ZoominfoBot
-Disallow: /
+Allow: /
 
 User-agent: PetalBot
-Disallow: /
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+User-agent: Sitebulb
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
 
 # ------------------------------------------------------------------------------
 # 7. Master Sitemaps & Feeds Declarations
