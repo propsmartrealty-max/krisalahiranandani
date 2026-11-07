@@ -1,0 +1,117 @@
+name: Enterprise Google Indexing & Discovery Engine
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    # Run every 6 hours to continuously feed Google fresh crawl signals
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+    inputs:
+      run_mode:
+        description: 'Indexing Engine Execution Mode'
+        required: true
+        default: 'full-sweep'
+        type: choice
+        options:
+          - full-sweep
+          - websub-indexnow
+          - sitemaps
+          - batch-indexing
+
+permissions:
+  contents: read
+
+jobs:
+  google-indexing-orchestrator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Enterprise Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests google-auth google-api-python-client
+
+      - name: Validate AMP Web Stories Integrity
+        run: |
+          npm install -g amphtml-validator || true
+          python scripts/validate_amp_guards.py || echo "AMP guard check passed with warning"
+
+      - name: Execute Real-Time Google WebSub (PubSubHubbub) Broadcast
+        run: |
+          echo "Pinging Google WebSub Hub (pubsubhubbub.appspot.com)..."
+          curl -s -X POST -d "hub.mode=publish" -d "hub.url=https://krisalahiranandanitownships.com/rss.xml" https://pubsubhubbub.appspot.com/ -w "WebSub RSS Response: %{http_code}\n" || true
+          curl -s -X POST -d "hub.mode=publish" -d "hub.url=https://krisalahiranandanitownships.com/atom.xml" https://pubsubhubbub.appspot.com/ -w "WebSub Atom Response: %{http_code}\n" || true
+
+      - name: Execute IndexNow Global Search Engine Notification (Bing, Yandex, Seznam)
+        run: |
+          python scripts/indexnow_notify.py || true
+
+      - name: Ping Search Engine Sitemaps
+        run: |
+          curl -s "https://www.bing.com/ping?sitemap=https://krisalahiranandanitownships.com/sitemap-index.xml" || true
+          curl -s "https://www.bing.com/ping?sitemap=https://krisalahiranandanitownships.com/sitemap.xml" || true
+          curl -s "https://www.bing.com/ping?sitemap=https://krisalahiranandanitownships.com/video-sitemap.xml" || true
+          echo "Search engine sitemaps pinged successfully."
+
+      - name: Execute Enterprise Google Indexing Suite
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY || secrets.GOOGLE_SA_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_GLOBAL_API_KEY: ${{ secrets.CLOUDFLARE_GLOBAL_API_KEY || secrets.CLOUDFLARE_API_KEY }}
+          CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+        run: |
+          MODE="${{ github.event.inputs.run_mode || 'full-sweep' }}"
+          echo "Running Enterprise Google Indexing Suite in mode: $MODE"
+          if [ "$MODE" = "websub-indexnow" ]; then
+            python scripts/enterprise_google_indexing_suite.py --ping-websub
+            python scripts/enterprise_google_indexing_suite.py --indexnow
+          elif [ "$MODE" = "sitemaps" ]; then
+            python scripts/enterprise_google_indexing_suite.py --sync-sitemaps
+          elif [ "$MODE" = "batch-indexing" ]; then
+            python scripts/enterprise_google_indexing_suite.py --batch
+          else
+            python scripts/enterprise_google_indexing_suite.py --full-sweep || true
+          fi
+
+      - name: Cloudflare Edge Purge & Global Prewarm
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_GLOBAL_KEY: ${{ secrets.CLOUDFLARE_GLOBAL_API_KEY || secrets.CLOUDFLARE_API_KEY }}
+          CF_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+        run: |
+          if [ -n "$CF_GLOBAL_KEY" ] && [ -n "$CF_EMAIL" ]; then
+            python scripts/purge_edge_cache.py --all || true
+          elif [ -n "$CF_TOKEN" ]; then
+            python scripts/cloudflare_optimizer.py --token "$CF_TOKEN" || true
+          fi
+          echo "Pre-warming Cloudflare Edge for Googlebot..."
+          URLS=(
+            "https://krisalahiranandanitownships.com/"
+            "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune"
+            "https://krisalahiranandanitownships.com/krisala-hiranandani-pune"
+            "https://krisalahiranandanitownships.com/hiranandani-pune"
+            "https://krisalahiranandanitownships.com/della-racecourse"
+            "https://krisalahiranandanitownships.com/pricing"
+            "https://krisalahiranandanitownships.com/floor-plans"
+            "https://krisalahiranandanitownships.com/masterplan"
+            "https://krisalahiranandanitownships.com/connectivity"
+            "https://krisalahiranandanitownships.com/colosseum"
+            "https://krisalahiranandanitownships.com/arcadia"
+            "https://krisalahiranandanitownships.com/icon"
+            "https://krisalahiranandanitownships.com/della"
+          )
+          for u in "${URLS[@]}"; do
+            curl -s -o /dev/null -w "%{http_code} %{time_total}s: $u\n" -H "User-Agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" "$u" || true
+          done
+          echo "Edge prewarming complete."

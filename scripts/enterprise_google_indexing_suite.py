@@ -210,6 +210,22 @@ class EnterpriseIndexingSuite:
 
     def _discover(self):
         seen = set()
+        # Discover from environment variable (ideal for GitHub Actions / CI/CD)
+        env_key = os.environ.get("GOOGLE_SERVICE_ACCOUNT_KEY") or os.environ.get("GOOGLE_SA_KEY")
+        if env_key:
+            try:
+                if env_key.strip().startswith("{"):
+                    os.makedirs(os.path.dirname(LEGACY_KEY_FILE), exist_ok=True)
+                    with open(LEGACY_KEY_FILE, "w", encoding="utf-8") as f:
+                        f.write(env_key.strip())
+                elif os.path.isfile(env_key.strip()):
+                    w = EnterpriseWorker(env_key.strip(), name="env_sa")
+                    if w.email and w.email not in seen:
+                        seen.add(w.email)
+                        self.workers.append(w)
+            except Exception as e:
+                print(f"Warning: Could not process GOOGLE_SERVICE_ACCOUNT_KEY env var: {e}")
+
         if os.path.exists(SERVICE_ACCOUNTS_DIR):
             for p in sorted(glob.glob(os.path.join(SERVICE_ACCOUNTS_DIR, "*.json"))):
                 w = EnterpriseWorker(p, name=os.path.basename(p))

@@ -511,6 +511,9 @@ export async function onRequest(context) {
 
  if (isWhitelistedBot) {
  newHeaders.set('X-Crawler-Status', 'whitelisted');
+ newHeaders.set('X-Google-Index-Priority', 'high');
+ newHeaders.set('X-Cloudflare-Crawl-Hints', 'enabled');
+ newHeaders.set('CF-Edge-Cache-Status', 'instant-serve');
  }
 
  // Cloudflare Early Hints / HTTP 103 Resource Preloading & Edge Canonical Header (RFC 6596)
@@ -519,10 +522,15 @@ export async function onRequest(context) {
  const canonicalUrl = `https://krisalahiranandanitownships.com${cleanCanonicalPath}`;
  newHeaders.set('Link', [
  `<${canonicalUrl}>; rel="canonical"`,
+ '<https://pubsubhubbub.appspot.com/>; rel="hub"',
+ '</sitemap-index.xml>; rel="sitemap"',
+ '</sitemap.xml>; rel="sitemap"',
+ '</video-sitemap.xml>; rel="sitemap"',
  '</rss.xml>; rel="alternate"; type="application/rss+xml"',
  '</atom.xml>; rel="alternate"; type="application/atom+xml"',
  '</opensearch.xml>; rel="search"; type="application/opensearchdescription+xml"'
  ].join(', '));
+ newHeaders.set('Crawl-Hints', 'enabled');
  }
 
  // Unrestricted Cross-Origin access for XML Sitemaps, XSL stylesheets, JSON data, and Feeds
