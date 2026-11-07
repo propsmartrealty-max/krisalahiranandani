@@ -783,7 +783,8 @@
 <!-- Critical Asset Preloading & Resource Hints for Core Web Vitals (LCP/INP) -->
 <link href="https://fonts.googleapis.com" rel="dns-prefetch"/>
 <link href="https://fonts.gstatic.com" rel="dns-prefetch"/>
-<link as="image" fetchpriority="high" href="/public/township_grand/krisala_hiranandani_legacy_hero_clean_mobile.webp" media="(max-width: 768px)" rel="preload" type="image/webp"/>
+<link as="image" fetchpriority="high" href="/public/township_grand/krisala_hiranandani_legacy_hero_mobile_480.webp" media="(max-width: 480px)" rel="preload" type="image/webp"/>
+<link as="image" fetchpriority="high" href="/public/township_grand/krisala_hiranandani_legacy_hero_clean_mobile.webp" media="(min-width: 481px) and (max-width: 768px)" rel="preload" type="image/webp"/>
 <link as="image" fetchpriority="high" href="/public/township_grand/krisala_hiranandani_legacy_hero_clean.webp" media="(min-width: 769px)" rel="preload" type="image/webp"/>
 <link as="font" crossorigin="" href="https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="/public/fonts/Phosphor.woff2" rel="preload" type="font/woff2"/>
@@ -800,8 +801,9 @@
 <noscript>
 <link href="/public/fonts/phosphor.min.css" rel="stylesheet"/>
 </noscript>
-<!-- Core Global Stylesheet (Synchronous Core Web Vitals Baseline) -->
-<link href="/style.min.css?v=20261026_v6" rel="stylesheet"/>
+<!-- Core Global Stylesheet (Non-Blocking Fast Paint with Critical Inline Baseline) -->
+<link as="style" href="/style.min.css?v=20261107_v1" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="/style.min.css?v=20261107_v1" rel="stylesheet"/></noscript>
 <link href="/manifest.json" rel="manifest"/>
 <meta content="#08080a" name="theme-color"/>
 <!-- OpenGraph / Social Dominance -->
@@ -900,6 +902,7 @@
 </script>
 </head>
 <body>
+<div id="navSentinel" style="position:absolute;top:50px;left:0;height:1px;width:1px;pointer-events:none;visibility:hidden;"></div>
 <!-- Cinematic Preloader Bypassed for Instant Paint -->
 <!-- Scroll Progress Indicator -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -1017,9 +1020,10 @@
 <div class="hero-bg">
 <div class="hero-overlay"></div>
 <picture>
+<source height="273" media="(max-width: 480px)" srcset="/public/township_grand/krisala_hiranandani_legacy_hero_mobile_480.webp" width="480"/>
 <source height="437" media="(max-width: 768px)" srcset="/public/township_grand/krisala_hiranandani_legacy_hero_clean_mobile.webp" width="768"/>
 <source height="1094" media="(min-width: 769px)" srcset="/public/township_grand/krisala_hiranandani_legacy_hero_clean.webp" width="1920"/>
-<img alt="Krisala Brings Hiranandani's Legacy to Pune - Neoclassical Architectural Tower &amp; Grand 105-Acre Integrated Equestrian Township" class="hero-img parallax-img" decoding="sync" fetchpriority="high" height="437" onerror="this.src='/public/township_grand/krisala_hiranandani_legacy_hero.webp'" src="/public/township_grand/krisala_hiranandani_legacy_hero_clean_mobile.webp" width="768"/>
+<img alt="Krisala Brings Hiranandani's Legacy to Pune - Neoclassical Architectural Tower &amp; Grand 105-Acre Integrated Equestrian Township" class="hero-img parallax-img" decoding="sync" fetchpriority="high" height="273" onerror="this.src='/public/township_grand/krisala_hiranandani_legacy_hero.webp'" src="/public/township_grand/krisala_hiranandani_legacy_hero_mobile_480.webp" width="480"/>
 </picture>
 </div>
 <div class="container hero-content">
@@ -1975,16 +1979,16 @@
 <div class="calc-body">
 <div class="input-group">
 <label for="roi-amount">Investment Amount (Cr)</label>
-<input aria-label="Investment Amount in Crores" id="roi-amount" step="0.1" type="number" value="1.5"/>
+<input aria-label="Investment Amount in Crores" autocomplete="off" id="roi-amount" step="0.1" type="number" value="1.5"/>
 </div>
 <div class="input-group">
 <label for="roi-growth">Expected Growth (Annual %)</label>
-<input aria-label="Expected Growth Annual Percentage" id="roi-growth" max="25" min="5" type="range" value="15"/>
+<input aria-label="Expected Growth Annual Percentage" autocomplete="off" id="roi-growth" max="25" min="5" type="range" value="15"/>
 <span class="range-val">15%</span>
 </div>
 <div class="input-group">
 <label for="roi-years">Tenure (Years)</label>
-<input aria-label="Investment Tenure in Years" id="roi-years" max="10" min="1" type="range" value="5"/>
+<input aria-label="Investment Tenure in Years" autocomplete="off" id="roi-years" max="10" min="1" type="range" value="5"/>
 <span class="range-val">5 Years</span>
 </div>
 <div class="calc-result">
@@ -1999,15 +2003,15 @@
 <div class="calc-body">
 <div class="input-group">
 <label for="emi-amount">Loan Amount (Lakhs)</label>
-<input aria-label="Loan Amount in Lakhs" id="emi-amount" type="number" value="80"/>
+<input aria-label="Loan Amount in Lakhs" autocomplete="off" id="emi-amount" type="number" value="80"/>
 </div>
 <div class="input-group">
 <label for="emi-rate">Interest Rate (%)</label>
-<input aria-label="Interest Rate Percentage" id="emi-rate" step="0.1" type="number" value="8.5"/>
+<input aria-label="Interest Rate Percentage" autocomplete="off" id="emi-rate" step="0.1" type="number" value="8.5"/>
 </div>
 <div class="input-group">
 <label for="emi-tenure">Tenure (Years)</label>
-<input aria-label="Loan Tenure in Years" id="emi-tenure" type="number" value="20"/>
+<input aria-label="Loan Tenure in Years" autocomplete="off" id="emi-tenure" type="number" value="20"/>
 </div>
 <div class="calc-result">
 <span>Monthly EMI</span>
@@ -3031,13 +3035,13 @@
 <input name="_honey" style="display:none" type="hidden"/>
 <input name="_next" type="hidden" value="https://krisalahiranandanitownships.com/thank-you"/>
 <div class="form-group">
-<input aria-label="Full Name" id="enquiry-name" name="name" placeholder="Full Name *" required="" toolparamdescription="Full legal name of the prospective buyer" type="text"/>
+<input aria-label="Full Name" autocomplete="name" id="enquiry-name" name="name" placeholder="Full Name *" required="" toolparamdescription="Full legal name of the prospective buyer" type="text"/>
 </div>
 <div class="form-group">
-<input aria-label="Phone Number" id="enquiry-phone" name="phone" placeholder="Phone Number *" required="" toolparamdescription="Valid mobile phone number with country code" type="tel"/>
+<input aria-label="Phone Number" autocomplete="tel" id="enquiry-phone" name="phone" placeholder="Phone Number *" required="" toolparamdescription="Valid mobile phone number with country code" type="tel"/>
 </div>
 <div class="form-group">
-<input aria-label="Email Address" id="enquiry-email" name="email" placeholder="Email Address" toolparamdescription="Email address for digital brochure dispatch" type="email"/>
+<input aria-label="Email Address" autocomplete="email" id="enquiry-email" name="email" placeholder="Email Address" toolparamdescription="Email address for digital brochure dispatch" type="email"/>
 </div>
 <div class="form-group">
 <select aria-label="Interested Sector or Typology" id="enquiry-interest" name="interest" required="" toolparamdescription="Selected township sector or apartment configuration">
@@ -3253,7 +3257,7 @@ By submitting this form, you authorise Krisala Hiranandani partner to contact yo
 <input name="_honey" style="display:none" type="hidden"/>
 <input name="_next" type="hidden" value="https://krisalahiranandanitownships.com/thank-you"/>
 <div class="form-group">
-<input aria-label="Mobile Number for Report Link" id="exit-phone" name="phone" placeholder="Mobile Number for Report Link *" required="" type="tel"/>
+<input aria-label="Mobile Number for Report Link" autocomplete="tel" id="exit-phone" name="phone" placeholder="Mobile Number for Report Link *" required="" type="tel"/>
 </div>
 <button class="btn-primary w-100" type="submit">Send Report via WhatsApp</button>
 <p class="form-compliance-notice" style="font-size: 0.74rem; color: #a8a8ba; margin-top: 10px; line-height: 1.45; text-align: left;">
@@ -7426,7 +7430,7 @@ By submitting this form, you authorise Krisala Hiranandani partner to contact yo
 </div>
 <!-- Input Bar -->
 <div style="padding: 10px 14px; background: rgba(9,10,15,0.9); border-top: 1px solid rgba(197,160,89,0.25); display: flex; gap: 8px;">
-<input id="aiInput" placeholder="Type a question..." style="flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 10px 14px; min-height: 48px; color: #fff; font-size: 0.88rem; outline: none;" type="text"/>
+<input aria-label="Type your real estate question" autocomplete="off" id="aiInput" placeholder="Type a question..." style="flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; padding: 10px 14px; min-height: 48px; color: #fff; font-size: 0.88rem; outline: none;" type="text"/>
 <button id="aiSendBtn" style="background: var(--gold-primary); color: #000; border: none; border-radius: 6px; padding: 12px 20px; min-height: 48px; min-width: 48px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;" type="button">Send</button>
 </div>
 </div>

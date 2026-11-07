@@ -221,9 +221,13 @@ cursorOutline.style.border = '1px solid rgba(212, 175, 55, 0.5)';
 const navbar = document.getElementById('navbar');
 if (navbar && !isBotOrLighthouse) {
 if ('IntersectionObserver' in window) {
-const navSentinel = document.createElement('div');
+let navSentinel = document.getElementById('navSentinel');
+if (!navSentinel) {
+navSentinel = document.createElement('div');
+navSentinel.id = 'navSentinel';
 navSentinel.style.cssText = 'position:absolute;top:50px;left:0;height:1px;width:1px;pointer-events:none;visibility:hidden;';
 document.body.prepend(navSentinel);
+}
 const navObserver = new IntersectionObserver(([entry]) => {
 navbar.classList.toggle('scrolled', !entry.isIntersecting);
 });
@@ -282,25 +286,36 @@ sliderContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
 let isDown = false;
 let startX;
 let scrollLeft;
+let sliderOffsetLeft = 0;
+let sliderRaf = null;
 sliderContainer.addEventListener('mousedown', (e) => {
 isDown = true;
 sliderContainer.classList.add('active');
-startX = e.pageX - sliderContainer.offsetLeft;
+sliderOffsetLeft = sliderContainer.offsetLeft;
+startX = e.pageX - sliderOffsetLeft;
 scrollLeft = sliderContainer.scrollLeft;
 });
 sliderContainer.addEventListener('mouseleave', () => {
 isDown = false;
 sliderContainer.classList.remove('active');
+if (sliderRaf) { cancelAnimationFrame(sliderRaf); sliderRaf = null; }
 });
 sliderContainer.addEventListener('mouseup', () => {
 isDown = false;
 sliderContainer.classList.remove('active');
+if (sliderRaf) { cancelAnimationFrame(sliderRaf); sliderRaf = null; }
 });
 sliderContainer.addEventListener('mousemove', (e) => {
 if (!isDown) return;
 e.preventDefault();
-const x = e.pageX - sliderContainer.offsetLeft;
-const walk = (x - startX) * 2;  sliderContainer.scrollLeft = scrollLeft - walk;
+const x = e.pageX - sliderOffsetLeft;
+const walk = (x - startX) * 2;
+if (!sliderRaf) {
+sliderRaf = requestAnimationFrame(() => {
+sliderContainer.scrollLeft = scrollLeft - walk;
+sliderRaf = null;
+});
+}
 });
 }
 const modalOverlay = document.getElementById('enquiryModal');
@@ -358,10 +373,7 @@ const chartObserver = new IntersectionObserver((entries) => {
 entries.forEach(entry => {
 if (entry.isIntersecting) {
 const bar = entry.target;
-const targetHeight = bar.style.height;
-bar.style.height = '0';  setTimeout(() => {
-bar.style.height = targetHeight;
-}, 100);
+bar.classList.add('animated');
 chartObserver.unobserve(bar);
 }
 });

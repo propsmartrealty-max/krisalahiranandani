@@ -252,9 +252,13 @@ document.addEventListener('DOMContentLoaded', () => {
  const navbar = document.getElementById('navbar');
  if (navbar && !isBotOrLighthouse) {
  if ('IntersectionObserver' in window) {
- const navSentinel = document.createElement('div');
+ let navSentinel = document.getElementById('navSentinel');
+ if (!navSentinel) {
+ navSentinel = document.createElement('div');
+ navSentinel.id = 'navSentinel';
  navSentinel.style.cssText = 'position:absolute;top:50px;left:0;height:1px;width:1px;pointer-events:none;visibility:hidden;';
  document.body.prepend(navSentinel);
+ }
  const navObserver = new IntersectionObserver(([entry]) => {
  navbar.classList.toggle('scrolled', !entry.isIntersecting);
  });
@@ -325,31 +329,41 @@ document.addEventListener('DOMContentLoaded', () => {
  sliderContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
  });
 
- // Optional Drag to scroll (Vanilla JS Desktop support)
+ // Optional Drag to scroll (Vanilla JS Desktop support - rAF throttled with cached geometry)
  let isDown = false;
  let startX;
  let scrollLeft;
+ let sliderOffsetLeft = 0;
+ let sliderRaf = null;
 
  sliderContainer.addEventListener('mousedown', (e) => {
  isDown = true;
  sliderContainer.classList.add('active');
- startX = e.pageX - sliderContainer.offsetLeft;
+ sliderOffsetLeft = sliderContainer.offsetLeft;
+ startX = e.pageX - sliderOffsetLeft;
  scrollLeft = sliderContainer.scrollLeft;
  });
  sliderContainer.addEventListener('mouseleave', () => {
  isDown = false;
  sliderContainer.classList.remove('active');
+ if (sliderRaf) { cancelAnimationFrame(sliderRaf); sliderRaf = null; }
  });
  sliderContainer.addEventListener('mouseup', () => {
  isDown = false;
  sliderContainer.classList.remove('active');
+ if (sliderRaf) { cancelAnimationFrame(sliderRaf); sliderRaf = null; }
  });
  sliderContainer.addEventListener('mousemove', (e) => {
  if (!isDown) return;
  e.preventDefault();
- const x = e.pageX - sliderContainer.offsetLeft;
- const walk = (x - startX) * 2; // Scroll-fast factor
+ const x = e.pageX - sliderOffsetLeft;
+ const walk = (x - startX) * 2;
+ if (!sliderRaf) {
+ sliderRaf = requestAnimationFrame(() => {
  sliderContainer.scrollLeft = scrollLeft - walk;
+ sliderRaf = null;
+ });
+ }
  });
  }
 
@@ -424,11 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
  entries.forEach(entry => {
  if (entry.isIntersecting) {
  const bar = entry.target;
- const targetHeight = bar.style.height;
- bar.style.height = '0'; // Reset for animation
- setTimeout(() => {
- bar.style.height = targetHeight;
- }, 100);
+ bar.classList.add('animated');
  chartObserver.unobserve(bar);
  }
  });
