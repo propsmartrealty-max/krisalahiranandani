@@ -156,24 +156,12 @@ def get_all_html_files():
     return html_files
 
 def update_meta_keywords(content):
-    # Check if <meta name="keywords" exists
-    if 'name="keywords"' in content:
-        # Replace or expand keywords content
-        content = re.sub(
-            r'<meta name="keywords" content="[^"]*"\s*/?>',
-            f'<meta name="keywords" content="{PRIME_KEYWORDS_STR}"/>',
-            content,
-            flags=re.IGNORECASE
-        )
+    pattern = r"""<meta\s+(?:name=["']keywords["']\s+content=["'][^"]*["']|content=["'][^"]*["']\s+name=["']keywords["'])\s*/?>"""
+    replacement = '<meta name="keywords" content="' + PRIME_KEYWORDS_STR + '"/>'
+    if re.search(pattern, content, flags=re.IGNORECASE):
+        content = re.sub(pattern, replacement, content, flags=re.IGNORECASE)
     else:
-        # Inject right after <head>
-        content = re.sub(
-            r'(<head[^>]*>)',
-            f'\\1\n<meta name="keywords" content="{PRIME_KEYWORDS_STR}"/>',
-            content,
-            flags=re.IGNORECASE,
-            count=1
-        )
+        content = re.sub(r'(<head[^>]*>)', r'\1\n' + replacement, content, flags=re.IGNORECASE, count=1)
     return content
 
 def update_json_ld_schema(content):
@@ -232,12 +220,14 @@ def update_json_ld_schema(content):
     return content
 
 def inject_authority_matrix(content, filepath):
-    # Check if file is an explore or blog page
     rel_path = os.path.relpath(filepath, ROOT_DIR)
-    is_target = rel_path.startswith("explore/") or rel_path.startswith("blog/") or rel_path.startswith("compare/")
-    
-    if is_target and "township-authority-matrix" not in content:
-        # Inject right before <footer or </main>
+    # Skip utility files, stories, and homepage (which already has full ecosystem sections)
+    if rel_path in ["404.html", "offline.html", "thank-you.html", "analytics.html", "index.html", "della-racecourse.html", "della-racecourse-pune.html"]:
+        return content
+    if "stories/" in rel_path or "public/" in rel_path:
+        return content
+        
+    if "township-authority-matrix" not in content:
         if "<footer" in content:
             content = content.replace("<footer", ECOSYSTEM_AUTHORITY_HTML + "\n<footer", 1)
         elif "</main>" in content:
