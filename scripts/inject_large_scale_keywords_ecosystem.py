@@ -20,23 +20,42 @@ import json
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PRIME_KEYWORDS_STR = (
-    "Krisala Hiranandani Township, Krisala Hiranandani Township Pune, Hiranandani Township Pune, "
-    "Hiranandani Pune, Krisala Hiranandani Pune, Krisala Pune, Krisala Hinranandani Township, "
-    "Della Racecourse Townships Pune, Della Racecourse Pune, Della Townships Pune, "
-    "Della Racecourse Township, Della Racecourse Hinjewadi, Della Townships India, "
-    "Della Villa Plots Pune, Della Bungalow Plots Hinjewadi, Jimmy Mistry Della Pune, "
-    "Della Polo Club Residences, The Colosseum Hinjewadi, Sector Arcadia Hinjewadi, "
-    "Sector Icon Hinjewadi, Dr Niranjan Hiranandani Pune, Della 5000 sqft Villa Plots 3.75Cr"
+    "Krisala Hiranandani, Hiranandani Krisala, Krisala Hiranandani Township, Krisala Hiranandani Township Pune, "
+    "Hiranandani Township Pune, Hiranandani Krisala Township, Hiranandani Pune, Krisala Hiranandani Pune, Krisala Pune, "
+    "Krisala Hiranandani Hinjewadi, Hiranandani Hinjewadi, Krisala Hinjewadi, Krisala Hiranandani North Hinjewadi, "
+    "Hiranandani North Hinjewadi, Krisala Hiranandani Darumbre, Hiranandani Darumbre, Krisala Hiranandani Marunji, "
+    "Krisala Hinranandani, Krisla Hiranandani, Krisala Hiranadani, Hiranadani Pune, Hirnandani Hinjewadi, Krisala Hirandani, "
+    "Della Racecourse Townships Pune, Della Racecourse Pune, Della Townships Pune, Della Racecourse Township, "
+    "Della Racecourse Hinjewadi, Della Townships India, Della Villa Plots Pune, Della Bungalow Plots Hinjewadi, "
+    "Jimmy Mistry Della Pune, Della Polo Club Residences, The Colosseum Hinjewadi, Sector Arcadia Hinjewadi, "
+    "Sector Icon Hinjewadi, Sector Everlyn Hinjewadi, Dr Niranjan Hiranandani Pune, Niranjan Hiranandani Krisala, "
+    "Sagar Agarwal Krisala, Della 5000 sqft Villa Plots 3.75Cr, 2 BHK Krisala Hiranandani 79 Lakhs, "
+    "3 BHK Krisala Hiranandani 1.25 Cr, 4 BHK Sky Duplex Krisala Hiranandani 2.10 Cr, Krisala Hiranandani Price List 2026, "
+    "Krisala Hiranandani Cost Sheet, Krisala Hiranandani Floor Plans PDF, Krisala Hiranandani Master Plan, "
+    "Krisala Hiranandani Reviews, Krisala Hiranandani Site Address, MahaRERA PR1260002500600, MahaRERA PR1260002600818, MahaRERA PR1260002502438, MahaRERA A031262401295"
 )
 
 PRIME_ALTERNATE_NAMES = [
+    "Krisala Hiranandani",
+    "Hiranandani Krisala",
+    "Krisala Hiranandani Township",
     "Krisala Hiranandani Township Pune",
-    "Krisala Hiranandani Pune",
     "Hiranandani Township Pune",
+    "Hiranandani Krisala Township",
+    "Krisala Hiranandani Pune",
     "Hiranandani Pune",
     "Krisala Pune",
-    "Krisala Hiranandani",
-    "Krisala Hinranandani Township",
+    "Krisala Hiranandani Hinjewadi",
+    "Hiranandani Hinjewadi",
+    "Krisala Hinjewadi",
+    "Krisala Hiranandani North Hinjewadi",
+    "Krisala Hiranandani Darumbre",
+    "Krisala Hinranandani",
+    "Krisla Hiranandani",
+    "Krisala Hiranadani",
+    "Hiranadani Pune",
+    "Hirnandani Hinjewadi",
+    "Krisala Hirandani",
     "Della Racecourse Townships Pune",
     "Della Racecourse Pune",
     "Della Townships Pune",
@@ -46,7 +65,10 @@ PRIME_ALTERNATE_NAMES = [
     "The Della Collection Hinjewadi",
     "The Colosseum Hinjewadi",
     "Sector Arcadia Hinjewadi",
-    "Sector Icon Hinjewadi"
+    "Sector Icon Hinjewadi",
+    "Sector Everlyn Hinjewadi",
+    "Dr Niranjan Hiranandani Pune",
+    "Niranjan Hiranandani Krisala"
 ]
 
 PRIME_KNOWS_ABOUT = [
@@ -54,6 +76,7 @@ PRIME_KNOWS_ABOUT = [
     "Hiranandani Township Pune",
     "Hiranandani Pune",
     "Krisala Pune",
+    "Krisala Hiranandani Hinjewadi",
     "Krisala Hinranandani Township",
     "Della Racecourse Townships Pune",
     "Della Racecourse Pune",
@@ -63,12 +86,23 @@ PRIME_KNOWS_ABOUT = [
     "Della Bungalow Plots Hinjewadi",
     "Jimmy Mistry Della Pune",
     "Dr Niranjan Hiranandani Pune",
+    "Niranjan Hiranandani Krisala",
+    "Sagar Agarwal Krisala",
     "The Colosseum Hinjewadi",
     "Sector Arcadia Hinjewadi",
     "Sector Icon Hinjewadi",
+    "Sector Everlyn Hinjewadi",
     "8-Acre Private Turf Racecourse Hinjewadi",
     "105-Acre Neoclassical Integrated Township Pune",
     "5000 sqft Villa Plots Della 3.75Cr",
+    "2 BHK Neoclassical Apartments from ₹79 Lakhs*",
+    "3 BHK Grande Residences from ₹1.25 Cr*",
+    "4 BHK Sky Duplex Penthouses from ₹2.10 Cr*",
+    "Krisala Hiranandani Price List 2026",
+    "MahaRERA PR1260002500600",
+    "MahaRERA PR1260002600818",
+    "MahaRERA PR1260002502438",
+    "MahaRERA Agent Registration A031262401295",
     "MAYRLIFE European Medical Longevity Pune"
 ]
 

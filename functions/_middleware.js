@@ -210,6 +210,9 @@ function applyEdgeHtmlRewriter(response, url, isWhitelistedBot, request) {
  } else if (cleanPath.endsWith('.html')) {
  cleanPath = cleanPath.slice(0, -5);
  }
+ if (cleanPath.length > 1 && cleanPath.endsWith('/')) {
+ cleanPath = cleanPath.slice(0, -1);
+ }
  const canonicalUrl = `https://krisalahiranandanitownships.com${cleanPath}`;
  const isPrivateOrErrorRoute = path.includes('thank-you') ||
  path.includes('analytics') ||
@@ -370,6 +373,13 @@ export async function onRequest(context) {
  if (path.length > 1 && path.endsWith('/')) {
  const canonicalUrl = new URL(request.url);
  canonicalUrl.pathname = path.slice(0, -1);
+ return Response.redirect(canonicalUrl.toString(), 301);
+ }
+
+ // 1b. Legacy Path Normalization (Sanitize legacy 'official' paths with 301 redirect)
+ if (path.includes('official-website') || path.includes('-official-')) {
+ const canonicalUrl = new URL(request.url);
+ canonicalUrl.pathname = path.replace('official-website', 'master-township-guide').replace('-official-', '-guide-');
  return Response.redirect(canonicalUrl.toString(), 301);
  }
 
@@ -664,7 +674,7 @@ export async function onRequest(context) {
  // Strict Content Security Policy
   newHeaders.set('Content-Security-Policy', [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://static.cloudflareinsights.com https://cdn.ampproject.org",
+    "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://static.cloudflareinsights.com https://cdn.ampproject.org",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.ampproject.org",
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: blob: https://krisalahiranandanitownships.com https://maharera.maharashtra.gov.in https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://googleads.g.doubleclick.net https://*.g.doubleclick.net https://*.doubleclick.net https://doubleclick.net https://stats.g.doubleclick.net https://www.googleadservices.com https://*.googleadservices.com https://*.google.com https://*.google.co.in https://*.googleapis.com https://*.gstatic.com",

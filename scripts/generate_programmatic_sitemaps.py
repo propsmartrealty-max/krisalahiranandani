@@ -106,7 +106,7 @@ SILOS = [
         "hubs": ["/privacy-policy"],
         "bases": ["maharera-registration-pr1260002502438", "sector-icon-rera-pr1260002600818", "phase-wise-possession-schedule", "carpet-area-regulatory-verification", "clear-marketable-title-search-report"],
         "modifiers": ["q4-2028-possession", "q2-2029-possession", "rera-approved-bank-loans", "encumbrance-free-land-title", "7-12-extract-verification", "environmental-noc-clearance", "fire-safety-noc-approval", "airport-authority-height-noc", "pmrda-sanctioned-layout", "commencement-certificate-cc"],
-        "localities": ["darumbre-survey-numbers", "marunji-gat-numbers", "north-hinjewadi-approval", "krisala-joint-venture-agreement", "hiranandani-development-rights", "buyer-rights-and-guarantees", "rera-escrow-account-transparency", "zero-risk-booking-process", "legal-due-diligence-guide", "allotment-letter-terms", "agreement-for-sale-draft", "stamp-duty-calculation-rules", "registration-office-haveli", "sub-registrar-pune-west", "rera-complaint-free-record", "legal-faq-homebuyers", "nri-power-of-attorney", "gst-input-tax-rules", "oc-handover-timeline", "official-compliance-dossier"]
+        "localities": ["darumbre-survey-numbers", "marunji-gat-numbers", "north-hinjewadi-approval", "krisala-joint-venture-agreement", "hiranandani-development-rights", "buyer-rights-and-guarantees", "rera-escrow-account-transparency", "zero-risk-booking-process", "legal-due-diligence-guide", "allotment-letter-terms", "agreement-for-sale-draft", "stamp-duty-calculation-rules", "registration-office-haveli", "sub-registrar-pune-west", "rera-complaint-free-record", "legal-faq-homebuyers", "nri-power-of-attorney", "gst-input-tax-rules", "oc-handover-timeline", "legal-compliance-dossier"]
     },
     {
         "name": "nri-desk",
@@ -227,7 +227,7 @@ SILOS = [
             "hiranandani-everland-pune"
         ],
         "modifiers": [
-            "official-website",
+            "master-township-guide",
             "direct-developer-booking",
             "all-inclusive-cost-sheet",
             "price-list-and-floor-plans",
