@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root {
+  --bg-dark: #090a0f;
+  --bg-dark-deep: #050608;
+  --bg-surface: rgba(16, 18, 26, 0.75);
+  --gold-primary: #c5a059;
+  --gold-light: #e6d5b8;
+  --gold-bright: #dfc07b;
+  --gold-deep: #9e7d3b;
+  --text-main: #fcfbf7;
+  --text-muted: #b8b8cc;
+  --text-subtle: #a8a8ba;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background-color: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
+.container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+@media (max-width: 768px) { .container { padding: 0 20px; } }
+.navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 16px 0; background: rgba(9, 10, 15, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+.nav-container { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+@media (max-width: 768px) { .nav-container { padding: 0 20px; } }
+.header-logo { height: 42px !important; width: 310px !important; max-width: 100% !important; aspect-ratio: 310/42 !important; object-fit: contain !important; display: block !important; }
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.hero-directory { padding: 140px 0 60px; text-align: center; background: radial-gradient(circle at 50% 20%, rgba(197,160,89,0.12) 0%, rgba(9,10,15,1) 80%); }
+.hero-title { font-family: var(--font-heading); font-size: clamp(2.4rem, 5vw, 4.2rem); color: #fff; line-height: 1.15; margin-bottom: 18px; }
+.hero-title span { color: var(--gold-bright); }
+.hero-subtitle { font-size: 1.15rem; color: var(--text-muted); max-width: 850px; margin: 0 auto 30px; line-height: 1.6; }
+.hero-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+.badge-item { background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3); color: var(--gold-bright); padding: 6px 14px; border-radius: 50px; font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.explore-card { background: rgba(16, 18, 26, 0.85); border: 1px solid rgba(197, 160, 89, 0.22); border-radius: 8px; padding: 22px; text-decoration: none; color: inherit; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; }
+.explore-card:hover { border-color: var(--gold-bright); transform: translateY(-4px); background: rgba(22, 25, 38, 0.95); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+.explore-badge { display: inline-block; color: var(--gold-bright); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.explore-card-title { font-family: var(--font-heading); font-size: 1.25rem; color: #fff; line-height: 1.3; margin-bottom: 8px; }
+.explore-card-desc { font-size: 0.86rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 14px; flex-grow: 1; }
+.explore-link-arrow { color: var(--gold-bright); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.btn-primary { background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 700; padding: 12px 24px; border-radius: 4px; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+.footer { background: #050608; border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 60px 0 30px; font-size: 0.88rem; color: var(--text-muted); margin-top: 60px; }
+</style>
+<title>Township Explorer &amp; Real Estate Knowledge Directory | Krisala Hiranandani Pune</title>
+<meta name="description" content="Explore complete real estate directory for Krisala Hiranandani 105-acre mega township in North Hinjewadi, Pune. Browse 100+ guides covering 2, 3, 4 BHK apartments, Della villa plots, pricing, and MahaRERA certifications."/>
+<meta name="keywords" content="Krisala Hiranandani Township, Krisala Hiranandani Township Pune, Hiranandani Township Pune, Hiranandani Pune, Krisala Hiranandani Pune, Krisala Pune, Krisala Hinranandani Township, Della Racecourse Townships Pune, Della Racecourse Pune, Della Townships Pune, The Colosseum Hinjewadi, Sector Arcadia Hinjewadi, Sector Icon Hinjewadi, Dr Niranjan Hiranandani Pune, Della 5000 sqft Villa Plots 3.75Cr, MahaRERA PR1260002500600, MahaRERA PR1260002600818, MahaRERA PR1260002502438, MahaRERA A031262401295"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+<link href="https://krisalahiranandanitownships.com/explore" id="seoCanonical" rel="canonical"/>
+<link href="/favicon.png" rel="icon" sizes="32x32" type="image/png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://krisalahiranandanitownships.com/explore#webpage",
+      "url": "https://krisalahiranandanitownships.com/explore",
+      "name": "Township Explorer & Real Estate Knowledge Directory | Krisala Hiranandani",
+      "description": "Comprehensive real estate intelligence directory covering 100+ specialized guides on 2, 3, 4 BHK residences, Della villa plots, prices, and approvals.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Township", "item": "https://krisalahiranandanitownships.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Explore Directory", "item": "https://krisalahiranandanitownships.com/explore" }
+        ]
+      }
+    },
+    {
+      "@type": "RealEstateListing",
+      "@id": "https://krisalahiranandanitownships.com/explore#realestate",
+      "name": "Krisala Hiranandani Township Directory",
+      "url": "https://krisalahiranandanitownships.com/explore",
+      "alternateName": [
+        "Krisala Hiranandani",
+        "Hiranandani Krisala",
+        "Krisala Hiranandani Township Pune",
+        "Hiranandani Township Pune",
+        "Krisala Hiranandani Pune",
+        "Hiranandani Pune",
+        "Della Racecourse Townships Pune",
+        "The Colosseum Hinjewadi",
+        "Sector Arcadia Hinjewadi",
+        "Sector Icon Hinjewadi"
+      ],
+      "knowsAbout": [
+        "Krisala Hiranandani Township Pune",
+        "105-Acre Neoclassical Integrated Township Pune",
+        "8-Acre Private Turf Racecourse Hinjewadi",
+        "5000 sqft Villa Plots Della 3.75Cr",
+        "MahaRERA PR1260002500600",
+        "MahaRERA PR1260002600818",
+        "MahaRERA PR1260002502438",
+        "MahaRERA Agent Registration A031262401295"
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-container">
+    <a href="/" class="logo" aria-label="Krisala Hiranandani Home">
+      <img src="/public/krisala-hiranandani-logo-310.webp" srcset="/public/krisala-hiranandani-logo-310.webp 1x, /public/krisala-hiranandani-logo.webp 2x" alt="Krisala Hiranandani Township Pune Logo" width="310" height="42" class="header-logo"/>
+    </a>
+    <div class="header-actions">
+      <a href="/pricing" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Price List 2026</a>
+      <a href="https://wa.me/917744009295?text=Hello%2C+I+am+browsing+the+Krisala+Hiranandani+Township+Explorer+and+would+like+the+brochure+and+cost+sheet." class="btn-primary" style="background: #25D366; color: #fff; padding: 8px 16px; font-size: 0.85rem;" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero-directory">
+    <div class="container">
+      <div class="hero-badges">
+        <span class="badge-item">105-Acre Master Township</span>
+        <span class="badge-item">MahaRERA PR1260002500600</span>
+        <span class="badge-item">MahaRERA Agent A031262401295</span>
+      </div>
+      <h1 class="hero-title">Township Explorer &amp; <span>Knowledge Directory</span></h1>
+      <p class="hero-subtitle">Comprehensive search portal for <strong>Krisala Hiranandani Township Pune</strong>. Explore hyper-targeted corridors, price sheets, floor plans, and connectivity guides across western Pune.</p>
+      
+      <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 25px;">
+        <a href="/pricing" style="color: #dfc07b; background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.88rem; font-weight: 600;">Pricing Sheet (from ₹79L*)</a>
+        <a href="/colosseum" style="color: #dfc07b; background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.88rem; font-weight: 600;">The Colosseum Phase 4</a>
+        <a href="/arcadia" style="color: #dfc07b; background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.88rem; font-weight: 600;">Sector Arcadia</a>
+        <a href="/della-racecourse" style="color: #dfc07b; background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.88rem; font-weight: 600;">Della 5,000 Sq.Ft. Villa Plots (₹3.75 Cr*)</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="directory-content" style="padding: 40px 0 80px;">
+    <div class="container">
+      
+        <div class="explore-category-group" style="margin-bottom: 50px;">
+          <h2 class="explore-cat-heading" style="font-family: var(--font-heading); color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 20px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span>Apartments & Typologies</span>
+            <span style="font-size: 0.9rem; color: var(--gold-bright); font-family: var(--font-body); font-weight: 600;">14 Dedicated Hubs</span>
+          </h2>
+          <div class="explore-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <a href="/explore/2-bhk-flats-in-hinjewadi" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Best 2 BHK flats in Hinjewadi Pune at Krisala Hiranandani Sector Arcadia. 740-840 sq.ft. carpet area from ₹79L*. MahaRERA PR126000...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/2-bhk-flats-in-mahalunge" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Best 2 BHK flats in Mahalunge Pune area. Sector Arcadia at Krisala Hiranandani: 740-840 sq.ft. carpet from ₹79L*. MahaRERA PR12600...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/2-bhk-flats-in-wakad" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Best 2 BHK flats in Wakad area. Sector Arcadia at Krisala Hiranandani: 740-840 sq.ft. carpet area from ₹79L*. MahaRERA PR126000250...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/3-bhk-flats-in-hinjewadi" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Premium 3 BHK flats in Hinjewadi Pune at The Colosseum, Krisala Hiranandani. 1,020-1,180 sq.ft. carpet from ₹1.25Cr*. MahaRERA PR1...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/3-bhk-flats-in-mahalunge" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Luxury 3 BHK flats in Mahalunge area at Krisala Hiranandani The Colosseum: 1,020-1,180 sq.ft. carpet from ₹1.25Cr*. MahaRERA PR126...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/3-bhk-flats-in-wakad" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Premium 3 BHK flats in Wakad area at The Colosseum, Krisala Hiranandani: 1,020-1,180 sq.ft. carpet from ₹1.25Cr*. MahaRERA PR12600...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/duplex-apartments-in-hinjewadi" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Double-height luxury duplex penthouses in Hinjewadi Pune at Sector Icon, Krisala Hiranandani. 1,850-2,450 sq.ft. from ₹2.10Cr*. Ma...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-2-bhk-pune" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-3-bhk-pune" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-4-bhk-pune" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-2-bhk-luxury-apartments-hinjewadi" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">2 BHK Luxury Flats Hinjewadi (from ₹79L*)</h3>
+              <p class="explore-card-desc">Sector Arcadia 2 BHK flats at Krisala Hiranandani Hinjewadi: 740-840 sq.ft. Mivan structure from ₹79L*. MahaRERA PR1260002500600. ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-3-bhk-luxury-apartments-hinjewadi" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">3 BHK Luxury Flats Hinjewadi (from ₹82.99L*)</h3>
+              <p class="explore-card-desc">The Colosseum 3 BHK flats at Krisala Hiranandani Hinjewadi: 1,020-1,180 sq.ft. racecourse-facing from ₹1.25Cr*. MahaRERA PR1260002...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-4-bhk-luxury-apartments-north-hinjewadi" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">4 BHK Sky Duplexes Hinjewadi (from ₹2.10 Cr*)</h3>
+              <p class="explore-card-desc">Sector Icon 4 BHK sky duplexes at Krisala Hiranandani Hinjewadi: 1,850-2,450 sq.ft. with 18ft double-height ceilings from ₹2.10Cr*...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/luxury-penthouses-in-pune" class="explore-card">
+              <span class="explore-badge">Apartments & Typologies</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Signature luxury penthouses & sky mansions in Pune at Sector Icon, Krisala Hiranandani Hinjewadi. Panoramic racecourse views from ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+          </div>
+        </div>
+        
+        <div class="explore-category-group" style="margin-bottom: 50px;">
+          <h2 class="explore-cat-heading" style="font-family: var(--font-heading); color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 20px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span>Villa Plots & Land</span>
+            <span style="font-size: 0.9rem; color: var(--gold-bright); font-family: var(--font-body); font-weight: 600;">16 Dedicated Hubs</span>
+          </h2>
+          <div class="explore-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <a href="/explore/bungalow-plots-in-hinjewadi-pune" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Sanctioned freehold bungalow plots in Hinjewadi Pune at Della Township & Krisala Hiranandani. 1,800-5,000 sq.ft. from ₹3.75Cr*. Ma...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/bungalow-plots-near-mumbai-pune-expressway" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Luxury bungalow plots near Mumbai-Pune Expressway (5 mins away) at Della Township & Krisala Hiranandani. 1,800-5,000 sq.ft. from ₹...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/della-luxury-resort-villa-plots-pune" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Della luxury resort villa plots in Pune at Krisala Hiranandani Hinjewadi. 8-Acre racecourse, polo club & 5-star resort amenities f...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/della-polo-club-residences-hinjewadi" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Della Polo Club residences & equestrian villa estates at Krisala Hiranandani Hinjewadi: 8-acre championship turf racecourse from ₹...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/della-township-bungalow-plots-hinjewadi" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Della Township luxury bungalow plots at Krisala Hiranandani Hinjewadi. G+2 sanctioned FSI around 8-acre racecourse from ₹3.75Cr*. ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/della-township-lots-hinjewadi" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Della Township residential estate lots in Hinjewadi Pune. Freehold NA plots surrounding private racecourse from ₹3.75Cr*. MahaRERA...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/equestrian-estate-plots-pune" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Exclusive equestrian estate plots in Pune at Della Township & Krisala Hiranandani. 8-Acre racecourse frontage from ₹3.75Cr*. MahaR...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/gated-community-plots-in-hinjewadi" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Luxury gated community plots in Hinjewadi Pune at Della Township & Krisala Hiranandani. 24/7 security, 8-acre racecourse & polo cl...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-della-pune" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-della-villa-plots-hinjewadi" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Della Villa Plots Hinjewadi (from ₹3.75 Cr*)</h3>
+              <p class="explore-card-desc">100 Exclusive Della Resort villa plots (1,800-5,000 sq.ft.) at Krisala Hiranandani Hinjewadi. 8-Acre racecourse & polo club from ₹...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-equestrian-turf-racecourse-residences" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Equestrian Racecourse Homes (from ₹3.75 Cr*)</h3>
+              <p class="explore-card-desc">India's 1st residential 8-acre turf racecourse & polo club residences at Krisala Hiranandani Hinjewadi. Luxury homes & plots from ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/na-plots-in-hinjewadi-pune" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Clear title collector sanctioned NA plots in Hinjewadi Pune at Della Township. 1,800-5,000 sq.ft. with racecourse frontage from ₹3...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/plots-in-hinjewadi-pune" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">MahaRERA approved residential plots in Hinjewadi Pune at Krisala Hiranandani Della Precinct. 1,800-5,000 sq.ft. from ₹3.75Cr*. Cle...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/residential-plots-in-hinjewadi-pune" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">MahaRERA approved residential plots in Hinjewadi Pune at Della Township & Krisala Hiranandani. 1,800-5,000 sq.ft. from ₹3.75Cr*. C...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/villa-plots-in-hinjewadi-pune" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Exclusive villa plots in Hinjewadi Pune at Krisala Hiranandani Della Collection. 1,800 to 5,000 sq.ft. with racecourse frontage fr...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/villa-plots-in-pune-west" class="explore-card">
+              <span class="explore-badge">Villa Plots & Land</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Exclusive villa plots in Pune West at Della Township & Krisala Hiranandani. 1,800 to 5,000 sq.ft. with racecourse frontage from ₹3...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+          </div>
+        </div>
+        
+        <div class="explore-category-group" style="margin-bottom: 50px;">
+          <h2 class="explore-cat-heading" style="font-family: var(--font-heading); color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 20px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span>Localities & Micro-Markets</span>
+            <span style="font-size: 0.9rem; color: var(--gold-bright); font-family: var(--font-body); font-weight: 600;">11 Dedicated Hubs</span>
+          </h2>
+          <div class="explore-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <a href="/explore/flats-in-balewadi-pune" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Looking for flats in Balewadi Pune? Explore 105-Acre Krisala Hiranandani Township (16 mins away). Luxury 2 & 3 BHK from ₹79L*. Mah...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-baner-pune" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Looking for flats in Baner Pune? Upgrade to 105-Acre Krisala Hiranandani Township (18 mins away). Luxury 2, 3 & 4 BHK from ₹79L*. ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-mahalunge-pune" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Looking for flats in Mahalunge Pune? Krisala Hiranandani 105-Acre Township is 8 mins via PMRDA Ring Road. 2 & 3 BHK from ₹79L*. Ma...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-marunji-hinjewadi" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Looking for flats in Marunji Hinjewadi? Explore 105-Acre Krisala Hiranandani Township on PMRDA Ring Road. 2 & 3 BHK from ₹79L*. Ma...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-punawale-near-hinjewadi" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Looking for flats in Punawale near Hinjewadi? Explore Krisala Hiranandani Township on PMRDA Ring Road. Luxury 2 & 3 BHK from ₹79L*...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-punawale-pune" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Looking for flats in Punawale Pune? Explore 105-Acre Krisala Hiranandani Township on PMRDA Ring Road. 2 & 3 BHK from ₹79L*. MahaRE...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-ravet-pune" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Looking for flats in Ravet Pune? Upgrade to 105-Acre Krisala Hiranandani Township near Expressway. Luxury 2 & 3 BHK from ₹79L*. Ma...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-tathawade-pune" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Looking for flats in Tathawade Pune? Discover 105-Acre Krisala Hiranandani Township on PMRDA Ring Road. 2 & 3 BHK from ₹79L*. Maha...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-wakad-near-hinjewadi" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Upgrade from Wakad apartments to 105-Acre Krisala Hiranandani Township. 2, 3 & 4 BHK homes with 8-acre racecourse from ₹79L*. Maha...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-wakad-pune" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Upgrade from congested Wakad to 105-Acre Krisala Hiranandani Township. Luxury 2 & 3 BHK with 8-acre racecourse from ₹79L*. MahaRER...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-near-mumbai-pune-expressway" class="explore-card">
+              <span class="explore-badge">Localities & Micro-Markets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Luxury flats near Mumbai-Pune Expressway at Krisala Hiranandani Township (5 mins to Urse Toll). 2 & 3 BHK homes from ₹79L*. MahaRE...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+          </div>
+        </div>
+        
+        <div class="explore-category-group" style="margin-bottom: 50px;">
+          <h2 class="explore-cat-heading" style="font-family: var(--font-heading); color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 20px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span>Pricing & Budgets</span>
+            <span style="font-size: 0.9rem; color: var(--gold-bright); font-family: var(--font-body); font-weight: 600;">9 Dedicated Hubs</span>
+          </h2>
+          <div class="explore-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <a href="/explore/flats-under-1-2-crore-hinjewadi" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Premium 2 & 3 BHK flats under 1.2 Crore in Hinjewadi Pune at Krisala Hiranandani. Sector Arcadia & Colosseum from ₹79L*. MahaRERA ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-under-1-5-crore-hinjewadi" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Best 3 BHK luxury flats under 1.5 Crore in Hinjewadi Pune at The Colosseum, Krisala Hiranandani. 1,020-1,180 sq.ft. from ₹1.25Cr*....</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-under-1-crore-hinjewadi" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Best residential flats under 1 Crore in Hinjewadi Pune. Sector Arcadia at Krisala Hiranandani: 2 & 3 BHK from ₹79L*. 70% open gree...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-under-70-lakhs-hinjewadi" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Searching for flats under 70-80 Lakhs in Hinjewadi? Sector Arcadia at Krisala Hiranandani: 740 sq.ft. 2 BHK from ₹79L*. MahaRERA P...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-under-80-lakhs-hinjewadi" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Best flats under 80 Lakhs in Hinjewadi Pune. Sector Arcadia at Krisala Hiranandani: 740 sq.ft. 2 BHK from ₹79L*. MahaRERA PR126000...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-under-90-lakhs-hinjewadi" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Best flats under 90 Lakhs in Hinjewadi Pune. Sector Arcadia at Krisala Hiranandani: 2 BHK Royale (840 sq.ft.) at ₹88L*. MahaRERA P...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-cost-sheet" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-pune-cost-sheet-download" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Download 2026 cost sheet for Krisala Hiranandani Pune: 2 BHK from ₹79L*, 3 BHK ₹1.25Cr*, 4 BHK ₹2.10Cr*, Della Plots ₹1.80Cr*. Mah...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-pune-payment-plan-20-80" class="explore-card">
+              <span class="explore-badge">Pricing & Budgets</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Krisala Hiranandani Pune 20:80 subvention and construction-linked payment plans. Pay 20% on booking & 80% on possession. MahaRERA ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+          </div>
+        </div>
+        
+        <div class="explore-category-group" style="margin-bottom: 50px;">
+          <h2 class="explore-cat-heading" style="font-family: var(--font-heading); color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 20px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span>IT Park Proximity</span>
+            <span style="font-size: 0.9rem; color: var(--gold-bright); font-family: var(--font-body); font-weight: 600;">5 Dedicated Hubs</span>
+          </h2>
+          <div class="explore-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <a href="/explore/flats-near-embassy-techzone-hinjewadi" class="explore-card">
+              <span class="explore-badge">IT Park Proximity</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Luxury flats near Embassy TechZone Hinjewadi Phase 2. Krisala Hiranandani offers a 10-min signal-free commute. 2 & 3 BHK from ₹79L...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-near-quadron-business-park-hinjewadi" class="explore-card">
+              <span class="explore-badge">IT Park Proximity</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Luxury flats near Quadron Business Park Hinjewadi Phase 2. Krisala Hiranandani offers a 12-min commute. 2 & 3 BHK from ₹79L*. Maha...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi" class="explore-card">
+              <span class="explore-badge">IT Park Proximity</span>
+              <h3 class="explore-card-title">Flats Near Infosys Hinjewadi (from ₹79L*)</h3>
+              <p class="explore-card-desc">Luxury flats near Infosys Hinjewadi Phase 1 at Krisala Hiranandani. 12-min drive via PMRDA Ring Road. 2 & 3 BHK from ₹79L*. MahaRE...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi" class="explore-card">
+              <span class="explore-badge">IT Park Proximity</span>
+              <h3 class="explore-card-title">Flats Near TCS Hinjewadi Phase 3 (from ₹79L*)</h3>
+              <p class="explore-card-desc">Flats near TCS Sahyadri Park Hinjewadi Phase 3. Krisala Hiranandani Township offers a 14-min drive via PMRDA Ring Road. 2 & 3 BHK ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-apartments-near-wipro-circle-hinjewadi" class="explore-card">
+              <span class="explore-badge">IT Park Proximity</span>
+              <h3 class="explore-card-title">Flats Near Wipro Circle Hinjewadi (from ₹79L*)</h3>
+              <p class="explore-card-desc">Luxury flats near Wipro Circle Hinjewadi Phase 2. Krisala Hiranandani offers a 15-min commute to Quadron & Cognizant. 2 & 3 BHK fr...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+          </div>
+        </div>
+        
+        <div class="explore-category-group" style="margin-bottom: 50px;">
+          <h2 class="explore-cat-heading" style="font-family: var(--font-heading); color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 20px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span>Township Comparisons</span>
+            <span style="font-size: 0.9rem; color: var(--gold-bright); font-family: var(--font-body); font-weight: 600;">11 Dedicated Hubs</span>
+          </h2>
+          <div class="explore-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <a href="/explore/krisala-hiranandani-carpet-area-vs-built-up-sheet" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Verified MahaRERA carpet area sheet for Krisala Hiranandani Hinjewadi: 2 BHK (740-840 sq.ft.), 3 BHK (1,020-1,180 sq.ft.). MahaRER...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-godrej-river-royale-hinjewadi" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">【Comparison】Hiranandani vs Godrej Hinjewadi</h3>
+              <p class="explore-card-desc">Head-to-head comparison: Krisala Hiranandani (105 Acres) vs Godrej River Royale (5.5 Acres) in Hinjewadi. Compare density, ameniti...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-kasturi-the-balmoral-towers" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Compare Krisala Hiranandani vs Kasturi The Balmoral Towers Balewadi. Compare master scale, 8-acre racecourse & luxury pricing from...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-kohinoor-coral-hinjewadi" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Compare Krisala Hiranandani vs Kohinoor Coral Hinjewadi Phase 3. Land scale, 8-acre racecourse & 2, 3 BHK pricing from ₹79L* compa...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-kolte-patil-life-republic-hinjewadi" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">【Comparison】Hiranandani vs Kolte Patil Pune</h3>
+              <p class="explore-card-desc">Comparison between Krisala Hiranandani and Kolte Patil Life Republic Hinjewadi. Neoclassical architecture, 8-acre racecourse & pri...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-lodha-sylvan-hinjewadi" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">【Comparison】Hiranandani vs Lodha Sylvan Pune</h3>
+              <p class="explore-card-desc">In-depth analysis: Krisala Hiranandani Township vs Lodha Sylvan Hinjewadi. Compare usable carpet area, equestrian amenities & 2026...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-pride-purple-park-connect" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Compare Krisala Hiranandani vs Pride Purple Park Connect Hinjewadi. Master land scale, equestrian amenities & entry pricing from ₹...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-rohan-nidita-hinjewadi" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Compare Krisala Hiranandani vs Rohan Nidita Hinjewadi Phase 1. Compare usable carpet area, equestrian lifestyle & entry pricing fr...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-shapoorji-joyville-hinjewadi" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Compare Krisala Hiranandani (105 Acres) vs Shapoorji Joyville Hinjewadi (8 Acres). Land scale, 8-acre racecourse & entry pricing f...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-vilas-javdekar-yashwin" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Compare Krisala Hiranandani Township vs Vilas Javdekar Yashwin Hinjewadi. Compare 105-acre land scale, racecourse amenities & pric...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-vs-vtp-earth-one-mahalunge" class="explore-card">
+              <span class="explore-badge">Township Comparisons</span>
+              <h3 class="explore-card-title">【Comparison】Hiranandani vs VTP Earth One</h3>
+              <p class="explore-card-desc">Comprehensive benchmark: Krisala Hiranandani (105 Acres) vs VTP Earth One Mahalunge. Compare open space, racecourse living & entry...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+          </div>
+        </div>
+        
+        <div class="explore-category-group" style="margin-bottom: 50px;">
+          <h2 class="explore-cat-heading" style="font-family: var(--font-heading); color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 20px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+            <span>Buyer Guides & Due Diligence</span>
+            <span style="font-size: 0.9rem; color: var(--gold-bright); font-family: var(--font-body); font-weight: 600;">35 Dedicated Hubs</span>
+          </h2>
+          <div class="explore-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            
+            <a href="/explore/dr-niranjan-hiranandani-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-in-hinjewadi" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Premium flats in Hinjewadi Pune at 105-Acre Krisala Hiranandani Township. 2, 3 & 4 BHK homes with 8-acre racecourse from ₹79L*. Ma...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-near-hinjewadi-phase-1" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Flats near Hinjewadi Phase 1 Pune at Krisala Hiranandani: 12-min signal-free drive via PMRDA Ring Road. 2 & 3 BHK from ₹79L*. Maha...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-near-hinjewadi-phase-2" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Flats near Hinjewadi Phase 2 (Wipro Circle) at Krisala Hiranandani Township. 15-min commute to IT park. 2 & 3 BHK from ₹79L*. Maha...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/flats-near-hinjewadi-phase-3" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Flats near Hinjewadi Phase 3 (TCS & Barclays) at Krisala Hiranandani Township. 14-min drive via Ring Road. 2, 3 & 4 BHK from ₹79L*...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-booking-office-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-brochure-pdf" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-colosseum-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-communities-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-contact-number" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-flats-in-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-group-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-hinjewadi" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-luxury-apartments-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-pre-launch-offers-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-rera-number-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-sample-flat-video" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/hiranandani-township-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/house-of-hiranandani-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Hinjewadi</h3>
+              <p class="explore-card-desc">guide to Krisala Hiranandani 105-acre mega integrated neoclassical township in North Hinjewadi, Pune. Explore 2, 3, 4 BHK residenc...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-bank-loan-pre-approval-sbi-hdfc" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">SBI, HDFC, ICICI pre-approved home loans for Krisala Hiranandani Hinjewadi: Interest rates from 8.40%, 90% funding & zero processi...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-brochure-download-2026-pdf" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Download 2026 official brochure PDF for Krisala Hiranandani Township Hinjewadi: Master plan, floor plans, cost sheet & amenities. ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-construction-update-mivan-progress" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Latest 2026 construction updates & monolithic Mivan concrete formwork progress at Krisala Hiranandani Township Hinjewadi. MahaRERA...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-luxury-township-darumbre-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Darumbre (from ₹79L*)</h3>
+              <p class="explore-card-desc">105-Acre Krisala Hiranandani Township in Darumbre, North Hinjewadi. Neoclassical towers & Della villa plots from ₹79L*. MahaRERA P...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-nri-investment-guide-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">NRI Real Estate Guide 2026</h3>
+              <p class="explore-card-desc">NRI investment guide for Krisala Hiranandani Hinjewadi: FEMA compliance, NRE/NRO repatriation, 5.4% rental yields & pre-launch pri...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-pmrda-ring-road-connectivity-advantage" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">PMRDA Ring Road Corridor</h3>
+              <p class="explore-card-desc">Strategic connectivity audit of the 128m PMRDA Ring Road at Krisala Hiranandani Hinjewadi: Signal-free drive to IT Park & Expressw...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-possession-date-2028" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Verified possession dates & construction milestones for Krisala Hiranandani Hinjewadi: Sector Arcadia (Dec 2028) & Colosseum (2029...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-rental-yield-it-professionals" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">High rental yield analysis for Krisala Hiranandani Hinjewadi: 4.8%-5.4% gross yields, 450,000+ IT executive demand, and capital gr...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-sample-flat-3d-tour" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Take the 4K sample flat walkthrough & 3D virtual tour of Krisala Hiranandani Hinjewadi: 2 & 3 BHK carpet layouts from ₹79L*. MahaR...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/krisala-hiranandani-site-visit-cab-booking" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Book a free VIP AC cab for site visit to Krisala Hiranandani Township Hinjewadi. Doorstep pickup across Pune & Mumbai. Explore 105...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/luxury-apartments-in-hinjewadi" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Ultra-luxury apartments in Hinjewadi at Krisala Hiranandani: Neoclassical towers, 8-acre racecourse, and Della amenities from ₹79L...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/luxury-flats-above-2-crore-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Signature duplex penthouses and 4 BHK sky suites above 2 Crore in Pune at Sector Icon, Krisala Hiranandani. From ₹2.10Cr*. MahaRER...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/sector-arcadia-hinjewadi" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Sector Arcadia at Krisala Hiranandani Hinjewadi. 2 & 3 BHK luxury neoclassical homes with Mivan construction from ₹79L*. MahaRERA ...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/sector-icon-hinjewadi" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Sector Icon at Krisala Hiranandani Hinjewadi: Double-height 4 BHK sky duplex penthouses with private terraces from ₹2.10Cr*. MahaR...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/the-colosseum-hinjewadi" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">The Colosseum at Krisala Hiranandani Hinjewadi: Roman neoclassical towers with amphitheatre podium. 2, 3 & 4 BHK from ₹79L*. MahaR...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+            <a href="/explore/townships-in-hinjewadi-pune" class="explore-card">
+              <span class="explore-badge">Buyer Guides & Due Diligence</span>
+              <h3 class="explore-card-title">Krisala Hiranandani Township Pune</h3>
+              <p class="explore-card-desc">Explore 105+ Acre Krisala Hiranandani integrated equestrian township in North Hinjewadi, Pune. 2, 3 & 4 BHK homes & plots from ₹79...</p>
+              <span class="explore-link-arrow">Explore Guide &amp; Cost Sheet &rarr;</span>
+            </a>
+            
+          </div>
+        </div>
+        
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container" style="text-align: center;">
+    <p style="margin-bottom: 12px; color: #fff; font-size: 0.95rem;"><strong>Krisala Hiranandani Township Pune</strong> • PMRDA 128m Ring Road Corridor, North Hinjewadi, Darumbre, Pune 410506</p>
+    <p style="margin-bottom: 14px; font-size: 0.82rem; line-height: 1.6;">Marketed by Authorised Real Estate Agent: Propsmart Realty (MahaRERA Reg: A031262401295). Project MahaRERA Registrations: Sector Arcadia (PR1260002500600), The Colosseum Phase 4 (PR1260002600818), Sector Everlyn / Della (PR1260002502438). Registered on maharera.maharashtra.gov.in.</p>
+    <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; font-size: 0.82rem; margin-top: 15px;">
+      <a href="/" style="color: #dfc07b; text-decoration: none;">Township</a>
+      <a href="/pricing" style="color: #dfc07b; text-decoration: none;">Price List 2026</a>
+      <a href="/masterplan" style="color: #dfc07b; text-decoration: none;">Master Plan</a>
+      <a href="/floor-plans" style="color: #dfc07b; text-decoration: none;">Floor Plans</a>
+      <a href="/colosseum" style="color: #dfc07b; text-decoration: none;">The Colosseum</a>
+      <a href="/arcadia" style="color: #dfc07b; text-decoration: none;">Sector Arcadia</a>
+      <a href="/della-racecourse" style="color: #dfc07b; text-decoration: none;">Della Racecourse</a>
+      <a href="/site-address" style="color: #dfc07b; text-decoration: none;">Site Address</a>
+      <a href="/reviews" style="color: #dfc07b; text-decoration: none;">Reviews</a>
+      <a href="/disclaimer" style="color: #888; text-decoration: none;">Disclaimer</a>
+      <a href="/privacy-policy" style="color: #888; text-decoration: none;">Privacy Policy</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 0.78rem; color: #666;">&copy; 2026 Krisala Hiranandani Township. All rights reserved. Prices subject to change without notice.</p>
+  </div>
+</footer>
+
+</body>
+</html>

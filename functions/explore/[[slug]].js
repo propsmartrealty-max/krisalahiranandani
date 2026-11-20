@@ -324,7 +324,20 @@ export async function onRequest(context) {
  return Response.redirect('https://krisalahiranandanitownships.com/', 301);
  }
 
- // 1. Check if pre-rendered static HTML file exists in explore/
+ // 1a. Check for explore directory root index (/explore or /explore/)
+ if (!slug || slug === 'index') {
+ try {
+ const indexResponse = await env.ASSETS.fetch(new URL('/explore/index.html', request.url));
+ if (indexResponse.ok) {
+ const response = new Response(indexResponse.body, indexResponse);
+ response.headers.set('Cache-Control', 'public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400');
+ response.headers.set('X-Edge-Source', 'kxh-prerendered-static');
+ return response;
+ }
+ } catch (e) {}
+ }
+
+ // 1b. Check if pre-rendered static HTML file exists in explore/
  try {
  const staticPageResponse = await env.ASSETS.fetch(new URL(`/explore/${slug}.html`, request.url));
  if (staticPageResponse.ok) {

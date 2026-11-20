@@ -292,7 +292,7 @@ CORE_STATIC_PAGES = [
         "image": {
             "loc": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
             "title": "Hiranandani Pune Integrated Township Hinjewadi",
-            "caption": "Official Portal for Hiranandani Pune Township in North Hinjewadi featuring Neoclassical 2, 3, 4 BHK residences and 8-acre racecourse"
+            "caption": "Hiranandani Pune Township in North Hinjewadi featuring Neoclassical 2, 3, 4 BHK residences and 8-acre racecourse"
         }
     },
     {
@@ -301,7 +301,7 @@ CORE_STATIC_PAGES = [
         "priority": "0.99",
         "image": {
             "loc": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
-            "title": "Hiranandani Price List 2026 Official Cost Sheet",
+            "title": "Hiranandani Price List 2026 Cost Sheet",
             "caption": "Complete 2026 price list and payment plans for 2, 3, 4 BHK residences and Della villa plots at Krisala Hiranandani Township Hinjewadi, Pune"
         }
     },
@@ -381,7 +381,7 @@ CORE_STATIC_PAGES = [
         "priority": "0.95",
         "image": {
             "loc": f"{BASE_URL}/public/everlyn/hero/hero_main_hq.webp",
-            "title": "Krisala Hiranandani Official Price List and Cost Sheets 2026",
+            "title": "Krisala Hiranandani Price List and Cost Sheets 2026",
             "caption": "MahaRERA verified 2026 price list, CLP payment schedule, stamp duty breakup, and bank pre-approved loans"
         }
     },
@@ -505,17 +505,17 @@ CORE_STATIC_PAGES = [
 
 # Tier-1 Strategic Programmatic Corridors to feature directly in Main Sitemap (sitemap.xml)
 TIER1_PROGRAMMATIC_CORRIDORS = [
-    ("hiranandani-pune", "Hiranandani Pune Official Township Website | Krisala Hiranandani", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "1.00"),
-    ("hiranandani-hinjewadi", "Hiranandani Hinjewadi Pune Official Website | 105-Acre Integrated Township", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "1.00"),
+    ("hiranandani-pune", "Hiranandani Pune Township Portal | Krisala Hiranandani", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "1.00"),
+    ("hiranandani-hinjewadi", "Hiranandani Hinjewadi Pune Master Guide | 105-Acre Integrated Township", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "1.00"),
     ("hiranandani-township-pune", "Hiranandani Township Pune | 105 Acres Luxury Living & Racecourse", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp", "1.00"),
     ("hiranandani-township-hinjewadi", "Hiranandani Township Hinjewadi | 2, 3 & 4 BHK Luxury Apartments", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp", "1.00"),
-    ("krisala-hiranandani", "Krisala Hiranandani Official Website | 105-Acre Equestrian Township Hinjewadi", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "1.00"),
+    ("krisala-hiranandani", "Krisala Hiranandani Master Township | 105-Acre Equestrian Township Hinjewadi", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "1.00"),
     ("krisala-hiranandani-township", "Krisala Hiranandani Township Hinjewadi Pune | Masterplan & Prices", "https://krisalahiranandanitownships.com/public/township_grand/township_aerial_birds_eye_master_view.webp", "1.00"),
     ("krisala-hiranandani-pune", "Krisala Hiranandani Pune | Joint Venture Luxury Township", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp", "1.00"),
     ("krisala-hiranandani-hinjewadi", "Krisala Hiranandani Hinjewadi | Neoclassical Homes & Villa Plots", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_sunset_grand_elevation.webp", "1.00"),
     ("house-of-hiranandani-pune", "House of Hiranandani Pune | Joint Venture Krisala Developers", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.99"),
     ("house-of-hiranandani-hinjewadi", "House of Hiranandani Hinjewadi | Neoclassical Residences", "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_daylight_architectural_elevation.webp", "0.99"),
-    ("hiranandani-communities-pune", "Hiranandani Communities Pune Official Project | Hinjewadi North", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.99"),
+    ("hiranandani-communities-pune", "Hiranandani Communities Pune Project | Hinjewadi North", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.99"),
     ("hiranandani-communities-hinjewadi", "Hiranandani Communities Hinjewadi | Integrated 105-Acre Township", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_exterior.webp", "0.99"),
     ("dr-niranjan-hiranandani-pune", "Dr. Niranjan Hiranandani Pune Project | Krisala Hiranandani Township", "https://krisalahiranandanitownships.com/public/everlyn/hero/hero_main_hq.webp", "0.99"),
     ("dr-niranjan-hiranandani-hinjewadi", "Dr. Niranjan Hiranandani Hinjewadi Project | 105-Acre Township", "https://krisalahiranandanitownships.com/public/imported/dr-niranjan-hiranandani.webp", "0.99"),
@@ -633,7 +633,7 @@ def generate_main_sitemap():
         img_title = ET.SubElement(img_elem, "{http://www.google.com/schemas/sitemap-image/1.1}title")
         img_title.text = f"{title} | Krisala Hiranandani"
         img_cap = ET.SubElement(img_elem, "{http://www.google.com/schemas/sitemap-image/1.1}caption")
-        img_cap.text = f"Official verified guide and specifications for {title} at Krisala Hiranandani Township Hinjewadi, Pune"
+        img_cap.text = f"Verified guide and specifications for {title} at Krisala Hiranandani Township Hinjewadi, Pune"
 
     tree = ET.ElementTree(root)
     ET.indent(tree, space="  ", level=0)
