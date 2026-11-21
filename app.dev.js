@@ -1265,7 +1265,7 @@ document.addEventListener('DOMContentLoaded', () => {
  submitBtn.disabled = true;
 
  const formData = new FormData(exitForm);
- const targetUrl = exitForm.action || 'https://formsubmit.co/propsmartrealty@gmail.com';
+ const targetUrl = exitForm.action || 'https://formsubmit.co/+91 77440 09295';
 
  try {
  const response = await fetch(targetUrl, {

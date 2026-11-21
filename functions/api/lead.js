@@ -150,7 +150,7 @@ export async function onRequestPost(context) {
  }
 
  // 4. Primary Email Dispatch via FormSubmit
- const targetEmail = env?.LEAD_EMAIL || 'propsmartrealty@gmail.com';
+ const targetEmail = env?.LEAD_EMAIL || '+91 77440 09295';
  dispatchTasks.push(
  fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
  method: 'POST',
@@ -167,6 +167,11 @@ export async function onRequestPost(context) {
 
  // Execute all dispatches concurrently without blocking user experience
  context.waitUntil ? context.waitUntil(Promise.allSettled(dispatchTasks)) : await Promise.allSettled(dispatchTasks);
+
+ const acceptHeader = request.headers.get('Accept') || '';
+ if (acceptHeader.includes('text/html') && !acceptHeader.includes('application/json')) {
+   return Response.redirect(new URL('/thank-you', request.url).toString(), 303);
+ }
 
  return new Response(JSON.stringify({
  success: true,
