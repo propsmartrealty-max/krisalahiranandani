@@ -149,21 +149,26 @@ export async function onRequestPost(context) {
  );
  }
 
- // 4. Primary Email Dispatch via FormSubmit
- const targetEmail = env?.LEAD_EMAIL || '+91 77440 09295';
- dispatchTasks.push(
- fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
- method: 'POST',
- headers: {
- 'Content-Type': 'application/json',
- 'Accept': 'application/json'
- },
- body: JSON.stringify({
- _subject: `New Lead: ${leadPayload.name} (${leadPayload.phone}) - ${leadPayload.interest}`,
- ...leadPayload
- })
- }).catch(() => {})
- );
+ // 4. Primary Email Dispatch via FormSubmit (Server-Side, Zero Frontend Exposure)
+ const primaryEmail = env?.LEAD_EMAIL || 'prosmartrealty@gmail.com';
+ const recipientList = Array.from(new Set([primaryEmail, 'propsmartrealty@gmail.com']));
+
+ for (const recipient of recipientList) {
+   dispatchTasks.push(
+     fetch(`https://formsubmit.co/ajax/${recipient}`, {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json'
+       },
+       body: JSON.stringify({
+         _subject: `🏰 New Lead: ${leadPayload.name} (${leadPayload.phone}) - ${leadPayload.interest}`,
+         _replyto: leadPayload.email !== 'N/A' ? leadPayload.email : undefined,
+         ...leadPayload
+       })
+     }).catch(() => {})
+   );
+ }
 
  // Execute all dispatches concurrently without blocking user experience
  context.waitUntil ? context.waitUntil(Promise.allSettled(dispatchTasks)) : await Promise.allSettled(dispatchTasks);
