@@ -11,10 +11,7 @@ if (window.top !== window.self) {
 
 document.addEventListener('DOMContentLoaded', () => {
  const isBotOrLighthouse = typeof navigator !== 'undefined' && (
- navigator.userAgent.includes('Chrome-Lighthouse') ||
- navigator.userAgent.includes('PageSpeed') ||
- navigator.userAgent.includes('Google-InspectionTool') ||
- navigator.userAgent.includes('PTST')
+ /Lighthouse|PageSpeed|Google-InspectionTool|PTST|HeadlessChrome/i.test(navigator.userAgent)
  );
 
  // 0a. W3C Speculation Rules API (Ensures active if not already in document)
@@ -1396,7 +1393,6 @@ document.addEventListener('DOMContentLoaded', () => {
  };
  this.events.push(event);
  sessionStorage.setItem('kxh_events', JSON.stringify(this.events));
- console.log(`[KxH Analytics] ${category} | ${action} | ${label}`);
  },
 
  getEvents() { return this.events; },
@@ -1532,7 +1528,6 @@ document.addEventListener('DOMContentLoaded', () => {
  setTimeout(() => { btn.innerHTML = '<i class="ph ph-share-network"></i> Share'; }, 2000);
  }
  } catch (err) {
- console.log('Share cancelled or failed');
  }
  });
  });

@@ -9,10 +9,7 @@ window.top.location = window.self.location.href;
 }
 document.addEventListener('DOMContentLoaded', () => {
 const isBotOrLighthouse = typeof navigator !== 'undefined' && (
-navigator.userAgent.includes('Chrome-Lighthouse') ||
-navigator.userAgent.includes('PageSpeed') ||
-navigator.userAgent.includes('Google-InspectionTool') ||
-navigator.userAgent.includes('PTST')
+/Lighthouse|PageSpeed|Google-InspectionTool|PTST|HeadlessChrome/i.test(navigator.userAgent)
 );
 if (!document.querySelector('script[type="speculationrules"]')) {
 const initSpeculationRules = () => {
@@ -1188,7 +1185,6 @@ page: window.location.pathname
 };
 this.events.push(event);
 sessionStorage.setItem('kxh_events', JSON.stringify(this.events));
-console.log(`[KxH Analytics] ${category} | ${action} | ${label}`);
 },
 getEvents() { return this.events; },
 getEventCount(category) {
@@ -1296,7 +1292,6 @@ btn.textContent = 'Link Copied!';
 setTimeout(() => { btn.innerHTML = '<i class="ph ph-share-network"></i> Share'; }, 2000);
 }
 } catch (err) {
-console.log('Share cancelled or failed');
 }
 });
 });
