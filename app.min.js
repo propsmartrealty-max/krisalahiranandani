@@ -741,7 +741,7 @@ break;
 const waBtn = document.getElementById('quizWhatsAppBtn');
 if (waBtn) {
 const waText = encodeURIComponent(
-`Hi, I completed the Dream Home Matcher on your Experience Portal. My top match is:\n` +
+`Hello, I completed the Dream Home Matcher for Krisala Hiranandani Township Hinjewadi, Pune. My top match is:\n` +
 `• Unit: ${sector} (${config})\n` +
 `• Carpet Area: ${carpet}\n` +
 `• Price: ${price}\n` +
@@ -1409,10 +1409,10 @@ else if (path.includes('masterplan')) topic = "105-Acre Masterplan & Sector Map"
 else if (path.includes('neighborhood')) topic = "North Hinjewadi Neighborhood & Appreciation";
 else if (path.includes('compare')) topic = "Project Comparison Matrix";
 else if (path.includes('explore')) topic = "Exclusive Exploration Portal";
-const dynamicMsg = `Hi, I am inquiring about ${topic} at Krisala Hiranandani Township Hinjewadi. Please share available inventory, floor plans, and current pricing.`;
+const dynamicMsg = `Hello, I am interested in ${topic} at Krisala Hiranandani Township Hinjewadi, Pune. Please share available inventory, floor plans, and current pricing.`;
 const encoded = encodeURIComponent(dynamicMsg);
 document.querySelectorAll('a[href*="wa.me"], a.float-whatsapp, a[data-whatsapp-smart]').forEach(waLink => {
-waLink.href = `https://wa.me/917744009295?text=Hello%2C%20I%20am%20interested%20in%20Krisala%20Hiranandani%20Township%20Hinjewadi%2C%20Pune.%20Please%20share%20verified%20floor%20plans%2C%20pricing%20details%2C%20and%20cost%20sheet.`;
+waLink.href = `https://wa.me/917744009295?text=${encoded}`;
 });
 })();
 (function initEdgeLeadSubmission() {
