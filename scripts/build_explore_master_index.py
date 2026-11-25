@@ -151,9 +151,9 @@ body {{ background-color: var(--bg-dark); color: var(--text-main); font-family: 
 .btn-primary {{ background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #000; font-weight: 700; padding: 12px 24px; border-radius: 4px; border: none; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }}
 .footer {{ background: #050608; border-top: 1px solid rgba(197, 160, 89, 0.2); padding: 60px 0 30px; font-size: 0.88rem; color: var(--text-muted); margin-top: 60px; }}
 </style>
-<title>Township Explorer &amp; Real Estate Knowledge Directory | Krisala Hiranandani Pune</title>
-<meta name="description" content="Explore complete real estate directory for Krisala Hiranandani 105-acre mega township in North Hinjewadi, Pune. Browse 100+ guides covering 2, 3, 4 BHK apartments, Della villa plots, pricing, and MahaRERA certifications."/>
-<meta name="keywords" content="Krisala Hiranandani Township, Krisala Hiranandani Township Pune, Hiranandani Township Pune, Hiranandani Pune, Krisala Hiranandani Pune, Krisala Pune, Krisala Hinranandani Township, Della Racecourse Townships Pune, Della Racecourse Pune, Della Townships Pune, The Colosseum Hinjewadi, Sector Arcadia Hinjewadi, Sector Icon Hinjewadi, Dr Niranjan Hiranandani Pune, Della 5000 sqft Villa Plots 3.75Cr, MahaRERA PR1260002500600, MahaRERA PR1260002600818, MahaRERA PR1260002502438, MahaRERA A031262401295"/>
+<title>Township Explorer &amp; Buyer Directory | Krisala Hiranandani Pune</title>
+<meta name="description" content="Explore 68 curated residential &amp; investment guides for Krisala Hiranandani 105-acre township in North Hinjewadi, Pune: 2–4 BHK apartments, Della villa plots, pricing &amp; RERA sanctions."/>
+<meta name="keywords" content="Krisala Hiranandani Township Pune, Hiranandani Pune guides, Hinjewadi flats directory, Della 5000 sq.ft. villa plots"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <link href="https://krisalahiranandanitownships.com/explore" id="seoCanonical" rel="canonical"/>
 <link href="/favicon.png" rel="icon" sizes="32x32" type="image/png"/>
@@ -165,8 +165,13 @@ body {{ background-color: var(--bg-dark); color: var(--text-main); font-family: 
       "@type": "CollectionPage",
       "@id": "https://krisalahiranandanitownships.com/explore#webpage",
       "url": "https://krisalahiranandanitownships.com/explore",
-      "name": "Township Explorer & Real Estate Knowledge Directory | Krisala Hiranandani",
-      "description": "Comprehensive real estate intelligence directory covering 100+ specialized guides on 2, 3, 4 BHK residences, Della villa plots, prices, and approvals.",
+      "name": "Township Explorer & Buyer Directory | Krisala Hiranandani Pune",
+      "description": "Curated real estate directory covering 68 buyer, transit, payment plan, and comparison guides for North Hinjewadi.",
+      "dateModified": "2026-11-25",
+      "speakable": {{
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#ai-overview-summary", "h1"]
+      }},
       "breadcrumb": {{
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -176,32 +181,12 @@ body {{ background-color: var(--bg-dark); color: var(--text-main); font-family: 
       }}
     }},
     {{
-      "@type": "RealEstateListing",
-      "@id": "https://krisalahiranandanitownships.com/explore#realestate",
-      "name": "Krisala Hiranandani Township Directory",
-      "url": "https://krisalahiranandanitownships.com/explore",
-      "alternateName": [
-        "Krisala Hiranandani",
-        "Hiranandani Krisala",
-        "Krisala Hiranandani Township Pune",
-        "Hiranandani Township Pune",
-        "Krisala Hiranandani Pune",
-        "Hiranandani Pune",
-        "Della Racecourse Townships Pune",
-        "The Colosseum Hinjewadi",
-        "Sector Arcadia Hinjewadi",
-        "Sector Icon Hinjewadi"
-      ],
-      "knowsAbout": [
-        "Krisala Hiranandani Township Pune",
-        "105-Acre Neoclassical Integrated Township Pune",
-        "8-Acre Private Turf Racecourse Hinjewadi",
-        "5000 sqft Villa Plots Della 3.75Cr",
-        "MahaRERA PR1260002500600",
-        "MahaRERA PR1260002600818",
-        "MahaRERA PR1260002502438",
-        "MahaRERA Agent Registration A031262401295"
-      ]
+      "@type": "RealEstateAgent",
+      "@id": "https://krisalahiranandanitownships.com/explore#agent",
+      "name": "Propsmart Realty — Authorised Channel Partner (Krisala Hiranandani Township)",
+      "telephone": "+917744009295",
+      "identifier": "MahaRERA Agent A031262401295",
+      "url": "https://krisalahiranandanitownships.com/explore"
     }}
   ]
 }}
@@ -216,7 +201,7 @@ body {{ background-color: var(--bg-dark); color: var(--text-main); font-family: 
     </a>
     <div class="header-actions">
       <a href="/pricing" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Price List 2026</a>
-      <a href="https://wa.me/917744009295?text=Hello%2C+I+am+browsing+the+Krisala+Hiranandani+Township+Explorer+and+would+like+the+brochure+and+cost+sheet." class="btn-primary" style="background: #25D366; color: #fff; padding: 8px 16px; font-size: 0.85rem;" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="https://wa.me/917744009295?text=Hello%2C+I+am+browsing+the+Krisala+Hiranandani+Township+Hinjewadi%2C+Pune+Explorer+and+would+like+the+brochure+and+cost+sheet." class="btn-primary" style="background: #25D366; color: #fff; padding: 8px 16px; font-size: 0.85rem;" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     </div>
   </div>
 </header>
@@ -229,9 +214,14 @@ body {{ background-color: var(--bg-dark); color: var(--text-main); font-family: 
         <span class="badge-item">MahaRERA PR1260002500600</span>
         <span class="badge-item">MahaRERA Agent A031262401295</span>
       </div>
-      <h1 class="hero-title">Township Explorer &amp; <span>Knowledge Directory</span></h1>
-      <p class="hero-subtitle">Comprehensive search portal for <strong>Krisala Hiranandani Township Pune</strong>. Explore hyper-targeted corridors, price sheets, floor plans, and connectivity guides across western Pune.</p>
+      <h1 class="hero-title">Township Explorer &amp; <span>68 Curated Buyer Guides</span></h1>
+      <p class="hero-subtitle">Structured micro-market, configuration, payment schedule, and IT-corridor guides across the 105-acre estate in North Hinjewadi, Pune.</p>
       
+      <div id="ai-overview-summary" style="max-width: 880px; margin: 0 auto 28px; background: rgba(16, 18, 26, 0.9); border: 1px solid rgba(197, 160, 89, 0.35); border-radius: 10px; padding: 20px 24px; text-align: left;">
+        <h2 style="font-family: var(--font-heading); color: var(--gold-bright); font-size: 1.3rem; margin-bottom: 8px;">What topics are covered in the Township Explorer Directory?</h2>
+        <p style="color: #e2e8f0; font-size: 0.92rem; line-height: 1.65; margin: 0;">This curated index organizes 68 dedicated residential guides covering 2, 3, and 4 BHK apartments (from ₹79L*), 5,000 sq.ft. Della Villa Plots (from ₹3.75 Cr*), 20:80 payment schedules, IT park commute distances to Infosys and TCS, NRI FEMA norms, and Pune West project comparisons.</p>
+      </div>
+
       <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 25px;">
         <a href="/pricing" style="color: #dfc07b; background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.88rem; font-weight: 600;">Pricing Sheet (from ₹79L*)</a>
         <a href="/colosseum" style="color: #dfc07b; background: rgba(197,160,89,0.1); border: 1px solid rgba(197,160,89,0.3); padding: 8px 16px; border-radius: 4px; text-decoration: none; font-size: 0.88rem; font-weight: 600;">The Colosseum Phase 4</a>

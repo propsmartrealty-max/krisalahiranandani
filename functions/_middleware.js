@@ -314,6 +314,161 @@ function applyEdgeHtmlRewriter(response, url, isWhitelistedBot, request) {
  return rewriter.transform(response);
 }
 
+// Curated unique long-tail /explore/ hubs allowed to serve HTTP 200
+const CURATED_EXPLORE_SLUGS = new Set([
+ '2-bhk-flats-in-hinjewadi',
+ '2-bhk-flats-in-mahalunge',
+ '2-bhk-flats-in-wakad',
+ '3-bhk-flats-in-hinjewadi',
+ '3-bhk-flats-in-mahalunge',
+ '3-bhk-flats-in-wakad',
+ 'bungalow-plots-in-hinjewadi-pune',
+ 'bungalow-plots-near-mumbai-pune-expressway',
+ 'della-luxury-resort-villa-plots-pune',
+ 'della-polo-club-residences-hinjewadi',
+ 'della-township-bungalow-plots-hinjewadi',
+ 'della-township-lots-hinjewadi',
+ 'duplex-apartments-in-hinjewadi',
+ 'equestrian-estate-plots-pune',
+ 'flats-in-balewadi-pune',
+ 'flats-in-baner-pune',
+ 'flats-in-hinjewadi',
+ 'flats-in-mahalunge-pune',
+ 'flats-in-punawale-near-hinjewadi',
+ 'flats-in-punawale-pune',
+ 'flats-in-ravet-pune',
+ 'flats-in-tathawade-pune',
+ 'flats-in-wakad-near-hinjewadi',
+ 'flats-in-wakad-pune',
+ 'flats-near-embassy-techzone-hinjewadi',
+ 'flats-near-hinjewadi-phase-1',
+ 'flats-near-hinjewadi-phase-2',
+ 'flats-near-hinjewadi-phase-3',
+ 'flats-near-mumbai-pune-expressway',
+ 'flats-near-quadron-business-park-hinjewadi',
+ 'flats-under-1-2-crore-hinjewadi',
+ 'flats-under-1-5-crore-hinjewadi',
+ 'flats-under-1-crore-hinjewadi',
+ 'flats-under-70-lakhs-hinjewadi',
+ 'flats-under-80-lakhs-hinjewadi',
+ 'flats-under-90-lakhs-hinjewadi',
+ 'gated-community-plots-in-hinjewadi',
+ 'hiranandani-marunji',
+ 'hiranandani-pune-payment-plan-20-80',
+ 'krisala-hiranandani-apartments-near-infosys-hinjewadi',
+ 'krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi',
+ 'krisala-hiranandani-apartments-near-wipro-circle-hinjewadi',
+ 'krisala-hiranandani-bank-loan-pre-approval-sbi-hdfc',
+ 'krisala-hiranandani-carpet-area-vs-built-up-sheet',
+ 'krisala-hiranandani-construction-update-mivan-progress',
+ 'krisala-hiranandani-equestrian-turf-racecourse-residences',
+ 'krisala-hiranandani-luxury-township-darumbre-pune',
+ 'krisala-hiranandani-nri-investment-guide-pune',
+ 'krisala-hiranandani-pmrda-ring-road-connectivity-advantage',
+ 'krisala-hiranandani-possession-date-2028',
+ 'krisala-hiranandani-rental-yield-it-professionals',
+ 'krisala-hiranandani-sample-flat-3d-tour',
+ 'krisala-hiranandani-site-visit-cab-booking',
+ 'krisala-hiranandani-vs-kasturi-the-balmoral-towers',
+ 'krisala-hiranandani-vs-kohinoor-coral-hinjewadi',
+ 'krisala-hiranandani-vs-pride-purple-park-connect',
+ 'krisala-hiranandani-vs-rohan-nidita-hinjewadi',
+ 'krisala-hiranandani-vs-shapoorji-joyville-hinjewadi',
+ 'krisala-hiranandani-vs-vilas-javdekar-yashwin',
+ 'luxury-apartments-in-hinjewadi',
+ 'luxury-flats-above-2-crore-pune',
+ 'luxury-penthouses-in-pune',
+ 'na-plots-in-hinjewadi-pune',
+ 'plots-in-hinjewadi-pune',
+ 'residential-plots-in-hinjewadi-pune',
+ 'townships-in-hinjewadi-pune',
+ 'villa-plots-in-hinjewadi-pune',
+ 'villa-plots-in-pune-west'
+]);
+
+const EXACT_SLUGS_TO_CANONICAL = {
+ 'flats-in-marunji-hinjewadi': '/explore/hiranandani-marunji',
+ 'krisala-hiranandani-vs-godrej-river-royale-hinjewadi': '/compare/vs-godrej-river-royale',
+ 'krisala-hiranandani-vs-godrej-river-royale-mahalunge': '/compare/vs-godrej-river-royale',
+ 'krisala-hiranandani-vs-kolte-patil-life-republic-hinjewadi': '/compare/vs-kolte-patil-life-republic',
+ 'krisala-hiranandani-vs-kolte-patil-life-republic': '/compare/vs-kolte-patil-life-republic',
+ 'krisala-hiranandani-vs-lodha-sylvan-hinjewadi': '/compare/vs-lodha-sylvan',
+ 'krisala-hiranandani-vs-vtp-earth-one-mahalunge': '/compare/vs-vtp-earth-one',
+ 'krisala-hiranandani-duplex-penthouses-hinjewadi': '/explore/duplex-apartments-in-hinjewadi',
+ 'krisala-hiranandani-apartments-near-tcs-sahyadri-park-hinjewadi': '/explore/krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi',
+ 'krisala-hiranandani-apartments-near-cognizant-hinjewadi': '/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi',
+ 'krisala-hiranandani-apartments-near-barclays-hinjewadi': '/explore/krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi',
+ 'krisala-hiranandani-apartments-near-pmrda-ring-road': '/explore/krisala-hiranandani-pmrda-ring-road-connectivity-advantage',
+ 'krisala-hiranandani-apartments-near-wakad-hinjewadi': '/explore/flats-in-wakad-near-hinjewadi',
+ 'krisala-hiranandani-apartments-near-baner-pune': '/explore/flats-in-baner-pune',
+ 'krisala-hiranandani-apartments-near-embassy-tech-zone': '/explore/flats-near-embassy-techzone-hinjewadi',
+ 'krisala-hiranandani-apartments-near-darumbre-marunji': '/explore/krisala-hiranandani-luxury-township-darumbre-pune',
+ 'krisala-hiranandani-apartments-near-mumbai-pune-expressway': '/explore/flats-near-mumbai-pune-expressway',
+ 'krisala-hiranandani-flats-for-sale-in-pune': '/explore/flats-in-hinjewadi',
+ 'krisala-hiranandani-luxury-apartments-in-pune': '/explore/luxury-apartments-in-hinjewadi'
+};
+
+function resolveCanonicalDestination(slug) {
+ if (EXACT_SLUGS_TO_CANONICAL[slug]) return EXACT_SLUGS_TO_CANONICAL[slug];
+ if (slug.includes('colosseum') || slug.includes('collosum') || slug.includes('phase-4')) return '/colosseum';
+ if (slug.includes('arcadia') || slug.includes('2-bhk') || slug.includes('2bhk') || slug.includes('3-bhk') || slug.includes('3bhk')) {
+  if (slug.includes('price') || slug.includes('cost')) return '/pricing';
+  return slug.includes('3-bhk') && !slug.includes('arcadia') ? '/colosseum' : '/arcadia';
+ }
+ if (slug.includes('sector-icon') || slug.includes('4-bhk') || slug.includes('4bhk') || slug.includes('5-bhk') || slug.includes('5bhk') || slug.includes('duplex') || slug.includes('penthouse') || slug.includes('sky-villa')) return '/icon';
+ if (slug.includes('everlyn') || slug.includes('everland')) return '/everlyn';
+ if (slug.includes('racecourse') && slug.includes('della')) return '/della-racecourse';
+ if (slug.includes('della') || slug.includes('villa-plot') || slug.includes('bungalow-plot') || slug.includes('polo')) return '/della';
+ if (slug.includes('racecourse') || slug.includes('equestrian')) return '/racecourse';
+ if (slug.includes('price') || slug.includes('cost') || slug.includes('emi') || slug.includes('payment') || slug.includes('token') || slug.includes('offer')) return '/pricing';
+ if (slug.includes('floor-plan') || slug.includes('carpet-area')) return '/floor-plans';
+ if (slug.includes('masterplan') || slug.includes('master-plan')) return '/masterplan';
+ if (slug.includes('rera') || slug.includes('possession') || slug.includes('construction') || slug.includes('7-12')) return '/construction-status';
+ if (slug.includes('review') || slug.includes('rating')) return '/reviews';
+ if (slug.includes('site-address') || slug.includes('location-map') || slug.includes('booking-office') || slug.includes('sales-office') || slug.includes('contact')) return '/site-address';
+ if (slug.includes('metro') || slug.includes('ring-road') || slug.includes('expressway') || slug.includes('connectivity') || slug.includes('airport') || slug.includes('infosys') || slug.includes('wipro') || slug.includes('tcs') || slug.includes('cognizant') || slug.includes('barclays')) return '/connectivity';
+ if (slug.includes('nri') || slug.includes('usd') || slug.includes('aed')) return '/nri';
+ if (slug.includes('vs-godrej')) return '/compare/vs-godrej-river-royale';
+ if (slug.includes('vs-lodha')) return '/compare/vs-lodha-sylvan';
+ if (slug.includes('vs-kolte')) return '/compare/vs-kolte-patil-life-republic';
+ if (slug.includes('vs-vtp')) return '/compare/vs-vtp-earth-one';
+ if (slug.includes('vs-') || slug.includes('compare') || slug.includes('comparison')) return '/compare';
+ if (slug.includes('amenities') || slug.includes('clubhouse')) return '/amenities';
+ if (slug.includes('sample-flat') || slug.includes('gallery') || slug.includes('virtual-tour')) return '/gallery';
+ if (slug.includes('dr-niranjan') || slug.includes('niranjan-hiranandani') || slug.includes('house-of-hiranandani') || slug.includes('communities-pune') || slug.includes('group-pune') || slug === 'hiranandani-pune' || slug === 'hiranandani-township-pune') return '/hiranandani-pune';
+ if (slug.includes('hinjewadi-real-estate')) return '/hinjewadi-real-estate';
+ if (slug.includes('pune-real-estate') || slug.includes('flats-in-pune') || slug.includes('flats-for-sale') || slug.includes('luxury-apartments-in-pune')) return '/pune-real-estate';
+ return '/';
+}
+
+const CLONE_HUB_REDIRECTS = {
+ '/krisala-hiranandani-pune': '/',
+ '/krisala-hiranandani-township-pune': '/',
+ '/krisala-hiranandani-pune/colosseum': '/colosseum',
+ '/krisala-hiranandani-township-pune/colosseum': '/colosseum',
+ '/krisala-hiranandani-pune/arcadia': '/arcadia',
+ '/krisala-hiranandani-township-pune/arcadia': '/arcadia',
+ '/krisala-hiranandani-pune/icon': '/icon',
+ '/krisala-hiranandani-township-pune/icon': '/icon',
+ '/krisala-hiranandani-pune/della': '/della',
+ '/krisala-hiranandani-township-pune/della': '/della',
+ '/krisala-hiranandani-pune/amenities': '/amenities',
+ '/krisala-hiranandani-township-pune/amenities': '/amenities',
+ '/krisala-hiranandani-pune/connectivity': '/connectivity',
+ '/krisala-hiranandani-township-pune/connectivity': '/connectivity',
+ '/krisala-hiranandani-pune/construction-status': '/construction-status',
+ '/krisala-hiranandani-township-pune/construction-status': '/construction-status',
+ '/krisala-hiranandani-pune/floor-plans': '/floor-plans',
+ '/krisala-hiranandani-township-pune/floor-plans': '/floor-plans',
+ '/krisala-hiranandani-pune/price-list-2026': '/hiranandani-price-list-2026',
+ '/krisala-hiranandani-township-pune/price-list-2026': '/hiranandani-price-list-2026',
+ '/krisala-hiranandani-pune/reviews': '/reviews',
+ '/krisala-hiranandani-township-pune/reviews': '/reviews',
+ '/krisala-hiranandani-pune/site-address': '/site-address',
+ '/krisala-hiranandani-township-pune/site-address': '/site-address',
+ '/della-racecourse-pune': '/della-racecourse'
+};
+
 export async function onRequest(context) {
  const { request, next } = context;
  const url = new URL(request.url);
@@ -342,6 +497,29 @@ export async function onRequest(context) {
  canonicalUrl.hostname = 'krisalahiranandanitownships.com';
  canonicalUrl.protocol = 'https:';
  return Response.redirect(canonicalUrl.toString(), 301);
+ }
+
+ // 1b. Compute normalized clean path FIRST for single-hop clone & doorway consolidation
+ let cleanPath = path;
+ if (cleanPath === '/index.html') cleanPath = '/';
+ else if (cleanPath.endsWith('/index.html')) cleanPath = cleanPath.slice(0, -11) || '/';
+ else if (cleanPath.endsWith('.html') && !cleanPath.startsWith('/404') && !cleanPath.startsWith('/offline') && !cleanPath.startsWith('/stories/')) {
+ cleanPath = cleanPath.slice(0, -5);
+ }
+ if (cleanPath.length > 1 && cleanPath.endsWith('/')) cleanPath = cleanPath.slice(0, -1);
+
+ // Direct 1-hop consolidation of clone hubs (/krisala-hiranandani-pune*, /krisala-hiranandani-township-pune*, /della-racecourse-pune)
+ if (CLONE_HUB_REDIRECTS[cleanPath]) {
+ return Response.redirect(`https://krisalahiranandanitownships.com${CLONE_HUB_REDIRECTS[cleanPath]}`, 301);
+ }
+
+ // Direct 1-hop consolidation of legacy doorway & non-curated /explore/ permutation slugs
+ if (cleanPath.startsWith('/explore/')) {
+ const exploreSlug = cleanPath.slice(9);
+ if (!CURATED_EXPLORE_SLUGS.has(exploreSlug)) {
+  const dest = resolveCanonicalDestination(exploreSlug);
+  return Response.redirect(`https://krisalahiranandanitownships.com${dest}`, 301);
+ }
  }
 
  // 1c. Canonical URL Path Normalization (SEO Clean URLs at the Edge)
@@ -373,13 +551,6 @@ export async function onRequest(context) {
  if (path.length > 1 && path.endsWith('/')) {
  const canonicalUrl = new URL(request.url);
  canonicalUrl.pathname = path.slice(0, -1);
- return Response.redirect(canonicalUrl.toString(), 301);
- }
-
- // 1b. Legacy Path Normalization (Sanitize legacy 'official' paths with 301 redirect)
- if (path.includes('official-website') || path.includes('-official-')) {
- const canonicalUrl = new URL(request.url);
- canonicalUrl.pathname = path.replace('official-website', 'master-township-guide').replace('-official-', '-guide-');
  return Response.redirect(canonicalUrl.toString(), 301);
  }
 
@@ -458,137 +629,32 @@ export async function onRequest(context) {
  });
  }
 
- // 4b. Pure Township Entity Canonical Consolidation (Resolve Keyword Cannibalization for Position #1)
- const CANNIBALIZED_EXPLORE_PATHS = new Set([
- '/explore/krisala-hiranandani-pune--website-hinjewadi-phase-2',
- '/explore/krisala-hiranandani-pune-hinjewadi-phase-2',
- '/explore/hiranandani-township-hinjewadi',
- '/explore/krisala-hiranandani-township-hinjewadi',
- '/explore/krisala-hiranandani-township',
- '/explore/krisala-hiranandani',
- '/explore/krisala-hiranandani-pune'
- ]);
- if (CANNIBALIZED_EXPLORE_PATHS.has(path.replace(/\/$/, ''))) {
- return Response.redirect('https://krisalahiranandanitownships.com/', 301);
- }
-
  // 5. Proceed with request through Cloudflare Pages asset pipeline
  const response = await next();
 
- // 5b. Intelligent 404 Fallback & Alias Redirection Engine (Zero-404 Digital Fortress)
+ // 5b. Intelligent 404 Fallback & Alias Redirection Engine (Single-Hop Direct Canonical 301)
  if (response.status === 404 && !path.startsWith('/api/') && !path.startsWith('/public/') && !path.endsWith('.png') && !path.endsWith('.webp') && !path.endsWith('.jpg') && !path.endsWith('.svg') && !path.endsWith('.ico') && !path.endsWith('.js') && !path.endsWith('.css') && !path.endsWith('.xml') && !path.endsWith('.txt') && !path.endsWith('.json')) {
- const cleanPath = path.replace(/\/+$/, '');
-
- const KNOWN_REDIRECTS = {
- '/explore/krisala-hiranandani-duplex-penthouses-hinjewadi': '/explore/duplex-apartments-in-hinjewadi',
- '/explore/krisala-hiranandani-4-bhk-luxury-apartments-floor-plans-north-hinjewadi': '/explore/krisala-hiranandani-4-bhk-luxury-apartments-north-hinjewadi',
- '/explore/krisala-hiranandani-2-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1': '/explore/krisala-hiranandani-2-bhk-luxury-apartments-hinjewadi',
- '/explore/krisala-hiranandani-3-bhk-luxury-apartments-floor-plans-hinjewadi-phase-1': '/explore/krisala-hiranandani-3-bhk-luxury-apartments-hinjewadi',
- '/explore/krisala-hiranandani-5-bhk-signature-penthouses-hinjewadi': '/icon',
- '/explore/krisala-hiranandani-apartments-near-mumbai-pune-expressway': '/explore/flats-near-mumbai-pune-expressway',
- '/explore/krisala-hiranandani-apartments-near-tcs-sahyadri-park-hinjewadi': '/explore/krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi',
- '/explore/krisala-hiranandani-apartments-near-metro-line-3-hinjewadi': '/connectivity',
- '/explore/krisala-hiranandani-apartments-near-cognizant-hinjewadi': '/explore/krisala-hiranandani-apartments-near-infosys-hinjewadi',
- '/explore/krisala-hiranandani-apartments-near-barclays-hinjewadi': '/explore/krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi',
- '/explore/krisala-hiranandani-apartments-near-pmrda-ring-road': '/explore/krisala-hiranandani-pmrda-ring-road-connectivity-advantage',
- '/explore/krisala-hiranandani-apartments-near-wakad-hinjewadi': '/explore/flats-in-wakad-near-hinjewadi',
- '/explore/krisala-hiranandani-apartments-near-baner-pune': '/explore/flats-in-baner-pune',
- '/explore/krisala-hiranandani-vs-godrej-river-royale-mahalunge': '/compare/vs-godrej-river-royale',
- '/explore/krisala-hiranandani-apartments-near-embassy-tech-zone': '/explore/flats-near-embassy-techzone-hinjewadi',
- '/explore/krisala-hiranandani-apartments-near-darumbre-marunji': '/explore/krisala-hiranandani-luxury-township-darumbre-pune',
- '/explore/krisala-hiranandani-vs-kolte-patil-life-republic': '/compare/vs-kolte-patil-life-republic',
- '/explore/krisala-hiranandani-hadapsar-comparison': '/compare',
- '/explore/krisala-hiranandani-price-list-2026': '/pricing',
- '/explore/krisala-hiranandani-flats-for-sale-in-pune': '/explore/flats-in-hinjewadi',
- '/explore/krisala-hiranandani-luxury-apartments-in-pune': '/explore/luxury-apartments-in-hinjewadi',
- '/explore/krisala-hiranandani-integrated-townships-in-pune': '/krisala-hiranandani-township-pune',
- '/explore/hiranandani-floor-plans': '/floor-plans',
- '/explore/hiranandani-possession-date-pune': '/explore/krisala-hiranandani-possession-date-2028',
- '/explore/hiranandani-reviews-pune': '/reviews',
- '/explore/hiranandani-site-address-pune': '/site-address'
- };
-
- if (KNOWN_REDIRECTS[cleanPath]) {
- return Response.redirect(`https://krisalahiranandanitownships.com${KNOWN_REDIRECTS[cleanPath]}`, 301);
+ const clean404Path = path.replace(/\/+$/, '');
+ if (clean404Path.startsWith('/explore/')) {
+ const dest = resolveCanonicalDestination(clean404Path.slice(9));
+ return Response.redirect(`https://krisalahiranandanitownships.com${dest}`, 301);
  }
 
- if (cleanPath.startsWith('/explore/')) {
- const slug = cleanPath.slice(9);
- if (slug.includes('2-bhk') || slug.includes('2bhk')) return Response.redirect('https://krisalahiranandanitownships.com/explore/krisala-hiranandani-2-bhk-luxury-apartments-hinjewadi', 301);
- if (slug.includes('3-bhk') || slug.includes('3bhk')) return Response.redirect('https://krisalahiranandanitownships.com/explore/krisala-hiranandani-3-bhk-luxury-apartments-hinjewadi', 301);
- if (slug.includes('4-bhk') || slug.includes('4bhk')) return Response.redirect('https://krisalahiranandanitownships.com/explore/krisala-hiranandani-4-bhk-luxury-apartments-north-hinjewadi', 301);
- if (slug.includes('villa') || slug.includes('plot') || slug.includes('della')) return Response.redirect('https://krisalahiranandanitownships.com/della', 301);
- if (slug.includes('duplex') || slug.includes('penthouse') || slug.includes('icon')) return Response.redirect('https://krisalahiranandanitownships.com/icon', 301);
- if (slug.includes('arcadia')) return Response.redirect('https://krisalahiranandanitownships.com/arcadia', 301);
- if (slug.includes('colosseum')) return Response.redirect('https://krisalahiranandanitownships.com/colosseum', 301);
- if (slug.includes('price') || slug.includes('cost') || slug.includes('payment')) return Response.redirect('https://krisalahiranandanitownships.com/pricing', 301);
- if (slug.includes('metro') || slug.includes('transit') || slug.includes('connectivity')) return Response.redirect('https://krisalahiranandanitownships.com/connectivity', 301);
- return Response.redirect('https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune', 301);
- }
- }
-
- // 5b. Universal Permutation & Combination Routing for Real Estate & Brand Queries
- if (response.status === 404 && !path.startsWith('/explore/') && !path.startsWith('/api/') && !path.startsWith('/public/') && !path.includes('.')) {
- let cleanSlug = path.replace(/^\/+|\/+$/g, '');
- const isBlogRoute = cleanSlug.startsWith('blog/');
- if (isBlogRoute) {
- cleanSlug = cleanSlug.replace(/^blog\//, '');
- }
-
+ const cleanSlug = clean404Path.replace(/^\/+|\/+$/g, '').replace(/^blog\//, '');
  const realEstateKeywords = [
- // Brand Permutations, Sub-Brands & Verified Search Typos
- 'krisala', 'krisla', 'hiranandani', 'hiranajdani', 'hiranadani', 'hirnandani', 
- 'dr-niranjan', 'niranjan-hiranandani', 'krisala-developers', 'hiranandani-communities',
- 
- // Township Sectors, Enclaves & Amenities
- 'arcadia', 'icon', 'colosseum', 'della', 'everlyn', 'olympus', 'club-olympus',
- 'racecourse', 'equestrian', 'polo',
- 
- // Pune Macro Corridors & Micro-Markets
- 'pune', 'pcmc', 'hinjewadi', 'hinjawadi', 'north-hinjewadi', 'darumbre', 'marunji',
- 'kasarsai', 'nere', 'maan', 'mahalunge', 'baner', 'balewadi', 'wakad', 'tathawade',
- 'punawale', 'ravet', 'kiwale', 'mamurdi', 'gahunje', 'bavdhan', 'pashan', 'aundh',
- 'kothrud', 'shivajinagar', 'model-colony', 'prabhat-road', 'boat-club-road',
- 'koregaon-park', 'kharadi', 'viman-nagar', 'kalyani-nagar', 'magarpatta', 'hadapsar',
- 'undri', 'nibm', 'kondhwa', 'pimpri', 'chinchwad', 'chakan', 'talegaon',
- 
- // Typologies & Buying Intent Queries
- 'real-estate', 'property', 'properties', 'township', 'townships',
- 'bhk', '1bhk', '2bhk', '3bhk', '4bhk', '5bhk',
- 'flat', 'flats', 'apartment', 'apartments', 'residence', 'residences',
- 'duplex', 'penthouse', 'villa', 'villas', 'plot', 'plots', 'row-house',
- 'price', 'prices', 'pricing', 'cost-sheet', 'cost', 'payment-plan',
- 'floor-plan', 'floorplan', 'masterplan', 'master-plan', 'layout', 'carpet-area',
- 'possession', 'ready-possession', 'under-construction', 'new-launch',
- 'rera', 'maharera', 'review', 'reviews', 'brochure', 'booking', 'contact',
- 'site-address', 'location', 'connectivity', 'metro', 'ring-road', 'expressway',
- 'infosys', 'wipro', 'tcs', 'cognizant', 'infotech', 'tech-park',
- 'investment', 'roi', 'rental-yield', 'nri', 'guide', 'review', 'trends'
+ 'krisala', 'krisla', 'hiranandani', 'hiranajdani', 'hiranadani', 'hirnandani',
+ 'dr-niranjan', 'niranjan-hiranandani', 'arcadia', 'icon', 'colosseum', 'collosum',
+ 'della', 'everlyn', 'everland', 'racecourse', 'equestrian', 'polo', 'pune', 'hinjewadi',
+ 'hinjawadi', 'darumbre', 'marunji', 'kasarsai', 'mahalunge', 'baner', 'balewadi', 'wakad',
+ 'tathawade', 'punawale', 'ravet', 'real-estate', 'property', 'township', 'bhk', '2bhk',
+ '3bhk', '4bhk', '5bhk', 'flat', 'flats', 'apartment', 'duplex', 'penthouse', 'villa',
+ 'plot', 'plots', 'price', 'pricing', 'cost', 'payment', 'floor-plan', 'masterplan',
+ 'possession', 'rera', 'maharera', 'review', 'brochure', 'site-address', 'location',
+ 'connectivity', 'metro', 'ring-road', 'expressway', 'infosys', 'wipro', 'tcs', 'nri'
  ];
- 
- const isTargetQuery = isBlogRoute || realEstateKeywords.some(kw => cleanSlug.includes(kw));
- if (isTargetQuery && cleanSlug) {
- let targetSlug = cleanSlug;
- if (targetSlug.startsWith('krisala-hiranandani-township-pune-')) {
- // already has full canonical prefix
- } else if (targetSlug.startsWith('krisala-hiranandani-pune-')) {
- targetSlug = `krisala-hiranandani-township-pune-${targetSlug.slice(25)}`;
- } else if (targetSlug.startsWith('krisala-hiranandani-')) {
- targetSlug = `krisala-hiranandani-township-pune-${targetSlug.slice(20)}`;
- } else if (targetSlug.startsWith('hiranandani-')) {
- targetSlug = `krisala-hiranandani-township-pune-${targetSlug.slice(12)}`;
- } else if (targetSlug.startsWith('krisala-')) {
- targetSlug = `krisala-hiranandani-township-pune-${targetSlug.slice(8)}`;
- } else {
- targetSlug = `krisala-hiranandani-township-pune-${targetSlug}`;
- }
- targetSlug = targetSlug.replace(/hiranandani-hiranandani/g, 'hiranandani');
- targetSlug = targetSlug.replace(/krisala-krisala/g, 'krisala');
- targetSlug = targetSlug.replace(/township-township/g, 'township');
- targetSlug = targetSlug.replace(/pune-pune/g, 'pune');
- targetSlug = targetSlug.replace(/-+/g, '-').replace(/^-|-$/g, '');
- const targetUrl = new URL(`/explore/${targetSlug}`, request.url);
- return Response.redirect(targetUrl.toString(), 301);
+ if (cleanSlug && (clean404Path.startsWith('/blog/') || realEstateKeywords.some(kw => cleanSlug.includes(kw)))) {
+ const dest = resolveCanonicalDestination(cleanSlug);
+ return Response.redirect(`https://krisalahiranandanitownships.com${dest}`, 301);
  }
  }
 
@@ -711,8 +777,8 @@ export async function onRequest(context) {
  newHeaders.delete('x-powered-by');
  newHeaders.delete('server');
 
- // Cryptographic Edge Lead Verification Cookie for anti-headless script defense
- if (request.method === 'GET' && isHtmlRoute) {
+ // Cryptographic Edge Lead Verification Cookie (human browsers only — never emitted to crawlers)
+ if (!isWhitelistedBot && request.method === 'GET' && isHtmlRoute) {
  const edgeSecToken = btoa(`kxh:${Date.now()}:${request.cf?.colo || 'edge'}`);
  newHeaders.append('Set-Cookie', `_kxh_sec=${edgeSecToken}; Path=/; Secure; SameSite=Strict; Max-Age=7200`);
  }

@@ -309,19 +309,73 @@ export async function onRequest(context) {
  const slugParts = params.slug || [];
  const slug = (Array.isArray(slugParts) ? slugParts.join('/') : slugParts).toLowerCase().replace(/^\/+|\/+$/g, '');
 
- // Edge 301 Consolidation for Pure Township Entity Slugs to resolve Cannibalization & Harden Position #1
- const PURE_TOWNSHIP_SLUGS = new Set([
- 'krisala-hiranandani-pune--website-hinjewadi-phase-2',
- 'krisala-hiranandani-pune-hinjewadi-phase-2',
- 'hiranandani-township-hinjewadi',
- 'krisala-hiranandani-township-hinjewadi',
- 'krisala-hiranandani-township',
- 'krisala-hiranandani',
- 'krisala-hiranandani-pune',
+ // Edge 301 Consolidation: Only serve curated /explore/index.html or curated static explore guides;
+ // consolidate all legacy combinatorial doorway slugs directly to their canonical Authority Hub
+ if (slug && slug !== 'index') {
+ const CURATED_STATIC = new Set([
+ '2-bhk-flats-in-hinjewadi','2-bhk-flats-in-mahalunge','2-bhk-flats-in-wakad',
+ '3-bhk-flats-in-hinjewadi','3-bhk-flats-in-mahalunge','3-bhk-flats-in-wakad',
+ 'bungalow-plots-in-hinjewadi-pune','bungalow-plots-near-mumbai-pune-expressway',
+ 'della-luxury-resort-villa-plots-pune','della-polo-club-residences-hinjewadi',
+ 'della-township-bungalow-plots-hinjewadi','della-township-lots-hinjewadi',
+ 'duplex-apartments-in-hinjewadi','equestrian-estate-plots-pune',
+ 'flats-in-balewadi-pune','flats-in-baner-pune','flats-in-hinjewadi',
+ 'flats-in-mahalunge-pune','flats-in-punawale-near-hinjewadi','flats-in-punawale-pune',
+ 'flats-in-ravet-pune','flats-in-tathawade-pune','flats-in-wakad-near-hinjewadi',
+ 'flats-in-wakad-pune','flats-near-embassy-techzone-hinjewadi','flats-near-hinjewadi-phase-1',
+ 'flats-near-hinjewadi-phase-2','flats-near-hinjewadi-phase-3','flats-near-mumbai-pune-expressway',
+ 'flats-near-quadron-business-park-hinjewadi','flats-under-1-2-crore-hinjewadi',
+ 'flats-under-1-5-crore-hinjewadi','flats-under-1-crore-hinjewadi','flats-under-70-lakhs-hinjewadi',
+ 'flats-under-80-lakhs-hinjewadi','flats-under-90-lakhs-hinjewadi','gated-community-plots-in-hinjewadi',
+ 'hiranandani-marunji','hiranandani-pune-payment-plan-20-80',
+ 'krisala-hiranandani-apartments-near-infosys-hinjewadi',
+ 'krisala-hiranandani-apartments-near-tcs-phase-3-hinjewadi',
+ 'krisala-hiranandani-apartments-near-wipro-circle-hinjewadi',
+ 'krisala-hiranandani-bank-loan-pre-approval-sbi-hdfc',
+ 'krisala-hiranandani-carpet-area-vs-built-up-sheet',
+ 'krisala-hiranandani-construction-update-mivan-progress',
+ 'krisala-hiranandani-equestrian-turf-racecourse-residences',
+ 'krisala-hiranandani-luxury-township-darumbre-pune',
+ 'krisala-hiranandani-nri-investment-guide-pune',
+ 'krisala-hiranandani-pmrda-ring-road-connectivity-advantage',
+ 'krisala-hiranandani-possession-date-2028',
+ 'krisala-hiranandani-rental-yield-it-professionals',
+ 'krisala-hiranandani-sample-flat-3d-tour',
+ 'krisala-hiranandani-site-visit-cab-booking',
+ 'krisala-hiranandani-vs-kasturi-the-balmoral-towers',
+ 'krisala-hiranandani-vs-kohinoor-coral-hinjewadi',
+ 'krisala-hiranandani-vs-pride-purple-park-connect',
+ 'krisala-hiranandani-vs-rohan-nidita-hinjewadi',
+ 'krisala-hiranandani-vs-shapoorji-joyville-hinjewadi',
+ 'krisala-hiranandani-vs-vilas-javdekar-yashwin',
+ 'luxury-apartments-in-hinjewadi','luxury-flats-above-2-crore-pune','luxury-penthouses-in-pune',
+ 'na-plots-in-hinjewadi-pune','plots-in-hinjewadi-pune','residential-plots-in-hinjewadi-pune',
+ 'townships-in-hinjewadi-pune','villa-plots-in-hinjewadi-pune','villa-plots-in-pune-west'
  ]);
-
- if (PURE_TOWNSHIP_SLUGS.has(slug)) {
- return Response.redirect('https://krisalahiranandanitownships.com/', 301);
+ if (!CURATED_STATIC.has(slug)) {
+ let dest = '/';
+ if (slug === 'flats-in-marunji-hinjewadi') dest = '/explore/hiranandani-marunji';
+ else if (slug.includes('colosseum') || slug.includes('collosum') || slug.includes('phase-4')) dest = '/colosseum';
+ else if (slug.includes('arcadia') || slug.includes('2-bhk')) dest = '/arcadia';
+ else if (slug.includes('icon') || slug.includes('4-bhk') || slug.includes('5-bhk') || slug.includes('duplex') || slug.includes('penthouse')) dest = '/icon';
+ else if (slug.includes('everlyn') || slug.includes('everland')) dest = '/everlyn';
+ else if (slug.includes('della')) dest = '/della';
+ else if (slug.includes('racecourse') || slug.includes('equestrian')) dest = '/racecourse';
+ else if (slug.includes('price') || slug.includes('cost') || slug.includes('payment') || slug.includes('emi')) dest = '/pricing';
+ else if (slug.includes('floor-plan')) dest = '/floor-plans';
+ else if (slug.includes('rera') || slug.includes('possession') || slug.includes('construction')) dest = '/construction-status';
+ else if (slug.includes('review')) dest = '/reviews';
+ else if (slug.includes('site-address') || slug.includes('location') || slug.includes('booking-office') || slug.includes('contact')) dest = '/site-address';
+ else if (slug.includes('metro') || slug.includes('ring-road') || slug.includes('expressway') || slug.includes('connectivity')) dest = '/connectivity';
+ else if (slug.includes('nri')) dest = '/nri';
+ else if (slug.includes('vs-godrej')) dest = '/compare/vs-godrej-river-royale';
+ else if (slug.includes('vs-lodha')) dest = '/compare/vs-lodha-sylvan';
+ else if (slug.includes('vs-kolte')) dest = '/compare/vs-kolte-patil-life-republic';
+ else if (slug.includes('vs-vtp')) dest = '/compare/vs-vtp-earth-one';
+ else if (slug.includes('vs-') || slug.includes('compare')) dest = '/compare';
+ else if (slug.includes('niranjan') || slug === 'hiranandani-pune' || slug === 'hiranandani-township-pune' || slug.includes('communities-pune') || slug.includes('group-pune')) dest = '/hiranandani-pune';
+ return Response.redirect(`https://krisalahiranandanitownships.com${dest}`, 301);
+ }
  }
 
  // 1a. Check for explore directory root index (/explore or /explore/)
@@ -726,11 +780,11 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  <h3 style="color: #fff; font-size: 1.35rem; margin: 8px 0;">Bungalow Premium Plots at Hiranandani Township Hinjewadi</h3>
  <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">Curated in collaboration with Della Resorts &amp; Adventure, this 40-acre equestrian precinct features sanctioned freehold bungalow plots and Della township lots surrounding an 8-acre private racecourse:</p>
  <table style="width: 100%; border-collapse: collapse; margin-top: 14px; color: var(--text-muted); font-size: 0.95rem;">
- <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff; width: 35%;">Plot Typologies</td><td style="padding: 10px 0; color: var(--gold-light);">Polo Meadow (1,800–2,400 sq.ft.) | Racecourse Grand (3,000–4,200 sq.ft.) | Presidential (5,000+ sq.ft.)</td></tr>
+ <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff; width: 35%;">Plot Typologies</td><td style="padding: 10px 0; color: var(--gold-light);">Signature Estate Bungalow &amp; Villa Plots (5,000 sq.ft. Uniform Curated Parcels)</td></tr>
  <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Sanctioned FSI / Height</td><td style="padding: 10px 0;">G + 2 Storey Independent Luxury Villa / Bungalow Construction</td></tr>
  <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Title &amp; Approvals</td><td style="padding: 10px 0;">100% Freehold NA Sanctioned, Clear Marketable Title, MahaRERA Escrow</td></tr>
  <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);"><td style="padding: 10px 0; font-weight: 600; color: #fff;">Signature Amenities</td><td style="padding: 10px 0;">8-Acre Racecourse, Championship Polo Club, Air-Cooled Stables, Della Concierge</td></tr>
- <tr><td style="padding: 10px 0; font-weight: 600; color: #fff;">Pricing Guidance</td><td style="padding: 10px 0; color: #fff;"><strong style="color: var(--gold-light);">Starting ₹3.75 Cr* to ₹3.50 Cr* (All-Inclusive)</strong></td></tr>
+ <tr><td style="padding: 10px 0; font-weight: 600; color: #fff;">Pricing Guidance</td><td style="padding: 10px 0; color: #fff;"><strong style="color: var(--gold-light);">Starting ₹3.75 Cr* Onwards (5,000 sq.ft., All-Inclusive)</strong></td></tr>
  </table>
  </div>`;
  }
@@ -1144,41 +1198,6 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  "name": "Propsmart Realty - Krisala Hiranandani Experience Desk",
  "telephone": "+917744009295",
  "url": "https://krisalahiranandanitownships.com/"
- },
- "hasMerchantReturnPolicy": {
- "@type": "MerchantReturnPolicy",
- "applicableCountry": "IN",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 15,
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/FreeReturn"
- },
- "shippingDetails": {
- "@type": "OfferShippingDetails",
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": "0",
- "currency": "INR"
- },
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "IN"
- },
- "deliveryTime": {
- "@type": "ShippingDeliveryTime",
- "handlingTime": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 1,
- "unitCode": "DAY"
- },
- "transitTime": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 1,
- "unitCode": "DAY"
- }
- }
  }
  },
  "aggregateRating": {

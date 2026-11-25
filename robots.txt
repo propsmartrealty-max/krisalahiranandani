@@ -332,34 +332,15 @@ User-agent: Slurp
 Allow: /
 
 # ------------------------------------------------------------------------------
-# 7. Master Sitemaps & Feeds Declarations
+# 7. Master Sitemaps & Feeds Declarations (Clean Canonical Indexing)
 # ------------------------------------------------------------------------------
 Sitemap: https://krisalahiranandanitownships.com/sitemap-index.xml
 Sitemap: https://krisalahiranandanitownships.com/sitemap.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-explore.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-blog.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-global.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-stories.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-news.xml
+Sitemap: https://krisalahiranandanitownships.com/sitemap-geo.xml
 Sitemap: https://krisalahiranandanitownships.com/image-sitemap.xml
 Sitemap: https://krisalahiranandanitownships.com/video-sitemap.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-news.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-stories.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-blog.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-geo.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-configurations.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-colosseum.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-pricing.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-it-workplaces.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-connectivity.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-micromarkets.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-villa-plots.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-comparisons.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-amenities.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-amenities-lifestyle.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-investment-roi.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-sustainability.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-construction.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-rera-legal.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-desk.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-hiranandani-brand.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-pune-real-estate.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-explore.xml
-Sitemap: https://krisalahiranandanitownships.com/sitemap-nri-global.xml
-Sitemap: https://krisalahiranandanitownships.com/google-products.xml
-Sitemap: https://krisalahiranandanitownships.com/google-merchant-feed.xml

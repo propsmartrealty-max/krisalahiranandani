@@ -52,41 +52,21 @@ SCOPES = [
 ALL_GRANULAR_SITEMAPS = [
     "https://krisalahiranandanitownships.com/sitemap-index.xml",
     "https://krisalahiranandanitownships.com/sitemap.xml",
-    "https://krisalahiranandanitownships.com/image-sitemap.xml",
-    "https://krisalahiranandanitownships.com/video-sitemap.xml",
-    "https://krisalahiranandanitownships.com/sitemap-configurations.xml",
-    "https://krisalahiranandanitownships.com/sitemap-pricing.xml",
-    "https://krisalahiranandanitownships.com/sitemap-it-workplaces.xml",
-    "https://krisalahiranandanitownships.com/sitemap-connectivity.xml",
-    "https://krisalahiranandanitownships.com/sitemap-comparisons.xml",
-    "https://krisalahiranandanitownships.com/sitemap-amenities.xml",
-    "https://krisalahiranandanitownships.com/sitemap-amenities-lifestyle.xml",
-    "https://krisalahiranandanitownships.com/sitemap-investment-roi.xml",
-    "https://krisalahiranandanitownships.com/sitemap-sustainability.xml",
-    "https://krisalahiranandanitownships.com/sitemap-construction.xml",
-    "https://krisalahiranandanitownships.com/sitemap-rera-legal.xml",
-    "https://krisalahiranandanitownships.com/sitemap-nri-desk.xml",
-    "https://krisalahiranandanitownships.com/sitemap-colosseum.xml",
-    "https://krisalahiranandanitownships.com/sitemap-micromarkets.xml",
-    "https://krisalahiranandanitownships.com/sitemap-villa-plots.xml",
-    "https://krisalahiranandanitownships.com/sitemap-hiranandani-brand.xml",
-    "https://krisalahiranandanitownships.com/sitemap-pune-real-estate.xml",
+    "https://krisalahiranandanitownships.com/sitemap-explore.xml",
+    "https://krisalahiranandanitownships.com/sitemap-blog.xml",
+    "https://krisalahiranandanitownships.com/sitemap-nri-global.xml",
     "https://krisalahiranandanitownships.com/sitemap-stories.xml",
     "https://krisalahiranandanitownships.com/sitemap-news.xml",
-    "https://krisalahiranandanitownships.com/sitemap-blog.xml",
     "https://krisalahiranandanitownships.com/sitemap-geo.xml",
-    "https://krisalahiranandanitownships.com/sitemap-explore.xml",
-    "https://krisalahiranandanitownships.com/sitemap-nri-global.xml",
-    "https://krisalahiranandanitownships.com/google-products.xml",
-    "https://krisalahiranandanitownships.com/google-merchant-feed.xml"
+    "https://krisalahiranandanitownships.com/image-sitemap.xml",
+    "https://krisalahiranandanitownships.com/video-sitemap.xml"
 ]
 
 PRIORITY_CORE_URLS = [
-    # Canonical Root Landing Hubs
+    # Canonical Root Landing Hubs (Strict HTTP 200 Non-Duplicate Set)
     "https://krisalahiranandanitownships.com/",
-    "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune",
-    "https://krisalahiranandanitownships.com/krisala-hiranandani-pune",
     "https://krisalahiranandanitownships.com/hiranandani-pune",
+    "https://krisalahiranandanitownships.com/della-racecourse",
     "https://krisalahiranandanitownships.com/pune-real-estate",
     "https://krisalahiranandanitownships.com/hinjewadi-real-estate",
     "https://krisalahiranandanitownships.com/arcadia",

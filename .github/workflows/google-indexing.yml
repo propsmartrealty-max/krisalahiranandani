@@ -98,8 +98,6 @@ jobs:
           echo "Pre-warming Cloudflare Edge for Googlebot..."
           URLS=(
             "https://krisalahiranandanitownships.com/"
-            "https://krisalahiranandanitownships.com/krisala-hiranandani-township-pune"
-            "https://krisalahiranandanitownships.com/krisala-hiranandani-pune"
             "https://krisalahiranandanitownships.com/hiranandani-pune"
             "https://krisalahiranandanitownships.com/della-racecourse"
             "https://krisalahiranandanitownships.com/pricing"
