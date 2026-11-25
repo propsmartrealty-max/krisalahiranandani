@@ -1291,7 +1291,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  "https://maharera.maharashtra.gov.in/",
  "https://en.wikipedia.org/wiki/Hiranandani_Group",
  "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
- "https://www.wikidata.org/wiki/Q7036662",
+ "https://www.wikidata.org/wiki/Q5769388",
  "https://hiranandani.com/",
  "https://houseofhiranandani.com/",
  "https://www.hiranandanicommunities.com/",
@@ -1360,8 +1360,8 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  },
  "sameAs": [
  "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
- "https://www.wikidata.org/wiki/Q16733367",
- "https://www.wikidata.org/wiki/Q7036662",
+ "https://www.wikidata.org/wiki/Q1538",
+ "https://www.wikidata.org/wiki/Q5769388",
  "https://www.crunchbase.com/person/niranjan-hiranandani",
  "https://twitter.com/N_Hiranandani",
  "https://www.linkedin.com/in/niranjanhiranandani/"
@@ -1377,7 +1377,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  },
  "sameAs": [
  "https://en.wikipedia.org/wiki/Hiranandani_Group",
- "https://www.wikidata.org/wiki/Q110461821",
+ "https://www.wikidata.org/wiki/Q3524535",
  "https://hiranandani.com/"
  ]
  },
@@ -1406,7 +1406,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  "name": "Hinjawadi",
  "sameAs": [
  "https://en.wikipedia.org/wiki/Hinjawadi",
- "https://www.wikidata.org/wiki/Q5766904"
+ "https://www.wikidata.org/wiki/Q3524535"
  ]
  }
  ]

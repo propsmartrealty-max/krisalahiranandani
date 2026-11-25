@@ -73,6 +73,9 @@ Allow: /rss.xml
 Allow: /atom.xml
 Allow: /
 
+User-agent: GoogleOther
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 Allow: /llms.txt
@@ -80,6 +83,12 @@ Allow: /llms-full.txt
 Allow: /ai-facts.json
 Allow: /blog
 Allow: /knowledge-hub
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+User-agent: Gemini-Deep-Research
+Allow: /
 
 User-agent: Google-InspectionTool
 Allow: /
@@ -133,6 +142,12 @@ Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /ai-facts.json
 
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
 User-agent: Claude-Web
 Allow: /
 Allow: /llms.txt
@@ -148,6 +163,9 @@ Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /ai-facts.json
+
+User-agent: Perplexity-User
+Allow: /
 
 User-agent: Applebot
 Allow: /
@@ -185,6 +203,9 @@ User-agent: MistralAI-Crawler
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
+
+User-agent: MistralAI-User
+Allow: /
 
 User-agent: Bytespider
 Allow: /

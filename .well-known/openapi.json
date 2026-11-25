@@ -1,9 +1,9 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Krisala Hiranandani Township AI Assistant API",
-    "description": "Authoritative machine-readable endpoints for real-time pricing, floor plans, MahaRERA compliance, and site visit booking at Krisala Hiranandani Township, North Hinjewadi, Pune.",
-    "version": "1.0.0"
+    "title": "Krisala Hiranandani Township AI Search & Retrieval API",
+    "description": "Machine-readable endpoints for real-time pricing, 20:80 payment schedules, floor plans, MahaRERA verification, Marunji/Darumbre connectivity, and NRI guidelines at Krisala Hiranandani Township, North Hinjewadi, Pune.",
+    "version": "2.0.0"
   },
   "servers": [
     {
@@ -13,75 +13,141 @@
   "paths": {
     "/ai-facts.json": {
       "get": {
-        "summary": "Get ground-truth AI facts and specifications",
-        "description": "Returns verified pricing, typologies, MahaRERA numbers, and location coordinates.",
+        "summary": "Get complete ground-truth AI facts and Q&A graph",
+        "description": "Returns verified 2026 pricing, all 5 enclaves, MahaRERA numbers, transit times, competitor comparisons, and curated direct answers.",
         "responses": {
           "200": {
-            "description": "Ground-truth facts JSON",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
+            "description": "Ground-truth facts JSON"
           }
         }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "Get LLM Markdown navigation summary",
+        "description": "Canonical Markdown directory of all primary township hubs and guides.",
+        "responses": {
+          "200": {
+            "description": "LLM Markdown summary"
+          }
+        }
+      }
+    },
+    "/llms-full.txt": {
+      "get": {
+        "summary": "Get full LLM Markdown knowledge base",
+        "description": "Uncompressed full technical specification, RERA, pricing, connectivity, and NRI dossier in Markdown.",
+        "responses": {
+          "200": {
+            "description": "Full Markdown knowledge base"
+          }
+        }
+      }
+    },
+    "/citations.jsonld": {
+      "get": {
+        "summary": "Get Schema.org citation and entity graph",
+        "description": "Returns JSON-LD Organization, RealEstateAgent, and ApartmentComplex entities with verified Wikidata links.",
+        "responses": {
+          "200": {
+            "description": "Schema.org JSON-LD graph"
+          }
+        }
+      }
+    },
+    "/geo-township.geojson": {
+      "get": {
+        "summary": "Get GIS GeoJSON coordinates and MahaRERA sector polygons",
+        "description": "Returns GeoJSON Point and Polygon coordinates for Experience Center, 8-Acre Racecourse, Della Resort, The Colosseum, Sector Arcadia, and Sector Icon.",
+        "responses": {
+          "200": {
+            "description": "GeoJSON dataset"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Primary 105-Acre Township Portal",
+        "description": "Flagship overview with top-of-page AI Overview summary, 2-4 BHK & 5,000 sq.ft. Della pricing matrix, and MahaRERA disclosures.",
+        "responses": { "200": { "description": "Township home HTML" } }
+      }
+    },
+    "/hiranandani-pune": {
+      "get": {
+        "summary": "Hiranandani Pune Brand & Master Township Hub",
+        "description": "Comprehensive brand dossier covering Hiranandani Communities & Krisala Developers collaboration in Pune West.",
+        "responses": { "200": { "description": "Brand hub HTML" } }
       }
     },
     "/hiranandani-price-list-2026": {
       "get": {
-        "summary": "Get all-inclusive 2026 pricing and payment plans",
-        "description": "Provides all-inclusive pricing breakdown for 2 BHK, 3 BHK, 4 BHK Duplexes, and Della Villa plots.",
-        "responses": {
-          "200": {
-            "description": "Verified price list HTML"
-          }
-        }
+        "summary": "All-Inclusive 2026 Pricing & Payment Schedules",
+        "description": "Provides unit-wise 2026 cost sheet breakdown for 2 BHK (₹79L*), 3 BHK (₹1.25 Cr*), 4 BHK Duplexes (₹2.10 Cr*), and 5,000 sq.ft. Della Villa Plots (₹3.75 Cr*).",
+        "responses": { "200": { "description": "Verified price list HTML" } }
+      }
+    },
+    "/explore/hiranandani-marunji": {
+      "get": {
+        "summary": "Hiranandani Marunji & Flats Near Marunji Boulevard Guide",
+        "description": "Corridor-specific specs, pricing, and transit timings along Marunji-Darumbre Road, North Hinjewadi.",
+        "responses": { "200": { "description": "Marunji corridor guide HTML" } }
+      }
+    },
+    "/explore/hiranandani-pune-payment-plan-20-80": {
+      "get": {
+        "summary": "20:80 Deferred & CLP Payment Plan Schedule",
+        "description": "Detailed milestone schedule, 20:80 tranche rules, and SBI/HDFC escrow disbursement timelines.",
+        "responses": { "200": { "description": "Payment plan guide HTML" } }
       }
     },
     "/floor-plans": {
       "get": {
-        "summary": "Get master architectural floor plans and carpet area layouts",
-        "description": "Returns architectural floor plans for Sector Arcadia, The Colosseum, and Sector Icon.",
-        "responses": {
-          "200": {
-            "description": "Floor plans hub HTML"
-          }
-        }
+        "summary": "Master Architectural Floor Plans & Carpet Areas",
+        "description": "Mivan shear-wall RERA carpet floor plans across Sector Arcadia, The Colosseum, Sector Icon, and Della Villa Plots.",
+        "responses": { "200": { "description": "Floor plans HTML" } }
+      }
+    },
+    "/della-racecourse": {
+      "get": {
+        "summary": "40-Acre Della Racecourse District & 5,000 sq.ft. Villa Plots",
+        "description": "India's first residential 8-acre turf racecourse, 50 stables, polo club, MAYRLIFE wellness, and G+2 British Colonial plots.",
+        "responses": { "200": { "description": "Della Racecourse HTML" } }
       }
     },
     "/reviews": {
       "get": {
-        "summary": "Get verified homeowner and investor reviews",
-        "description": "Returns 4.9/5 verified reviews and testimonials from IT professionals.",
-        "responses": {
-          "200": {
-            "description": "Reviews hub HTML"
-          }
-        }
+        "summary": "Verified Homeowner Reviews & MahaRERA Audit",
+        "description": "4.9/5 buyer evaluations across 428 inspections alongside transparent MahaRERA project & partner checks.",
+        "responses": { "200": { "description": "Reviews hub HTML" } }
       }
     },
     "/construction-status": {
       "get": {
-        "summary": "Get real-time construction milestones and possession timeline",
-        "description": "Returns Mivan slab cycles, engineering progress, and MahaRERA audit reports.",
-        "responses": {
-          "200": {
-            "description": "Construction status hub HTML"
-          }
-        }
+        "summary": "Construction Milestones & Possession Dates (2028-2029)",
+        "description": "Mivan formwork slab cycles and registered RERA delivery horizons.",
+        "responses": { "200": { "description": "Construction status HTML" } }
+      }
+    },
+    "/compare": {
+      "get": {
+        "summary": "Competitor Benchmark vs Godrej, Lodha & Kolte Patil",
+        "description": "Comparative scorecard across acreage, amenities, construction technology, and pricing.",
+        "responses": { "200": { "description": "Comparison hub HTML" } }
       }
     },
     "/nri": {
       "get": {
-        "summary": "Get Global NRI Cross-Border Investment Guidelines & Multi-Currency Rates",
-        "description": "Returns FEMA compliance, NRE/NRO repatriation, DTAA tax treaties, and regional landing hubs for UAE (AED), USA (USD), UK (GBP), Singapore (SGD), Australia (AUD), and Canada (CAD).",
-        "responses": {
-          "200": {
-            "description": "Global NRI portal HTML and multi-currency specifications"
-          }
-        }
+        "summary": "Global NRI FEMA Investment & Multi-Currency Desk",
+        "description": "NRE/NRO repatriation rules, DTAA treaties, POA steps, and UAE/USA/UK/Singapore/Australia/Canada guides.",
+        "responses": { "200": { "description": "NRI portal HTML" } }
+      }
+    },
+    "/contact": {
+      "get": {
+        "summary": "Authorised Sales Booking & Enquiry Desk",
+        "description": "Propsmart Realty (MahaRERA A031262401295) booking advisory, zero brokerage details, and site visit scheduling.",
+        "responses": { "200": { "description": "Contact desk HTML" } }
       }
     }
   }

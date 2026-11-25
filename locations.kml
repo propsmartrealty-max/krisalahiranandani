@@ -6,7 +6,7 @@
       <atom:name>Krisala × Hiranandani Master Township Consortium</atom:name>
     </atom:author>
     <atom:link href="https://krisalahiranandanitownships.com" rel="related" />
-    <description><![CDATA[Official Geospatial Map & Boundary Registry for the 105-acre Krisala × Hiranandani Master Township in North Hinjawadi, Pune (MahaRERA: PR1260002500600 & PR1260002600818). Features Neoclassical residential enclaves (Sector Arcadia, Sector Icon, The Colosseum Phase 4), Della Equestrian Estate with 8-Acre private racecourse, Club Olympus, direct PMRDA 128m Ring Road corridor, and Hinjewadi-Shivajinagar Metro Line 3 connectivity.]]></description>
+    <description><![CDATA[Verified Geospatial Map & Boundary Registry for the 105-acre Krisala × Hiranandani Master Township in North Hinjawadi, Pune (MahaRERA: PR1260002500600, PR1260002600818 & PR1260002502438). Features Neoclassical residential enclaves (Sector Arcadia, Sector Icon, The Colosseum Phase 4), Della Equestrian Estate with 8-Acre private racecourse, Club Olympus, direct PMRDA 128m Ring Road corridor, and Hinjewadi-Shivajinagar Metro Line 3 connectivity.]]></description>
 
     <!-- Styles -->
     <Style id="townshipBoundaryStyle">
@@ -104,7 +104,7 @@
       <description><![CDATA[<b>105-Acre Integrated Master Township Footprint</b><br/>
       North Hinjawadi / Marunji / Darumbre Corridor, Pune 410506.<br/>
       Includes Neoclassical High-Rise Enclaves, Luxury Villa Plots, Private Racecourse, Central Botanical Park & Commercial Hub.<br/>
-      <a href="https://krisalahiranandanitownships.com">Visit Official Township Portal</a>]]></description>
+      <a href="https://krisalahiranandanitownships.com">Visit Primary Township Portal</a>]]></description>
       <Polygon>
         <extrude>1</extrude>
         <altitudeMode>clampToGround</altitudeMode>

@@ -65,13 +65,45 @@
         "name": "The Colosseum (Phase 4) Residential Enclave",
         "category": "Residential Sector",
         "url": "https://krisalahiranandanitownships.com/colosseum",
-        "mahaRera": "PR1260002500600"
+        "mahaRera": "PR1260002600818"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           73.7381,
           18.5908
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sector Arcadia Residential Enclave",
+        "category": "Residential Sector",
+        "url": "https://krisalahiranandanitownships.com/arcadia",
+        "mahaRera": "PR1260002500600"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7376,
+          18.5902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sector Icon & Everlyn Enclave",
+        "category": "Residential Sector",
+        "url": "https://krisalahiranandanitownships.com/icon",
+        "mahaRera": "PR1260002502438"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7392,
+          18.5916
         ]
       }
     },

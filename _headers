@@ -382,10 +382,75 @@
   CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
   X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
 
-# Universal AI Bots & PR Syndication Feeds
+# Universal AI Bots, LLM Grounding & PR Syndication Feeds
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+  Cache-Tag: kxh-ai, kxh-llm
+  X-Robots-Tag: index, follow
+
+/llms-full.txt
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+  Cache-Tag: kxh-ai, kxh-llm
+  X-Robots-Tag: index, follow
+
+/citations.jsonld
+  Content-Type: application/ld+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+  Cache-Tag: kxh-ai, kxh-facts
+  X-Robots-Tag: index, follow
+
+/geo-township.geojson
+  Content-Type: application/geo+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: index, follow
+
+/locations.kml
+  Content-Type: application/vnd.google-earth.kml+xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: index, follow
+
+/feed.json
+  Content-Type: application/feed+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: index, follow
+
+/township-press-feed.json
+  Content-Type: application/feed+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+  X-Robots-Tag: index, follow
+
+/rss.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+
+/atom.xml
+  Content-Type: application/atom+xml; charset=utf-8
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=3600
+
 /ai-facts.json
   Content-Type: application/json; charset=utf-8
   Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
   Cache-Control: public, max-age=3600
   Cache-Tag: kxh-ai, kxh-facts, kxh-llm
   X-Robots-Tag: index, follow
@@ -393,6 +458,7 @@
 /press-releases.json
   Content-Type: application/json; charset=utf-8
   Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
   Cache-Control: public, max-age=3600
   Cache-Tag: kxh-pr, kxh-news
   X-Robots-Tag: index, follow
@@ -400,18 +466,21 @@
 /.well-known/ai-plugin.json
   Content-Type: application/json; charset=utf-8
   Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
   Cache-Control: public, max-age=3600
   X-Robots-Tag: index, follow
 
 /.well-known/openapi.json
   Content-Type: application/json; charset=utf-8
   Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
   Cache-Control: public, max-age=3600
   X-Robots-Tag: index, follow
 
 /ai-plugin.json
   Content-Type: application/json; charset=utf-8
   Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
   Cache-Control: public, max-age=3600
   X-Robots-Tag: index, follow
 
@@ -438,13 +507,6 @@
 
 /north-hinjewadi
   Cache-Tag: kxh-township, kxh-html, kxh-geo, kxh-seo
-  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
-  Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
-  CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
-  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
-
-/krisala-hiranandani-pune/*
-  Cache-Tag: kxh-township, kxh-html, kxh-pune, kxh-seo
   Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
   Cloudflare-CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800
   CDN-Cache-Control: max-age=86400, stale-while-revalidate=604800

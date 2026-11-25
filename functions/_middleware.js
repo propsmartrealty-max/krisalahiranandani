@@ -69,6 +69,9 @@ const WHITELISTED_CRAWLERS = [
  'googleother-image',
  'googleother-video',
  'google-extended',
+ 'google-cloudvertexbot',
+ 'gemini-deep-research',
+ 'google-notebooklm',
  'adsbot-google',
  'adsbot-google-mobile',
  'mediapartners-google',
@@ -110,10 +113,15 @@ const WHITELISTED_CRAWLERS = [
  'gptbot',
  'oai-searchbot',
  'chatgpt-user',
+ 'chatgpt',
+ 'openai',
  'perplexitybot',
+ 'perplexity-user',
  'perplexity-ai',
  'claudebot',
  'claude-web',
+ 'claude-user',
+ 'claude-searchbot',
  'anthropic-ai',
  'deepseekbot',
  'deepseek',
@@ -124,6 +132,7 @@ const WHITELISTED_CRAWLERS = [
  'bytespider',
  'cohere-ai',
  'mistralai-crawler',
+ 'mistralai-user',
  'mistralbot',
  'meta-externalagent',
  'meta-externalfetcher',
@@ -711,6 +720,10 @@ export async function onRequest(context) {
  newHeaders.set('Link', [
  `<${canonicalUrl}>; rel="canonical"`,
  '<https://pubsubhubbub.appspot.com/>; rel="hub"',
+ '</llms.txt>; rel="alternate"; type="text/markdown"',
+ '</llms-full.txt>; rel="alternate"; type="text/markdown"',
+ '</ai-facts.json>; rel="alternate"; type="application/json"',
+ '</citations.jsonld>; rel="alternate"; type="application/ld+json"',
  '</sitemap-index.xml>; rel="sitemap"',
  '</sitemap.xml>; rel="sitemap"',
  '</video-sitemap.xml>; rel="sitemap"',
@@ -721,8 +734,8 @@ export async function onRequest(context) {
  newHeaders.set('Crawl-Hints', 'enabled');
  }
 
- // Unrestricted Cross-Origin access for XML Sitemaps, XSL stylesheets, JSON data, and Feeds
- if (path.endsWith('.xml') || path.endsWith('.xsl') || path.endsWith('.txt') || path.endsWith('.json')) {
+ // Unrestricted Cross-Origin access for XML Sitemaps, XSL stylesheets, JSON data, AI manifests, and Feeds
+ if (path.endsWith('.xml') || path.endsWith('.xsl') || path.endsWith('.txt') || path.endsWith('.json') || path.endsWith('.jsonld') || path.endsWith('.geojson') || path.endsWith('.kml')) {
  newHeaders.set('Access-Control-Allow-Origin', '*');
  newHeaders.set('Cross-Origin-Resource-Policy', 'cross-origin');
  }

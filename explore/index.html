@@ -70,13 +70,26 @@ body { background-color: var(--bg-dark); color: var(--text-main); font-family: v
       "dateModified": "2026-11-25",
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": ["#ai-overview-summary", "h1"]
+        "cssSelector": [
+          "#ai-overview-summary",
+          "h1"
+        ]
       },
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Township", "item": "https://krisalahiranandanitownships.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Explore Directory", "item": "https://krisalahiranandanitownships.com/explore" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Township",
+            "item": "https://krisalahiranandanitownships.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Explore Directory",
+            "item": "https://krisalahiranandanitownships.com/explore"
+          }
         ]
       }
     },
@@ -91,6 +104,10 @@ body { background-color: var(--bg-dark); color: var(--text-main); font-family: v
   ]
 }
 </script>
+<link href="/citations.jsonld" rel="alternate" title="Krisala Hiranandani Citation Graph" type="application/ld+json"/>
+<link href="/llms.txt" rel="alternate" title="LLM Canonical Knowledge Graph" type="text/plain"/>
+<link href="/llms-full.txt" rel="alternate" title="LLM Extended Knowledge Base" type="text/plain"/>
+<link href="/ai-facts.json" rel="alternate" title="Machine-Readable AI Facts" type="application/json"/>
 </head>
 <body>
 
