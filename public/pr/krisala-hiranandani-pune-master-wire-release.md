@@ -23,5 +23,5 @@ To access verified floor plans, 360-degree virtual sample flat walkthroughs, and
 **Corporate Desk:** Krisala × Hiranandani Master Township Experience Center  
 **Site Address:** PMRDA 128m Ring Road Corridor, North Hinjewadi, Darumbre, Pune 410506  
 **Website:** [https://krisalahiranandanitownships.com/](https://krisalahiranandanitownships.com/)  
-**Email:** propsmartrealty@gmail.com  
+**Online Desk:** [https://krisalahiranandanitownships.com/contact](https://krisalahiranandanitownships.com/contact)  
 **Phone:** +91 7744009295
