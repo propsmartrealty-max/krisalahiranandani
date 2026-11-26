@@ -541,6 +541,10 @@ class EnterpriseGoogleIndexingOrchestrator:
                 r = requests.get(u, headers={"User-Agent": "KrisalaEnterprisePreflight/2.0"}, timeout=15, allow_redirects=False)
                 if r.status_code != 200:
                     return u, False, f"HTTP {r.status_code}"
+                if u.lower().endswith((".kml", ".geojson", ".xml", ".json", ".txt", ".jsonld")):
+                    if not r.text.strip():
+                        return u, False, "empty non-HTML payload"
+                    return u, True, f"200 OK ({r.headers.get('cf-cache-status', 'EDGE')})"
                 body = r.text
                 if re.search(r'<meta[^>]+name=["\']robots["\'][^>]+noindex', body, re.I):
                     return u, False, "noindex meta detected"
@@ -571,6 +575,8 @@ class EnterpriseGoogleIndexingOrchestrator:
         skipped_fresh = 0
 
         for u in self.urls:
+            if u.lower().endswith((".kml", ".geojson", ".xml", ".json", ".txt", ".jsonld")):
+                continue
             local_meta = compute_url_meta(u)
             if local_meta["has_noindex"]:
                 continue
