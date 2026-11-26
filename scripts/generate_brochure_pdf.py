@@ -277,10 +277,10 @@ def build_official_brochure():
     # Villa plots card
     p5.draw_rect(fitz.Rect(36, 580, 559, 770), color=BORDER_GOLD, fill=CARD_BG, width=0.5)
     p5.insert_text((50, 605), "THE DELLA COLLECTION — ULTRA-EXCLUSIVE VILLA PLOTS", fontsize=12, color=GOLD, fontname="helv")
-    p5.insert_text((50, 630), "• Limited Collection of Only 100 Gated Villa Plots (2,000 to 5,000 Sq.Ft.)", fontsize=9.5, color=TEXT_LIGHT, fontname="helv")
+    p5.insert_text((50, 630), "• Limited Collection of 98 Private Luxury Villas & 5,000 Sq.Ft. Freehold Villa Plots", fontsize=9.5, color=TEXT_LIGHT, fontname="helv")
     p5.insert_text((50, 650), "• Bespoke Villa Architectural Designs by Leading International Architects", fontsize=9.5, color=TEXT_LIGHT, fontname="helv")
     p5.insert_text((50, 670), "• Direct Equestrian Circuit Access with Frontage onto the Polo Pavilion", fontsize=9.5, color=TEXT_LIGHT, fontname="helv")
-    p5.insert_text((50, 690), "• Starting Price: ₹3.50 Crores* onwards (Special Launch Allotment)", fontsize=10.5, color=GOLD_LIGHT, fontname="helv")
+    p5.insert_text((50, 690), "• Starting Price: ₹3.75 Crores* onwards (Special Launch Allotment)", fontsize=10.5, color=GOLD_LIGHT, fontname="helv")
     p5.insert_text((50, 720), "• Contact authorized concierge for site inspection & villa allotment guidelines.", fontsize=9, color=TEXT_MUTED, fontname="helv")
 
     # ==========================================
@@ -290,7 +290,7 @@ def build_official_brochure():
     p6.draw_rect(fitz.Rect(0, 0, 595, 842), color=DARK_BG, fill=DARK_BG)
     add_header_footer(p6, 6)
 
-    p6.insert_text((36, 70), "2026 OFFICIAL PRICE LIST & PAYMENT SCHEDULE", fontsize=18, color=GOLD_LIGHT, fontname="times-bold")
+    p6.insert_text((36, 70), "2026 VERIFIED PRICE LIST & PAYMENT SCHEDULE", fontsize=18, color=GOLD_LIGHT, fontname="times-bold")
     p6.insert_text((36, 90), "Transparent All-Inclusive Pricing Guidance • CLP Milestone Schedule", fontsize=9.5, color=TEXT_MUTED, fontname="helv")
 
     # Table Header
@@ -309,7 +309,7 @@ def build_official_brochure():
         ("Icon", "3 BHK Sky Villa", "1,250 – 1,350 sq.ft.", "₹1.45 Crores*", "Dec 2029"),
         ("Icon", "4 BHK Duplex", "1,650 – 1,850 sq.ft.", "₹2.10 Crores*", "Dec 2029"),
         ("Icon", "5 BHK Sky Mansion", "2,800 – 3,500 sq.ft.", "₹3.20 Crores*", "Dec 2029"),
-        ("Della", "Villa Plots", "2,000 – 5,000 sq.ft.", "₹3.50 Crores*", "Ready Phased")
+        ("Della", "Villa Plots", "5,000 sq.ft.", "₹3.75 Crores*", "Ready Phased")
     ]
 
     y_row = 145

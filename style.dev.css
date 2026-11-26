@@ -5991,6 +5991,193 @@ body.menu-open {
 }
 
 /* ==============================================================================
+   DELLA RACECOURSE PUNE — UNIFIED 40-ACRE RESORT & EQUESTRIAN ECOSYSTEM
+   Harmonized site-wide design matching dellatownships.com/pune/della-racecourse
+   ============================================================================== */
+.della-pune-ecosystem {
+    width: 100%;
+    padding: 64px 0;
+    background: radial-gradient(circle at 50% 8%, rgba(197, 160, 89, 0.09) 0%, #07080d 72%);
+    border-top: 1px solid rgba(197, 160, 89, 0.28);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.28);
+    position: relative;
+}
+.della-ec-inner {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.della-ec-head {
+    text-align: center;
+    max-width: 960px;
+    margin: 0 auto 38px;
+}
+.della-ec-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    background: rgba(197, 160, 89, 0.12);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    color: var(--gold-bright, #dfc07b);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.della-ec-title {
+    font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+    color: #fff;
+    line-height: 1.2;
+    margin: 0 0 14px;
+}
+.della-ec-title span {
+    color: var(--gold-bright, #dfc07b);
+}
+.della-ec-subtitle {
+    color: var(--text-muted, #b8b8cc);
+    font-size: 0.98rem;
+    line-height: 1.72;
+    margin: 0;
+}
+.della-ec-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 14px;
+    margin-bottom: 34px;
+}
+.della-ec-kpi {
+    background: rgba(14, 16, 24, 0.9);
+    border: 1px solid rgba(197, 160, 89, 0.28);
+    border-radius: 8px;
+    padding: 16px 14px;
+    text-align: center;
+}
+.della-ec-kpi-val {
+    font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.48rem;
+    font-weight: 700;
+    color: var(--gold-bright, #dfc07b);
+    line-height: 1.15;
+    margin-bottom: 4px;
+}
+.della-ec-kpi-lbl {
+    font-size: 0.76rem;
+    color: #d1d5db;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 1.35;
+}
+.della-ec-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.della-ec-card {
+    background: rgba(16, 18, 26, 0.85);
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    border-radius: 10px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.della-ec-card:hover {
+    border-color: rgba(223, 192, 123, 0.6);
+    transform: translateY(-2px);
+}
+.della-ec-card-tag {
+    color: var(--gold-bright, #dfc07b);
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+}
+.della-ec-card h3 {
+    font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: 1.28rem;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+}
+.della-ec-card p {
+    font-size: 0.88rem;
+    color: #cbd5e1;
+    line-height: 1.62;
+    margin: 0;
+    flex-grow: 1;
+}
+.della-ec-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+.della-ec-pill {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: rgba(197, 160, 89, 0.11);
+    border: 1px solid rgba(197, 160, 89, 0.28);
+    color: var(--gold-light, #e6d5b8);
+}
+.della-ec-detail-strip {
+    background: rgba(13, 15, 22, 0.92);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 10px;
+    padding: 22px 24px;
+    margin-bottom: 26px;
+}
+.della-ec-detail-strip h4 {
+    font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+    color: var(--gold-bright, #dfc07b);
+    font-size: 1.18rem;
+    margin: 0 0 10px;
+}
+.della-ec-un-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+.della-ec-un-item {
+    background: rgba(197, 160, 89, 0.08);
+    border: 1px solid rgba(197, 160, 89, 0.25);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 0.79rem;
+    color: #e2e8f0;
+    line-height: 1.4;
+}
+.della-ec-un-item strong {
+    display: block;
+    color: var(--gold-bright, #dfc07b);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 2px;
+}
+.della-ec-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
+}
+@media (max-width: 768px) {
+    .della-pune-ecosystem { padding: 42px 0; }
+    .della-ec-inner { padding: 0 16px; }
+    .della-ec-kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+}
+
+/* ==============================================================================
    HIGH-FIDELITY PRINT & PDF EXPORT STYLES
    Ensures floor plans, pricing sheets, and dossiers print cleanly for HNIs/NRIs
    ============================================================================== */

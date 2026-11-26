@@ -117,12 +117,12 @@ const ENTITY_DICTIONARY = {
  },
  "della-equestrian": {
  name: "The Della Resort & 8-Acre Private Racecourse",
- carpet: "2,000 – 5,000 sq.ft. Villa Plots",
+ carpet: "5,000 sq.ft. Freehold Villa Plots",
  price: "₹3.75 Cr* Onwards (5,000 sq.ft.)",
  sector: "Della 40-Acre Hospitality Precinct",
  floors: "G + 2 Independent Villa Permissions",
  spec: "Pursuits of the Privileged, Professional Equestrian Derby Track, 5-Star Glamping & Concierge",
- desc: "India's first equestrian-themed township featuring an 8-acre championship polo oval and 100 bespoke villa plots curated by Della Resorts."
+ desc: "India's first equestrian-themed township featuring an 8-acre championship polo oval and 98 Private Luxury Villas & freehold 5,000 sq.ft. villa plots curated by Della Resorts."
  },
  "kasarsai-dam": {
  landmark: "Kasarsai Dam & Eco Waterfront Horizon",
@@ -1084,7 +1084,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  if (isRacecourseIntent) {
  faqs.push({
  q: `What are the details of the 8-acre private racecourse at Krisala Hiranandani?`,
- a: `Curated in collaboration with Della Resorts, the 8-acre equestrian precinct includes an international polo track, air-cooled equine stables, a riding academy, and 100 exclusive villa plots with 5-star concierge privileges.`
+ a: `Curated in collaboration with Della Resorts, the 8-acre equestrian precinct includes an international polo track, air-cooled equine stables, a riding academy, and 98 Private Luxury Villas & 5,000 sq.ft. villa plots with 5-star concierge privileges.`
  });
  }
 
@@ -1096,7 +1096,7 @@ function buildPageIntelligence(slug, rawUrl, cf = {}) {
  },
  {
  q: `What configurations and starting prices are available at Hiranandani Pune?`,
- a: `Hiranandani Pune features 2 BHK (740–840 sq.ft. from ₹79L*), 3 BHK (1,050–1,280 sq.ft. from ₹1.25 Cr*), 4 BHK Palatial Residences (1,850–2,300 sq.ft. from ₹2.10 Cr*), double-height Sky Duplexes, and 100 bespoke Della Equestrian Villa plots.`
+ a: `Hiranandani Pune features 2 BHK (740–840 sq.ft. from ₹79L*), 3 BHK (1,050–1,280 sq.ft. from ₹1.25 Cr*), 4 BHK Palatial Residences (1,850–2,300 sq.ft. from ₹2.10 Cr*), double-height Sky Duplexes, and 98 bespoke Della Equestrian Villa plots.`
  },
  {
  q: `What is the MahaRERA registration number for Hiranandani Hinjewadi Pune?`,

@@ -70,9 +70,9 @@ def generate_report():
     rows.sort(key=lambda x: (x.get("clicks", 0), x.get("impressions", 0)), reverse=True)
 
     report_lines = [
-        "# Krisala × Hiranandani Township — Official Google Search Console Rank Audit",
+        "# Krisala × Hiranandani Township — Verified Google Search Console Rank Audit",
         f"**Audit Timestamp:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}  ",
-        f"**Data Source:** Google Search Console Official API (`{GSC_PROPERTY}`)  ",
+        f"**Data Source:** Google Search Console API (`{GSC_PROPERTY}`)  ",
         f"**Verified Search Queries Analyzed:** {len(rows)}  ",
         "",
         "## Real Organic Google SERP Performance",
@@ -104,7 +104,7 @@ def generate_report():
     report_lines.extend([
         "",
         "---",
-        "### Key SEO Takeaways from Official Google Data:",
+        "### Key SEO Takeaways from Verified Google Data:",
         "1. **Dominant Page 1 Positions:** High-intent branded queries such as `hiranandani pune hinjewadi` (#1.3), `codename colosseum` (#1.8), `krisala hiranandani arcadia` (#3.9), and `hiranandani hinjewadi phase 4` (#7.0) are firmly in the Top 1 to Top 7 of Google.",
         "2. **Pillar Page Indexing Acceleration:** The new dedicated authority pillars (`/hiranandani-pune`, `/hiranandani-price-list-2026`) are progressing through Google's Caffeine indexing pipeline to elevate mega-head terms (`hiranandani pune`, `krisala hiranandani`) into the Top 3.",
         "3. **Zero Scraping Artifacts:** This report is generated strictly from Google Search Console telemetry, removing any false 'Not in top 30' flags caused by Google's anti-bot scraper challenges."
@@ -114,7 +114,7 @@ def generate_report():
     with open(REPORT_FILE, "w", encoding="utf-8") as f:
         f.write(report_content)
     
-    print(f"Generated official verified GSC report at: {REPORT_FILE}")
+    print(f"Generated verified GSC report at: {REPORT_FILE}")
     print("\nTop 10 Live Rankings Directly from Google:")
     for r in rows[:10]:
         print(f"  Pos: #{r.get('position', 0):.1f} | Clicks: {r.get('clicks', 0):>2} | Impr: {r.get('impressions', 0):>3} | Query: {r['keys'][0]}")

@@ -1076,7 +1076,9 @@ const originalText = submitBtn.textContent;
 submitBtn.textContent = "Sending Report Link...";
 submitBtn.disabled = true;
 const formData = new FormData(exitForm);
-const targetUrl = exitForm.action || 'https://formsubmit.co/+91 77440 09295';
+formData.append('_source', window.location.href);
+const rawAction = exitForm.getAttribute('action') || '';
+const targetUrl = rawAction.startsWith('/') ? rawAction : '/api/lead';
 try {
 const response = await fetch(targetUrl, {
 method: 'POST',
@@ -1416,7 +1418,7 @@ waLink.href = `https://wa.me/917744009295?text=${encoded}`;
 });
 })();
 (function initEdgeLeadSubmission() {
-document.querySelectorAll('form.enquiry-form, form#leadForm, form#exitForm, form#enquiryForm, form.modal-form').forEach(form => {
+document.querySelectorAll('form.enquiry-form, form#leadForm, form#exitForm, form#enquiryForm, form#dellaMasterForm, form.modal-form').forEach(form => {
 form.addEventListener('submit', async (e) => {
 const btn = form.querySelector('button[type="submit"]');
 const origText = btn ? btn.innerHTML : '';

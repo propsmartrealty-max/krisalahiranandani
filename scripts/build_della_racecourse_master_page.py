@@ -1,24 +1,25 @@
 #!/usr/bin/env python3
 """
-Master Page Generator: Della Racecourse Pune (40-Acre District)
-Directly referenced from https://www.dellatownships.com/pune/della-racecourse
+Master Page Generator: Della Racecourse Pune (40-Acre Integrated District)
+Implements full parity with https://www.dellatownships.com/pune/della-racecourse
+inside the 105-Acre Krisala Hiranandani Township Pune Portal.
+Zero exposed emails, zero "official" wording, /api/lead server routing, MahaRERA compliant.
 """
 
 import os
-import re
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUTPUT_PATH = os.path.join(ROOT_DIR, "della-racecourse.html")
 
-PAGE_HTML = """<!DOCTYPE html>
+PAGE_HTML = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Della Racecourse Pune | 40-Acre International Polo Club, Resort & Villa Plots</title>
-<meta content="Explore Della Racecourse Pune: 40-Acre International Polo Club, 8-Acre Turf Racecourse, 5,000 sq.ft. British Colonial Villa Plots from ₹3.75 Cr*, 5-Star Resort & MAYRLIFE Wellness in North Hinjewadi." name="description"/>
-<meta name="keywords" content="Della Racecourse Pune, Della Townships Pune, Della Racecourse Township, Della Racecourse Hinjewadi, Della Townships India, Jimmy Mistry Della Pune, Della Villa Plots Pune, Della Polo Club Residences, Luxury Township Hinjewadi, Equestrian Plots Pune, Della Bungalow Plots"/>
-<link rel="canonical" href="https://krisalahiranandanitownships.com/della-racecourse"/>
+<title>Della Racecourse Pune | 40-Acre Polo Club, Branded Residences &amp; Villa Plots</title>
+<meta content="Della Racecourse Pune at Krisala Hiranandani North Hinjewadi: 40-Acre International Polo Club, 8-Acre Turf Racecourse, 98 Private Luxury Villas, 156 Branded Residences, 12 Sky Villas, 5,000 sq.ft. Villa Plots from ₹3.75 Cr*, 300+ Room 5-Star Resort &amp; MAYRLIFE Wellness." name="description"/>
+<meta name="keywords" content="Della Racecourse Pune, Della Townships Pune, Della Racecourse Hinjewadi, Krisala Hiranandani Township Pune, Jimmy Mistry Della Pune, Della Branded Residences Sky Villas, 5000 sq.ft. Villa Plots Pune, MAYRLIFE Wellness Pune, Della Design District"/>
+<link href="https://krisalahiranandanitownships.com/della-racecourse" rel="canonical"/>
 
 <!-- Favicons & App Icons -->
 <link href="/favicon.png" rel="icon" sizes="32x32" type="image/png"/>
@@ -27,28 +28,31 @@ PAGE_HTML = """<!DOCTYPE html>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/favicon.ico" rel="shortcut icon"/>
 
-<!-- Crawlers & Robots -->
+<!-- Crawlers & AI Discovery -->
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="googlebot"/>
+<link href="/llms.txt" rel="alternate" title="AI Documentation Index" type="text/plain"/>
+<link href="/ai-facts.json" rel="alternate" title="Verified Entity Facts JSON" type="application/json"/>
+<link href="/rss.xml" rel="alternate" title="Krisala Hiranandani Dispatches" type="application/rss+xml"/>
 
-<!-- OpenGraph / Social Dominance -->
+<!-- OpenGraph / Social Cards -->
 <meta content="website" property="og:type"/>
 <meta content="https://krisalahiranandanitownships.com/della-racecourse" property="og:url"/>
-<meta content="Della Racecourse Pune | 40-Acre International Polo Club, Resort & Villa Plots" property="og:title"/>
-<meta content="Explore Della Racecourse Pune: 40-Acre International Polo Club, 8-Acre Turf Racecourse, 5,000 sq.ft. British Colonial Villa Plots from ₹3.75 Cr*, 5-Star Resort & MAYRLIFE Wellness in North Hinjewadi." property="og:description"/>
+<meta content="Della Racecourse Pune | 40-Acre Polo Club, Branded Residences &amp; Villa Plots" property="og:title"/>
+<meta content="40-Acre Equestrian Township by Della Townships India × Hiranandani Communities × Krisala Developers (GDV ₹1,389 Crs / $150.1 Mn). 8-Acre Racecourse, 98 Private Villas, 156 Branded Residences, 12 Sky Villas, 300+ Room 5-Star Resort &amp; 5,000 sq.ft. Villa Plots from ₹3.75 Cr*." property="og:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/della_racecourse/della_pune_racecourse_hero_banner.webp" property="og:image"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="Della Racecourse Pune Master View" property="og:image:alt"/>
+<meta content="Della Racecourse Pune Master Aerial Render" property="og:image:alt"/>
 <meta content="Krisala Hiranandani Township" property="og:site_name"/>
 
 <!-- Twitter Cards -->
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Della Racecourse Pune | 40-Acre International Polo Club, Resort & Villa Plots" name="twitter:title"/>
-<meta content="Explore Della Racecourse Pune: 40-Acre International Polo Club, 8-Acre Turf Racecourse, 5,000 sq.ft. British Colonial Villa Plots from ₹3.75 Cr*, 5-Star Resort & MAYRLIFE Wellness in North Hinjewadi." name="twitter:description"/>
+<meta content="Della Racecourse Pune | 40-Acre Polo Club, Branded Residences &amp; Villa Plots" name="twitter:title"/>
+<meta content="40-Acre Equestrian Township by Jimmy Mistry, Dr. Niranjan Hiranandani &amp; Sagar Agarwal. 8-Acre Turf Racecourse, 50 Stables, 98 Private Villas, 168 Branded Residences &amp; Sky Villas, 5,000 sq.ft. Villa Plots from ₹3.75 Cr*." name="twitter:description"/>
 <meta content="https://krisalahiranandanitownships.com/public/della_racecourse/della_pune_racecourse_hero_banner.webp" name="twitter:image"/>
 
-<!-- Preload Critical Hero Image -->
+<!-- Preload Critical Assets -->
 <link as="image" fetchpriority="high" href="/public/della_racecourse/della_pune_racecourse_hero_banner.webp" rel="preload" type="image/webp"/>
 <link as="font" crossorigin="" href="https://fonts.gstatic.com/s/cormorantgaramond/v21/co3bmX5slCNuHLi8bLeY9MK7whWMhyjYqXtKky2F7g.woff2" rel="preload" type="font/woff2"/>
 <link as="font" crossorigin="" href="/public/fonts/Phosphor.woff2" rel="preload" type="font/woff2"/>
@@ -56,9 +60,9 @@ PAGE_HTML = """<!DOCTYPE html>
 <!-- Stylesheets -->
 <link href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'" rel="stylesheet"/>
 <noscript><link href="/public/fonts/phosphor.min.css" rel="stylesheet"/></noscript>
-<link href="/style.min.css?v=20261026_v6" rel="stylesheet"/>
+<link href="/style.min.css?v=20261126_v1" rel="stylesheet"/>
 
-<!-- Google Consent Mode v2 & Universal Tag -->
+<!-- Google Consent Mode v2 & Analytics -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -71,7 +75,7 @@ gtag('consent', 'default', {
 (function() {
   var gtmId = window.GTM_ID || 'AW-17430583486';
   var gaId = 'G-QW05E2X6M0';
-  var d = document, s = 'script', l = 'dataLayer';
+  var d = document, s = 'script';
   var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
   j.async = true;
   j.src = 'https://www.googletagmanager.com/gtag/js?id=' + gtmId;
@@ -96,9 +100,9 @@ gtag('consent', 'default', {
     },
     {
       "name": "schedule_della_site_visit",
-      "description": "Schedule a VIP chauffeured site tour of Della Racecourse Pune and experience center",
+      "description": "Register Expression of Interest or schedule VIP site tour of Della Racecourse Pune in Darumbre, North Hinjewadi",
       "targetUrl": "https://krisalahiranandanitownships.com/site-address",
-      "method": "POST"
+      "method": "GET"
     },
     {
       "name": "download_della_dossier",
@@ -116,12 +120,50 @@ gtag('consent', 'default', {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "VideoObject",
+      "name": "Della Racecourse Pune 4K Master Drone & Architectural Tour",
+      "description": "Aerial journey over the 40-acre Della Racecourse Pune district inside Krisala Hiranandani Township: 8-acre turf racecourse, 50 horse stables, three 18-floor Branded Residences & Sky Villa towers, 98 Private Luxury Villas, 300+ room 5-star resort, MAYRLIFE wellness, and 5,000 sq.ft. villa plots starting from ₹3.75 Cr*.",
+      "thumbnailUrl": [
+        "https://krisalahiranandanitownships.com/public/della_racecourse/della_pune_racecourse_hero_banner.webp"
+      ],
+      "uploadDate": "2026-10-31T08:00:00+05:30",
+      "contentUrl": "https://krisalahiranandanitownships.com/public/imported/u8323264961_httpss.mj_.rundqik694D-FI_aerial_view_of_dense_gre_cdda2115-7b10-495a-84ac-39089bcdc5a2_2.mp4",
+      "embedUrl": "https://krisalahiranandanitownships.com/della-racecourse#della-drone-tour"
+    },
+    {
       "@type": "RealEstateListing",
       "@id": "https://krisalahiranandanitownships.com/della-racecourse#listing",
-      "name": "Della Racecourse Pune — 40-Acre Equestrian Township",
-      "description": "India's first luxury integrated equestrian township featuring 8-acre championship turf racecourse, 50 horse stables, international polo club, 5-star resort, and 5,000 sq.ft. British colonial villa plots.",
+      "name": "Della Racecourse Pune — 40-Acre Equestrian Township, Branded Residences & Villa Plots",
+      "description": "Developed by Della Townships India (Jimmy Mistry) in strategic collaboration with Hiranandani Communities (Dr. Niranjan Hiranandani) and Krisala Developers (Sagar Agarwal). Spanning 40 acres (GDV ₹1,389 Crs / $150.1 Mn) with an 8-acre racecourse & polo club, 50 horse stables, 98 Private Luxury Villas, 156 Della Branded Residences, 12 Sky Villas, 300+ room 5-star resort, 8 restaurants & lounges, 1 Lakh sq.ft. Della Design District, MAYRLIFE wellness, and 5,000 sq.ft. freehold villa plots starting from ₹3.75 Cr*.",
       "url": "https://krisalahiranandanitownships.com/della-racecourse",
       "image": "https://krisalahiranandanitownships.com/public/della_racecourse/della_pune_racecourse_hero_banner.webp",
+      "dateModified": "2026-11-26",
+      "alternateName": [
+        "Della Racecourse Townships Pune",
+        "Della Racecourse Pune",
+        "Della Townships Pune",
+        "The Della Collection Hinjewadi"
+      ],
+      "knowsAbout": [
+        "Della Racecourse Pune",
+        "Della Branded Residences",
+        "98 Private Luxury Villas",
+        "5000 sq.ft. Villa Plots from 3.75 Cr",
+        "8-Acre International Polo Club",
+        "MAYRLIFE European Medical Wellness",
+        "Della Design District 1 Lakh SqFt",
+        "Future-Fit Living Laboratory"
+      ],
+      "sameAs": [
+        "https://www.dellatownships.com/pune/della-racecourse",
+        "https://www.wikidata.org/wiki/Q3524535",
+        "https://en.wikipedia.org/wiki/Niranjan_Hiranandani",
+        "https://en.wikipedia.org/wiki/Hinjawadi"
+      ],
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["#ai-overview-summary", "h1", ".hero-subtitle"]
+      },
       "offers": {
         "@type": "Offer",
         "priceCurrency": "INR",
@@ -138,10 +180,10 @@ gtag('consent', 'default', {
     {
       "@type": "Place",
       "@id": "https://krisalahiranandanitownships.com/della-racecourse#place",
-      "name": "Della Racecourse & International Polo Club",
+      "name": "Della Racecourse & International Polo Club, North Hinjawadi",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Krisala Hiranandani Master Township, Darumbre, North Hinjewadi",
+        "streetAddress": "Krisala Hiranandani Master Township, Darumbre, North Hinjawadi",
         "addressLocality": "Pune",
         "addressRegion": "Maharashtra",
         "postalCode": "410506",
@@ -157,24 +199,9 @@ gtag('consent', 'default', {
       "@type": "BreadcrumbList",
       "@id": "https://krisalahiranandanitownships.com/della-racecourse#breadcrumb",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://krisalahiranandanitownships.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "The Della Collection",
-          "item": "https://krisalahiranandanitownships.com/della"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Della Racecourse Pune",
-          "item": "https://krisalahiranandanitownships.com/della-racecourse"
-        }
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://krisalahiranandanitownships.com/"},
+        {"@type": "ListItem", "position": 2, "name": "The Della Collection", "item": "https://krisalahiranandanitownships.com/della"},
+        {"@type": "ListItem", "position": 3, "name": "Della Racecourse Pune", "item": "https://krisalahiranandanitownships.com/della-racecourse"}
       ]
     },
     {
@@ -186,31 +213,31 @@ gtag('consent', 'default', {
           "name": "What is Della Racecourse Pune?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Della Racecourse Pune is a 40-acre ultra-luxury integrated equestrian district created by Design Futurist Jimmy Mistry in collaboration with Dr. Niranjan Hiranandani and Sagar Agarwal. Located within the 105-acre Krisala Hiranandani Township in North Hinjewadi, it features an 8-acre championship turf racecourse, international polo club, 50 horse stables, a 300+ key 5-star resort, MAYRLIFE European medical wellness, 1,00,000 sq.ft. luxury retail boulevard, and 100 bespoke 5,000 sq.ft. British Colonial villa plots starting from ₹3.75 Cr*."
+            "text": "Della Racecourse Pune is a 40-acre theme-based luxury integrated equestrian and resort township at Darumbre, North Hinjawadi, Pune, created by Della Townships India (Jimmy Mistry) in strategic collaboration with Hiranandani Communities (Dr. Niranjan Hiranandani) and Krisala Developers (Sagar Agarwal) with a GDV of ₹1,389 Crs ($150.1 Mn). Inside the 105-acre Krisala Hiranandani masterplan, it integrates an 8-acre racecourse & international polo club with 50 horse stables, 98 Private Luxury Villas, 156 Della Branded Residences, 12 Sky Villas, a 300+ room 5-star resort, Bespoke Private Offices, 8 restaurants & lounges, 12 destination wedding & 12 corporate MICE venues, 1 Lakh sq.ft. Della Design District, MAYRLIFE medical wellness, and 5,000 sq.ft. freehold villa plots starting from ₹3.75 Cr*."
           }
         },
         {
           "@type": "Question",
-          "name": "What is the starting price of villa plots at Della Racecourse Pune?",
+          "name": "What residential offerings and villa plot prices are available at Della Racecourse Pune?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Villa plots at Della Racecourse Pune start at ₹3.75 Crore* for 5,000 sq.ft. clear-title freehold plots with sanctioned G+2 British Colonial architectural villa blueprints."
+            "text": "The 40-acre district encompasses 98 Private Luxury Villas across 4 British Colonial architectural styles, 5,000 sq.ft. clear-title freehold villa plots starting from ₹3.75 Crore* with G+2 sanctions, plus 156 Della Branded Residences and 12 Sky Villas set across three 18-floor biophilic towers with Marina Bay Singapore-inspired rooftop infinity pools."
           }
         },
         {
           "@type": "Question",
-          "name": "What is the MahaRERA registration number for Della Racecourse Pune?",
+          "name": "What wellness therapies and sustainability frameworks are integrated into Della Racecourse Pune?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Della Racecourse Pune is part of the sanctioned Krisala Hiranandani Master Township under MahaRERA registration numbers PR1260002500600 and PR1260002600818. Marketed exclusively by Propsmart Realty (MahaRERA Reg No: A031262401295)."
+            "text": "In collaboration with MAYRLIFE, the township features 6 advanced clinical longevity modalities: Cryotherapy (-110°C), Red Light Therapy (up to 650 nm), PEMF Therapy, Hyperbaric Oxygen Therapy (HBOT), Infrared Therapy (700 nm+), and EEG Biofeedback. Every home runs on Salutogenic Living (Biophilic Design, Natural Light, Water Perfection, Air Purity) and complies with 6 UN SDGs (UN SDG 3, 6, 7+13, 9+12, 11, and 15)."
           }
         },
         {
           "@type": "Question",
-          "name": "What are the resort and equestrian privileges included?",
+          "name": "How far is Della Racecourse Pune from Mumbai, the Pune Expressway, and Hinjewadi IT hubs?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Residents receive exclusive lifetime membership privileges to Della Adventure Park (50+ activities), the 8-acre private turf racecourse and polo arena, access to the 300+ key 5-star luxury resort, MAYRLIFE European medical wellness center, and the 1,00,000 sq.ft. Della Design District retail boulevard."
+            "text": "Situated at Darumbre, North Hinjawadi (Pune 410506), Della Racecourse Pune is 2.5 hours from Mumbai by road, 20 minutes from the Mumbai-Pune Expressway, 4 minutes from the PMRDA 128m Ring Road and Pune Metro Line 3, and 10 minutes from Hinjewadi Phase 1, 2 & 3 IT campuses (Infosys, TCS, Wipro)."
           }
         }
       ]
@@ -220,11 +247,10 @@ gtag('consent', 'default', {
 </script>
 
 <style>
-/* Page-Specific Styling for Della Racecourse Master Page */
 :root {
   --bg-dark: #090a0f;
   --bg-dark-deep: #050608;
-  --bg-surface: rgba(16, 18, 26, 0.75);
+  --bg-surface: rgba(16, 18, 26, 0.82);
   --gold-primary: #c5a059;
   --gold-light: #e6d5b8;
   --gold-bright: #dfc07b;
@@ -235,427 +261,94 @@ gtag('consent', 'default', {
   --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif;
   --font-accent: 'Cinzel', serif;
 }
-
-body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
+body { background: var(--bg-dark); color: var(--text-main); font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; margin: 0; }
 .della-rc-hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 140px 20px 80px;
-  background: linear-gradient(180deg, rgba(5,6,8,0.72) 0%, rgba(9,10,15,0.88) 100%),
-              url('/public/della_racecourse/della_pune_racecourse_hero_banner.webp') center/cover no-repeat;
+  padding: 130px 20px 70px;
+  background: linear-gradient(180deg, rgba(5,6,8,0.74) 0%, rgba(9,10,15,0.92) 100%), url('/public/della_racecourse/della_pune_racecourse_hero_banner.webp') center/cover no-repeat;
   text-align: center;
 }
-
-.hero-content {
-  max-width: 1040px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
+.della-rc-subnav {
+  position: sticky;
+  top: 66px;
+  z-index: 950;
+  background: rgba(5,6,8,0.94);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(197,160,89,0.22);
+  border-bottom: 1px solid rgba(197,160,89,0.3);
+  padding: 10px 16px;
+  overflow-x: auto;
+  white-space: nowrap;
 }
-
-.hero-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 24px;
-  border-radius: 50px;
-  background: rgba(197, 160, 89, 0.15);
-  border: 1px solid rgba(197, 160, 89, 0.45);
-  color: var(--gold-bright);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-bottom: 24px;
-}
-
-.hero-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 700;
-  line-height: 1.15;
-  color: #fff;
-  margin-bottom: 20px;
-  letter-spacing: -0.02em;
-}
-
-.hero-title span {
-  background: linear-gradient(135deg, #dfc07b 0%, #c5a059 50%, #f4e4c1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: #d1d5db;
-  max-width: 860px;
-  margin: 0 auto 35px;
-  line-height: 1.7;
-}
-
-.gdv-badge-strip {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 40px;
-}
-
-.gdv-chip {
-  background: rgba(16, 18, 26, 0.85);
-  border: 1px solid rgba(197, 160, 89, 0.3);
-  border-radius: 8px;
-  padding: 12px 24px;
-  text-align: left;
-}
-
-.gdv-chip .label {
-  font-size: 0.75rem;
-  color: var(--gold-light);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.gdv-chip .value {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #fff;
-  font-family: var(--font-accent);
-}
-
-.cta-btn-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-}
-
-.btn-luxury {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 36px;
-  background: linear-gradient(135deg, #c5a059 0%, #dfc07b 100%);
-  color: #090a0f;
-  font-weight: 700;
-  font-size: 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  min-height: 48px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn-luxury:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(223, 192, 123, 0.35);
-}
-
-.btn-outline-gold {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 36px;
-  background: rgba(16, 18, 26, 0.7);
-  border: 1px solid var(--gold-primary);
-  color: var(--gold-bright);
-  font-weight: 600;
-  font-size: 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  min-height: 48px;
-  transition: background 0.2s;
-}
-
-.btn-outline-gold:hover {
-  background: rgba(197, 160, 89, 0.15);
-}
-
-.section-pad {
-  padding: 100px 20px;
+.della-rc-subnav-inner {
   max-width: 1360px;
   margin: 0 auto;
-}
-
-.sec-head {
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto 60px;
-}
-
-.sec-badge {
-  display: inline-block;
-  color: var(--gold-bright);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.sec-title {
-  font-family: var(--font-heading);
-  font-size: clamp(2rem, 3.8vw, 3.2rem);
-  color: #fff;
-  line-height: 1.2;
-  margin-bottom: 18px;
-}
-
-.sec-desc {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.7;
-}
-
-/* 3-Column Visionary Leadership Grid */
-.visionary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.visionary-card {
-  background: rgba(16, 18, 26, 0.65);
-  border: 1px solid rgba(197, 160, 89, 0.25);
-  border-radius: 12px;
-  padding: 35px 28px;
-  text-align: center;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.visionary-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--gold-primary);
-}
-
-.visionary-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  object-fit: cover;
-  border: 2px solid var(--gold-primary);
-}
-
-.visionary-name {
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  color: #fff;
-  margin-bottom: 6px;
-}
-
-.visionary-role {
-  color: var(--gold-bright);
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
-}
-
-.visionary-bio {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-  line-height: 1.65;
-}
-
-/* 12 Master Feature Highlights Showcase */
-.feature-showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 30px;
-}
-
-.feature-box {
-  background: rgba(16, 18, 26, 0.7);
-  border: 1px solid rgba(197, 160, 89, 0.2);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.feature-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-  border-color: rgba(197, 160, 89, 0.5);
-}
-
-.feature-img-wrap {
-  position: relative;
-  height: 240px;
-  overflow: hidden;
-}
-
-.feature-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.feature-box:hover .feature-img-wrap img {
-  transform: scale(1.05);
-}
-
-.feature-tag-chip {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(5, 6, 8, 0.85);
-  border: 1px solid var(--gold-primary);
-  color: var(--gold-bright);
-  font-size: 0.75rem;
-  padding: 5px 12px;
-  border-radius: 4px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-
-.feature-body {
-  padding: 26px;
-}
-
-.feature-body h3 {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  color: #fff;
-  margin-bottom: 12px;
-}
-
-.feature-body p {
-  color: var(--text-muted);
-  font-size: 0.94rem;
-  line-height: 1.65;
-  margin-bottom: 16px;
-}
-
-.feature-meta-list {
-  list-style: none;
-  border-top: 1px solid rgba(197, 160, 89, 0.15);
-  padding-top: 14px;
-}
-
-.feature-meta-list li {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.88rem;
-  color: var(--gold-light);
-  margin-bottom: 6px;
+  justify-content: center;
+  gap: 18px;
+  font-size: 0.82rem;
 }
-
-/* Specification Matrix Table */
-.spec-table-container {
-  overflow-x: auto;
-  border-radius: 8px;
-  border: 1px solid rgba(197, 160, 89, 0.3);
-  margin-top: 30px;
-}
-
-.spec-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.92rem;
-  background: #0c0e15;
-}
-
-.spec-table th {
-  background: rgba(197, 160, 89, 0.18);
-  color: #dfc07b;
-  padding: 16px 20px;
-  font-weight: 600;
-  border-bottom: 1px solid rgba(197, 160, 89, 0.3);
-}
-
-.spec-table td {
-  padding: 16px 20px;
-  border-bottom: 1px solid rgba(197, 160, 89, 0.12);
-  color: #d1d5db;
-}
-
-.spec-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-/* Lead Capture Form */
-.form-card {
-  background: radial-gradient(circle at 50% 0%, rgba(197, 160, 89, 0.12) 0%, rgba(16, 18, 26, 0.95) 70%);
-  border: 1px solid rgba(197, 160, 89, 0.4);
-  border-radius: 14px;
-  padding: 45px 35px;
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.form-field {
-  margin-bottom: 20px;
-}
-
-.form-field label {
-  display: block;
-  font-size: 0.88rem;
-  color: var(--gold-light);
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.form-field input, .form-field select, .form-field textarea {
-  width: 100%;
-  padding: 14px 16px;
-  background: rgba(5, 6, 8, 0.85);
-  border: 1px solid rgba(197, 160, 89, 0.3);
-  border-radius: 6px;
-  color: #fff;
-  font-size: 1rem;
-}
-
-.form-field input:focus, .form-field select:focus {
-  outline: none;
-  border-color: var(--gold-bright);
-}
-
-.consent-notice {
-  font-size: 0.78rem;
-  color: #9ca3af;
-  line-height: 1.5;
-  margin-top: 14px;
-}
-
-@media (max-width: 768px) {
-  .section-pad { padding: 60px 16px; }
-  .feature-showcase-grid { grid-template-columns: 1fr; }
-  .btn-luxury, .btn-outline-gold { width: 100%; justify-content: center; }
-}
+.della-rc-subnav-inner a { color: #e2e8f0; text-decoration: none; font-weight: 600; padding: 6px 10px; border-radius: 4px; transition: color 0.2s, background 0.2s; }
+.della-rc-subnav-inner a:hover { color: var(--gold-bright); background: rgba(197,160,89,0.12); }
+.gdv-badge-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 32px; }
+.gdv-chip { background: rgba(16, 18, 26, 0.88); border: 1px solid rgba(197, 160, 89, 0.35); border-radius: 8px; padding: 12px 20px; text-align: left; min-width: 200px; }
+.gdv-chip .label { font-size: 0.72rem; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
+.gdv-chip .value { font-size: 1.15rem; font-weight: 700; color: #fff; font-family: var(--font-accent); }
+.della-rc-section { padding: 78px 20px; }
+.sec-head { text-align: center; max-width: 900px; margin: 0 auto 46px; }
+.sec-badge { display: inline-block; color: var(--gold-bright); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 10px; }
+.sec-title { font-family: var(--font-heading); font-size: clamp(2rem, 3.8vw, 3.1rem); color: #fff; line-height: 1.18; margin: 0 0 14px; }
+.sec-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin: 0; }
+.visionary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; max-width: 1240px; margin: 0 auto; }
+.visionary-card { background: rgba(16, 18, 26, 0.72); border: 1px solid rgba(197, 160, 89, 0.28); border-radius: 12px; padding: 30px 24px; text-align: center; }
+.visionary-avatar { width: 112px; height: 112px; border-radius: 50%; margin: 0 auto 16px; object-fit: cover; border: 2px solid var(--gold-primary); display: block; }
+.visionary-crest { width: 112px; height: 112px; border-radius: 50%; margin: 0 auto 16px; border: 2px solid var(--gold-bright); background: radial-gradient(circle, rgba(197,160,89,0.22) 0%, rgba(16,18,26,0.96) 72%); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; color: var(--gold-bright); letter-spacing: 2px; }
+.visionary-name { font-family: var(--font-heading); font-size: 1.55rem; color: #fff; margin: 0 0 6px; }
+.visionary-role { font-size: 0.82rem; color: var(--gold-bright); font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; line-height: 1.45; }
+.visionary-bio { font-size: 0.9rem; color: var(--text-muted); line-height: 1.62; margin: 0; }
+.feature-showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px; max-width: 1360px; margin: 0 auto; }
+.feature-box { background: rgba(16, 18, 26, 0.78); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.feature-img-wrap { position: relative; height: 220px; overflow: hidden; background: #0c0d14; }
+.feature-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.feature-tag-chip { position: absolute; top: 12px; left: 12px; background: rgba(5,6,8,0.85); border: 1px solid rgba(197,160,89,0.45); color: var(--gold-bright); padding: 4px 11px; border-radius: 4px; font-size: 0.73rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+.feature-body { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; }
+.feature-body h3 { font-family: var(--font-heading); font-size: 1.38rem; color: #fff; margin: 0 0 10px; }
+.feature-body p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.62; margin: 0 0 14px; }
+.feature-meta-list { list-style: none; padding: 0; margin: auto 0 0; display: flex; flex-direction: column; gap: 6px; font-size: 0.84rem; color: #e2e8f0; }
+.feature-meta-list li { display: flex; align-items: flex-start; gap: 8px; }
+.feature-meta-list i { color: var(--gold-bright); margin-top: 3px; flex-shrink: 0; }
+.spec-table-container { max-width: 1240px; margin: 0 auto; overflow-x: auto; border-radius: 10px; border: 1px solid rgba(197,160,89,0.3); }
+.spec-table { width: 100%; border-collapse: collapse; background: rgba(12,14,22,0.92); font-size: 0.9rem; }
+.spec-table th { background: rgba(197,160,89,0.16); color: var(--gold-bright); text-align: left; padding: 14px 16px; border-bottom: 1px solid rgba(197,160,89,0.35); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; }
+.spec-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); color: #d1d5db; }
+.form-card { max-width: 680px; margin: 0 auto; background: rgba(14,16,24,0.9); border: 1px solid rgba(197,160,89,0.35); border-radius: 12px; padding: 34px 28px; }
+.form-field { margin-bottom: 18px; }
+.form-field label { display: block; color: var(--gold-light); font-size: 0.84rem; font-weight: 600; margin-bottom: 6px; }
+.form-field input, .form-field select { width: 100%; padding: 13px 14px; background: rgba(5,6,8,0.8); border: 1px solid rgba(197,160,89,0.3); border-radius: 6px; color: #fff; font-size: 0.95rem; }
+.consent-notice { font-size: 0.74rem; color: #9ca3af; line-height: 1.5; margin-top: 14px; }
 </style>
 </head>
-
 <body>
 
-<!-- Header & Nav -->
-<header class="navbar" style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 14px 0; background: rgba(9, 10, 15, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.25);">
-  <div class="container" style="display: flex; align-items: center; justify-content: space-between; max-width: 1360px; margin: 0 auto; padding: 0 20px;">
-    <a href="/" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-      <img src="/public/krisala-hiranandani-logo.webp" alt="Krisala Hiranandani Township" width="160" height="38" style="height: 38px; width: auto;"/>
+<!-- Primary Navigation Header -->
+<header style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(5, 6, 8, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(197, 160, 89, 0.25); padding: 12px 0;">
+  <div style="max-width: 1380px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+    <a href="/" style="display: flex; align-items: center; text-decoration: none;">
+      <img alt="Krisala Hiranandani Township" height="38" src="/public/krisala-hiranandani-logo.webp" style="height: 38px; width: auto;" width="160"/>
     </a>
-    <nav style="display: flex; align-items: center; gap: 24px;">
-      <a href="/della-racecourse" style="color: var(--gold-bright); text-decoration: none; font-weight: 700; font-size: 0.92rem; border-bottom: 2px solid var(--gold-bright); padding-bottom: 4px;">Della Racecourse</a>
-      <a href="/della" style="color: #fff; text-decoration: none; font-weight: 500; font-size: 0.92rem;">Villa Plots</a>
-      <a href="/masterplan" style="color: #fff; text-decoration: none; font-weight: 500; font-size: 0.92rem;">Master Plan</a>
-      <a href="/pricing" style="color: #fff; text-decoration: none; font-weight: 500; font-size: 0.92rem;">Cost Sheet</a>
-      <a href="https://wa.me/917744009295?text=Hello%2C+I+am+interested+in+Della+Racecourse+Pune+5000+sq.ft.+villa+plots+at+Krisala+Hiranandani+Township+Hinjewadi.+Please+share+the+brochure+and+cost+sheet." target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #fff; padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-        <i class="ph ph-whatsapp-logo" style="font-size: 1.2rem;"></i> WhatsApp
+    <nav aria-label="Primary Navigation" style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+      <a href="/" style="color: #fff; text-decoration: none; font-weight: 500; font-size: 0.88rem;">Township Home</a>
+      <a href="/della-racecourse" style="color: var(--gold-bright); text-decoration: none; font-weight: 700; font-size: 0.88rem; border-bottom: 2px solid var(--gold-bright); padding-bottom: 2px;">Della Racecourse</a>
+      <a href="/della" style="color: #fff; text-decoration: none; font-weight: 500; font-size: 0.88rem;">Villa Plots</a>
+      <a href="/masterplan" style="color: #fff; text-decoration: none; font-weight: 500; font-size: 0.88rem;">Master Plan</a>
+      <a href="/pricing" style="color: #fff; text-decoration: none; font-weight: 500; font-size: 0.88rem;">Price List</a>
+      <a href="/contact" style="color: #fff; text-decoration: none; font-weight: 500; font-size: 0.88rem;">Contact</a>
+      <a href="https://wa.me/917744009295?text=Hello%2C%20I%20am%20interested%20in%20Della%20Racecourse%20Pune%20at%20Krisala%20Hiranandani%20Township%20Hinjewadi%2C%20Pune.%20Please%20share%20the%20brochure%20and%20cost%20sheet." rel="noopener noreferrer" style="background: #25D366; color: #fff; padding: 9px 16px; border-radius: 6px; font-weight: 700; font-size: 0.84rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;" target="_blank">
+        <i class="ph ph-whatsapp-logo"></i> WhatsApp Desk
       </a>
     </nav>
   </div>
@@ -663,490 +356,529 @@ body {
 
 <!-- Hero Section -->
 <section class="della-rc-hero">
-  <div class="hero-content">
-    <div class="hero-pill">
-      <i class="ph ph-horse"></i> 40-Acre International Polo Club, Resort &amp; Private Residences
+  <div style="max-width: 1120px; margin: 0 auto; position: relative; z-index: 2;">
+    <div style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: 50px; background: rgba(197,160,89,0.16); border: 1px solid rgba(197,160,89,0.45); color: var(--gold-bright); font-size: 0.8rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 18px;">
+      <i class="ph ph-horse"></i> 40 Acres · International Polo Club, Resort &amp; Private Residences · Darumbre, North Hinjawadi
     </div>
-    <h1 class="hero-title">
-      Della Racecourse <span>Pune</span><br/>
-      India's 1st Luxury Integrated Equestrian Township
+    <h1 style="font-family: var(--font-heading); font-size: clamp(2.4rem, 5.4vw, 4.3rem); font-weight: 700; line-height: 1.12; color: #fff; margin: 0 0 18px;">
+      Della Racecourse <span style="color: var(--gold-bright);">Pune</span><br/>
+      India's 1st Equestrian Integrated Township
     </h1>
-    <p class="hero-subtitle">
-      Conceived by Design Futurist <strong>Jimmy Mistry</strong> in landmark collaboration with <strong>Dr. Niranjan Hiranandani</strong> and <strong>Sagar Agarwal</strong>. An iconic 40-acre resort-living ecosystem featuring an 8-acre championship turf racecourse, 50 equine stables, MAYRLIFE European medical wellness, and 100 bespoke 5,000 sq.ft. British Colonial villa estates.
+    <p class="hero-subtitle" style="font-size: clamp(1rem, 1.9vw, 1.22rem); color: #e2e8f0; max-width: 900px; margin: 0 auto 30px; line-height: 1.7;">
+      Developed by <strong>Della Townships India</strong> (Design Futurist <strong>Jimmy Mistry</strong>) in strategic collaboration with <strong>Hiranandani Communities</strong> (<strong>Dr. Niranjan Hiranandani</strong>) and <strong>Krisala Developers</strong> (<strong>Sagar Agarwal</strong>). Built under Della's <strong>CDDMO</strong> framework &amp; <strong>Future-Fit Living Laboratory</strong> model inside our 105-acre North Hinjawadi master township.
     </p>
 
-    <!-- GDV Strip -->
     <div class="gdv-badge-strip">
       <div class="gdv-chip">
         <div class="label">Gross Development Value (GDV)</div>
-        <div class="value">₹1,389 Crs · $146.98 Mn</div>
+        <div class="value">₹1,389 Crs · $150.1 Mn</div>
       </div>
       <div class="gdv-chip">
-        <div class="label">Villa Plot Configuration</div>
-        <div class="value">5,000 Sq.Ft. · G+2 Mansions</div>
+        <div class="label">Villas &amp; Freehold Villa Plots</div>
+        <div class="value">98 Villas · 5,000 Sq.Ft. (₹3.75 Cr*)</div>
       </div>
       <div class="gdv-chip">
-        <div class="label">Starting Price</div>
-        <div class="value">₹3.75 Cr* Onwards</div>
+        <div class="label">Branded Residences &amp; Sky Villas</div>
+        <div class="value">156 Residences + 12 Sky Villas</div>
       </div>
       <div class="gdv-chip">
-        <div class="label">Location &amp; Access</div>
-        <div class="value">Darumbre · North Hinjewadi</div>
+        <div class="label">Expressway &amp; Mumbai Access</div>
+        <div class="value">20 Mins Pune Expwy · 2.5 Hrs Mumbai</div>
       </div>
     </div>
 
-    <!-- CTA Buttons -->
-    <div class="cta-btn-group">
-      <a href="#enquire" class="btn-luxury">
-        <i class="ph ph-calendar-check"></i> Book VIP Site Inspection
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;">
+      <a class="btn-primary" href="#enquire" style="padding: 15px 30px; border-radius: 6px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #090a0f;">
+        <i class="ph ph-calendar-check"></i> Register EOI / Resort Membership
       </a>
-      <a href="https://wa.me/917744009295?text=Hello%2C+I+am+interested+in+Della+Racecourse+Pune+5000+sq.ft.+villa+plots+at+Krisala+Hiranandani+Township+Hinjewadi.+Please+share+the+brochure+and+cost+sheet." target="_blank" rel="noopener noreferrer" class="btn-outline-gold">
-        <i class="ph ph-whatsapp-logo"></i> Instant WhatsApp Brochure
+      <a class="btn-secondary" href="https://wa.me/917744009295?text=Hello%2C%20I%20am%20interested%20in%20Della%20Racecourse%20Pune%20at%20Krisala%20Hiranandani%20Township%20Hinjewadi%2C%20Pune.%20Please%20share%20the%20brochure%20and%20cost%20sheet." rel="noopener noreferrer" style="padding: 15px 28px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; background: rgba(16,18,26,0.75); border: 1px solid var(--gold-primary); color: var(--gold-bright);" target="_blank">
+        <i class="ph ph-whatsapp-logo"></i> WhatsApp Instant Brochure
       </a>
     </div>
   </div>
 </section>
 
-<!-- Section 1: The Visionary Collaboration -->
-<section class="section-pad" style="background: rgba(16, 18, 26, 0.4);">
+<!-- Sticky Sub-Navigation Bar -->
+<nav aria-label="Della Racecourse Sections" class="della-rc-subnav">
+  <div class="della-rc-subnav-inner">
+    <a href="#ai-overview-summary">Overview &amp; Stats</a>
+    <a href="#leadership">Visionary Collaboration</a>
+    <a href="#pillars">12 Ecosystem Pillars</a>
+    <a href="#dining-weddings">Restaurants &amp; MICE</a>
+    <a href="#wellness-salutogenic">MAYRLIFE &amp; Salutogenic Living</a>
+    <a href="#sustainability-membership">UN SDGs &amp; Membership</a>
+    <a href="#pricing-matrix">Specification Matrix</a>
+    <a href="#enquire">Enquire / EOI</a>
+  </div>
+</nav>
+
+<!-- 12-Tile Master Statistics Grid & AI Overview Factsheet -->
+<section aria-label="Master Ecosystem Statistics" class="della-rc-section" style="padding-bottom: 42px; background: #07080d;">
+  <div style="max-width: 1320px; margin: 0 auto;">
+    <div class="della-ec-head">
+      <span class="della-ec-eyebrow"><i class="ph ph-trophy"></i> First Time in Pune · Complete District Scale</span>
+      <h2 class="della-ec-title">Experience International <span>Resort Living</span></h2>
+      <p class="della-ec-subtitle">India's first-ever Racecourse &amp; International Polo Club inside a luxury integrated township, spanning 40 contiguous acres within our 105-acre Darumbre, North Hinjawadi development.</p>
+    </div>
+
+    <div class="della-ec-kpi-grid">
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">40 Acres</div><div class="della-ec-kpi-lbl">District Land in Pune</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">8 Acres</div><div class="della-ec-kpi-lbl">Turf Racecourse &amp; Polo Club</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">50 Stables</div><div class="della-ec-kpi-lbl">Equestrian Riding &amp; Stables</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">98 Villas</div><div class="della-ec-kpi-lbl">Private British Colonial Villas</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">168 Units</div><div class="della-ec-kpi-lbl">156 Branded + 12 Sky Villas</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">300+ Rooms</div><div class="della-ec-kpi-lbl">5-Star Luxury Resort</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">1 Lakh Sq.Ft.</div><div class="della-ec-kpi-lbl">Della Design District Retail</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">50+ Brands</div><div class="della-ec-kpi-lbl">Global Luxury Brands</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">8 Venues</div><div class="della-ec-kpi-lbl">Restaurants &amp; Lounges</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">12 + 12</div><div class="della-ec-kpi-lbl">Wedding &amp; MICE Venues</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">20 Mins</div><div class="della-ec-kpi-lbl">Mumbai-Pune Expressway</div></div>
+      <div class="della-ec-kpi"><div class="della-ec-kpi-val">2.5 Hrs</div><div class="della-ec-kpi-lbl">From Mumbai (By Road)</div></div>
+    </div>
+
+    <div id="ai-overview-summary" style="background: rgba(197, 160, 89, 0.07); border: 1px solid rgba(197, 160, 89, 0.38); border-radius: 10px; padding: 24px 28px;">
+      <span style="display:inline-block;font-size:0.75rem;text-transform:uppercase;letter-spacing:1.2px;color:#dfc07b;font-weight:700;margin-bottom:8px;">Key Entity Summary • Verified 2026</span>
+      <h2 style="font-family: var(--font-heading, 'Cormorant Garamond', serif); color: #dfc07b; font-size: clamp(1.35rem, 2.5vw, 1.75rem); margin: 0 0 10px; line-height: 1.3;">What is Della Racecourse Pune in Darumbre, North Hinjawadi?</h2>
+      <p style="color: #e2e8f0; font-size: 0.98rem; line-height: 1.72; margin: 0 0 18px;">Della Racecourse Pune is a 40-acre equestrian and resort-living township (GDV ₹1,389 Crs / $150.1 Mn) inside the 105-acre Krisala × Hiranandani masterplan in North Hinjawadi, co-created by Jimmy Mistry, Dr. Niranjan Hiranandani, and Sagar Agarwal. It features an 8-acre turf racecourse and international polo club with 50 horse stables, 98 Private Luxury Villas &amp; 5,000 sq.ft. freehold villa plots starting from ₹3.75 Crore*, 156 Della Branded Residences + 12 Sky Villas across three 18-floor towers, a 300+ room 5-star resort, Bespoke Private Offices, 8 signature dining venues, 1 Lakh sq.ft. Della Design District, MAYRLIFE European medical wellness, and 6 UN SDG sustainability standards.</p>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.88rem;background:rgba(9,10,15,0.65);border-radius:6px;">
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(197,160,89,0.16);"><td style="padding:10px 14px;font-weight:600;color:#e6d5b8;width:30%;">Collaboration &amp; GDV</td><td style="padding:10px 14px;color:#fcfbf7;">Della Townships India × Hiranandani Communities × Krisala Developers · ₹1,389 Crs ($150.1 Mn)</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,160,89,0.16);"><td style="padding:10px 14px;font-weight:600;color:#e6d5b8;">Equestrian &amp; Hospitality</td><td style="padding:10px 14px;color:#fcfbf7;">40-Acre District · 8-Acre Championship Racecourse · 50 Horse Stables · 300+ Room 5-Star Resort</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,160,89,0.16);"><td style="padding:10px 14px;font-weight:600;color:#e6d5b8;">Residential Typologies</td><td style="padding:10px 14px;color:#fcfbf7;">98 Private British Colonial Villas &amp; 5,000 sq.ft. Plots (from ₹3.75 Cr*) · 156 Branded Residences + 12 Sky Villas</td></tr>
+            <tr><td style="padding:10px 14px;font-weight:600;color:#e6d5b8;">Wellness &amp; Retail</td><td style="padding:10px 14px;color:#fcfbf7;">MAYRLIFE 6 Clinical Therapies · 4 Salutogenic Pillars · 1 Lakh Sq.Ft. Della Design District · 6 UN SDGs</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 1: Visionary Collaboration & Groundbreaking -->
+<section class="della-rc-section" id="leadership" style="background: rgba(16, 18, 26, 0.45); border-top: 1px solid rgba(197, 160, 89, 0.2); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
   <div class="sec-head">
-    <span class="sec-badge">The Masterminds</span>
-    <h2 class="sec-title">The Visionary Collaboration</h2>
-    <p class="sec-desc">
-      A triumvirate of real estate and design pioneers uniting to deliver India's most aspirational equestrian and resort living address.
-    </p>
+    <span class="sec-badge">The Visionary Collaboration · Della CDDMO Framework</span>
+    <h2 class="sec-title">Jimmy Mistry × Hiranandani × Krisala</h2>
+    <p class="sec-desc">Della Townships India, Hiranandani Communities, and Krisala Developers unite through Della's proprietary CDDMO framework to build a Future-Fit Living Laboratory in Pune's western growth corridor.</p>
   </div>
 
   <div class="visionary-grid">
-    <!-- Jimmy Mistry -->
     <div class="visionary-card">
-      <img src="/public/imported/dr-niranjan-hiranandani.webp" alt="Jimmy Mistry Della Townships" class="visionary-avatar" style="border-color: #dfc07b;"/>
+      <div class="visionary-crest" aria-label="Jimmy Mistry Monogram">JM</div>
       <h3 class="visionary-name">Jimmy Mistry</h3>
       <div class="visionary-role">Design Futurist &amp; Creator of Future-Fit Cities<br/>CMD, Della Townships India</div>
-      <p class="visionary-bio">
-        Pioneer of experiential resort hospitality and adventure living in India. Creator of Della Resorts, Lonavala, Della Adventure Park, and the visionary behind India's first equestrian integrated township.
-      </p>
+      <p class="visionary-bio">Pioneer of experiential hospitality and adventure living across India since 2010, masterplanner of Della Resorts Lonavala, and architect of the Salutogenic &amp; ESG Future-Fit Township model.</p>
     </div>
-
-    <!-- Dr. Niranjan Hiranandani -->
     <div class="visionary-card">
-      <img src="/public/imported/dr-niranjan-hiranandani.webp" alt="Dr. Niranjan Hiranandani" class="visionary-avatar"/>
+      <img alt="Dr. Niranjan Hiranandani CMD Hiranandani Communities" class="visionary-avatar" loading="lazy" src="/public/imported/dr-niranjan-hiranandani.webp"/>
       <h3 class="visionary-name">Dr. Niranjan Hiranandani</h3>
-      <div class="visionary-role">Founder &amp; CMD, Hiranandani Communities<br/>Chairman, NAREDCO National</div>
-      <p class="visionary-bio">
-        The legendary creator of integrated neoclassical townships at Powai and Thane. Bringing timeless Greco-Roman architecture, institutional infrastructure, and 40-year town planning mastery to Pune.
-      </p>
+      <div class="visionary-role">Chairman (NAREDCO)<br/>CMD, Hiranandani Group</div>
+      <p class="visionary-bio">Legendary town planner behind integrated neoclassical townships in Powai and Thane, bringing institutional civic engineering, green infrastructure, and multi-decade real estate trust to Pune.</p>
     </div>
-
-    <!-- Sagar Agarwal -->
     <div class="visionary-card">
-      <img src="/public/imported/mr-Sagar-Agrawal.webp" alt="Sagar Agarwal Krisala Developers" class="visionary-avatar"/>
+      <img alt="Sagar Agarwal Managing Director Krisala Developers" class="visionary-avatar" loading="lazy" src="/public/imported/mr-Sagar-Agrawal.webp"/>
       <h3 class="visionary-name">Sagar Agarwal</h3>
       <div class="visionary-role">Managing Director<br/>Krisala Developers</div>
-      <p class="visionary-bio">
-        Fastest-growing luxury infrastructure developer in Pune West. Renowned for zero-compromise construction velocity, Mivan monolithic engineering, and delivering over 5 Million sq.ft. of prime residential real estate.
-      </p>
+      <p class="visionary-bio">Driving Pune West's fastest-growing luxury infrastructure delivery through Mivan monolithic construction velocity and transparent MahaRERA project execution.</p>
+    </div>
+  </div>
+
+  <div style="max-width: 1240px; margin: 36px auto 0; background: rgba(10,12,18,0.85); border: 1px solid rgba(197,160,89,0.28); border-radius: 12px; padding: 26px; display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; align-items: center;">
+    <img alt="Bhumi Pujan and Master Site Groundbreaking at Darumbre North Hinjewadi" loading="lazy" src="/public/della_racecourse/della_pune_bhumi_poojan_site.webp" style="width: 100%; border-radius: 8px; height: auto;"/>
+    <div>
+      <span class="sec-badge" style="margin-bottom: 6px;">Launch Showcase &amp; Bhumi Pujan</span>
+      <h3 style="font-family: var(--font-heading); font-size: 1.65rem; color: #fff; margin: 0 0 10px;">Inspiring Voices &amp; On-Site Groundbreaking at Darumbre</h3>
+      <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.7; margin: 0 0 14px;">Launched with industry leaders, CREDAI &amp; NAREDCO leadership, civic dignitaries, wellness pioneers, and institutional capital partners alongside the traditional Bhumi Pujan ceremony consecrating the 40-acre Darumbre equestrian site.</p>
+      <div class="della-ec-tag-row">
+        <span class="della-ec-pill">CDDMO Framework</span>
+        <span class="della-ec-pill">Future-Fit Living Lab</span>
+        <span class="della-ec-pill">Darumbre Bhumi Pujan</span>
+        <span class="della-ec-pill">Experience Center Preview</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Section 2: 12 Pillars of Della Racecourse Pune -->
-<section class="section-pad">
+<!-- Section 2: 12 Ecosystem Pillars -->
+<section class="della-rc-section" id="pillars">
   <div class="sec-head">
-    <span class="sec-badge">Ecosystem Blueprint</span>
+    <span class="sec-badge">Complete Masterplan Architecture</span>
     <h2 class="sec-title">12 Master Pillars of Della Racecourse Pune</h2>
-    <p class="sec-desc">
-      Referenced directly from the master masterplan at <a href="https://www.dellatownships.com/pune/della-racecourse" target="_blank" rel="noopener noreferrer" style="color: var(--gold-bright);">Della Townships India</a> — an international resort sanctuary encompassing equestrian sports, wellness, and bespoke British Colonial architecture.
-    </p>
+    <p class="sec-desc">Every residential, equestrian, hospitality, luxury retail, workspace, celebration, wellness, and sustainability vertical integrated inside one gated ecosystem.</p>
   </div>
 
   <div class="feature-showcase-grid">
-    <!-- Pillar 1: 8-Acre Racecourse & Polo Club -->
     <div class="feature-box">
       <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_polo_club_main.webp" alt="8-Acre Championship Racecourse & Polo Club" loading="lazy"/>
-        <span class="feature-tag-chip">Equestrian Grandeur</span>
+        <img alt="8-Acre Championship Racecourse &amp; International Polo Club" loading="lazy" src="/public/della_racecourse/della_pune_polo_club_main.webp"/>
+        <span class="feature-tag-chip">8 Acres · 50 Stables</span>
       </div>
       <div class="feature-body">
-        <h3>8-Acre Racecourse &amp; Polo Club</h3>
-        <p>India's first residential championship thoroughbred turf racecourse, polo oval, and private grandstand overlooking the Sahyadri mountains.</p>
+        <h3>Racecourse, Polo Club &amp; Experience Center</h3>
+        <p>India's first 8-acre private championship turf racecourse and International Polo Club featuring curated riding trails, daily sessions, and show jumping arenas.</p>
         <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> 50 Equine Stables &amp; Paddock Walk</li>
-          <li><i class="ph ph-check-circle"></i> Certified International Equestrian Trainers</li>
-          <li><i class="ph ph-check-circle"></i> Private Polo Arena &amp; Viewing Lounge</li>
+          <li><i class="ph ph-check-circle"></i> 50 Air-Cooled Horse Stables &amp; Riding School</li>
+          <li><i class="ph ph-check-circle"></i> Show Jumping Arena &amp; VIP Grandstand</li>
+          <li><i class="ph ph-check-circle"></i> Dedicated Della Experience Center</li>
         </ul>
       </div>
     </div>
 
-    <!-- Pillar 2: Private Luxury Villa Plots -->
     <div class="feature-box">
       <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_private_villas_plots.webp" alt="Private Luxury Villa Plots Della Racecourse" loading="lazy"/>
-        <span class="feature-tag-chip">From ₹3.75 Cr*</span>
+        <img alt="98 Private Luxury Villas in British Colonial Architecture" loading="lazy" src="/public/della_racecourse/della_pune_british_colonial_villa_style2.webp"/>
+        <span class="feature-tag-chip">98 Villas · 5,000 Sq.Ft. Plots</span>
       </div>
       <div class="feature-body">
-        <h3>5,000 Sq.Ft. Luxury Villa Plots</h3>
-        <p>100 demarcated, 100% freehold collector-sanctioned villa plots directly fronting the racecourse and polo arenas with G+2 construction permissions.</p>
+        <h3>98 Private Luxury Villas &amp; Freehold Villa Plots</h3>
+        <p>Four bespoke British Colonial architectural styles tailored to tropical living with wide verandahs, tall columns, arched windows, breezy courtyards, and 5,000 sq.ft. freehold villa plots starting from ₹3.75 Cr*.</p>
         <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> Plot Dimensions: 5,000 Sq.Ft.</li>
-          <li><i class="ph ph-check-circle"></i> Sanctioned British Colonial Blueprints</li>
-          <li><i class="ph ph-check-circle"></i> Unobstructed Turf &amp; Sahyadri Horizons</li>
+          <li><i class="ph ph-check-circle"></i> 98 Private Luxury Villas (4 Colonial Styles)</li>
+          <li><i class="ph ph-check-circle"></i> 5,000 Sq.Ft. Freehold Plots (G+2) from ₹3.75 Cr*</li>
+          <li><i class="ph ph-check-circle"></i> Direct Racecourse &amp; Sahyadri Horizon Views</li>
         </ul>
       </div>
     </div>
 
-    <!-- Pillar 3: British Colonial Architectural Blueprints -->
     <div class="feature-box">
       <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_british_colonial_villa_style2.webp" alt="British Colonial Architecture Styles" loading="lazy"/>
-        <span class="feature-tag-chip">Signature Design</span>
+        <img alt="Della Branded Residences and Sky Villas 3 Biophilic Towers" loading="lazy" src="/public/della_racecourse/della_pune_branded_residences_skyvillas.webp"/>
+        <span class="feature-tag-chip">156 Residences + 12 Sky Villas</span>
       </div>
       <div class="feature-body">
-        <h3>British Colonial Architectural Mansions</h3>
-        <p>Four bespoke architectural expressions curated by Jimmy Mistry: The Stately Manor, The Colonial Veranda, The Neoclassical Villa, and The Country Estate.</p>
+        <h3>168 Branded Residences &amp; Sky Villas</h3>
+        <p>Limited-edition biophilic residences and Sky Villas set across three 18-floor architectural towers with grand twin-height lobbies and a rooftop infinity pool inspired by Marina Bay Singapore.</p>
         <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> Double-Height Ceilings &amp; Deep Verandas</li>
-          <li><i class="ph ph-check-circle"></i> Private Plunge Pools &amp; Manicured Lawns</li>
-          <li><i class="ph ph-check-circle"></i> Dedicated House-Help &amp; Service Quarters</li>
+          <li><i class="ph ph-check-circle"></i> 156 Della Branded Residences + 12 Sky Villas</li>
+          <li><i class="ph ph-check-circle"></i> Three 18-Floor Biophilic Signature Towers</li>
+          <li><i class="ph ph-check-circle"></i> Rooftop Infinity Pool &amp; Private Foyer Access</li>
         </ul>
       </div>
     </div>
 
-    <!-- Pillar 4: Della Branded Residences & Sky Villas -->
     <div class="feature-box">
       <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_branded_residences_skyvillas.webp" alt="Della Branded Residences & Sky Villas" loading="lazy"/>
-        <span class="feature-tag-chip">Branded Living</span>
+        <img alt="300+ Rooms 5-Star Luxury Resort and Glamping Suites" loading="lazy" src="/public/della_racecourse/della_pune_glamping_bedroom.webp"/>
+        <span class="feature-tag-chip">300+ Rooms Resort</span>
       </div>
       <div class="feature-body">
-        <h3>Della Branded Residences &amp; Sky Villas</h3>
-        <p>Iconic tower clusters featuring rooftop garden bridges, double-height sun decks, and fully serviced residences managed by Della 5-star hospitality.</p>
+        <h3>300+ Rooms 5-Star Resort &amp; Bespoke Private Offices</h3>
+        <p>Flagship 5-star luxury resort &amp; glamping tent suites with private outdoor Jacuzzis paired with bespoke executive private offices inside the integrated district.</p>
         <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> Dual-Aspect 360° Turf &amp; Valley Vistas</li>
-          <li><i class="ph ph-check-circle"></i> Private Elevator Foyers &amp; Smart Automation</li>
-          <li><i class="ph ph-check-circle"></i> Turnkey Della Luxury Interior Furnishings</li>
+          <li><i class="ph ph-check-circle"></i> 300+ Key 5-Star Resort &amp; Glamping Retreats</li>
+          <li><i class="ph ph-check-circle"></i> Bespoke Private CXO Offices &amp; Co-Working</li>
+          <li><i class="ph ph-check-circle"></i> 24/7 Valet, Sommelier &amp; Villa Concierge</li>
         </ul>
       </div>
     </div>
 
-    <!-- Pillar 5: 300+ Keys 5-Star Luxury Resort -->
     <div class="feature-box">
       <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_5star_resort_suites.webp" alt="300+ Rooms 5-Star Luxury Resort" loading="lazy"/>
-        <span class="feature-tag-chip">5-Star Hospitality</span>
+        <img alt="Della Design District 1 Lakh SqFt Luxury Retail Promenade" loading="lazy" src="/public/della_racecourse/della_pune_design_district_retail.webp"/>
+        <span class="feature-tag-chip">1 Lakh Sq.Ft. · 50+ Brands</span>
       </div>
       <div class="feature-body">
-        <h3>300+ Keys 5-Star Luxury Resort</h3>
-        <p>A flagship destination resort offering international hospitality, presidential suites, temperature-controlled pools, and 24/7 dedicated concierge desks.</p>
+        <h3>Della Design District (4 Anchor Categories)</h3>
+        <p>A 1,00,000 sq.ft. luxury-only promenade housing Della Luxury Products and 25–50+ designer stores across 4 anchors, preview theater, kids' crèche, and weekly farmers' market.</p>
         <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> Exclusive Villa Owner Club Privileges</li>
-          <li><i class="ph ph-check-circle"></i> Global In-Villa Dining &amp; Sommelier Service</li>
-          <li><i class="ph ph-check-circle"></i> Valet, Housekeeping &amp; Property Maintenance</li>
+          <li><i class="ph ph-check-circle"></i> Luxury Interiors &amp; Design · Bridal &amp; Celebrations Maison</li>
+          <li><i class="ph ph-check-circle"></i> Fashion, Fine Jewelry &amp; Lifestyle · Destination Gastronomy</li>
+          <li><i class="ph ph-check-circle"></i> Fresh Local Produce Store, Cafés &amp; Preview Theater</li>
         </ul>
       </div>
     </div>
 
-    <!-- Pillar 6: European Medical Wellness & Longevity (MAYRLIFE) -->
     <div class="feature-box">
       <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_senior_living_longevity.webp" alt="European Medical Wellness & Longevity" loading="lazy"/>
-        <span class="feature-tag-chip">Longevity Sanctuary</span>
+        <img alt="Della Adventure Park Extreme Attractions and Sky Cycling" loading="lazy" src="/public/della_racecourse/della_pune_extreme_adventure_park.webp"/>
+        <span class="feature-tag-chip">India's 1st Residential Adventure Park</span>
       </div>
       <div class="feature-body">
-        <h3>MAYRLIFE Medical Wellness &amp; Longevity</h3>
-        <p>Partnering with world-renowned Austrian health clinic MAYRLIFE to deliver diagnostic medicine, cellular rejuvenation, and preventive longevity care.</p>
+        <h3>Della Extreme Adventure Park &amp; Senior Living</h3>
+        <p>Home to India's 1st extreme adventure park within a residential township alongside active, biophilic Senior Living &amp; Longevity Communities with 24/7 geriatric care.</p>
         <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> Mayr Cure Gut Health &amp; Detox Protocols</li>
-          <li><i class="ph ph-check-circle"></i> Cryotherapy, Hydrotherapy &amp; Thermal Spas</li>
-          <li><i class="ph ph-check-circle"></i> Senior Living &amp; Regenerative Medicine Desks</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Pillar 7: Della Design District (1,00,000 Sq.Ft. Luxury Retail) -->
-    <div class="feature-box">
-      <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_design_district_retail.webp" alt="Della Design District Luxury Retail" loading="lazy"/>
-        <span class="feature-tag-chip">Haute Living</span>
-      </div>
-      <div class="feature-body">
-        <h3>Della Design District Luxury Retail</h3>
-        <p>Over 1,00,000 sq.ft. of curated high-street retail boulevard spanning bespoke luxury interiors, couture fashion, bridal maisons, and fine jewellery.</p>
-        <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> Luxury Furniture &amp; Interior Design Maison</li>
-          <li><i class="ph ph-check-circle"></i> Haute Horlogerie &amp; Diamond Jewellery Boutiques</li>
-          <li><i class="ph ph-check-circle"></i> Bridal Fashion &amp; Celebrations Boulevard</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Pillar 8: Destination Weddings & Corporate MICE Venues -->
-    <div class="feature-box">
-      <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_destination_wedding_venue.webp" alt="Destination Weddings & Corporate MICE Venues" loading="lazy"/>
-        <span class="feature-tag-chip">Grand Celebrations</span>
-      </div>
-      <div class="feature-body">
-        <h3>Weddings &amp; Corporate MICE Venues</h3>
-        <p>Spectacular pillarless banquet ballrooms, open-air amphitheaters, and manicured lawns designed for destination weddings and global CXO summits.</p>
-        <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> 2,500+ Guest Capacity Grand Ballrooms</li>
-          <li><i class="ph ph-check-circle"></i> Helipad &amp; Dedicated Event Portals</li>
-          <li><i class="ph ph-check-circle"></i> Bespoke Event Production &amp; Floral Stylists</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Pillar 9: Della Adventure Park & Glamping -->
-    <div class="feature-box">
-      <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_extreme_adventure_park.webp" alt="Della Adventure Park & Glamping" loading="lazy"/>
-        <span class="feature-tag-chip">50+ Attractions</span>
-      </div>
-      <div class="feature-body">
-        <h3>Della Adventure Park &amp; Luxury Glamping</h3>
-        <p>India's benchmark adventure park integrated right into your neighborhood: sky cycling, ATV quad biking, rock climbing, paintball, and jacuzzi glamping tents.</p>
-        <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> 50+ Adrenaline-Pumping Outdoor Sports</li>
-          <li><i class="ph ph-check-circle"></i> Private Heated Jacuzzi Glamping Suites</li>
-          <li><i class="ph ph-check-circle"></i> International Safety Standards &amp; Certified Marshals</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Pillar 10: Celebrity Chef Gastronomy & Lounges -->
-    <div class="feature-box">
-      <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_signature_restaurants_lounges.webp" alt="Celebrity Chef Gastronomy & Lounges" loading="lazy"/>
-        <span class="feature-tag-chip">Epicurean Mastery</span>
-      </div>
-      <div class="feature-body">
-        <h3>Signature Fine Dining &amp; Lounges</h3>
-        <p>An array of destination dining concepts: European brasseries, pan-Asian bistros, artisanal patisseries, cigar lounges, and racecourse-view rooftop decks.</p>
-        <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> Michelin-Caliber Guest Chef Residencies</li>
-          <li><i class="ph ph-check-circle"></i> Private Dining Rooms for High-Net-Worth Connoisseurs</li>
-          <li><i class="ph ph-check-circle"></i> Farm-to-Table Organic Produce Sourced Locally</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Pillar 11: Bespoke Private Offices & Boardrooms -->
-    <div class="feature-box">
-      <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_experience_center.webp" alt="Bespoke Private Offices & Boardrooms" loading="lazy"/>
-        <span class="feature-tag-chip">CXO Suites</span>
-      </div>
-      <div class="feature-body">
-        <h3>Private Executive Offices &amp; Boardrooms</h3>
-        <p>State-of-the-art corporate infrastructure enabling senior business leaders and entrepreneurs to conduct international business right from their resort home.</p>
-        <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> High-Speed Tier-4 Fiber Optic Grid</li>
-          <li><i class="ph ph-check-circle"></i> Video-Conferencing Boardrooms &amp; Lounges</li>
-          <li><i class="ph ph-check-circle"></i> Confidential Secretarial &amp; Concierge Support</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Pillar 12: Strategic Arterial Connectivity -->
-    <div class="feature-box">
-      <div class="feature-img-wrap">
-        <img src="/public/della_racecourse/della_pune_masterplan_40acres.webp" alt="Strategic Arterial Connectivity North Hinjewadi" loading="lazy"/>
-        <span class="feature-tag-chip">Prime Location</span>
-      </div>
-      <div class="feature-body">
-        <h3>Darumbre: The Golden Triangle of Pune West</h3>
-        <p>Positioned directly on the PMRDA 128m Ring Road in Darumbre, bridging Hinjewadi Phase 4 IT hubs with the Mumbai-Pune Expressway in under 5 minutes.</p>
-        <ul class="feature-meta-list">
-          <li><i class="ph ph-check-circle"></i> 4 Mins to PMRDA 128m Ring Road Corridor</li>
-          <li><i class="ph ph-check-circle"></i> 5 Mins to Mumbai-Pune Expressway Toll Plaza</li>
-          <li><i class="ph ph-check-circle"></i> 10 Mins to Infosys, Wipro &amp; TCS Hinjewadi</li>
+          <li><i class="ph ph-check-circle"></i> Zip Bike, Human Catapult, Quadruple Zipline, Vertigo, Sky Cycling</li>
+          <li><i class="ph ph-check-circle"></i> Senior Living Hubs with Accessible Biophilic Trails</li>
+          <li><i class="ph ph-check-circle"></i> Direct Access to On-Site Medical Wellness Desk</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section 3: Comparative Specifications & Pricing Matrix Table -->
-<section class="section-pad" style="background: rgba(16, 18, 26, 0.45);">
-  <div class="sec-head">
-    <span class="sec-badge">Verified Pricing &amp; Typologies</span>
-    <h2 class="sec-title">Della Racecourse Pune — Master Plot Specification Matrix</h2>
-    <p class="sec-desc">
-      Transparent, verified 2026 cost sheet breakdowns for bespoke freehold villa plots and branded residences.
-    </p>
-  </div>
+<!-- Section 3: 8 Named Restaurants & 12 Weddings / MICE -->
+<section class="della-rc-section" id="dining-weddings" style="background: rgba(16,18,26,0.45); border-top: 1px solid rgba(197,160,89,0.2); border-bottom: 1px solid rgba(197,160,89,0.2);">
+  <div style="max-width: 1320px; margin: 0 auto;">
+    <div class="sec-head">
+      <span class="sec-badge">Epicurean Destinations &amp; Celebrations</span>
+      <h2 class="sec-title">8 Restaurants &amp; Lounges · 12 Wedding &amp; 12 MICE Venues</h2>
+      <p class="sec-desc">Celebrity chef-led 24x7 fine dining, al fresco terraces, garden-in-the-sky rooftops, London-inspired royal wedding gardens, and international corporate event infrastructure.</p>
+    </div>
 
+    <div class="della-ec-pillars">
+      <div class="della-ec-card">
+        <span class="della-ec-card-tag">8 Gourmet Culinary Destinations</span>
+        <h3>Named Restaurants &amp; Lounges</h3>
+        <p>Curated across equestrian terraces, cavalry lounges, and elevated sky gardens overlooking the championship polo oval.</p>
+        <div class="della-ec-tag-row">
+          <span class="della-ec-pill">Saddle &amp; Stirrup</span>
+          <span class="della-ec-pill">The Imperial Turf Pavilion</span>
+          <span class="della-ec-pill">Maratha Cavalry Restaurant &amp; Lounge</span>
+          <span class="della-ec-pill">Horseshoe</span>
+          <span class="della-ec-pill">The Royal Derby</span>
+          <span class="della-ec-pill">The Jockeys Club</span>
+          <span class="della-ec-pill">Garden In The Sky</span>
+        </div>
+      </div>
+
+      <div class="della-ec-card">
+        <span class="della-ec-card-tag">12 Destination Weddings · 12 Corporate MICE</span>
+        <h3>Royal Gardens &amp; Event Curations</h3>
+        <p>Inspired by London's royal gardens with contemporary pillarless ballrooms, bespoke floral design, artisanal mixology, and executive CXO boardroom infrastructure.</p>
+        <div class="della-ec-tag-row">
+          <span class="della-ec-pill">12 Wedding Venues</span>
+          <span class="della-ec-pill">12 Corporate MICE Venues</span>
+          <span class="della-ec-pill">Michelin-Inspired Gastronomy</span>
+          <span class="della-ec-pill">Bespoke Floral &amp; Stage Production</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 4: MAYRLIFE European Medical Wellness & Salutogenic Living -->
+<section class="della-rc-section" id="wellness-salutogenic">
+  <div style="max-width: 1320px; margin: 0 auto;">
+    <div class="sec-head">
+      <span class="sec-badge">Della × MAYRLIFE · Adding Years to Life &amp; Life to Years</span>
+      <h2 class="sec-title">European Medical Wellness &amp; Integrated Salutogenic Living</h2>
+      <p class="sec-desc">Preventive and individualized longevity science integrated directly into your neighborhood's architectural operating system.</p>
+    </div>
+
+    <div class="della-ec-detail-strip">
+      <h4>6 Clinical Modalities — Della × MAYRLIFE European Medical Wellness &amp; Spa</h4>
+      <div class="della-ec-un-grid">
+        <div class="della-ec-un-item"><strong>1. Cryotherapy (-110°C)</strong>Systemic cellular recovery, inflammation reduction &amp; athletic vitality.</div>
+        <div class="della-ec-un-item"><strong>2. Red Light (Upto 650 nm)</strong>Mitochondrial photobiomodulation for skin rejuvenation &amp; tissue repair.</div>
+        <div class="della-ec-un-item"><strong>3. PEMF Therapy</strong>Pulsed Electromagnetic Field stimulation for cellular micro-circulation.</div>
+        <div class="della-ec-un-item"><strong>4. HBOT Chambers</strong>Hyperbaric Oxygen Therapy boosting oxygenation, neuro-focus &amp; longevity.</div>
+        <div class="della-ec-un-item"><strong>5. Infrared (700 nm+)</strong>Deep thermal detoxification, pain relief &amp; autonomic nervous balance.</div>
+        <div class="della-ec-un-item"><strong>6. EEG Biofeedback</strong>Real-time neurological stress modulation, peak cognition &amp; deep sleep.</div>
+      </div>
+    </div>
+
+    <div class="della-ec-detail-strip" style="margin-bottom: 0;">
+      <h4>Integrated Salutogenic Living — 4 Architectural Operating System Pillars</h4>
+      <div class="della-ec-un-grid">
+        <div class="della-ec-un-item"><strong>Biophilic Design</strong>Living natural materials, indoor greenery &amp; nature-forward textures lowering stress.</div>
+        <div class="della-ec-un-item"><strong>Natural Light</strong>Circadian daylight geometry &amp; adaptive shading tuning melatonin and sleep quality.</div>
+        <div class="della-ec-un-item"><strong>Water Perfection</strong>Structured drinking water &amp; optimized mineral pH across pools and baths.</div>
+        <div class="della-ec-un-item"><strong>Air Purity</strong>High-efficiency air filtration &amp; low-VOC materials ensuring clean respiratory interiors.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5: 4K Master Flythrough Video -->
+<section class="della-rc-section" id="della-drone-tour" style="background: #040507; border-top: 1px solid rgba(197, 160, 89, 0.2); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="sec-head">
+      <span class="sec-badge">4K Master Flythrough</span>
+      <h2 class="sec-title">Explore the 40-Acre Equestrian Masterplan</h2>
+      <p class="sec-desc">Aerial visualization of the 8-acre championship turf racecourse, 50 equine stables, three 18-floor Branded Residences towers, 98 Private Luxury Villas, and 5,000 sq.ft. British Colonial villa estates.</p>
+    </div>
+    <div style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.8); border: 1px solid rgba(197, 160, 89, 0.35);">
+      <video controls playsinline preload="metadata" poster="/public/della_racecourse/della_pune_racecourse_hero_banner.webp" style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="/public/imported/u8323264961_httpss.mj_.rundqik694D-FI_aerial_view_of_dense_gre_cdda2115-7b10-495a-84ac-39089bcdc5a2_2.mp4" type="video/mp4"/>
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: UN SDGs Sustainability & Invitation-Led Membership -->
+<section class="della-rc-section" id="sustainability-membership">
+  <div style="max-width: 1320px; margin: 0 auto;">
+    <div class="sec-head">
+      <span class="sec-badge">Sustainability · Woven Into Every Square Foot</span>
+      <h2 class="sec-title">6 UN Sustainable Development Goals &amp; Global ESG</h2>
+      <p class="sec-desc">Led by Jimmy Mistry's 25+ years of Global ESG stewardship alongside TERI's 50-year ecological framework—empowering artisan communities and resilient biophilic ecosystems.</p>
+    </div>
+
+    <div class="della-ec-un-grid" style="margin-bottom: 34px;">
+      <div class="della-ec-un-item"><strong>UN SDG 3</strong>Wellness &amp; Preventive Health</div>
+      <div class="della-ec-un-item"><strong>UN SDG 6</strong>Clean Water &amp; Conservation</div>
+      <div class="della-ec-un-item"><strong>UN SDG 7 + 13</strong>Clean Energy &amp; Climate Action</div>
+      <div class="della-ec-un-item"><strong>UN SDG 9 + 12</strong>Circular Materials &amp; Infrastructure</div>
+      <div class="della-ec-un-item"><strong>UN SDG 15</strong>Indigenous Biodiversity &amp; Flora</div>
+      <div class="della-ec-un-item"><strong>UN SDG 11</strong>Sustainable Future Communities</div>
+    </div>
+
+    <div class="della-ec-detail-strip" style="text-align: center; max-width: 980px; margin: 0 auto;">
+      <h4>An Exclusive, Invitation-Led Membership &amp; Statutory Clarity</h4>
+      <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.75; margin: 0 0 12px;">Della Resorts Membership is strictly limited and offered primarily by invitation following Membership Committee evaluation. Expressions of Interest (EOI) are currently open for residential offerings subject to applicable statutory and MahaRERA approvals. Within the broader Krisala × Hiranandani master township, active sanctioned MahaRERA registrations include <strong>PR1260002500600</strong> (Sector Arcadia), <strong>PR1260002600818</strong> (The Colosseum), and <strong>PR1260002502438</strong> (Sector Everlyn / The Della Collection).</p>
+      <a class="btn-primary" href="#enquire" style="display: inline-flex; padding: 12px 26px; border-radius: 6px; font-weight: 700; text-decoration: none; background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #090a0f;">Request Invitation &amp; Membership Dossier</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: Comparative Specifications & Pricing Matrix -->
+<section class="della-rc-section" id="pricing-matrix" style="background: rgba(16, 18, 26, 0.45); border-top: 1px solid rgba(197, 160, 89, 0.2); border-bottom: 1px solid rgba(197, 160, 89, 0.2);">
+  <div class="sec-head">
+    <span class="sec-badge">Verified Configurations &amp; Indicatives</span>
+    <h2 class="sec-title">Della Racecourse Pune — Typology &amp; Plot Specification Matrix</h2>
+    <p class="sec-desc">Transparent 2026 guidance across freehold 5,000 sq.ft. villa plots, 98 Private British Colonial Villas, and 168 Branded Residences &amp; Sky Villas.</p>
+  </div>
   <div class="spec-table-container">
-    <table class="spec-table" aria-label="Della Racecourse Pune Villa Plots Pricing and Specifications">
+    <table aria-label="Della Racecourse Pune Offerings and Villa Plots Pricing Matrix" class="spec-table">
       <thead>
         <tr>
-          <th>Plot Classification</th>
-          <th>Demarcated Area</th>
-          <th>Permissible Architecture</th>
-          <th>Frontage &amp; Orientation</th>
-          <th>All-Inclusive Price*</th>
-          <th>Legal Title Status</th>
+          <th>Offering / Classification</th>
+          <th>Unit Count / Scale</th>
+          <th>Demarcated Area &amp; Architecture</th>
+          <th>Indicative Starting Price*</th>
+          <th>Status / Registration</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="font-weight: 700; color: #fff;">Della Racecourse Villa Plot</td>
-          <td style="color: #dfc07b; font-weight: 700;">5,000 Sq.Ft.</td>
-          <td>G+2 British Colonial Villa (FSI 1.5)</td>
-          <td>Direct 8-Acre Turf Racecourse View</td>
-          <td style="color: #dfc07b; font-weight: 700; font-size: 1.05rem;">₹3.75 Crore*</td>
-          <td>100% Freehold NA Clear Title</td>
+          <td style="font-weight: 700; color: #fff;">Della Racecourse Villa Plots</td>
+          <td>Limited Estate Release</td>
+          <td>5,000 Sq.Ft. Freehold Plots · 4 British Colonial G+2 Villa Styles</td>
+          <td style="color: #dfc07b; font-weight: 700;">₹3.75 Crore* Onwards</td>
+          <td>MahaRERA PR1260002502438</td>
         </tr>
         <tr>
-          <td style="font-weight: 700; color: #fff;">Della Sovereign Grand Estate</td>
-          <td style="color: #dfc07b; font-weight: 700;">8,500 Sq.Ft.</td>
-          <td>Bespoke Custom G+2 Mansion</td>
-          <td>Corner Turf &amp; Sahyadri Valley Frontage</td>
-          <td style="color: #dfc07b; font-weight: 700;">On Request</td>
-          <td>PMRDA Sanctioned Layout</td>
+          <td style="font-weight: 700; color: #fff;">98 Private Luxury Villas</td>
+          <td>98 Bespoke Villas</td>
+          <td>Wide Verandahs · Tall Columns · Arched Windows · Breezy Courtyards</td>
+          <td style="color: #dfc07b; font-weight: 700;">EOI Open (On Request)</td>
+          <td>Pre-Launch / Invitation</td>
         </tr>
         <tr>
-          <td style="font-weight: 700; color: #fff;">Della Branded Sky Villa</td>
-          <td>3,200 – 4,500 Sq.Ft.</td>
-          <td>Double-Height Duplex Penthouse</td>
-          <td>Dual-Aspect Racecourse Sun Decks</td>
-          <td style="color: #dfc07b; font-weight: 700;">₹4.20 Crore*</td>
-          <td>MahaRERA PR1260002500600</td>
+          <td style="font-weight: 700; color: #fff;">Della Branded Residences &amp; Sky Villas</td>
+          <td>156 Residences + 12 Sky Villas</td>
+          <td>Three 18-Floor Biophilic Towers · Twin-Height Lobbies · Rooftop Infinity Pool</td>
+          <td style="color: #dfc07b; font-weight: 700;">EOI Open (On Request)</td>
+          <td>Pre-Launch / Invitation</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700; color: #fff;">Resort Membership &amp; Hospitality</td>
+          <td>300+ Room 5-Star Resort</td>
+          <td>8-Acre Polo Club, 50 Stables, MAYRLIFE Wellness, 1 Lakh Sq.Ft. Retail</td>
+          <td style="color: #dfc07b; font-weight: 700;">By Invitation</td>
+          <td>Membership Committee</td>
         </tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<!-- Section 4: VIP Lead Capture Form -->
-<section id="enquire" class="section-pad">
+<!-- Section 8: EOI & Resort Membership Form -->
+<section class="della-rc-section" id="enquire">
   <div class="sec-head">
-    <span class="sec-badge">Private Invitation</span>
-    <h2 class="sec-title">Register for Della Racecourse Pune</h2>
-    <p class="sec-desc">
-      Submit your Expression of Interest (EOI) to receive the confidential architectural dossier, floor layouts, and reserve an exclusive chauffeured site inspection.
-    </p>
+    <span class="sec-badge">Private Invitation &amp; Priority Access</span>
+    <h2 class="sec-title">Register EOI for Della Racecourse Pune</h2>
+    <p class="sec-desc">Submit your Expression of Interest (EOI) for Resort Membership, 5,000 sq.ft. Freehold Villa Plots (from ₹3.75 Cr*), 98 Private Villas, or Branded Residences &amp; Sky Villas.</p>
   </div>
-
   <div class="form-card">
-    <form action="https://formsubmit.co/manisha.yewle87@gmail.com" method="POST" id="dellaMasterForm">
-      <input type="hidden" name="_subject" value="New Della Racecourse Pune VIP Enquiry"/>
-      <input type="hidden" name="_captcha" value="false"/>
-      <input type="hidden" name="_template" value="table"/>
-      <input type="text" name="_honey" style="display:none"/>
-
+    <form action="/api/lead" id="dellaMasterForm" method="POST">
+      <input name="_subject" type="hidden" value="Della Racecourse Pune — Priority EOI &amp; Membership Enquiry"/>
+      <input name="source" type="hidden" value="della_racecourse_master_page"/>
+      <input name="_honey" style="display:none" type="text"/>
       <div class="form-field">
         <label for="fullName">Full Name *</label>
-        <input type="text" id="fullName" name="name" placeholder="Dr. / Mr. / Ms. Full Name" required/>
+        <input id="fullName" name="name" placeholder="Dr. / Mr. / Ms. Full Name" required="" type="text"/>
       </div>
-
       <div class="form-field">
         <label for="phoneNum">Phone / WhatsApp Number *</label>
-        <input type="tel" id="phoneNum" name="phone" placeholder="+91 98765 43210" required/>
+        <input id="phoneNum" name="phone" placeholder="+91 98765 43210" required="" type="tel"/>
       </div>
-
       <div class="form-field">
-        <label for="emailAddr">Official / Corporate Email *</label>
-        <input type="email" id="emailAddr" name="email" placeholder="name@company.com" required/>
+        <label for="emailAddr">Email Address *</label>
+        <input id="emailAddr" name="email" placeholder="Enter your email address" required="" type="email"/>
       </div>
-
       <div class="form-field">
-        <label for="plotType">Interested Offering *</label>
-        <select id="plotType" name="offering" required>
-          <option value="5000-sqft-villa-plot">5,000 Sq.Ft. Della Racecourse Villa Plot (₹3.75 Cr*)</option>
-          <option value="8500-sqft-sovereign-estate">8,500 Sq.Ft. Sovereign Estate (On Request)</option>
-          <option value="branded-sky-villa">Della Branded Sky Villa &amp; Duplex</option>
-          <option value="resort-membership">Della Resort &amp; Polo Club Membership</option>
+        <label for="plotType">Interest Category / Offering *</label>
+        <select id="plotType" name="offering" required="">
+          <option value="5000-sqft-villa-plot-3.75cr">5,000 Sq.Ft. Villa Plot (From ₹3.75 Cr*)</option>
+          <option value="98-private-luxury-villa">Private Luxury Villa (British Colonial Style)</option>
+          <option value="branded-residences-sky-villas">Della Branded Residences &amp; Sky Villas (18F Towers)</option>
+          <option value="resort-membership">Della Resort Membership / EOI</option>
+          <option value="channel-partner-investor">Developer / Investor / Channel Partner</option>
         </select>
       </div>
-
-      <button type="submit" class="btn-luxury" style="width: 100%; justify-content: center; font-size: 1.05rem; cursor: pointer; border: none;">
-        <i class="ph ph-paper-plane-tilt"></i> Request Confidential Della Dossier
+      <button style="width: 100%; justify-content: center; font-size: 1.02rem; cursor: pointer; border: none; padding: 16px; border-radius: 6px; font-weight: 700; display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #dfc07b 0%, #c5a059 100%); color: #090a0f;" type="submit">
+        <i class="ph ph-paper-plane-tilt"></i> Submit EOI &amp; Request Confidential Dossier
       </button>
-
       <p class="consent-notice">
-        By submitting, you consent to receive verified project details and private invitations from Propsmart Realty (MahaRERA Agent Reg No: A031262401295) for Krisala Hiranandani Township (MahaRERA: PR1260002500600). Your data is safeguarded under strict privacy standards. Zero spam guaranteed.
+        Disclaimer: Residential pre-launch offerings are subject to requisite statutory &amp; RERA approvals; EOIs do not constitute allotment or sale. Channel Partner Desk: Propsmart Realty (MahaRERA Reg No: A031262401295). Active township registrations: PR1260002500600, PR1260002600818, PR1260002502438.
       </p>
     </form>
   </div>
 </section>
 
-<!-- Section 5: Frequently Asked Questions (FAQ) -->
-<section class="section-pad" style="background: rgba(16, 18, 26, 0.4);">
+<!-- Section 9: FAQs -->
+<section class="della-rc-section" style="background: rgba(16, 18, 26, 0.45); border-top: 1px solid rgba(197, 160, 89, 0.2);">
   <div class="sec-head">
-    <span class="sec-badge">Clarity &amp; Intelligence</span>
+    <span class="sec-badge">Frequently Asked Questions</span>
     <h2 class="sec-title">Della Racecourse Pune FAQ</h2>
-    <p class="sec-desc">Common questions answered regarding land tenure, resort privileges, FSI, and connectivity.</p>
+    <p class="sec-desc">Verified answers on scale, residences, hospitality, MAYRLIFE wellness, UN SDGs, and connectivity.</p>
   </div>
-
-  <div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
-    <div style="background: rgba(16, 18, 26, 0.7); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 22px;">
-      <h3 style="color: var(--gold-bright); font-size: 1.1rem; margin-bottom: 8px;">What is the exact plot size and starting price at Della Racecourse Pune?</h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-        Demarcated freehold villa plots are 5,000 sq.ft. in area, starting at ₹3.75 Crore* all-inclusive. Sovereign estates extending up to 8,500 sq.ft. are available on private request.
-      </p>
+  <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+    <div style="background: rgba(16, 18, 26, 0.78); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 22px;">
+      <h3 style="color: var(--gold-bright); font-size: 1.08rem; margin: 0 0 8px;">What is included across the 40-acre Della Racecourse Pune township?</h3>
+      <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.65; margin: 0;">It integrates an 8-acre racecourse &amp; international polo club with 50 horse stables, 98 Private Luxury Villas &amp; 5,000 sq.ft. freehold villa plots starting from ₹3.75 Cr*, 156 Della Branded Residences + 12 Sky Villas across three 18-floor biophilic towers, a 300+ room 5-star resort, Bespoke Private Offices, 8 gourmet restaurants (including Saddle &amp; Stirrup, The Imperial Turf Pavilion, Maratha Cavalry, Horseshoe, The Royal Derby, The Jockeys Club, Garden In The Sky), 12 wedding &amp; 12 MICE venues, 1 Lakh sq.ft. Della Design District, MAYRLIFE wellness, Della Adventure Park, Senior Living, and 6 UN SDGs.</p>
     </div>
-
-    <div style="background: rgba(16, 18, 26, 0.7); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 22px;">
-      <h3 style="color: var(--gold-bright); font-size: 1.1rem; margin-bottom: 8px;">Who are the key developers behind Della Racecourse Pune?</h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-        The project is a visionary joint development between Jimmy Mistry (CMD, Della Townships India), Dr. Niranjan Hiranandani (CMD, Hiranandani Communities), and Sagar Agarwal (MD, Krisala Developers).
-      </p>
-    </div>
-
-    <div style="background: rgba(16, 18, 26, 0.7); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 22px;">
-      <h3 style="color: var(--gold-bright); font-size: 1.1rem; margin-bottom: 8px;">Is the land title 100% Non-Agricultural (NA) and MahaRERA approved?</h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-        Yes. All plots carry sanctioned collector Non-Agricultural orders with clear 30-year marketable search titles. The master development is sanctioned under MahaRERA Project Registration PR1260002500600.
-      </p>
-    </div>
-
-    <div style="background: rgba(16, 18, 26, 0.7); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 22px;">
-      <h3 style="color: var(--gold-bright); font-size: 1.1rem; margin-bottom: 8px;">How does Della Racecourse connect to Hinjewadi IT parks and Mumbai?</h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-        Located in Darumbre, North Hinjewadi, the township is 4 minutes from the PMRDA 128m Ring Road, 5 minutes from the Mumbai-Pune Expressway, and 10 minutes from Hinjewadi Phase 1, 2, and 3 IT giants (Infosys, TCS, Wipro).
-      </p>
+    <div style="background: rgba(16, 18, 26, 0.78); border: 1px solid rgba(197, 160, 89, 0.25); border-radius: 8px; padding: 22px;">
+      <h3 style="color: var(--gold-bright); font-size: 1.08rem; margin: 0 0 8px;">How far is Della Racecourse Pune from Mumbai and the Expressway?</h3>
+      <p style="color: var(--text-muted); font-size: 0.94rem; line-height: 1.65; margin: 0;">Located at Darumbre, North Hinjawadi (Pune 410506), the township is 2.5 hours by road from Mumbai, 20 minutes from the Mumbai-Pune Expressway, 4 minutes from the PMRDA 128m Ring Road &amp; Metro Line 3, and 10 minutes from Hinjewadi Phase 1–3 IT parks.</p>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer style="background: #050608; border-top: 1px solid rgba(197, 160, 89, 0.25); padding: 60px 20px 40px; text-align: center;">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <img src="/public/krisala-hiranandani-logo.webp" alt="Krisala Hiranandani Township" width="180" height="42" style="height: 42px; width: auto; margin-bottom: 20px;"/>
-    <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 800px; margin: 0 auto 24px; line-height: 1.6;">
-      Della Racecourse Pune is an ultra-luxury plotted and resort enclave situated within Krisala Hiranandani Township, North Hinjewadi, Pune. Conceptual showcase referenced from Della Townships India.
+<footer style="background: #050608; border-top: 1px solid rgba(197, 160, 89, 0.25); padding: 55px 20px 36px; text-align: center;">
+  <div style="max-width: 1240px; margin: 0 auto;">
+    <img alt="Krisala Hiranandani Township" height="42" loading="lazy" src="/public/krisala-hiranandani-logo.webp" style="height: 42px; width: auto; margin-bottom: 18px;" width="180"/>
+    <p style="color: var(--text-muted); font-size: 0.88rem; max-width: 860px; margin: 0 auto 18px; line-height: 1.6;">
+      Della Racecourse Pune (40-Acre Equestrian &amp; Resort District · GDV ₹1,389 Crs / $150.1 Mn) inside Krisala Hiranandani Township, Darumbre, North Hinjawadi, Pune 410506. Channel Partner: Propsmart Realty (MahaRERA Reg No: A031262401295). Township MahaRERA: PR1260002500600, PR1260002600818, PR1260002502438.
     </p>
-    <p style="color: var(--gold-bright); font-size: 0.85rem; font-weight: 600; margin-bottom: 16px;">
-      Channel Partner: Propsmart Realty (MahaRERA Reg No: A031262401295) · Project MahaRERA: PR1260002500600
-    </p>
-    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; font-size: 0.85rem;">
+    <div style="display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 20px; font-size: 0.85rem;">
       <a href="/" style="color: #9ca3af; text-decoration: none;">Home</a>
+      <a href="/hiranandani-pune" style="color: #9ca3af; text-decoration: none;">Hiranandani Pune</a>
       <a href="/della" style="color: #9ca3af; text-decoration: none;">The Della Collection</a>
       <a href="/della-racecourse" style="color: var(--gold-bright); text-decoration: none;">Della Racecourse</a>
-      <a href="/racecourse" style="color: #9ca3af; text-decoration: none;">Turf Racecourse</a>
+      <a href="/racecourse" style="color: #9ca3af; text-decoration: none;">8-Acre Racecourse</a>
       <a href="/masterplan" style="color: #9ca3af; text-decoration: none;">Master Plan</a>
       <a href="/pricing" style="color: #9ca3af; text-decoration: none;">Price List 2026</a>
+      <a href="/contact" style="color: #9ca3af; text-decoration: none;">Contact</a>
       <a href="/privacy-policy" style="color: #9ca3af; text-decoration: none;">Privacy Policy</a>
       <a href="/disclaimer" style="color: #9ca3af; text-decoration: none;">Disclaimer</a>
     </div>
-    <p style="color: #6b7280; font-size: 0.78rem;">
-      © 2026 Krisala Hiranandani Township. All rights reserved.
-    </p>
+    <p style="color: #6b7280; font-size: 0.78rem; margin: 0;">© 2026 Krisala Hiranandani Township. All rights reserved.</p>
   </div>
 </footer>
 
-<!-- Deferred JavaScript -->
-<script defer src="/app.min.js?v=20261026_v6"></script>
+<!-- Floating Actions -->
+<div aria-label="Quick contact options" class="floating-actions">
+  <a aria-label="Chat on WhatsApp" class="float-btn float-whatsapp" href="https://wa.me/917744009295?text=Hello%2C%20I%20am%20interested%20in%20Della%20Racecourse%20Pune%20at%20Krisala%20Hiranandani%20Township%20Hinjewadi%2C%20Pune.%20Please%20share%20verified%20brochure%2C%20floor%20plans%2C%20and%20pricing%20details." rel="noopener noreferrer" target="_blank">
+    <svg aria-hidden="true" fill="currentColor" height="28" viewbox="0 0 24 24" width="28"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.64c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.43.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.22-.19-.47-.32"></path></svg>
+  </a>
+  <a aria-label="Call concierge" class="float-btn float-call" href="tel:+917744009295">
+    <svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99"></path></svg>
+  </a>
+</div>
+
+<script defer="" src="/app.min.js?v=20261126_v1"></script>
 </body>
 </html>
 """
 
 def generate_page():
-    with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(PAGE_HTML.strip() + "\n")
-    print(f"Successfully generated master page: {OUTPUT_PATH}")
+    print(f"Successfully generated upgraded master page: {OUTPUT_PATH}")
 
 if __name__ == "__main__":
     generate_page()

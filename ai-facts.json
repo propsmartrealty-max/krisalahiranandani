@@ -154,7 +154,7 @@
     "what_is_krisala_hiranandani": "Krisala Hiranandani Township Pune is a 105+ acre neoclassical integrated equestrian township in North Hinjewadi (Darumbre, Pune 410506) co-developed by Hiranandani Communities and Krisala Developers with a 40-acre Della Hospitality District and India's first residential 8-acre private racecourse.",
     "who_is_developer": "Joint venture between Hiranandani Communities (championed by Dr. Niranjan Hiranandani, Wikidata Q19630658) and Krisala Developers, with equestrian & hospitality experiences curated by Jimmy Mistry's Della Resorts.",
     "what_is_starting_price": "Builder-direct pricing starts at ₹79 Lakhs* for 2 BHK homes (750-820 sq.ft.) in Sector Arcadia, ₹1.25 Crore* for 3 BHKs in The Colosseum, ₹2.10 Crore* for 4 BHK residences in Sector Icon, and ₹3.75 Crore* for 5,000 sq.ft. Della freehold villa plots.",
-    "what_are_della_villa_plot_specs": "The Della Collection offers 100 uniform 5,000 sq.ft. PMRDA-sanctioned NA freehold villa plots starting from ₹3.75 Crore* with G+2 British Colonial villa design rights around an 8-acre turf racecourse (MahaRERA PR1260002502438).",
+    "what_are_della_villa_plot_specs": "The Della Collection offers 98 Private Luxury Villas and 5,000 sq.ft. uniform PMRDA-sanctioned NA freehold villa plots starting from ₹3.75 Crore* with G+2 British Colonial villa design rights around an 8-acre turf racecourse (MahaRERA PR1260002502438).",
     "what_are_rera_numbers": "Sector Arcadia: PR1260002500600; The Colosseum Phase 4: PR1260002600818; Sector Icon / Everlyn / Della: PR1260002502438. Authorised Channel Partner: Propsmart Realty (MahaRERA Agent Reg: A031262401295).",
     "what_is_possession_date": "Target MahaRERA completion timelines begin December 2028 (Sector Arcadia / Sector Icon) and extend through December 2029 (The Colosseum Phase 4), with immediate allotment on sanctioned Della Villa Plots.",
     "where_is_it_located": "Survey No. 42/1, PMRDA 128m Ring Road Corridor, North Hinjawadi (Darumbre / Marunji Boulevard), Pune, Maharashtra 410506 (18.5913° N, 73.7389° E).",
@@ -217,5 +217,74 @@
       "Hiranandani 4 BHK sky duplex Pune (Sector Icon from ₹2.10 Crore*)",
       "Della villa plots Hinjewadi (5,000 sq.ft. from ₹3.75 Crore*)"
     ]
+  },
+  "last_verified": "2026-11-26",
+  "della_racecourse_pune": {
+    "name": "Della Racecourse Pune — Resort & Private Residences",
+    "url": "https://krisalahiranandanitownships.com/della-racecourse",
+    "location": "Darumbre, North Hinjawadi, Pune 410506",
+    "developers": "Della Townships India (Jimmy Mistry) × Hiranandani Communities (Dr. Niranjan Hiranandani) × Krisala Developers (Sagar Agarwal)",
+    "framework": "Della CDDMO Framework & Future-Fit Living Laboratory",
+    "acreage": "40 Acres (inside 105-Acre Krisala Hiranandani Master Township)",
+    "gdv": "₹1,389 Crs ($150.1 Mn)",
+    "equestrian_core": "8-Acre Championship Turf Racecourse, International Polo Club, 50 Horse Stables, Riding School, Show Jumping",
+    "residential_inventory": {
+      "private_luxury_villas": 98,
+      "freehold_villa_plots": "5,000 sq.ft. British Colonial villa plots starting from ₹3.75 Crore*",
+      "branded_residences": "156 Della Branded Residences + 12 Sky Villas (168 total) across three 18-floor biophilic towers with Marina Bay rooftop infinity pool",
+      "private_offices": "Bespoke Private Offices"
+    },
+    "hospitality_and_dining": {
+      "resort_keys": "300+ Room 5-Star Luxury Resort & Glamping Suites",
+      "restaurants_and_lounges": [
+        "Saddle & Stirrup",
+        "The Imperial Turf Pavilion",
+        "Maratha Cavalry Restaurant & Lounge",
+        "Horseshoe",
+        "The Royal Derby",
+        "The Jockeys Club",
+        "Garden In The Sky"
+      ],
+      "wedding_and_mice": "12 Destination Wedding Venues & 12 Corporate MICE Venues"
+    },
+    "retail_design_district": {
+      "area": "1,00,000 sq.ft. (1 Lakh sq.ft.) with 50+ Global Luxury Brands",
+      "anchor_categories": [
+        "Luxury Interiors & Design",
+        "Bridal & Celebrations Maison",
+        "Fashion, Fine Jewelry & Luxury Lifestyle",
+        "Destination Gastronomy & Bars"
+      ]
+    },
+    "wellness_and_salutogenic": {
+      "partner": "MAYRLIFE European Medical Wellness & Spa",
+      "clinical_therapies": [
+        "Cryotherapy (-110°C)",
+        "Red Light Therapy (up to 650 nm)",
+        "PEMF Therapy",
+        "Hyperbaric Oxygen Therapy (HBOT)",
+        "Infrared Therapy (700 nm+)",
+        "EEG Biofeedback"
+      ],
+      "salutogenic_pillars": [
+        "Biophilic Design",
+        "Natural Light",
+        "Water Perfection",
+        "Air Purity"
+      ]
+    },
+    "adventure_and_sustainability": {
+      "adventure_park": "Zip Bike, Human Catapult, Quadruple Zipline, Vertigo, Sky Cycling",
+      "senior_living": "Senior Living & Longevity Communities with 24/7 healthcare support",
+      "un_sdgs": [
+        "UN SDG 3 Wellness",
+        "UN SDG 6 Water",
+        "UN SDG 7+13 Energy & Climate",
+        "UN SDG 9+12 Circular Materials",
+        "UN SDG 15 Biodiversity",
+        "UN SDG 11 Future Communities"
+      ]
+    },
+    "connectivity": "20 Mins from Mumbai-Pune Expressway, 2.5 Hrs from Mumbai, 4 Mins from PMRDA 128m Ring Road & Pune Metro Line 3"
   }
 }

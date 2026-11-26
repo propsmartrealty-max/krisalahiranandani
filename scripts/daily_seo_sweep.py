@@ -1,81 +1,51 @@
 #!/usr/bin/env python3
 """
-Master Daily SEO Sweep & Google Ecosystem Hardening Engine
-Executes complete automated indexing, sitemap sync, and search engine broadcast.
-Usage: python3 scripts/daily_seo_sweep.py
+Master Daily SEO Sweep & Enterprise Google Indexing Runner
+Rebuilds clean canonical XML sitemaps, runs full GSC self-healing & indexing suite,
+pings Cloudflare Edge Cron, updates verified GSC rank telemetry, and purges edge cache.
 """
 
 import os
-import sys
 import subprocess
+import sys
 from datetime import datetime, timezone
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
 
-def load_env():
-    env_file = os.path.join(PROJECT_DIR, ".env")
-    if os.path.exists(env_file):
-        with open(env_file, "r") as f:
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith("#") and "=" in line:
-                    k, v = line.split("=", 1)
-                    k = k.strip()
-                    v = v.strip().strip('"').strip("'")
-                    if k not in os.environ:
-                        os.environ[k] = v
+from enterprise_google_indexing_suite import load_dotenv  # noqa: E402
 
-def run_step(step_name, command):
-    print("\n" + "=" * 65)
-    print(f"STEP: {step_name}")
-    print("=" * 65)
-    result = subprocess.run(command, cwd=PROJECT_DIR, shell=True)
-    if result.returncode != 0:
-        print(f"[{step_name}] Warning: Process exited with return code {result.returncode}")
-    else:
-        print(f"[{step_name}] SUCCESS")
-    return result.returncode
+
+def run_step(name, cmd):
+    print("\n" + "=" * 68)
+    print(f"STEP: {name}")
+    print("=" * 68)
+    res = subprocess.run(cmd, cwd=PROJECT_DIR, shell=True)
+    status = "SUCCESS" if res.returncode == 0 else f"EXIT {res.returncode}"
+    print(f"[{name}] {status}")
+    return res.returncode
+
 
 def main():
-    load_env()
-    start_time = datetime.now(timezone.utc).isoformat()
-    print("=" * 70)
-    print("Krisala Hiranandani Master SEO Ecosystem Sweep")
-    print(f"Start Timestamp: {start_time}")
-    print("=" * 70)
+    load_dotenv()
+    print(f"Krisala Hiranandani Master SEO Sweep Started: {datetime.now(timezone.utc).isoformat()}")
 
-    # 1. Regenerate 15,000+ Programmatic Sitemaps & Master Index
-    run_step("1. Regenerate 15k Sharded Sitemaps", "python3 scripts/generate_programmatic_sitemaps.py")
+    run_step("1. Rebuild Canonical XML Sitemaps & Index", f"{sys.executable} scripts/generate_programmatic_sitemaps.py")
+    run_step(
+        "2. Enterprise Google Indexing Orchestrator (GSC + WebSub + IndexNow + Batch)",
+        f"{sys.executable} scripts/enterprise_google_indexing_suite.py --mode full --live-preflight",
+    )
 
-    # 2. Autonomous Multi-Tier Google Indexing & Discovery Suite
-    run_step("2. Autonomous Google Indexing & GSC Sitemaps Sync", "python3 scripts/autonomous_indexing_daemon.py")
-
-    # 3. IndexNow Real-Time Broadcast (Bing, Yandex, Seznam, Naver)
-    run_step("3. IndexNow Multi-Engine Broadcast", "python3 scripts/indexnow_notify.py")
-
-    # 4. Programmatic Off-Page SEO & Automated Link-Building Engine
-    run_step("4. Programmatic Off-Page SEO & Link-Building Engine", "python3 scripts/programmatic_offpage_link_builder.py")
-
-    # 5. Trigger Cloudflare Edge Cron & Programmatic Indexing Engine
     cron_key = os.getenv("CRON_SECRET", "kxh_cron_2026")
-    run_step("5. Cloudflare Edge Cron Indexing Engine", f"curl -s -f 'https://krisalahiranandanitownships.com/api/cron/index-engine?key={cron_key}' || true")
+    run_step(
+        "3. Cloudflare Edge Cron Indexing Trigger",
+        f"curl -s -f 'https://krisalahiranandanitownships.com/api/cron/index-engine?key={cron_key}' || true",
+    )
+    run_step("4. GSC Search Analytics Rank Report", f"{sys.executable} scripts/keyword_rank_tracker.py")
+    print(f"\nMaster SEO Sweep Finished: {datetime.now(timezone.utc).isoformat()}")
 
-    # 6. Cloudflare Edge Cache Purge (if Token or Global Key is set)
-    cf_token = os.getenv("CLOUDFLARE_API_TOKEN")
-    cf_key = os.getenv("CLOUDFLARE_GLOBAL_API_KEY") or os.getenv("CLOUDFLARE_API_KEY")
-    cf_email = os.getenv("CLOUDFLARE_EMAIL")
-    if cf_token:
-        run_step("6. Cloudflare Cache Purge (API Token)", "python3 scripts/purge_edge_cache.py --all")
-    elif cf_key and cf_email:
-        run_step("6. Cloudflare Cache Purge (Global Key)", f"python3 scripts/purge_edge_cache.py --all --key '{cf_key}' --email '{cf_email}'")
-
-    # 7. Automated Google SERP Keyword Rank Tracker
-    run_step("7. Google SERP Keyword Ranking Tracker", "python3 scripts/keyword_rank_tracker.py")
-
-    print("\n" + "=" * 70)
-    print(f"SEO Ecosystem Sweep Completed at {datetime.now(timezone.utc).isoformat()}")
-    print("=" * 70)
 
 if __name__ == "__main__":
     main()

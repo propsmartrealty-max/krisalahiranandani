@@ -14,26 +14,38 @@ const HOST = 'krisalahiranandanitownships.com';
 const INDEXNOW_KEY = 'e2b9c79fa4d84b90a6e4d77c15243890';
 const DEFAULT_CRON_SECRET = 'kxh_cron_2026';
 
-// Master list of high-priority ecosystem URLs & all 8 Google Web Stories
+// Master list of canonical ecosystem URLs, AMP Web Stories, AI manifests & sitemaps
 const CRITICAL_INDEXING_URLS = [
  `https://${HOST}/`,
+ `https://${HOST}/hiranandani-pune`,
+ `https://${HOST}/della-racecourse`,
+ `https://${HOST}/della`,
+ `https://${HOST}/racecourse`,
+ `https://${HOST}/colosseum`,
+ `https://${HOST}/arcadia`,
+ `https://${HOST}/icon`,
+ `https://${HOST}/everlyn`,
+ `https://${HOST}/pricing`,
+ `https://${HOST}/hiranandani-price-list-2026`,
+ `https://${HOST}/floor-plans`,
+ `https://${HOST}/masterplan`,
+ `https://${HOST}/amenities`,
+ `https://${HOST}/connectivity`,
+ `https://${HOST}/site-address`,
+ `https://${HOST}/reviews`,
+ `https://${HOST}/construction-status`,
  `https://${HOST}/pune-real-estate`,
  `https://${HOST}/hinjewadi-real-estate`,
- `https://${HOST}/arcadia`,
- `https://${HOST}/colosseum`,
- `https://${HOST}/icon`,
- `https://${HOST}/della`,
- `https://${HOST}/pricing`,
- `https://${HOST}/amenities`,
- `https://${HOST}/nri`,
- `https://${HOST}/connectivity`,
- `https://${HOST}/racecourse`,
- `https://${HOST}/gallery`,
- `https://${HOST}/masterplan`,
+ `https://${HOST}/north-hinjewadi`,
  `https://${HOST}/neighborhood`,
+ `https://${HOST}/nri`,
  `https://${HOST}/compare`,
  `https://${HOST}/knowledge-hub`,
  `https://${HOST}/blog`,
+ `https://${HOST}/explore`,
+ `https://${HOST}/explore/hiranandani-marunji`,
+ `https://${HOST}/explore/hiranandani-pune-payment-plan-20-80`,
+ `https://${HOST}/contact`,
  // Google Articles & Research Hub Standalone Pages
  `https://${HOST}/blog/krisala-hiranandani-township-hinjewadi-master-plan-review-2026`,
  `https://${HOST}/blog/krisala-hiranandani-township-hinjewadi-flats-price-list-cost-sheet`,
@@ -47,18 +59,20 @@ const CRITICAL_INDEXING_URLS = [
  `https://${HOST}/blog/maharera-sanctions-nri-real-estate-investment-pune-fema-guide`,
  `https://${HOST}/blog/the-colosseum-hinjewadi-phase-4-investment-guide`,
  `https://${HOST}/blog/della-equestrian-estate-villa-plots-hinjewadi-lifestyle`,
- // Google Web Stories Suite (8 Comprehensive AMP Stories)
- `https://${HOST}/stories/the-colosseum-phase-4.html`,
- `https://${HOST}/stories/township-grand-living.html`,
- `https://${HOST}/stories/sector-icon-sky-residences.html`,
- `https://${HOST}/stories/sector-arcadia-luxury-living.html`,
- `https://${HOST}/stories/della-equestrian-villa-plots.html`,
- `https://${HOST}/stories/hinjewadi-it-investment-roi.html`,
- `https://${HOST}/stories/maharera-legal-sanctions-guide.html`,
- `https://${HOST}/stories/nri-investment-desk-pune.html`,
- // Sitemaps & Feeds
+ // Google Web Stories Suite (Extensionless Canonical URLs)
+ `https://${HOST}/stories/the-colosseum-phase-4`,
+ `https://${HOST}/stories/township-grand-living`,
+ `https://${HOST}/stories/sector-icon-sky-residences`,
+ `https://${HOST}/stories/sector-arcadia-luxury-living`,
+ `https://${HOST}/stories/della-equestrian-villa-plots`,
+ `https://${HOST}/stories/hinjewadi-it-investment-roi`,
+ `https://${HOST}/stories/maharera-legal-sanctions-guide`,
+ `https://${HOST}/stories/nri-investment-desk-pune`,
+ // AI Manifests, Sitemaps & Feeds
  `https://${HOST}/sitemap-index.xml`,
  `https://${HOST}/sitemap.xml`,
+ `https://${HOST}/sitemap-explore.xml`,
+ `https://${HOST}/sitemap-nri-global.xml`,
  `https://${HOST}/sitemap-stories.xml`,
  `https://${HOST}/sitemap-news.xml`,
  `https://${HOST}/sitemap-blog.xml`,
@@ -67,6 +81,10 @@ const CRITICAL_INDEXING_URLS = [
  `https://${HOST}/sitemap-geo.xml`,
  `https://${HOST}/locations.kml`,
  `https://${HOST}/llms.txt`,
+ `https://${HOST}/llms-full.txt`,
+ `https://${HOST}/ai-facts.json`,
+ `https://${HOST}/citations.jsonld`,
+ `https://${HOST}/geo-township.geojson`,
  `https://${HOST}/rss.xml`,
  `https://${HOST}/atom.xml`,
  `https://${HOST}/feed.json`
@@ -125,47 +143,38 @@ async function submitIndexNow() {
  }
 }
 
-// Pings Google and Bing Sitemap discovery endpoints
+// Dispatches real-time crawl updates to Google WebSub Hub (replaces deprecated /ping endpoints)
 async function pingSitemaps() {
- const sitemaps = [
+ const feeds = [
  `https://${HOST}/sitemap-index.xml`,
+ `https://${HOST}/sitemap.xml`,
+ `https://${HOST}/sitemap-explore.xml`,
  `https://${HOST}/sitemap-stories.xml`,
  `https://${HOST}/sitemap-news.xml`,
- `https://${HOST}/sitemap-blog.xml`
+ `https://${HOST}/sitemap-blog.xml`,
+ `https://${HOST}/rss.xml`,
+ `https://${HOST}/atom.xml`
  ];
 
- const pingEndpoints = [];
- for (const sm of sitemaps) {
- const encoded = encodeURIComponent(sm);
- pingEndpoints.push({
- engine: 'Google',
- sitemap: sm,
- url: `https://www.google.com/ping?sitemap=${encoded}`
- });
- pingEndpoints.push({
- engine: 'Bing',
- sitemap: sm,
- url: `https://www.bing.com/ping?sitemap=${encoded}`
- });
- }
-
  const results = await Promise.all(
- pingEndpoints.map(async (target) => {
+ feeds.map(async (feedUrl) => {
  try {
- const res = await fetch(target.url, {
- method: 'GET',
- headers: { 'User-Agent': 'KrisalaHiranandani-SitemapPinger/1.0' }
+ const body = new URLSearchParams({ 'hub.mode': 'publish', 'hub.url': feedUrl });
+ const res = await fetch('https://pubsubhubbub.appspot.com/publish', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+ body: body.toString()
  });
  return {
- engine: target.engine,
- sitemap: target.sitemap,
+ engine: 'Google-WebSub',
+ sitemap: feedUrl,
  status: res.status,
  ok: res.ok
  };
  } catch (e) {
  return {
- engine: target.engine,
- sitemap: target.sitemap,
+ engine: 'Google-WebSub',
+ sitemap: feedUrl,
  status: 500,
  ok: false,
  error: e.message
@@ -177,15 +186,18 @@ async function pingSitemaps() {
  return results;
 }
 
-// Pre-warms edge cache for high-priority stories and pages
+// Pre-warms edge cache for flagship hubs, stories & AI manifests
 async function prewarmEdge(originUrl) {
  const warmupTargets = [
  `https://${HOST}/`,
- `https://${HOST}/stories/sector-icon-sky-residences.html`,
- `https://${HOST}/stories/the-colosseum-phase-4.html`,
- `https://${HOST}/stories/township-grand-living.html`,
- `https://${HOST}/stories/hinjewadi-it-investment-roi.html`,
- `https://${HOST}/sitemap-stories.xml`
+ `https://${HOST}/hiranandani-pune`,
+ `https://${HOST}/della-racecourse`,
+ `https://${HOST}/della`,
+ `https://${HOST}/hiranandani-price-list-2026`,
+ `https://${HOST}/stories/the-colosseum-phase-4`,
+ `https://${HOST}/llms.txt`,
+ `https://${HOST}/ai-facts.json`,
+ `https://${HOST}/sitemap-index.xml`
  ];
 
  const results = await Promise.all(
