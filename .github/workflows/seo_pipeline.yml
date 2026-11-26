@@ -65,10 +65,9 @@ jobs:
           if [ -n "$GOOGLE_SERVICE_ACCOUNT_KEY" ]; then
             echo "$GOOGLE_SERVICE_ACCOUNT_KEY" > scripts/google_service_account.json
             python scripts/keyword_rank_tracker.py || true
-            python scripts/enterprise_google_indexing_suite.py --mode index --live-preflight || true
             rm -f scripts/google_service_account.json
           else
-            echo "GOOGLE_SERVICE_ACCOUNT_KEY secret not configured. Skipping GSC/Indexing API steps."
+            echo "GOOGLE_SERVICE_ACCOUNT_KEY secret not configured. Skipping GSC rank tracking."
           fi
 
       - name: Optimize Cloudflare Edge & Purge Cache

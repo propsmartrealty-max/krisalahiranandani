@@ -60,7 +60,7 @@ PAGE_HTML = r"""<!DOCTYPE html>
 <!-- Stylesheets -->
 <link href="/public/fonts/phosphor.min.css" media="print" onload="this.media='all'" rel="stylesheet"/>
 <noscript><link href="/public/fonts/phosphor.min.css" rel="stylesheet"/></noscript>
-<link href="/style.min.css?v=20261126_v1" rel="stylesheet"/>
+<link href="/style.min.css?v=20261127_v1" rel="stylesheet"/>
 
 <!-- Google Consent Mode v2 & Analytics -->
 <script>
@@ -870,7 +870,7 @@ body { background: var(--bg-dark); color: var(--text-main); font-family: var(--f
   </a>
 </div>
 
-<script defer="" src="/app.min.js?v=20261126_v1"></script>
+<script defer="" src="/app.min.js?v=20261127_v1"></script>
 </body>
 </html>
 """

@@ -904,12 +904,41 @@ class EnterpriseGoogleIndexingOrchestrator:
             print(f"\n[REPORT] Saved telemetry report to {REPORT_FILE}")
 
 
+def verify_legacy_301_urls(urls, max_workers=8):
+    """Verify legacy URLs return HTTP 301/308 pointing to a valid destination on the canonical host."""
+    print(f"\n  [PREFLIGHT] Verifying {len(urls)} legacy 301 redirect URLs...")
+    passed = []
+    failed = []
+
+    def _chk(u):
+        try:
+            r = requests.get(u, timeout=12, allow_redirects=False, headers={"User-Agent": "Googlebot/2.1"})
+            loc = r.headers.get("Location", "")
+            if r.status_code in (301, 308) and loc:
+                return u, True, f"HTTP {r.status_code} -> {loc}"
+            return u, False, f"HTTP {r.status_code}"
+        except Exception as e:
+            return u, False, str(e)
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        for fut in as_completed([pool.submit(_chk, u) for u in urls]):
+            u, ok, reason = fut.result()
+            if ok:
+                passed.append(u)
+            else:
+                failed.append((u, reason))
+
+    print(f"  Legacy 301 Preflight: Passed={len(passed)} | Skipped={len(failed)}")
+    return passed, failed
+
+
 def main():
     load_dotenv()
     parser = argparse.ArgumentParser(description="Enterprise Google Indexing & Search Ecosystem Orchestrator")
     parser.add_argument("--mode", choices=["audit", "inspect", "sitemaps", "broadcast", "index", "full"], default="full")
-    parser.add_argument("--limit", type=int, default=145, help="Max URLs to submit to Google Indexing API")
+    parser.add_argument("--limit", type=int, default=145, help="Max canonical URLs to submit to Google Indexing API")
     parser.add_argument("--inspect-limit", type=int, default=150, help="Max URLs to inspect via GSC URL Inspection API")
+    parser.add_argument("--include-legacy-301s", type=int, default=0, help="Append top N impression-holding legacy 301 URLs to accelerate PageRank consolidation")
     parser.add_argument("--force", action="store_true", help="Force resubmit even if hash unchanged / published recently")
     parser.add_argument("--dry-run", action="store_true", help="Audit & rank queue without mutating live APIs or ledger")
     parser.add_argument("--live-preflight", action="store_true", help="Verify live HTTP 200 & canonical before Indexing API dispatch")
@@ -979,11 +1008,43 @@ def main():
 
     if mode in ("index", "full"):
         queue, skipped = orc.build_priority_queue(inspect_data, sa_stats, force=args.force, limit=args.limit)
-        print(f"\n  Priority Indexing Queue Ready: {len(queue)} URLs (Skipped {skipped} unchanged recent URLs)")
+        print(f"\n  Priority Indexing Queue Ready: {len(queue)} Canonical URLs (Skipped {skipped} unchanged recent URLs)")
         if args.live_preflight and queue:
             passed_urls, _ = orc.preflight_live_check([it["url"] for it in queue])
             passed_set = set(passed_urls)
             queue = [it for it in queue if it["url"] in passed_set]
+
+        if args.include_legacy_301s > 0 and non_canon_sa:
+            now_utc = datetime.now(timezone.utc)
+            legacy_candidates = []
+            for u, st in non_canon_sa:
+                if not args.force:
+                    last_pub = orc.ledger.get("urls", {}).get(u, {}).get("last_published_at")
+                    if last_pub:
+                        try:
+                            if (now_utc - datetime.fromisoformat(last_pub.replace("Z", "+00:00"))).total_seconds() < 48 * 3600:
+                                continue
+                        except Exception:
+                            pass
+                legacy_candidates.append((u, st))
+                if len(legacy_candidates) >= args.include_legacy_301s:
+                    break
+
+            if legacy_candidates:
+                leg_urls = [u for u, _ in legacy_candidates]
+                if args.live_preflight:
+                    passed_leg, _ = verify_legacy_301_urls(leg_urls)
+                    passed_leg_set = set(passed_leg)
+                    legacy_candidates = [(u, st) for u, st in legacy_candidates if u in passed_leg_set]
+                for u, st in legacy_candidates:
+                    queue.append({
+                        "url": u,
+                        "score": min(400, 150 + int(st.get("impressions", 0))),
+                        "reasons": ["legacy_301_transfer", f"impr={st.get('impressions', 0)}"],
+                        "sha256": "",
+                    })
+                print(f"  Appended {len(legacy_candidates)} Top Legacy 301 URLs after canonical hubs (Total queue: {len(queue)})")
+
         batch_res = orc.batch_publish(queue, action_type="URL_UPDATED")
 
     orc.write_report(sm_summary, inspect_data, sa_stats, non_canon_sa, batch_res, websub_res, indexnow_res, edge_res)

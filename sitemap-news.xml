@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
     <url>
+        <loc>https://krisalahiranandanitownships.com/della-racecourse</loc>
+        <news:news>
+            <news:publication>
+                <news:name>Krisala Hiranandani Township Media Bureau</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2026-11-27T01:30:00+05:30</news:publication_date>
+            <news:title>Della Racecourse Pune Unveils 40-Acre Polo District, 98 Private Villas &amp; 156 Branded Residences at Krisala Hiranandani</news:title>
+        </news:news>
+    </url>
+    <url>
         <loc>https://krisalahiranandanitownships.com/blog/hinjewadi-it-park-housing-shortage-pmrda-ring-road-surge-2026</loc>
         <news:news>
             <news:publication>
@@ -52,8 +63,8 @@
                 <news:name>Krisala Hiranandani Township Media Bureau</news:name>
                 <news:language>en</news:language>
             </news:publication>
-            <news:publication_date>2026-10-28T10:00:00+00:00</news:publication_date>
-            <news:title>The Della Collection Unveils 100 Exclusive Luxury Equestrian Villa Plots in West Pune</news:title>
+            <news:publication_date>2026-11-26T10:00:00+05:30</news:publication_date>
+            <news:title>Della Collection Unveils 98 Private Villas &amp; 5,000 Sq.Ft. Freehold Villa Plots in West Pune</news:title>
         </news:news>
     </url>
 </urlset>

@@ -6171,8 +6171,41 @@ body.menu-open {
     gap: 12px;
     margin-top: 22px;
 }
+.della-ec-compact {
+    padding: 36px 0;
+    background: linear-gradient(180deg, rgba(11, 13, 19, 0.96) 0%, #090a0f 100%);
+    border-top: 1px solid rgba(197, 160, 89, 0.25);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.18);
+}
+.della-ec-compact-card {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 28px;
+    border-radius: 10px;
+    background: rgba(16, 18, 26, 0.88);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    text-align: center;
+}
+.della-ec-compact-card h2 {
+    font-family: var(--font-heading, 'Cormorant Garamond', Georgia, serif);
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+    color: #fff;
+    margin: 8px 0 10px;
+}
+.della-ec-compact-card h2 span {
+    color: var(--gold-bright, #dfc07b);
+}
+.della-ec-compact-card p {
+    color: #d6dbe6;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    max-width: 920px;
+    margin: 0 auto 16px;
+}
 @media (max-width: 768px) {
     .della-pune-ecosystem { padding: 42px 0; }
+    .della-ec-compact { padding: 28px 0; }
+    .della-ec-compact-card { padding: 20px 16px; }
     .della-ec-inner { padding: 0 16px; }
     .della-ec-kpi-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }

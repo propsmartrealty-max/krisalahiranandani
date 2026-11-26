@@ -414,7 +414,14 @@ const EXACT_SLUGS_TO_CANONICAL = {
  'krisala-hiranandani-apartments-near-darumbre-marunji': '/explore/krisala-hiranandani-luxury-township-darumbre-pune',
  'krisala-hiranandani-apartments-near-mumbai-pune-expressway': '/explore/flats-near-mumbai-pune-expressway',
  'krisala-hiranandani-flats-for-sale-in-pune': '/explore/flats-in-hinjewadi',
- 'krisala-hiranandani-luxury-apartments-in-pune': '/explore/luxury-apartments-in-hinjewadi'
+ 'krisala-hiranandani-luxury-apartments-in-pune': '/explore/luxury-apartments-in-hinjewadi',
+ 'krisala-hiranandani-hinjewadi-official-website-north-hinjewadi': '/hinjewadi-real-estate',
+ 'krisala-hiranandani-hiranandani-hinjewadi-schedule-vip-site-visit-wakad-extension': '/site-address',
+ 'krisala-hiranandani-hiranandani-hinjewadi-direct-developer-booking-pune-west-corridor': '/site-address',
+ 'krisala-hiranandani-hiranandani-hinjewadi-official-website-it-leaders-pune': '/hiranandani-pune',
+ 'krisala-hiranandani-upcoming-projects-pune-official-website-north-hinjewadi': '/hiranandani-pune',
+ 'krisala-hiranandani-upcoming-projects-pune-105-acre-integrated-township-pune-west-corridor': '/hiranandani-pune',
+ 'krisala-hiranandani-hiranandani-township-hinjewadi-official-website-mahalunge-smart-city': '/hinjewadi-real-estate'
 };
 
 function resolveCanonicalDestination(slug) {
@@ -426,7 +433,7 @@ function resolveCanonicalDestination(slug) {
  }
  if (slug.includes('sector-icon') || slug.includes('4-bhk') || slug.includes('4bhk') || slug.includes('5-bhk') || slug.includes('5bhk') || slug.includes('duplex') || slug.includes('penthouse') || slug.includes('sky-villa')) return '/icon';
  if (slug.includes('everlyn') || slug.includes('everland')) return '/everlyn';
- if (slug.includes('racecourse') && slug.includes('della')) return '/della-racecourse';
+ if ((slug.includes('racecourse') && slug.includes('della')) || (slug.includes('della-resorts-partnership') && !slug.includes('villa-plot') && !slug.includes('bungalow-plot'))) return '/della-racecourse';
  if (slug.includes('della') || slug.includes('villa-plot') || slug.includes('bungalow-plot') || slug.includes('polo')) return '/della';
  if (slug.includes('racecourse') || slug.includes('equestrian')) return '/racecourse';
  if (slug.includes('price') || slug.includes('cost') || slug.includes('emi') || slug.includes('payment') || slug.includes('token') || slug.includes('offer')) return '/pricing';
@@ -434,7 +441,7 @@ function resolveCanonicalDestination(slug) {
  if (slug.includes('masterplan') || slug.includes('master-plan')) return '/masterplan';
  if (slug.includes('rera') || slug.includes('possession') || slug.includes('construction') || slug.includes('7-12')) return '/construction-status';
  if (slug.includes('review') || slug.includes('rating')) return '/reviews';
- if (slug.includes('site-address') || slug.includes('location-map') || slug.includes('booking-office') || slug.includes('sales-office') || slug.includes('contact')) return '/site-address';
+ if (slug.includes('site-address') || slug.includes('location-map') || slug.includes('booking-office') || slug.includes('sales-office') || slug.includes('site-visit') || slug.includes('schedule-vip') || slug.includes('direct-developer-booking') || slug.includes('contact')) return '/site-address';
  if (slug.includes('metro') || slug.includes('ring-road') || slug.includes('expressway') || slug.includes('connectivity') || slug.includes('airport') || slug.includes('infosys') || slug.includes('wipro') || slug.includes('tcs') || slug.includes('cognizant') || slug.includes('barclays')) return '/connectivity';
  if (slug.includes('nri') || slug.includes('usd') || slug.includes('aed')) return '/nri';
  if (slug.includes('vs-godrej')) return '/compare/vs-godrej-river-royale';
@@ -444,8 +451,9 @@ function resolveCanonicalDestination(slug) {
  if (slug.includes('vs-') || slug.includes('compare') || slug.includes('comparison')) return '/compare';
  if (slug.includes('amenities') || slug.includes('clubhouse')) return '/amenities';
  if (slug.includes('sample-flat') || slug.includes('gallery') || slug.includes('virtual-tour')) return '/gallery';
- if (slug.includes('dr-niranjan') || slug.includes('niranjan-hiranandani') || slug.includes('house-of-hiranandani') || slug.includes('communities-pune') || slug.includes('group-pune') || slug === 'hiranandani-pune' || slug === 'hiranandani-township-pune') return '/hiranandani-pune';
- if (slug.includes('hinjewadi-real-estate')) return '/hinjewadi-real-estate';
+ if (slug.includes('dr-niranjan') || slug.includes('niranjan-hiranandani') || slug.includes('house-of-hiranandani') || slug.includes('communities-pune') || slug.includes('group-pune') || slug.includes('upcoming-projects-pune') || slug.includes('it-leaders-pune') || slug === 'hiranandani-pune' || slug === 'hiranandani-township-pune') return '/hiranandani-pune';
+ if (slug.includes('north-hinjewadi')) return '/north-hinjewadi';
+ if (slug.includes('hinjewadi-real-estate') || slug.includes('hiranandani-hinjewadi') || slug.includes('mahalunge-smart-city')) return '/hinjewadi-real-estate';
  if (slug.includes('pune-real-estate') || slug.includes('flats-in-pune') || slug.includes('flats-for-sale') || slug.includes('luxury-apartments-in-pune')) return '/pune-real-estate';
  return '/';
 }
