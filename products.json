@@ -69,26 +69,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -157,26 +137,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -245,26 +205,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -333,26 +273,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -421,26 +341,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -509,26 +409,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -597,26 +477,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -629,7 +489,7 @@
         "@id": "https://krisalahiranandanitownships.com/#product-KXH-ICON-4BHK-ULTRA",
         "name": "Krisala Hiranandani Sector Icon 4 BHK Ultra-Luxury Suite Hinjewadi",
         "description": "Sector Icon 4 BHK Ultra-Luxury suite in Tower B & C (1,850 sq.ft. carpet area). Private sundeck facing 8-acre integrated racecourse and Sahyadri horizon. MahaRERA PR1260002600818.",
-        "image": "https://krisalahiranandani.townships.com/public/icon_official/icon_towers_daylight_architectural_elevation.webp",
+        "image": "https://krisalahiranandanitownships.com/public/icon_official/icon_towers_daylight_architectural_elevation.webp",
         "sku": "KXH-ICON-4BHK-ULTRA",
         "mpn": "KXH-ICON-4BHK-ULTRA",
         "brand": {
@@ -685,26 +545,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -773,26 +613,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -861,26 +681,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -949,26 +749,6 @@
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }
@@ -980,7 +760,7 @@
         "@type": "Product",
         "@id": "https://krisalahiranandanitownships.com/#product-KXH-DELLA-VILLA-PLOT",
         "name": "The Della Collection Resort Equestrian Villa Plot Hinjewadi Pune",
-        "description": "Exclusive 2,500-5,000 sq.ft. resort-themed equestrian villa plots curated by Della Resorts with access to 8-acre championship polo track, horse stables, and private 5-star concierge club. MahaRERA Registered.",
+        "description": "Exclusive 5,000 sq.ft. freehold resort equestrian villa plots alongside 98 Private Luxury Villas curated by Della Resorts with access to 8-acre championship polo track, 50 horse stables, and 5-star concierge privileges. MahaRERA PR1260002502438.",
         "image": "https://krisalahiranandanitownships.com/public/township_grand/della_resort_villas_equestrian_official.webp",
         "sku": "KXH-DELLA-VILLA-PLOT",
         "mpn": "KXH-DELLA-VILLA-PLOT",
@@ -1028,35 +808,15 @@
         ],
         "offers": {
           "@type": "Offer",
-          "url": "https://krisalahiranandanitownships.com/della",
+          "url": "https://krisalahiranandanitownships.com/della-racecourse",
           "priceCurrency": "INR",
-          "price": "35000000.00",
+          "price": "37500000.00",
           "priceValidUntil": "2026-12-31",
           "itemCondition": "https://schema.org/NewCondition",
           "availability": "https://schema.org/InStock",
           "seller": {
             "@type": "RealEstateAgent",
             "name": "Krisala x Hiranandani Communities"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "IN",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          },
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0",
-              "currency": "INR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "IN"
-            }
           }
         }
       }

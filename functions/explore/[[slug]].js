@@ -63,11 +63,11 @@ const ENTITY_DICTIONARY = {
  },
  "della-plots": {
  name: "Della Township Bungalow Premium Plots & Lots",
- carpet: "2,000 – 5,000 sq.ft. Plot Area",
+ carpet: "5,000 sq.ft. Freehold Villa Plots",
  price: "₹3.75 Cr* Onwards (5,000 sq.ft.)",
  sector: "The Della Precinct",
  floors: "G + 2 Independent Villa / Bungalow Construction Allowed",
- spec: "Private Polo Track Access, Della Concierge Club Membership, 100 Exclusive Lots",
+ spec: "Private Polo Track Access, Della Concierge Club Membership, 98 Private Luxury Villas & Freehold Plots",
  desc: "Exclusive resort-themed bungalow premium plots and Della township lots at Hiranandani Township Hinjewadi, boasting an 8-acre private racecourse, polo club, and Della concierge."
  },
  "colosseum": {

@@ -18,7 +18,7 @@ INVENTORY = [
     {
         "id": "KXH-PUNE-MASTER",
         "title": "Hiranandani Pune 105-Acre Flagship Integrated Equestrian Township (Hinjewadi)",
-        "description": "Official Master Township Portal for Krisala Hiranandani Pune in North Hinjewadi. 105+ Acres featuring Neoclassical Greco-Roman architecture, 2, 3, 4 BHK residences, Della luxury villa plots, and India's first 8-acre private racecourse. MahaRERA: PR1260002500600, PR1260002600818, PR1260002502438.",
+        "description": "Verified Master Township Portal for Krisala Hiranandani Pune in North Hinjewadi. 105+ Acres featuring Neoclassical Greco-Roman architecture, 2, 3, 4 BHK residences, Della 5,000 sq.ft. freehold villa plots, and India's first 8-acre private racecourse. MahaRERA: PR1260002500600, PR1260002600818, PR1260002502438.",
         "link": f"{BASE_URL}/hiranandani-pune",
         "image_link": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
         "price": "7900000.00 INR",
@@ -29,8 +29,8 @@ INVENTORY = [
     },
     {
         "id": "KXH-PRICE-2026",
-        "title": "Hiranandani Pune 2026 Official Price List, Cost Sheet & Payment Schedules",
-        "description": "Official 2026 price list and cost sheets for Krisala Hiranandani Township Hinjewadi, Pune. 2 BHK from ₹79L, 3 BHK from ₹1.25Cr, 4 BHK Duplex from ₹2.10Cr, and Della Villa Plots from ₹1.80Cr. All-inclusive cost sheets with stamp duty and RERA milestones.",
+        "title": "Hiranandani Pune 2026 Verified Price List, Cost Sheet & Payment Schedules",
+        "description": "Verified 2026 price list and cost sheets for Krisala Hiranandani Township Hinjewadi, Pune. 2 BHK from ₹79L, 3 BHK from ₹1.25Cr, 4 BHK Duplex from ₹2.10Cr, and Della 5,000 sq.ft. Freehold Villa Plots from ₹3.75Cr*. All-inclusive cost sheets with stamp duty and RERA milestones.",
         "link": f"{BASE_URL}/hiranandani-price-list-2026",
         "image_link": f"{BASE_URL}/public/township_grand/krisala_hiranandani_grand_entrance_hero.webp",
         "price": "7900000.00 INR",
@@ -42,7 +42,7 @@ INVENTORY = [
     {
         "id": "KXH-ARC-2BHK",
         "title": "Krisala Hiranandani 2 BHK Luxury Neoclassical Apartment (Sector Arcadia)",
-        "description": "Official MahaRERA PR1260002502438 verified 2 BHK residence in Sector Arcadia, Krisala Hiranandani Township Hinjewadi, Pune. 740-840 sq.ft. carpet area, Mivan aluminium formwork, private sundeck, 8-acre racecourse access, and signal-free connectivity to Hinjewadi IT Park.",
+        "description": "MahaRERA PR1260002502438 verified 2 BHK residence in Sector Arcadia, Krisala Hiranandani Township Hinjewadi, Pune. 740-840 sq.ft. carpet area, Mivan aluminium formwork, private sundeck, 8-acre racecourse access, and signal-free connectivity to Hinjewadi IT Park.",
         "link": f"{BASE_URL}/arcadia",
         "image_link": f"{BASE_URL}/public/everlyn/floorplans/plan_booklet_1.webp",
         "price": "7900000.00 INR",
@@ -148,40 +148,28 @@ INVENTORY = [
         "mpn": "PR1260002600818-5BHK"
     },
     {
-        "id": "KXH-DEL-VILLA-2000",
-        "title": "The Della Collection 2,000 sq.ft. Equestrian Villa Plot",
-        "description": "Bespoke resort villa plot in the 40-acre Della hospitality district with 8-acre championship polo oval and private racecourse. G+2 independent villa permissions with Della Resorts 5-star concierge membership.",
-        "link": f"{BASE_URL}/della",
-        "image_link": f"{BASE_URL}/public/imported/krisala-hiranandani-banner.webp",
-        "price": "18000000.00 INR",
+        "id": "KXH-DEL-RACECOURSE-RES",
+        "title": "Della Racecourse Pune Branded Residences & Sky Villas (3×18F Towers)",
+        "description": "40-acre Della Racecourse district featuring 156 Branded Residences and 12 Sky Villas across three 18-floor biophilic towers with Marina Bay rooftop infinity pool, 8-acre turf racecourse, 50 stables, and MAYRLIFE longevity therapies.",
+        "link": f"{BASE_URL}/della-racecourse",
+        "image_link": f"{BASE_URL}/public/della_racecourse/della_pune_racecourse_hero_banner.webp",
+        "price": "21000000.00 INR",
         "availability": "in stock",
-        "brand": "Krisala x Hiranandani",
-        "product_type": "Real Estate > Land & Plots > Equestrian Villa Plots",
-        "mpn": "DELLA-RESORT-PLOT2000"
-    },
-    {
-        "id": "KXH-DEL-VILLA-3000",
-        "title": "The Della Collection 3,000 sq.ft. Equestrian Estate Plot",
-        "description": "Expansive 3,000 sq.ft. equestrian estate parcel fronting the private polo track. Clear demarcated title, PMRDA sanctioned layouts, and exclusive access to the Della Adventure & Concierge Club.",
-        "link": f"{BASE_URL}/della",
-        "image_link": f"{BASE_URL}/public/imported/krisala-hiranandani-banner.webp",
-        "price": "26500000.00 INR",
-        "availability": "in stock",
-        "brand": "Krisala x Hiranandani",
-        "product_type": "Real Estate > Land & Plots > Equestrian Villa Plots",
-        "mpn": "DELLA-RESORT-PLOT3000"
+        "brand": "Krisala x Hiranandani x Della",
+        "product_type": "Real Estate > Ultra Luxury > Della Racecourse Branded Residences",
+        "mpn": "DELLA-RACECOURSE-168"
     },
     {
         "id": "KXH-DEL-VILLA-5000",
-        "title": "The Della Collection 5,000 sq.ft. Presidential Polo Estate Parcel",
-        "description": "Ultra-exclusive 5,000 sq.ft. presidential polo parcel with direct racecourse frontage, air-cooled equine stables, and resort lifestyle privileges curated in collaboration with Jimmy Mistry (Della Resorts).",
+        "title": "The Della Collection 5,000 sq.ft. Freehold Villa Plots & 98 Private Luxury Villas",
+        "description": "Freehold 5,000 sq.ft. NA-sanctioned bungalow villa plots starting ₹3.75 Crore* alongside 98 Private Luxury Villas in 4 British Colonial architectural styles overlooking India's first 8-acre residential racecourse and polo club. MahaRERA PR1260002502438.",
         "link": f"{BASE_URL}/della",
-        "image_link": f"{BASE_URL}/public/imported/krisala-hiranandani-banner.webp",
-        "price": "35000000.00 INR",
+        "image_link": f"{BASE_URL}/public/township_grand/della_resort_villas_equestrian_official.webp",
+        "price": "37500000.00 INR",
         "availability": "in stock",
-        "brand": "Krisala x Hiranandani",
+        "brand": "Krisala x Hiranandani x Della",
         "product_type": "Real Estate > Land & Plots > Equestrian Villa Plots",
-        "mpn": "DELLA-RESORT-PLOT5000"
+        "mpn": "PR1260002502438-DELLA5000"
     },
     {
         "id": "KXH-EVR-2BHK",
@@ -229,13 +217,13 @@ def generate_feed():
     channel = ET.SubElement(rss, "channel")
 
     title = ET.SubElement(channel, "title")
-    title.text = "Krisala Hiranandani Township Hinjewadi — Official Google Product Inventory Feed"
+    title.text = "Krisala Hiranandani Township Hinjewadi — Verified Google Product Inventory Feed"
 
     link = ET.SubElement(channel, "link")
     link.text = BASE_URL
 
     desc = ET.SubElement(channel, "description")
-    desc.text = "Verified Google Merchant & Google Shopping Product Feed for Krisala Hiranandani Township Hinjewadi, Pune. Featuring 2, 3, 4 BHK apartments, Sky Duplexes, and Della Villa plots."
+    desc.text = "Verified Google Merchant & Google Shopping Product Feed for Krisala Hiranandani Township Hinjewadi, Pune. Featuring 2, 3, 4 BHK apartments, Sky Duplexes, and 5,000 sq.ft. Della Freehold Villa Plots."
 
     last_build = ET.SubElement(channel, "lastBuildDate")
     last_build.text = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S GMT")
@@ -271,7 +259,7 @@ def generate_feed():
         i_condition.text = "new"
 
         i_cat = ET.SubElement(item, "g:google_product_category")
-        i_cat.text = "Real Estate > Residential Properties"
+        i_cat.text = "Real Estate > Land & Plots" if "Plot" in item_data["product_type"] else "Real Estate > Residential Properties"
 
         i_type = ET.SubElement(item, "g:product_type")
         i_type.text = item_data["product_type"]
@@ -282,6 +270,7 @@ def generate_feed():
     xml_bytes = ET.tostring(rss, encoding="utf-8", xml_declaration=True)
 
     dest_files = [
+        os.path.join(ROOT_DIR, "google-merchant-feed.xml"),
         os.path.join(PUBLIC_DIR, "google-merchant-feed.xml"),
         os.path.join(PUBLIC_DIR, "google-products.xml"),
         os.path.join(ROOT_DIR, "google-products.xml")

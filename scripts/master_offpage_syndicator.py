@@ -30,9 +30,9 @@ def update_press_releases():
             "id": "pr-2026-11-della-racecourse-launch",
             "title": "Krisala Developers & Hiranandani Communities Unveil India's First Residential 8-Acre Racecourse & Della Precinct in Hinjewadi, Pune",
             "date": TODAY_DATE,
-            "url": f"{DOMAIN}/della",
+            "url": f"{DOMAIN}/della-racecourse",
             "category": "Flagship Launch",
-            "summary": "105-acre integrated township in North Hinjewadi introduces an 8-acre private turf racecourse, equestrian polo club, and 100 bespoke villa plots curated by Della Resorts."
+            "summary": "40-acre equestrian district within the 105-acre township in Darumbre, North Hinjewadi introduces an 8-acre private turf racecourse, 98 Private Luxury Villas, 5,000 sq.ft. freehold villa plots from ₹3.75 Cr*, and 156 Branded Residences + 12 Sky Villas curated with Della Resorts."
         },
         {
             "id": "pr-2026-11-price-list-cost-sheet",
@@ -40,15 +40,15 @@ def update_press_releases():
             "date": TODAY_DATE,
             "url": f"{DOMAIN}/hiranandani-price-list-2026",
             "category": "Commercial Disclosure",
-            "summary": "Transparent pricing schedule released: 2 BHK residences from ₹79 Lakh*, 3 BHK from ₹1.25 Crore*, 4 BHK sky duplexes from ₹2.10 Crore*, and Della villa plots from ₹1.80 Crore*."
+            "summary": "Transparent pricing schedule released: 2 BHK residences from ₹79 Lakh*, 3 BHK from ₹1.25 Crore*, 4 BHK sky duplexes from ₹2.10 Crore*, and Della 5,000 sq.ft. freehold villa plots from ₹3.75 Crore*."
         },
         {
             "id": "pr-2026-11-global-nri-investment-desk",
             "title": "Global NRI Real Estate Investment Desk Inaugurated for Hinjewadi IT Park Tech Corridors",
             "date": TODAY_DATE,
-            "url": f"{DOMAIN}/explore/krisala-hiranandani-nri-investment-desk-pune",
+            "url": f"{DOMAIN}/nri",
             "category": "Global Capital",
-            "summary": "Direct cross-border acquisition desks established for UAE, USA, UK, Singapore, and Australia NRI investors offering 5.4% projected rental yields and FEMA-compliant execution."
+            "summary": "Direct cross-border acquisition desks established for UAE, USA, UK, Singapore, Australia, and Canada NRI investors offering 5.4% projected rental yields and FEMA-compliant execution."
         },
         {
             "id": "pr-2026-10-pune-metro-line-3-trials",
@@ -83,9 +83,9 @@ def update_township_press_feed():
         "items": [
             {
                 "id": "pr-2026-11-racecourse-precinct",
-                "url": f"{DOMAIN}/della",
+                "url": f"{DOMAIN}/della-racecourse",
                 "title": "Krisala Developers & Hiranandani Communities Announce 40-Acre Della Equestrian Precinct & 8-Acre Racecourse in Hinjewadi",
-                "content_html": f"<p>PUNE, MAHARASHTRA — Krisala Developers and Hiranandani Communities have unveiled the centerpiece of their 105-acre master development: <a href=\"{DOMAIN}/della\">The Della Collection</a>, featuring an 8-acre private turf racecourse, international polo club, and bespoke villa plots. Access transparent pricing on the <a href=\"{DOMAIN}/hiranandani-price-list-2026\">Hiranandani Price List 2026</a> portal.</p>",
+                "content_html": f"<p>PUNE, MAHARASHTRA — Krisala Developers and Hiranandani Communities have unveiled the centerpiece of their 105-acre master development: <a href=\"{DOMAIN}/della-racecourse\">Della Racecourse Pune</a>, featuring an 8-acre private turf racecourse, international polo club, 98 Private Luxury Villas, 156 Branded Residences + 12 Sky Villas, and 5,000 sq.ft. freehold villa plots starting ₹3.75 Cr*. Access transparent pricing on the <a href=\"{DOMAIN}/hiranandani-price-list-2026\">Hiranandani Price List 2026</a> portal.</p>",
                 "summary": "105-Acre integrated township launch in North Hinjewadi featuring Neoclassical architecture, 8-acre private racecourse, and Della luxury resort precinct.",
                 "date_published": f"{TODAY_DATE}T08:00:00Z",
                 "tags": ["Hiranandani Pune", "Krisala Hiranandani", "Della Township", "Della Racecourse", "MahaRERA PR1260002500600"]
@@ -94,7 +94,7 @@ def update_township_press_feed():
                 "id": "pr-2026-11-the-colosseum-phase-4",
                 "url": f"{DOMAIN}/colosseum",
                 "title": "The Colosseum (Phase 4) Pre-Launch Window Opens at Krisala Hiranandani Township Hinjewadi",
-                "content_html": f"<p>PUNE, INDIA — Pre-launch bookings are now officially open for <a href=\"{DOMAIN}/colosseum\">The Colosseum Phase 4 Hinjewadi</a>, comprising B+G+27 storey Roman neoclassical high-rises. Floor plans and cost sheets are accessible directly via <a href=\"{DOMAIN}/pricing\">Krisala Hiranandani Pricing Desk</a>.</p>",
+                "content_html": f"<p>PUNE, INDIA — Pre-launch bookings are now open for <a href=\"{DOMAIN}/colosseum\">The Colosseum Phase 4 Hinjewadi</a>, comprising B+G+27 storey Roman neoclassical high-rises. Floor plans and cost sheets are accessible directly via <a href=\"{DOMAIN}/pricing\">Krisala Hiranandani Pricing Desk</a>.</p>",
                 "summary": "Pre-launch window for The Colosseum Phase 4 featuring neoclassical towers overlooking the Sahyadri mountains and private racecourse.",
                 "date_published": f"{TODAY_DATE}T06:00:00Z",
                 "tags": ["The Colosseum Hinjewadi", "Krisala Hiranandani", "New Launch Pune", "MahaRERA PR1260002600818"]
@@ -132,11 +132,11 @@ def generate_syndication_packages():
 
 **Pune, Maharashtra — November 2026**
 
-In an unprecedented collaboration reshaping Western India's luxury real estate landscape, **Krisala Developers** and **Hiranandani Communities** (under the visionary leadership of Dr. Niranjan Hiranandani) have officially launched their flagship 105-acre integrated development: [Hiranandani Pune](https://krisalahiranandanitownships.com/hiranandani-pune).
+In an unprecedented collaboration reshaping Western India's luxury real estate landscape, **Krisala Developers** and **Hiranandani Communities** (under the visionary leadership of Dr. Niranjan Hiranandani) have unveiled their flagship 105-acre integrated development: [Hiranandani Pune](https://krisalahiranandanitownships.com/hiranandani-pune).
 
 Strategically located on the PMRDA 128-meter Ring Road in North Hinjewadi (Darumbre / Marunji Boulevard), the township introduces:
-1. **India's First Residential 8-Acre Private Racecourse & Polo Club:** Curated for equine elegance, featuring equestrian stables, showjumping arenas, and private racecourse pathways.
-2. **40-Acre Della Luxury Resort Precinct:** Designed in exclusive partnership with Della Resorts & Adventure, featuring bespoke villa plots and resort-style five-star privileges.
+1. **India's First Residential 8-Acre Private Racecourse & Polo Club:** Curated for equine elegance, featuring 50 horse stables, showjumping arenas, and private racecourse pathways.
+2. **40-Acre Della Luxury Resort Precinct:** Designed in partnership with Jimmy Mistry's Della Resorts & Adventure, featuring 98 Private Luxury Villas, 156 Branded Residences + 12 Sky Villas, and 5,000 sq.ft. freehold villa plots.
 3. **Neoclassical Roman Architecture:** Iconic high-rise towers engineered with monolithic Mivan RCC technology, Roman archways, fluted Corinthian pillars, and 18-foot double-height grand entrance lobbies.
 4. **MahaRERA Statutory Sanctions:** Fully registered under MahaRERA PR1260002500600 (Sector Arcadia), PR1260002600818 (The Colosseum Phase 4), and PR1260002502438 (The Della Collection).
 
@@ -144,16 +144,16 @@ Strategically located on the PMRDA 128-meter Ring Road in North Hinjewadi (Darum
 - **2 BHK Neoclassical Residences (Sector Arcadia):** Starting from ₹79 Lakh*
 - **3 BHK Grand Residences (The Colosseum):** Starting from ₹1.25 Crore*
 - **4 BHK Sky Duplex Mansions (Sector Icon):** Starting from ₹2.10 Crore*
-- **Custom Equestrian Villa Plots (The Della Collection):** Starting from ₹1.80 Crore*
+- **Della Freehold Villa Plots (5,000 sq.ft.):** Starting from ₹3.75 Crore*
 
-To access verified floor plans, 360-degree virtual sample flat walkthroughs, and official cost sheets, visit the verified [Krisala Hiranandani Township](https://krisalahiranandanitownships.com/) portal and check the updated [Hiranandani Price List 2026](https://krisalahiranandanitownships.com/hiranandani-price-list-2026).
+To access verified floor plans, 360-degree virtual sample flat walkthroughs, and cost sheets, visit the verified [Krisala Hiranandani Township](https://krisalahiranandanitownships.com/) portal and check the updated [Hiranandani Price List 2026](https://krisalahiranandanitownships.com/hiranandani-price-list-2026).
 
 ---
 **Media & Investor Relations Contact:**  
 **Corporate Desk:** Krisala × Hiranandani Master Township Experience Center  
 **Site Address:** PMRDA 128m Ring Road Corridor, North Hinjewadi, Darumbre, Pune 410506  
 **Website:** [https://krisalahiranandanitownships.com/](https://krisalahiranandanitownships.com/)  
-**Email:** propsmartrealty@gmail.com  
+**Direct Contact Portal:** [https://krisalahiranandanitownships.com/contact](https://krisalahiranandanitownships.com/contact)  
 **Phone:** +91 7744009295
 """
         },
@@ -180,9 +180,9 @@ Explore verified floor plans and pricing at [Krisala Hiranandani](https://krisal
 
 **Pune, Maharashtra — November 2026**
 
-A collaboration between Della Resorts & Adventure and Hiranandani Communities, [Della Township Hinjewadi](https://krisalahiranandanitownships.com/della) presents 100 bespoke freehold villa plots integrated around India's first residential 8-acre turf racecourse.
+A collaboration between Della Resorts & Adventure and Hiranandani Communities, [Della Racecourse Pune](https://krisalahiranandanitownships.com/della-racecourse) presents 98 Private Luxury Villas, 156 Branded Residences + 12 Sky Villas, and freehold 5,000 sq.ft. villa plots starting from ₹3.75 Crore* integrated around India's first residential 8-acre turf racecourse.
 
-Villa plots feature G+2 sanctioned architectural blueprints, private stable access, and 5-star Della resort memberships. For plot layouts and site visits, visit [Della Collection Hinjewadi](https://krisalahiranandanitownships.com/della).
+Villa plots feature G+2 British Colonial sanctioned architectural blueprints, 50 equine stables, MAYRLIFE wellness access, and 5-star Della resort memberships. For plot layouts and site visits, visit [Della Collection Hinjewadi](https://krisalahiranandanitownships.com/della).
 """
         }
     ]

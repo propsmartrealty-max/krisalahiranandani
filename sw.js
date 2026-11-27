@@ -1,10 +1,10 @@
-const CACHE_NAME = 'krisala-hiranandani-v13';
+const CACHE_NAME = 'krisala-hiranandani-v14';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
  '/',
- '/style.min.css?v=20261026_v6',
- '/app.min.js?v=20261026_v6',
+ '/style.min.css?v=20261127_v1',
+ '/app.min.js?v=20261127_v1',
  '/style.css',
  '/app.js',
  '/offline.html',
@@ -16,7 +16,8 @@ const CORE_ASSETS = [
 ];
 
 const SILO_ASSETS = [
- '/krisala-hiranandani-pune/',
+ '/hiranandani-pune',
+ '/della-racecourse',
  '/pune-real-estate',
  '/hinjewadi-real-estate',
  '/colosseum',
@@ -27,6 +28,11 @@ const SILO_ASSETS = [
  '/racecourse',
  '/amenities',
  '/pricing',
+ '/hiranandani-price-list-2026',
+ '/floor-plans',
+ '/construction-status',
+ '/reviews',
+ '/site-address',
  '/gallery',
  '/masterplan',
  '/connectivity',
@@ -37,6 +43,7 @@ const SILO_ASSETS = [
  '/compare',
  '/neighborhood',
  '/blog',
+ '/explore',
  '/404.html'
 ];
 

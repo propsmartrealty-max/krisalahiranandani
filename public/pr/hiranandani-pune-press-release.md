@@ -10,4 +10,4 @@ Situated in North Hinjewadi, the landmark township introduces:
 - Signature neoclassical Roman architecture with Mivan monolithic RCC engineering
 - Verified MahaRERA certifications: `PR1260002500600`, `PR1260002600818`, `PR1260002502438`
 
-To view verified inventory, floor plans, and cost sheets, visit the official [Krisala Hiranandani Township Hinjewadi](https://krisalahiranandanitownships.com/) portal and check the updated [Hiranandani Price List 2026](https://krisalahiranandanitownships.com/hiranandani-price-list-2026).
+To view verified inventory, floor plans, and cost sheets, visit the verified [Krisala Hiranandani Township Hinjewadi](https://krisalahiranandanitownships.com/) portal and check the updated [Hiranandani Price List 2026](https://krisalahiranandanitownships.com/hiranandani-price-list-2026).

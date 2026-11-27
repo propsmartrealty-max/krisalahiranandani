@@ -505,7 +505,7 @@ overlay.innerHTML = `
 <button class="quiz-opt" data-value="della-villa">
 <i class="ph ph-horse gold-icon"></i>
 <strong>Bespoke Equestrian Villa Plot</strong>
-<span>Della District • From ₹1.50 Cr*</span>
+<span>Della District • Plots ₹3.75 Cr*</span>
 </button>
 </div>
 </div>
@@ -1777,11 +1777,11 @@ url: '/arcadia'
 id: 'della',
 name: 'Della Resort & Racecourse',
 badge: '40-Acre District',
-price: '₹1.50 Crore*',
-config: 'Bespoke Villa Plots & Glamping',
+price: '₹3.75 Crore*',
+config: '5,000 Sq.Ft. Villa Plots & 98 Villas',
 rera: 'Sanctioned Master Enclave',
 img: '/public/imported/della_equestrian_championship_track_hq.webp',
-desc: "India's first 8-acre private equestrian racecourse & polo arena within a residential township, paired with Della's 5-star resort hospitality and 100 private villa estates.",
+desc: "India's first 8-acre private equestrian racecourse & polo arena within a residential township, paired with Della's 5-star resort hospitality, 98 Private Luxury Villas & 5,000 sq.ft. freehold villa plots.",
 url: '/della'
 }
 ];

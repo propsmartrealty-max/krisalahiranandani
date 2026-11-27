@@ -69,11 +69,20 @@ def generate_report():
     # Sort by clicks descending, then impressions
     rows.sort(key=lambda x: (x.get("clicks", 0), x.get("impressions", 0)), reverse=True)
 
+    total_clicks = sum(r.get("clicks", 0) for r in rows)
+    total_impr = sum(r.get("impressions", 0) for r in rows)
+    top3_count = sum(1 for r in rows if r.get("position", 99.0) <= 3.0)
+    page1_count = sum(1 for r in rows if r.get("position", 99.0) <= 10.0)
+    top_leaders = ", ".join(
+        f"`{r['keys'][0]}` (#{r.get('position', 0.0):.1f})"
+        for r in sorted(rows, key=lambda x: x.get("position", 99.0))[:5]
+    )
+
     report_lines = [
-        "# Krisala × Hiranandani Township — Verified Google Search Console Rank Audit",
+        "# Krisala Hiranandani Township — Verified Google Search Console Rank Audit",
         f"**Audit Timestamp:** {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}  ",
         f"**Data Source:** Google Search Console API (`{GSC_PROPERTY}`)  ",
-        f"**Verified Search Queries Analyzed:** {len(rows)}  ",
+        f"**Verified Search Queries Analyzed:** {len(rows)} ({total_clicks} clicks, {total_impr} impressions)  ",
         "",
         "## Real Organic Google SERP Performance",
         "",
@@ -105,9 +114,9 @@ def generate_report():
         "",
         "---",
         "### Key SEO Takeaways from Verified Google Data:",
-        "1. **Dominant Page 1 Positions:** High-intent branded queries such as `hiranandani pune hinjewadi` (#1.3), `codename colosseum` (#1.8), `krisala hiranandani arcadia` (#3.9), and `hiranandani hinjewadi phase 4` (#7.0) are firmly in the Top 1 to Top 7 of Google.",
-        "2. **Pillar Page Indexing Acceleration:** The new dedicated authority pillars (`/hiranandani-pune`, `/hiranandani-price-list-2026`) are progressing through Google's Caffeine indexing pipeline to elevate mega-head terms (`hiranandani pune`, `krisala hiranandani`) into the Top 3.",
-        "3. **Zero Scraping Artifacts:** This report is generated strictly from Google Search Console telemetry, removing any false 'Not in top 30' flags caused by Google's anti-bot scraper challenges."
+        f"1. **Page 1 & Top 3 Coverage:** {page1_count} tracked queries rank on Page 1 (including {top3_count} in Top 3), led by {top_leaders}.",
+        f"2. **Aggregate Organic Demand:** Observed {total_clicks} clicks across {total_impr} impressions in this GSC window across township, sector, and pricing URLs.",
+        "3. **Zero Scraping Artifacts:** Generated strictly from Google Search Console telemetry rather than third-party SERP scrapers."
     ])
 
     report_content = "\n".join(report_lines)
