@@ -1,4 +1,4 @@
-const CACHE_NAME = 'krisala-hiranandani-v14';
+const CACHE_NAME = 'krisala-hiranandani-v15';
 const OFFLINE_URL = '/offline.html';
 
 const CORE_ASSETS = [
@@ -20,6 +20,12 @@ const SILO_ASSETS = [
  '/della-racecourse',
  '/pune-real-estate',
  '/hinjewadi-real-estate',
+ '/pune-stamp-duty-registration-calculator',
+ '/pune-property-rates-2026',
+ '/pune-metro-line-3-stations-route-map',
+ '/pmrda-ring-road-villages-map',
+ '/hinjewadi-it-park-companies-directory',
+ '/maharera-project-verification-guide',
  '/colosseum',
  '/everlyn',
  '/arcadia',
